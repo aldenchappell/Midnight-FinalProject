@@ -3,6 +3,64 @@ using UnityEngine.AI;
 
 public class EnemyStateController : MonoBehaviour
 {
+    //Enemy State Parameters
+    enum AIState { roaming, chasing, patrolling};
+    AIState currentState;
+
+    [Header("Movement Speed Values")]
+    [SerializeField] float roamSpeed;
+    [SerializeField] float chaseSpeed;
+
+    //Script References
+    EnemyVision COV;
+    RandomMovementController RM;
+
+    private void Start()
+    {
+        COV = GetComponent<EnemyVision>();
+        RM = GetComponent<RandomMovementController>();
+    }
+
+
+    private void DetermineCurrentState()
+    {
+        if(COV.targetsInSight.Count > 0 && COV.realizationValue > 20)
+        {
+            currentState = AIState.chasing;
+        }
+        else if(COV.realizationValue > 0)
+        {
+            currentState = AIState.patrolling;
+        }
+        else
+        {
+            currentState = AIState.roaming;
+        }
+    }
+
+    private void ApplyCurrentStateBehaviour()
+    {
+        if(currentState == AIState.chasing)
+        {
+            Transform target = COV.targetsInSight[0].transform;
+            //Insert code here to adjust RandomMovement to chase player. Reference provided above
+        }
+        else if(currentState == AIState.patrolling)
+        {
+            Vector3 lastKnownPosition = COV.lastKnownPosition;
+            //Insert code here to adjust RandomMovement to patrol around the players last known position, provided above
+        }
+        else
+        {
+            //Insert code here to reset AI movement to default roaming
+        }
+    }
+
+
+
+
+
+
     // public enum EnemyStates
     // {
     //     Roam,

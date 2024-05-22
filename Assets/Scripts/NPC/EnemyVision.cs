@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
 {
+    //Parameters that dictate search radius and cone of vision field
     [Header("Search Parameters")]
     [SerializeField] float searchRadius;
     [Range(0,360)]
     [SerializeField] float coneRadius;
-
+    
+    //Layer of the target AI is searching for
     [Header("Target Layer")]
     [SerializeField] LayerMask targetLayer;
 
+    //Enable this in inspector to see debug information for COV
     [Header("Enable Debug Statements")]
     [SerializeField] bool enableDebug;
 
-    //Found Targets
-    List<GameObject> targetsInSight = new List<GameObject>();
+    //List of all targets that are in range, sight, and not obstructed from view.
+    public List<GameObject> targetsInSight = new List<GameObject>();
+    public Vector3 lastKnownPosition;
 
+    //Parameters that adjust AI's realization values
     [Header("Realization Function Values")]
     [Range(0, 20)]
-    [SerializeField] float realizationValue;
+    public float realizationValue;
     bool isRealizing;
 
 
@@ -34,7 +39,7 @@ public class EnemyVision : MonoBehaviour
         }
     }
 
-
+    //Get all targets in radius and determine if they are visible to AI
     private void GetTargetsInRadius()
     {
         targetsInSight.Clear();
@@ -52,6 +57,7 @@ public class EnemyVision : MonoBehaviour
                         if(hit.collider == target)
                         {
                             targetsInSight.Add(target.transform.gameObject);
+                            lastKnownPosition = target.transform.position;
                             print("Target " + target.name + " is in sight");
                         }
                         else
@@ -81,6 +87,7 @@ public class EnemyVision : MonoBehaviour
         }
     }
 
+    //Raises and lowers Realization Value depending on if targets are in sight. Used for chasing and patrolling states in Enemy state Controller
     private void RealiziationBuffer()
     {
         if(targetsInSight.Count > 0)
@@ -95,7 +102,7 @@ public class EnemyVision : MonoBehaviour
         }
     }
 
-
+    //Debug Gizmos
     private void OnDrawGizmos()
     {
         if(enableDebug)

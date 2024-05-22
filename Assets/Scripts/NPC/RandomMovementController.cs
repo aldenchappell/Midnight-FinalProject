@@ -7,6 +7,7 @@ public class RandomMovementController : MonoBehaviour
 {
     private NavMeshAgent _agent; 
 
+    [Header("Randomized Movement Parameters")]
     [SerializeField] private float waypointSpawnRadius; // Radius for spawning waypoints.
     [SerializeField] private Transform centerPoint; // Center point of the map (e.g., ground or ground floor).
     [SerializeField] private float maxDistanceFromRandomPoint; // Max distance from a random point to a valid NavMesh position.
