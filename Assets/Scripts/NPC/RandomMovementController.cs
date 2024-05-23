@@ -17,9 +17,10 @@ public class RandomMovementController : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>(); 
     }
 
-    private void FixedUpdate()
+    public void Roam()
     {
-        if (_agent != null && _agent.remainingDistance <= _agent.stoppingDistance)
+        Debug.Log("Roaming");
+        if (_agent.remainingDistance <= _agent.stoppingDistance)
         {
             Vector3 destinationPoint;
             if (GetRandomWaypoint(centerPoint.position, waypointSpawnRadius, out destinationPoint))
@@ -28,6 +29,28 @@ public class RandomMovementController : MonoBehaviour
                 Debug.DrawRay(destinationPoint, Vector3.up, Color.red, maxDistanceFromRandomPoint); // Visualize the waypoint in the editor.
 #endif
                 _agent.SetDestination(destinationPoint); // Set the agent's destination to the random waypoint.
+            }
+        }
+    }
+
+    public void ChasePlayer(Transform player)
+    {
+        Debug.Log("Chasing");
+        _agent.SetDestination(player.position);
+    }
+
+    public void Patrol(Vector3 lastKnownPosition)
+    {
+        Debug.Log("Patrolling");
+        if (_agent.remainingDistance <= _agent.stoppingDistance)
+        {
+            Vector3 destinationPoint;
+            if (GetRandomWaypoint(lastKnownPosition, waypointSpawnRadius, out destinationPoint))
+            {
+#if UNITY_EDITOR
+                Debug.DrawRay(destinationPoint, Vector3.up, Color.blue, maxDistanceFromRandomPoint); // Visualize the waypoint in the editor.
+#endif
+                _agent.SetDestination(destinationPoint); // Set the agent's destination to the random waypoint near the last known position.
             }
         }
     }

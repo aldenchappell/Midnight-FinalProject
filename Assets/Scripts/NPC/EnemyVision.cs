@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,13 @@ public class EnemyVision : MonoBehaviour
     bool isRealizing;
 
 
+    private EnemyStateController _stateController;
+
+    private void Awake()
+    {
+        _stateController = GetComponent<EnemyStateController>();
+    }
+
     private void Update()
     {
         GetTargetsInRadius();
@@ -59,6 +67,7 @@ public class EnemyVision : MonoBehaviour
                             targetsInSight.Add(target.transform.gameObject);
                             lastKnownPosition = target.transform.position;
                             print("Target " + target.name + " is in sight");
+                            
                         }
                         else
                         {
