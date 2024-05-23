@@ -45,7 +45,7 @@ public class RandomMovementController : MonoBehaviour
         if (_agent.remainingDistance <= _agent.stoppingDistance)
         {
             Vector3 destinationPoint;
-            if (GetRandomWaypoint(lastKnownPosition, waypointSpawnRadius, out destinationPoint))
+            if (GetRandomWaypoint(lastKnownPosition, waypointSpawnRadius / 4, out destinationPoint))
             {
 #if UNITY_EDITOR
                 Debug.DrawRay(destinationPoint, Vector3.up, Color.blue, maxDistanceFromRandomPoint); // Visualize the waypoint in the editor.

@@ -20,14 +20,24 @@ public class EnemyVision : MonoBehaviour
     [SerializeField] bool enableDebug;
 
     //List of all targets that are in range, sight, and not obstructed from view.
-    public List<GameObject> targetsInSight = new List<GameObject>();
+    private List<GameObject> targetsInSight = new List<GameObject>(1);
+    public List<GameObject> targetsLockedIn = new List<GameObject>(1);
     public Vector3 lastKnownPosition;
 
     //Parameters that adjust AI's realization values
     [Header("Realization Function Values")]
     [Range(0, 20)]
-    public float realizationValue;
+    [SerializeField] float realizationValue;
     bool isRealizing;
+
+    //Get Set Methods
+    public float GetRealizationValue
+    {
+        get
+        {
+            return realizationValue;
+        }
+    }
 
 
     private EnemyStateController _stateController;
@@ -101,12 +111,24 @@ public class EnemyVision : MonoBehaviour
     {
         if(targetsInSight.Count > 0)
         {
-            realizationValue += 1;
+            realizationValue += 1; 
+            //Target has been fully realized and is now being chased.
+            if(realizationValue >= 20)
+            {
+                targetsLockedIn.Add(targetsInSight[0]);
+                realizationValue = 20;
+            }
             Invoke("RealiziationBuffer", .05f);
+        }
+        else if(targetsInSight.Count <= 0 && realizationValue > 0)
+        {
+            realizationValue -= 1;
+            Invoke("RealiziationBuffer", 1f);
         }
         else
         {
-            realizationValue = 0;
+            //Target is no longer in sight and has been unrealized. 
+            targetsLockedIn.Clear();
             isRealizing = false;
         }
     }

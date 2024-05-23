@@ -41,14 +41,16 @@ public class EnemyStateController : MonoBehaviour
 
     private void DetermineCurrentState()
     {
-        if (_enemyVision.targetsInSight.Count > 0 && _enemyVision.realizationValue > 20)
+        if (_enemyVision.targetsLockedIn.Count > 0)
         {
             _currentState = AIState.Chase;
         }
+        /*
         else if (_enemyVision.realizationValue > 0)
         {
             _currentState = AIState.Patrol;
         }
+        */
         else
         {
             _currentState = AIState.Roam;
@@ -60,7 +62,7 @@ public class EnemyStateController : MonoBehaviour
         
         if (_currentState == AIState.Chase)
         {
-            Transform target = _enemyVision.targetsInSight[0].transform;
+            Transform target = _enemyVision.targetsLockedIn[0].transform;
             _agent.speed = chaseSpeed;
             _randomMovement.ChasePlayer(target);
         }
