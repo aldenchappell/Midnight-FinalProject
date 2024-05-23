@@ -10,6 +10,8 @@ public class EnemySuspicionSystem : MonoBehaviour
 
     EnemyVision _COV;
 
+    private bool _isLosingSuspicion;
+
     private void Awake()
     {
         _COV = GetComponent<EnemyVision>();
@@ -25,11 +27,20 @@ public class EnemySuspicionSystem : MonoBehaviour
 
     public void AddSuspicion(int addedSuspicion)
     {
-
+        suspicionValue += addedSuspicion;
+        if(suspicionValue > 40)
+        {
+            suspicionValue = 40;
+        }
     }
 
     private IEnumerator SuspicionLoss()
     {
-        yield return new WaitForSeconds(0f);
+        while(suspicionValue > 0)
+        {
+            suspicionValue -= 5;
+            yield return new WaitForSeconds(1f);
+        }
+        
     }
 }
