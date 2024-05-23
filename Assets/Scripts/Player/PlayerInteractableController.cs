@@ -3,8 +3,9 @@ using UnityEngine.UI;
 
 public class PlayerInteractableController : MonoBehaviour
 {
-    
     private InteractableObject _interactableObject;
+
+    [SerializeField] private Camera mainCamera;
     
     [SerializeField] private LayerMask interactableLayerMask;
     [SerializeField] private KeyCode interactionButton;
@@ -15,15 +16,17 @@ public class PlayerInteractableController : MonoBehaviour
     
     [SerializeField] private Vector2 defaultIconSize;
     [SerializeField] private Vector2 defaultInteractionIconSize;
-    
+
+    [SerializeField] private float interactionDistance = 2.0f;
     private void Update()
     {
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(Camera.main.transform.position,
-                Camera.main.transform.forward,
+        if (Physics.Raycast(
+                mainCamera.transform.position,
+                mainCamera.transform.forward,
                 out hitInfo,
-                2,
+                interactionDistance,
                 interactableLayerMask))
         {
             if (hitInfo.collider.GetComponent<InteractableObject>() != false)
@@ -33,7 +36,6 @@ public class PlayerInteractableController : MonoBehaviour
                    hitInfo.collider.GetComponent<InteractableObject>().interactableID)
                 {
                     _interactableObject = hitInfo.collider.GetComponent<InteractableObject>();
-                    Debug.Log("Found interactable");
                 }
 
                 if (_interactableObject.interactionIcon != null)
