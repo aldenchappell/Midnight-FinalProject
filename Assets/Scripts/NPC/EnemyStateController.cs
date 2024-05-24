@@ -6,6 +6,7 @@ public class EnemyStateController : MonoBehaviour
     // Enemy State Parameters
     enum AIState { Roam, Chase, Patrol };
     private AIState _currentState;
+    private AIState _previousState;
 
     [Header("Movement Speed Values")]
     [SerializeField] private float roamSpeed = 1.85f;
@@ -17,6 +18,7 @@ public class EnemyStateController : MonoBehaviour
     private RandomMovementController _randomMovement;
     private NavMeshAgent _agent;
     private EnemyAnimator _animator;
+    private EnemySuspicionSystem _suspicion;
     
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class EnemyStateController : MonoBehaviour
         _randomMovement = GetComponent<RandomMovementController>();
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<EnemyAnimator>();
+        _suspicion = GetComponent<EnemySuspicionSystem>();
     }
 
     private void Start()
@@ -36,20 +39,20 @@ public class EnemyStateController : MonoBehaviour
     {
         DetermineCurrentState();
         ApplyCurrentStateBehaviour();
+        print(_currentState);
     }
 
     private void DetermineCurrentState()
     {
+        _previousState = _currentState;
         if (_enemyVision.targetsLockedIn.Count > 0)
         {
             _currentState = AIState.Chase;
         }
-        /*
-        else if (_enemyVision.realizationValue > 0)
+        else if (_suspicion.GetSuspicionValue > 10)
         {
             _currentState = AIState.Patrol;
         }
-        */
         else
         {
             _currentState = AIState.Roam;
@@ -58,7 +61,10 @@ public class EnemyStateController : MonoBehaviour
 
     private void ApplyCurrentStateBehaviour()
     {
-        
+        if(_previousState != _currentState)
+        {
+            _agent.ResetPath();
+        }
         if (_currentState == AIState.Chase)
         {
             Transform target = _enemyVision.targetsLockedIn[0].transform;
@@ -67,7 +73,7 @@ public class EnemyStateController : MonoBehaviour
         }
         else if (_currentState == AIState.Patrol)
         {
-            Vector3 lastKnownPosition = _enemyVision.lastKnownPosition;
+            Vector3 lastKnownPosition = _suspicion.lastSusPosition;
             _agent.speed = patrollingSpeed;
             _randomMovement.Patrol(lastKnownPosition);
         }
