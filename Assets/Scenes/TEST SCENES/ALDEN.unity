@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 7708422}
   - component: {fileID: 7708421}
   m_Layer: 0
-  m_Name: InteractableIcon
+  m_Name: InteractableImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 11436973}
   - component: {fileID: 11436972}
   - component: {fileID: 11436976}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TestObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,6 +676,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &415917370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415917371}
+  - component: {fileID: 415917372}
+  m_Layer: 0
+  m_Name: FieldOfView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &415917371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415917370}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.279, y: 2.06, z: 1.227}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1905904908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415917372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415917370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c50bc0011f54544a453feeae28a032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VisionConeMaterial: {fileID: 2100000, guid: 41e0c1783ecb78c4eb28db9a3b0c792a, type: 2}
+  VisionRange: 10
+  VisionAngle: 2
+  VisionObstructingLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  VisionConeResolution: 120
+--- !u!20 &430310477 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5126527961139664767, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+  m_PrefabInstance: {fileID: 1572344791}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &599779889
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 768184905}
   - component: {fileID: 768184907}
-  - component: {fileID: 768184908}
+  - component: {fileID: 768184909}
   m_Layer: 7
   m_Name: DoorParent
   m_TagString: Untagged
@@ -970,7 +1026,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &768184908
+--- !u!114 &768184909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -979,15 +1035,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 768184904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13810721ea2449f4b98cb93a65e70177, type: 3}
+  m_Script: {fileID: 11500000, guid: 2797d0655e40cdd45926582637422ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionIcon: {fileID: 21300000, guid: 08a9b04753ae1474a863a9d53ac1035f, type: 3}
-  interactableIconSize: {x: 75, y: 75}
-  interactableID: 0
+  canBeOpened: 1
+  doorInteractionCooldown: 1.5
 --- !u!4 &1021355127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 937451010987979973, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
@@ -1005,6 +1057,7 @@ GameObject:
   - component: {fileID: 1069589443}
   - component: {fileID: 1069589442}
   - component: {fileID: 1069589441}
+  - component: {fileID: 1069589444}
   m_Layer: 7
   m_Name: TempDoorObj
   m_TagString: Untagged
@@ -1098,6 +1151,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069589439}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1069589444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069589439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13810721ea2449f4b98cb93a65e70177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 768184909}
+        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
+        m_MethodName: HandleDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  interactionIcon: {fileID: 21300000, guid: 08a9b04753ae1474a863a9d53ac1035f, type: 3}
+  interactableIconSize: {x: 75, y: 75}
+  interactableID: 0
 --- !u!1 &1237344293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,7 +1266,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d7884446406d889498d023b855a63c67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 415917371}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d7884446406d889498d023b855a63c67, type: 3}
       insertIndex: -1
@@ -1226,13 +1312,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbf44f50cf5f4e4796e6eee6b7fddde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 430310477}
   interactableLayerMask:
     serializedVersion: 2
     m_Bits: 128
   interactionButton: 101
-  currentInteractableImage: {fileID: 7708421}
-  defaultInteractableIcon: {fileID: 21300000, guid: 2d736f517ba3c9a4f9c8daa3ca0287fb, type: 3}
+  interactionImage: {fileID: 7708421}
+  defaultIcon: {fileID: 21300000, guid: 2d736f517ba3c9a4f9c8daa3ca0287fb, type: 3}
+  defaultInteractionIcon: {fileID: 21300000, guid: 2d736f517ba3c9a4f9c8daa3ca0287fb, type: 3}
   defaultIconSize: {x: 50, y: 50}
+  defaultInteractionIconSize: {x: 0, y: 0}
+  interactionDistance: 2
 --- !u!1001 &1572344791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1500,6 +1590,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1905904908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d7884446406d889498d023b855a63c67, type: 3}
+  m_PrefabInstance: {fileID: 1307926463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

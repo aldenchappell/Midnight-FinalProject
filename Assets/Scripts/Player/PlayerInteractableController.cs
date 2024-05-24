@@ -18,6 +18,7 @@ public class PlayerInteractableController : MonoBehaviour
     [SerializeField] private Vector2 defaultInteractionIconSize;
 
     [SerializeField] private float interactionDistance = 2.0f;
+    
     private void Update()
     {
         RaycastHit hitInfo;

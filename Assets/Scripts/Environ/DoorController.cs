@@ -18,7 +18,7 @@ public class DoorController : MonoBehaviour
 
     public void HandleDoor()
     {
-        if (canBeOpened)
+        if (!_animator.GetBool("Open") == true)
         {
             OpenDoor();
         }
@@ -30,7 +30,7 @@ public class DoorController : MonoBehaviour
     
     private void OpenDoor()
     {
-        _animator.SetTrigger("Open");
+        _animator.SetBool("Open", true);
         StartDoorInteractionCooldown();
 
         Debug.Log("opening door");
@@ -38,7 +38,7 @@ public class DoorController : MonoBehaviour
 
     private void CloseDoor()
     {
-        _animator.SetTrigger("Close");
+        _animator.SetBool("Open", false);
         StartDoorInteractionCooldown();
         
         Debug.Log("closing door");
