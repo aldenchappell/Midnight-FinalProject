@@ -3,10 +3,11 @@ using UnityEngine;
 public class InGameSettingsManager : MonoBehaviour
 {
     public static InGameSettingsManager Instance;
-
-
+    
     [Header("In Game Settings")] 
     public bool enableViewBobbing;
+    public bool enableFootsteps;
+    
     
     private void Awake()
     {
@@ -20,7 +21,4 @@ public class InGameSettingsManager : MonoBehaviour
             Destroy((gameObject));
         }
     }
-    
-    
-    
 }
