@@ -71,9 +71,33 @@ namespace StarterAssets
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
+		
 
 		private const float _threshold = 0.01f;
 
+		[Header("Added Parameters")]
+		[SerializeField] private GameObject cameraRoot;
+		public bool canMove = true;
+
+		public bool isCrouching = false;
+		public bool isSprinting = false;
+		
+		
+		[Space(10)]
+		
+		
+		[Header("View Bobbing")]
+		[SerializeField] private float walkBobSpeed = 14f;
+		[SerializeField] private float walkBobAmount = 0.05f;
+		[SerializeField] private float sprintBobSpeed = 18f;
+		[SerializeField] private float sprintBobAmount = 0.11f;
+		[SerializeField] private float crouchBobSpeed = 8f;
+		[SerializeField] private float crouchBobAmount = 0.025f;
+		private float _defaultYPos = 0;
+		private float _timer;
+		
+		
+		
 		private bool IsCurrentDeviceMouse
 		{
 			get
@@ -93,6 +117,8 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+
+			_defaultYPos = _mainCamera.transform.localPosition.y;
 		}
 
 		private void Start()
@@ -115,6 +141,16 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+
+			if (InGameSettingsManager.Instance.enableViewBobbing)
+			{
+				HandleHeadBob();
+			}
+
+			
+			//Set booleans for sprinting and crouching
+			isSprinting = Input.GetKey(KeyCode.LeftShift) && Grounded;
+			isCrouching = Input.GetKey(KeyCode.LeftControl) && Grounded;
 		}
 
 		private void LateUpdate()
@@ -263,6 +299,26 @@ namespace StarterAssets
 
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+		}
+
+		private void HandleHeadBob()
+		{
+			if (!Grounded) return;
+
+			
+			
+			if (Mathf.Abs(_input.move.x) != 0.0f || Mathf.Abs(_input.move.y) != 0.0f)
+			{
+				
+				//Debug.Log("Moving");
+				_timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : isSprinting ? sprintBobSpeed : walkBobSpeed);
+
+				cameraRoot.transform.localPosition = new Vector3(
+					cameraRoot.transform.localPosition.x,
+					_defaultYPos + Mathf.Sin(_timer) * (isCrouching ? crouchBobAmount : isSprinting ? sprintBobAmount : walkBobAmount),
+					cameraRoot.transform.localPosition.z
+				);
+			}
 		}
 	}
 }
