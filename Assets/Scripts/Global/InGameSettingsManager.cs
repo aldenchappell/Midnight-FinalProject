@@ -7,6 +7,16 @@ public class InGameSettingsManager : MonoBehaviour
     [Header("In Game Settings")] 
     public bool enableViewBobbing;
     public bool enableFootsteps;
+
+    [Space(10)]
+    
+    
+    [Header("Custom KeyBinds")]
+    public KeyCode objectInteractionKey;
+    public KeyCode doorInteractionKey;
+    public KeyCode crouchKey;
+    public KeyCode sprintKey;
+    public KeyCode swapInventorySlotKey;
     
     
     private void Awake()
@@ -18,7 +28,17 @@ public class InGameSettingsManager : MonoBehaviour
         }
         else
         {
-            Destroy((gameObject));
+            Destroy(gameObject);
         }
+    }
+
+    public void ToggleViewBobbing()
+    {
+        enableViewBobbing = !enableViewBobbing;
+    }
+
+    public void ToggleFootsteps()
+    {
+        enableFootsteps = !enableFootsteps;
     }
 }

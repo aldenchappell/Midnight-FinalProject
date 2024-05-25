@@ -1267,6 +1267,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableViewBobbing: 1
   enableFootsteps: 1
+  objectInteractionKey: 0
+  doorInteractionKey: 0
+  crouchKey: 0
+  sprintKey: 0
+  swapInventorySlotKey: 0
 --- !u!4 &459306353
 Transform:
   m_ObjectHideFlags: 0
@@ -1775,6 +1780,17 @@ MonoBehaviour:
   interactionIcon: {fileID: 21300000, guid: 08a9b04753ae1474a863a9d53ac1035f, type: 3}
   interactableIconSize: {x: 75, y: 75}
   interactableID: 0
+--- !u!114 &1174053637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3705575913500103047, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+  m_PrefabInstance: {fileID: 1572344791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0688965857bdfff4cb38abbd15d83b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1472288891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1827,6 +1843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HallwayDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 2779003513843120012, guid: 2aab45534f5e3864eb3ffb00ebefa0a4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1840,38 +1860,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 113800927778067130, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185921017414210646, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_Center.y
-      value: 0.93
-      objectReference: {fileID: 0}
     - target: {fileID: 1185921017414210651, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: crouchingHeight
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185921017414210651, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: standingCenter.y
-      value: 0.93
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185921017414210651, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: crouchingCenter.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258686653956112458, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5361665550486581420, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 5361665550486581421, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_Transitions.m_InheritPosition
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: pauseManager
+      value: 
+      objectReference: {fileID: 1174053637}
     - target: {fileID: 5630490845543064191, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_Name
       value: Player

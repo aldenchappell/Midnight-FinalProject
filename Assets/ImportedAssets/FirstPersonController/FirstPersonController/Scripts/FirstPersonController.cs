@@ -81,9 +81,9 @@ namespace StarterAssets
 		[Header("Added Parameters")]
 		public GameObject cameraRoot;
 		public bool canMove = true;
-
-		
 		public bool isSprinting = false;
+
+		[SerializeField] private PauseManager pauseManager;
 		
 		
 		[Space(10)]
@@ -157,6 +157,8 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			if (pauseManager.GameIsPaused) return;
+			
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
@@ -180,6 +182,8 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
+			if (pauseManager.GameIsPaused) return;
+			
 			CameraRotation();
 		}
 
