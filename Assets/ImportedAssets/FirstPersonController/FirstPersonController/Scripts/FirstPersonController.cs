@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -16,6 +17,8 @@ namespace StarterAssets
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
 		public float SprintSpeed = 6.0f;
+		[Tooltip("Crouch speed of the character in m/s")]
+		public float CrouchSpeed = 2.0f; 
 		[Tooltip("Rotation speed of the character")]
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
@@ -79,14 +82,14 @@ namespace StarterAssets
 		public GameObject cameraRoot;
 		public bool canMove = true;
 
-		public bool isCrouching = false;
+		
 		public bool isSprinting = false;
 		
 		
 		[Space(10)]
 		
 		
-		[Header("View Bobbing")]
+		[Header("View Bobbing Parameters")]
 		[SerializeField] private float walkBobSpeed = 14f;
 		[SerializeField] private float walkBobAmount = 0.05f;
 		[SerializeField] private float sprintBobSpeed = 18f;
@@ -97,6 +100,20 @@ namespace StarterAssets
 		private float _timer;
 		
 		
+		[Space(10)]
+		
+		
+		[Header("Crouching Parameters")]
+		//private bool ShouldCrouch = Input.GetKeyDown(KeyCode.LeftControl) && !
+		public bool isCrouching = false;
+		private bool _inCrouchAnimation;
+		
+		[SerializeField] private float crouchingHeight = .5f;
+		[SerializeField] private float standingHeight = 2.0f;
+		[SerializeField] private float timeToEnterCrouch = 0.25f;
+		[SerializeField] private Vector3 crouchingCenter = new Vector3(0, 0.5f, 0);
+		[SerializeField] private Vector3 standingCenter = new Vector3(0, .93f, 0);
+		private float _originalCameraRootPosition;
 		
 		private bool IsCurrentDeviceMouse
 		{
@@ -119,6 +136,8 @@ namespace StarterAssets
 			}
 
 			_defaultYPos = _mainCamera.transform.localPosition.y;
+
+			_originalCameraRootPosition = cameraRoot.transform.localPosition.y;
 		}
 
 		private void Start()
@@ -147,11 +166,17 @@ namespace StarterAssets
 				HandleHeadBob();
 			}
 
+			// Toggle crouch state on key press
+			if (Input.GetKeyDown(KeyCode.LeftControl) && Grounded && !_inCrouchAnimation)
+			{
+				HandleCrouching();
+			}
 			
-			//Set booleans for sprinting and crouching
+			// Set booleans for sprinting
 			isSprinting = Input.GetKey(KeyCode.LeftShift) && Grounded;
-			isCrouching = Input.GetKey(KeyCode.LeftControl) && Grounded;
 		}
+
+
 
 		private void LateUpdate()
 		{
@@ -190,7 +215,21 @@ namespace StarterAssets
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
+			//float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed;
+			
+			if (input.sprint)
+			{
+				targetSpeed = SprintSpeed;
+			}
+			else if (isCrouching)
+			{
+				targetSpeed = CrouchSpeed;
+			}
+			else
+			{
+				targetSpeed = MoveSpeed;
+			}
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -304,21 +343,74 @@ namespace StarterAssets
 		private void HandleHeadBob()
 		{
 			if (!Grounded) return;
-
 			
-			
-			if (Mathf.Abs(input.move.x) != 0.0f || Mathf.Abs(input.move.y) != 0.0f)
+			//Head bob while crouching is currently disabled.
+            
+			if (Mathf.Abs(input.move.x) != 0.0f && !isCrouching || Mathf.Abs(input.move.y) != 0.0f && !isCrouching)
 			{
-				
 				//Debug.Log("Moving");
-				_timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : isSprinting ? sprintBobSpeed : walkBobSpeed);
+				_timer += Time.deltaTime * (isSprinting ? sprintBobSpeed : walkBobSpeed);
 
 				cameraRoot.transform.localPosition = new Vector3(
 					cameraRoot.transform.localPosition.x,
-					_defaultYPos + Mathf.Sin(_timer) * (isCrouching ? crouchBobAmount : isSprinting ? sprintBobAmount : walkBobAmount),
+					_defaultYPos + Mathf.Sin(_timer) * (isSprinting ? sprintBobAmount : walkBobAmount),
 					cameraRoot.transform.localPosition.z
 				);
+				
+				// cameraRoot.transform.localPosition = new Vector3(
+				// 	cameraRoot.transform.localPosition.x,
+				// 	_defaultYPos + Mathf.Sin(_timer) * (isCrouching ? crouchBobAmount : isSprinting ? sprintBobAmount : walkBobAmount),
+				// 	cameraRoot.transform.localPosition.z
+				// );
 			}
 		}
+
+		private void HandleCrouching()
+		{
+			StartCoroutine(CrouchAndStandRoutine());
+		}
+
+
+		private IEnumerator CrouchAndStandRoutine()
+		{
+			_inCrouchAnimation = true;
+
+			float timeElapsed = 0;
+			float targetHeight = isCrouching ? standingHeight : crouchingHeight;
+			float currentHeight = _controller.height;
+
+			Vector3 targetCenter = isCrouching ? standingCenter : crouchingCenter;
+			Vector3 currentCenter = _controller.center;
+
+			// Calculate target and current positions for cameraRoot
+			Vector3 targetCameraRootPosition =
+				isCrouching ? new Vector3(0, _defaultYPos, 0)
+					: new Vector3(0, crouchingHeight, 0);
+			
+			Vector3 currentCameraRootPosition = cameraRoot.transform.localPosition;
+
+			while (timeElapsed < timeToEnterCrouch)
+			{
+				float t = timeElapsed / timeToEnterCrouch;
+
+				_controller.height = Mathf.Lerp(currentHeight, targetHeight, t);
+				_controller.center = Vector3.Lerp(currentCenter, targetCenter, t);
+
+				// Interpolate the cameraRoot position
+				cameraRoot.transform.localPosition = Vector3.Lerp(currentCameraRootPosition, targetCameraRootPosition, t);
+
+				timeElapsed += Time.deltaTime;
+				yield return null;
+			}
+
+			_controller.height = targetHeight;
+			_controller.center = targetCenter;
+			cameraRoot.transform.localPosition = targetCameraRootPosition;
+
+			// Toggle crouch state
+			isCrouching = !isCrouching;
+			_inCrouchAnimation = false;
+		}
+
 	}
 }
