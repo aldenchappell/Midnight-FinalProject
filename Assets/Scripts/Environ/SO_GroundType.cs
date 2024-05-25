@@ -7,5 +7,7 @@ public class SO_GroundType : ScriptableObject
     //i.e when the player is on wood, or carpet, etc..
     public AudioClip[] groundTypeAudioClips;
 
+    public float groundTypeVolumeValue; 
+    
     public string groundTypeName;
 }
