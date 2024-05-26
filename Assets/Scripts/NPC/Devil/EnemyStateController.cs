@@ -39,7 +39,7 @@ public class EnemyStateController : MonoBehaviour
     {
         DetermineCurrentState();
         ApplyCurrentStateBehaviour();
-        //print(_currentState);
+        print(_currentState);
     }
 
     private void DetermineCurrentState()

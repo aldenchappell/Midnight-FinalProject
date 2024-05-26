@@ -74,10 +74,12 @@ public class EnemyVision : MonoBehaviour
                     {
                         if(hit.collider == target)
                         {
-                            targetsInSight.Add(target.transform.gameObject);
-                            lastKnownPosition = target.transform.position;
-                            print("Target " + target.name + " is in sight");
-                            
+                            if(targetsInSight.Contains(target.gameObject) != true)
+                            {
+                                targetsInSight.Add(target.transform.gameObject);
+                                lastKnownPosition = target.transform.position;
+                                print("Target " + target.name + " is in sight");
+                            }   
                         }
                         else
                         {
@@ -115,7 +117,10 @@ public class EnemyVision : MonoBehaviour
             //Target has been fully realized and is now being chased.
             if(realizationValue >= 20)
             {
-                targetsLockedIn.Add(targetsInSight[0]);
+                if(targetsLockedIn.Contains(targetsInSight[0]) != true)
+                {
+                    targetsLockedIn.Add(targetsInSight[0]);
+                }
                 realizationValue = 20;
             }
             Invoke("RealiziationBuffer", .05f);
