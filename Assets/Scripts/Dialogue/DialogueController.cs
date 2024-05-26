@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,14 +7,16 @@ public class DialogueController : MonoBehaviour
     public static DialogueController Instance;
 
     [SerializeField] private TMP_Text dialogueText;
-    [SerializeField] private float textReadingSpeed;
+    [SerializeField] private float textReadingSpeed = 0.05f;
 
-    private int _index;
+    private int _currentIndex;
+    private int _lastUsedIndex;
+    
     private string[] _lines;
 
     [SerializeField] private GameObject dialogueBox;
 
-    public bool dialogueEnabled = false;
+    [HideInInspector] public bool dialogueEnabled;
 
     private void Awake()
     {
@@ -38,34 +39,31 @@ public class DialogueController : MonoBehaviour
     public void StartDialogue(string[] lines)
     {
         _lines = lines;
-        _index = 0;
-        gameObject.SetActive(true);
+        _currentIndex = 0;
+        EnableDialogueBox();
         StartCoroutine(ReadOutLine());
         
-        GlobalCursorManager.Instance.EnableCursor();
     }
 
     public void GoToNextLine()
     {
-        if (_index < _lines.Length - 1)
+        if (_currentIndex < _lines.Length - 1)
         {
-            _index++;
+            _currentIndex++;
             dialogueText.text = "";
             StartCoroutine(ReadOutLine());
         }
         else
         {
-            gameObject.SetActive(false);
-            StopAllCoroutines();
-            ResetDialogueText();
+            StopDialogue();
         }
     }
 
     private IEnumerator ReadOutLine()
     {
-        foreach (var line in _lines[_index].ToCharArray())
+        foreach (var character in _lines[_currentIndex].ToCharArray())
         {
-            dialogueText.text += line;
+            dialogueText.text += character;
             yield return new WaitForSeconds(textReadingSpeed);
         }
     }
@@ -75,17 +73,27 @@ public class DialogueController : MonoBehaviour
         dialogueText.text = "";
     }
 
-    public void EnableDialogueBox()
+    private void EnableDialogueBox()
     {
         dialogueEnabled = true;
         dialogueBox.SetActive(true);
         GlobalCursorManager.Instance.EnableCursor();
     }
-    
+
     public void DisableDialogueBox()
     {
+        _lastUsedIndex = _currentIndex;
         dialogueEnabled = false;
         dialogueBox.SetActive(false);
         GlobalCursorManager.Instance.DisableCursor();
+    }
+
+    private void StopDialogue()
+    {
+        _currentIndex = _lastUsedIndex;
+        gameObject.SetActive(false);
+        StopAllCoroutines();
+        ResetDialogueText();
+        DisableDialogueBox();
     }
 }

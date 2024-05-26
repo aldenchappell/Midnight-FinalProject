@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalCursorManager : MonoBehaviour
@@ -11,6 +9,7 @@ public class GlobalCursorManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad((gameObject));
         }
         else
         {
