@@ -173,7 +173,7 @@ namespace StarterAssets
 			{
 				HandleCrouching();
 			}
-			
+		
 			// Set booleans for sprinting
 			isSprinting = Input.GetKey(KeyCode.LeftShift) && Grounded;
 		}
@@ -184,7 +184,19 @@ namespace StarterAssets
 		{
 			if (pauseManager.GameIsPaused) return;
 			
-			CameraRotation();
+			if (DialogueController.Instance.dialogueEnabled)
+			{
+				canMove = false;
+				Debug.Log("disabling movement because dialogue is enabled");
+			}
+			else
+			{
+				canMove = true;
+				Debug.Log("enabling movement because dialogue is disabled");
+			}
+			
+			if(canMove)
+				CameraRotation();
 		}
 
 		private void GroundedCheck()
