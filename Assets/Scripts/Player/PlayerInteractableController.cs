@@ -6,35 +6,24 @@ public class PlayerInteractableController : MonoBehaviour
     private InteractableObject _interactableObject;
 
     [SerializeField] private Camera mainCamera;
-    
     [SerializeField] private LayerMask interactableLayerMask;
     [SerializeField] private KeyCode interactionButton;
-    
     [SerializeField] private Image interactionImage;
     [SerializeField] private Sprite defaultIcon;
     [SerializeField] private Sprite defaultInteractionIcon;
-    
     [SerializeField] private Vector2 defaultIconSize;
     [SerializeField] private Vector2 defaultInteractionIconSize;
-
     [SerializeField] private float interactionDistance = 2.0f;
-    
+
     private void Update()
     {
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(
-                mainCamera.transform.position,
-                mainCamera.transform.forward,
-                out hitInfo,
-                interactionDistance,
-                interactableLayerMask))
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hitInfo, interactionDistance, interactableLayerMask))
         {
             if (hitInfo.collider.GetComponent<InteractableObject>() != false)
             {
-                if(_interactableObject == null ||
-                   _interactableObject.interactableID !=
-                   hitInfo.collider.GetComponent<InteractableObject>().interactableID)
+                if (_interactableObject == null || _interactableObject.interactableID != hitInfo.collider.GetComponent<InteractableObject>().interactableID)
                 {
                     _interactableObject = hitInfo.collider.GetComponent<InteractableObject>();
                 }
@@ -42,14 +31,7 @@ public class PlayerInteractableController : MonoBehaviour
                 if (_interactableObject.interactionIcon != null)
                 {
                     interactionImage.sprite = _interactableObject.interactionIcon;
-                    if (_interactableObject.interactableIconSize == Vector2.zero)
-                    {
-                        interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
-                    }
-                    else
-                    {
-                        interactionImage.rectTransform.sizeDelta = _interactableObject.interactableIconSize;
-                    }
+                    interactionImage.rectTransform.sizeDelta = _interactableObject.interactableIconSize == Vector2.zero ? defaultInteractionIconSize : _interactableObject.interactableIconSize;
                 }
                 else
                 {
@@ -59,7 +41,14 @@ public class PlayerInteractableController : MonoBehaviour
 
                 if (Input.GetKeyDown(interactionButton))
                 {
-                    _interactableObject.onInteraction.Invoke();
+                    if (_interactableObject is InteractableNPC interactableNPC)
+                    {
+                        interactableNPC.Interact();
+                    }
+                    else
+                    {
+                        _interactableObject.onInteraction.Invoke();
+                    }
                 }
             }
         }
@@ -69,6 +58,8 @@ public class PlayerInteractableController : MonoBehaviour
             {
                 interactionImage.sprite = defaultIcon;
                 interactionImage.rectTransform.sizeDelta = defaultIconSize;
+                
+                DialogueController.Instance.DisableDialogueBox();
             }
         }
     }
