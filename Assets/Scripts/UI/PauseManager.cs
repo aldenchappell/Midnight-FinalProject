@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,17 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    public bool GameIsPaused = false;
+    public bool GameIsPaused;
     public GameObject pauseMenuUI;
     public GameObject playerUI;
     public AudioSource pauseSFX;
 
-    void Start()
+    private void Start()
     {
-        
+        GameIsPaused = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

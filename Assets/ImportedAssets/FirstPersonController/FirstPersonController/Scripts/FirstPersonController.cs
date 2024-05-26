@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -16,6 +17,8 @@ namespace StarterAssets
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
 		public float SprintSpeed = 6.0f;
+		[Tooltip("Crouch speed of the character in m/s")]
+		public float CrouchSpeed = 2.0f; 
 		[Tooltip("Rotation speed of the character")]
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
@@ -66,14 +69,52 @@ namespace StarterAssets
 
 	
 #if ENABLE_INPUT_SYSTEM
-		private PlayerInput _playerInput;
+		public PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
-		private StarterAssetsInputs _input;
+		public StarterAssetsInputs input;
 		private GameObject _mainCamera;
+		
 
 		private const float _threshold = 0.01f;
 
+		[Header("Added Parameters")]
+		public GameObject cameraRoot;
+		public bool canMove = true;
+		public bool isSprinting = false;
+
+		[SerializeField] private PauseManager pauseManager;
+		
+		
+		[Space(10)]
+		
+		
+		[Header("View Bobbing Parameters")]
+		[SerializeField] private float walkBobSpeed = 14f;
+		[SerializeField] private float walkBobAmount = 0.05f;
+		[SerializeField] private float sprintBobSpeed = 18f;
+		[SerializeField] private float sprintBobAmount = 0.11f;
+		[SerializeField] private float crouchBobSpeed = 8f;
+		[SerializeField] private float crouchBobAmount = 0.025f;
+		private float _defaultYPos = 0;
+		private float _timer;
+		
+		
+		[Space(10)]
+		
+		
+		[Header("Crouching Parameters")]
+		//private bool ShouldCrouch = Input.GetKeyDown(KeyCode.LeftControl) && !
+		public bool isCrouching = false;
+		private bool _inCrouchAnimation;
+		
+		[SerializeField] private float crouchingHeight = .5f;
+		[SerializeField] private float standingHeight = 2.0f;
+		[SerializeField] private float timeToEnterCrouch = 0.25f;
+		[SerializeField] private Vector3 crouchingCenter = new Vector3(0, 0.5f, 0);
+		[SerializeField] private Vector3 standingCenter = new Vector3(0, .93f, 0);
+		private float _originalCameraRootPosition;
+		
 		private bool IsCurrentDeviceMouse
 		{
 			get
@@ -93,12 +134,16 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+
+			_defaultYPos = _mainCamera.transform.localPosition.y;
+
+			_originalCameraRootPosition = cameraRoot.transform.localPosition.y;
 		}
 
 		private void Start()
 		{
 			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+			input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
 #else
@@ -112,13 +157,33 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			if (pauseManager.GameIsPaused) return;
+			
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+
+			if (InGameSettingsManager.Instance.enableViewBobbing)
+			{
+				HandleHeadBob();
+			}
+
+			// Toggle crouch state on key press
+			if (Input.GetKeyDown(KeyCode.LeftControl) && Grounded && !_inCrouchAnimation)
+			{
+				HandleCrouching();
+			}
+			
+			// Set booleans for sprinting
+			isSprinting = Input.GetKey(KeyCode.LeftShift) && Grounded;
 		}
+
+
 
 		private void LateUpdate()
 		{
+			if (pauseManager.GameIsPaused) return;
+			
 			CameraRotation();
 		}
 
@@ -132,13 +197,13 @@ namespace StarterAssets
 		private void CameraRotation()
 		{
 			// if there is an input
-			if (_input.look.sqrMagnitude >= _threshold)
+			if (input.look.sqrMagnitude >= _threshold)
 			{
 				//Don't multiply mouse input by Time.deltaTime
 				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 				
-				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
-				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+				_cinemachineTargetPitch += input.look.y * RotationSpeed * deltaTimeMultiplier;
+				_rotationVelocity = input.look.x * RotationSpeed * deltaTimeMultiplier;
 
 				// clamp our pitch rotation
 				_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
@@ -154,19 +219,33 @@ namespace StarterAssets
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			//float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed;
+			
+			if (input.sprint)
+			{
+				targetSpeed = SprintSpeed;
+			}
+			else if (isCrouching)
+			{
+				targetSpeed = CrouchSpeed;
+			}
+			else
+			{
+				targetSpeed = MoveSpeed;
+			}
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
-			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+			if (input.move == Vector2.zero) targetSpeed = 0.0f;
 
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
 			float speedOffset = 0.1f;
-			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+			float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
 
 			// accelerate or decelerate to target speed
 			if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
@@ -184,14 +263,14 @@ namespace StarterAssets
 			}
 
 			// normalise input direction
-			Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+			Vector3 inputDirection = new Vector3(input.move.x, 0.0f, input.move.y).normalized;
 
 			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is a move input rotate player when the player is moving
-			if (_input.move != Vector2.zero)
+			if (input.move != Vector2.zero)
 			{
 				// move
-				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+				inputDirection = transform.right * input.move.x + transform.forward * input.move.y;
 			}
 
 			// move the player
@@ -212,7 +291,7 @@ namespace StarterAssets
 				}
 
 				// Jump
-				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+				if (input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -236,7 +315,7 @@ namespace StarterAssets
 				}
 
 				// if we are not grounded, do not jump
-				_input.jump = false;
+				input.jump = false;
 			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
@@ -264,5 +343,78 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
+
+		private void HandleHeadBob()
+		{
+			if (!Grounded) return;
+			
+			//Head bob while crouching is currently disabled.
+            
+			if (Mathf.Abs(input.move.x) != 0.0f && !isCrouching || Mathf.Abs(input.move.y) != 0.0f && !isCrouching)
+			{
+				//Debug.Log("Moving");
+				_timer += Time.deltaTime * (isSprinting ? sprintBobSpeed : walkBobSpeed);
+
+				cameraRoot.transform.localPosition = new Vector3(
+					cameraRoot.transform.localPosition.x,
+					_defaultYPos + Mathf.Sin(_timer) * (isSprinting ? sprintBobAmount : walkBobAmount),
+					cameraRoot.transform.localPosition.z
+				);
+				
+				// cameraRoot.transform.localPosition = new Vector3(
+				// 	cameraRoot.transform.localPosition.x,
+				// 	_defaultYPos + Mathf.Sin(_timer) * (isCrouching ? crouchBobAmount : isSprinting ? sprintBobAmount : walkBobAmount),
+				// 	cameraRoot.transform.localPosition.z
+				// );
+			}
+		}
+
+		private void HandleCrouching()
+		{
+			StartCoroutine(CrouchAndStandRoutine());
+		}
+
+
+		private IEnumerator CrouchAndStandRoutine()
+		{
+			_inCrouchAnimation = true;
+
+			float timeElapsed = 0;
+			float targetHeight = isCrouching ? standingHeight : crouchingHeight;
+			float currentHeight = _controller.height;
+
+			Vector3 targetCenter = isCrouching ? standingCenter : crouchingCenter;
+			Vector3 currentCenter = _controller.center;
+
+			// Calculate target and current positions for cameraRoot
+			Vector3 targetCameraRootPosition =
+				isCrouching ? new Vector3(0, _defaultYPos, 0)
+					: new Vector3(0, crouchingHeight, 0);
+			
+			Vector3 currentCameraRootPosition = cameraRoot.transform.localPosition;
+
+			while (timeElapsed < timeToEnterCrouch)
+			{
+				float t = timeElapsed / timeToEnterCrouch;
+
+				_controller.height = Mathf.Lerp(currentHeight, targetHeight, t);
+				_controller.center = Vector3.Lerp(currentCenter, targetCenter, t);
+
+				// Interpolate the cameraRoot position
+				cameraRoot.transform.localPosition = Vector3.Lerp(currentCameraRootPosition, targetCameraRootPosition, t);
+
+				timeElapsed += Time.deltaTime;
+				yield return null;
+			}
+
+			_controller.height = targetHeight;
+			_controller.center = targetCenter;
+			cameraRoot.transform.localPosition = targetCameraRootPosition;
+
+			// Toggle crouch state
+			isCrouching = !isCrouching;
+			_inCrouchAnimation = false;
+		}
+
 	}
 }
