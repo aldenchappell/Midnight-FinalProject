@@ -36,14 +36,7 @@ public class PlayerDualHandInventory : MonoBehaviour
             _currentIndexSelected = 1;
             ShowCurrentIndexItem();
         }
-        foreach(GameObject obj in _inventorySlots)
-        {
-            if(obj != null)
-            {
-                obj.transform.position = handPosition.position;
-                obj.transform.localEulerAngles = handPosition.transform.parent.transform.localEulerAngles;
-            }
-        }
+        
     }
 
     private void SwapObjectsInInventory(GameObject newObject)
