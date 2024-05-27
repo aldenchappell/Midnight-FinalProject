@@ -75,21 +75,29 @@ public class EnemySuspicionSystem : MonoBehaviour
         {
             suspicionValue = 40;
         }
-        Invoke("DelayToSuspicionLoss", 5f);
+        Invoke("DelayToSuspicionLoss", .5f);
     }
     //Lose suspicion over a period of time
     private IEnumerator SuspicionLoss()
     {
         while(suspicionValue > 0)
         {
-            suspicionValue -= 5;
+            suspicionValue -= 1;
             yield return new WaitForSeconds(1f);
         }
         
     }
     private void DelayToSuspicionLoss()
     {
-        StartCoroutine(SuspicionLoss());
+        if(Vector3.Distance(this.transform.position, lastSusPosition) < 5)
+        {
+            StartCoroutine(SuspicionLoss());
+        }
+        else
+        {
+            Invoke("DelayToSuspicionLoss", .5f);
+        }
+        
     }
 
     

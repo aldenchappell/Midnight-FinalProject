@@ -49,7 +49,7 @@ public class EnemyStateController : MonoBehaviour
         {
             _currentState = AIState.Chase;
         }
-        else if (_suspicion.GetSuspicionValue > 10)
+        else if (_suspicion.GetSuspicionValue > 0)
         {
             _currentState = AIState.Patrol;
         }
