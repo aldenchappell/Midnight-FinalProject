@@ -15,12 +15,12 @@ public class EnemyStateController : MonoBehaviour
     
     [Space(10)]
     
-    [Header("Attacking")]
-    [SerializeField] private float attackRange = 2.5f;
-    [SerializeField] private float attackCooldownTimer = 3.0f;
-    [SerializeField] private float attackRadius = 0.5f;
-    private bool _canAttack = true;
-    [SerializeField] private Transform attackPoint;
+    [Header("Attacking - Obsolete")]
+    // [SerializeField] private float attackRange = 2.5f;
+    // [SerializeField] private float attackCooldownTimer = 3.0f;
+    // [SerializeField] private float attackRadius = 0.5f;
+    // private bool _canAttack = true;
+    // [SerializeField] private Transform attackPoint;
 
     // Script References
     private EnemyVision _enemyVision;
@@ -105,6 +105,11 @@ public class EnemyStateController : MonoBehaviour
     public bool CheckForChaseState()
     {
         return currentState == AIState.Chase;
+    }
+
+    public void ResetSuspicionValue()
+    {
+        _suspicion.suspicionValue = 0;
     }
     
     // private void Attack(Transform target)

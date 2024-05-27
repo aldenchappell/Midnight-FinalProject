@@ -95,8 +95,10 @@ namespace StarterAssets
 		[SerializeField] private float walkBobAmount = 0.05f;
 		[SerializeField] private float sprintBobSpeed = 18f;
 		[SerializeField] private float sprintBobAmount = 0.11f;
-		[SerializeField] private float crouchBobSpeed = 8f;
-		[SerializeField] private float crouchBobAmount = 0.025f;
+		
+		//disabled due to conflicts with crouching and head bob.
+		//[SerializeField] private float crouchBobSpeed = 8f;
+		//[SerializeField] private float crouchBobAmount = 0.025f;
 		private float _defaultYPos = 0;
 		private float _timer;
 		

@@ -16,14 +16,16 @@ public class PlayerDeathController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Devil"))
-        {
-            var enemy = other.GetComponent<EnemyStateController>();
+        if (!other.CompareTag("Devil")) return;
+        
+        var enemy = other.GetComponent<EnemyStateController>();
 
-            if (enemy != null && enemy.CheckForChaseState())
-            {
-                Die();
-            }
+        if (enemy != null && enemy.CheckForChaseState())
+        {
+            Die();
+
+            enemy.ResetSuspicionValue();
+            enemy.currentState = enemy.currentState = EnemyStateController.AIState.Roam;
         }
     }
 
@@ -40,7 +42,7 @@ public class PlayerDeathController : MonoBehaviour
     private IEnumerator OnDeathLoadDeathScreenRoutine()
     {
         firstPersonController.canMove = false;
-        yield return new WaitForSeconds(5.0f); // Reduced delay
+        yield return new WaitForSeconds(5.0f); 
 
         ReturnToLobby();
     }

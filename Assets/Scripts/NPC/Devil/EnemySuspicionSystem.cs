@@ -14,7 +14,7 @@ public class EnemySuspicionSystem : MonoBehaviour
 
     [Header("Suspicion Values")]
     [Range(0, 40)]
-    [SerializeField] float suspicionValue;
+    public float suspicionValue;
 
     //Vector3 of the last position of suspicious activity
     public Vector3 lastSusPosition;
