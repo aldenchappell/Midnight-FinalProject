@@ -187,12 +187,12 @@ namespace StarterAssets
 			if (DialogueController.Instance.dialogueEnabled)
 			{
 				canMove = false;
-				Debug.Log("disabling movement because dialogue is enabled");
+				//Debug.Log("disabling movement because dialogue is enabled");
 			}
 			else
 			{
 				canMove = true;
-				Debug.Log("enabling movement because dialogue is disabled");
+				//Debug.Log("enabling movement because dialogue is disabled");
 			}
 			
 			if(canMove)

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,11 @@ public class PlayerInteractableController : MonoBehaviour
     [SerializeField] private Vector2 defaultIconSize;
     [SerializeField] private Vector2 defaultInteractionIconSize;
     [SerializeField] private float interactionDistance = 2.0f;
-
+    
+    
+    //Spam prevention
+    private bool _allowInteraction = true;
+    private const float InteractionSpamPreventionTimer = 2.0f;
     private void Update()
     {
         RaycastHit hitInfo;
@@ -47,11 +52,12 @@ public class PlayerInteractableController : MonoBehaviour
                     interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
                 }
 
-                if (Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKey))
+                if (_allowInteraction && Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKey))
                 {
                     if (_interactableObject is InteractableNPC interactableNPC)
                     {
-                        interactableNPC.Interact();
+                        if(!DialogueController.Instance.dialogueEnabled)
+                            interactableNPC.Interact();
                     }
                     else
                     {
@@ -69,5 +75,12 @@ public class PlayerInteractableController : MonoBehaviour
                 DialogueController.Instance.DisableDialogueBox();
             }
         }
+    }
+
+    private IEnumerator PreventInteractionSpam()
+    {
+        _allowInteraction = false;
+        yield return new WaitForSeconds(InteractionSpamPreventionTimer);
+        _allowInteraction = true;
     }
 }
