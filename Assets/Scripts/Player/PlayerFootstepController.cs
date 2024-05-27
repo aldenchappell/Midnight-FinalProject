@@ -40,7 +40,7 @@ public class PlayerFootstepController : MonoBehaviour
 
     private void Update()
     {
-        if (InGameSettingsManager.Instance.enableFootsteps)
+        if (InGameSettingsManager.Instance.enableFootsteps && _firstPersonController.canMove)
         {
             HandleFootsteps();
         }

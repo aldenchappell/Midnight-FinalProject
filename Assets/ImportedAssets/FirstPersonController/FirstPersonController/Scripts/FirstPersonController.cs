@@ -71,7 +71,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM
 		public PlayerInput _playerInput;
 #endif
-		private CharacterController _controller;
+		public CharacterController controller;
 		public StarterAssetsInputs input;
 		private GameObject _mainCamera;
 		
@@ -83,6 +83,7 @@ namespace StarterAssets
 		public bool canMove = true;
 		public bool isSprinting = false;
 
+		[SerializeField] private PlayerDeathController deathController;
 		[SerializeField] private PauseManager pauseManager;
 		
 		
@@ -142,7 +143,7 @@ namespace StarterAssets
 
 		private void Start()
 		{
-			_controller = GetComponent<CharacterController>();
+			controller = GetComponent<CharacterController>();
 			input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
@@ -158,6 +159,7 @@ namespace StarterAssets
 		private void Update()
 		{
 			if (pauseManager.GameIsPaused) return;
+			if (deathController.isDead) return;
 			
 			JumpAndGravity();
 			GroundedCheck();
@@ -195,7 +197,7 @@ namespace StarterAssets
 				//Debug.Log("enabling movement because dialogue is disabled");
 			}
 			
-			if(canMove)
+			if(canMove && !deathController.isDead)
 				CameraRotation();
 		}
 
@@ -254,7 +256,7 @@ namespace StarterAssets
 			if (input.move == Vector2.zero) targetSpeed = 0.0f;
 
 			// a reference to the players current horizontal velocity
-			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
+			float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
 
 			float speedOffset = 0.1f;
 			float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
@@ -285,8 +287,10 @@ namespace StarterAssets
 				inputDirection = transform.right * input.move.x + transform.forward * input.move.y;
 			}
 
-			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			if (!deathController.isDead)
+			{
+				controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			}
 		}
 
 		private void JumpAndGravity()
@@ -393,10 +397,10 @@ namespace StarterAssets
 
 			float timeElapsed = 0;
 			float targetHeight = isCrouching ? standingHeight : crouchingHeight;
-			float currentHeight = _controller.height;
+			float currentHeight = controller.height;
 
 			Vector3 targetCenter = isCrouching ? standingCenter : crouchingCenter;
-			Vector3 currentCenter = _controller.center;
+			Vector3 currentCenter = controller.center;
 
 			// Calculate target and current positions for cameraRoot
 			Vector3 targetCameraRootPosition =
@@ -409,8 +413,8 @@ namespace StarterAssets
 			{
 				float t = timeElapsed / timeToEnterCrouch;
 
-				_controller.height = Mathf.Lerp(currentHeight, targetHeight, t);
-				_controller.center = Vector3.Lerp(currentCenter, targetCenter, t);
+				controller.height = Mathf.Lerp(currentHeight, targetHeight, t);
+				controller.center = Vector3.Lerp(currentCenter, targetCenter, t);
 
 				// Interpolate the cameraRoot position
 				cameraRoot.transform.localPosition = Vector3.Lerp(currentCameraRootPosition, targetCameraRootPosition, t);
@@ -419,8 +423,8 @@ namespace StarterAssets
 				yield return null;
 			}
 
-			_controller.height = targetHeight;
-			_controller.center = targetCenter;
+			controller.height = targetHeight;
+			controller.center = targetCenter;
 			cameraRoot.transform.localPosition = targetCameraRootPosition;
 
 			// Toggle crouch state
