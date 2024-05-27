@@ -45,11 +45,19 @@ public class PlayerDeathController : MonoBehaviour
         ReturnToLobby();
     }
 
+
+    //Note from Owen: Change the functionality of return to lobby to swap the scene to "LOBBY"
+    //If above is not what you want, see code below
     private void ReturnToLobby()
     {
+        //Disable character controller component to allow teleport
+        GetComponent<CharacterController>().enabled = false;
+
         // Move the player to the lobby spawn position
         transform.position = lobbySpawnPosition.position;
 
+        //Renable character controller component to allow movement
+        GetComponent<CharacterController>().enabled = true;
         deathScreen.SetActive(false); // Hide the death screen
         isDead = false; // Reset death status
 
