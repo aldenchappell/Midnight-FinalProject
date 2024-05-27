@@ -13,7 +13,7 @@ public class InteractableNPC : InteractableObject
         _npcDialogue = GetComponent<NpcDialogue>();
         if (_npcDialogue != null)
         {
-            onNPCInteraction.AddListener(DialogueController.Instance.StartDialogue);
+            //onNPCInteraction.AddListener(DialogueController.Instance.StartDialogue);
         }
     }
 
