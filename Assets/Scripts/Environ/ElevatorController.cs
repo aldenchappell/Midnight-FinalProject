@@ -28,13 +28,6 @@ public class ElevatorController : MonoBehaviour
         //elevatorAnimator = GetComponent<Animator>();
         _elevatorAudioSource = GetComponent<AudioSource>();
     }
-    
-
-    public IEnumerator CloseElevatorAfterDelay()
-    {
-        yield return new WaitForSeconds(2.0f);
-        CloseElevator();
-    }
 
     public void OpenElevator()
     {
