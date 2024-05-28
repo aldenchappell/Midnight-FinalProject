@@ -10,7 +10,7 @@ public class InteractableObject : MonoBehaviour
 
     public Vector2 interactableIconSize;
     
-    public int interactableID;
+    [HideInInspector] public int interactableID;
 
     private void Start()
     {

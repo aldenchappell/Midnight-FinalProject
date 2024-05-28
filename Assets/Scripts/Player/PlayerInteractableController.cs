@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,19 +7,18 @@ public class PlayerInteractableController : MonoBehaviour
     private InteractableObject _interactableObject;
 
     [SerializeField] private Camera mainCamera;
-    
     [SerializeField] private LayerMask interactableLayerMask;
-    [SerializeField] private KeyCode interactionButton;
-    
     [SerializeField] private Image interactionImage;
     [SerializeField] private Sprite defaultIcon;
     [SerializeField] private Sprite defaultInteractionIcon;
-    
     [SerializeField] private Vector2 defaultIconSize;
     [SerializeField] private Vector2 defaultInteractionIconSize;
-
     [SerializeField] private float interactionDistance = 2.0f;
     
+    
+    //Spam prevention
+    private bool _allowInteraction = true;
+    private const float InteractionSpamPreventionTimer = 2.0f;
     private void Update()
     {
         RaycastHit hitInfo;
@@ -30,26 +30,21 @@ public class PlayerInteractableController : MonoBehaviour
                 interactionDistance,
                 interactableLayerMask))
         {
-            if (hitInfo.collider.GetComponent<InteractableObject>() != false)
+            var interactable = hitInfo.collider.GetComponent<InteractableObject>();
+            if (interactable != null)
             {
-                if(_interactableObject == null ||
-                   _interactableObject.interactableID !=
-                   hitInfo.collider.GetComponent<InteractableObject>().interactableID)
+                if (_interactableObject == null || _interactableObject.interactableID != interactable.interactableID)
                 {
-                    _interactableObject = hitInfo.collider.GetComponent<InteractableObject>();
+                    _interactableObject = interactable;
                 }
 
                 if (_interactableObject.interactionIcon != null)
                 {
                     interactionImage.sprite = _interactableObject.interactionIcon;
-                    if (_interactableObject.interactableIconSize == Vector2.zero)
-                    {
-                        interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
-                    }
-                    else
-                    {
-                        interactionImage.rectTransform.sizeDelta = _interactableObject.interactableIconSize;
-                    }
+                    
+                    interactionImage.rectTransform.sizeDelta =
+                    _interactableObject.interactableIconSize == Vector2.zero ? defaultInteractionIconSize
+                        : _interactableObject.interactableIconSize;
                 }
                 else
                 {
@@ -57,9 +52,17 @@ public class PlayerInteractableController : MonoBehaviour
                     interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
                 }
 
-                if (Input.GetKeyDown(interactionButton))
+                if (_allowInteraction && Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKey))
                 {
-                    _interactableObject.onInteraction.Invoke();
+                    if (_interactableObject is InteractableNPC interactableNPC)
+                    {
+                        if(!DialogueController.Instance.dialogueEnabled)
+                            interactableNPC.Interact();
+                    }
+                    else
+                    {
+                        _interactableObject.onInteraction?.Invoke();
+                    }
                 }
             }
         }
@@ -69,7 +72,15 @@ public class PlayerInteractableController : MonoBehaviour
             {
                 interactionImage.sprite = defaultIcon;
                 interactionImage.rectTransform.sizeDelta = defaultIconSize;
+                DialogueController.Instance.DisableDialogueBox();
             }
         }
+    }
+
+    private IEnumerator PreventInteractionSpam()
+    {
+        _allowInteraction = false;
+        yield return new WaitForSeconds(InteractionSpamPreventionTimer);
+        _allowInteraction = true;
     }
 }
