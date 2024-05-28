@@ -9,7 +9,7 @@ public class ElevatorController : MonoBehaviour
 
     public bool isOpened = false;
     public bool playerInElevator = false;
-    private bool _levelSelected = false; // Flag to ensure only one button can be pressed
+    private bool _levelSelected = false; //ensure only one button can be pressed
     private string _selectedLevelName = "";
 
     [SerializeField] private float timeBeforeLoadingLevel = 5.0f;
@@ -89,7 +89,7 @@ public class ElevatorController : MonoBehaviour
                 break;
             default:
                 Debug.LogError("Invalid floor index selected.");
-                _levelSelected = false; // Reset the flag in case of error
+                _levelSelected = false; //should prevent errors...
                 return;
         }
         
@@ -99,7 +99,7 @@ public class ElevatorController : MonoBehaviour
     private IEnumerator StartElevatorRoutine()
     {
         _elevatorAudioSource.PlayOneShot(elevatorDingSound);
-        yield return new WaitForSeconds(elevatorDingSound.length);
+        yield return new WaitForSeconds(elevatorDingSound.length + .5f);
 
         _elevatorAudioSource.PlayOneShot(elevatorMovingSound);
 
