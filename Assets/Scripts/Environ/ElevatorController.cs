@@ -7,87 +7,104 @@ public class ElevatorController : MonoBehaviour
 {
     [SerializeField] private Animator elevatorAnimator;
 
-    private bool _isOpened = false;
-    
+    public bool isOpened = false;
+    public bool playerInElevator = false;
+    private bool _levelSelected = false; // Flag to ensure only one button can be pressed
+    private string _selectedLevelName = "";
+
     [SerializeField] private float timeBeforeLoadingLevel = 5.0f;
 
     [SerializeField] private TMP_Text floorIndexText;
-    
-    
+
     [Header("Audio Parameters")]
     private AudioSource _elevatorAudioSource;
     [SerializeField] private AudioClip elevatorDingSound;
     [SerializeField] private AudioClip elevatorOpeningSound;
     [SerializeField] private AudioClip elevatorClosingSound;
+    [SerializeField] private AudioClip elevatorMovingSound;
+
     private void Awake()
     {
-        elevatorAnimator = GetComponent<Animator>();
-        
+        //elevatorAnimator = GetComponent<Animator>();
         _elevatorAudioSource = GetComponent<AudioSource>();
-        
     }
+    
 
-    private void OnTriggerEnter(Collider other)
+    public IEnumerator CloseElevatorAfterDelay()
     {
-        if (!other.CompareTag("Player")) return;
-        
+        yield return new WaitForSeconds(2.0f);
+        CloseElevator();
     }
 
-    //Used for interaction
     public void OpenElevator()
     {
-        if (!_isOpened)
+        if (!isOpened)
         {
-            _isOpened = true;
-            elevatorAnimator.SetBool("Open", _isOpened);
-            //Play a door opening sound
+            isOpened = true;
+            elevatorAnimator.SetBool("Open", isOpened);
             _elevatorAudioSource.PlayOneShot(elevatorOpeningSound);
         }
     }
 
-    //This method will be attached to the buttons in the elevator and will determine which level the player is
-    //brought to.
-    public void CloseElevator(string levelName)
+    public void CloseElevator()
     {
-        if(_isOpened)
-            StartCoroutine(LoadLevelAfterClosingAnimation(levelName));
-    }
-
-    private IEnumerator LoadLevelAfterClosingAnimation(string levelName)
-    {
-        //close the elevator
-        elevatorAnimator.SetBool("Open", false);
-        //Play a door closing sound
-        _elevatorAudioSource.PlayOneShot(elevatorClosingSound);
-        
-        //Play an elevator ding sound when the elevator goes up
-        //Idea - *ding* ... "going up"
-        yield return new WaitForSeconds(2.0f);
-        _elevatorAudioSource.PlayOneShot(elevatorDingSound);
-        
-        //Assign the elevator level text
-        AssignElevatorFloorText(levelName);
-        
-        yield return new WaitForSeconds(timeBeforeLoadingLevel);
-        SceneManager.LoadScene(levelName);
-    }
-
-    private void AssignElevatorFloorText(string levelName)
-    {
-        switch (levelName)
+        if (isOpened)
         {
-            case "LEVEL ONE":
+            StartCoroutine(CloseElevatorRoutine());
+        }
+    }
+
+    private IEnumerator CloseElevatorRoutine()
+    {
+        isOpened = false;
+        elevatorAnimator.SetBool("Open", isOpened);
+        _elevatorAudioSource.PlayOneShot(elevatorClosingSound);
+
+        yield return new WaitForSeconds(elevatorClosingSound.length);
+    }
+
+    public void SelectLevel(int floorIndex)
+    {
+        if (_levelSelected)
+        {
+            Debug.Log("Level already selected. Ignoring button press.");
+            return;
+        }
+
+        _levelSelected = true;
+
+        switch (floorIndex)
+        {
+            case 1:
+                _selectedLevelName = "LEVEL ONE";
                 floorIndexText.text = "1";
                 break;
-            case "LEVEL TWO":
+            case 2:
+                _selectedLevelName = "LEVEL TWO";
                 floorIndexText.text = "2";
                 break;
-            case "LEVEL THREE":
+            case 3:
+                _selectedLevelName = "LEVEL THREE";
                 floorIndexText.text = "3";
                 break;
-            default: Debug.Log("Error assigning the elevator floor text. Invalid level name?" +
-                               " ElevatorController/AssignElevatorFloorText");
-                break;
+            default:
+                Debug.LogError("Invalid floor index selected.");
+                _levelSelected = false; // Reset the flag in case of error
+                return;
         }
+        
+        StartCoroutine(StartElevatorRoutine());
+    }
+
+    private IEnumerator StartElevatorRoutine()
+    {
+        _elevatorAudioSource.PlayOneShot(elevatorDingSound);
+        yield return new WaitForSeconds(elevatorDingSound.length);
+
+        _elevatorAudioSource.PlayOneShot(elevatorMovingSound);
+
+        yield return new WaitForSeconds(timeBeforeLoadingLevel);
+
+        SceneManager.LoadScene(_selectedLevelName);
     }
 }

@@ -61,7 +61,7 @@ public class PlayerInteractableController : MonoBehaviour
                     }
                     else
                     {
-                        _interactableObject.onInteraction.Invoke();
+                        _interactableObject.onInteraction?.Invoke();
                     }
                 }
             }
