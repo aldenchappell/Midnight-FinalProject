@@ -16,11 +16,20 @@ public class PlayerDualHandInventory : MonoBehaviour
         _currentIndexSelected = 0;
     }
 
+    //Adjsut inventory when picking up new interactable object
     public GameObject AdjustInventorySlots
     {
         set
         {
             SwapObjectsInInventory(value);
+        }
+    }
+    //Place interactable object in inventory onto shadow position and adjust inventory
+    public GameObject PlaceObject
+    {
+        set
+        {
+            PlaceObjectFromInventory(value);
         }
     }
 
@@ -39,6 +48,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         
     }
 
+    //Swap current interactable object in hand for another in environment
     private void SwapObjectsInInventory(GameObject newObject)
     {
         if (_inventorySlots[_currentIndexSelected] != null)
@@ -51,6 +61,24 @@ public class PlayerDualHandInventory : MonoBehaviour
         _inventorySlots[_currentIndexSelected] = newObject;
         ShowCurrentIndexItem();
     }
+
+    //Place interactable object in hand in shadow position
+    private void PlaceObjectFromInventory(GameObject objectPosition)
+    {
+        if (_inventorySlots[_currentIndexSelected] != null)
+        {
+            if(_inventorySlots[_currentIndexSelected].transform.tag == objectPosition.transform.tag)
+            {
+                _inventorySlots[_currentIndexSelected].transform.parent = null;
+                _inventorySlots[_currentIndexSelected].transform.position = objectPosition.transform.position;
+                Destroy(_inventorySlots[_currentIndexSelected].GetComponent<InteractableObject>());
+                Destroy(objectPosition);
+                _inventorySlots[_currentIndexSelected] = null;
+            }
+        }
+    }
+
+    //Show the interactable object in the current inventory index selected by player
     private void ShowCurrentIndexItem()
     {
         foreach(GameObject obj in _inventorySlots)
@@ -68,5 +96,5 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
     }
 
-    //Notes: Items not swapping visibility when pressing 1 and 2, Items not getting set to correct location when swapping.
+
 }
