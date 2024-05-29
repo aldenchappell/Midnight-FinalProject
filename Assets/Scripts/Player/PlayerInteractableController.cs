@@ -90,7 +90,9 @@ public class PlayerInteractableController : MonoBehaviour
         if (interactable != null && interactable.interactionIcon != null)
         {
             interactionImage.sprite = interactable.interactionIcon;
-            interactionImage.rectTransform.sizeDelta = interactable.interactableIconSize == Vector2.zero ? defaultInteractionIconSize : interactable.interactableIconSize;
+            interactionImage.rectTransform.sizeDelta =
+                interactable.interactableIconSize == Vector2.zero ?
+                    defaultInteractionIconSize : interactable.interactableIconSize;
         }
         else
         {

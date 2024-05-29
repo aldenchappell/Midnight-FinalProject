@@ -167,7 +167,7 @@ namespace StarterAssets
 			GroundedCheck();
 			Move();
 
-			if (InGameSettingsManager.Instance.enableViewBobbing)
+			if (InGameSettingsManager.Instance.enableViewBobbing && controller.enabled)
 			{
 				HandleHeadBob();
 			}
@@ -199,7 +199,7 @@ namespace StarterAssets
 				//Debug.Log("enabling movement because dialogue is disabled");
 			}
 			
-			if(canMove && !deathController.isDead)
+			if(canMove && !deathController.isDead && controller.enabled)
 				CameraRotation();
 		}
 
@@ -234,6 +234,8 @@ namespace StarterAssets
 
 		private void Move()
 		{
+			if (!canMove && !controller.enabled) return;
+
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			//float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
 			float targetSpeed;
@@ -289,7 +291,7 @@ namespace StarterAssets
 				inputDirection = transform.right * input.move.x + transform.forward * input.move.y;
 			}
 
-			if (!deathController.isDead)
+			if (!deathController.isDead && controller.enabled == true)
 			{
 				controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 			}
