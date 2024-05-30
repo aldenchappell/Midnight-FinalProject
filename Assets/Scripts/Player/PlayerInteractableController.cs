@@ -29,6 +29,7 @@ public class PlayerInteractableController : MonoBehaviour
             interactableLayerMask))
         {
             var interactable = hitInfo.collider.GetComponent<InteractableObject>();
+            var button = hitInfo.collider.GetComponent<Button>();
             if (interactable != null)
             {
                 if (_interactableObject != interactable)
@@ -38,11 +39,15 @@ public class PlayerInteractableController : MonoBehaviour
 
                     // Highlight new object
                     _interactableObject = interactable;
-                    _mouseHighlight = _interactableObject.mouseHighlight;
-                    _mouseHighlight.ChangeColor(Color.red);
-
+                    
                     // Update interaction UI
                     UpdateInteractionUI(_interactableObject);
+
+                    if (button == null)
+                    {
+                        _mouseHighlight = _interactableObject.mouseHighlight;
+                        _mouseHighlight.ChangeColor(Color.red);
+                    }
                 }
             }
         }

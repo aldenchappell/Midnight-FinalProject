@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using StarterAssets;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeathController : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerDeathController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Devil")) return;
-        
+
         var enemy = other.GetComponent<EnemyStateController>();
 
         if (enemy != null && enemy.CheckForChaseState())
@@ -25,7 +26,7 @@ public class PlayerDeathController : MonoBehaviour
             Die();
 
             enemy.ResetSuspicionValue();
-            enemy.currentState = enemy.currentState = EnemyStateController.AIState.Roam;
+            enemy.currentState = EnemyStateController.AIState.Roam;
         }
     }
 
@@ -33,6 +34,9 @@ public class PlayerDeathController : MonoBehaviour
     {
         if (!isDead) // Prevent multiple deaths at the same time
         {
+            // Reset puzzles on player death
+            LevelCompletionManager.Instance.OnPlayerDeath();
+            
             deathScreen.SetActive(true);
             isDead = true;
             StartCoroutine(OnDeathLoadDeathScreenRoutine());
@@ -47,28 +51,9 @@ public class PlayerDeathController : MonoBehaviour
         ReturnToLobby();
     }
 
-
-    //Note from Owen: Change the functionality of return to lobby to swap the scene to "LOBBY"
-    //If above is not what you want, see code below
     private void ReturnToLobby()
     {
-        //Disable character controller component to allow teleport
-        GetComponent<CharacterController>().enabled = false;
-
-        // Move the player to the lobby spawn position
-        transform.position = lobbySpawnPosition.position;
-
-        //Renable character controller component to allow movement
-        GetComponent<CharacterController>().enabled = true;
-        deathScreen.SetActive(false); // Hide the death screen
-        isDead = false; // Reset death status
-
-        StartCoroutine(WaitToEnableMovement());
-    }
-
-    private IEnumerator WaitToEnableMovement()
-    {
-        yield return new WaitForSeconds(0.25f);
-        firstPersonController.canMove = true; // Allow movement
+        //TO BE CHANGED TO LOBBY
+        SceneManager.LoadScene("ALDEN");
     }
 }

@@ -24,9 +24,13 @@ public class WoodBlockPuzzle : MonoBehaviour
     [SerializeField] private AudioClip correctSlotSound;
     [SerializeField] private AudioClip incorrectSlotSound;
 
+
+    private Puzzle _puzzle;
     private void Awake()
     {
         _puzzleAudio = GetComponent<AudioSource>();
+
+        _puzzle = GetComponent<Puzzle>();
     }
 
     private void Start()
@@ -84,10 +88,16 @@ public class WoodBlockPuzzle : MonoBehaviour
             solved = true;
             TogglePuzzleUI();
             ResetPuzzle();//testing
-            //update the level completion manager and save this puzzle as completed.
             
-            //Destroy the puzzle. (TO DO)
-            //LevelCompletionManager.Instance.DestroyPuzzle(gameObject);
+            // Update the level completion manager and save this puzzle as completed.
+            if (_puzzle != null)
+            {
+                _puzzle.CompletePuzzle();
+            }
+            else
+            {
+                Debug.LogError("Puzzle reference is null!");
+            }
         }
         else
         {
