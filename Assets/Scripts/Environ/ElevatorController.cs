@@ -60,7 +60,7 @@ public class ElevatorController : MonoBehaviour
     {
         if (_levelSelected)
         {
-            Debug.Log("Level already selected. Ignoring button press.");
+           // Debug.Log("Level already selected. Ignoring button press.");
             return;
         }
 
