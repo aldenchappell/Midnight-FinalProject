@@ -1,97 +1,139 @@
+using System;
 using StarterAssets;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WoodBlockPuzzle : MonoBehaviour
 {
-    [SerializeField] private GameObject puzzleUI;
-    [SerializeField] private Image[] slotImages;
-    [SerializeField] private WoodBlockPuzzlePiece[] puzzlePieces;
-
-    private int[] _correctSequence = new int[] { 10, 20, 30, 40 };
-    private bool solved = false;
-
-    [SerializeField] private FirstPersonController firstPersonController;
+    [SerializeField] private GameObject startingPuzzleUI;
     
-    void Update()
+    private bool solved = false;
+    [SerializeField] private FirstPersonController firstPersonController;
+
+    private WoodBlockPuzzlePiece _currentSelectedPuzzlePiece;
+
+    [SerializeField] private WoodBlockPuzzlePiece[] puzzlePieces;
+    [SerializeField] private WoodBlockPuzzleSlot[] puzzleSlots;
+
+    [SerializeField] private TMP_Text movesMadeText;
+    private int _movesMade;
+    private int _maxMoves = 6;
+
+    private AudioSource _puzzleAudio;
+    [SerializeField] private AudioClip correctSlotSound;
+    [SerializeField] private AudioClip incorrectSlotSound;
+
+    private void Awake()
     {
-        if (Input.GetMouseButtonDown(0))
+        _puzzleAudio = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        _movesMade = 0;
+        UpdateMovesMadeUI(_movesMade);
+    }
+
+    public void PlacePuzzlePiece(Button slotButton)
+    {
+        if (solved) return;
+        WoodBlockPuzzleSlot slot = slotButton.GetComponent<WoodBlockPuzzleSlot>();
+        if (slot != null && _currentSelectedPuzzlePiece != null)
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            // Increment moves made
+            _movesMade++;
+            UpdateMovesMadeUI(_movesMade);
 
-            if (Physics.Raycast(ray, out hit))
+            if (slot.value == _currentSelectedPuzzlePiece.puzzlePieceID)
             {
-                WoodBlockPuzzlePiece puzzlePiece = hit.collider.GetComponent<WoodBlockPuzzlePiece>();
+                // Place the puzzle piece in the slot
+                slot.puzzlePiece = _currentSelectedPuzzlePiece;
+                slotButton.GetComponent<Image>().sprite = _currentSelectedPuzzlePiece.GetComponent<Image>().sprite;
 
-                if (puzzlePiece != null && !solved)
-                {
-                    Debug.Log("Found puzzle piece");
-                    // Move the puzzle piece to the clicked slot
-                    MovePuzzlePiece(puzzlePiece);
-                }
+                // Disable the piece button to prevent multiple placements
+                _currentSelectedPuzzlePiece.GetComponent<Button>().interactable = false;
+
+                // Clear the current selection
+                _currentSelectedPuzzlePiece = null;
+
+                // Check if the puzzle is solved
+                CheckForPuzzleCompletion();
+
+                _puzzleAudio.PlayOneShot(correctSlotSound);
+            }
+            else
+            {
+                // Player connected an incorrect piece
+                _puzzleAudio.PlayOneShot(incorrectSlotSound);
+                Debug.Log("Wrong slot");
             }
         }
     }
 
 
+    private void CheckForPuzzleCompletion()
+    {
+        
+        if (puzzleSlots[0].GetComponent<Image>().sprite == puzzlePieces[0].GetComponent<Image>().sprite
+            && puzzleSlots[1].GetComponent<Image>().sprite == puzzlePieces[1].GetComponent<Image>().sprite
+            && puzzleSlots[2].GetComponent<Image>().sprite == puzzlePieces[2].GetComponent<Image>().sprite
+            && puzzleSlots[3].GetComponent<Image>().sprite == puzzlePieces[3].GetComponent<Image>().sprite)
+        {
+            Debug.Log("Puzzle completed");
+            solved = true;
+            TogglePuzzleUI();
+            ResetPuzzle();//testing
+            //update the level completion manager and save this puzzle as completed.
+            
+            //Destroy the puzzle. (TO DO)
+            //LevelCompletionManager.Instance.DestroyPuzzle(gameObject);
+        }
+        else
+        {
+            if (_movesMade == _maxMoves)
+            {
+                Debug.Log("Puzzle lost. Resetting puzzle...");
+                TogglePuzzleUI();
+                //ResetPuzzle();
+            }
+        }
+    }
+    
+    private void ResetPuzzle()
+    {
+        // Reset moves counter
+        _movesMade = 0;
+        UpdateMovesMadeUI(_movesMade);
+    }
+    
+
     public void TogglePuzzleUI()
     {
-        bool isPuzzleActive = !puzzleUI.activeSelf;
-
-        puzzleUI.SetActive(isPuzzleActive);
+        bool isPuzzleActive = !startingPuzzleUI.activeSelf;
+        startingPuzzleUI.SetActive(isPuzzleActive);
 
         // Toggle canMove and cursor visibility based on puzzle activity
+        firstPersonController.canMove = !isPuzzleActive;
+        firstPersonController.controller.enabled = !isPuzzleActive;
         if (isPuzzleActive)
         {
-            // Puzzle is active, disable player movement and show cursor
-            firstPersonController.canMove = false;
-            firstPersonController.controller.enabled = false;
             GlobalCursorManager.Instance.EnableCursor();
         }
         else
         {
-            // Puzzle is inactive, enable player movement and hide cursor
-            firstPersonController.canMove = true;
-            firstPersonController.controller.enabled = true;
             GlobalCursorManager.Instance.DisableCursor();
         }
     }
 
-
-    private void MovePuzzlePiece(WoodBlockPuzzlePiece puzzlePiece)
+    public void SelectPuzzlePiece(Button puzzlePieceButton)
     {
-        // Find the empty slot to place the puzzle piece
-        for (int i = 0; i < slotImages.Length; i++)
-        {
-            if (slotImages[i].sprite == null)
-            {
-                // Place the puzzle piece in the empty slot
-                puzzlePiece.transform.position = slotImages[i].transform.position;
-                slotImages[i].sprite = puzzlePiece.GetComponent<Image>().sprite;
-                puzzlePiece.gameObject.SetActive(false); // Hide the puzzle piece
-
-                CheckForCorrectSequence();
-                return;
-            }
-        }
+        if(solved) return;
+        _currentSelectedPuzzlePiece = puzzlePieceButton.GetComponent<WoodBlockPuzzlePiece>();
     }
 
-    private void CheckForCorrectSequence()
+    private void UpdateMovesMadeUI(int movesUsed)
     {
-        for (int i = 0; i < slotImages.Length; i++)
-        {
-            if (slotImages[i].sprite == null || puzzlePieces[i].puzzlePieceID != _correctSequence[i])
-            {
-                // If any slot is empty or puzzle piece is not in correct sequence, puzzle is not solved
-                solved = false;
-                return;
-            }
-        }
-
-        // If all slots are filled and puzzle pieces are in correct sequence, puzzle is solved
-        solved = true;
-        Debug.Log("Puzzle Solved!");
-        TogglePuzzleUI();
+        movesMadeText.text = "Moves Made: " + movesUsed + "/" + _maxMoves;
     }
 }
