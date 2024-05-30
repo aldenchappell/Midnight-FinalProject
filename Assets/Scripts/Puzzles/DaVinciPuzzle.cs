@@ -10,6 +10,8 @@ public class DaVinciPuzzle : MonoBehaviour
     [SerializeField] int[] passcode;
     [Header("Da Vinci Puzzle UI")]
     [SerializeField] GameObject puzzleUI;
+    [Header("Music Crank Piece Prefab")]
+    [SerializeField] GameObject crankPref;
 
     private GlobalCursorManager _cursor;
 
@@ -40,15 +42,6 @@ public class DaVinciPuzzle : MonoBehaviour
         switch (_dialNumber)
         {
             case (10):
-                _dial1[0] += -1;
-
-                if (_dial1[0] < 0)
-                {
-                    _dial1[0] = 26;
-                }
-
-                break;
-            case (11):
                 _dial1[0] += 1;
 
                 if (_dial1[0] > 26)
@@ -57,7 +50,23 @@ public class DaVinciPuzzle : MonoBehaviour
                 }
 
                 break;
+            case (11):
+                _dial1[0] += -1;
+
+                if (_dial1[0] < 0)
+                {
+                    _dial1[0] = 26;
+                }
+                break;
             case (20):
+                _dial2[0] += 1;
+
+                if (_dial2[0] > 26)
+                {
+                    _dial2[0] = 26;
+                }
+                break;
+            case (21):
                 _dial2[0] += -1;
 
                 if (_dial2[0] < 0)
@@ -65,24 +74,7 @@ public class DaVinciPuzzle : MonoBehaviour
                     _dial2[0] = 26;
                 }
                 break;
-            case (21):
-                _dial2[0] += 1;
-
-                if (_dial2[0] > 26)
-                {
-                    _dial2[0] = 0;
-                }
-
-                break;
             case (30):
-                _dial3[0] += -1;
-
-                if (_dial3[0] < 0)
-                {
-                    _dial3[0] = 26;
-                }
-                break;
-            case (31):
                 _dial3[0] += 1;
 
                 if (_dial3[0] > 26)
@@ -90,20 +82,28 @@ public class DaVinciPuzzle : MonoBehaviour
                     _dial3[0] = 0;
                 }
                 break;
-            case (40):
-                _dial4[0] += -1;
+            case (31):
+                _dial3[0] += -1;
 
-                if (_dial4[0] < 0)
+                if (_dial3[0] < 0)
                 {
-                    _dial4[0] = 26;
+                    _dial3[0] = 26;
                 }
                 break;
-            case (41):
+            case (40):
                 _dial4[0] += 1;
 
                 if (_dial4[0] > 26)
                 {
                     _dial4[0] = 0;
+                }
+                break;
+            case (41):
+                _dial4[0] += -1;
+
+                if (_dial4[0] < 0)
+                {
+                    _dial4[0] = 26;
                 }
                 break;
         }
@@ -133,6 +133,7 @@ public class DaVinciPuzzle : MonoBehaviour
         {
             print("Puzzle Solved");
             ActivatePuzzleUI();
+            Instantiate(crankPref, new Vector3(transform.position.x + 2, transform.position.y, transform.position.z), Quaternion.identity);
         }
         else
         {
@@ -160,12 +161,16 @@ public class DaVinciPuzzle : MonoBehaviour
     #region Rotate Dials
     public void RotateUp(GameObject dial)
     {
-        dial.transform.eulerAngles = new Vector3(dial.transform.eulerAngles.x, dial.transform.eulerAngles.y, dial.transform.eulerAngles.z - 10);
+        dial.transform.eulerAngles = new Vector3(dial.transform.eulerAngles.x, dial.transform.eulerAngles.y, dial.transform.eulerAngles.z - 13.84f);
     }
 
     public void RotateDown(GameObject dial)
     {
-        dial.transform.eulerAngles = new Vector3(dial.transform.eulerAngles.x, dial.transform.eulerAngles.y, dial.transform.eulerAngles.z - 10);
+        dial.transform.eulerAngles = new Vector3(dial.transform.eulerAngles.x, dial.transform.eulerAngles.y, dial.transform.eulerAngles.z + 13.84f);
     }
+    #endregion
+
+    #region Animations
+
     #endregion
 }
