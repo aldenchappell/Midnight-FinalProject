@@ -34,20 +34,12 @@ public class DaVinciPuzzle : MonoBehaviour
     }
 
 
+    #region Adjusting Dials
     public void AdjustTargetDialLetter(int _dialNumber)
     {
         switch (_dialNumber)
         {
             case (10):
-                _dial1[0] += 1;
-
-                if(_dial1[0] > 26)
-                {
-                    _dial1[0] = 0;
-                }
-
-                break;
-            case (11):
                 _dial1[0] += -1;
 
                 if (_dial1[0] < 0)
@@ -56,7 +48,24 @@ public class DaVinciPuzzle : MonoBehaviour
                 }
 
                 break;
+            case (11):
+                _dial1[0] += 1;
+
+                if (_dial1[0] > 26)
+                {
+                    _dial1[0] = 0;
+                }
+
+                break;
             case (20):
+                _dial2[0] += -1;
+
+                if (_dial2[0] < 0)
+                {
+                    _dial2[0] = 26;
+                }
+                break;
+            case (21):
                 _dial2[0] += 1;
 
                 if (_dial2[0] > 26)
@@ -65,50 +74,37 @@ public class DaVinciPuzzle : MonoBehaviour
                 }
 
                 break;
-            case (21):
-                _dial2[0] += -1;
-
-                if (_dial2[0] < 0)
-                {
-                    _dial2[0] = 26;
-                }
-
-                break;
             case (30):
-                _dial3[0] += 1;
-
-                if (_dial3[0] > 26)
-                {
-                    _dial3[0] = 0;
-                }
-
-                break;
-            case (31):
                 _dial3[0] += -1;
 
                 if (_dial3[0] < 0)
                 {
                     _dial3[0] = 26;
                 }
+                break;
+            case (31):
+                _dial3[0] += 1;
 
+                if (_dial3[0] > 26)
+                {
+                    _dial3[0] = 0;
+                }
                 break;
             case (40):
-                _dial4[0] += 1;
-
-                if (_dial4[0] > 26)
-                {
-                    _dial4[0] = 0;
-                }
-
-                break;
-            case (41):
                 _dial4[0] += -1;
 
                 if (_dial4[0] < 0)
                 {
                     _dial4[0] = 26;
                 }
+                break;
+            case (41):
+                _dial4[0] += 1;
 
+                if (_dial4[0] > 26)
+                {
+                    _dial4[0] = 0;
+                }
                 break;
         }
         print(_dial1[0] + " " + _dial2[0] + " " + _dial3[0] + " " + _dial4[0]);
@@ -136,6 +132,7 @@ public class DaVinciPuzzle : MonoBehaviour
         if(correctLetters == 4)
         {
             print("Puzzle Solved");
+            ActivatePuzzleUI();
         }
         else
         {
@@ -158,4 +155,17 @@ public class DaVinciPuzzle : MonoBehaviour
         }
         
     }
+    #endregion
+
+    #region Rotate Dials
+    public void RotateUp(GameObject dial)
+    {
+        dial.transform.eulerAngles = new Vector3(dial.transform.eulerAngles.x, dial.transform.eulerAngles.y, dial.transform.eulerAngles.z - 10);
+    }
+
+    public void RotateDown(GameObject dial)
+    {
+        dial.transform.eulerAngles = new Vector3(dial.transform.eulerAngles.x, dial.transform.eulerAngles.y, dial.transform.eulerAngles.z - 10);
+    }
+    #endregion
 }
