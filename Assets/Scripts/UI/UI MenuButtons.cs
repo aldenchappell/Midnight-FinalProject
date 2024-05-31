@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //written by Creature Sari
 public class UIMenuButtons : MonoBehaviour
@@ -16,6 +17,11 @@ public class UIMenuButtons : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void TestSceneButton()
+    {
+        SceneManager.LoadScene("TEST SCENE");
     }
 
     public void ExitButton()
