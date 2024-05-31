@@ -203,6 +203,12 @@ namespace StarterAssets
 				CameraRotation();
 		}
 
+		public void ToggleCanMove()
+		{
+			canMove = !canMove;
+			controller.enabled = !controller.enabled;
+		}
+
 		private void GroundedCheck()
 		{
 			// set sphere position, with offset
