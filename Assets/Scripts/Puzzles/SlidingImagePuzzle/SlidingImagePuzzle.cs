@@ -3,10 +3,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using StarterAssets;
+using TMPro;
 using Random = UnityEngine.Random;
 
 public class SlidingImagePuzzle : MonoBehaviour
 {
+    private Puzzle _puzzle;
+    
     [SerializeField] private GameObject puzzleUI;
 
     [SerializeField] private Sprite[] puzzleSprites;
@@ -16,10 +19,39 @@ public class SlidingImagePuzzle : MonoBehaviour
     private bool _isFirstSlotSelected;
 
     
-    [SerializeField] private FirstPersonController firstPersonController; 
+    [SerializeField] private FirstPersonController firstPersonController;
+
+    [Header("Puzzle scoring")]
+    [SerializeField] private TMP_Text movesRemainingText;
+    private int _movesMade;
+    private int _maxMoves = 15;
+
+    private AudioSource _audio;
+    [SerializeField] private AudioClip correctMoveSound;
+
+    private void Awake()
+    {
+        _puzzle = GetComponent<Puzzle>();
+        _audio = GetComponent<AudioSource>();
+    }
+
+
     private void Start()
     {
         AssignUniqueSprites();
+        _movesMade = 0;
+        UpdatePuzzleUI();
+    }
+
+    private void Update()
+    {
+        if (puzzleUI.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePuzzleUI();
+            }
+        }
     }
 
     public void TogglePuzzleUI()
@@ -66,28 +98,97 @@ public class SlidingImagePuzzle : MonoBehaviour
             _selectedSlotIndex = clickedIndex;
             _isFirstSlotSelected = true;
         }
-        else
+        //check to make sure the player cant select the same slot, as well as ensure
+        //that the second selected slot is adjacent to the first selected slot
+        else if (clickedIndex != _selectedSlotIndex && IsAdjacentSlot(_selectedSlotIndex, clickedIndex))
         {
             SwapSlotImages(_selectedSlotIndex, clickedIndex);
             _isFirstSlotSelected = false;
         }
     }
 
+    //ensure that the selected slot and the second slot are adjacent do one another.
+    private bool IsAdjacentSlot(int index1, int index2)
+    {
+        //calculate the row and column for both the first and second selected slots
+        int row1 = index1 / 3;
+        int col1 = index1 % 3;
+        int row2 = index2 / 3;
+        int col2 = index2 % 3;
+
+        //if the slots are adjacent (horizontally or vertically)
+        return (row1 == row2 && Math.Abs(col1 - col2) == 1) || (col1 == col2 && Mathf.Abs(row1 - row2) == 1);
+    }
+
+    
     private void SwapSlotImages(int index1, int index2)
     {
-        //if an invalid index is selected
+        //check if an invalid index is selected
         if (index1 < 0 || index1 >= gridSlotImages.Count || index2 < 0 || index2 >= gridSlotImages.Count)
         {
             return;
         }
 
-        //swap the grid slot images
+        //check to see if the player has reached the maximum number of moves
+        if (_movesMade >= _maxMoves)
+        {
+            Debug.Log("Out of moves. Resetting puzzle.");
+            ResetPuzzle();
+            return; 
+        }
+
+        // Swap the grid slot images
         Image image1 = gridSlotImages[index1];
         Image image2 = gridSlotImages[index2];
 
         Sprite tempSprite = image1.sprite;
         image1.sprite = image2.sprite;
         image2.sprite = tempSprite;
+
+        _audio.PlayOneShot(correctMoveSound);
+
+        
+        _movesMade++;
+        if (_movesMade >= _maxMoves)
+        {
+            Debug.Log("Reached maximum moves. Resetting puzzle.");
+            ResetPuzzle();
+            return; 
+        }
+
+        UpdatePuzzleUI();
+        CheckForFinishedPuzzle();
     }
 
+
+
+    private void CheckForFinishedPuzzle()
+    {
+        if (gridSlotImages[0].sprite == puzzleSprites[0] &&
+            gridSlotImages[1].sprite == puzzleSprites[1] &&
+            gridSlotImages[2].sprite == puzzleSprites[2] &&
+            gridSlotImages[3].sprite == puzzleSprites[3] &&
+            gridSlotImages[4].sprite == puzzleSprites[4] &&
+            gridSlotImages[5].sprite == puzzleSprites[5] &&
+            gridSlotImages[6].sprite == puzzleSprites[6] &&
+            gridSlotImages[7].sprite == puzzleSprites[7] &&
+            gridSlotImages[8].sprite == puzzleSprites[8])
+        {
+            _puzzle.CompletePuzzle();
+            firstPersonController.ToggleCanMove();
+        }
+    }
+
+    private void UpdatePuzzleUI()
+    {
+        movesRemainingText.text = "Moves Made: " + _movesMade + "/" + _maxMoves;
+    }
+
+    private void ResetPuzzle()
+    {
+        _movesMade = 0;
+        UpdatePuzzleUI();
+        
+        AssignUniqueSprites();
+    }
 }

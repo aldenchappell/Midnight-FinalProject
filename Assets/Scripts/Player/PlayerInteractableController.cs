@@ -55,6 +55,9 @@ public class PlayerInteractableController : MonoBehaviour
         {
             // No object detected, reset previous highlight and disable dialogue if interacting with NPC
             ResetHighlight();
+            
+            //Ignore this comment, my IDE was screaming at me hehe 
+            // ReSharper disable once Unity.NoNullPropagation
             DialogueController.Instance?.DisableDialogueBox(); // Added null check
         }
 
