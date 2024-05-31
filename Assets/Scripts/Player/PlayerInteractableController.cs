@@ -29,6 +29,7 @@ public class PlayerInteractableController : MonoBehaviour
             interactableLayerMask))
         {
             var interactable = hitInfo.collider.GetComponent<InteractableObject>();
+            var button = hitInfo.collider.GetComponent<Button>();
             if (interactable != null)
             {
                 if (_interactableObject != interactable)
@@ -38,18 +39,23 @@ public class PlayerInteractableController : MonoBehaviour
 
                     // Highlight new object
                     _interactableObject = interactable;
-                    _mouseHighlight = _interactableObject.mouseHighlight;
-                    _mouseHighlight.ChangeColor(Color.red);
-
+                    
                     // Update interaction UI
                     UpdateInteractionUI(_interactableObject);
+
+                    if (button == null || !interactable.GetComponent<InteractableNPC>())
+                    {
+                        _mouseHighlight = _interactableObject.mouseHighlight;
+                        _mouseHighlight?.ChangeColor(Color.red); // Added null check
+                    }
                 }
             }
         }
         else
         {
-            // No object detected, reset previous highlight
+            // No object detected, reset previous highlight and disable dialogue if interacting with NPC
             ResetHighlight();
+            DialogueController.Instance?.DisableDialogueBox(); // Added null check
         }
 
         // Handle interaction input
@@ -87,6 +93,8 @@ public class PlayerInteractableController : MonoBehaviour
 
     private void UpdateInteractionUI(InteractableObject interactable)
     {
+        if (interactionImage == null) return; // Added null check
+
         if (interactable != null && interactable.interactionIcon != null)
         {
             interactionImage.sprite = interactable.interactionIcon;

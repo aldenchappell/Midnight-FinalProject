@@ -8,7 +8,6 @@ public class ElevatorController : MonoBehaviour
     [SerializeField] private Animator elevatorAnimator;
 
     public bool isOpened = false;
-    public bool playerInElevator = false;
     private bool _levelSelected = false; //ensure only one button can be pressed
     private string _selectedLevelName = "";
 
@@ -70,23 +69,35 @@ public class ElevatorController : MonoBehaviour
         {
             case 1:
                 _selectedLevelName = "LEVEL ONE";
-                floorIndexText.text = "1";
                 break;
             case 2:
                 _selectedLevelName = "LEVEL TWO";
-                floorIndexText.text = "2";
                 break;
             case 3:
                 _selectedLevelName = "LEVEL THREE";
-                floorIndexText.text = "3";
+                break;
+            //Testing
+            case 4:
+                _selectedLevelName = "ALDEN";
                 break;
             default:
                 Debug.LogError("Invalid floor index selected.");
                 _levelSelected = false; //should prevent errors...
                 return;
         }
-        
-        StartCoroutine(StartElevatorRoutine());
+
+        // Check if the level is already completed
+        if (LevelCompletionManager.Instance.IsLevelCompleted(_selectedLevelName))
+        {
+            Debug.Log("This level is already completed. Please select a different level.");
+            _levelSelected = false;
+        }
+        else
+        {
+            floorIndexText.text = floorIndex.ToString();
+
+            StartCoroutine(StartElevatorRoutine());
+        }
     }
 
     private IEnumerator StartElevatorRoutine()

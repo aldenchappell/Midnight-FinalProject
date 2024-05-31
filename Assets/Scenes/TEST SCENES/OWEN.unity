@@ -271,7 +271,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1834534317}
+      - m_Target: {fileID: 175821604}
         m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
         m_MethodName: AdjustTargetDialLetter
         m_Mode: 3
@@ -279,6 +279,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 31
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175821604}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: RotateDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 175821600}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -419,7 +431,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1834534317}
+      - m_Target: {fileID: 175821604}
         m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
         m_MethodName: AdjustTargetDialLetter
         m_Mode: 3
@@ -427,6 +439,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 11
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175821604}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: RotateDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 175821602}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -664,6 +688,327 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &175821597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.372447
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.372447
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.372447
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.89
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.536
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6114939942592387248, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9709676
+      objectReference: {fileID: 0}
+    - target: {fileID: -6114939942592387248, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6114939942592387248, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.23921145
+      objectReference: {fileID: 0}
+    - target: {fileID: -6114939942592387248, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -28.788437
+      objectReference: {fileID: 0}
+    - target: {fileID: -6114939942592387248, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -6114939942592387248, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -4668074107676032118, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9709676
+      objectReference: {fileID: 0}
+    - target: {fileID: -4668074107676032118, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4668074107676032118, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.23921145
+      objectReference: {fileID: 0}
+    - target: {fileID: -4668074107676032118, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 19.29578
+      objectReference: {fileID: 0}
+    - target: {fileID: -4668074107676032118, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 115.31251
+      objectReference: {fileID: 0}
+    - target: {fileID: -4668074107676032118, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 115.31251
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_Name
+      value: DaVinciPuzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666126897319158058, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9709676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666126897319158058, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666126897319158058, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.23921145
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666126897319158058, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 92.43967
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666126897319158058, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -80.029144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666126897319158058, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -80.029144
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681652847580564254, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9709676
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681652847580564254, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681652847580564254, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.23921145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681652847580564254, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -63.51631
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681652847580564254, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681652847580564254, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175821604}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175821603}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175821609}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175821611}
+  m_SourcePrefab: {fileID: 100100000, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+--- !u!1 &175821598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+  m_PrefabInstance: {fileID: 175821597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &175821599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3403155128824885820, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+  m_PrefabInstance: {fileID: 175821597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &175821600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7917291961305824890, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+  m_PrefabInstance: {fileID: 175821597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &175821601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9022215874312191456, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+  m_PrefabInstance: {fileID: 175821597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &175821602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1869004960016252962, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+  m_PrefabInstance: {fileID: 175821597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &175821603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175821598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13810721ea2449f4b98cb93a65e70177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 175821604}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: ActivatePuzzleUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  interactionIcon: {fileID: 0}
+  interactableIconSize: {x: 0, y: 0}
+  interactableID: 0
+  mouseHighlight: {fileID: 0}
+--- !u!114 &175821604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175821598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70aa8c559ba9ef540a060278a9d6be70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  letters:
+  - a
+  - b
+  - c
+  - d
+  - e
+  - f
+  - g
+  - h
+  - i
+  - j
+  - k
+  - l
+  - m
+  - n
+  - o
+  - p
+  - q
+  - r
+  - s
+  - t
+  - u
+  - v
+  - w
+  - s
+  - y
+  - z
+  passcode: 0700000014000000060000000e000000
+  puzzleUI: {fileID: 666790638}
+  crankPref: {fileID: 640369657}
+--- !u!65 &175821609
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175821598}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4677513, y: 2.138245, z: 4.8502927}
+  m_Center: {x: -0.2338747, y: -0.006509713, z: 0.1100652}
+--- !u!95 &175821611
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175821598}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf28974595d1dfc42986f6e187a26851, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &213823261 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b69d911917c4bc348a6a6d6c2816eeb9, type: 3}
@@ -1174,7 +1519,7 @@ GameObject:
   - component: {fileID: 353886783}
   - component: {fileID: 353886782}
   m_Layer: 7
-  m_Name: TEsObject
+  m_Name: BookPH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,13 +1635,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353886781}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.449997, y: 1.37, z: 13.74}
-  m_LocalScale: {x: 0.25754, y: 0.25754, z: 0.25754}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 29.449997, y: 1.385, z: 13.74}
+  m_LocalScale: {x: 0.27064878, y: 0.3501458, z: 0.06415796}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &387695425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b69d911917c4bc348a6a6d6c2816eeb9, type: 3}
@@ -1780,7 +2125,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1834534317}
+      - m_Target: {fileID: 175821604}
         m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
         m_MethodName: AdjustTargetDialLetter
         m_Mode: 3
@@ -1788,6 +2133,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 21
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175821604}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: RotateDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 175821601}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2686,7 +3043,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1834534317}
+      - m_Target: {fileID: 175821604}
         m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
         m_MethodName: AdjustTargetDialLetter
         m_Mode: 3
@@ -2694,6 +3051,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 41
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175821604}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: RotateDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 175821599}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3000,7 +3369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3136,7 +3505,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1834534317}
+      - m_Target: {fileID: 175821604}
         m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
         m_MethodName: AdjustTargetDialLetter
         m_Mode: 3
@@ -3144,6 +3513,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 20
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175821604}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: RotateUp
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 175821601}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4075,7 +4456,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1834534317}
+      - m_Target: {fileID: 175821604}
         m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
         m_MethodName: AdjustTargetDialLetter
         m_Mode: 3
@@ -4083,6 +4464,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 30
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175821604}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: RotateUp
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 175821600}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5009,7 +5402,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1834534317}
+      - m_Target: {fileID: 175821604}
         m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
         m_MethodName: AdjustTargetDialLetter
         m_Mode: 3
@@ -5017,6 +5410,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175821604}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: RotateUp
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 175821602}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6162,6 +6567,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 19.050003, y: 300, z: 400.00006}
   m_Center: {x: 5.715004, y: 150, z: -199.99997}
+--- !u!1001 &1425313908
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.556152
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 19.714294
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
+      propertyPath: m_Name
+      value: Bookcase
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 473b4b154f6251d46b65caa6ffac81d9, type: 3}
 --- !u!1001 &1446031097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7497,7 +7959,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1834534317}
+      - m_Target: {fileID: 175821604}
         m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
         m_MethodName: CheckForCorrectCombination
         m_Mode: 1
@@ -8165,6 +8627,7 @@ MonoBehaviour:
   - z
   passcode: 03000000020000000100000000000000
   puzzleUI: {fileID: 666790638}
+  crankPref: {fileID: 0}
 --- !u!114 &1834534318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8996,7 +9459,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1834534317}
+      - m_Target: {fileID: 175821604}
         m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
         m_MethodName: AdjustTargetDialLetter
         m_Mode: 3
@@ -9004,6 +9467,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 40
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175821604}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: RotateUp
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 175821599}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9745,6 +10220,143 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1997074873}
   m_SourcePrefab: {fileID: 100100000, guid: 78eac0fc1c930944f8d12709286f8f5c, type: 3}
+--- !u!1 &2143454605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143454610}
+  - component: {fileID: 2143454609}
+  - component: {fileID: 2143454608}
+  - component: {fileID: 2143454607}
+  - component: {fileID: 2143454606}
+  m_Layer: 7
+  m_Name: ShadowBook
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2143454606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143454605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13810721ea2449f4b98cb93a65e70177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1299662755}
+        m_TargetAssemblyTypeName: PlayerDualHandInventory, Assembly-CSharp
+        m_MethodName: set_PlaceObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2143454605}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  interactionIcon: {fileID: 0}
+  interactableIconSize: {x: 0, y: 0}
+  interactableID: 0
+  mouseHighlight: {fileID: 0}
+--- !u!65 &2143454607
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143454605}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2143454608
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143454605}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 4b98e51cddd2cc843b288eed5d783838, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2143454609
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143454605}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2143454610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143454605}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 29.449997, y: 1.643, z: 19.521}
+  m_LocalScale: {x: 0.27064878, y: 0.3501458, z: 0.06415796}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -9757,6 +10369,7 @@ SceneRoots:
   - {fileID: 640369662}
   - {fileID: 1647180808}
   - {fileID: 353886786}
+  - {fileID: 2143454610}
   - {fileID: 869692807}
   - {fileID: 1198661802}
   - {fileID: 1200421920}
@@ -9766,3 +10379,5 @@ SceneRoots:
   - {fileID: 1211717983}
   - {fileID: 472230676}
   - {fileID: 1834534322}
+  - {fileID: 175821597}
+  - {fileID: 1425313908}

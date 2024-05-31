@@ -3,10 +3,14 @@ using StarterAssets;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class WoodBlockPuzzle : MonoBehaviour
 {
     [SerializeField] private GameObject startingPuzzleUI;
+
+    //Added by Owen
+    [SerializeField] Sprite originalSlotSprite;
     
     private bool solved = false;
     [SerializeField] private FirstPersonController firstPersonController;
@@ -14,6 +18,7 @@ public class WoodBlockPuzzle : MonoBehaviour
     private WoodBlockPuzzlePiece _currentSelectedPuzzlePiece;
 
     [SerializeField] private WoodBlockPuzzlePiece[] puzzlePieces;
+    private List<Vector3> originalPositions;
     [SerializeField] private WoodBlockPuzzleSlot[] puzzleSlots;
 
     [SerializeField] private TMP_Text movesMadeText;
@@ -24,14 +29,26 @@ public class WoodBlockPuzzle : MonoBehaviour
     [SerializeField] private AudioClip correctSlotSound;
     [SerializeField] private AudioClip incorrectSlotSound;
 
+
+    private Puzzle _puzzle;
     private void Awake()
     {
         _puzzleAudio = GetComponent<AudioSource>();
+
+        _puzzle = GetComponent<Puzzle>();
     }
 
     private void Start()
     {
         _movesMade = 0;
+        originalPositions = new List<Vector3>();
+        //Owen:
+        //Get all pieces original positions
+        foreach (WoodBlockPuzzlePiece piece in puzzlePieces)
+        {
+            originalPositions.Add(piece.GetPosition);
+            print(piece.name + " " + piece.GetPosition);
+        }
         UpdateMovesMadeUI(_movesMade);
     }
 
@@ -65,6 +82,7 @@ public class WoodBlockPuzzle : MonoBehaviour
             else
             {
                 // Player connected an incorrect piece
+                CheckForPuzzleCompletion();
                 _puzzleAudio.PlayOneShot(incorrectSlotSound);
                 Debug.Log("Wrong slot");
             }
@@ -84,10 +102,16 @@ public class WoodBlockPuzzle : MonoBehaviour
             solved = true;
             TogglePuzzleUI();
             ResetPuzzle();//testing
-            //update the level completion manager and save this puzzle as completed.
             
-            //Destroy the puzzle. (TO DO)
-            //LevelCompletionManager.Instance.DestroyPuzzle(gameObject);
+            // Update the level completion manager and save this puzzle as completed.
+            if (_puzzle != null)
+            {
+                _puzzle.CompletePuzzle();
+            }
+            else
+            {
+                Debug.LogError("Puzzle reference is null!");
+            }
         }
         else
         {
@@ -95,16 +119,28 @@ public class WoodBlockPuzzle : MonoBehaviour
             {
                 Debug.Log("Puzzle lost. Resetting puzzle...");
                 TogglePuzzleUI();
-                //ResetPuzzle();
+                ResetPuzzle();
             }
         }
     }
     
     private void ResetPuzzle()
     {
-        // Reset moves counter
+        //Owen:
+        //Return all pieces to original positions
+        for (int i = 0; i < puzzlePieces.Length; i++)
+        {
+            puzzlePieces[i].GetComponent<RectTransform>().anchoredPosition = originalPositions[i];
+            puzzlePieces[i].GetComponent<Button>().interactable = true;
+        }
+        foreach(WoodBlockPuzzleSlot slot in puzzleSlots)
+        {
+            slot.GetComponent<Image>().sprite = originalSlotSprite;
+        }
+
         _movesMade = 0;
         UpdateMovesMadeUI(_movesMade);
+        
     }
     
 
