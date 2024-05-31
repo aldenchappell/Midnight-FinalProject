@@ -14,6 +14,7 @@ public class DaVinciPuzzle : MonoBehaviour
     [SerializeField] GameObject crankPref;
 
     private GlobalCursorManager _cursor;
+    private Animator _animator;
 
     private int[] _dial1;
     private int[] _dial2;
@@ -44,7 +45,7 @@ public class DaVinciPuzzle : MonoBehaviour
             case (10):
                 _dial1[0] += 1;
 
-                if (_dial1[0] > 26)
+                if (_dial1[0] > 25)
                 {
                     _dial1[0] = 0;
                 }
@@ -55,15 +56,15 @@ public class DaVinciPuzzle : MonoBehaviour
 
                 if (_dial1[0] < 0)
                 {
-                    _dial1[0] = 26;
+                    _dial1[0] = 25;
                 }
                 break;
             case (20):
                 _dial2[0] += 1;
 
-                if (_dial2[0] > 26)
+                if (_dial2[0] > 25)
                 {
-                    _dial2[0] = 26;
+                    _dial2[0] = 25;
                 }
                 break;
             case (21):
@@ -71,13 +72,13 @@ public class DaVinciPuzzle : MonoBehaviour
 
                 if (_dial2[0] < 0)
                 {
-                    _dial2[0] = 26;
+                    _dial2[0] = 25;
                 }
                 break;
             case (30):
                 _dial3[0] += 1;
 
-                if (_dial3[0] > 26)
+                if (_dial3[0] > 25)
                 {
                     _dial3[0] = 0;
                 }
@@ -87,13 +88,13 @@ public class DaVinciPuzzle : MonoBehaviour
 
                 if (_dial3[0] < 0)
                 {
-                    _dial3[0] = 26;
+                    _dial3[0] = 25;
                 }
                 break;
             case (40):
                 _dial4[0] += 1;
 
-                if (_dial4[0] > 26)
+                if (_dial4[0] > 25)
                 {
                     _dial4[0] = 0;
                 }
@@ -103,7 +104,7 @@ public class DaVinciPuzzle : MonoBehaviour
 
                 if (_dial4[0] < 0)
                 {
-                    _dial4[0] = 26;
+                    _dial4[0] = 25;
                 }
                 break;
         }
@@ -138,6 +139,7 @@ public class DaVinciPuzzle : MonoBehaviour
         else
         {
             print("Puzzle Failed");
+            TriggerAnimation(true);
         }
     }
 
@@ -171,6 +173,16 @@ public class DaVinciPuzzle : MonoBehaviour
     #endregion
 
     #region Animations
+    private void TriggerAnimation(bool fail)
+    {
+        if(fail)
+        {
+            _animator.SetTrigger("FailTrigger");
+        }
+        else
+        {
 
+        }
+    }
     #endregion
 }
