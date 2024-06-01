@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
+using Cinemachine;
 
 public class DaVinciPuzzle : MonoBehaviour
 {
@@ -11,14 +12,17 @@ public class DaVinciPuzzle : MonoBehaviour
     [SerializeField] int[] passcode;
     [Header("Da Vinci Puzzle UI")]
     [SerializeField] GameObject puzzleUI;
-    [Header("Music Crank Piece Prefab")]
-    [SerializeField] GameObject crankPref;
     [Header("Animator Child Object")]
     [SerializeField] Animator animatorChild;
     [Header("AudioFiles")]
     [SerializeField] AudioClip failSound;
     [SerializeField] AudioClip winSound;
+    [Header("Dials")]
+    [SerializeField] Transform[] dials;
 
+    private CinemachineVirtualCamera _playerCam;
+    private CinemachineVirtualCamera _puzzleCam;
+    private int _currentDialIndex;
     private GlobalCursorManager _cursor;
     private FirstPersonController _FPC;
     private AudioSource _puzzleAudio;
@@ -32,6 +36,7 @@ public class DaVinciPuzzle : MonoBehaviour
     private void Awake()
     {
         GlobalCursorManager.Instance = _cursor;
+        _currentDialIndex = 0;
         _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
         _puzzleAudio = GetComponent<AudioSource>();
     }
@@ -47,81 +52,109 @@ public class DaVinciPuzzle : MonoBehaviour
         _dial2[0] = 0;
         _dial3[0] = 0;
         _dial4[0] = 0;
+
+        _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
+        _puzzleCam = GameObject.Find("DaVinciPuzzleCam").GetComponent<CinemachineVirtualCamera>();
+    }
+
+    private void Update()
+    {
+        CheckForInput();
     }
 
 
     #region Adjusting Dials
-    public void AdjustTargetDialLetter(int _dialNumber)
+    public void AdjustTargetDialLetter(int dialAdjustment, int dialIndex)
     {
-        switch (_dialNumber)
+        switch(dialIndex)
         {
-            case (10):
-                _dial1[0] += 1;
-
-                if (_dial1[0] > 25)
+            case 0:
+                _dial1[0] += dialAdjustment;
+                if(_dial1[0] > 25)
                 {
                     _dial1[0] = 0;
                 }
-
-                break;
-            case (11):
-                _dial1[0] += -1;
-
-                if (_dial1[0] < 0)
+                if(_dial1[0] < 0)
                 {
                     _dial1[0] = 25;
                 }
                 break;
-            case (20):
-                _dial2[0] += 1;
-
+            case 1:
+                _dial2[0] += dialAdjustment;
                 if (_dial2[0] > 25)
                 {
-                    _dial2[0] = 25;
+                    _dial2[0] = 0;
                 }
-                break;
-            case (21):
-                _dial2[0] += -1;
-
                 if (_dial2[0] < 0)
                 {
                     _dial2[0] = 25;
                 }
                 break;
-            case (30):
-                _dial3[0] += 1;
-
+            case 2:
+                _dial3[0] += dialAdjustment;
                 if (_dial3[0] > 25)
                 {
                     _dial3[0] = 0;
                 }
-                break;
-            case (31):
-                _dial3[0] += -1;
-
                 if (_dial3[0] < 0)
                 {
                     _dial3[0] = 25;
                 }
                 break;
-            case (40):
-                _dial4[0] += 1;
-
+            case 3:
+                _dial4[0] += dialAdjustment;
                 if (_dial4[0] > 25)
                 {
                     _dial4[0] = 0;
                 }
-                break;
-            case (41):
-                _dial4[0] += -1;
-
                 if (_dial4[0] < 0)
                 {
                     _dial4[0] = 25;
                 }
                 break;
         }
-        print(_dial1[0] + " " + _dial2[0] + " " + _dial3[0] + " " + _dial4[0]);
+    }
+ 
+
+    private void AdjustSelectedDial(int adjustment)
+    {
+        _currentDialIndex += adjustment;
+        if(_currentDialIndex < 0)
+        {
+            _currentDialIndex = 3;
+        }
+        if(_currentDialIndex > 3)
+        {
+            _currentDialIndex = 0;
+        }
+        foreach(Transform dial in dials)
+        {
+            dial.GetChild(0).gameObject.SetActive(false);
+        }
+        dials[_currentDialIndex].GetChild(0).gameObject.SetActive(true);
+    }
+
+    private void CheckForInput()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            AdjustSelectedDial(-1);
+        }
+        else if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            AdjustSelectedDial(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            AdjustTargetDialLetter(-1, _currentDialIndex);
+            RotateDown(dials[_currentDialIndex].gameObject);
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            AdjustTargetDialLetter(1, _currentDialIndex);
+            RotateUp(dials[_currentDialIndex].gameObject);
+        }
+        //print(_dial1[0] + " " + _dial2[0] + " " + _dial3[0] + " " + _dial4[0]);
     }
 
     public void CheckForCorrectCombination()
@@ -148,7 +181,6 @@ public class DaVinciPuzzle : MonoBehaviour
             print("Puzzle Solved");
             ActivatePuzzleUI();
             StartCoroutine(TriggerAnimation(false));
-            Instantiate(crankPref, new Vector3(transform.position.x + 2, transform.position.y, transform.position.z), Quaternion.identity);
         }
         else
         {
@@ -165,12 +197,21 @@ public class DaVinciPuzzle : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             _FPC.ToggleCanMove();
+            AdjustSelectedDial(0);
+            _playerCam.Priority = 0;
+            _puzzleCam.Priority = 10;
         }
         else
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             _FPC.ToggleCanMove();
+            foreach (Transform dial in dials)
+            {
+                dial.GetChild(0).gameObject.SetActive(false);
+            }
+            _playerCam.Priority = 10;
+            _puzzleCam.Priority = 0;
         }
         
     }
@@ -220,7 +261,24 @@ public class DaVinciPuzzle : MonoBehaviour
         else
         {
             _puzzleAudio.PlayOneShot(winSound);
+            MeshRenderer[] children = GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer child in children)
+            {
+                child.GetComponent<MeshRenderer>().enabled = false;
+            }
+            animatorChild.gameObject.SetActive(true);
+            animatorChild.SetTrigger("WinTrigger");
+            GetComponent<BoxCollider>().enabled = false;
+            yield return new WaitForSeconds(4.30f);
+            GivePlayerCrank();
         }
     }
     #endregion
+
+    private void GivePlayerCrank()
+    {
+        Transform crank = transform.GetChild(6).transform.GetChild(6);
+        crank.GetComponent<InteractableObject>().onInteraction.Invoke();
+        Destroy(transform.GetChild(6).transform.GetChild(5).gameObject);
+    }
 }
