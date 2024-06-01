@@ -1146,12 +1146,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 175821598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6dcbc48c414f7f4f81450f5399df09b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6215a277c650e8549b38f4b9e5f94da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleCam: {fileID: 1727129585}
-  mazePuzzleObj: {fileID: 0}
-  offset: {x: 0, y: 10, z: 0}
+  puzzle: {fileID: 11400000, guid: 3d0451a4687364b47b19377b129c7595, type: 2}
+  onPuzzleCompletion:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &193348577
 GameObject:
   m_ObjectHideFlags: 0
