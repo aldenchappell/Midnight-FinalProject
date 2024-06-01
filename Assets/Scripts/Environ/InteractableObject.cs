@@ -13,13 +13,13 @@ public class InteractableObject : MonoBehaviour
     
     [HideInInspector] public int interactableID;
 
-    [HideInInspector] public MouseHighlight mouseHighlight;
+    [HideInInspector] public HighlightController highlightController;
 
     private void Start()
     {
         interactableID = Random.Range(0,999999);
         
-        mouseHighlight = GetComponent<MouseHighlight>();
+        highlightController = GetComponent<HighlightController>();
     }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayerInteractableController : MonoBehaviour
 {
     private InteractableObject _interactableObject;
-    private MouseHighlight _mouseHighlight;
+    private HighlightController _highlightController;
     
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask interactableLayerMask;
@@ -45,8 +45,8 @@ public class PlayerInteractableController : MonoBehaviour
 
                     if (button == null || !interactable.GetComponent<InteractableNPC>())
                     {
-                        _mouseHighlight = _interactableObject.mouseHighlight;
-                        _mouseHighlight?.ChangeColor(Color.red); // Added null check
+                        _highlightController = _interactableObject.highlightController;
+                        _highlightController?.ChangeColor(Color.red); // Added null check
                     }
                 }
             }
@@ -81,10 +81,10 @@ public class PlayerInteractableController : MonoBehaviour
 
     private void ResetHighlight()
     {
-        if (_mouseHighlight != null)
+        if (_highlightController != null)
         {
-            _mouseHighlight.ResetColor();
-            _mouseHighlight = null;
+            _highlightController.ResetColor();
+            _highlightController = null;
         }
 
         if (_interactableObject != null)
