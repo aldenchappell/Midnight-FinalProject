@@ -111,4 +111,9 @@ public class PlayerInteractableController : MonoBehaviour
             interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
         }
     }
+
+    public bool IsLookingAtInteractableObject(GameObject target)
+    {
+        return _interactableObject != null && _interactableObject.gameObject == target;
+    }
 }
