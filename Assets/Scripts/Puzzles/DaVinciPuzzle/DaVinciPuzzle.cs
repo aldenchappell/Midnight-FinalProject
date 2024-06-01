@@ -39,6 +39,8 @@ public class DaVinciPuzzle : MonoBehaviour
         _currentDialIndex = 0;
         _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
         _puzzleAudio = GetComponent<AudioSource>();
+        _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
+        _puzzleCam = GameObject.Find("DaVinciPuzzleCam").GetComponent<CinemachineVirtualCamera>();
     }
 
     private void Start()
@@ -53,8 +55,7 @@ public class DaVinciPuzzle : MonoBehaviour
         _dial3[0] = 0;
         _dial4[0] = 0;
 
-        _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
-        _puzzleCam = GameObject.Find("DaVinciPuzzleCam").GetComponent<CinemachineVirtualCamera>();
+        
     }
 
     private void Update()

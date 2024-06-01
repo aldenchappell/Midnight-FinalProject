@@ -10,6 +10,14 @@ public class PlayerDualHandInventory : MonoBehaviour
     private GameObject[] _inventorySlots;
     private int _currentIndexSelected;
 
+    public GameObject[] GetInventory
+    {
+        get
+        {
+            return _inventorySlots;
+        }
+    }
+
     private void Start()
     {
         _inventorySlots = new GameObject[2];
