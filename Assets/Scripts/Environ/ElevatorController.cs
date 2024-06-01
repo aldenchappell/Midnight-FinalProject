@@ -21,6 +21,7 @@ public class ElevatorController : MonoBehaviour
     [SerializeField] private AudioClip elevatorOpeningSound;
     [SerializeField] private AudioClip elevatorClosingSound;
     [SerializeField] private AudioClip elevatorMovingSound;
+    [SerializeField] private AudioClip invalidLevelSound;
 
     private void Awake()
     {
@@ -40,9 +41,13 @@ public class ElevatorController : MonoBehaviour
 
     public void CloseElevator()
     {
-        if (isOpened)
+        if (isOpened && _levelSelected)
         {
             StartCoroutine(CloseElevatorRoutine());
+        }
+        else
+        {
+            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
         }
     }
 

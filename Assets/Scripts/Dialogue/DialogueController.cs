@@ -87,7 +87,9 @@ public class DialogueController : MonoBehaviour
         ResetDialogueText();
         dialogueEnabled = true;
         dialogueBox.SetActive(true);
-        GlobalCursorManager.Instance.EnableCursor();
+        
+        if(GlobalCursorManager.Instance != null)
+            GlobalCursorManager.Instance.EnableCursor();
     }
 
     public void DisableDialogueBox()
@@ -97,7 +99,8 @@ public class DialogueController : MonoBehaviour
         dialogueBox.SetActive(false);
         _shouldPrintText = true;
         
-        GlobalCursorManager.Instance.DisableCursor();
+        if(GlobalCursorManager.Instance != null)
+            GlobalCursorManager.Instance.DisableCursor();
     }
 
     private void StopDialogue()

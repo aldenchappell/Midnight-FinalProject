@@ -1,37 +1,48 @@
-using System;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class MazeBullPuzzle : MonoBehaviour
 {
     [HideInInspector] public Puzzle puzzle;
 
+    [SerializeField] private PlayerInteractableController playerInteractableController;
     [SerializeField] private FirstPersonController firstPersonController;
     [SerializeField] private GameObject mazePuzzleObj;
-    [SerializeField] private MazeBall mazeBall;
-
+    [SerializeField] private GameObject originalMazeBall;
+    [SerializeField] private GameObject pfMazeBall;
+    [SerializeField] private Transform mazePuzzleBallSpawnPos;
+    
+    [Header("Tilting")]
     [SerializeField] private float tiltSpeed;
     [SerializeField] private float minAngle, maxAngle;
     
-    
+    [Space(5)]
     
     [Header("UI")] 
     [SerializeField] private GameObject puzzleUI;
     [SerializeField] private TMP_Text timeRemainingText;
 
+    [Space(5)]
+    
     [Header("Cinemachine Cameras")]
     [SerializeField] private CinemachineVirtualCamera playerCam;
     [SerializeField] private CinemachineVirtualCamera puzzleCam;
     
+    [Space(5)]
+    
     [Header("Puzzle Scoring")] 
-    private int _currentTimer;
-    private int _maxTimeAllowed;
+    private float _currentTimer;
+    private const float MaxTimeAllowed = 60f; //we will adjust this based on testing with finished puzzle model.
+
+    [Space(5)]
     
     [Header("Audio")] 
     private AudioSource _audio;
+
+    private bool _isInPuzzle;
     
     private void Awake()
     {
@@ -43,8 +54,10 @@ public class MazeBullPuzzle : MonoBehaviour
     {
         if (mazePuzzleObj.activeSelf)
         {
-            //tilt the puzzle with arrow keys
-            
+            // Handle the timer
+            HandleTimer(true);
+
+            // Tilt the puzzle with arrow keys
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 DetermineTiltAxis(0);
@@ -62,6 +75,17 @@ public class MazeBullPuzzle : MonoBehaviour
                 DetermineTiltAxis(3);
             }
         }
+        else
+        {
+            // Stop the timer when the puzzle is not active
+            HandleTimer(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F) &&
+            (playerInteractableController.IsLookingAtInteractableObject(mazePuzzleObj) || mazePuzzleObj.activeSelf))
+        {
+            TogglePuzzleUI();
+        }
     }
 
     public void TogglePuzzleUI()
@@ -69,7 +93,8 @@ public class MazeBullPuzzle : MonoBehaviour
         puzzleUI.SetActive(!puzzleUI.activeSelf);
 
         bool isActive = puzzleUI.activeSelf;
-        
+        _isInPuzzle = isActive; // Update the flag when toggling
+
         firstPersonController.ToggleCanMove();
         
         mazePuzzleObj.SetActive(isActive);
@@ -81,6 +106,7 @@ public class MazeBullPuzzle : MonoBehaviour
         else
         {
             SwitchToPlayerCamera();
+            //_currentTimer = 0; // Reset the timer when exiting the puzzle
         }
     }
 
@@ -96,7 +122,7 @@ public class MazeBullPuzzle : MonoBehaviour
         puzzleCam.Priority = 0;
     }
 
-    //determine the direction the player chooses to tilt the puzzle
+    // Determine the direction the player chooses to tilt the puzzle
     private void DetermineTiltAxis(int directionValue)
     {
         if (mazePuzzleObj.activeSelf && TimerIsActive())
@@ -122,29 +148,28 @@ public class MazeBullPuzzle : MonoBehaviour
             }
         }
     }
-    
 
-    //limit the angle the puzzle can tilt and tilt the puzzle
+    // Limit the angle the puzzle can tilt and tilt the puzzle
     private void TiltPuzzle(Vector3 axis, float angle)
     {
-        //calculate the rotation angle
+        // Calculate the new rotation angle
         Vector3 newRotation = mazePuzzleObj.transform.rotation.eulerAngles + axis * angle;
         
         newRotation.x = NormalizeTiltAngle(newRotation.x);
         newRotation.z = NormalizeTiltAngle(newRotation.z);
 
-        //clamp the rotation
+        // Clamp the rotation
         newRotation.x = Mathf.Clamp(newRotation.x, minAngle, maxAngle);
         newRotation.z = Mathf.Clamp(newRotation.z, minAngle, maxAngle);
 
-        //rotate the puzzle using tilt speed
+        // Rotate the puzzle using tilt speed
         mazePuzzleObj.transform.rotation = Quaternion.Lerp(
             mazePuzzleObj.transform.rotation,
             Quaternion.Euler(newRotation),
             Time.deltaTime * tiltSpeed);
     }
 
-    //normalize the tilt angle to ensure it stays within 0 and 360
+    // Normalize the tilt angle to ensure it stays within 0 and 360
     private float NormalizeTiltAngle(float angle)
     {
         if (angle > 180f)
@@ -153,14 +178,42 @@ public class MazeBullPuzzle : MonoBehaviour
         }
         return angle;
     }
-    
+
     private bool TimerIsActive()
     {
-        return _currentTimer <= _maxTimeAllowed;
+        return _currentTimer <= MaxTimeAllowed;
     }
 
     private void UpdatePuzzleUI()
     {
-        timeRemainingText.text = "Time Remaining: " + _currentTimer;
+        timeRemainingText.text = "Time Remaining: " + Mathf.CeilToInt(MaxTimeAllowed - _currentTimer);
+    }
+
+    private void HandleTimer(bool isActive)
+    {
+        if (isActive)
+        {
+            _currentTimer += Time.deltaTime;
+            if (_currentTimer >= MaxTimeAllowed)
+            {
+                ResetPuzzle();
+            }
+        }
+        
+        UpdatePuzzleUI();
+    }
+
+    private void ResetPuzzle()
+    {
+        Destroy(originalMazeBall);
+        GameObject newBall = Instantiate(pfMazeBall, mazePuzzleBallSpawnPos.position, Quaternion.identity);
+        newBall.transform.SetParent(mazePuzzleObj.transform);
+        newBall.GetComponent<MazeBall>().mazePuzzle = this;
+        
+        originalMazeBall = newBall;
+        
+        // Reset the timer
+        _currentTimer = 0;
+        UpdatePuzzleUI();
     }
 }
