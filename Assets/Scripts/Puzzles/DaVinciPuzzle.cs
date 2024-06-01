@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
 
 public class DaVinciPuzzle : MonoBehaviour
 {
@@ -12,14 +13,28 @@ public class DaVinciPuzzle : MonoBehaviour
     [SerializeField] GameObject puzzleUI;
     [Header("Music Crank Piece Prefab")]
     [SerializeField] GameObject crankPref;
+    [Header("Animator Child Object")]
+    [SerializeField] Animator animatorChild;
+    [Header("AudioFiles")]
+    [SerializeField] AudioClip failSound;
+    [SerializeField] AudioClip winSound;
 
     private GlobalCursorManager _cursor;
-    private Animator _animator;
+    private FirstPersonController _FPC;
+    private AudioSource _puzzleAudio;
+
 
     private int[] _dial1;
     private int[] _dial2;
     private int[] _dial3;
     private int[] _dial4;
+
+    private void Awake()
+    {
+        GlobalCursorManager.Instance = _cursor;
+        _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
+        _puzzleAudio = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -32,8 +47,6 @@ public class DaVinciPuzzle : MonoBehaviour
         _dial2[0] = 0;
         _dial3[0] = 0;
         _dial4[0] = 0;
-
-        GlobalCursorManager.Instance = _cursor;
     }
 
 
@@ -134,12 +147,13 @@ public class DaVinciPuzzle : MonoBehaviour
         {
             print("Puzzle Solved");
             ActivatePuzzleUI();
+            StartCoroutine(TriggerAnimation(false));
             Instantiate(crankPref, new Vector3(transform.position.x + 2, transform.position.y, transform.position.z), Quaternion.identity);
         }
         else
         {
             print("Puzzle Failed");
-            TriggerAnimation(true);
+            StartCoroutine(TriggerAnimation(true));
         }
     }
 
@@ -150,11 +164,13 @@ public class DaVinciPuzzle : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            _FPC.ToggleCanMove();
         }
         else
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            _FPC.ToggleCanMove();
         }
         
     }
@@ -173,15 +189,37 @@ public class DaVinciPuzzle : MonoBehaviour
     #endregion
 
     #region Animations
-    private void TriggerAnimation(bool fail)
+    private IEnumerator TriggerAnimation(bool fail)
     {
         if(fail)
         {
-            _animator.SetTrigger("FailTrigger");
+            _puzzleAudio.PlayOneShot(failSound);
+            MeshRenderer[] children = GetComponentsInChildren<MeshRenderer>();
+            foreach(MeshRenderer child in children)
+            {
+                child.GetComponent<MeshRenderer>().enabled = false;
+            }
+            animatorChild.gameObject.SetActive(true);
+            animatorChild.SetTrigger("FailTrigger");
+            yield return new WaitForSeconds(2f);
+            foreach (MeshRenderer child in children)
+            {
+                child.GetComponent<MeshRenderer>().enabled = true;
+                if(child.name.Contains("Cylinder"))
+                {
+                    child.gameObject.transform.eulerAngles = new Vector3(child.transform.eulerAngles.x, child.transform.eulerAngles.y, -27.68f);
+                }
+                
+            }
+            animatorChild.gameObject.SetActive(false);
+            _dial1[0] = 0;
+            _dial2[0] = 0;
+            _dial3[0] = 0;
+            _dial4[0] = 0;
         }
         else
         {
-
+            _puzzleAudio.PlayOneShot(winSound);
         }
     }
     #endregion
