@@ -16,7 +16,7 @@ public class PlayerHeartbeatController : MonoBehaviour
         heartbeatAudioSource.volume = 0.0f;
         //heartbeatAudioSource.enabled = false;
 
-        _enemyStateController = GameObject.FindGameObjectWithTag("Devil").GetComponent<EnemyStateController>();
+        _enemyStateController = GameObject.FindGameObjectWithTag("Devil")?.GetComponent<EnemyStateController>();
     }
 
     private void Update()

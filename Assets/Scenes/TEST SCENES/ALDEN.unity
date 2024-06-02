@@ -1963,37 +1963,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1090091643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &386278052
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 386278053}
-  m_Layer: 6
-  m_Name: NoteDropPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &386278053
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386278052}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.151, z: 1.31}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2080705987}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &409116675
 GameObject:
   m_ObjectHideFlags: 0
@@ -3384,37 +3353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1233648270
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1233648271}
-  m_Layer: 6
-  m_Name: NotePickupPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1233648271
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233648270}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.36, z: 1.418}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2080705987}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1257654927 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4462302513717123913, guid: b2052b16d3c45e94a8d0435490abb003, type: 3}
@@ -3825,13 +3763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1963266304447385318, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1233648271}
-    - targetCorrespondingSourceObject: {fileID: 1963266304447385318, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 386278053}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
 --- !u!20 &1572344792 stripped
@@ -5465,11 +5397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2080705987 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1963266304447385318, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-  m_PrefabInstance: {fileID: 1572344791}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2121984619
 GameObject:
   m_ObjectHideFlags: 0
@@ -6453,18 +6380,6 @@ PrefabInstance:
     - target: {fileID: 3285743406111077160, guid: cfc5883f2e6c20047b965c67c00e156b, type: 3}
       propertyPath: m_Name
       value: InGameSettingsManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 6819457786681106486, guid: cfc5883f2e6c20047b965c67c00e156b, type: 3}
-      propertyPath: crouchKey
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 6819457786681106486, guid: cfc5883f2e6c20047b965c67c00e156b, type: 3}
-      propertyPath: enableFootstepSounds
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6819457786681106486, guid: cfc5883f2e6c20047b965c67c00e156b, type: 3}
-      propertyPath: enableHeartbeatSounds
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
