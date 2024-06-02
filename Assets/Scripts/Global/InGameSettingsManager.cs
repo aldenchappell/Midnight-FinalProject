@@ -8,13 +8,15 @@ public class InGameSettingsManager : MonoBehaviour
     public bool enableViewBobbing;
     public bool enableFootstepSounds;
     public bool enableHeartbeatSounds;
+    
+    //for testing purposes only
+    public bool enableJumping;
 
     [Space(10)]
     
     
     [Header("Custom KeyBinds")]
     public KeyCode objectInteractionKey;
-    public KeyCode doorInteractionKey;
     public KeyCode crouchKey;
     public KeyCode sprintKey;
     public KeyCode swapInventorySlotKey;
