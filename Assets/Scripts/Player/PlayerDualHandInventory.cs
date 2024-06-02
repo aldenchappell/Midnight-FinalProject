@@ -87,6 +87,32 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
     }
 
+    //Special place functionality for easier use in puzzles
+    public void PlaceObjectInPuzzle(GameObject objectPosition, int index, GameObject parentObject)
+    {
+        if (_inventorySlots[index] != null)
+        {
+            if (_inventorySlots[index].transform.tag == objectPosition.transform.tag)
+            {
+                if (parentObject != null)
+                {
+                    _inventorySlots[index].transform.parent = parentObject.transform;
+                }
+                else
+                {
+                    _inventorySlots[index].transform.parent = null;
+                }
+                _inventorySlots[index].transform.position = objectPosition.transform.position;
+                _inventorySlots[index].transform.eulerAngles = objectPosition.transform.eulerAngles;
+                Destroy(_inventorySlots[index].GetComponent<InteractableObject>());
+                Destroy(objectPosition);
+                _inventorySlots[index].SetActive(true);
+                _inventorySlots[index] = null;
+                
+            }
+        }
+    }
+
     //Show the interactable object in the current inventory index selected by player
     private void ShowCurrentIndexItem()
     {

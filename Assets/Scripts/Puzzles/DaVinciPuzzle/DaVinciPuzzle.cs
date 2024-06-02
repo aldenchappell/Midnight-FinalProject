@@ -22,7 +22,10 @@ public class DaVinciPuzzle : MonoBehaviour
 
     private CinemachineVirtualCamera _playerCam;
     private CinemachineVirtualCamera _puzzleCam;
+
     private int _currentDialIndex;
+    private bool _isActive;
+
     private GlobalCursorManager _cursor;
     private FirstPersonController _FPC;
     private AudioSource _puzzleAudio;
@@ -60,7 +63,10 @@ public class DaVinciPuzzle : MonoBehaviour
 
     private void Update()
     {
-        CheckForInput();
+        if(_isActive)
+        {
+            CheckForInput();
+        }
     }
 
 
@@ -201,6 +207,7 @@ public class DaVinciPuzzle : MonoBehaviour
             AdjustSelectedDial(0);
             _playerCam.Priority = 0;
             _puzzleCam.Priority = 10;
+            _isActive = true;
         }
         else
         {
@@ -213,6 +220,7 @@ public class DaVinciPuzzle : MonoBehaviour
             }
             _playerCam.Priority = 10;
             _puzzleCam.Priority = 0;
+            _isActive = false;
         }
         
     }

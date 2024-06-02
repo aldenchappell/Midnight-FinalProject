@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using StarterAssets;
 
 public class BabyBlockPuzzle : MonoBehaviour
 {
@@ -11,9 +12,12 @@ public class BabyBlockPuzzle : MonoBehaviour
     [SerializeField] GameObject animationChild;
 
     private PlayerDualHandInventory  _playerInv;
+    private FirstPersonController _FPC;
     private CinemachineVirtualCamera _playerCam;
     private CinemachineVirtualCamera _puzzleCam;
     private Camera _mainCam;
+
+    private bool _isActive;
 
     private void Awake()
     {
@@ -21,11 +25,15 @@ public class BabyBlockPuzzle : MonoBehaviour
         _puzzleCam = GameObject.Find("BabyBlockPuzzleCam").GetComponent<CinemachineVirtualCamera>();
         _playerInv = GameObject.FindFirstObjectByType<PlayerDualHandInventory>();
         _mainCam = GameObject.Find("MainCamera").GetComponent<Camera>();
+        _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
     }
 
     private void Update()
     {
-        CheckForInput();
+        if(_isActive)
+        {
+            CheckForInput();
+        }
     }
 
     public void ActivatePuzzle()
@@ -33,27 +41,50 @@ public class BabyBlockPuzzle : MonoBehaviour
         puzzleUI.SetActive(!puzzleUI.activeSelf);
         if(puzzleUI.activeSelf)
         {
+            _FPC.ToggleCanMove();
             _playerCam.Priority = 0;
             _puzzleCam.Priority = 10;
-            Transform[] children = transform.GetChild(2).GetComponentsInChildren<Transform>();
-            foreach(Transform child in children)
+
+            List<Transform> children = new List<Transform>();
+            children.AddRange(animationChild.GetComponentsInChildren<Transform>());
+            children.Remove(animationChild.transform);
+
+            foreach (Transform child in children)
             {
-                child.GetComponent<BoxCollider>().enabled = true;
+                if (child.GetComponent<Collider>() != null)
+                {
+                    child.GetComponent<Collider>().enabled = true;
+                }
             }
+
+            _isActive = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            _FPC.ToggleCanMove();
             _playerCam.Priority = 10;
             _puzzleCam.Priority = 0;
-            Transform[] children = transform.GetChild(2).GetComponentsInChildren<Transform>();
+
+            List<Transform> children = new List<Transform>();
+            children.AddRange(animationChild.GetComponentsInChildren<Transform>());
+            children.Remove(animationChild.transform);
+
             foreach (Transform child in children)
             {
-                child.GetComponent<BoxCollider>().enabled = false;
+                if(child.GetComponent<Collider>() != null)
+                {
+                    child.GetComponent<Collider>().enabled = false;
+                }
             }
+
+            _isActive = false;
         }
     }
 
-    //Add left click functionality
     private void CheckForInput()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -71,6 +102,10 @@ public class BabyBlockPuzzle : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             RotateObject(true, 90);
+        }
+        if(Input.GetMouseButtonDown(0))
+        {
+            RaycastToMousePosition();
         }
     }
 
@@ -93,31 +128,35 @@ public class BabyBlockPuzzle : MonoBehaviour
         if(Physics.Raycast(ray, out hit))
         {
             Transform objectHit = hit.transform;
-            if(!objectHit.CompareTag("Default"))
+            if(!objectHit.CompareTag("Untagged"))
             {
-                PlaceObjectInSlot(objectHit);
+                CheckForCorrectObject(objectHit);
             }
         }
     }
 
-    private void PlaceObjectInSlot(Transform obj)
+    private void CheckForCorrectObject(Transform slot)
     {
         GameObject rightItem = null;
         GameObject[] currentItems = _playerInv.GetInventory;
         foreach(GameObject item in currentItems)
         {
-            if(item.transform.CompareTag(obj.tag))
+            if(item != null)
             {
-                rightItem = item;
+                if (item.transform.CompareTag(slot.tag))
+                {
+                    rightItem = item;
+                }
             }
         }
-        if(rightItem = null)
+        if(rightItem == null)
         {
             print("Failed");
         }
         else
         {
-            print("Succeeded");
+            _playerInv.PlaceObjectInPuzzle(slot.gameObject, System.Array.IndexOf(currentItems, rightItem), animationChild);
         }
     }
+    
 }
