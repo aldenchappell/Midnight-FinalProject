@@ -6,7 +6,8 @@ public class InGameSettingsManager : MonoBehaviour
     
     [Header("In Game Settings")] 
     public bool enableViewBobbing;
-    public bool enableFootsteps;
+    public bool enableFootstepSounds;
+    public bool enableHeartbeatSounds;
 
     [Space(10)]
     
@@ -39,6 +40,6 @@ public class InGameSettingsManager : MonoBehaviour
 
     public void ToggleFootsteps()
     {
-        enableFootsteps = !enableFootsteps;
+        enableFootstepSounds = !enableFootstepSounds;
     }
 }
