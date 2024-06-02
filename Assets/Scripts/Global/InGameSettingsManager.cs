@@ -10,7 +10,7 @@ public class InGameSettingsManager : MonoBehaviour
     public bool enableHeartbeatSounds;
     
     //for testing purposes only
-    public bool enableJumping;
+    public bool enableJumping = false;
 
     [Space(10)]
     
