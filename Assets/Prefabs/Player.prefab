@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4102810914646865542}
   - component: {fileID: 2008672009661365823}
   m_Layer: 6
-  m_Name: Footsteps
+  m_Name: FootstepsAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,12 +185,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4035500538950331364}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6270535685669938727}
+  m_Father: {fileID: 1963266304447385318}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &231928509697799497
 AudioSource:
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartbeatAudioSource: {fileID: 231928509697799497}
   minHeartBeatVolume: 0.1
-  maxHeartBeatVolume: 0.75
+  maxHeartBeatVolume: 1
   volumeChangeSpeed: 5
   maxDistance: 20
 --- !u!1 &5266198982711008647
@@ -500,7 +500,6 @@ Transform:
   - {fileID: 1963266304447385318}
   - {fileID: 1767562946501127655}
   - {fileID: 2431997135297008152}
-  - {fileID: 3720658112871009842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7861388797520701875
@@ -689,11 +688,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.70710677
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.y
@@ -945,6 +944,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 588395151903924062}
+    - targetCorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3720658112871009842}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
