@@ -10,14 +10,21 @@ public class BabyBlockPuzzle : MonoBehaviour
     [SerializeField] GameObject puzzleUI;
     [Header("Animation Child")]
     [SerializeField] GameObject animationChild;
+    [Header("Complete Material")]
+    [SerializeField] Material completeMaterial;
+    [Header("AudioClips")]
+    [SerializeField] AudioClip winSound;
+    [SerializeField] AudioClip failSound;
 
     private PlayerDualHandInventory  _playerInv;
     private FirstPersonController _FPC;
     private CinemachineVirtualCamera _playerCam;
     private CinemachineVirtualCamera _puzzleCam;
     private Camera _mainCam;
+    private AudioSource _audioSource;
 
     private bool _isActive;
+    private int _correctObjectsPlaced;
 
     private void Awake()
     {
@@ -26,6 +33,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         _playerInv = GameObject.FindFirstObjectByType<PlayerDualHandInventory>();
         _mainCam = GameObject.Find("MainCamera").GetComponent<Camera>();
         _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -36,6 +44,8 @@ public class BabyBlockPuzzle : MonoBehaviour
         }
     }
 
+    #region Activation and Input
+    //Turn on or off puzzle interaction
     public void ActivatePuzzle()
     {
         puzzleUI.SetActive(!puzzleUI.activeSelf);
@@ -84,7 +94,7 @@ public class BabyBlockPuzzle : MonoBehaviour
             _isActive = false;
         }
     }
-
+    //Check for inputs once puzzle is active.
     private void CheckForInput()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -108,7 +118,10 @@ public class BabyBlockPuzzle : MonoBehaviour
             RaycastToMousePosition();
         }
     }
+    #endregion
 
+    #region Rotation
+    //Rotate baby block cube 
     private void RotateObject(bool axis, int rotation)
     {
         if (axis)
@@ -120,7 +133,10 @@ public class BabyBlockPuzzle : MonoBehaviour
             animationChild.transform.Rotate(0, rotation, 0);
         }
     }
-    
+    #endregion
+
+    #region Mouse Raycast and Check Objects
+    //Check for mouse clicks
     private void RaycastToMousePosition()
     {
         RaycastHit hit;
@@ -134,7 +150,7 @@ public class BabyBlockPuzzle : MonoBehaviour
             }
         }
     }
-
+    //Check for correct object in inventory to be placed.
     private void CheckForCorrectObject(Transform slot)
     {
         GameObject rightItem = null;
@@ -151,12 +167,40 @@ public class BabyBlockPuzzle : MonoBehaviour
         }
         if(rightItem == null)
         {
-            print("Failed");
+            PlayAudioClip(failSound);
         }
         else
         {
+            PlayAudioClip(winSound);
             _playerInv.PlaceObjectInPuzzle(slot.gameObject, System.Array.IndexOf(currentItems, rightItem), animationChild);
+            _correctObjectsPlaced++;
+            CheckForCompletion();
         }
     }
-    
+
+    private void CheckForCompletion()
+    {
+        if(_correctObjectsPlaced >= 4)
+        {
+            List<Transform> children = new List<Transform>();
+            children.AddRange(animationChild.GetComponentsInChildren<Transform>());
+            children.Remove(animationChild.transform);
+            for(int i = 0; i < animationChild.transform.childCount; i++)
+            {
+                if (animationChild.transform.GetChild(i).GetComponent<MeshRenderer>() != null)
+                {
+                    animationChild.transform.GetChild(i).GetComponent<MeshRenderer>().material = completeMaterial;
+                }
+            }
+                 
+            
+        }
+    }
+    #endregion
+
+    private void PlayAudioClip(AudioClip clip)
+    {
+        _audioSource.PlayOneShot(clip);
+    }
+
 }
