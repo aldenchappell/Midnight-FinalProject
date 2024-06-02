@@ -14587,6 +14587,7 @@ GameObject:
   - component: {fileID: 8277350903444555753}
   - component: {fileID: 8280322294847666145}
   - component: {fileID: 1731513321219273687}
+  - component: {fileID: 2807176487841001055}
   m_Layer: 0
   m_Name: SkullCompanion
   m_TagString: Untagged
@@ -14681,6 +14682,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4584455, y: 1.7931249, z: 1.606243}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2807176487841001055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974069668862667033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13810721ea2449f4b98cb93a65e70177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  interactionIcon: {fileID: 21300000, guid: a78af9cffe164384fb3c1dc91b66dae5, type: 3}
+  interactableIconSize: {x: 75, y: 75}
+  interactableID: 0
+  highlightInteractableObjectController: {fileID: 0}
 --- !u!1 &2974170983478058084
 GameObject:
   m_ObjectHideFlags: 0

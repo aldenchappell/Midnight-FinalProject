@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class HighlightController : MonoBehaviour
+public class HighlightInteractableObjectController : MonoBehaviour
 {
     private Color[] _startColors;
     private Renderer[] _renderers;
