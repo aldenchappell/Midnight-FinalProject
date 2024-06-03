@@ -174,10 +174,8 @@ public class BabyBlockPuzzle : MonoBehaviour
         else
         {
             PlayAudioClip(winSound);
-            _playerInv.PlaceObjectInPuzzle(slot.gameObject, System.Array.IndexOf(currentItems, rightItem), animationChild);
-            PlayAnimation(slot.name);
+            StartCoroutine(PlayAnimation(slot.gameObject, System.Array.IndexOf(currentItems, rightItem), animationChild));
             _correctObjectsPlaced++;
-            CheckForCompletion();
         }
     }
 
@@ -201,24 +199,32 @@ public class BabyBlockPuzzle : MonoBehaviour
     }
     #endregion
 
-    private void PlayAnimation(string slotName)
+    private IEnumerator PlayAnimation(GameObject slot, int index, GameObject parent)
     {
-        switch (slotName)
+        print("Animating");
+        switch (slot.name)
         {
-            case "Block1":
+            case "BBPiece1":
+                slot.GetComponent<MeshRenderer>().material = _playerInv.GetInventory[index].GetComponent<MeshRenderer>().material;
                 _animator.SetTrigger("Block1");
                 break;
-            case "Block2":
+            case "BBPiece2":
+                slot.GetComponent<MeshRenderer>().material = _playerInv.GetInventory[index].GetComponent<MeshRenderer>().material;
                 _animator.SetTrigger("Block2");
                 break;
-            case "Block3":
+            case "BBPiece3":
+                slot.GetComponent<MeshRenderer>().material = _playerInv.GetInventory[index].GetComponent<MeshRenderer>().material;
                 _animator.SetTrigger("Block3");
-                print("Animating");
                 break;
-            case "Block4":
+            case "BBPiece4":
+                slot.GetComponent<MeshRenderer>().material = _playerInv.GetInventory[index].GetComponent<MeshRenderer>().material;
                 _animator.SetTrigger("Block4");
                 break;
         }
+        yield return new WaitForSeconds(1f);
+        _animator.SetTrigger("Return");
+        _playerInv.PlaceObjectInPuzzle(slot, index, parent);
+        CheckForCompletion();
     }
 
     private void PlayAudioClip(AudioClip clip)
