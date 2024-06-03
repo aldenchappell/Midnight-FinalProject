@@ -6,7 +6,7 @@ using UnityEngine;
 public class NoteController : MonoBehaviour
 {
     public SO_Note note;
-    private TMP_Text _noteText;
+    [SerializeField] private TMP_Text noteText, noteInstructionsText;
 
     //where the note will be placed when picked up and parented to.
     private Transform _pickupPosition;
@@ -23,7 +23,6 @@ public class NoteController : MonoBehaviour
     [SerializeField] private AudioClip pickupClip, paperFallingClip;
     private void Awake()
     {
-        _noteText = GetComponentInChildren<TMP_Text>();
         _rigidBody = GetComponent<Rigidbody>();
         _audio = GetComponent<AudioSource>();
 
@@ -37,7 +36,7 @@ public class NoteController : MonoBehaviour
     {
         if (note == null) return;
 
-        if (_noteText == null) return;
+        if (noteText == null) return;
 
         // Check if the note is picked up and F is pressed to drop it
         if (_isPickedUp && Input.GetKeyDown(KeyCode.F))
@@ -59,7 +58,8 @@ public class NoteController : MonoBehaviour
 
         _rigidBody.isKinematic = true; 
 
-        _noteText.text = note.noteText;
+        noteText.text = note.noteText;
+        noteInstructionsText.gameObject.SetActive(true);
 
         // Lerping position and rotation
         StartCoroutine(LerpToPositionAndRotation(transform, _pickupPosition, pickupSpeed));
@@ -80,7 +80,8 @@ public class NoteController : MonoBehaviour
 
         _rigidBody.isKinematic = false;
 
-        _noteText.text = "";
+        noteText.text = "";
+        noteInstructionsText.gameObject.SetActive(false);
 
         _isPickedUp = false; 
         

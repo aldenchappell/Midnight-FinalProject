@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class InGameSettingsManager : MonoBehaviour
@@ -32,6 +33,14 @@ public class InGameSettingsManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.Tab))
+        {
+            //GlobalCursorManager.Instance.EnableCursor();
         }
     }
 

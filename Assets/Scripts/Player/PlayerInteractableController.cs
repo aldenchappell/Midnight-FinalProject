@@ -76,6 +76,8 @@ public class PlayerInteractableController : MonoBehaviour
                     _interactableObject.onInteraction?.Invoke();
                 }
             }
+            interactionImage.sprite = defaultInteractionIcon;
+            interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
         }
     }
 

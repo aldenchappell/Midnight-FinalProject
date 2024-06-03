@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class DoorController : MonoBehaviour
 {
     public bool canBeOpened = true;
@@ -11,37 +10,44 @@ public class DoorController : MonoBehaviour
 
     private Animator _animator;
 
+    private AudioSource _audio;
+    [SerializeField] private AudioClip openDoorSound, closeDoorSound;
+    
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
     }
 
     public void HandleDoor()
     {
-        if (!_animator.GetBool("Open") == true)
+        if (canBeOpened)
         {
-            OpenDoor();
-        }
-        else
-        {
-            CloseDoor();
+            if (!_animator.GetBool("Open") == true)
+            {
+                OpenDoor();
+            }
+            else
+            {
+                CloseDoor();
+            }
         }
     }
     
     private void OpenDoor()
     {
         _animator.SetBool("Open", true);
+        _audio.PlayOneShot(openDoorSound);
+        
         StartDoorInteractionCooldown();
-
-        Debug.Log("opening door");
     }
 
     private void CloseDoor()
     {
         _animator.SetBool("Open", false);
-        StartDoorInteractionCooldown();
+        _audio.PlayOneShot(closeDoorSound);
         
-        Debug.Log("closing door");
+        StartDoorInteractionCooldown();
     }
 
     private void StartDoorInteractionCooldown()
