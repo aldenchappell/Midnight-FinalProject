@@ -22,6 +22,7 @@ public class BabyBlockPuzzle : MonoBehaviour
     private CinemachineVirtualCamera _puzzleCam;
     private Camera _mainCam;
     private AudioSource _audioSource;
+    private Animator _animator;
 
     private bool _isActive;
     private int _correctObjectsPlaced;
@@ -34,6 +35,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         _mainCam = GameObject.Find("MainCamera").GetComponent<Camera>();
         _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
         _audioSource = GetComponent<AudioSource>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -173,6 +175,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         {
             PlayAudioClip(winSound);
             _playerInv.PlaceObjectInPuzzle(slot.gameObject, System.Array.IndexOf(currentItems, rightItem), animationChild);
+            PlayAnimation(slot.name);
             _correctObjectsPlaced++;
             CheckForCompletion();
         }
@@ -197,6 +200,26 @@ public class BabyBlockPuzzle : MonoBehaviour
         }
     }
     #endregion
+
+    private void PlayAnimation(string slotName)
+    {
+        switch (slotName)
+        {
+            case "Block1":
+                _animator.SetTrigger("Block1");
+                break;
+            case "Block2":
+                _animator.SetTrigger("Block2");
+                break;
+            case "Block3":
+                _animator.SetTrigger("Block3");
+                print("Animating");
+                break;
+            case "Block4":
+                _animator.SetTrigger("Block4");
+                break;
+        }
+    }
 
     private void PlayAudioClip(AudioClip clip)
     {
