@@ -17,8 +17,11 @@ public class DialogueController : MonoBehaviour
 
     [HideInInspector] public bool dialogueEnabled;
 
-    private const float DialogueSpamPreventionTime = 1.0f;
+    private const float NoAudioDialogueSpamPreventionTime = 1.0f;
+    private const float WithAudioDialogueSpamPreventionTime = 1.5f;
     private bool _shouldPrintText = true;
+    private bool _isPrintingLine = false;
+    private Coroutine _currentCoroutine = null;
 
     private void Awake()
     {
@@ -46,10 +49,12 @@ public class DialogueController : MonoBehaviour
             return;
         }
 
+        dialogueText.text = "";
         _lines = lines;
+        _audioClips = null;
         _currentIndex = 0;
         EnableDialogueBox();
-        StartCoroutine(ReadOutLine());
+        _currentCoroutine = StartCoroutine(ReadOutLine());
     }
 
     public void StartDialogueWithAudio(string[] lines, AudioClip[] audioClips)
@@ -59,57 +64,86 @@ public class DialogueController : MonoBehaviour
             Debug.LogError("Dialogue lines are null or empty!");
             return;
         }
-        
+
+        dialogueText.text = "";
         _lines = lines;
         _audioClips = audioClips;
         _currentIndex = 0;
         EnableDialogueBox();
-        StartCoroutine(ReadOutLineWithAudio());
+        _currentCoroutine = StartCoroutine(ReadOutLineWithAudio());
     }
 
     public void GoToNextLine()
     {
-        if (_shouldPrintText)
+        if (_shouldPrintText && !_isPrintingLine)
         {
-            ResetDialogueText();
-            StartCoroutine(PreventDialogueSpam());
-            
             _currentIndex++;
-            
+
             if (_currentIndex < _lines.Length)
             {
-                dialogueText.text = "";
-                StartCoroutine(ReadOutLine());
+                ResetDialogueText();
+
+                if (_currentCoroutine != null)
+                {
+                    StopCoroutine(_currentCoroutine);
+                }
+
+                if (_audioClips != null && _audioClips.Length > 0)
+                {
+                    _currentCoroutine = StartCoroutine(ReadOutLineWithAudio());
+                }
+                else
+                {
+                    _currentCoroutine = StartCoroutine(ReadOutLine());
+                }
             }
             else
             {
                 StopDialogue();
             }
         }
+        else if (_isPrintingLine) // If currently printing, immediately skip to the end
+        {
+            StopCoroutine(_currentCoroutine);
+            dialogueText.text = _lines[_currentIndex];
+            _isPrintingLine = false;
+            if (_audioClips != null && _audioClips.Length > 0)
+            {
+                StartCoroutine(PreventTextWithAudioDialogueSpam());
+            }
+            else
+            {
+                StartCoroutine(PreventTextOnlyDialogueSpam());
+            }
+        }
         Debug.Log(_currentIndex);
     }
 
-
-
-
     private IEnumerator ReadOutLine()
     {
-        foreach (char character in _lines[_currentIndex].ToCharArray())
+        _isPrintingLine = true;
+        dialogueText.text = "";
+        foreach (char character in _lines[_currentIndex])
         {
             dialogueText.text += character;
             yield return new WaitForSeconds(textReadingSpeed);
         }
+        _isPrintingLine = false;
+        StartCoroutine(PreventTextOnlyDialogueSpam());
     }
 
     private IEnumerator ReadOutLineWithAudio()
     {
+        _isPrintingLine = true;
+        dialogueText.text = "";
+
         if (_audioClips != null && _audioClips.Length > 0)
         {
             audioSource.clip = _audioClips[_currentIndex % _audioClips.Length];
             audioSource.Play();
         }
 
-        foreach (char character in _lines[_currentIndex].ToCharArray())
+        foreach (char character in _lines[_currentIndex])
         {
             dialogueText.text += character;
             yield return new WaitForSeconds(textReadingSpeed);
@@ -119,6 +153,9 @@ public class DialogueController : MonoBehaviour
         {
             yield return new WaitForSeconds(audioSource.clip.length);
         }
+
+        _isPrintingLine = false;
+        StartCoroutine(PreventTextWithAudioDialogueSpam());
     }
 
     private void ResetDialogueText()
@@ -132,7 +169,7 @@ public class DialogueController : MonoBehaviour
         dialogueEnabled = true;
         dialogueBox.SetActive(true);
 
-        if (GlobalCursorManager.Instance != null)
+        //if (GlobalCursorManager.Instance != null)
             GlobalCursorManager.Instance.EnableCursor();
     }
 
@@ -142,25 +179,39 @@ public class DialogueController : MonoBehaviour
         ResetDialogueText();
         dialogueBox.SetActive(false);
         _shouldPrintText = true;
+        _lines = null;
+        _audioClips = null;
+        audioSource.clip = null;
+        dialogueText.text = "";
 
-        if (GlobalCursorManager.Instance != null)
-            GlobalCursorManager.Instance.DisableCursor();
+        //if (GlobalCursorManager.Instance != null)
+        GlobalCursorManager.Instance.DisableCursor();
     }
 
     private void StopDialogue()
     {
-        StopAllCoroutines();
+        if (_currentCoroutine != null)
+        {
+            StopCoroutine(_currentCoroutine);
+        }
         ResetDialogueText();
         DisableDialogueBox();
-        
+
         if (audioSource.clip != null)
             audioSource.clip = null;
     }
 
-    private IEnumerator PreventDialogueSpam()
+    private IEnumerator PreventTextOnlyDialogueSpam()
     {
         _shouldPrintText = false;
-        yield return new WaitForSeconds(DialogueSpamPreventionTime);
+        yield return new WaitForSeconds(NoAudioDialogueSpamPreventionTime);
+        _shouldPrintText = true;
+    }
+
+    private IEnumerator PreventTextWithAudioDialogueSpam()
+    {
+        _shouldPrintText = false;
+        yield return new WaitForSeconds(WithAudioDialogueSpamPreventionTime);
         _shouldPrintText = true;
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,18 +16,18 @@ public class PlayerInteractableController : MonoBehaviour
     [SerializeField] private Vector2 defaultInteractionIconSize;
     [SerializeField] private float interactionDistance = 2.0f;
 
+    private const float SpamPreventionTime = 2.0f;
     private bool _allowInteraction = true;
+    
 
     private void Update()
     {
-        RaycastHit hitInfo;
-
         if (Physics.Raycast(
-            mainCamera.transform.position,
-            mainCamera.transform.forward,
-            out hitInfo,
-            interactionDistance,
-            interactableLayerMask))
+                mainCamera.transform.position,
+                mainCamera.transform.forward,
+                out var hitInfo,
+                interactionDistance,
+                interactableLayerMask))
         {
             var interactable = hitInfo.collider.GetComponent<InteractableObject>();
             var button = hitInfo.collider.GetComponent<Button>();
@@ -34,13 +35,13 @@ public class PlayerInteractableController : MonoBehaviour
             {
                 if (_interactableObject != interactable)
                 {
-                    // Reset previous highlight
+                    //reset last highlight
                     ResetHighlight();
 
-                    // Highlight new object
+                    //highlight new object
                     _interactableObject = interactable;
                     
-                    // Update interaction UI
+                    //update interaction UI
                     UpdateInteractionUI(_interactableObject);
 
                     if (button == null || !interactable.GetComponent<InteractableNPC>())
@@ -53,10 +54,9 @@ public class PlayerInteractableController : MonoBehaviour
         }
         else
         {
-            // No object detected, reset previous highlight and disable dialogue if interacting with NPC
+            //no object detected, reset previous highlight and disable dialogue if interacting with NPC
             ResetHighlight();
             
-            //Ignore this comment, my IDE was screaming at me hehe 
             // ReSharper disable once Unity.NoNullPropagation
             DialogueController.Instance?.DisableDialogueBox(); // Added null check
         }
@@ -64,7 +64,7 @@ public class PlayerInteractableController : MonoBehaviour
         // Handle interaction input
         if (_allowInteraction && Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKey))
         {
-            if (_interactableObject != null)
+            if (_interactableObject != null && _allowInteraction)
             {
                 if (_interactableObject is InteractableNPC interactableNPC)
                 {
@@ -75,6 +75,8 @@ public class PlayerInteractableController : MonoBehaviour
                 {
                     _interactableObject.onInteraction?.Invoke();
                 }
+
+                StartCoroutine(InteractionSpamPrevention());
             }
             interactionImage.sprite = defaultInteractionIcon;
             interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
@@ -109,13 +111,20 @@ public class PlayerInteractableController : MonoBehaviour
         }
         else
         {
-            interactionImage.sprite = defaultInteractionIcon;
-            interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
+            interactionImage.sprite = defaultIcon;
+            interactionImage.rectTransform.sizeDelta = defaultIconSize;
         }
     }
 
     public bool IsLookingAtInteractableObject(GameObject target)
     {
         return _interactableObject != null && _interactableObject.gameObject == target;
+    }
+
+    private IEnumerator InteractionSpamPrevention()
+    {
+        _allowInteraction = false;
+        yield return new WaitForSeconds(SpamPreventionTime);
+        _allowInteraction = true;
     }
 }

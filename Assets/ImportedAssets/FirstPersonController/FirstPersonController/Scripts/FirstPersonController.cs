@@ -82,7 +82,8 @@ namespace StarterAssets
 		public GameObject cameraRoot;
 		public bool canMove = true;
 		public bool isSprinting = false;
-
+		public bool canRotate = true;
+		
 		[SerializeField] private PlayerDeathController deathController;
 		[SerializeField] private PauseManager pauseManager;
 		
@@ -207,6 +208,11 @@ namespace StarterAssets
 		{
 			canMove = !canMove;
 			controller.enabled = !controller.enabled;
+		}
+
+		public void ToggleCanRotate()
+		{
+			canRotate = !canRotate;
 		}
 
 		private void GroundedCheck()
