@@ -1,5 +1,8 @@
 ﻿using System.Collections;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -12,6 +15,7 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
+		#region Default Parameters
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -78,6 +82,8 @@ namespace StarterAssets
 
 		private const float _threshold = 0.01f;
 
+		#endregion
+		
 		[Header("Added Parameters")]
 		public GameObject cameraRoot;
 		public bool canMove = true;
@@ -108,9 +114,11 @@ namespace StarterAssets
 		
 		
 		[Header("Crouching Parameters")]
-		//private bool ShouldCrouch = Input.GetKeyDown(KeyCode.LeftControl) && !
 		public bool isCrouching = false;
 		private bool _inCrouchAnimation;
+		[SerializeField] private Image standImage;
+		[SerializeField] private Sprite crouchingSprite;
+		[SerializeField] private Sprite standingSprite;
 		
 		[SerializeField] private float crouchingHeight = .5f;
 		[SerializeField] private float standingHeight = 2.0f;
@@ -210,11 +218,54 @@ namespace StarterAssets
 			controller.enabled = !controller.enabled;
 		}
 
-		public void ToggleCanRotate()
+		private Coroutine fadeOutCoroutine;
+
+		private void HandleCrouchingIcon()
 		{
-			canRotate = !canRotate;
+			standImage.sprite = !isCrouching ? crouchingSprite : standingSprite;
+
+			//set to highest alpha value
+			standImage.color = new Color(standImage.color.r, standImage.color.g, standImage.color.b, 1.0f);
+
+			//prevent the icon from bugging out when spamming crouch/stand
+			if (fadeOutCoroutine != null)
+			{
+				StopCoroutine(fadeOutCoroutine);
+			}
+            
+			//icon will stay for 2 seconds
+			fadeOutCoroutine = StartCoroutine(FadeOutIcon(standImage, 2.0f));
 		}
 
+		private IEnumerator FadeOutIcon(Image image, float displayTime)
+		{
+			yield return new WaitForSeconds(displayTime);
+
+			//how long it will take for the fade to finish
+			float fadeDuration = 1.0f;
+			float elapsedTime = 0.0f;
+            
+			Color initialColor = image.color;
+
+			//gradually increase the alpha value
+			while (elapsedTime < fadeDuration)
+			{
+				float newAlpha = Mathf.Lerp(initialColor.a, 0, elapsedTime / fadeDuration);
+                
+				image.color = new Color(initialColor.r, initialColor.g, initialColor.b, newAlpha);
+
+				elapsedTime += Time.deltaTime;
+
+				yield return null;
+			}
+
+			//reset the image to transparent after fading out
+			image.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
+
+			fadeOutCoroutine = null;
+		}
+
+		#region Default Functions
 		private void GroundedCheck()
 		{
 			// set sphere position, with offset
@@ -372,7 +423,8 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
-
+		#endregion
+		
 		private void HandleHeadBob()
 		{
 			if (!Grounded) return;
@@ -389,18 +441,14 @@ namespace StarterAssets
 					_defaultYPos + Mathf.Sin(_timer) * (isSprinting ? sprintBobAmount : walkBobAmount),
 					cameraRoot.transform.localPosition.z
 				);
-				
-				// cameraRoot.transform.localPosition = new Vector3(
-				// 	cameraRoot.transform.localPosition.x,
-				// 	_defaultYPos + Mathf.Sin(_timer) * (isCrouching ? crouchBobAmount : isSprinting ? sprintBobAmount : walkBobAmount),
-				// 	cameraRoot.transform.localPosition.z
-				// );
 			}
 		}
 
 		private void HandleCrouching()
 		{
 			StartCoroutine(CrouchAndStandRoutine());
+
+			HandleCrouchingIcon();
 		}
 
 
@@ -444,6 +492,5 @@ namespace StarterAssets
 			isCrouching = !isCrouching;
 			_inCrouchAnimation = false;
 		}
-
 	}
 }
