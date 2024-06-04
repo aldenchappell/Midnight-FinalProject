@@ -184,8 +184,8 @@ public class DialogueController : MonoBehaviour
         audioSource.clip = null;
         dialogueText.text = "";
 
-        //if (GlobalCursorManager.Instance != null)
-        GlobalCursorManager.Instance.DisableCursor();
+        if (GlobalCursorManager.Instance != null)
+            GlobalCursorManager.Instance.DisableCursor();
     }
 
     private void StopDialogue()
