@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class SkullController : MonoBehaviour
+public class SkullDialogueController : MonoBehaviour
 {
     private AudioSource _audioSource;
-    public NPCInteractionEvent npcInteractionEvent; // Reference to the NPCInteractionEvent instance
+    public NPCInteractionEvent npcInteractionEvent; 
 
     private void Awake()
     {

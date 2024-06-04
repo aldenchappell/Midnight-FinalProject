@@ -15,7 +15,7 @@ public class InteractableNPC : InteractableObject
     {
         if (_npcDialogue != null)
         {
-            if (TryGetComponent<SkullController>(out SkullController skullController))
+            if (TryGetComponent<SkullDialogueController>(out SkullDialogueController skullController))
             {
                 skullController.HandleSkullCompanionSpeak(_npcDialogue.SO_NpcDialogue.dialogueLines, _npc.dialogue.audioClips[0]);
             }

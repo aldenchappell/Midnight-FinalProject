@@ -174,13 +174,13 @@ namespace StarterAssets
 			}
 
 			// Toggle crouch state on key press
-			if (Input.GetKeyDown(KeyCode.LeftControl) && Grounded && !_inCrouchAnimation)
+			if (Input.GetKeyDown(InGameSettingsManager.Instance.crouchKey) && Grounded && !_inCrouchAnimation)
 			{
 				HandleCrouching();
 			}
 		
 			// Set booleans for sprinting
-			isSprinting = Input.GetKey(KeyCode.LeftShift) && Grounded;
+			isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && Grounded;
 		}
 
 

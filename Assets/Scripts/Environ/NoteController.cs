@@ -27,7 +27,7 @@ public class NoteController : MonoBehaviour
         _audio = GetComponent<AudioSource>();
 
         _pickupPosition = GameObject.Find("NotePickupPosition").transform;
-        _dropPosition = GameObject.Find("NoteDropPosition").transform;
+        _dropPosition = GameObject.Find("ObjectDropPosition").transform;
 
         _rigidBody.isKinematic = true;
     }

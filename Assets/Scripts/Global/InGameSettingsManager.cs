@@ -10,8 +10,10 @@ public class InGameSettingsManager : MonoBehaviour
     public bool enableFootstepSounds;
     public bool enableHeartbeatSounds;
     
+    
     //for testing purposes only
     public bool enableJumping = false;
+    public bool enableDroppingItems;
 
     [Space(10)]
     
@@ -21,7 +23,7 @@ public class InGameSettingsManager : MonoBehaviour
     public KeyCode crouchKey;
     public KeyCode sprintKey;
     public KeyCode swapInventorySlotKey;
-    
+    public KeyCode dropCurrentItem;
     
     private void Awake()
     {
