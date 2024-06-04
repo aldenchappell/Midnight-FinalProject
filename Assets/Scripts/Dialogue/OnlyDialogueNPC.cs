@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class OnlyDialogueNPC : DialogueNPCBase
 {
     public SO_NpcDialogue dialogue;

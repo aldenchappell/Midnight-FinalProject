@@ -23,6 +23,8 @@ public class DialogueController : MonoBehaviour
     private bool _isPrintingLine = false;
     private Coroutine _currentCoroutine = null;
 
+    private SkullDialogue _skullCompanion;
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,6 +35,8 @@ public class DialogueController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        _skullCompanion = GameObject.FindWithTag("Skull").GetComponent<SkullDialogue>();
     }
 
     private void Start()
@@ -49,29 +53,18 @@ public class DialogueController : MonoBehaviour
             return;
         }
 
-        dialogueText.text = "";
-        _lines = lines;
-        _audioClips = null;
-        _currentIndex = 0;
-        EnableDialogueBox();
-        _currentCoroutine = StartCoroutine(ReadOutLine());
-    }
-
-    public void StartDialogueWithAudio(string[] lines, AudioClip[] audioClips)
-    {
-        if (lines == null || lines.Length == 0)
+        // Check if the skull is in slot 0
+        if (!_skullCompanion.IsSkullActiveInInventory())
         {
-            Debug.LogError("Dialogue lines are null or empty!");
-            return;
+            dialogueText.text = "";
+            _lines = lines;
+            _audioClips = null;
+            _currentIndex = 0;
+            EnableDialogueBox();
+            _currentCoroutine = StartCoroutine(ReadOutLine());
         }
-
-        dialogueText.text = "";
-        _lines = lines;
-        _audioClips = audioClips;
-        _currentIndex = 0;
-        EnableDialogueBox();
-        _currentCoroutine = StartCoroutine(ReadOutLineWithAudio());
     }
+
 
     public void GoToNextLine()
     {

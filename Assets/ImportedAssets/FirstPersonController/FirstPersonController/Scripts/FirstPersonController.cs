@@ -197,7 +197,7 @@ namespace StarterAssets
 		{
 			if (pauseManager.GameIsPaused) return;
 			
-			if (DialogueController.Instance.dialogueEnabled)
+			if (DialogueController.Instance != null && DialogueController.Instance.dialogueEnabled)
 			{
 				canMove = false;
 				//Debug.Log("disabling movement because dialogue is enabled");

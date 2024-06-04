@@ -6,7 +6,8 @@ public class SkullController : MonoBehaviour
     private Rigidbody _rb;
     private Transform _dropPosition;
     [SerializeField] private GameObject fireFX;
-
+    
+    
     //NOTE: 
     //WHEN PICKING UP THE SKULL IS FULLY SET UP, ADD THE RIGIDBODY COMPONENT->bool isKinematic TO A NEW 
     //INTERACTION EVENT, AND DISABLE THE CHECK BOX!!

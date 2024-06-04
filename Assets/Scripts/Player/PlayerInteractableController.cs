@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ public class PlayerInteractableController : MonoBehaviour
 {
     private InteractableObject _interactableObject;
     private HighlightInteractableObjectController _highlightInteractableObjectController;
-    
+
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask interactableLayerMask;
     [SerializeField] private Image interactionImage;
@@ -19,6 +20,12 @@ public class PlayerInteractableController : MonoBehaviour
     private const float SpamPreventionTime = 2.0f;
     private bool _allowInteraction = true;
     
+    private GameObject _skullCompanion;
+
+    private void Awake()
+    {
+        _skullCompanion = GameObject.FindWithTag("Skull");
+    }
 
     private void Update()
     {
@@ -54,11 +61,14 @@ public class PlayerInteractableController : MonoBehaviour
         }
         else
         {
-            //no object detected, reset previous highlight and disable dialogue if interacting with NPC
+            //no object detected, reset previous highlight
             ResetHighlight();
-            
-            // ReSharper disable once Unity.NoNullPropagation
-            DialogueController.Instance?.DisableDialogueBox(); // Added null check
+
+            // Disable dialogue only if the skull is not active
+            if (_skullCompanion != null && !_skullCompanion.GetComponent<SkullDialogue>().pickedUp)
+            {
+                DialogueController.Instance?.DisableDialogueBox(); // Added null check
+            }
         }
 
         // Handle interaction input
@@ -70,8 +80,11 @@ public class PlayerInteractableController : MonoBehaviour
                 interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
                 if (_interactableObject is InteractableNPC interactableNPC)
                 {
-                    if (!DialogueController.Instance.dialogueEnabled)
+                    // Block interaction with NPCs if the skull is active
+                    if (_skullCompanion != null && !_skullCompanion.activeSelf)
+                    {
                         interactableNPC.Interact();
+                    }
                 }
                 else
                 {
@@ -80,7 +93,6 @@ public class PlayerInteractableController : MonoBehaviour
 
                 StartCoroutine(InteractionSpamPrevention());
             }
-            
         }
     }
 
