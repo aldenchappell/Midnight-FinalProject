@@ -180,7 +180,7 @@ namespace StarterAssets
 			}
 		
 			// Set booleans for sprinting
-			isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && Grounded;
+			isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && !isCrouching && Grounded;
 		}
 
 
@@ -248,43 +248,39 @@ namespace StarterAssets
 		{
 			if (!canMove && !controller.enabled) return;
 
-			// set target speed based on move speed, sprint speed and if sprint is pressed
-			//float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
+			// Set target speed based on move speed, sprint speed, and crouch speed
 			float targetSpeed;
-			
-			if (input.sprint)
-			{
-				targetSpeed = SprintSpeed;
-			}
-			else if (isCrouching)
+
+			// Determine the correct speed based on the player's current state
+			if (isCrouching)
 			{
 				targetSpeed = CrouchSpeed;
+			}
+			else if (input.sprint)
+			{
+				targetSpeed = SprintSpeed;
 			}
 			else
 			{
 				targetSpeed = MoveSpeed;
 			}
 
-			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
-
-			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-			// if there is no input, set the target speed to 0
+			// If there is no input, set the target speed to 0
 			if (input.move == Vector2.zero) targetSpeed = 0.0f;
 
-			// a reference to the players current horizontal velocity
+			// A reference to the player's current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
 
 			float speedOffset = 0.1f;
 			float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
 
-			// accelerate or decelerate to target speed
+			// Accelerate or decelerate to target speed
 			if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
 			{
-				// creates curved result rather than a linear one giving a more organic speed change
-				// note T in Lerp is clamped, so we don't need to clamp our speed
+				// Creates a curved result rather than a linear one giving a more organic speed change
 				_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
 
-				// round speed to 3 decimal places
+				// Round speed to 3 decimal places
 				_speed = Mathf.Round(_speed * 1000f) / 1000f;
 			}
 			else
@@ -292,14 +288,13 @@ namespace StarterAssets
 				_speed = targetSpeed;
 			}
 
-			// normalise input direction
+			// Normalize input direction
 			Vector3 inputDirection = new Vector3(input.move.x, 0.0f, input.move.y).normalized;
 
-			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-			// if there is a move input rotate player when the player is moving
+			// If there is move input, rotate the player when the player is moving
 			if (input.move != Vector2.zero)
 			{
-				// move
+				// Move
 				inputDirection = transform.right * input.move.x + transform.forward * input.move.y;
 			}
 
@@ -308,6 +303,7 @@ namespace StarterAssets
 				controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 			}
 		}
+
 
 		private void JumpAndGravity()
 		{
