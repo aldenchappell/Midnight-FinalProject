@@ -66,6 +66,8 @@ public class PlayerInteractableController : MonoBehaviour
         {
             if (_interactableObject != null && _allowInteraction)
             {
+                interactionImage.sprite = defaultInteractionIcon;
+                interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
                 if (_interactableObject is InteractableNPC interactableNPC)
                 {
                     if (!DialogueController.Instance.dialogueEnabled)
@@ -78,8 +80,7 @@ public class PlayerInteractableController : MonoBehaviour
 
                 StartCoroutine(InteractionSpamPrevention());
             }
-            interactionImage.sprite = defaultInteractionIcon;
-            interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
+            
         }
     }
 
