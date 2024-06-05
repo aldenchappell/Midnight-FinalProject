@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1124,6 +1124,49 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 19.050007, y: 300, z: 400.00015}
   m_Center: {x: 5.7150016, y: 150, z: -200.00005}
+--- !u!1 &420538039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5954124955280132267, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+  m_PrefabInstance: {fileID: 961874271359108516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &420538041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 21797904456259848, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+  m_PrefabInstance: {fileID: 961874271359108516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420538039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2710a4a4b9c89a42a9634a2662bfeaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &420538045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420538039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b3fc7431e6aac449d2cf7ee3fccca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EscapePressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 420538041}
+        m_TargetAssemblyTypeName: BabyBlockPuzzle, Assembly-CSharp
+        m_MethodName: ActivatePuzzle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &461082191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7188,6 +7231,34 @@ PrefabInstance:
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 420538045}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangeIsActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PuzzleEscape, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5951876479529719911, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7247,7 +7318,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5954124955280132267, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 420538045}
   m_SourcePrefab: {fileID: 100100000, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
 --- !u!1001 &1293037972565348314
 PrefabInstance:
@@ -7318,10 +7392,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2146703024577045, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4665136484641481010, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: m_Name
       value: DaVinciPuzzle
@@ -7365,14 +7435,6 @@ PrefabInstance:
     - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8265431255270107002, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
-      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8265431255270107002, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
-      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_AdjustInventorySlots
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

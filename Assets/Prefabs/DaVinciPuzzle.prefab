@@ -4044,15 +4044,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9962604
+      value: 21.89
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.289802
+      value: 12.536
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4064,7 +4064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4076,7 +4076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -4250,6 +4250,9 @@ PrefabInstance:
       addedObject: {fileID: 6315707682437308356}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 3109452355243166519}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2856228823778086619}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3d100bb34c3d3c4a83e1180fd191dfb, type: 3}
       insertIndex: -1
@@ -4346,6 +4349,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3109452355243166519}
+        m_TargetAssemblyTypeName: PuzzleEscape, Assembly-CSharp
+        m_MethodName: ChangeIsActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   interactionIcon: {fileID: 0}
   interactableIconSize: {x: 0, y: 0}
   interactableID: 0
@@ -4366,6 +4381,33 @@ MonoBehaviour:
   onPuzzleCompletion:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3109452355243166519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665136484641481010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b3fc7431e6aac449d2cf7ee3fccca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EscapePressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2571972261391295672}
+        m_TargetAssemblyTypeName: DaVinciPuzzle, Assembly-CSharp
+        m_MethodName: ActivatePuzzleUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &2856228823778086619
 BoxCollider:
   m_ObjectHideFlags: 0

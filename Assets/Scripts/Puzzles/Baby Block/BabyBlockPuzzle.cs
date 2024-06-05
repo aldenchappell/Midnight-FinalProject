@@ -99,19 +99,19 @@ public class BabyBlockPuzzle : MonoBehaviour
     //Check for inputs once puzzle is active.
     private void CheckForInput()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             RotateObject(false, 90);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             RotateObject(false, -90);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
             RotateObject(true, -90);
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             RotateObject(true, 90);
         }
