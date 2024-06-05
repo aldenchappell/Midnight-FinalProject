@@ -143,20 +143,20 @@ public class DaVinciPuzzle : MonoBehaviour
 
     private void CheckForInput()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if(Input.GetKeyDown(KeyCode.A))
         {
             AdjustSelectedDial(-1);
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow))
+        else if(Input.GetKeyDown(KeyCode.D))
         {
             AdjustSelectedDial(1);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
             AdjustTargetDialLetter(-1, _currentDialIndex);
             RotateDown(dials[_currentDialIndex].gameObject);
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             AdjustTargetDialLetter(1, _currentDialIndex);
             RotateUp(dials[_currentDialIndex].gameObject);
