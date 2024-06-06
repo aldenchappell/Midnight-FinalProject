@@ -13,6 +13,7 @@ public class PlayerInteractableController : MonoBehaviour
     [SerializeField] private Image interactionImage;
     [SerializeField] private Sprite defaultIcon;
     [SerializeField] private Sprite defaultInteractionIcon;
+    [SerializeField] private Sprite interactionCooldownIcon;
     [SerializeField] private Vector2 defaultIconSize;
     [SerializeField] private Vector2 defaultInteractionIconSize;
     [SerializeField] private float interactionDistance = 2.0f;
@@ -42,13 +43,13 @@ public class PlayerInteractableController : MonoBehaviour
             {
                 if (_interactableObject != interactable)
                 {
-                    //reset last highlight
+                    // Reset last highlight
                     ResetHighlight();
 
-                    //highlight new object
+                    // Highlight new object
                     _interactableObject = interactable;
                     
-                    //update interaction UI
+                    // Update interaction UI
                     UpdateInteractionUI(_interactableObject);
 
                     if (button == null || !interactable.GetComponent<InteractableNPC>())
@@ -61,7 +62,7 @@ public class PlayerInteractableController : MonoBehaviour
         }
         else
         {
-            //no object detected, reset previous highlight
+            // No object detected, reset previous highlight
             ResetHighlight();
 
             // Disable dialogue only if the skull is not active
@@ -117,17 +118,18 @@ public class PlayerInteractableController : MonoBehaviour
 
         if (interactable != null && interactable.interactionIcon != null)
         {
-            interactionImage.sprite = interactable.interactionIcon;
+            interactionImage.sprite = _allowInteraction ? interactable.interactionIcon : interactionCooldownIcon;
             interactionImage.rectTransform.sizeDelta =
                 interactable.interactableIconSize == Vector2.zero ?
                     defaultInteractionIconSize : interactable.interactableIconSize;
         }
         else
         {
-            interactionImage.sprite = defaultIcon;
+            interactionImage.sprite = _allowInteraction ? defaultIcon : defaultInteractionIcon;
             interactionImage.rectTransform.sizeDelta = defaultIconSize;
         }
     }
+
 
     public bool IsLookingAtInteractableObject(GameObject target)
     {
@@ -137,7 +139,9 @@ public class PlayerInteractableController : MonoBehaviour
     private IEnumerator InteractionSpamPrevention()
     {
         _allowInteraction = false;
+        UpdateInteractionUI(_interactableObject); // Update UI to show cooldown icon or default interaction icon if not looking at an object
         yield return new WaitForSeconds(SpamPreventionTime);
         _allowInteraction = true;
+        UpdateInteractionUI(_interactableObject); // Update UI back to normal icon
     }
 }
