@@ -25,17 +25,22 @@ public class BabyBlockPuzzle : MonoBehaviour
     private Animator _animator;
 
     private bool _isActive;
+    private bool _canAnimate;
     private int _correctObjectsPlaced;
 
     private void Awake()
     {
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("BabyBlockPuzzleCam").GetComponent<CinemachineVirtualCamera>();
+
         _playerInv = GameObject.FindFirstObjectByType<PlayerDualHandInventory>();
         _mainCam = GameObject.Find("MainCamera").GetComponent<Camera>();
+
         _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponentInChildren<Animator>();
+
+        _canAnimate = true;
     }
 
     private void Update()
@@ -115,7 +120,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         {
             RotateObject(true, 90);
         }
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && _canAnimate)
         {
             RaycastToMousePosition();
         }
@@ -201,7 +206,7 @@ public class BabyBlockPuzzle : MonoBehaviour
 
     private IEnumerator PlayAnimation(GameObject slot, int index, GameObject parent)
     {
-        print("Animating");
+        _canAnimate = false;
         switch (slot.name)
         {
             case "BBPiece1":
@@ -225,6 +230,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         _animator.SetTrigger("Return");
         _playerInv.PlaceObjectInPuzzle(slot, index, parent);
         CheckForCompletion();
+        _canAnimate = true;
     }
 
     private void PlayAudioClip(AudioClip clip)

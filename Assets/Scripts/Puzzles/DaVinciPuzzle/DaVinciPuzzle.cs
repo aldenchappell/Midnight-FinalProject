@@ -36,6 +36,8 @@ public class DaVinciPuzzle : MonoBehaviour
     private int[] _dial3;
     private int[] _dial4;
 
+    private bool _canAnimate;
+
     private void Awake()
     {
         GlobalCursorManager.Instance = _cursor;
@@ -44,6 +46,8 @@ public class DaVinciPuzzle : MonoBehaviour
         _puzzleAudio = GetComponent<AudioSource>();
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("DaVinciPuzzleCam").GetComponent<CinemachineVirtualCamera>();
+
+        _canAnimate = true;
     }
 
     private void Start()
@@ -185,14 +189,20 @@ public class DaVinciPuzzle : MonoBehaviour
         }
         if(correctLetters == 4)
         {
-            print("Puzzle Solved");
-            ActivatePuzzleUI();
-            StartCoroutine(TriggerAnimation(false));
+            if(_canAnimate)
+            {
+                print("Puzzle Solved");
+                ActivatePuzzleUI();
+                StartCoroutine(TriggerAnimation(false));
+            }
         }
         else
         {
-            print("Puzzle Failed");
-            StartCoroutine(TriggerAnimation(true));
+            if (_canAnimate)
+            {
+                print("Puzzle Failed");
+                StartCoroutine(TriggerAnimation(true));
+            }
         }
     }
 
@@ -241,6 +251,7 @@ public class DaVinciPuzzle : MonoBehaviour
     #region Animations
     private IEnumerator TriggerAnimation(bool fail)
     {
+        _canAnimate = false;
         if(fail)
         {
             _puzzleAudio.PlayOneShot(failSound);
@@ -267,6 +278,7 @@ public class DaVinciPuzzle : MonoBehaviour
             _dial3[0] = 0;
             _dial4[0] = 0;
         }
+
         else
         {
             _puzzleAudio.PlayOneShot(winSound);
@@ -281,6 +293,7 @@ public class DaVinciPuzzle : MonoBehaviour
             yield return new WaitForSeconds(4.30f);
             GivePlayerCrank();
         }
+        _canAnimate = true;
     }
     #endregion
 
