@@ -8,7 +8,7 @@ public class ElevatorController : MonoBehaviour
     [SerializeField] private Animator elevatorAnimator;
 
     public bool isOpened = false;
-    private bool _levelSelected = false; //ensure only one button can be pressed
+    private bool _levelSelected = false; // Ensure only one button can be pressed
     private string _selectedLevelName = "";
 
     [SerializeField] private float timeBeforeLoadingLevel = 5.0f;
@@ -23,9 +23,11 @@ public class ElevatorController : MonoBehaviour
     [SerializeField] private AudioClip elevatorMovingSound;
     [SerializeField] private AudioClip invalidLevelSound;
 
+    private static readonly int Floor = Animator.StringToHash("Floor");
+    private static readonly int Open = Animator.StringToHash("Open");
+
     private void Awake()
     {
-        //elevatorAnimator = GetComponent<Animator>();
         _elevatorAudioSource = GetComponent<AudioSource>();
     }
 
@@ -34,27 +36,23 @@ public class ElevatorController : MonoBehaviour
         if (!isOpened)
         {
             isOpened = true;
-            elevatorAnimator.SetBool("Open", isOpened);
+            elevatorAnimator.SetBool(Open, isOpened);
             _elevatorAudioSource.PlayOneShot(elevatorOpeningSound);
         }
     }
 
     public void CloseElevator()
     {
-        if (isOpened && _levelSelected)
+        if (isOpened)
         {
             StartCoroutine(CloseElevatorRoutine());
-        }
-        else
-        {
-            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
         }
     }
 
     private IEnumerator CloseElevatorRoutine()
     {
         isOpened = false;
-        elevatorAnimator.SetBool("Open", isOpened);
+        elevatorAnimator.SetBool(Open, isOpened);
         _elevatorAudioSource.PlayOneShot(elevatorClosingSound);
 
         yield return new WaitForSeconds(elevatorClosingSound.length);
@@ -64,43 +62,47 @@ public class ElevatorController : MonoBehaviour
     {
         if (_levelSelected)
         {
-           // Debug.Log("Level already selected. Ignoring button press.");
+            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
+            Debug.Log("A level is already being loaded. Ignoring button press.");
             return;
         }
-
-        _levelSelected = true;
 
         switch (floorIndex)
         {
             case 1:
-                _selectedLevelName = "LEVEL ONE";
+                _selectedLevelName = "LOBBY";
                 break;
             case 2:
-                _selectedLevelName = "LEVEL TWO";
+                _selectedLevelName = "LEVEL ONE";
                 break;
             case 3:
+                _selectedLevelName = "LEVEL TWO";
+                break;
+            case 4:
                 _selectedLevelName = "LEVEL THREE";
                 break;
-            //Testing
-            case 4:
+            case 5:
                 _selectedLevelName = "ALDEN";
                 break;
             default:
+                _elevatorAudioSource.PlayOneShot(invalidLevelSound);
                 Debug.LogError("Invalid floor index selected.");
-                _levelSelected = false; //should prevent errors...
                 return;
         }
 
         // Check if the level is already completed
         if (LevelCompletionManager.Instance.IsLevelCompleted(_selectedLevelName))
         {
+            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
             Debug.Log("This level is already completed. Please select a different level.");
-            _levelSelected = false;
         }
         else
         {
+            _levelSelected = true;
             floorIndexText.text = floorIndex.ToString();
+            elevatorAnimator.SetInteger(Floor, floorIndex);
 
+            Debug.Log(floorIndex);
             StartCoroutine(StartElevatorRoutine());
         }
     }
@@ -108,7 +110,7 @@ public class ElevatorController : MonoBehaviour
     private IEnumerator StartElevatorRoutine()
     {
         _elevatorAudioSource.PlayOneShot(elevatorDingSound);
-        yield return new WaitForSeconds(elevatorDingSound.length + .5f);
+        yield return new WaitForSeconds(elevatorDingSound.length + 0.5f);
 
         _elevatorAudioSource.PlayOneShot(elevatorMovingSound);
 

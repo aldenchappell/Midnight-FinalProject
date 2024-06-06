@@ -2,7 +2,6 @@ using StarterAssets;
 using TMPro;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.UIElements;
 
 public class MazeBullPuzzle : MonoBehaviour
 {
@@ -58,19 +57,19 @@ public class MazeBullPuzzle : MonoBehaviour
             HandleTimer(true);
 
             // Tilt the puzzle with arrow keys
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A))
             {
                 DetermineTiltAxis(0);
             }
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.D))
             {
                 DetermineTiltAxis(1);
             }
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.W))
             {
                 DetermineTiltAxis(2);
             }
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.S))
             {
                 DetermineTiltAxis(3);
             }
@@ -113,12 +112,12 @@ public class MazeBullPuzzle : MonoBehaviour
     private void SwitchToPuzzleCamera()
     {
         playerCam.Priority = 0;
-        puzzleCam.Priority = 10;
+        puzzleCam.Priority = 3;
     }
 
     private void SwitchToPlayerCamera()
     {
-        playerCam.Priority = 10;
+        playerCam.Priority = 3;
         puzzleCam.Priority = 0;
     }
 
