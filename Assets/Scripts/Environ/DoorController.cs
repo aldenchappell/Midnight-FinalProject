@@ -21,6 +21,7 @@ public class DoorController : MonoBehaviour
 
     public void HandleDoor()
     {
+        print("Handling door");
         if (canBeOpened)
         {
             if (!_animator.GetBool("Open") == true)
