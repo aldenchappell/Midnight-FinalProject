@@ -77,7 +77,15 @@ public class PlayerDualHandInventory : MonoBehaviour
         {
             if(_inventorySlots[_currentIndexSelected].transform.tag == objectPosition.transform.tag)
             {
-                _inventorySlots[_currentIndexSelected].transform.parent = null;
+                if(objectPosition.transform.parent != null)
+                {
+                    _inventorySlots[_currentIndexSelected].transform.parent = objectPosition.transform.parent;
+                }
+                else
+                {
+                    _inventorySlots[_currentIndexSelected].transform.parent = null; 
+                }
+                
                 _inventorySlots[_currentIndexSelected].transform.position = objectPosition.transform.position;
                 _inventorySlots[_currentIndexSelected].transform.eulerAngles = objectPosition.transform.eulerAngles;
                 Destroy(_inventorySlots[_currentIndexSelected].GetComponent<InteractableObject>());

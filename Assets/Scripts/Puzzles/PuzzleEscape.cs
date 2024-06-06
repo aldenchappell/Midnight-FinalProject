@@ -28,6 +28,6 @@ public class PuzzleEscape : MonoBehaviour
     
     public void ChangeIsActive()
     {
-        isActive = true;
+        isActive = !isActive;
     }
 }

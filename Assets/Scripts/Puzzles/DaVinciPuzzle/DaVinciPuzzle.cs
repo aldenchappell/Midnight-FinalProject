@@ -206,7 +206,7 @@ public class DaVinciPuzzle : MonoBehaviour
             _FPC.ToggleCanMove();
             AdjustSelectedDial(0);
             _playerCam.Priority = 0;
-            _puzzleCam.Priority = 10;
+            _puzzleCam.Priority = 5;
             _isActive = true;
         }
         else
@@ -218,7 +218,7 @@ public class DaVinciPuzzle : MonoBehaviour
             {
                 dial.GetChild(0).gameObject.SetActive(false);
             }
-            _playerCam.Priority = 10;
+            _playerCam.Priority = 5;
             _puzzleCam.Priority = 0;
             _isActive = false;
         }
