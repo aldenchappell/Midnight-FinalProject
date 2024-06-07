@@ -107,7 +107,7 @@ public class DialogueController : MonoBehaviour
                 StopDialogue();
             }
         }
-        else if (_isPrintingLine) // If currently printing, immediately skip to the end
+        else if (_isPrintingLine)
         {
             StopCoroutine(_currentCoroutine);
             dialogueText.text = _lines[_currentIndex];

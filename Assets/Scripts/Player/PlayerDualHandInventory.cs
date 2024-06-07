@@ -140,7 +140,6 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
     }
     
-    // Check if the skull is in the first slot of the inventory
     public bool IsSkullInFirstSlot()
     {
         if (_inventorySlots.Length > 0 && _inventorySlots[1] != null)

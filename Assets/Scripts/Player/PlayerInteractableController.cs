@@ -47,32 +47,27 @@ public class PlayerInteractableController : MonoBehaviour
             {
                 if (_interactableObject != interactable)
                 {
-                    // Reset last highlight
                     ResetHighlight();
-
-                    // Highlight new object
+                    
                     _interactableObject = interactable;
                     
-                    // Update interaction UI
                     UpdateInteractionUI(_interactableObject);
 
                     if (button == null || !interactable.GetComponent<InteractableNPC>())
                     {
                         _highlightInteractableObjectController = _interactableObject.highlightInteractableObjectController;
-                        _highlightInteractableObjectController?.ChangeColor(Color.red); // Added null check
+                        _highlightInteractableObjectController?.ChangeColor(Color.red); 
                     }
                 }
             }
         }
         else
         {
-            // No object detected, reset previous highlight
             ResetHighlight();
-
-            // Disable dialogue only if the skull is not active
+            
             if (_skullCompanion != null && !_skullCompanion.GetComponent<SkullDialogue>().pickedUp)
             {
-                Instance.DisableDialogueBox(); // Added null check
+                Instance.DisableDialogueBox(); 
             }
         }
         
@@ -82,7 +77,6 @@ public class PlayerInteractableController : MonoBehaviour
             interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
             if (_interactableObject is InteractableNPC interactableNPC)
             {
-                // Check if the skull is in the second slot of the inventory
                 if (_skullCompanion != null && _playerInventory.IsSkullInFirstSlot())
                 {
                     interactableNPC.Interact();
@@ -117,7 +111,7 @@ public class PlayerInteractableController : MonoBehaviour
 
     private void UpdateInteractionUI(InteractableObject interactable)
     {
-        if (interactionImage == null) return; // Added null check
+        if (interactionImage == null) return;
 
         if (interactable != null && interactable.interactionIcon != null)
         {
@@ -142,9 +136,9 @@ public class PlayerInteractableController : MonoBehaviour
     private IEnumerator InteractionSpamPrevention()
     {
         _allowInteraction = false;
-        UpdateInteractionUI(_interactableObject); // Update UI to show cooldown icon or default interaction icon if not looking at an object
+        UpdateInteractionUI(_interactableObject);
         yield return new WaitForSeconds(SpamPreventionTime);
         _allowInteraction = true;
-        UpdateInteractionUI(_interactableObject); // Update UI back to normal icon
+        UpdateInteractionUI(_interactableObject);
     }
 }

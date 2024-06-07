@@ -34,7 +34,6 @@ public class SkullDialogue : MonoBehaviour
 
     private void Update()
     {
-        // Check for key presses to switch inventory slots
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             UpdateSkullActiveStatus(0);
@@ -81,8 +80,7 @@ public class SkullDialogue : MonoBehaviour
         {
             yield break;
         }
-
-        // Ensure audio clips and messages lists are of the same length
+        
         if (audioClips.Count != messages.Count)
         {
             Debug.LogWarning("Audio clips and messages lists must be of the same length.");
@@ -91,33 +89,25 @@ public class SkullDialogue : MonoBehaviour
 
         for (int i = 0; i < messages.Count; i++)
         {
-            // Enable the dialogue UI
             dialogueUI.SetActive(true);
 
-            // Clear the dialogue text
             dialogueText.text = "";
 
-            // Get the current message
             string currentMessage = messages[i];
 
-            // Play the selected audio clip
             _audioSource.clip = audioClips[i];
             _audioSource.Play();
-
-            // Type out the message progressively
+            
             for (int j = 0; j < currentMessage.Length; j++)
             {
                 dialogueText.text += currentMessage[j];
                 yield return new WaitForSeconds(textPrintingSpeed);
             }
-
-            // Wait for the audio clip to finish playing
+            
             yield return new WaitForSeconds(_audioSource.clip.length);
-
-            // Disable the dialogue UI after the message and audio clip are done
+            
             dialogueUI.SetActive(false);
-
-            // Wait for a random amount of time before playing the next clip
+            
             float delay = Random.Range(minDelayBetweenMessages, maxDelayBetweenMessages);
             yield return new WaitForSeconds(delay);
         }
