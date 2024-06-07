@@ -66,11 +66,6 @@ public class SkullDialogue : MonoBehaviour
         }
     }
 
-    public bool IsSkullActiveInInventory()
-    {
-        return _playerInventory != null && _playerInventory.GetInventory[0] == gameObject;
-    }
-
     private void UpdateSkullActiveStatus(int slotIndex)
     {
         if (_playerInventory != null && _playerInventory.GetInventory.Length > slotIndex)

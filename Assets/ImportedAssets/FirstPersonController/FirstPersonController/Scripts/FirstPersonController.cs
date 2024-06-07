@@ -189,6 +189,12 @@ namespace StarterAssets
 		
 			// Set booleans for sprinting
 			isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && !isCrouching && Grounded;
+
+			if (Input.GetKeyDown(KeyCode.Escape) && !pauseManager.GameIsPaused)
+			{
+				canMove = true;
+				canRotate = true;
+			}
 		}
 
 

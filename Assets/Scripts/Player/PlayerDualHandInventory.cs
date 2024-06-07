@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDualHandInventory : MonoBehaviour
@@ -8,7 +6,7 @@ public class PlayerDualHandInventory : MonoBehaviour
     [SerializeField] Transform handPosition;
 
     private GameObject[] _inventorySlots;
-    private int _currentIndexSelected;
+    public int currentIndexSelected;
 
     public GameObject[] GetInventory
     {
@@ -18,13 +16,16 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
     }
 
+    public bool PickedUp { get; private set; } // New property to track if any item is picked up
+
     private void Start()
     {
         _inventorySlots = new GameObject[2];
-        _currentIndexSelected = 0;
+        currentIndexSelected = 0;
+        PickedUp = false; // Initialize picked up state
     }
 
-    //Adjsut inventory when picking up new interactable object
+    // Adjust inventory when picking up a new interactable object
     public GameObject AdjustInventorySlots
     {
         set
@@ -32,7 +33,8 @@ public class PlayerDualHandInventory : MonoBehaviour
             SwapObjectsInInventory(value);
         }
     }
-    //Place interactable object in inventory onto shadow position and adjust inventory
+
+    // Place interactable object in inventory onto shadow position and adjust inventory
     public GameObject PlaceObject
     {
         set
@@ -45,57 +47,57 @@ public class PlayerDualHandInventory : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _currentIndexSelected = 0;
+            currentIndexSelected = 0;
             ShowCurrentIndexItem();
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            _currentIndexSelected = 1;
+            currentIndexSelected = 1;
             ShowCurrentIndexItem();
         }
-        
     }
 
-    //Swap current interactable object in hand for another in environment
+    // Swap current interactable object in hand for another in the environment
     private void SwapObjectsInInventory(GameObject newObject)
     {
-        if (_inventorySlots[_currentIndexSelected] != null)
+        if (_inventorySlots[currentIndexSelected] != null)
         {
-            _inventorySlots[_currentIndexSelected].SetActive(true);
-            _inventorySlots[_currentIndexSelected].transform.position = newObject.transform.position;
-            _inventorySlots[_currentIndexSelected].transform.parent = null;
+            _inventorySlots[currentIndexSelected].SetActive(true);
+            _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
+            _inventorySlots[currentIndexSelected].transform.parent = null;
         }
         newObject.transform.parent = this.gameObject.transform;
-        _inventorySlots[_currentIndexSelected] = newObject;
+        _inventorySlots[currentIndexSelected] = newObject;
         ShowCurrentIndexItem();
+        PickedUp = true; // Set picked up state to true when an item is picked up
     }
 
-    //Place interactable object in hand in shadow position
+    // Place interactable object in hand in the shadow position
     private void PlaceObjectFromInventory(GameObject objectPosition)
     {
-        if (_inventorySlots[_currentIndexSelected] != null)
+        if (_inventorySlots[currentIndexSelected] != null)
         {
-            if(_inventorySlots[_currentIndexSelected].transform.tag == objectPosition.transform.tag)
+            if(_inventorySlots[currentIndexSelected].transform.tag == objectPosition.transform.tag)
             {
                 if(objectPosition.transform.parent != null)
                 {
-                    _inventorySlots[_currentIndexSelected].transform.parent = objectPosition.transform.parent;
+                    _inventorySlots[currentIndexSelected].transform.parent = objectPosition.transform.parent;
                 }
                 else
                 {
-                    _inventorySlots[_currentIndexSelected].transform.parent = null; 
+                    _inventorySlots[currentIndexSelected].transform.parent = null; 
                 }
                 
-                _inventorySlots[_currentIndexSelected].transform.position = objectPosition.transform.position;
-                _inventorySlots[_currentIndexSelected].transform.eulerAngles = objectPosition.transform.eulerAngles;
-                Destroy(_inventorySlots[_currentIndexSelected].GetComponent<InteractableObject>());
+                _inventorySlots[currentIndexSelected].transform.position = objectPosition.transform.position;
+                _inventorySlots[currentIndexSelected].transform.eulerAngles = objectPosition.transform.eulerAngles;
+                Destroy(_inventorySlots[currentIndexSelected].GetComponent<InteractableObject>());
                 Destroy(objectPosition);
-                _inventorySlots[_currentIndexSelected] = null;
+                _inventorySlots[currentIndexSelected] = null;
             }
         }
     }
 
-    //Special place functionality for easier use in puzzles
+    // Special place functionality for easier use in puzzles
     public void PlaceObjectInPuzzle(GameObject objectPosition, int index, GameObject parentObject)
     {
         if (_inventorySlots[index] != null)
@@ -117,12 +119,10 @@ public class PlayerDualHandInventory : MonoBehaviour
                 Destroy(objectPosition);
                 _inventorySlots[index].SetActive(true);
                 _inventorySlots[index] = null;
-                
             }
         }
     }
 
-    //Show the interactable object in the current inventory index selected by player
     private void ShowCurrentIndexItem()
     {
         foreach(GameObject obj in _inventorySlots)
@@ -132,13 +132,21 @@ public class PlayerDualHandInventory : MonoBehaviour
                 obj.SetActive(false);
             }
         }
-        if (_inventorySlots[_currentIndexSelected] != null)
+        if (_inventorySlots[currentIndexSelected] != null)
         {
-            _inventorySlots[_currentIndexSelected].SetActive(true);
-            _inventorySlots[_currentIndexSelected].transform.parent = this.gameObject.transform;
-            _inventorySlots[_currentIndexSelected].transform.localPosition = handPosition.localPosition;
+            _inventorySlots[currentIndexSelected].SetActive(true);
+            _inventorySlots[currentIndexSelected].transform.parent = this.gameObject.transform;
+            _inventorySlots[currentIndexSelected].transform.localPosition = handPosition.localPosition;
         }
     }
-
-
+    
+    // Check if the skull is in the first slot of the inventory
+    public bool IsSkullInFirstSlot()
+    {
+        if (_inventorySlots.Length > 0 && _inventorySlots[1] != null)
+        {
+            return _inventorySlots[1].GetComponent<SkullDialogue>() != null;
+        }
+        return false;
+    }
 }

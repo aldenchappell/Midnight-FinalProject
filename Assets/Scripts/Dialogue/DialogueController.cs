@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using StarterAssets;
 using TMPro;
 using UnityEngine;
 
@@ -24,7 +26,8 @@ public class DialogueController : MonoBehaviour
     private Coroutine _currentCoroutine = null;
 
     private SkullDialogue _skullCompanion;
-
+    private PlayerDualHandInventory _playerInventory;
+    private FirstPersonController _firstPersonController;
     private void Awake()
     {
         if (Instance == null)
@@ -37,12 +40,22 @@ public class DialogueController : MonoBehaviour
         }
         
         _skullCompanion = GameObject.FindWithTag("Skull").GetComponent<SkullDialogue>();
+        _playerInventory = FindObjectOfType<PlayerDualHandInventory>().GetComponent<PlayerDualHandInventory>();
+        _firstPersonController = FindObjectOfType<FirstPersonController>().GetComponent<FirstPersonController>();
     }
 
     private void Start()
     {
         ResetDialogueText();
         DisableDialogueBox();
+    }
+
+    private void Update()
+    {
+        if (_firstPersonController.canMove && _firstPersonController.canRotate)
+        {
+            dialogueBox.SetActive(false);
+        }
     }
 
     public void StartDialogue(string[] lines)
@@ -53,8 +66,7 @@ public class DialogueController : MonoBehaviour
             return;
         }
 
-        // Check if the skull is in slot 0
-        if (!_skullCompanion.IsSkullActiveInInventory())
+        if (!_playerInventory.IsSkullInFirstSlot())
         {
             dialogueText.text = "";
             _lines = lines;

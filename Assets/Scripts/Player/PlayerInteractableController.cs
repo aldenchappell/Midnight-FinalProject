@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using static DialogueController;
+using UnityEngine.InputSystem;
 
 public class PlayerInteractableController : MonoBehaviour
 {
@@ -22,10 +24,12 @@ public class PlayerInteractableController : MonoBehaviour
     private bool _allowInteraction = true;
     
     private GameObject _skullCompanion;
-
+    private PlayerDualHandInventory _playerInventory;
     private void Awake()
     {
         _skullCompanion = GameObject.FindWithTag("Skull");
+        _playerInventory = FindObjectOfType<PlayerDualHandInventory>()
+            .GetComponent<PlayerDualHandInventory>();
     }
 
     private void Update()
@@ -68,33 +72,32 @@ public class PlayerInteractableController : MonoBehaviour
             // Disable dialogue only if the skull is not active
             if (_skullCompanion != null && !_skullCompanion.GetComponent<SkullDialogue>().pickedUp)
             {
-                DialogueController.Instance?.DisableDialogueBox(); // Added null check
+                Instance.DisableDialogueBox(); // Added null check
             }
         }
-
-        // Handle interaction input
-        if (_allowInteraction && Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKey))
+        
+        if (Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKey) && _interactableObject != null && _allowInteraction)
         {
-            if (_interactableObject != null && _allowInteraction)
+            interactionImage.sprite = defaultInteractionIcon;
+            interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
+            if (_interactableObject is InteractableNPC interactableNPC)
             {
-                interactionImage.sprite = defaultInteractionIcon;
-                interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
-                if (_interactableObject is InteractableNPC interactableNPC)
+                // Check if the skull is in the second slot of the inventory
+                if (_skullCompanion != null && _playerInventory.IsSkullInFirstSlot())
                 {
-                    // Block interaction with NPCs if the skull is active
-                    if (_skullCompanion != null && !_skullCompanion.activeSelf)
-                    {
-                        interactableNPC.Interact();
-                    }
+                    interactableNPC.Interact();
                 }
-                else
-                {
-                    _interactableObject.onInteraction?.Invoke();
-                }
-
-                StartCoroutine(InteractionSpamPrevention());
             }
+
+            else
+            {
+                _interactableObject.onInteraction?.Invoke();
+            }
+
+            StartCoroutine(InteractionSpamPrevention());
         }
+
+
     }
 
     private void ResetHighlight()
