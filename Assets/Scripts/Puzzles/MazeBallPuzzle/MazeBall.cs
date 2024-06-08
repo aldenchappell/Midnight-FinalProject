@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class MazeBall : MonoBehaviour
 {
-    public MazeBullPuzzle mazePuzzle;
-    
-    
+    private MazeBullPuzzle _mazePuzzle;
+
+    private void Awake()
+    {
+        _mazePuzzle = FindObjectOfType<MazeBullPuzzle>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("MazePuzzleCompletion")) return;
 
-        mazePuzzle.TogglePuzzleUI();
-        mazePuzzle.puzzle.CompletePuzzle();
+        _mazePuzzle.TogglePuzzleUI();
+        _mazePuzzle.puzzle.CompletePuzzle();
     }
 }

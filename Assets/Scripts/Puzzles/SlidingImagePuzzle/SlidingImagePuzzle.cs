@@ -28,6 +28,8 @@ public class SlidingImagePuzzle : MonoBehaviour
 
     private AudioSource _audio;
     [SerializeField] private AudioClip correctMoveSound;
+    
+    [SerializeField] private GameObject mazeballPrefab;
 
     private void Awake()
     {
@@ -176,8 +178,29 @@ public class SlidingImagePuzzle : MonoBehaviour
         {
             _puzzle.CompletePuzzle();
             firstPersonController.ToggleCanMove();
+
+            // Instantiate the mazeball at the player's feet
+            InstantiateMazeballAtPlayerFeet();
         }
     }
+
+    private void InstantiateMazeballAtPlayerFeet()
+    {
+        if (mazeballPrefab != null)
+        {
+            // Get the player's position
+            Vector3 playerPosition = firstPersonController.transform.position;
+
+            // Instantiate the mazeball at the player's position
+            Instantiate(mazeballPrefab, playerPosition, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Mazeball prefab is not assigned in the inspector.");
+        }
+    }
+
+    
 
     private void UpdatePuzzleUI()
     {
