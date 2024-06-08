@@ -89,6 +89,12 @@ public class MazeBullPuzzle : MonoBehaviour
 
     public void TogglePuzzleUI()
     {
+        if (LevelCompletionManager.Instance.currentLevelPuzzles.Count != 2)
+        {
+            Debug.LogError("Player hasn't completed the image puzzle.");
+            return;
+        }
+        
         puzzleUI.SetActive(!puzzleUI.activeSelf);
 
         bool isActive = puzzleUI.activeSelf;

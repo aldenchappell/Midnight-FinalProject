@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class LevelCompletionManager : MonoBehaviour
 {
     public static LevelCompletionManager Instance;
-    private List<string> _currentLevelPuzzles = new List<string>();
+    public List<string> currentLevelPuzzles = new List<string>();
     private string _currentLevel;
 
     // Assign the appropriate puzzle scriptable objects in the inspector - Should be added to the lobby scene.
@@ -13,7 +13,6 @@ public class LevelCompletionManager : MonoBehaviour
     public List<SO_Puzzle> level3Puzzles;
     public List<SO_Puzzle> aldenLevelPuzzles; //testing
 
-    
     private HashSet<string> _completedLevels = new HashSet<string>();
     private HashSet<string> _completedPuzzles = new HashSet<string>();
 
@@ -37,17 +36,17 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void SavePuzzleCompletion(SO_Puzzle puzzle)
     {
-        if (_currentLevelPuzzles == null)
+        if (currentLevelPuzzles == null)
         {
             Debug.LogError("Current level puzzles list is null");
             return;
         }
 
         _completedPuzzles.Add(puzzle.puzzleName);
-        if (_currentLevelPuzzles.Contains(puzzle.puzzleName))
+        if (currentLevelPuzzles.Contains(puzzle.puzzleName))
         {
-            _currentLevelPuzzles.Remove(puzzle.puzzleName);
-            if (_currentLevelPuzzles.Count == 0)
+            currentLevelPuzzles.Remove(puzzle.puzzleName);
+            if (currentLevelPuzzles.Count == 0)
             {
                 SaveLevelCompletion(_currentLevel);
 
@@ -56,7 +55,6 @@ public class LevelCompletionManager : MonoBehaviour
             }
         }
     }
-
 
     private void SaveLevelCompletion(string levelName)
     {
@@ -68,23 +66,28 @@ public class LevelCompletionManager : MonoBehaviour
         return _completedLevels.Contains(levelName);
     }
 
+    public bool IsPuzzleCompleted(string puzzleName)
+    {
+        return _completedPuzzles.Contains(puzzleName);
+    }
+
     public void ResetPuzzles()
     {
-        foreach (string puzzleName in _currentLevelPuzzles)
+        foreach (string puzzleName in currentLevelPuzzles)
         {
             _completedPuzzles.Remove(puzzleName);
         }
-        _currentLevelPuzzles = new List<string>();
+        currentLevelPuzzles = new List<string>();
     }
 
     public void StartLevel(string levelName, List<SO_Puzzle> puzzles)
     {
         _currentLevel = levelName;
-        _currentLevelPuzzles = ConvertPuzzlesToNames(puzzles);
+        currentLevelPuzzles = ConvertPuzzlesToNames(puzzles);
 
         // Debug log to check if any puzzles are not completed in the current level
         Debug.Log("Starting level: " + _currentLevel);
-        foreach (var puzzleName in _currentLevelPuzzles)
+        foreach (var puzzleName in currentLevelPuzzles)
         {
             if (!_completedPuzzles.Contains(puzzleName))
             {
@@ -114,13 +117,12 @@ public class LevelCompletionManager : MonoBehaviour
 
         if (_completedPuzzles.Contains(puzzleName))
         {
-
             Debug.Log("Puzzle " + puzzleName + " in level + " + levelName + " is already completed.");
             return;
         }
 
         _completedPuzzles.Add(puzzleName);
-        Debug.Log("Puzzle " + puzzleName + " in level " + levelName + "completed.");
+        Debug.Log("Puzzle " + puzzleName + " in level " + levelName + " completed.");
     }
 
     public void CheckAndStartNextLevel()
