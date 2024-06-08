@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using StarterAssets;
 
 public class HideBehindDoor : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class HideBehindDoor : MonoBehaviour
     private Camera _mainCamera;
 
     private DoorController _doorController;
+    private GameObject _player;
+    private FirstPersonController _FPC;
 
     private bool _isActive;
 
@@ -22,6 +25,8 @@ public class HideBehindDoor : MonoBehaviour
         _doorSpyHoleCamera = gameObject.transform.GetChild(0).GetComponent<CinemachineVirtualCamera>();
 
         _doorController = GetComponent<DoorController>();
+        _player = GameObject.Find("Player");
+        _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
     }
 
     private void Start()
@@ -37,11 +42,18 @@ public class HideBehindDoor : MonoBehaviour
         }
     }
 
-    public void ChangeHideState()
+    #region Change Hide State
+    public void StartChangeState()
+    {
+        StartCoroutine("ChangeHideState");
+    }
+    private IEnumerator ChangeHideState()
     {
         _isActive = !_isActive;
+        HidePlayer();
         if(_isActive)
         {
+            yield return new WaitForSeconds(1f);
             _playerCam.Priority = 0;
             _doorHideCamera.Priority = 5;
             _doorController.Invoke("HandleDoor", 2f);
@@ -51,6 +63,7 @@ public class HideBehindDoor : MonoBehaviour
         }
         else
         {
+            yield return new WaitForSeconds(1f);
             _playerCam.Priority = 5;
             _doorHideCamera.Priority = 0;
             _doorController.Invoke("HandleDoor", 2f);
@@ -60,7 +73,9 @@ public class HideBehindDoor : MonoBehaviour
         }
         
     }
+    #endregion
 
+    #region Input and Raycast
     private void CheckForInput()
     {
         if(Input.GetMouseButtonDown(0))
@@ -82,7 +97,9 @@ public class HideBehindDoor : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Peep Hole Camera
     private void SwapDoorCameraPosition()
     {
         if(_doorHideCamera.Priority > 0)
@@ -108,6 +125,22 @@ public class HideBehindDoor : MonoBehaviour
             {
                 collider.enabled = !collider.enabled;
             }
+        }
+    }
+
+    #endregion
+
+    private void HidePlayer()
+    {
+        if(_isActive)
+        {
+            _player.transform.GetChild(2).gameObject.layer = 0;
+            _FPC.ToggleCanMove();
+        }
+        else
+        {
+            _player.transform.GetChild(2).gameObject.layer = 6;
+            _FPC.ToggleCanMove();
         }
     }
 }
