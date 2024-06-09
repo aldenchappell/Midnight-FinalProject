@@ -25,4 +25,9 @@ public class KeyController : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void SetKeyActive()
+    {
+        gameObject.SetActive(true);
+    }
 }
