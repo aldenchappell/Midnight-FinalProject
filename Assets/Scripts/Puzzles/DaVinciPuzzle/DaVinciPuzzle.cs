@@ -293,6 +293,7 @@ public class DaVinciPuzzle : MonoBehaviour
             GetComponent<BoxCollider>().enabled = false;
             yield return new WaitForSeconds(4.30f);
             GivePlayerCrank();
+            Destroy(GetComponent<PuzzleEscape>());
         }
         _canAnimate = true;
     }
