@@ -501,6 +501,11 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 5.715, y: 200.00002, z: -200.00002}
   m_TimeToStationary: 0.5
+--- !u!1 &99247145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2505426710106675620, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
+  m_PrefabInstance: {fileID: 739776816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &102203584 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2746571738594111124, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
@@ -1059,19 +1064,7 @@ MonoBehaviour:
         m_CallState: 2
   onPlaceObject:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 877110849}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   interactionIcon: {fileID: 0}
   interactableIconSize: {x: 0, y: 0}
   interactableID: 0
@@ -3258,7 +3251,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605171352}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13810721ea2449f4b98cb93a65e70177, type: 3}
   m_Name: 
@@ -3280,7 +3273,19 @@ MonoBehaviour:
         m_CallState: 2
   onPlaceObject:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 605171355}
+        m_TargetAssemblyTypeName: Puzzle, Assembly-CSharp
+        m_MethodName: CompletePuzzle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   interactionIcon: {fileID: 0}
   interactableIconSize: {x: 0, y: 0}
   interactableID: 0
@@ -3306,6 +3311,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.16, z: 0.1}
   m_Center: {x: 0, y: 0.08, z: 0}
+--- !u!114 &605171355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605171352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6215a277c650e8549b38f4b9e5f94da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzle: {fileID: 11400000, guid: d0573950543ccef4b8f1f083993c16fe, type: 2}
+  onPuzzleCompletion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 99247145}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &605546137 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5129349954596724737, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
@@ -4733,19 +4766,7 @@ MonoBehaviour:
         m_CallState: 2
   onPlaceObject:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1509954739}
-        m_TargetAssemblyTypeName: KeyController, Assembly-CSharp
-        m_MethodName: SetKeyActive
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   interactionIcon: {fileID: 0}
   interactableIconSize: {x: 0, y: 0}
   interactableID: 0
@@ -9560,6 +9581,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0daa944a46731484eb826e88600b5da4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1423310712}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0daa944a46731484eb826e88600b5da4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1423310716}
   m_SourcePrefab: {fileID: 100100000, guid: 0daa944a46731484eb826e88600b5da4, type: 3}
 --- !u!1 &1423310707 stripped
 GameObject:
@@ -9596,10 +9620,22 @@ MonoBehaviour:
   onPlaceObject:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 605171352}
+      - m_Target: {fileID: 877110849}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1423310716}
+        m_TargetAssemblyTypeName: Puzzle, Assembly-CSharp
+        m_MethodName: CompletePuzzle
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9633,6 +9669,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8384168, y: 0.20352551, z: 1}
   m_Center: {x: -0.023681521, y: 0.000000018626451, z: 0}
+--- !u!114 &1423310716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423310707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6215a277c650e8549b38f4b9e5f94da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzle: {fileID: 11400000, guid: 8eff266543b89d4458a00006ee1fa06b, type: 2}
+  onPuzzleCompletion:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1424799350 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 115677020108505906, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
@@ -9786,6 +9838,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 368d54e4026797a4bbe1d06ecfa38a7d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 605171353}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 368d54e4026797a4bbe1d06ecfa38a7d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 605171355}
   m_SourcePrefab: {fileID: 100100000, guid: 368d54e4026797a4bbe1d06ecfa38a7d, type: 3}
 --- !u!1 &1457669146 stripped
 GameObject:
@@ -10253,17 +10308,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -2.6690001, y: 200.00002, z: -0.105000004}
   m_TimeToStationary: 0.5
---- !u!114 &1509954739 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8388984645142030032, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
-  m_PrefabInstance: {fileID: 739776816}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0743014263620fd47a426cfd613b90d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1517096332 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2219169063796996646, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
@@ -11286,6 +11330,50 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 5.715, y: 200.00002, z: -200.00002}
   m_TimeToStationary: 0.5
+--- !u!1 &1654877097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1654877099}
+  - component: {fileID: 1654877098}
+  m_Layer: 0
+  m_Name: GameInitializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1654877098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654877097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf686ab197c751428df682555349a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1654877099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654877097}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.147314, y: 1.3355753, z: 99.72576}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1662583086 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4925685075156792944, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
@@ -14199,3 +14287,4 @@ SceneRoots:
   - {fileID: 739776816}
   - {fileID: 1440358656}
   - {fileID: 588253657}
+  - {fileID: 1654877099}
