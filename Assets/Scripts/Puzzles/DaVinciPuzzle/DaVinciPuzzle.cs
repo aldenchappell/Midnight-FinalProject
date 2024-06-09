@@ -194,6 +194,7 @@ public class DaVinciPuzzle : MonoBehaviour
                 print("Puzzle Solved");
                 ActivatePuzzleUI();
                 StartCoroutine(TriggerAnimation(false));
+                GetComponent<Puzzle>().CompletePuzzle();
             }
         }
         else

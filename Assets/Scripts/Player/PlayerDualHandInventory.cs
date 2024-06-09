@@ -114,25 +114,31 @@ public class PlayerDualHandInventory : MonoBehaviour
     {
         foreach(GameObject item in _inventorySlots)
         {
-            if(item.CompareTag(obj.tag))
+            if(item != null)
             {
-                int index = System.Array.IndexOf(_inventorySlots, item);
-                if (obj.transform.parent != null)
+                if (item.CompareTag(obj.tag))
                 {
-                    _inventorySlots[index].transform.parent = obj.transform.parent;
-                }
-                else
-                {
-                    _inventorySlots[index].transform.parent = null;
-                }
+                    int index = System.Array.IndexOf(_inventorySlots, item);
+                    if (obj.transform.parent != null)
+                    {
+                        _inventorySlots[index].transform.parent = obj.transform.parent;
+                    }
+                    else
+                    {
+                        _inventorySlots[index].transform.parent = null;
+                    }
 
-                _inventorySlots[index].transform.position = obj.transform.position;
-                _inventorySlots[index].transform.eulerAngles = obj.transform.eulerAngles;
-                obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
-                Destroy(_inventorySlots[index].GetComponent<InteractableObject>());
-                Destroy(obj);
-                _inventorySlots[index] = null;
+                    _inventorySlots[index].transform.position = obj.transform.position;
+                    _inventorySlots[index].transform.eulerAngles = obj.transform.eulerAngles;
+                    _inventorySlots[index].SetActive(true);
+
+                    obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
+                    Destroy(_inventorySlots[index].GetComponent<InteractableObject>());
+                    Destroy(obj);
+                    _inventorySlots[index] = null;
+                }
             }
+           
         }
         
     }
@@ -141,13 +147,16 @@ public class PlayerDualHandInventory : MonoBehaviour
     {
         foreach(GameObject item in _inventorySlots)
         {
-            if(item.CompareTag(obj.tag))
+            if(item != null)
             {
-                int index = System.Array.IndexOf(_inventorySlots, item);
-                Destroy(_inventorySlots[index]);
-                _inventorySlots[index] = null;
-                break;
-            }
+                if (item.CompareTag(obj.tag))
+                {
+                    int index = System.Array.IndexOf(_inventorySlots, item);
+                    Destroy(_inventorySlots[index]);
+                    _inventorySlots[index] = null;
+                    break;
+                }
+            } 
         }
     }
     #endregion

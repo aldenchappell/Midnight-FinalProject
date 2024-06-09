@@ -127,21 +127,17 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void CheckAndStartNextLevel()
     {
-        if (!IsLevelCompleted("ALDEN"))
+        if (!IsLevelCompleted("FLOOR ONE"))
         {
-            StartLevel("ALDEN", aldenLevelPuzzles);
+            StartLevel("FLOOR ONE", level1Puzzles);
         }
-        else if (!IsLevelCompleted("LEVEL ONE"))
+        else if (!IsLevelCompleted("FLOOR TWO"))
         {
-            StartLevel("LEVEL ONE", level1Puzzles);
+            StartLevel("FLOOR TWO", level2Puzzles);
         }
-        else if (!IsLevelCompleted("LEVEL TWO"))
+        else if (!IsLevelCompleted("FLOOR THREE"))
         {
-            StartLevel("LEVEL TWO", level2Puzzles);
-        }
-        else if (!IsLevelCompleted("LEVEL THREE"))
-        {
-            StartLevel("LEVEL THREE", level3Puzzles);
+            StartLevel("FLOOR THREE", level3Puzzles);
         }
         else
         {

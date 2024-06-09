@@ -29,5 +29,6 @@ public class MusicBoxPuzzle : MonoBehaviour
     private void LoopAnimation()
     {
         _animator.SetTrigger("PlayMusicBox");
+        GetComponent<Puzzle>().CompletePuzzle();
     }
 }
