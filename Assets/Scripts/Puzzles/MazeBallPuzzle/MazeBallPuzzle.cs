@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
@@ -58,6 +59,7 @@ public class MazeBallPuzzle : MonoBehaviour
     private PlayerDualHandInventory _playerDualHandInventory;
     private bool _firstTime = true;
 
+    private PuzzlePiece _puzzlePieceRequired;    
     private Quaternion _startingRotation;
     private void Awake()
     {
@@ -70,7 +72,7 @@ public class MazeBallPuzzle : MonoBehaviour
         _playerDualHandInventory = FindObjectOfType<PlayerDualHandInventory>();
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("MazePuzzleCam").GetComponent<CinemachineVirtualCamera>();
-
+        _puzzlePieceRequired = originalMazeBall.GetComponent<PuzzlePiece>();
         _startingRotation = transform.rotation;
     }
 
@@ -119,8 +121,10 @@ public class MazeBallPuzzle : MonoBehaviour
             _audio.PlayOneShot(puzzleCompletedSound);
             return;
         }
+
+        var inv = _playerDualHandInventory.GetInventory; 
         
-        if (!_playerDualHandInventory.MatchPuzzlePieceInInventory(gameObject)
+        if (!inv.Contains(originalMazeBall)
             && LevelCompletionManager.Instance.currentLevelPuzzles.Count != 2)
         {
             _audio.PlayOneShot(invalidButtonSound);
@@ -253,6 +257,7 @@ public class MazeBallPuzzle : MonoBehaviour
             _firstTime = false;
             originalMazeBall = Instantiate(pfMazeBall, mazePuzzleBallSpawnPos.position, Quaternion.identity);
             originalMazeBall.transform.SetParent(mazePuzzleObj.transform);
+            _puzzlePieceRequired = originalMazeBall.GetComponent<PuzzlePiece>();
         }
     }
     

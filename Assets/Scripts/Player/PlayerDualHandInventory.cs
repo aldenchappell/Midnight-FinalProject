@@ -153,7 +153,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         return false;
     }
 
-    public bool MatchPuzzlePieceInInventory(GameObject activePuzzlePiece)
+    public bool MatchPuzzlePieceInInventory(PuzzlePiece activePuzzlePiece)
     {
         if (_inventorySlots.Length > 0 && _inventorySlots[1] != null)
         {
