@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class Puzzle : MonoBehaviour
 {
     public SO_Puzzle puzzle;
-
     public UnityEvent onPuzzleCompletion;
     private void Awake()
     {
@@ -21,7 +20,6 @@ public class Puzzle : MonoBehaviour
         {
             LevelCompletionManager.Instance.SavePuzzleCompletion(puzzle);
             LevelCompletionManager.Instance.CompletePuzzleInScene(SceneManager.GetActiveScene().name, puzzle.puzzleName);
-            LevelCompletionManager.Instance.DestroyPuzzle(gameObject);
             
             onPuzzleCompletion?.Invoke();
         }

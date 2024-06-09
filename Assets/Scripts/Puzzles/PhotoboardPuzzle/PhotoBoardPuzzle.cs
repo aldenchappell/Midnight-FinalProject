@@ -1,3 +1,4 @@
+using System;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
@@ -5,21 +6,21 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Cinemachine;
 
-public class WoodBlockPuzzle : MonoBehaviour
+public class PhotoBoardPuzzle : MonoBehaviour
 {
     [SerializeField] private GameObject startingPuzzleUI;
 
     //Added by Owen
     [SerializeField] Sprite originalSlotSprite;
     
-    private bool _solved = false;
+    [SerializeField] private bool _solved = false;
     private FirstPersonController _firstPersonController;
 
-    private WoodBlockPuzzlePiece _currentSelectedPuzzlePiece;
+    private PhotoBoardPuzzlePiece _currentSelectedPuzzlePiece;
 
-    [SerializeField] private WoodBlockPuzzlePiece[] puzzlePieces;
+    [SerializeField] private PhotoBoardPuzzlePiece[] puzzlePieces;
     private List<Vector3> _originalPositions;
-    [SerializeField] private WoodBlockPuzzleSlot[] puzzleSlots;
+    [SerializeField] private PhotoBoardPuzzleSlot[] puzzleSlots;
 
     [SerializeField] private TMP_Text movesMadeText;
     private int _movesMade;
@@ -34,16 +35,34 @@ public class WoodBlockPuzzle : MonoBehaviour
     private GameObject _playerUI;
     private CinemachineVirtualCamera _mainCam;
     private CinemachineVirtualCamera _puzzleCam;
-    
+
+    private PlayerDualHandInventory _playerDualHandInventory;
+    private PuzzlePiece _puzzlePieceRequired;
+    private PuzzleEscape _puzzleEscape;
+
+    public int polaroidCount;
+    private const int TargetPolaroidCount = 6;
     private void Awake()
     {
+        polaroidCount = 0;
         _puzzleAudio = GetComponent<AudioSource>();
         _puzzle = GetComponent<Puzzle>();
 
+        _playerDualHandInventory = FindObjectOfType<PlayerDualHandInventory>();
+        _puzzlePieceRequired = GetComponent<PuzzlePiece>();
+        _puzzleEscape = GetComponent<PuzzleEscape>();
         _firstPersonController = FindObjectOfType<FirstPersonController>();
         _playerUI = GameObject.Find("PlayerUICanvas");
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
-        _puzzleCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
+        _puzzleCam = GameObject.Find("InFrontPuzzleCam").GetComponent<CinemachineVirtualCamera>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && startingPuzzleUI.activeSelf)
+        {
+            _puzzleEscape.EscapePressed?.Invoke();
+        }
     }
 
     private void Start()
@@ -51,7 +70,7 @@ public class WoodBlockPuzzle : MonoBehaviour
         _movesMade = 0;
         _originalPositions = new List<Vector3>();
 
-        foreach (WoodBlockPuzzlePiece piece in puzzlePieces)
+        foreach (PhotoBoardPuzzlePiece piece in puzzlePieces)
         {
             _originalPositions.Add(piece.GetPosition);
             print(piece.name + " " + piece.GetPosition);
@@ -62,7 +81,7 @@ public class WoodBlockPuzzle : MonoBehaviour
     public void PlacePuzzlePiece(Button slotButton)
     {
         if (_solved) return;
-        WoodBlockPuzzleSlot slot = slotButton.GetComponent<WoodBlockPuzzleSlot>();
+        PhotoBoardPuzzleSlot slot = slotButton.GetComponent<PhotoBoardPuzzleSlot>();
         if (slot != null && _currentSelectedPuzzlePiece != null)
         {
 
@@ -74,8 +93,9 @@ public class WoodBlockPuzzle : MonoBehaviour
 
                 slot.puzzlePiece = _currentSelectedPuzzlePiece;
                 slotButton.GetComponent<Image>().sprite = _currentSelectedPuzzlePiece.GetComponent<Image>().sprite;
-
-
+                var color = slotButton.GetComponent<Image>().color;
+                slotButton.GetComponent<Image>().color = new Color(color.r, color.g, color.b, 255f);
+                
                 _currentSelectedPuzzlePiece.GetComponent<Button>().interactable = false;
 
 
@@ -113,8 +133,9 @@ public class WoodBlockPuzzle : MonoBehaviour
         {
             Debug.Log("Puzzle completed");
             _solved = true;
+            ExitPuzzle();
             TogglePuzzleUI();
-            ResetPuzzle(); //testing
+            //ResetPuzzle(); //testing
 
 
             if (_puzzle != null)
@@ -146,7 +167,7 @@ public class WoodBlockPuzzle : MonoBehaviour
             puzzlePieces[i].GetComponent<Button>().interactable = true;
         }
 
-        foreach (WoodBlockPuzzleSlot slot in puzzleSlots)
+        foreach (PhotoBoardPuzzleSlot slot in puzzleSlots)
         {
             slot.GetComponent<Image>().sprite = originalSlotSprite;
         }
@@ -157,9 +178,20 @@ public class WoodBlockPuzzle : MonoBehaviour
 
     public void TogglePuzzleUI()
     {
-        if (LevelCompletionManager.Instance.currentLevelPuzzles.Count != 1)
+        if (_solved)
         {
-            Debug.LogError("Player hasn't completed the image and maze ball puzzles.");
+            _puzzleAudio.PlayOneShot(incorrectSlotSound);
+            return;
+        }
+            
+        
+        if(!_solved
+           && polaroidCount != TargetPolaroidCount 
+           && LevelCompletionManager.Instance.currentLevelPuzzles.Count != 1 
+           && !_playerDualHandInventory.MatchPuzzlePieceInInventory(gameObject))
+        {
+            Debug.LogError("Player does not have polaroid");
+            _puzzleAudio.PlayOneShot(incorrectSlotSound);
             return;
         }
 
@@ -184,6 +216,18 @@ public class WoodBlockPuzzle : MonoBehaviour
         ToggleCamera();
     }
 
+    private void ExitPuzzle()
+    {
+        GlobalCursorManager.Instance.DisableCursor();
+        _playerUI.SetActive(true);
+        startingPuzzleUI.SetActive(false);
+        
+        _firstPersonController.canMove = true;
+        _firstPersonController.controller.enabled = true;
+        
+        ToggleCamera();
+    }
+    
     private void ToggleCamera()
     {
         if (_mainCam.Priority > _puzzleCam.Priority)
@@ -203,7 +247,7 @@ public class WoodBlockPuzzle : MonoBehaviour
     public void SelectPuzzlePiece(Button puzzlePieceButton)
     {
         if (_solved) return;
-        _currentSelectedPuzzlePiece = puzzlePieceButton.GetComponent<WoodBlockPuzzlePiece>();
+        _currentSelectedPuzzlePiece = puzzlePieceButton.GetComponent<PhotoBoardPuzzlePiece>();
     }
 
     private void UpdateMovesMadeUI(int movesUsed)

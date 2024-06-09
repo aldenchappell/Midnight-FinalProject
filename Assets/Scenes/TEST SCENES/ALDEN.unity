@@ -877,6 +877,7 @@ GameObject:
   - component: {fileID: 105075169}
   - component: {fileID: 105075167}
   - component: {fileID: 105075168}
+  - component: {fileID: 105075175}
   m_Layer: 7
   m_Name: CorkboardImagePuzzle
   m_TagString: Untagged
@@ -915,7 +916,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingPuzzleUI: {fileID: 1671902625}
   originalSlotSprite: {fileID: 21300000, guid: 32c372952ecacfb4c93d7e5f54ad494b, type: 3}
-  firstPersonController: {fileID: 2080705986}
   puzzlePieces:
   - {fileID: 2040596958}
   - {fileID: 2072257228}
@@ -935,9 +935,6 @@ MonoBehaviour:
   movesMadeText: {fileID: 150023641}
   correctSlotSound: {fileID: 8300000, guid: 1ef49d7b3c2af5a4bb2f7b25aa3b97d4, type: 3}
   incorrectSlotSound: {fileID: 8300000, guid: 8d8cc863a037fd74a86b7f6cac4a48d9, type: 3}
-  playerUI: {fileID: 599559539}
-  mainCam: {fileID: 1936861999}
-  puzzleCam: {fileID: 1416290838}
 --- !u!114 &105075168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -984,6 +981,18 @@ MonoBehaviour:
       - m_Target: {fileID: 105075167}
         m_TargetAssemblyTypeName: WoodBlockPuzzle, Assembly-CSharp
         m_MethodName: TogglePuzzleUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 105075175}
+        m_TargetAssemblyTypeName: PuzzleEscape, Assembly-CSharp
+        m_MethodName: ChangeIsActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1164,6 +1173,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &105075175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105075165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b3fc7431e6aac449d2cf7ee3fccca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EscapePressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 105075175}
+        m_TargetAssemblyTypeName: PuzzleEscape, Assembly-CSharp
+        m_MethodName: ChangeIsActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &108865551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,7 +1876,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingPuzzleUI: {fileID: 5867924988603597454}
   originalSlotSprite: {fileID: 21300000, guid: 3975332c7ea4c3a4fac5d0f05df29814, type: 3}
-  firstPersonController: {fileID: 2080705986}
   puzzlePieces:
   - {fileID: 4724216016927374656}
   - {fileID: 6412911688973483781}
@@ -1854,9 +1889,6 @@ MonoBehaviour:
   movesMadeText: {fileID: 237752387634471917}
   correctSlotSound: {fileID: 8300000, guid: 1ef49d7b3c2af5a4bb2f7b25aa3b97d4, type: 3}
   incorrectSlotSound: {fileID: 8300000, guid: 8d8cc863a037fd74a86b7f6cac4a48d9, type: 3}
-  playerUI: {fileID: 0}
-  mainCam: {fileID: 0}
-  puzzleCam: {fileID: 0}
 --- !u!114 &187064460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2764,6 +2796,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6810330853496925440, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
   m_PrefabInstance: {fileID: 1572344791}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &309033922
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4665136484641481010, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_Name
+      value: DaVinciPuzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.45972
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8418589
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.2137418
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473619876284562312, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
 --- !u!4 &319117141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d6e269fe38bbf5942b4e3ee651fb1db0, type: 3}
@@ -4031,11 +4120,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1500, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &599559539 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4810593981529044818, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-  m_PrefabInstance: {fileID: 1572344791}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &599779889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4614,6 +4698,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6270535685669938727, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
   m_PrefabInstance: {fileID: 1572344791}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &813309616
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2237597290829421694, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_Name
+      value: MazeBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.559222
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8418586
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.86944604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7072302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7069834
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300135486836177909, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
 --- !u!4 &815687424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2994542995377701662, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
@@ -6000,63 +6141,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260932979}
   m_CullTransparentMesh: 1
---- !u!1001 &1265388588
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.792397
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.171
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.8916116
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
-      propertyPath: m_Name
-      value: Mazeball
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c1a6c935325f0f4498fdaf21c99c2daf, type: 3}
 --- !u!1001 &1274506790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9157,6 +9241,7 @@ GameObject:
   - component: {fileID: 2058819198}
   - component: {fileID: 2058819207}
   - component: {fileID: 2058819199}
+  - component: {fileID: 2058819208}
   m_Layer: 7
   m_Name: Temp_MazeBallPuzzle
   m_TagString: Untagged
@@ -9236,6 +9321,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2058819198}
         m_TargetAssemblyTypeName: MazeBullPuzzle, Assembly-CSharp
         m_MethodName: TogglePuzzleUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2058819208}
+        m_TargetAssemblyTypeName: PuzzleEscape, Assembly-CSharp
+        m_MethodName: ChangeIsActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9449,6 +9546,33 @@ MonoBehaviour:
   puzzleCam: {fileID: 1175320700}
   mazePuzzleObj: {fileID: 919132149566114025}
   offset: {x: 0, y: 2.5, z: 0}
+--- !u!114 &2058819208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058819197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b3fc7431e6aac449d2cf7ee3fccca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EscapePressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2058819198}
+        m_TargetAssemblyTypeName: MazeBullPuzzle, Assembly-CSharp
+        m_MethodName: TogglePuzzleUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2072257227
 GameObject:
   m_ObjectHideFlags: 0
@@ -9758,6 +9882,7 @@ GameObject:
   - component: {fileID: 2078247106}
   - component: {fileID: 2078247105}
   - component: {fileID: 2078247104}
+  - component: {fileID: 2078247113}
   m_Layer: 7
   m_Name: Temp_SlidingImagePuzzle
   m_TagString: Untagged
@@ -9780,7 +9905,19 @@ MonoBehaviour:
   puzzle: {fileID: 11400000, guid: 93449b2d1a35d474097bc67160a2b1c7, type: 2}
   onPuzzleCompletion:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2078247107}
+        m_TargetAssemblyTypeName: SlidingImagePuzzle, Assembly-CSharp
+        m_MethodName: InstantiateMazeballAtPlayerFeet
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2078247105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9811,6 +9948,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2078247107}
         m_TargetAssemblyTypeName: SlidingImagePuzzle, Assembly-CSharp
         m_MethodName: TogglePuzzleUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2078247113}
+        m_TargetAssemblyTypeName: PuzzleEscape, Assembly-CSharp
+        m_MethodName: ChangeIsActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9860,6 +10009,7 @@ MonoBehaviour:
   firstPersonController: {fileID: 2080705986}
   movesRemainingText: {fileID: 1257654927}
   correctMoveSound: {fileID: 8300000, guid: 1ef49d7b3c2af5a4bb2f7b25aa3b97d4, type: 3}
+  mazeballPrefab: {fileID: 2237597290829421694, guid: f76a7f7356aa11d4daa577e75e0d3819, type: 3}
 --- !u!65 &2078247108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10043,6 +10193,33 @@ Transform:
   - {fileID: 363908375}
   m_Father: {fileID: 1897193350}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2078247113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078247103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b3fc7431e6aac449d2cf7ee3fccca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EscapePressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2078247107}
+        m_TargetAssemblyTypeName: SlidingImagePuzzle, Assembly-CSharp
+        m_MethodName: TogglePuzzleUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2080705986 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1185921017414210651, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
@@ -11420,5 +11597,6 @@ SceneRoots:
   - {fileID: 1804164132}
   - {fileID: 7401235349710595900}
   - {fileID: 1100283986789120959}
-  - {fileID: 1265388588}
   - {fileID: 1378815710}
+  - {fileID: 813309616}
+  - {fileID: 309033922}

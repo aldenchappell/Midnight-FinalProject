@@ -30,11 +30,12 @@ public class SlidingImagePuzzle : MonoBehaviour
     [SerializeField] private AudioClip correctMoveSound;
     
     [SerializeField] private GameObject mazeballPrefab;
-
+    private PuzzleEscape _puzzleEscape;
     private void Awake()
     {
         _puzzle = GetComponent<Puzzle>();
         _audio = GetComponent<AudioSource>();
+        _puzzleEscape = GetComponent<PuzzleEscape>();
     }
 
 
@@ -47,12 +48,9 @@ public class SlidingImagePuzzle : MonoBehaviour
 
     private void Update()
     {
-        if (puzzleUI.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape) && puzzleUI.activeSelf)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                TogglePuzzleUI();
-            }
+            _puzzleEscape.EscapePressed?.Invoke();
         }
     }
 
@@ -178,13 +176,10 @@ public class SlidingImagePuzzle : MonoBehaviour
         {
             _puzzle.CompletePuzzle();
             firstPersonController.ToggleCanMove();
-
-            // Instantiate the mazeball at the player's feet
-            InstantiateMazeballAtPlayerFeet();
         }
     }
 
-    private void InstantiateMazeballAtPlayerFeet()
+    public void InstantiateMazeballAtPlayerFeet()
     {
         if (mazeballPrefab != null)
         {

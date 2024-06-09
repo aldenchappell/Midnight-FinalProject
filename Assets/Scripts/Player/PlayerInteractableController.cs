@@ -20,7 +20,7 @@ public class PlayerInteractableController : MonoBehaviour
     [SerializeField] private Vector2 defaultInteractionIconSize;
     [SerializeField] private float interactionDistance = 2.0f;
 
-    private const float SpamPreventionTime = 2.0f;
+    [SerializeField] private float spamPreventionTime = 2.0f;
     private bool _allowInteraction = true;
     
     private GameObject _skullCompanion;
@@ -137,7 +137,7 @@ public class PlayerInteractableController : MonoBehaviour
     {
         _allowInteraction = false;
         UpdateInteractionUI(_interactableObject);
-        yield return new WaitForSeconds(SpamPreventionTime);
+        yield return new WaitForSeconds(spamPreventionTime);
         _allowInteraction = true;
         UpdateInteractionUI(_interactableObject);
     }

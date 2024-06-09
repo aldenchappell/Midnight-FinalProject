@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WoodBlockPuzzleSlot : MonoBehaviour
+public class PhotoBoardPuzzleSlot : MonoBehaviour
 {
-    public WoodBlockPuzzlePiece puzzlePiece;
+    public PhotoBoardPuzzlePiece puzzlePiece;
     public int value;
 }

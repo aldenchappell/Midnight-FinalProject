@@ -29,11 +29,6 @@ public class LevelCompletionManager : MonoBehaviour
         }
     }
 
-    public void DestroyPuzzle(GameObject puzzleToDestroy)
-    {
-        Destroy(puzzleToDestroy);
-    }
-
     public void SavePuzzleCompletion(SO_Puzzle puzzle)
     {
         if (currentLevelPuzzles == null)
@@ -69,6 +64,11 @@ public class LevelCompletionManager : MonoBehaviour
     public bool IsPuzzleCompleted(string puzzleName)
     {
         return _completedPuzzles.Contains(puzzleName);
+    }
+
+    public void DestroyPuzzlePiece()
+    {
+        
     }
 
     public void ResetPuzzles()

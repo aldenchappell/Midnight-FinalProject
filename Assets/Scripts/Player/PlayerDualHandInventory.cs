@@ -148,4 +148,15 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
         return false;
     }
+
+    public bool MatchPuzzlePieceInInventory(GameObject activePuzzlePiece)
+    {
+        if (_inventorySlots.Length > 0 && _inventorySlots[1] != null)
+        {
+            return _inventorySlots[1].GetComponent<PuzzlePiece>().puzzlePieceName
+                   == activePuzzlePiece.GetComponent<PuzzlePiece>().puzzlePieceName;
+        }
+
+        return false;
+    }
 }

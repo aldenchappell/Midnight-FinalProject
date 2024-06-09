@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 1660208763438686689}
   - component: {fileID: 4584994966793000179}
   - component: {fileID: 185423678746916736}
+  - component: {fileID: 6140434526267297655}
   - component: {fileID: 8464533797917494297}
+  - component: {fileID: -8287125775092965685}
   m_Layer: 7
   m_Name: MazeBall
   m_TagString: Untagged
@@ -106,6 +108,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.028125003
   m_Center: {x: -9.313226e-10, y: 0.0000000018626449, z: 9.3132246e-10}
+--- !u!114 &6140434526267297655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237597290829421694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a872b0592db87c549a51c8666ba35399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8464533797917494297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,3 +151,16 @@ MonoBehaviour:
   interactableIconSize: {x: 50, y: 50}
   interactableID: 0
   highlightInteractableObjectController: {fileID: 0}
+--- !u!114 &-8287125775092965685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237597290829421694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06468f160d689e48ad2a211de4e2b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzlePieceName: MazeBall

@@ -35,7 +35,8 @@ public class MazeBullPuzzle : MonoBehaviour
     [Header("Puzzle Scoring")] 
     private float _currentTimer;
     private const float MaxTimeAllowed = 60f; //we will adjust this based on testing with finished puzzle model.
-
+    private PuzzleEscape _puzzleEscape;
+    
     [Space(5)]
     
     [Header("Audio")] 
@@ -47,6 +48,7 @@ public class MazeBullPuzzle : MonoBehaviour
     {
         puzzle = GetComponent<Puzzle>();
         _audio = GetComponent<AudioSource>();
+        _puzzleEscape = GetComponent<PuzzleEscape>();
     }
 
     private void Update()
@@ -80,10 +82,10 @@ public class MazeBullPuzzle : MonoBehaviour
             HandleTimer(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.F) &&
+        if (Input.GetKeyDown(KeyCode.Escape) &&
             (playerInteractableController.IsLookingAtInteractableObject(mazePuzzleObj) || mazePuzzleObj.activeSelf))
         {
-            TogglePuzzleUI();
+            _puzzleEscape.EscapePressed?.Invoke();
         }
     }
 
@@ -213,7 +215,6 @@ public class MazeBullPuzzle : MonoBehaviour
         Destroy(originalMazeBall);
         GameObject newBall = Instantiate(pfMazeBall, mazePuzzleBallSpawnPos.position, Quaternion.identity);
         newBall.transform.SetParent(mazePuzzleObj.transform);
-        newBall.GetComponent<MazeBall>().mazePuzzle = this;
         
         originalMazeBall = newBall;
         
