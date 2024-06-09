@@ -56,6 +56,14 @@ public class PlayerDualHandInventory : MonoBehaviour
             PlaceObjectFromInventory(value);
         }
     }
+
+    public GameObject RemoveObject
+    {
+        set
+        {
+            RemoveObjectInInventory(value);
+        }
+    }
     #endregion
 
 
@@ -93,6 +101,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                 
                 _inventorySlots[currentIndexSelected].transform.position = objectPosition.transform.position;
                 _inventorySlots[currentIndexSelected].transform.eulerAngles = objectPosition.transform.eulerAngles;
+                _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
                 Destroy(_inventorySlots[currentIndexSelected].GetComponent<InteractableObject>());
                 Destroy(objectPosition);
                 _inventorySlots[currentIndexSelected] = null;
@@ -118,10 +127,24 @@ public class PlayerDualHandInventory : MonoBehaviour
                 _inventorySlots[index].transform.position = objectPosition.transform.position;
                 _inventorySlots[index].transform.eulerAngles = objectPosition.transform.eulerAngles;
                 _inventorySlots[index].transform.localScale = objectPosition.transform.localScale;
+                _inventorySlots[index].GetComponent<InteractableObject>().onPlaceObject.Invoke();
                 Destroy(_inventorySlots[index].GetComponent<InteractableObject>());
                 Destroy(_inventorySlots[index].GetComponent<Collider>());
                 Destroy(objectPosition);
                 _inventorySlots[index].SetActive(true);
+                _inventorySlots[index] = null;
+            }
+        }
+    }
+
+    private void RemoveObjectInInventory(GameObject obj)
+    {
+        foreach(GameObject item in _inventorySlots)
+        {
+            if(item == obj)
+            {
+                int index = System.Array.IndexOf(_inventorySlots, obj);
+                Destroy(_inventorySlots[index]);
                 _inventorySlots[index] = null;
             }
         }

@@ -7,6 +7,8 @@ public class InteractableObject : MonoBehaviour
 {
     public UnityEvent onInteraction;
 
+    public UnityEvent onPlaceObject;
+
     public Sprite interactionIcon;
 
     public Vector2 interactableIconSize;
