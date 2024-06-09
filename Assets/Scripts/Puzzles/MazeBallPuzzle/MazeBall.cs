@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class MazeBall : MonoBehaviour
 {
-    private MazeBullPuzzle _mazePuzzle;
+    private MazeBallPuzzle _mazePuzzle;
 
     private void Awake()
     {
-        _mazePuzzle = FindObjectOfType<MazeBullPuzzle>();
+        _mazePuzzle = FindObjectOfType<MazeBallPuzzle>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,5 +16,9 @@ public class MazeBall : MonoBehaviour
         _mazePuzzle.solved = true;
         _mazePuzzle.TogglePuzzleUI();
         _mazePuzzle.puzzle.CompletePuzzle();
+        _mazePuzzle.Complete();
+        _mazePuzzle.ResetRotation();
+        
+        Destroy(gameObject);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Cinemachine;
 using StarterAssets;
 using TMPro;
 using Random = UnityEngine.Random;
@@ -26,12 +27,19 @@ public class SlidingImagePuzzle : MonoBehaviour
     private int _movesMade;
     private int _maxMoves = 15;
 
+    [Header("Cinemachine Cameras")]
+    private CinemachineVirtualCamera _mainCam;
+    private CinemachineVirtualCamera _puzzleCam;
+    
+    
+    [Header("Audio")]
     private AudioSource _audio;
     [SerializeField] private AudioClip correctMoveSound;
     [SerializeField] private AudioClip puzzleCompletedSound;
     
     [SerializeField] private GameObject mazeballPrefab;
     private PuzzleEscape _puzzleEscape;
+    private GameObject _playerUI;
 
     private bool _solved;
     private void Awake()
@@ -39,6 +47,9 @@ public class SlidingImagePuzzle : MonoBehaviour
         _puzzle = GetComponent<Puzzle>();
         _audio = GetComponent<AudioSource>();
         _puzzleEscape = GetComponent<PuzzleEscape>();
+        _playerUI = GameObject.Find("PlayerUICanvas");
+        _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
+        _puzzleCam = GameObject.Find("SlidingImagePuzzleCam").GetComponent<CinemachineVirtualCamera>();
     }
 
 
@@ -71,13 +82,33 @@ public class SlidingImagePuzzle : MonoBehaviour
         if (puzzleUI.activeSelf)
         {
             GlobalCursorManager.Instance.EnableCursor();
+            _playerUI.SetActive(false);
         }
         else
         {
             GlobalCursorManager.Instance.DisableCursor();
+            _playerUI.SetActive(true);
+        }
+        
+        ToggleCamera();
+    }
+
+
+    private void ToggleCamera()
+    {
+        if (_mainCam.Priority > _puzzleCam.Priority)
+        {
+            _mainCam.Priority = 0;
+            _puzzleCam.Priority = 10;
+            
+        }
+        else
+        {
+            _mainCam.Priority = 10;
+            _puzzleCam.Priority = 0;
+            
         }
     }
-    
     private void AssignUniqueSprites()
     {
         List<Sprite> uniqueSprites = new List<Sprite>(puzzleSprites);

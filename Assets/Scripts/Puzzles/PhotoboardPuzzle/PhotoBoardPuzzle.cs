@@ -54,7 +54,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
         _firstPersonController = FindObjectOfType<FirstPersonController>();
         _playerUI = GameObject.Find("PlayerUICanvas");
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
-        _puzzleCam = GameObject.Find("InFrontPuzzleCam").GetComponent<CinemachineVirtualCamera>();
+        _puzzleCam = GameObject.Find("PhotoBoardPuzzleCam").GetComponent<CinemachineVirtualCamera>();
     }
 
     private void Update()
