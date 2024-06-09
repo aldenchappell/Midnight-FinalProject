@@ -7,8 +7,8 @@ using StarterAssets;
 public class HideBehindDoor : MonoBehaviour
 {
     private CinemachineVirtualCamera _playerCam;
-    private CinemachineVirtualCamera _doorHideCamera;
-    private CinemachineVirtualCamera _doorSpyHoleCamera;
+    [SerializeField] CinemachineVirtualCamera _doorHideCamera;
+    [SerializeField] CinemachineVirtualCamera _doorSpyHoleCamera;
     private Camera _mainCamera;
 
     private DoorController _doorController;
@@ -20,9 +20,7 @@ public class HideBehindDoor : MonoBehaviour
     private void Awake()
     {
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
-        _doorHideCamera = gameObject.transform.parent.GetChild(2).GetComponent<CinemachineVirtualCamera>();
         _mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
-        _doorSpyHoleCamera = gameObject.transform.GetChild(0).GetComponent<CinemachineVirtualCamera>();
 
         _doorController = GetComponent<DoorController>();
         _player = GameObject.Find("Player");
