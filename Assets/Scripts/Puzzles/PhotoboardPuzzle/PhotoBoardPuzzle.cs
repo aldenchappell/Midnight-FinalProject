@@ -44,6 +44,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
     private GameObject _polaroidObj;
     public int polaroidCount;
     private const int TargetPolaroidCount = 6;
+    private bool _isFirstTime = true;
     private void Awake()
     {
         polaroidCount = 0;
@@ -184,18 +185,14 @@ public class PhotoBoardPuzzle : MonoBehaviour
             _puzzleAudio.PlayOneShot(incorrectSlotSound);
             return;
         }
-
-        var inv = _playerDualHandInventory.GetInventory;
         
-        
-        // Check if the player has collected enough polaroids
-        if (!_solved
-            && polaroidCount != TargetPolaroidCount
-            && LevelCompletionManager.Instance.currentLevelPuzzles.Count != 1
-            && !inv.Contains(_polaroidObj))
+        bool hasPolaroid = _playerDualHandInventory.GetInventory.Any(item => item != null
+                                                                             && item.CompareTag("Polaroid"));
+    
+        if (!hasPolaroid)
         {
-            Debug.LogError("Player does not have enough polaroids or is not holding the required puzzle piece.");
             _puzzleAudio.PlayOneShot(incorrectSlotSound);
+            Debug.LogError("Player doesn't have the polaroid.");
             return;
         }
 
@@ -224,6 +221,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
         }
 
         ToggleCamera();
+        PlacePolaroid();
     }
 
 
@@ -241,6 +239,18 @@ public class PhotoBoardPuzzle : MonoBehaviour
         _firstPersonController.controller.enabled = true;
         
         ToggleCamera();
+    }
+
+    private void PlacePolaroid()
+    {
+
+        if (_isFirstTime)
+        {
+            _isFirstTime = false;
+
+            _playerDualHandInventory.RemoveObject = _polaroidObj;
+            _polaroidObj = null;
+        }
     }
     
     private void ToggleCamera()
