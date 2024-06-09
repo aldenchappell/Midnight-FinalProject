@@ -30,6 +30,14 @@ public class KeyController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if(isTaggedKey)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public void OnPickupDestroy()
     {
         if (isTaggedKey)
