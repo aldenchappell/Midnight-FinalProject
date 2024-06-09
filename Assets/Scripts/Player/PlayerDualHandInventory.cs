@@ -141,11 +141,13 @@ public class PlayerDualHandInventory : MonoBehaviour
     {
         foreach(GameObject item in _inventorySlots)
         {
-            if(item == obj)
+            print(obj.name);
+            if(item.name.Contains(obj.name))
             {
-                int index = System.Array.IndexOf(_inventorySlots, obj);
+                int index = System.Array.IndexOf(_inventorySlots, item);
                 Destroy(_inventorySlots[index]);
                 _inventorySlots[index] = null;
+                break;
             }
         }
     }

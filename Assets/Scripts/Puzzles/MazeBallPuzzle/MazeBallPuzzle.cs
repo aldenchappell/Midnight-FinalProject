@@ -135,7 +135,7 @@ public class MazeBallPuzzle : MonoBehaviour
         
         InitializeBall();
         _animator.SetTrigger(Start);
-
+        
         bool isActive = !puzzleUI.activeSelf;
         
         puzzleUI.SetActive(isActive);
@@ -258,6 +258,11 @@ public class MazeBallPuzzle : MonoBehaviour
             originalMazeBall = Instantiate(pfMazeBall, mazePuzzleBallSpawnPos.position, Quaternion.identity);
             originalMazeBall.transform.SetParent(mazePuzzleObj.transform);
             _puzzlePieceRequired = originalMazeBall.GetComponent<PuzzlePiece>();
+
+            //var interactableObj = GetComponent<InteractableObject>();
+            //interactableObj.onInteraction.RemoveListener(() => _playerDualHandInventory.RemoveObject = originalMazeBall);
+
+            _playerDualHandInventory.RemoveObject = originalMazeBall;
         }
     }
     
