@@ -5,7 +5,7 @@ public class PlayerDualHandInventory : MonoBehaviour
     [Header("Item Hand Location")]
     [SerializeField] Transform handPosition;
 
-    private GameObject[] _inventorySlots;
+    public GameObject[] _inventorySlots;
     public int currentIndexSelected;
 
     public GameObject[] GetInventory

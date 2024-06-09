@@ -59,7 +59,7 @@ public class MazeBallPuzzle : MonoBehaviour
     private PlayerDualHandInventory _playerDualHandInventory;
     private bool _firstTime = true;
 
-    private PuzzlePiece _puzzlePieceRequired;    
+    //private PuzzlePiece _puzzlePieceRequired;    
     private Quaternion _startingRotation;
     private void Awake()
     {
@@ -72,7 +72,7 @@ public class MazeBallPuzzle : MonoBehaviour
         _playerDualHandInventory = FindObjectOfType<PlayerDualHandInventory>();
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("MazePuzzleCam").GetComponent<CinemachineVirtualCamera>();
-        _puzzlePieceRequired = originalMazeBall.GetComponent<PuzzlePiece>();
+        //_puzzlePieceRequired = originalMazeBall.GetComponent<PuzzlePiece>();
         _startingRotation = transform.rotation;
     }
 
@@ -121,25 +121,25 @@ public class MazeBallPuzzle : MonoBehaviour
             _audio.PlayOneShot(puzzleCompletedSound);
             return;
         }
-
-        var inv = _playerDualHandInventory.GetInventory; 
         
-        if (!inv.Contains(originalMazeBall)
-            && LevelCompletionManager.Instance.currentLevelPuzzles.Count != 2)
+        bool hasMazeBall = _playerDualHandInventory.GetInventory.Any(item => item != null
+                                                                             && item.CompareTag("MazeBall"));
+    
+        if (!hasMazeBall)
         {
             _audio.PlayOneShot(invalidButtonSound);
-            Debug.LogError("Player hasn't completed the image puzzle.");
+            Debug.LogError("Player doesn't have the maze ball.");
             return;
         }
 
-        
-        InitializeBall();
         _animator.SetTrigger(Start);
-        
+
         bool isActive = !puzzleUI.activeSelf;
-        
+
         puzzleUI.SetActive(isActive);
-        _isInPuzzle = isActive; 
+        _isInPuzzle = isActive;
+
+        InitializeBall();
 
         _firstPersonController.ToggleCanMove();
 
@@ -150,6 +150,7 @@ public class MazeBallPuzzle : MonoBehaviour
 
         ToggleCamera();
     }
+
 
 
     private void ToggleCamera()
@@ -244,25 +245,18 @@ public class MazeBallPuzzle : MonoBehaviour
     {
         timeRemainingText.text = "Time Remaining: " + Mathf.CeilToInt(MaxTimeAllowed - _currentTimer);
     }
-    
-    //puzzle starts with no ball
-    //when the player has the maze ball it should start the ball in animation and spawn a ballprefab in the spawn position
-    //that ball prefab should be made a child of the mazeBallObj
-    //then if the player runs out of time it resets
 
     public void InitializeBall()
     {
         if (_firstTime)
         {
             _firstTime = false;
-            originalMazeBall = Instantiate(pfMazeBall, mazePuzzleBallSpawnPos.position, Quaternion.identity);
-            originalMazeBall.transform.SetParent(mazePuzzleObj.transform);
-            _puzzlePieceRequired = originalMazeBall.GetComponent<PuzzlePiece>();
+            originalMazeBall.SetActive(true);
 
-            //var interactableObj = GetComponent<InteractableObject>();
-            //interactableObj.onInteraction.RemoveListener(() => _playerDualHandInventory.RemoveObject = originalMazeBall);
-
-            _playerDualHandInventory.RemoveObject = originalMazeBall;
+            if (GameObject.FindWithTag("MazeBall") != null)
+            {
+                _playerDualHandInventory.RemoveObject = GameObject.FindWithTag("MazeBall");
+            }
         }
     }
     
