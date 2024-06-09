@@ -107,10 +107,10 @@ public class MazeBallPuzzle : MonoBehaviour
             HandleTimer(false);
         }
 
-        if (!solved && Input.GetKeyDown(KeyCode.Escape) &&
-            (_playerInteractableController.IsLookingAtInteractableObject(gameObject) || puzzleUI.activeSelf))
+        if (Input.GetKeyDown(KeyCode.E) &&
+            (_playerInteractableController.IsLookingAtInteractableObject(mazePuzzleObj) || mazePuzzleObj.activeSelf))
         {
-            _puzzleEscape.EscapePressed?.Invoke();
+            TogglePuzzleUI();
         }
     }
 
@@ -124,7 +124,7 @@ public class MazeBallPuzzle : MonoBehaviour
         
         bool hasMazeBall = _playerDualHandInventory.GetInventory.Any(item => item != null
                                                                              && item.CompareTag("MazeBall"));
-    
+        
         if (!hasMazeBall)
         {
             _audio.PlayOneShot(invalidButtonSound);
@@ -150,8 +150,6 @@ public class MazeBallPuzzle : MonoBehaviour
 
         ToggleCamera();
     }
-
-
 
     private void ToggleCamera()
     {
