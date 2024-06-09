@@ -54,6 +54,6 @@ public class PlayerDeathController : MonoBehaviour
     private void ReturnToLobby()
     {
         //TO BE CHANGED TO LOBBY
-        SceneManager.LoadScene("ALDEN");
+        SceneManager.LoadScene("LOBBY");
     }
 }
