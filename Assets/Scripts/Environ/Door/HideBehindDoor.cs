@@ -26,7 +26,7 @@ public class HideBehindDoor : MonoBehaviour
 
         _doorController = GetComponent<DoorController>();
         _player = GameObject.Find("Player");
-        _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
+        _FPC = FindObjectOfType<FirstPersonController>();
     }
 
     private void Start()
@@ -108,7 +108,7 @@ public class HideBehindDoor : MonoBehaviour
             _doorSpyHoleCamera.Priority = 5;
 
             //Activate SpyHole Exterior Box Collider to allow the player to return from spy hole camera position
-            Collider[] colliders = _doorSpyHoleCamera.gameObject.transform.GetComponents<Collider>();
+            Collider[] colliders = _doorSpyHoleCamera.gameObject.transform.GetComponentsInChildren<Collider>();
             foreach(Collider collider in colliders)
             {
                 collider.enabled = !collider.enabled;
@@ -120,7 +120,7 @@ public class HideBehindDoor : MonoBehaviour
             _doorHideCamera.Priority = 5;
 
             //Deactivate SpyHole Exterior Box Collider to prevent confusing collision outside of the door
-            Collider[] colliders = _doorSpyHoleCamera.gameObject.transform.GetComponents<Collider>();
+            Collider[] colliders = _doorSpyHoleCamera.gameObject.transform.GetComponentsInChildren<Collider>();
             foreach (Collider collider in colliders)
             {
                 collider.enabled = !collider.enabled;
@@ -134,12 +134,12 @@ public class HideBehindDoor : MonoBehaviour
     {
         if(_isActive)
         {
-            _player.transform.GetChild(2).gameObject.layer = 0;
+            _player.transform.gameObject.layer = 0;
             _FPC.ToggleCanMove();
         }
         else
         {
-            _player.transform.GetChild(2).gameObject.layer = 6;
+            _player.transform.gameObject.layer = 6;
             _FPC.ToggleCanMove();
         }
     }

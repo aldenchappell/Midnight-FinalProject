@@ -64,6 +64,10 @@ public class PlayerInteractableController : MonoBehaviour
         else
         {
             ResetHighlight();
+
+            // Set interaction image to default interaction icon when no interactable object is detected
+            interactionImage.sprite = defaultInteractionIcon;
+            interactionImage.rectTransform.sizeDelta = defaultIconSize;
             
             if (_skullCompanion != null && !_skullCompanion.GetComponent<SkullDialogue>().pickedUp)
             {
@@ -90,8 +94,6 @@ public class PlayerInteractableController : MonoBehaviour
 
             StartCoroutine(InteractionSpamPrevention());
         }
-
-
     }
 
     private void ResetHighlight()
@@ -126,7 +128,6 @@ public class PlayerInteractableController : MonoBehaviour
             interactionImage.rectTransform.sizeDelta = defaultIconSize;
         }
     }
-
 
     public bool IsLookingAtInteractableObject(GameObject target)
     {

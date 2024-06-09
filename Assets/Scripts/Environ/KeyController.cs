@@ -9,7 +9,7 @@ public class KeyController : MonoBehaviour
     {
         _interactable = GetComponent<InteractableObject>();
         
-        _playerKeyController = GameObject.Find("Player").GetComponent<PlayerKeyController>();
+        _playerKeyController = FindObjectOfType<PlayerKeyController>();
         
         if (_interactable != null && _playerKeyController != null)
         {

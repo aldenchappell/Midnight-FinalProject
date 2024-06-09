@@ -8,8 +8,8 @@ public class MazeBallPuzzle : MonoBehaviour
 {
     [HideInInspector] public Puzzle puzzle;
 
-    [SerializeField] private PlayerInteractableController playerInteractableController;
-    [SerializeField] private FirstPersonController firstPersonController;
+    private PlayerInteractableController _playerInteractableController;
+    private FirstPersonController _firstPersonController;
     [SerializeField] private GameObject mazePuzzleObj;
     [SerializeField] private GameObject originalMazeBall;
     [SerializeField] private GameObject pfMazeBall;
@@ -57,8 +57,12 @@ public class MazeBallPuzzle : MonoBehaviour
     public bool solved;
     private PlayerDualHandInventory _playerDualHandInventory;
     private bool _firstTime = true;
+
+    private Quaternion _startingRotation;
     private void Awake()
     {
+        _playerInteractableController = FindObjectOfType<PlayerInteractableController>();
+        _firstPersonController = FindObjectOfType<FirstPersonController>();
         puzzle = GetComponent<Puzzle>();
         _audio = GetComponent<AudioSource>();
         _puzzleEscape = GetComponent<PuzzleEscape>();
@@ -66,6 +70,8 @@ public class MazeBallPuzzle : MonoBehaviour
         _playerDualHandInventory = FindObjectOfType<PlayerDualHandInventory>();
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("MazePuzzleCam").GetComponent<CinemachineVirtualCamera>();
+
+        _startingRotation = transform.rotation;
     }
 
     private void Update()
@@ -100,7 +106,7 @@ public class MazeBallPuzzle : MonoBehaviour
         }
 
         if (!solved && Input.GetKeyDown(KeyCode.Escape) &&
-            (playerInteractableController.IsLookingAtInteractableObject(gameObject) || puzzleUI.activeSelf))
+            (_playerInteractableController.IsLookingAtInteractableObject(gameObject) || puzzleUI.activeSelf))
         {
             _puzzleEscape.EscapePressed?.Invoke();
         }
@@ -114,20 +120,24 @@ public class MazeBallPuzzle : MonoBehaviour
             return;
         }
         
-        // if (!_playerDualHandInventory.MatchPuzzlePieceInInventory(gameObject)
-        //     && LevelCompletionManager.Instance.currentLevelPuzzles.Count != 2)
-        // {
-        //     Debug.LogError("Player hasn't completed the image puzzle.");
-        //     return;
-        // }
+        if (!_playerDualHandInventory.MatchPuzzlePieceInInventory(gameObject)
+            && LevelCompletionManager.Instance.currentLevelPuzzles.Count != 2)
+        {
+            _audio.PlayOneShot(invalidButtonSound);
+            Debug.LogError("Player hasn't completed the image puzzle.");
+            return;
+        }
 
+        
+        InitializeBall();
         _animator.SetTrigger(Start);
 
         bool isActive = !puzzleUI.activeSelf;
+        
         puzzleUI.SetActive(isActive);
-        _isInPuzzle = isActive; // Update the flag when toggling
+        _isInPuzzle = isActive; 
 
-        firstPersonController.ToggleCanMove();
+        _firstPersonController.ToggleCanMove();
 
         if (!isActive)
         {
@@ -144,6 +154,7 @@ public class MazeBallPuzzle : MonoBehaviour
         {
             _mainCam.Priority = 0;
             _puzzleCam.Priority = 10;
+            _puzzleCam.transform.rotation = _puzzleCam.m_Follow.rotation;
         }
         else
         {
@@ -264,8 +275,8 @@ public class MazeBallPuzzle : MonoBehaviour
         _animator.SetTrigger(Finish);
         
         ToggleCamera();
-        firstPersonController.ToggleCanMove();
-        firstPersonController.canRotate = true;
+        _firstPersonController.ToggleCanMove();
+        _firstPersonController.canRotate = true;
         //_audio.enabled = false;
         Destroy(puzzleUI);
     }
@@ -294,7 +305,7 @@ public class MazeBallPuzzle : MonoBehaviour
         float lerpTime = 0f;
         float lerpSpeed = 1.0f;
         Quaternion startRot = mazePuzzleObj.transform.rotation;
-        Quaternion targetRot = Quaternion.Euler(Vector3.zero);
+        Quaternion targetRot = _startingRotation;
 
         while (lerpTime < 1f)
         {
