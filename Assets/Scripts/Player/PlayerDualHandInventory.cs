@@ -24,7 +24,21 @@ public class PlayerDualHandInventory : MonoBehaviour
         currentIndexSelected = 0;
         PickedUp = false; // Initialize picked up state
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currentIndexSelected = 0;
+            ShowCurrentIndexItem();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentIndexSelected = 1;
+            ShowCurrentIndexItem();
+        }
+    }
 
+    #region Public methods
     // Adjust inventory when picking up a new interactable object
     public GameObject AdjustInventorySlots
     {
@@ -42,21 +56,10 @@ public class PlayerDualHandInventory : MonoBehaviour
             PlaceObjectFromInventory(value);
         }
     }
+    #endregion
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            currentIndexSelected = 0;
-            ShowCurrentIndexItem();
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentIndexSelected = 1;
-            ShowCurrentIndexItem();
-        }
-    }
 
+    #region Inventory Methods
     // Swap current interactable object in hand for another in the environment
     private void SwapObjectsInInventory(GameObject newObject)
     {
@@ -114,6 +117,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                 }
                 _inventorySlots[index].transform.position = objectPosition.transform.position;
                 _inventorySlots[index].transform.eulerAngles = objectPosition.transform.eulerAngles;
+                _inventorySlots[index].transform.localScale = objectPosition.transform.localScale;
                 Destroy(_inventorySlots[index].GetComponent<InteractableObject>());
                 Destroy(_inventorySlots[index].GetComponent<Collider>());
                 Destroy(objectPosition);
@@ -122,7 +126,7 @@ public class PlayerDualHandInventory : MonoBehaviour
             }
         }
     }
-
+    #endregion
     private void ShowCurrentIndexItem()
     {
         foreach(GameObject obj in _inventorySlots)
