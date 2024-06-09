@@ -28,9 +28,12 @@ public class SlidingImagePuzzle : MonoBehaviour
 
     private AudioSource _audio;
     [SerializeField] private AudioClip correctMoveSound;
+    [SerializeField] private AudioClip puzzleCompletedSound;
     
     [SerializeField] private GameObject mazeballPrefab;
     private PuzzleEscape _puzzleEscape;
+
+    private bool _solved;
     private void Awake()
     {
         _puzzle = GetComponent<Puzzle>();
@@ -56,6 +59,11 @@ public class SlidingImagePuzzle : MonoBehaviour
 
     public void TogglePuzzleUI()
     {
+        if (_solved)
+        {
+            _audio.PlayOneShot(puzzleCompletedSound);
+            return;
+        }
         puzzleUI.SetActive(!puzzleUI.activeSelf);
         
         firstPersonController.canMove = !puzzleUI.activeSelf;
@@ -104,6 +112,10 @@ public class SlidingImagePuzzle : MonoBehaviour
         {
             SwapSlotImages(_selectedSlotIndex, clickedIndex);
             _isFirstSlotSelected = false;
+        }
+        else
+        {
+            _audio.PlayOneShot(puzzleCompletedSound);
         }
     }
 
@@ -174,8 +186,12 @@ public class SlidingImagePuzzle : MonoBehaviour
             gridSlotImages[7].sprite == puzzleSprites[7] &&
             gridSlotImages[8].sprite == puzzleSprites[8])
         {
+            Debug.LogError("finished");
+            TogglePuzzleUI();
+            _solved = true;
             _puzzle.CompletePuzzle();
-            firstPersonController.ToggleCanMove();
+            firstPersonController.canMove = true;
+            firstPersonController.canRotate = true;
         }
     }
 

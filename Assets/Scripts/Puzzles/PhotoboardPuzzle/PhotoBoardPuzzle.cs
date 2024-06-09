@@ -135,9 +135,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
             _solved = true;
             ExitPuzzle();
             TogglePuzzleUI();
-            //ResetPuzzle(); //testing
-
-
+            
             if (_puzzle != null)
             {
                 _puzzle.CompletePuzzle();

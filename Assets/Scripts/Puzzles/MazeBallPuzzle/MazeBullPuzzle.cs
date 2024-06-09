@@ -41,14 +41,18 @@ public class MazeBullPuzzle : MonoBehaviour
     
     [Header("Audio")] 
     private AudioSource _audio;
+    [SerializeField] private AudioClip puzzleCompletedSound;
 
     private bool _isInPuzzle;
-    
+    public bool solved;
+    private PlayerDualHandInventory _playerDualHandInventory;
     private void Awake()
     {
         puzzle = GetComponent<Puzzle>();
         _audio = GetComponent<AudioSource>();
         _puzzleEscape = GetComponent<PuzzleEscape>();
+
+        _playerDualHandInventory = FindObjectOfType<PlayerDualHandInventory>();
     }
 
     private void Update()
@@ -91,7 +95,14 @@ public class MazeBullPuzzle : MonoBehaviour
 
     public void TogglePuzzleUI()
     {
-        if (LevelCompletionManager.Instance.currentLevelPuzzles.Count != 2)
+        if (solved)
+        {
+            _audio.PlayOneShot(puzzleCompletedSound);
+            return;
+        }
+        
+        if (!_playerDualHandInventory.MatchPuzzlePieceInInventory(gameObject)
+            && LevelCompletionManager.Instance.currentLevelPuzzles.Count != 2)
         {
             Debug.LogError("Player hasn't completed the image puzzle.");
             return;

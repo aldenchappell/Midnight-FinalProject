@@ -13,6 +13,7 @@ public class MazeBall : MonoBehaviour
     {
         if (!other.CompareTag("MazePuzzleCompletion")) return;
 
+        _mazePuzzle.solved = true;
         _mazePuzzle.TogglePuzzleUI();
         _mazePuzzle.puzzle.CompletePuzzle();
     }
