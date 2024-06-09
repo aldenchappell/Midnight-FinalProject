@@ -178,8 +178,9 @@ public class BabyBlockPuzzle : MonoBehaviour
         }
         else
         {
+            slot.GetComponent<InteractableObject>().onInteraction.Invoke();
             PlayAudioClip(winSound);
-            StartCoroutine(PlayAnimation(slot.gameObject, System.Array.IndexOf(currentItems, rightItem), animationChild));
+            //StartCoroutine(PlayBlockAnimation(slot.gameObject, System.Array.IndexOf(currentItems, rightItem), animationChild));
             _correctObjectsPlaced++;
         }
     }
@@ -228,7 +229,37 @@ public class BabyBlockPuzzle : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         _animator.SetTrigger("Return");
-        _playerInv.PlaceObjectInPuzzle(slot, index, parent);
+        _playerInv.PlaceObjectInPuzzle(slot);
+        CheckForCompletion();
+        _canAnimate = true;
+    }
+
+    public void StartBlockAnimation(string name)
+    {
+        print("Starting");
+        StartCoroutine(PlayBlockAnimation(name));
+    }
+
+    private IEnumerator PlayBlockAnimation(string name)
+    {
+        _canAnimate = false;
+        switch (name)
+        {
+            case "BBPiece1":
+                _animator.SetTrigger("Block1");
+                break;
+            case "BBPiece2":
+                _animator.SetTrigger("Block2");
+                break;
+            case "BBPiece3":
+                _animator.SetTrigger("Block3");
+                break;
+            case "BBPiece4":
+                _animator.SetTrigger("Block4");
+                break;
+        }
+        yield return new WaitForSeconds(1f);
+        _animator.SetTrigger("Return");
         CheckForCompletion();
         _canAnimate = true;
     }

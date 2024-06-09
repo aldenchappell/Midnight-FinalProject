@@ -83,66 +83,65 @@ public class PlayerDualHandInventory : MonoBehaviour
         PickedUp = true; // Set picked up state to true when an item is picked up
     }
 
-    // Place interactable object in hand in the shadow position
-    private void PlaceObjectFromInventory(GameObject objectPosition)
+    // Place interactable object in hand in the position given
+    private void PlaceObjectFromInventory(GameObject obj)
     {
         if (_inventorySlots[currentIndexSelected] != null)
         {
-            if(_inventorySlots[currentIndexSelected].transform.tag == objectPosition.transform.tag)
+            if(_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag)
             {
-                if(objectPosition.transform.parent != null)
+                if(obj.transform.parent != null)
                 {
-                    _inventorySlots[currentIndexSelected].transform.parent = objectPosition.transform.parent;
+                    _inventorySlots[currentIndexSelected].transform.parent = obj.transform.parent;
                 }
                 else
                 {
                     _inventorySlots[currentIndexSelected].transform.parent = null; 
                 }
                 
-                _inventorySlots[currentIndexSelected].transform.position = objectPosition.transform.position;
-                _inventorySlots[currentIndexSelected].transform.eulerAngles = objectPosition.transform.eulerAngles;
-                _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
+                _inventorySlots[currentIndexSelected].transform.position = obj.transform.position;
+                _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
+                obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
                 Destroy(_inventorySlots[currentIndexSelected].GetComponent<InteractableObject>());
-                Destroy(objectPosition);
+                Destroy(obj);
                 _inventorySlots[currentIndexSelected] = null;
             }
         }
     }
 
-    // Special place functionality for easier use in puzzles
-    public void PlaceObjectInPuzzle(GameObject objectPosition, int index, GameObject parentObject)
+    // Place object from either inventory slots without having to hold it
+    public void PlaceObjectInPuzzle(GameObject obj)
     {
-        if (_inventorySlots[index] != null)
+        foreach(GameObject item in _inventorySlots)
         {
-            if (_inventorySlots[index].transform.tag == objectPosition.transform.tag)
+            if(item.CompareTag(obj.tag))
             {
-                if (parentObject != null)
+                int index = System.Array.IndexOf(_inventorySlots, item);
+                if (obj.transform.parent != null)
                 {
-                    _inventorySlots[index].transform.parent = parentObject.transform;
+                    _inventorySlots[index].transform.parent = obj.transform.parent;
                 }
                 else
                 {
                     _inventorySlots[index].transform.parent = null;
                 }
-                _inventorySlots[index].transform.position = objectPosition.transform.position;
-                _inventorySlots[index].transform.eulerAngles = objectPosition.transform.eulerAngles;
-                _inventorySlots[index].transform.localScale = objectPosition.transform.localScale;
-                _inventorySlots[index].GetComponent<InteractableObject>().onPlaceObject.Invoke();
+
+                _inventorySlots[index].transform.position = obj.transform.position;
+                _inventorySlots[index].transform.eulerAngles = obj.transform.eulerAngles;
+                obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
                 Destroy(_inventorySlots[index].GetComponent<InteractableObject>());
-                Destroy(_inventorySlots[index].GetComponent<Collider>());
-                Destroy(objectPosition);
-                _inventorySlots[index].SetActive(true);
+                Destroy(obj);
                 _inventorySlots[index] = null;
             }
         }
+        
     }
 
     private void RemoveObjectInInventory(GameObject obj)
     {
         foreach(GameObject item in _inventorySlots)
         {
-            print(obj.name);
-            if(item.name.Contains(obj.name))
+            if(item.CompareTag(obj.tag))
             {
                 int index = System.Array.IndexOf(_inventorySlots, item);
                 Destroy(_inventorySlots[index]);
