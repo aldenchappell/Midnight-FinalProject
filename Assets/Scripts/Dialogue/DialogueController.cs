@@ -25,7 +25,7 @@ public class DialogueController : MonoBehaviour
     private bool _isPrintingLine = false;
     private Coroutine _currentCoroutine = null;
 
-    private SkullDialogue _skullCompanion;
+    [SerializeField] private SkullDialogue skullCompanion;
     private PlayerDualHandInventory _playerInventory;
     private FirstPersonController _firstPersonController;
     private void Awake()
@@ -39,7 +39,7 @@ public class DialogueController : MonoBehaviour
             Destroy(gameObject);
         }
         
-        _skullCompanion = GameObject.FindWithTag("Skull").GetComponent<SkullDialogue>();
+        //_skullCompanion = GameObject.FindWithTag("Skull").GetComponent<SkullDialogue>();
         _playerInventory = FindObjectOfType<PlayerDualHandInventory>().GetComponent<PlayerDualHandInventory>();
         _firstPersonController = FindObjectOfType<FirstPersonController>().GetComponent<FirstPersonController>();
     }

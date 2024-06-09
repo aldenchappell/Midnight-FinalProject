@@ -189,7 +189,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
         bool hasPolaroid = _playerDualHandInventory.GetInventory.Any(item => item != null
                                                                              && item.CompareTag("Polaroid"));
     
-        if (!hasPolaroid)
+        if (!hasPolaroid && polaroidCount != TargetPolaroidCount)
         {
             _puzzleAudio.PlayOneShot(incorrectSlotSound);
             Debug.LogError("Player doesn't have the polaroid.");

@@ -73,16 +73,32 @@ public class ElevatorController : MonoBehaviour
                 _selectedLevelName = "LOBBY";
                 break;
             case 2:
-                _selectedLevelName = "LEVEL ONE";
+                _selectedLevelName = "FLOOR ONE";
                 break;
             case 3:
-                _selectedLevelName = "LEVEL TWO";
+                if (LevelCompletionManager.Instance.IsLevelCompleted("FLOOR ONE"))
+                {
+                    _selectedLevelName = "FLOOR TWO";
+                }
+                else
+                {
+                    _elevatorAudioSource.PlayOneShot(invalidLevelSound);
+                    Debug.Log("You must complete FLOOR ONE first.");
+                    return;
+                }
                 break;
             case 4:
-                _selectedLevelName = "LEVEL THREE";
-                break;
-            case 5:
-                _selectedLevelName = "ALDEN";
+                if (LevelCompletionManager.Instance.IsLevelCompleted("FLOOR ONE") &&
+                    LevelCompletionManager.Instance.IsLevelCompleted("FLOOR TWO"))
+                {
+                    _selectedLevelName = "FLOOR THREE";
+                }
+                else
+                {
+                    _elevatorAudioSource.PlayOneShot(invalidLevelSound);
+                    Debug.Log("You must complete FLOOR ONE and FLOOR TWO first.");
+                    return;
+                }
                 break;
             default:
                 _elevatorAudioSource.PlayOneShot(invalidLevelSound);
