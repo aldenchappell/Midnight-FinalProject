@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.708435
+      value: 16.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8418586
+      value: 0.000011205673
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.39168
+      value: 90.048
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
       propertyPath: m_LocalRotation.w
@@ -90,11 +90,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
       propertyPath: m_Name
-      value: Sari_keywtag
+      value: KeyWithTag
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
+      propertyPath: m_TagString
+      value: KeyWTag
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -169,7 +173,7 @@ MonoBehaviour:
   interactionIcon: {fileID: 21300000, guid: a78af9cffe164384fb3c1dc91b66dae5, type: 3}
   interactableIconSize: {x: 75, y: 75}
   interactableID: 0
-  highlightController: {fileID: 0}
+  highlightInteractableObjectController: {fileID: 0}
 --- !u!114 &8388984645142030032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0743014263620fd47a426cfd613b90d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTaggedKey: 1
+  collected: 0
 --- !u!114 &7844909703543481034
 MonoBehaviour:
   m_ObjectHideFlags: 0
