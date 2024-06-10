@@ -477,7 +477,6 @@ MonoBehaviour:
   dialogueBox: {fileID: 6852679594966046156}
   audioSource: {fileID: 7725033616192579798}
   dialogueEnabled: 0
-  skullCompanion: {fileID: 0}
 --- !u!1 &1210336631740400226
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4582471c6a2a1498579322b8f5972f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPhotoBoardCam: 0
   targetTransform: {fileID: 0}
   offset: {x: 0.78, y: 1.13, z: 0}
 --- !u!1 &1456836621840173478
@@ -1908,6 +1908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4582471c6a2a1498579322b8f5972f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPhotoBoardCam: 0
   targetTransform: {fileID: 0}
   offset: {x: 0, y: 3, z: 0}
 --- !u!1 &3501408799374656451
@@ -3843,8 +3844,8 @@ MonoBehaviour:
   sprintBobAmount: 0.05
   isCrouching: 0
   standImage: {fileID: 8070953128623333478}
-  crouchingSprite: {fileID: 21300000, guid: 734d65c3d61071e42b00e4cb368a117e, type: 3}
-  standingSprite: {fileID: 21300000, guid: a03920ae871f2ce4aae05c6f211e69c9, type: 3}
+  crouchingSprite: {fileID: 21300000, guid: fbcba7a9696d6cc43bc9cf3c9fe4bed9, type: 3}
+  standingSprite: {fileID: 21300000, guid: 8fce480ba92a6834b99a750202791196, type: 3}
   crouchingHeight: 0.6
   standingHeight: 2
   timeToEnterCrouch: 0.25
@@ -5652,6 +5653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4582471c6a2a1498579322b8f5972f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPhotoBoardCam: 0
   targetTransform: {fileID: 0}
   offset: {x: 0.06, y: -0.045, z: -0.05}
 --- !u!1 &9218528575294346770
