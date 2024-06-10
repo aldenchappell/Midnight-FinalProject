@@ -57,6 +57,7 @@ public class HideBehindDoor : MonoBehaviour
         HidePlayer();
         if(_isActive)
         {
+            _doorController.Invoke("HandleDoor", 0);
             yield return new WaitForSeconds(1f);
             _playerCam.Priority = 0;
             _doorHideCamera.Priority = 5;
@@ -68,6 +69,7 @@ public class HideBehindDoor : MonoBehaviour
         }
         else
         {
+            _doorController.Invoke("HandleDoor", 0);
             yield return new WaitForSeconds(1f);
             _playerCam.Priority = 5;
             _doorHideCamera.Priority = 0;
@@ -77,7 +79,7 @@ public class HideBehindDoor : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             
         }
-        Invoke("InteractDelay", 3f);
+        Invoke("InteractDelay", 4f);
         
 
     }
@@ -93,7 +95,7 @@ public class HideBehindDoor : MonoBehaviour
     #region Input and Raycast
     private void CheckForInput()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && _isSwitching == false)
         {
             RaycastToMousePosition();
         }
@@ -108,7 +110,9 @@ public class HideBehindDoor : MonoBehaviour
             Transform objectHit = hit.transform;
             if (objectHit.CompareTag("SpyHole"))
             {
+                _isSwitching = true;
                 SwapDoorCameraPosition();
+                Invoke("InteractDelay", 1f);
             }
         }
     }

@@ -21,6 +21,12 @@ public class PlayerHeartbeatController : MonoBehaviour
 
     private void Update()
     {
+        if (_enemyStateController == null)
+        {
+            heartbeatAudioSource.enabled = false;
+            return;
+        }
+        
         if (InGameSettingsManager.Instance.enableHeartbeatSounds && _enemyStateController != null)
         {
             bool isDevilChasing = IsDevilChasing();
