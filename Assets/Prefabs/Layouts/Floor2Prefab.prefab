@@ -47,7 +47,8 @@ GameObject:
   - component: {fileID: 3154886296592205753}
   - component: {fileID: 3952312544345500283}
   - component: {fileID: 8604869625162907534}
-  m_Layer: 0
+  - component: {fileID: 19213720730772757}
+  m_Layer: 3
   m_Name: HallwayFloorNav (80)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,6 +142,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &19213720730772757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9776559487706865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &12594634736119508
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +273,7 @@ GameObject:
   - component: {fileID: 8394362445015660591}
   - component: {fileID: 8212024817574870681}
   - component: {fileID: 8709999514075145626}
+  - component: {fileID: 900198860344607593}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (11)
   m_TagString: Untagged
@@ -369,6 +384,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &900198860344607593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22127132470876767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &26882929123568720
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +410,7 @@ GameObject:
   - component: {fileID: 6615851042386843001}
   - component: {fileID: 4685443912922860126}
   - component: {fileID: 6199602114618448035}
+  - component: {fileID: 7298473310330195578}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (31)
   m_TagString: Untagged
@@ -492,6 +521,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &7298473310330195578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26882929123568720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &48923334835834585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,7 +1144,8 @@ GameObject:
   - component: {fileID: 1434655642175925955}
   - component: {fileID: 876546936683115509}
   - component: {fileID: 2384026757908766883}
-  m_Layer: 0
+  - component: {fileID: 4272872695803423372}
+  m_Layer: 3
   m_Name: HallwayFloorNav (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1196,6 +1239,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4272872695803423372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92163223669093767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &95398613543787040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,7 +1934,8 @@ GameObject:
   - component: {fileID: 197860933273386488}
   - component: {fileID: 2571264736757271097}
   - component: {fileID: 6676546095585869085}
-  m_Layer: 0
+  - component: {fileID: 3952001937602781833}
+  m_Layer: 3
   m_Name: HallwayFloorNav (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1972,6 +2029,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3952001937602781833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154881110764465450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &161781955531109863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2500,7 @@ GameObject:
   - component: {fileID: 6089702853196765189}
   - component: {fileID: 5024561137287884511}
   - component: {fileID: 8017693790452827672}
+  - component: {fileID: 1888835288266159110}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (10)
   m_TagString: Untagged
@@ -2540,6 +2611,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &1888835288266159110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202997504304896926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &207888440522473161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,6 +2949,7 @@ GameObject:
   - component: {fileID: 7419479408905734944}
   - component: {fileID: 6133424924735219103}
   - component: {fileID: 6574378851914173751}
+  - component: {fileID: 4013871161736328191}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (51)
   m_TagString: Untagged
@@ -2975,6 +3060,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4013871161736328191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234251571498293033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &240820534948290044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,7 +3191,8 @@ GameObject:
   - component: {fileID: 7011263722245291053}
   - component: {fileID: 2676444356133022007}
   - component: {fileID: 3257670590693859771}
-  m_Layer: 0
+  - component: {fileID: 4223900717963480843}
+  m_Layer: 3
   m_Name: HallwayFloorNav (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3187,6 +3286,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4223900717963480843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247346692724181802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &260083598654617284
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,7 +4276,8 @@ GameObject:
   - component: {fileID: 2113482287665939707}
   - component: {fileID: 7783605152898017669}
   - component: {fileID: 813036244721233638}
-  m_Layer: 0
+  - component: {fileID: 5449626963753000555}
+  m_Layer: 3
   m_Name: HallwayFloorNav (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4258,6 +4371,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &5449626963753000555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344793536701249021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &345748355272150836
 GameObject:
   m_ObjectHideFlags: 0
@@ -4723,7 +4849,8 @@ GameObject:
   - component: {fileID: 1913063145124564531}
   - component: {fileID: 480425600737105652}
   - component: {fileID: 2739472704712599052}
-  m_Layer: 0
+  - component: {fileID: 4387176512999635308}
+  m_Layer: 3
   m_Name: HallwayFloorNav (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4817,6 +4944,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4387176512999635308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373089895759794134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &378764699784017740
 GameObject:
   m_ObjectHideFlags: 0
@@ -4829,7 +4969,8 @@ GameObject:
   - component: {fileID: 5662632177830532223}
   - component: {fileID: 7692461761942533373}
   - component: {fileID: 3712374660874764790}
-  m_Layer: 0
+  - component: {fileID: 4168670721932765447}
+  m_Layer: 3
   m_Name: HallwayFloorNav (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4923,6 +5064,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4168670721932765447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378764699784017740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &393984233737990491
 GameObject:
   m_ObjectHideFlags: 0
@@ -5041,7 +5195,8 @@ GameObject:
   - component: {fileID: 2439889684559861795}
   - component: {fileID: 7109440519732180320}
   - component: {fileID: 8840118859037696949}
-  m_Layer: 0
+  - component: {fileID: 7382160884886143661}
+  m_Layer: 3
   m_Name: HallwayFloorNav (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5135,6 +5290,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &7382160884886143661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396379431884190745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &406392875131591057
 GameObject:
   m_ObjectHideFlags: 0
@@ -5817,7 +5985,8 @@ GameObject:
   - component: {fileID: 8394180494969013200}
   - component: {fileID: 4235124142739650277}
   - component: {fileID: 2243523075233489646}
-  m_Layer: 0
+  - component: {fileID: 7473202612100369402}
+  m_Layer: 3
   m_Name: HallwayFloorNav
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5911,6 +6080,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &7473202612100369402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445566861249047242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &456478962172346915
 GameObject:
   m_ObjectHideFlags: 0
@@ -6029,7 +6211,8 @@ GameObject:
   - component: {fileID: 8947013359317540247}
   - component: {fileID: 4952819802113568618}
   - component: {fileID: 4616598838853123807}
-  m_Layer: 0
+  - component: {fileID: 1107139253447499126}
+  m_Layer: 3
   m_Name: HallwayFloorNav (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6123,6 +6306,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1107139253447499126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458619040448180341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &467213842668536368
 GameObject:
   m_ObjectHideFlags: 0
@@ -7598,6 +7794,7 @@ GameObject:
   - component: {fileID: 1415420377609362320}
   - component: {fileID: 4152159274377749883}
   - component: {fileID: 6888285417179727535}
+  - component: {fileID: 6947691659088351444}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (44)
   m_TagString: Untagged
@@ -7708,6 +7905,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &6947691659088351444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594144599901349894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &596148146183092775
 GameObject:
   m_ObjectHideFlags: 0
@@ -8459,6 +8669,7 @@ GameObject:
   - component: {fileID: 1457028369249652723}
   - component: {fileID: 1684812728712727888}
   - component: {fileID: 6352687869236264532}
+  - component: {fileID: 2094647630006537081}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (37)
   m_TagString: Untagged
@@ -8569,6 +8780,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &2094647630006537081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700778918498721924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &723909798720290938
 GameObject:
   m_ObjectHideFlags: 0
@@ -8705,6 +8929,7 @@ GameObject:
   - component: {fileID: 4626983486300021663}
   - component: {fileID: 4535595850625213397}
   - component: {fileID: 3729960063679396118}
+  - component: {fileID: 3943056969911236047}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (52)
   m_TagString: Untagged
@@ -8815,6 +9040,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &3943056969911236047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725954242153182551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &726148770026739711
 GameObject:
   m_ObjectHideFlags: 0
@@ -8921,7 +9159,8 @@ GameObject:
   - component: {fileID: 5665211215519728298}
   - component: {fileID: 3662139322385592847}
   - component: {fileID: 3211758629443304414}
-  m_Layer: 0
+  - component: {fileID: 6047159013731795886}
+  m_Layer: 3
   m_Name: HallwayFloorNav (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9015,6 +9254,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &6047159013731795886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726999017888065178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &731640722798749763
 GameObject:
   m_ObjectHideFlags: 0
@@ -9487,6 +9739,7 @@ GameObject:
   - component: {fileID: 387724186299012744}
   - component: {fileID: 3020232108543371379}
   - component: {fileID: 6832975191725989311}
+  - component: {fileID: 878991264178767490}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (14)
   m_TagString: Untagged
@@ -9597,6 +9850,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &878991264178767490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763123618184590398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &776850361478592016
 GameObject:
   m_ObjectHideFlags: 0
@@ -10224,7 +10490,8 @@ GameObject:
   - component: {fileID: 6013432734987618740}
   - component: {fileID: 4836459067820523286}
   - component: {fileID: 4010010253242051965}
-  m_Layer: 0
+  - component: {fileID: 2722679138010157464}
+  m_Layer: 3
   m_Name: HallwayFloorNav (56)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10318,6 +10585,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &2722679138010157464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803514508378579116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &806257660751555127
 GameObject:
   m_ObjectHideFlags: 0
@@ -11252,7 +11532,8 @@ GameObject:
   - component: {fileID: 7936433864423931097}
   - component: {fileID: 8439898445434535736}
   - component: {fileID: 2101375331915700851}
-  m_Layer: 0
+  - component: {fileID: 3659442865686981420}
+  m_Layer: 3
   m_Name: HallwayFloorNav (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11346,6 +11627,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3659442865686981420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860521627756798699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &863610077778793997
 GameObject:
   m_ObjectHideFlags: 0
@@ -11637,6 +11931,7 @@ GameObject:
   - component: {fileID: 8661734346493999313}
   - component: {fileID: 8089064468931711061}
   - component: {fileID: 453356160151142574}
+  - component: {fileID: 2070037224762045059}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (8)
   m_TagString: Untagged
@@ -11747,6 +12042,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &2070037224762045059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889826891905210975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &908699760215817044
 GameObject:
   m_ObjectHideFlags: 0
@@ -11882,7 +12190,8 @@ GameObject:
   - component: {fileID: 4898244489267637264}
   - component: {fileID: 6945123476007885413}
   - component: {fileID: 4593629696563481941}
-  m_Layer: 0
+  - component: {fileID: 2371057417740636170}
+  m_Layer: 3
   m_Name: HallwayFloorNav (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11976,6 +12285,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &2371057417740636170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909822297991731374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &911389993772346737
 GameObject:
   m_ObjectHideFlags: 0
@@ -11989,6 +12311,7 @@ GameObject:
   - component: {fileID: 1123167161628598965}
   - component: {fileID: 863615458198765352}
   - component: {fileID: 4433265312136382047}
+  - component: {fileID: 3877642936922559968}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (16)
   m_TagString: Untagged
@@ -12099,6 +12422,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &3877642936922559968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911389993772346737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &912033605977432572
 GameObject:
   m_ObjectHideFlags: 0
@@ -12738,7 +13074,8 @@ GameObject:
   - component: {fileID: 34974182551608645}
   - component: {fileID: 8486207987331903942}
   - component: {fileID: 4438499859685928088}
-  m_Layer: 0
+  - component: {fileID: 952570312911925955}
+  m_Layer: 3
   m_Name: HallwayFloorNav (59)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12832,6 +13169,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &952570312911925955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042490396984847069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1046996473520768119
 GameObject:
   m_ObjectHideFlags: 0
@@ -13386,7 +13736,8 @@ GameObject:
   - component: {fileID: 7797607115976634233}
   - component: {fileID: 8406298789886106821}
   - component: {fileID: 2866564470022145301}
-  m_Layer: 0
+  - component: {fileID: 3483882619806120583}
+  m_Layer: 3
   m_Name: HallwayFloorNav (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13480,6 +13831,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3483882619806120583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094277076254115771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1103980379554093851
 GameObject:
   m_ObjectHideFlags: 0
@@ -13586,7 +13950,8 @@ GameObject:
   - component: {fileID: 4494824911292954719}
   - component: {fileID: 7551188369800273322}
   - component: {fileID: 5098692982766258503}
-  m_Layer: 0
+  - component: {fileID: 7833719444972481722}
+  m_Layer: 3
   m_Name: HallwayFloorNav (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13680,6 +14045,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &7833719444972481722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113608725562283540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1118843264012930534
 GameObject:
   m_ObjectHideFlags: 0
@@ -13999,6 +14377,7 @@ GameObject:
   - component: {fileID: 8595569288151522470}
   - component: {fileID: 8943362770411428531}
   - component: {fileID: 8675144684467802086}
+  - component: {fileID: 8771073537768950563}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (48)
   m_TagString: Untagged
@@ -14109,6 +14488,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &8771073537768950563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167387837205031925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1180841273706774764
 GameObject:
   m_ObjectHideFlags: 0
@@ -14321,6 +14713,7 @@ GameObject:
   - component: {fileID: 8810669604073704729}
   - component: {fileID: 5242973515808016934}
   - component: {fileID: 927696708816232058}
+  - component: {fileID: 1393504066017848241}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (53)
   m_TagString: Untagged
@@ -14431,6 +14824,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &1393504066017848241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188294092413310691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1205833182191980520
 GameObject:
   m_ObjectHideFlags: 0
@@ -18897,7 +19303,8 @@ GameObject:
   - component: {fileID: 8999031171626003939}
   - component: {fileID: 4435790401987364842}
   - component: {fileID: 278047195714004894}
-  m_Layer: 0
+  - component: {fileID: 1304566204803095780}
+  m_Layer: 3
   m_Name: HallwayFloorNav (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18991,6 +19398,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1304566204803095780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739283017267733455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1744891062554564107
 GameObject:
   m_ObjectHideFlags: 0
@@ -19087,7 +19507,8 @@ GameObject:
   - component: {fileID: 3621343331381638342}
   - component: {fileID: 6147882764355562113}
   - component: {fileID: 2059098712095406414}
-  m_Layer: 0
+  - component: {fileID: 9102061903447464998}
+  m_Layer: 3
   m_Name: HallwayFloorNav (62)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19181,6 +19602,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &9102061903447464998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752169332768542338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1753237723542351392
 GameObject:
   m_ObjectHideFlags: 0
@@ -19474,7 +19908,8 @@ GameObject:
   - component: {fileID: 617682214619323910}
   - component: {fileID: 9095811566066968103}
   - component: {fileID: 6976995116699349029}
-  m_Layer: 0
+  - component: {fileID: 3530304378531875571}
+  m_Layer: 3
   m_Name: HallwayFloorNav (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19568,6 +20003,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3530304378531875571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768381409517108156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1770798985766941036
 GameObject:
   m_ObjectHideFlags: 0
@@ -19675,6 +20123,7 @@ GameObject:
   - component: {fileID: 2240037413116206367}
   - component: {fileID: 2543679212299149019}
   - component: {fileID: 1237091806870841326}
+  - component: {fileID: 8840627428456526482}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (45)
   m_TagString: Untagged
@@ -19785,6 +20234,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &8840627428456526482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777561404635663934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1778385973471724927
 GameObject:
   m_ObjectHideFlags: 0
@@ -19798,6 +20260,7 @@ GameObject:
   - component: {fileID: 1852013750895966715}
   - component: {fileID: 7339544202037270411}
   - component: {fileID: 3163621408502239566}
+  - component: {fileID: 6969393781210535663}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (25)
   m_TagString: Untagged
@@ -19908,6 +20371,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &6969393781210535663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778385973471724927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1784810328568502960
 GameObject:
   m_ObjectHideFlags: 0
@@ -20235,6 +20711,7 @@ GameObject:
   - component: {fileID: 7190316791767825650}
   - component: {fileID: 1675939801961387208}
   - component: {fileID: 8836920938624208908}
+  - component: {fileID: 6834232451477375323}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (43)
   m_TagString: Untagged
@@ -20345,6 +20822,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &6834232451477375323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807964050080887907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &1824259912205200136
 GameObject:
   m_ObjectHideFlags: 0
@@ -21967,6 +22457,7 @@ GameObject:
   - component: {fileID: 820700202907803885}
   - component: {fileID: 5396984593834982830}
   - component: {fileID: 5984337491138093049}
+  - component: {fileID: 6535075928757041324}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (19)
   m_TagString: Untagged
@@ -22077,6 +22568,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &6535075928757041324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032835262104050168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2034877117368617580
 GameObject:
   m_ObjectHideFlags: 0
@@ -22213,6 +22717,7 @@ GameObject:
   - component: {fileID: 3944222802384751378}
   - component: {fileID: 6425251253383044624}
   - component: {fileID: 2730843992303967377}
+  - component: {fileID: 4994645521913405336}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (38)
   m_TagString: Untagged
@@ -22323,6 +22828,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4994645521913405336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052275169966209974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2060499675917412843
 GameObject:
   m_ObjectHideFlags: 0
@@ -22335,7 +22853,8 @@ GameObject:
   - component: {fileID: 4250558101269164183}
   - component: {fileID: 7657513913235554256}
   - component: {fileID: 7461181411843620504}
-  m_Layer: 0
+  - component: {fileID: 1259029307376155431}
+  m_Layer: 3
   m_Name: HallwayFloorNav (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22429,6 +22948,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1259029307376155431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060499675917412843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2062631066324645365
 GameObject:
   m_ObjectHideFlags: 0
@@ -22771,7 +23303,8 @@ GameObject:
   - component: {fileID: 7992314312475805731}
   - component: {fileID: 1187616617379404985}
   - component: {fileID: 5560691526482700269}
-  m_Layer: 0
+  - component: {fileID: 1466389403771671849}
+  m_Layer: 3
   m_Name: HallwayFloorNav (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22865,6 +23398,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1466389403771671849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079814624489681601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2083181479405921801
 GameObject:
   m_ObjectHideFlags: 0
@@ -23106,6 +23652,7 @@ GameObject:
   - component: {fileID: 3653741799100800159}
   - component: {fileID: 1342402412112248499}
   - component: {fileID: 3469471892358965874}
+  - component: {fileID: 4798269481461254996}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (23)
   m_TagString: Untagged
@@ -23216,6 +23763,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4798269481461254996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089720231439063525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2101983060458345990
 GameObject:
   m_ObjectHideFlags: 0
@@ -23351,7 +23911,8 @@ GameObject:
   - component: {fileID: 76782521579056703}
   - component: {fileID: 4820225809310730561}
   - component: {fileID: 4215111137578289177}
-  m_Layer: 0
+  - component: {fileID: 7815386062674976587}
+  m_Layer: 3
   m_Name: HallwayFloorNav (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23445,6 +24006,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &7815386062674976587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129074361243537654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2137748926687270624
 GameObject:
   m_ObjectHideFlags: 0
@@ -24091,7 +24665,8 @@ GameObject:
   - component: {fileID: 7564272129907617908}
   - component: {fileID: 6450652552791771829}
   - component: {fileID: 9171987853561112982}
-  m_Layer: 0
+  - component: {fileID: 4755123218310357129}
+  m_Layer: 3
   m_Name: HallwayFloorNav (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24185,6 +24760,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4755123218310357129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250805255048351130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2268524646239238641
 GameObject:
   m_ObjectHideFlags: 0
@@ -25613,7 +26201,8 @@ GameObject:
   - component: {fileID: 167701873478909831}
   - component: {fileID: 1627699769899076709}
   - component: {fileID: 414807095959628643}
-  m_Layer: 0
+  - component: {fileID: 817297245660727624}
+  m_Layer: 3
   m_Name: HallwayFloorNav (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25707,6 +26296,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &817297245660727624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2416418833634896203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2417267181411617627
 GameObject:
   m_ObjectHideFlags: 0
@@ -26298,7 +26900,8 @@ GameObject:
   - component: {fileID: 3525364867025109}
   - component: {fileID: 4595956700268780852}
   - component: {fileID: 6792011861663687984}
-  m_Layer: 0
+  - component: {fileID: 321711950955656133}
+  m_Layer: 3
   m_Name: HallwayFloorNav (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26392,6 +26995,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &321711950955656133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476197488829886632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2478259472281442852
 GameObject:
   m_ObjectHideFlags: 0
@@ -26729,6 +27345,7 @@ GameObject:
   - component: {fileID: 8725985646004240544}
   - component: {fileID: 3228762050321631153}
   - component: {fileID: 6910179272544506035}
+  - component: {fileID: 6945600759270074603}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (47)
   m_TagString: Untagged
@@ -26839,6 +27456,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &6945600759270074603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519349506935536323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2537482882418440505
 GameObject:
   m_ObjectHideFlags: 0
@@ -26851,7 +27481,8 @@ GameObject:
   - component: {fileID: 7461245618670858274}
   - component: {fileID: 1180753143460889389}
   - component: {fileID: 6449767541124274074}
-  m_Layer: 0
+  - component: {fileID: 4013741241846051406}
+  m_Layer: 3
   m_Name: HallwayFloorNav (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26945,6 +27576,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4013741241846051406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537482882418440505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2545597685983463037
 GameObject:
   m_ObjectHideFlags: 0
@@ -27203,7 +27847,8 @@ GameObject:
   - component: {fileID: 83228832616875558}
   - component: {fileID: 6289724450477272070}
   - component: {fileID: 671894312419735915}
-  m_Layer: 0
+  - component: {fileID: 5695052887173252443}
+  m_Layer: 3
   m_Name: HallwayFloorNav (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27297,6 +27942,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &5695052887173252443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564070931383134244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2581530409579579708
 GameObject:
   m_ObjectHideFlags: 0
@@ -27984,7 +28642,8 @@ GameObject:
   - component: {fileID: 4096866222237027535}
   - component: {fileID: 1321418167399758737}
   - component: {fileID: 2042692471818790091}
-  m_Layer: 0
+  - component: {fileID: 626188851931310582}
+  m_Layer: 3
   m_Name: HallwayFloorNav (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28078,6 +28737,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &626188851931310582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616754899712096028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2617882495660929412
 GameObject:
   m_ObjectHideFlags: 0
@@ -29171,7 +29843,8 @@ GameObject:
   - component: {fileID: 8316465602237917754}
   - component: {fileID: 3882963129670540109}
   - component: {fileID: 6922594930079972843}
-  m_Layer: 0
+  - component: {fileID: 1774679128341244097}
+  m_Layer: 3
   m_Name: HallwayFloorNav (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29265,6 +29938,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1774679128341244097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2781265328918494693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2788098506058445667
 GameObject:
   m_ObjectHideFlags: 0
@@ -30662,7 +31348,8 @@ GameObject:
   - component: {fileID: 4037327521397441651}
   - component: {fileID: 191235953519657041}
   - component: {fileID: 2767923255751300395}
-  m_Layer: 0
+  - component: {fileID: 3159426051783399533}
+  m_Layer: 3
   m_Name: HallwayFloorNav (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30756,6 +31443,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3159426051783399533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2977220384692610298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &2990023365650717008
 GameObject:
   m_ObjectHideFlags: 0
@@ -32217,7 +32917,8 @@ GameObject:
   - component: {fileID: 6278752031705720861}
   - component: {fileID: 9096407247672132718}
   - component: {fileID: 3059507482597809291}
-  m_Layer: 0
+  - component: {fileID: 2282670389812113421}
+  m_Layer: 3
   m_Name: HallwayFloorNav (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32311,6 +33012,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &2282670389812113421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3175364610665660983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3191904499901979032
 GameObject:
   m_ObjectHideFlags: 0
@@ -33127,6 +33841,7 @@ GameObject:
   - component: {fileID: 6177430818405262661}
   - component: {fileID: 6627726664808624096}
   - component: {fileID: 6076367020716700382}
+  - component: {fileID: 7910542390561108900}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (4)
   m_TagString: Untagged
@@ -33237,6 +33952,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &7910542390561108900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282714786484455634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3292865309629224515
 GameObject:
   m_ObjectHideFlags: 0
@@ -33354,7 +34082,8 @@ GameObject:
   - component: {fileID: 459430941827546345}
   - component: {fileID: 5618141407383464247}
   - component: {fileID: 159503561001163903}
-  m_Layer: 0
+  - component: {fileID: 2935044963290686934}
+  m_Layer: 3
   m_Name: HallwayFloorNav (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33448,6 +34177,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &2935044963290686934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3317302629081961030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3362910227239977414
 GameObject:
   m_ObjectHideFlags: 0
@@ -33461,6 +34203,7 @@ GameObject:
   - component: {fileID: 5986006196844893816}
   - component: {fileID: 1674640964526341610}
   - component: {fileID: 8014918411242567581}
+  - component: {fileID: 3698029468143402527}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (28)
   m_TagString: Untagged
@@ -33571,6 +34314,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &3698029468143402527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362910227239977414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3398750793077900556
 GameObject:
   m_ObjectHideFlags: 0
@@ -34533,6 +35289,7 @@ GameObject:
   - component: {fileID: 2754805824100434187}
   - component: {fileID: 911725565692360443}
   - component: {fileID: 3833460075952260948}
+  - component: {fileID: 2161622830861693431}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (7)
   m_TagString: Untagged
@@ -34643,6 +35400,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &2161622830861693431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3511324225510433404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3514110635160513454
 GameObject:
   m_ObjectHideFlags: 0
@@ -34834,6 +35604,7 @@ GameObject:
   - component: {fileID: 863827634905882255}
   - component: {fileID: 6921803108422164025}
   - component: {fileID: 1609938363656019274}
+  - component: {fileID: 4078851801137646034}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (34)
   m_TagString: Untagged
@@ -34944,6 +35715,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4078851801137646034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525425302917437997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3538904962632692593
 GameObject:
   m_ObjectHideFlags: 0
@@ -36723,7 +37507,8 @@ GameObject:
   - component: {fileID: 8435771009322811725}
   - component: {fileID: 7943460830996371454}
   - component: {fileID: 7252805884886774454}
-  m_Layer: 0
+  - component: {fileID: 483456874287174604}
+  m_Layer: 3
   m_Name: HallwayFloorNav (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36817,6 +37602,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &483456874287174604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784507129547248276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3784801264295624914
 GameObject:
   m_ObjectHideFlags: 0
@@ -37160,6 +37958,7 @@ GameObject:
   - component: {fileID: 4550761320528901614}
   - component: {fileID: 3438122919509857745}
   - component: {fileID: 5498090968776712697}
+  - component: {fileID: 3787610106856726192}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (2)
   m_TagString: Untagged
@@ -37270,6 +38069,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &3787610106856726192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828625044726568403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3836742634409069826
 GameObject:
   m_ObjectHideFlags: 0
@@ -37651,7 +38463,8 @@ GameObject:
   - component: {fileID: 3704069032397500938}
   - component: {fileID: 7193097700903467695}
   - component: {fileID: 1806235475963194130}
-  m_Layer: 0
+  - component: {fileID: 758092202668693622}
+  m_Layer: 3
   m_Name: HallwayFloorNav (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37745,6 +38558,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &758092202668693622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876465125297694561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3889874914382096168
 GameObject:
   m_ObjectHideFlags: 0
@@ -38003,7 +38829,8 @@ GameObject:
   - component: {fileID: 5202104362365459584}
   - component: {fileID: 3757624505803959511}
   - component: {fileID: 1150855204031597654}
-  m_Layer: 0
+  - component: {fileID: 4772511404568076001}
+  m_Layer: 3
   m_Name: HallwayFloorNav (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38097,6 +38924,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4772511404568076001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3906093997069186273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &3909859128855946826
 GameObject:
   m_ObjectHideFlags: 0
@@ -39244,7 +40084,8 @@ GameObject:
   - component: {fileID: 2827901787267022994}
   - component: {fileID: 5713909927767458791}
   - component: {fileID: 1263691815132914033}
-  m_Layer: 0
+  - component: {fileID: 4562762381621986685}
+  m_Layer: 3
   m_Name: HallwayFloorNav (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39338,6 +40179,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4562762381621986685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4049163884910371679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4087763154982982169
 GameObject:
   m_ObjectHideFlags: 0
@@ -40010,6 +40864,7 @@ GameObject:
   - component: {fileID: 1056780356952151402}
   - component: {fileID: 6592014497318218566}
   - component: {fileID: 4582109535623510981}
+  - component: {fileID: 2939365692810240708}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (49)
   m_TagString: Untagged
@@ -40120,6 +40975,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &2939365692810240708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139558162429360552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4148883057240325603
 GameObject:
   m_ObjectHideFlags: 0
@@ -40608,6 +41476,7 @@ GameObject:
   - component: {fileID: 7930368576837754054}
   - component: {fileID: 8861991799524824906}
   - component: {fileID: 2389541311718768742}
+  - component: {fileID: 4880427900890793828}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (39)
   m_TagString: Untagged
@@ -40718,6 +41587,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4880427900890793828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4166248509490995947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4180594810710115713
 GameObject:
   m_ObjectHideFlags: 0
@@ -41071,6 +41953,7 @@ GameObject:
   - component: {fileID: 5799584316610425205}
   - component: {fileID: 6049708792091066093}
   - component: {fileID: 5292485302327531797}
+  - component: {fileID: 1356838090788585041}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (5)
   m_TagString: Untagged
@@ -41181,6 +42064,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &1356838090788585041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233609534569900772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4235691610659575935
 GameObject:
   m_ObjectHideFlags: 0
@@ -41865,7 +42761,8 @@ GameObject:
   - component: {fileID: 4898847444554551875}
   - component: {fileID: 6414988171260478456}
   - component: {fileID: 5769203560921585497}
-  m_Layer: 0
+  - component: {fileID: 590004248232951418}
+  m_Layer: 3
   m_Name: HallwayFloorNav (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41959,6 +42856,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &590004248232951418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4320860190317855453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4322806047554850235
 GameObject:
   m_ObjectHideFlags: 0
@@ -43705,6 +44615,7 @@ GameObject:
   - component: {fileID: 195694590249358424}
   - component: {fileID: 4815936789194105102}
   - component: {fileID: 6328565848967802410}
+  - component: {fileID: 4655784413386638530}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (40)
   m_TagString: Untagged
@@ -43815,6 +44726,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4655784413386638530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4579302090949595649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4590784481369249202
 GameObject:
   m_ObjectHideFlags: 0
@@ -43950,7 +44874,8 @@ GameObject:
   - component: {fileID: 3225431960633767755}
   - component: {fileID: 4207061419912151024}
   - component: {fileID: 9088421027629351013}
-  m_Layer: 0
+  - component: {fileID: 2414710102477422625}
+  m_Layer: 3
   m_Name: HallwayFloorNav (83)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44044,6 +44969,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &2414710102477422625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604957042388415520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4621762209091297231
 GameObject:
   m_ObjectHideFlags: 0
@@ -44574,7 +45512,8 @@ GameObject:
   - component: {fileID: 6115359622642225681}
   - component: {fileID: 3582922880478420967}
   - component: {fileID: 5227063076670823158}
-  m_Layer: 0
+  - component: {fileID: 9193984533458811840}
+  m_Layer: 3
   m_Name: HallwayFloorNav (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44668,6 +45607,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &9193984533458811840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4709228377625721788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4720266015445975994
 GameObject:
   m_ObjectHideFlags: 0
@@ -44888,6 +45840,7 @@ GameObject:
   - component: {fileID: 4209710752239653326}
   - component: {fileID: 8058246911281329239}
   - component: {fileID: 8569318181575051017}
+  - component: {fileID: 1485940183291896899}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (24)
   m_TagString: Untagged
@@ -44998,6 +45951,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &1485940183291896899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4780109535061277349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4802702639295843526
 GameObject:
   m_ObjectHideFlags: 0
@@ -45731,7 +46697,8 @@ GameObject:
   - component: {fileID: 4857656908587991212}
   - component: {fileID: 3106427525943199384}
   - component: {fileID: 6474647080052646848}
-  m_Layer: 0
+  - component: {fileID: 8553635285732665827}
+  m_Layer: 3
   m_Name: HallwayFloorNav (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45825,6 +46792,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &8553635285732665827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4889611628144686775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4890047874033446423
 GameObject:
   m_ObjectHideFlags: 0
@@ -46150,7 +47130,8 @@ GameObject:
   - component: {fileID: 8950967492022541918}
   - component: {fileID: 5044918214026536433}
   - component: {fileID: 5637070926507962835}
-  m_Layer: 0
+  - component: {fileID: 8804810968988439150}
+  m_Layer: 3
   m_Name: HallwayFloorNav (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46244,6 +47225,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &8804810968988439150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4901066092109776971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &4903366489244921141
 GameObject:
   m_ObjectHideFlags: 0
@@ -47193,7 +48187,8 @@ GameObject:
   - component: {fileID: 3986891000204400109}
   - component: {fileID: 4709202241812553799}
   - component: {fileID: 1996594423792494442}
-  m_Layer: 0
+  - component: {fileID: 8883350264902483710}
+  m_Layer: 3
   m_Name: HallwayFloorNav (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47287,6 +48282,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &8883350264902483710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049278540698944433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5054771043764682090
 GameObject:
   m_ObjectHideFlags: 0
@@ -47723,7 +48731,8 @@ GameObject:
   - component: {fileID: 4344213522250883841}
   - component: {fileID: 2202808989070850842}
   - component: {fileID: 3808809743087624121}
-  m_Layer: 0
+  - component: {fileID: 5772824862545488157}
+  m_Layer: 3
   m_Name: HallwayFloorNav (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47817,6 +48826,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &5772824862545488157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5119614021296490016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5164132456678311474
 GameObject:
   m_ObjectHideFlags: 0
@@ -49641,7 +50663,8 @@ GameObject:
   - component: {fileID: 8897453865689609312}
   - component: {fileID: 1673372919086954587}
   - component: {fileID: 8784035828216408227}
-  m_Layer: 0
+  - component: {fileID: 531883249409389190}
+  m_Layer: 3
   m_Name: HallwayFloorNav (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49735,6 +50758,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &531883249409389190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285966142253674111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5309674772498902729
 GameObject:
   m_ObjectHideFlags: 0
@@ -50319,7 +51355,8 @@ GameObject:
   - component: {fileID: 5738420070519932950}
   - component: {fileID: 1074946779916163674}
   - component: {fileID: 8148592900441516189}
-  m_Layer: 0
+  - component: {fileID: 2200702330251759007}
+  m_Layer: 3
   m_Name: HallwayFloorNav (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50413,6 +51450,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &2200702330251759007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5338268332286161309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5354220637089481763
 GameObject:
   m_ObjectHideFlags: 0
@@ -50740,6 +51790,7 @@ GameObject:
   - component: {fileID: 1763762577823550110}
   - component: {fileID: 1835152431475427593}
   - component: {fileID: 1972339194925550019}
+  - component: {fileID: 4338425848676921824}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (20)
   m_TagString: Untagged
@@ -50850,6 +51901,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4338425848676921824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368274889441861143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5404190170943779875
 GameObject:
   m_ObjectHideFlags: 0
@@ -52028,7 +53092,8 @@ GameObject:
   - component: {fileID: 3578246750470139832}
   - component: {fileID: 9108838973240624387}
   - component: {fileID: 7387099925053536633}
-  m_Layer: 0
+  - component: {fileID: 3192216997521394456}
+  m_Layer: 3
   m_Name: HallwayFloorNav (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52122,6 +53187,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3192216997521394456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5529104869470173952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5531030413781320382
 GameObject:
   m_ObjectHideFlags: 0
@@ -52899,7 +53977,8 @@ GameObject:
   - component: {fileID: 2656557581082675628}
   - component: {fileID: 8187008906494042822}
   - component: {fileID: 574204528280785410}
-  m_Layer: 0
+  - component: {fileID: 8174110203636993068}
+  m_Layer: 3
   m_Name: HallwayFloorNav (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52993,6 +54072,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &8174110203636993068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582289828279246121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5595702165809787929
 GameObject:
   m_ObjectHideFlags: 0
@@ -53229,7 +54321,8 @@ GameObject:
   - component: {fileID: 6275993923989179001}
   - component: {fileID: 7033341689271170497}
   - component: {fileID: 2090877941474048755}
-  m_Layer: 0
+  - component: {fileID: 2320751997828022650}
+  m_Layer: 3
   m_Name: HallwayFloorNav (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53323,6 +54416,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &2320751997828022650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5619894864952105379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5626986226395792535
 GameObject:
   m_ObjectHideFlags: 0
@@ -53429,7 +54535,8 @@ GameObject:
   - component: {fileID: 4799100636637282375}
   - component: {fileID: 4005044852778338845}
   - component: {fileID: 7164433607462540730}
-  m_Layer: 0
+  - component: {fileID: 3427723435939399019}
+  m_Layer: 3
   m_Name: HallwayFloorNav (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53523,6 +54630,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3427723435939399019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5631576296873122548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5632479401063595011
 GameObject:
   m_ObjectHideFlags: 0
@@ -54216,7 +55336,8 @@ GameObject:
   - component: {fileID: 6325106782038903633}
   - component: {fileID: 5644347023391025209}
   - component: {fileID: 1996056130341414685}
-  m_Layer: 0
+  - component: {fileID: 157051452984344280}
+  m_Layer: 3
   m_Name: HallwayFloorNav (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54310,6 +55431,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &157051452984344280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697147943505158210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5698215642551799734
 GameObject:
   m_ObjectHideFlags: 0
@@ -54530,6 +55664,7 @@ GameObject:
   - component: {fileID: 2804003300735789998}
   - component: {fileID: 8398422596332207069}
   - component: {fileID: 3453735338903229429}
+  - component: {fileID: 372315122017840329}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (35)
   m_TagString: Untagged
@@ -54640,6 +55775,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &372315122017840329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5743145337504217491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5751382488849095051
 GameObject:
   m_ObjectHideFlags: 0
@@ -55480,6 +56628,7 @@ GameObject:
   - component: {fileID: 1320402913086384571}
   - component: {fileID: 6220953368983901464}
   - component: {fileID: 57701949846922317}
+  - component: {fileID: 3527704575640554031}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (22)
   m_TagString: Untagged
@@ -55590,6 +56739,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &3527704575640554031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5818255842581052772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5835494998288415275
 GameObject:
   m_ObjectHideFlags: 0
@@ -55602,7 +56764,8 @@ GameObject:
   - component: {fileID: 3694520264466377530}
   - component: {fileID: 5676406394639378136}
   - component: {fileID: 2230105550354471985}
-  m_Layer: 0
+  - component: {fileID: 3131717410892264360}
+  m_Layer: 3
   m_Name: HallwayFloorNav (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55696,6 +56859,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3131717410892264360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5835494998288415275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5839989753681355655
 GameObject:
   m_ObjectHideFlags: 0
@@ -56288,7 +57464,8 @@ GameObject:
   - component: {fileID: 4060796006996649955}
   - component: {fileID: 6063757586967328192}
   - component: {fileID: 86563609567548894}
-  m_Layer: 0
+  - component: {fileID: 1619278124248008949}
+  m_Layer: 3
   m_Name: HallwayFloorNav (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56382,6 +57559,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1619278124248008949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884317322435520596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &5887422607453153695
 GameObject:
   m_ObjectHideFlags: 0
@@ -57077,7 +58267,8 @@ GameObject:
   - component: {fileID: 3435751338039763513}
   - component: {fileID: 2864533218498691607}
   - component: {fileID: 6446520703981644369}
-  m_Layer: 0
+  - component: {fileID: 6056325723738372186}
+  m_Layer: 3
   m_Name: HallwayFloorNav (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57171,6 +58362,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &6056325723738372186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977690578781621682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6013486793592620560
 GameObject:
   m_ObjectHideFlags: 0
@@ -57307,6 +58511,7 @@ GameObject:
   - component: {fileID: 2382916754018160603}
   - component: {fileID: 5557075960266423585}
   - component: {fileID: 443026923362295595}
+  - component: {fileID: 5291015708202072239}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (21)
   m_TagString: Untagged
@@ -57417,6 +58622,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &5291015708202072239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023909436760311505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6032077518071942049
 GameObject:
   m_ObjectHideFlags: 0
@@ -57636,7 +58854,8 @@ GameObject:
   - component: {fileID: 6309861935271376412}
   - component: {fileID: 7168650509611497952}
   - component: {fileID: 1626001552427026452}
-  m_Layer: 0
+  - component: {fileID: 7793823534402645422}
+  m_Layer: 3
   m_Name: HallwayFloorNav (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57730,6 +58949,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &7793823534402645422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065551738978619840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6068153395294957758
 GameObject:
   m_ObjectHideFlags: 0
@@ -60134,7 +61366,8 @@ GameObject:
   - component: {fileID: 3559447680840378500}
   - component: {fileID: 8883936770676117320}
   - component: {fileID: 7188151418034136405}
-  m_Layer: 0
+  - component: {fileID: 5580681530807119825}
+  m_Layer: 3
   m_Name: HallwayFloorNav (65)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60228,6 +61461,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &5580681530807119825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6261006748914299183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6289188091061269897
 GameObject:
   m_ObjectHideFlags: 0
@@ -60363,7 +61609,8 @@ GameObject:
   - component: {fileID: 2645617244479746122}
   - component: {fileID: 205059698456776126}
   - component: {fileID: 585019477704542196}
-  m_Layer: 0
+  - component: {fileID: 983129899817916145}
+  m_Layer: 3
   m_Name: HallwayFloorNav (81)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60457,6 +61704,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &983129899817916145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6291901200919253456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6293308174050816580
 GameObject:
   m_ObjectHideFlags: 0
@@ -61367,7 +62627,8 @@ GameObject:
   - component: {fileID: 4795988541406330297}
   - component: {fileID: 5632641685287556618}
   - component: {fileID: 4185100163290445666}
-  m_Layer: 0
+  - component: {fileID: 4552711535470264647}
+  m_Layer: 3
   m_Name: HallwayFloorNav (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61461,6 +62722,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4552711535470264647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6394986305305580719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6410833449881428914
 GameObject:
   m_ObjectHideFlags: 0
@@ -61719,7 +62993,8 @@ GameObject:
   - component: {fileID: 6099045696022203731}
   - component: {fileID: 5896492843288992148}
   - component: {fileID: 8485804114322671583}
-  m_Layer: 0
+  - component: {fileID: 229592474460210767}
+  m_Layer: 3
   m_Name: HallwayFloorNav (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61813,6 +63088,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &229592474460210767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440884434463520037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6444608568268686796
 GameObject:
   m_ObjectHideFlags: 0
@@ -62377,7 +63665,8 @@ GameObject:
   - component: {fileID: 2903241044569638346}
   - component: {fileID: 5409123111641457200}
   - component: {fileID: 6061076763160583272}
-  m_Layer: 0
+  - component: {fileID: 1286369493737677606}
+  m_Layer: 3
   m_Name: HallwayFloorNav (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62471,6 +63760,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1286369493737677606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461025002289991348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6461595330839747426
 GameObject:
   m_ObjectHideFlags: 0
@@ -64483,7 +65785,8 @@ GameObject:
   - component: {fileID: 326004731553220699}
   - component: {fileID: 1496992173342519548}
   - component: {fileID: 8552698220118476394}
-  m_Layer: 0
+  - component: {fileID: 4760507956049998582}
+  m_Layer: 3
   m_Name: HallwayFloorNav (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64577,6 +65880,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4760507956049998582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662562556825065801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6671473464781117503
 GameObject:
   m_ObjectHideFlags: 0
@@ -64819,7 +66135,8 @@ GameObject:
   - component: {fileID: 7147217200371472968}
   - component: {fileID: 2779643606920997624}
   - component: {fileID: 4883119911273654213}
-  m_Layer: 0
+  - component: {fileID: 7187180075313376578}
+  m_Layer: 3
   m_Name: HallwayFloorNav (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64913,6 +66230,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &7187180075313376578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6676130220565892478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6682825466595291588
 GameObject:
   m_ObjectHideFlags: 0
@@ -65424,6 +66754,7 @@ GameObject:
   - component: {fileID: 5034577481812053979}
   - component: {fileID: 32691238193136050}
   - component: {fileID: 3558304332688399184}
+  - component: {fileID: 7105369534824709107}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (54)
   m_TagString: Untagged
@@ -65534,6 +66865,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &7105369534824709107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746922443161304221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6783328199040079764
 GameObject:
   m_ObjectHideFlags: 0
@@ -65546,7 +66890,8 @@ GameObject:
   - component: {fileID: 1958264043981177347}
   - component: {fileID: 7345287851158167250}
   - component: {fileID: 5129403926730351693}
-  m_Layer: 0
+  - component: {fileID: 7574303771279454256}
+  m_Layer: 3
   m_Name: HallwayFloorNav (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65640,6 +66985,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &7574303771279454256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783328199040079764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6801815652726380636
 GameObject:
   m_ObjectHideFlags: 0
@@ -66424,7 +67782,8 @@ GameObject:
   - component: {fileID: 1053277512565840696}
   - component: {fileID: 7388107578462447593}
   - component: {fileID: 85043763026035932}
-  m_Layer: 0
+  - component: {fileID: 5616414137506659687}
+  m_Layer: 3
   m_Name: HallwayFloorNav (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66518,6 +67877,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &5616414137506659687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6858157685822404955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6864517273917268985
 GameObject:
   m_ObjectHideFlags: 0
@@ -66614,7 +67986,8 @@ GameObject:
   - component: {fileID: 3086665698737519972}
   - component: {fileID: 8891935089435130524}
   - component: {fileID: 2990663058145442493}
-  m_Layer: 0
+  - component: {fileID: 1833427381331705320}
+  m_Layer: 3
   m_Name: HallwayFloorNav (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66708,6 +68081,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1833427381331705320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865544723856852713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &6920618434685209863
 GameObject:
   m_ObjectHideFlags: 0
@@ -68083,6 +69469,7 @@ GameObject:
   - component: {fileID: 2120503523683025067}
   - component: {fileID: 3334680881944475243}
   - component: {fileID: 7953153992362381331}
+  - component: {fileID: 1046219800485772748}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (33)
   m_TagString: Untagged
@@ -68193,6 +69580,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &1046219800485772748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038023855213995360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7042664115414875212
 GameObject:
   m_ObjectHideFlags: 0
@@ -68870,7 +70270,8 @@ GameObject:
   - component: {fileID: 4533608363791639427}
   - component: {fileID: 921654519602137264}
   - component: {fileID: 7845851631320952857}
-  m_Layer: 0
+  - component: {fileID: 800216942957716686}
+  m_Layer: 3
   m_Name: HallwayFloorNav (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68964,6 +70365,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &800216942957716686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128891171045512283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7134527464508472345
 GameObject:
   m_ObjectHideFlags: 0
@@ -69100,6 +70514,7 @@ GameObject:
   - component: {fileID: 8129536121991320666}
   - component: {fileID: 768180241244694108}
   - component: {fileID: 9053209224521397048}
+  - component: {fileID: 4732711933073351164}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (46)
   m_TagString: Untagged
@@ -69210,6 +70625,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4732711933073351164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7145839448710070694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7146423239765435082
 GameObject:
   m_ObjectHideFlags: 0
@@ -69592,6 +71020,7 @@ GameObject:
   - component: {fileID: 2161615477875325326}
   - component: {fileID: 6178621892985981958}
   - component: {fileID: 6751383237055810489}
+  - component: {fileID: 729860368805847045}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (27)
   m_TagString: Untagged
@@ -69702,6 +71131,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &729860368805847045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7201572255639138428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7203099300746330412
 GameObject:
   m_ObjectHideFlags: 0
@@ -70151,6 +71593,7 @@ GameObject:
   - component: {fileID: 790714313224956526}
   - component: {fileID: 6365047169787195267}
   - component: {fileID: 3318052038969888074}
+  - component: {fileID: 4231758341581887016}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (17)
   m_TagString: Untagged
@@ -70261,6 +71704,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4231758341581887016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7267995454747179305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7291984961664191932
 GameObject:
   m_ObjectHideFlags: 0
@@ -70432,6 +71888,7 @@ GameObject:
   - component: {fileID: 7528959731950955748}
   - component: {fileID: 5471131574085774283}
   - component: {fileID: 7015537238465146417}
+  - component: {fileID: 7183371225642700262}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (26)
   m_TagString: Untagged
@@ -70542,6 +71999,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &7183371225642700262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7306475102612921344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7308343258377986252
 GameObject:
   m_ObjectHideFlags: 0
@@ -70554,7 +72024,8 @@ GameObject:
   - component: {fileID: 7021333438984761005}
   - component: {fileID: 3753065400505641503}
   - component: {fileID: 4082861466760731169}
-  m_Layer: 0
+  - component: {fileID: 8518769521714507171}
+  m_Layer: 3
   m_Name: HallwayFloorNav (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70648,6 +72119,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &8518769521714507171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308343258377986252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7335019811716270916
 GameObject:
   m_ObjectHideFlags: 0
@@ -70784,6 +72268,7 @@ GameObject:
   - component: {fileID: 5195016339643150569}
   - component: {fileID: 1499352628252978410}
   - component: {fileID: 809748436053615775}
+  - component: {fileID: 5267208146945282178}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (18)
   m_TagString: Untagged
@@ -70894,6 +72379,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &5267208146945282178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7338330410867024093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7385984454265987779
 GameObject:
   m_ObjectHideFlags: 0
@@ -71266,6 +72764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2583552205329125376}
+  - component: {fileID: 7404954269706158634}
   m_Layer: 3
   m_Name: FloorObstacle
   m_TagString: Untagged
@@ -71343,6 +72842,19 @@ Transform:
   - {fileID: 7086792316367799515}
   m_Father: {fileID: 8522308109327929388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7404954269706158634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429881214507374781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7436270937491182246
 GameObject:
   m_ObjectHideFlags: 0
@@ -71355,7 +72867,8 @@ GameObject:
   - component: {fileID: 6155004963619404878}
   - component: {fileID: 1271677512209713888}
   - component: {fileID: 3654588928614302160}
-  m_Layer: 0
+  - component: {fileID: 1404954803874804957}
+  m_Layer: 3
   m_Name: HallwayFloorNav (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71449,6 +72962,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1404954803874804957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436270937491182246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7437801606970872039
 GameObject:
   m_ObjectHideFlags: 0
@@ -71545,7 +73071,8 @@ GameObject:
   - component: {fileID: 6134675468487105286}
   - component: {fileID: 72081045130065580}
   - component: {fileID: 7066411903715468608}
-  m_Layer: 0
+  - component: {fileID: 933426798691003394}
+  m_Layer: 3
   m_Name: HallwayFloorNav (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71639,6 +73166,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &933426798691003394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446637371544538538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7462037504533305787
 GameObject:
   m_ObjectHideFlags: 0
@@ -71687,6 +73227,7 @@ GameObject:
   - component: {fileID: 8518193403703825551}
   - component: {fileID: 1128644068349096461}
   - component: {fileID: 2316984514873335364}
+  - component: {fileID: 2520772173187682007}
   m_Layer: 3
   m_Name: HallwayFloorObstacle
   m_TagString: Untagged
@@ -71797,6 +73338,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &2520772173187682007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7469159813518569407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7493645033021790251
 GameObject:
   m_ObjectHideFlags: 0
@@ -71917,6 +73471,7 @@ GameObject:
   - component: {fileID: 6109787590714583370}
   - component: {fileID: 603659336236573105}
   - component: {fileID: 5471084839079541026}
+  - component: {fileID: 2399660612706560438}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (6)
   m_TagString: Untagged
@@ -72027,6 +73582,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &2399660612706560438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7502425412276996207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7504825921087641366
 GameObject:
   m_ObjectHideFlags: 0
@@ -73744,7 +75312,8 @@ GameObject:
   - component: {fileID: 7204158689769220410}
   - component: {fileID: 6585104291118367593}
   - component: {fileID: 1173394899909993083}
-  m_Layer: 0
+  - component: {fileID: 2997687238750643893}
+  m_Layer: 3
   m_Name: HallwayFloorNav (85)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73838,6 +75407,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &2997687238750643893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7624112556979165524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7625417943757782771
 GameObject:
   m_ObjectHideFlags: 0
@@ -74748,6 +76330,7 @@ GameObject:
   - component: {fileID: 219648348825319065}
   - component: {fileID: 1840702844827756973}
   - component: {fileID: 4803054397814233461}
+  - component: {fileID: 8833541565545376488}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (3)
   m_TagString: Untagged
@@ -74858,6 +76441,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &8833541565545376488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7679140228107129191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7682197853238642915
 GameObject:
   m_ObjectHideFlags: 0
@@ -74871,6 +76467,7 @@ GameObject:
   - component: {fileID: 802294823370362747}
   - component: {fileID: 1432199810474323856}
   - component: {fileID: 3429771285815850895}
+  - component: {fileID: 3355306077040787439}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (13)
   m_TagString: Untagged
@@ -74981,6 +76578,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &3355306077040787439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7682197853238642915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7687357503041488254
 GameObject:
   m_ObjectHideFlags: 0
@@ -75117,6 +76727,7 @@ GameObject:
   - component: {fileID: 3975127779757047259}
   - component: {fileID: 5983611352870424982}
   - component: {fileID: 5581514986948862046}
+  - component: {fileID: 4288546209318183293}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (41)
   m_TagString: Untagged
@@ -75227,6 +76838,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4288546209318183293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7708271591926856300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7737909648803156117
 GameObject:
   m_ObjectHideFlags: 0
@@ -76335,7 +77959,8 @@ GameObject:
   - component: {fileID: 1769274403758487409}
   - component: {fileID: 6999979164624601183}
   - component: {fileID: 225363694302758076}
-  m_Layer: 0
+  - component: {fileID: 3805967688826515894}
+  m_Layer: 3
   m_Name: HallwayFloorNav (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76429,6 +78054,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3805967688826515894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7900069266386468183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7919044753540151767
 GameObject:
   m_ObjectHideFlags: 0
@@ -76795,6 +78433,7 @@ GameObject:
   - component: {fileID: 5988801704277671149}
   - component: {fileID: 7777907864799697567}
   - component: {fileID: 4705580946590385696}
+  - component: {fileID: 2252316408803998081}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (29)
   m_TagString: Untagged
@@ -76905,6 +78544,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &2252316408803998081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933293199463965606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7964888653073789678
 GameObject:
   m_ObjectHideFlags: 0
@@ -77164,6 +78816,7 @@ GameObject:
   - component: {fileID: 7351404512742879271}
   - component: {fileID: 6820987254950218926}
   - component: {fileID: 2411080074511864716}
+  - component: {fileID: 569986060524327905}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (30)
   m_TagString: Untagged
@@ -77274,6 +78927,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &569986060524327905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7969197395329411301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7973135431252329402
 GameObject:
   m_ObjectHideFlags: 0
@@ -77778,7 +79444,8 @@ GameObject:
   - component: {fileID: 7252288020379181384}
   - component: {fileID: 941565876230472514}
   - component: {fileID: 5719430357045086425}
-  m_Layer: 0
+  - component: {fileID: 5129526709805130212}
+  m_Layer: 3
   m_Name: HallwayFloorNav (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77872,6 +79539,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &5129526709805130212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7986002062572063696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &7994573241633708834
 GameObject:
   m_ObjectHideFlags: 0
@@ -78973,7 +80653,8 @@ GameObject:
   - component: {fileID: 6818399088960224200}
   - component: {fileID: 8619818725177919666}
   - component: {fileID: 6254539683779537886}
-  m_Layer: 0
+  - component: {fileID: 5781252765020175684}
+  m_Layer: 3
   m_Name: HallwayFloorNav (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79067,6 +80748,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &5781252765020175684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8179093872312383523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8190197017312402202
 GameObject:
   m_ObjectHideFlags: 0
@@ -79186,7 +80880,8 @@ GameObject:
   - component: {fileID: 5622502177481117902}
   - component: {fileID: 7433724034289205133}
   - component: {fileID: 5870670936284787677}
-  m_Layer: 0
+  - component: {fileID: 5674904365358614304}
+  m_Layer: 3
   m_Name: HallwayFloorNav (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79280,6 +80975,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &5674904365358614304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192126264639142335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8198680241280152660
 GameObject:
   m_ObjectHideFlags: 0
@@ -79422,6 +81130,7 @@ GameObject:
   - component: {fileID: 6864631160866806877}
   - component: {fileID: 3428556906704602779}
   - component: {fileID: 2009039688864699430}
+  - component: {fileID: 25735161372247385}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (1)
   m_TagString: Untagged
@@ -79532,6 +81241,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &25735161372247385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242008686510111713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8243010973998520129
 GameObject:
   m_ObjectHideFlags: 0
@@ -79761,7 +81483,8 @@ GameObject:
   - component: {fileID: 582993651710883631}
   - component: {fileID: 9167108030562832147}
   - component: {fileID: 171030098466910236}
-  m_Layer: 0
+  - component: {fileID: 7806618296932872900}
+  m_Layer: 3
   m_Name: HallwayFloorNav (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79855,6 +81578,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &7806618296932872900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256729413244995830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8262046954094669907
 GameObject:
   m_ObjectHideFlags: 0
@@ -80114,6 +81850,7 @@ GameObject:
   - component: {fileID: 5188682996314586175}
   - component: {fileID: 5354682968130476686}
   - component: {fileID: 5745194927802860756}
+  - component: {fileID: 8575213485721876303}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (15)
   m_TagString: Untagged
@@ -80224,6 +81961,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &8575213485721876303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296206283725821857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8297387397699218096
 GameObject:
   m_ObjectHideFlags: 0
@@ -80454,6 +82204,7 @@ GameObject:
   - component: {fileID: 6931695324684920610}
   - component: {fileID: 5306859796654360111}
   - component: {fileID: 5621379346175665646}
+  - component: {fileID: 2365051235615683185}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (50)
   m_TagString: Untagged
@@ -80564,6 +82315,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &2365051235615683185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321796636468675218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8322391198794951749
 GameObject:
   m_ObjectHideFlags: 0
@@ -80576,7 +82340,8 @@ GameObject:
   - component: {fileID: 8102920811079840068}
   - component: {fileID: 8217164296213702097}
   - component: {fileID: 8255813088838551492}
-  m_Layer: 0
+  - component: {fileID: 8735206287549136298}
+  m_Layer: 3
   m_Name: HallwayFloorNav (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80670,6 +82435,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &8735206287549136298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8322391198794951749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8334347823681678799
 GameObject:
   m_ObjectHideFlags: 0
@@ -81192,7 +82970,8 @@ GameObject:
   - component: {fileID: 4144181110282308006}
   - component: {fileID: 8571600505223785433}
   - component: {fileID: 7491747708813898361}
-  m_Layer: 0
+  - component: {fileID: 3524579555480836459}
+  m_Layer: 3
   m_Name: HallwayFloorNav (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81286,6 +83065,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3524579555480836459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381749673156039606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8408220983027058864
 GameObject:
   m_ObjectHideFlags: 0
@@ -82381,6 +84173,7 @@ GameObject:
   - component: {fileID: 294626939925377678}
   - component: {fileID: 3204964262986551736}
   - component: {fileID: 921219362445688948}
+  - component: {fileID: 7809021067953127973}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (9)
   m_TagString: Untagged
@@ -82491,6 +84284,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &7809021067953127973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505189989900972205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8506491002387660670
 GameObject:
   m_ObjectHideFlags: 0
@@ -82503,7 +84309,8 @@ GameObject:
   - component: {fileID: 7648156966441615496}
   - component: {fileID: 9020467897386557893}
   - component: {fileID: 7849702507699919106}
-  m_Layer: 0
+  - component: {fileID: 6349998050733498705}
+  m_Layer: 3
   m_Name: HallwayFloorNav (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82597,6 +84404,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &6349998050733498705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506491002387660670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8516414904490107559
 GameObject:
   m_ObjectHideFlags: 0
@@ -82609,7 +84429,8 @@ GameObject:
   - component: {fileID: 7745479057869439864}
   - component: {fileID: 571283162090840321}
   - component: {fileID: 6245014741648143551}
-  m_Layer: 0
+  - component: {fileID: 4538555378314978040}
+  m_Layer: 3
   m_Name: HallwayFloorNav (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82703,6 +84524,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &4538555378314978040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8516414904490107559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8536336911436168102
 GameObject:
   m_ObjectHideFlags: 0
@@ -83134,6 +84968,7 @@ GameObject:
   - component: {fileID: 4868339627372567649}
   - component: {fileID: 8384997412635826286}
   - component: {fileID: 2522118802537517413}
+  - component: {fileID: 7889530583291303989}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (36)
   m_TagString: Untagged
@@ -83244,6 +85079,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &7889530583291303989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8556548076349770472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8559647218784433365
 GameObject:
   m_ObjectHideFlags: 0
@@ -83821,7 +85669,8 @@ GameObject:
   - component: {fileID: 6972169783710555973}
   - component: {fileID: 1556881498140968789}
   - component: {fileID: 4493457879843304731}
-  m_Layer: 0
+  - component: {fileID: 8079368198938783399}
+  m_Layer: 3
   m_Name: HallwayFloorNav (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83915,6 +85764,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &8079368198938783399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586140790365341353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8588334309094750447
 GameObject:
   m_ObjectHideFlags: 0
@@ -84296,7 +86158,8 @@ GameObject:
   - component: {fileID: 2183558452410112003}
   - component: {fileID: 4501319556575933132}
   - component: {fileID: 6121284603023922615}
-  m_Layer: 0
+  - component: {fileID: 7098374345922168406}
+  m_Layer: 3
   m_Name: HallwayFloorNav (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84390,6 +86253,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &7098374345922168406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613499106937783377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8618212454009132377
 GameObject:
   m_ObjectHideFlags: 0
@@ -84402,7 +86278,8 @@ GameObject:
   - component: {fileID: 7344237029806328915}
   - component: {fileID: 702122664374595748}
   - component: {fileID: 7266819129243576163}
-  m_Layer: 0
+  - component: {fileID: 3377736255451173319}
+  m_Layer: 3
   m_Name: HallwayFloorNav (84)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84496,6 +86373,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3377736255451173319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8618212454009132377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8632108004656719908
 GameObject:
   m_ObjectHideFlags: 0
@@ -86366,6 +88256,7 @@ GameObject:
   - component: {fileID: 3095555950011205047}
   - component: {fileID: 8652386702876856424}
   - component: {fileID: 3082610741073224880}
+  - component: {fileID: 7215132431092798693}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (42)
   m_TagString: Untagged
@@ -86476,6 +88367,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &7215132431092798693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855445904940284234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8860945213164392927
 GameObject:
   m_ObjectHideFlags: 0
@@ -86717,7 +88621,8 @@ GameObject:
   - component: {fileID: 3433217680964584757}
   - component: {fileID: 2325666761946024361}
   - component: {fileID: 2157480379990348767}
-  m_Layer: 0
+  - component: {fileID: 9180997040416770019}
+  m_Layer: 3
   m_Name: HallwayFloorNav (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86811,6 +88716,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &9180997040416770019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889950637885295926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &8890978187925506692
 GameObject:
   m_ObjectHideFlags: 0
@@ -87629,7 +89547,8 @@ GameObject:
   - component: {fileID: 7408580030782717470}
   - component: {fileID: 3450522840247500882}
   - component: {fileID: 3811048081457247045}
-  m_Layer: 0
+  - component: {fileID: 123620687170931516}
+  m_Layer: 3
   m_Name: HallwayFloorNav (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87723,6 +89642,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &123620687170931516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9002620583140589410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &9034444389909005173
 GameObject:
   m_ObjectHideFlags: 0
@@ -88187,7 +90119,8 @@ GameObject:
   - component: {fileID: 1064029950634869878}
   - component: {fileID: 5425662862280005969}
   - component: {fileID: 6223199588072986052}
-  m_Layer: 0
+  - component: {fileID: 3923400471653845904}
+  m_Layer: 3
   m_Name: HallwayFloorNav (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88281,6 +90214,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &3923400471653845904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9109526178961378488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &9112048083930274719
 GameObject:
   m_ObjectHideFlags: 0
@@ -88596,6 +90542,7 @@ GameObject:
   - component: {fileID: 8011488082955189460}
   - component: {fileID: 6087393896491352195}
   - component: {fileID: 226788873775455467}
+  - component: {fileID: 4403262883343734303}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (32)
   m_TagString: Untagged
@@ -88706,6 +90653,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &4403262883343734303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131012089750448783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &9133653428418451696
 GameObject:
   m_ObjectHideFlags: 0
@@ -89541,6 +91501,7 @@ GameObject:
   - component: {fileID: 880652814727010679}
   - component: {fileID: 6356555899461334832}
   - component: {fileID: 4005905506616916401}
+  - component: {fileID: 73093766522828916}
   m_Layer: 3
   m_Name: HallwayFloorObstacle (12)
   m_TagString: Untagged
@@ -89651,6 +91612,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 7.6200004, y: 200.00002, z: -200.001}
   m_TimeToStationary: 0.5
+--- !u!114 &73093766522828916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9181228879710746933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &9182966804129751322
 GameObject:
   m_ObjectHideFlags: 0
@@ -89927,7 +91901,8 @@ GameObject:
   - component: {fileID: 4090208816957518058}
   - component: {fileID: 8459517100587440722}
   - component: {fileID: 2667150474742648915}
-  m_Layer: 0
+  - component: {fileID: 1763678283692547767}
+  m_Layer: 3
   m_Name: HallwayFloorNav (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90021,6 +91996,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: b3b9b7ad39dd4fe48817f2ff0883e515, type: 3}
+--- !u!114 &1763678283692547767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203263912745060589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7285176f310a2849b1376e42caa9f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_GroundType: {fileID: 11400000, guid: 2572c750b6541b9439c5748095ffeb6b, type: 2}
 --- !u!1 &9204315032597261452
 GameObject:
   m_ObjectHideFlags: 0
