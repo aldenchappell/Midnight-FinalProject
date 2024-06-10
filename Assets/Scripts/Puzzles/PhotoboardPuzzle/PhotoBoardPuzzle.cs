@@ -37,6 +37,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
     private CinemachineVirtualCamera _mainCam;
     private CinemachineVirtualCamera _puzzleCam;
 
+    private PlayerInteractableController _playerInteractableController;
     private PlayerDualHandInventory _playerDualHandInventory;
     private PuzzlePiece _puzzlePieceRequired;
     private PuzzleEscape _puzzleEscape;
@@ -45,9 +46,9 @@ public class PhotoBoardPuzzle : MonoBehaviour
     public int polaroidCount;
     private const int TargetPolaroidCount = 6;
     private bool _isFirstTime = true;
+    private bool _isInPuzzle = false;
     private void Awake()
     {
-        polaroidCount = 0;
         _puzzleAudio = GetComponent<AudioSource>();
         _puzzle = GetComponent<Puzzle>();
         _polaroidObj = GameObject.Find("Polaroid");
@@ -56,6 +57,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
         _puzzleEscape = GetComponent<PuzzleEscape>();
         _firstPersonController = FindObjectOfType<FirstPersonController>();
         _playerUI = GameObject.Find("PlayerUICanvas");
+        _playerInteractableController = FindObjectOfType<PlayerInteractableController>();
         _puzzlePieceRequired = GameObject.Find("Polaroid").GetComponent<PuzzlePiece>();
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("PhotoBoardPuzzleCam").GetComponent<CinemachineVirtualCamera>();
@@ -63,7 +65,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && puzzleUI[0].activeSelf && puzzleUI[1].activeSelf)
+        if (Input.GetKeyDown(KeyCode.E) && _playerInteractableController.IsLookingAtInteractableObject(gameObject))
         {
             _puzzleEscape.EscapePressed?.Invoke();
         }
@@ -72,6 +74,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
     private void Start()
     {
         _movesMade = 0;
+        polaroidCount = 0;
         _originalPositions = new List<Vector3>();
 
         foreach (PhotoBoardPuzzlePiece piece in puzzlePieces)
@@ -185,20 +188,22 @@ public class PhotoBoardPuzzle : MonoBehaviour
             _puzzleAudio.PlayOneShot(incorrectSlotSound);
             return;
         }
-        
-        bool hasPolaroid = _playerDualHandInventory.GetInventory.Any(item => item != null
-                                                                             && item.CompareTag("Polaroid"));
-    
-        if (!hasPolaroid && polaroidCount != TargetPolaroidCount)
+
+        // Check for polaroid only if the player is not already in the puzzle
+        if (!_isInPuzzle)
         {
-            _puzzleAudio.PlayOneShot(incorrectSlotSound);
-            Debug.LogError("Player doesn't have the polaroid.");
-            return;
+            bool hasPolaroid = _playerDualHandInventory.GetInventory.Any(item => item != null && item.CompareTag("Polaroid"));
+            if (_isFirstTime && !hasPolaroid && polaroidCount != TargetPolaroidCount)
+            {
+                _puzzleAudio.PlayOneShot(incorrectSlotSound);
+                Debug.LogError("Player doesn't have the polaroid.");
+                return;
+            }
         }
 
         // Toggle the puzzle UI
         bool isPuzzleActive = !puzzleUI[0].activeSelf;
-        
+        _isInPuzzle = isPuzzleActive;
 
         foreach (var element in puzzleUI)
         {
@@ -224,7 +229,6 @@ public class PhotoBoardPuzzle : MonoBehaviour
         PlacePolaroid();
     }
 
-
     private void ExitPuzzle()
     {
         GlobalCursorManager.Instance.DisableCursor();
@@ -243,7 +247,6 @@ public class PhotoBoardPuzzle : MonoBehaviour
 
     private void PlacePolaroid()
     {
-
         if (_isFirstTime)
         {
             _isFirstTime = false;

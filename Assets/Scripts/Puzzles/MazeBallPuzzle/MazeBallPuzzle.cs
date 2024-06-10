@@ -107,10 +107,9 @@ public class MazeBallPuzzle : MonoBehaviour
             HandleTimer(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) &&
-            (_playerInteractableController.IsLookingAtInteractableObject(mazePuzzleObj) || mazePuzzleObj.activeSelf))
+        if (Input.GetKeyDown(KeyCode.E) && _playerInteractableController.IsLookingAtInteractableObject(gameObject))
         {
-            TogglePuzzleUI();
+            _puzzleEscape.EscapePressed?.Invoke();
         }
     }
 
@@ -122,14 +121,25 @@ public class MazeBallPuzzle : MonoBehaviour
             return;
         }
         
-        bool hasMazeBall = _playerDualHandInventory.GetInventory.Any(item => item != null
-                                                                             && item.CompareTag("MazeBall"));
+        // bool hasMazeBall = _playerDualHandInventory.GetInventory.Any(item => item != null
+        //                                                                      && item.CompareTag("MazeBall"));
+        //
+        // if (!hasMazeBall)
+        // {
+        //     _audio.PlayOneShot(invalidButtonSound);
+        //     Debug.LogError("Player doesn't have the maze ball.");
+        //     return;
+        // }
         
-        if (!hasMazeBall)
+        if (!_isInPuzzle)
         {
-            _audio.PlayOneShot(invalidButtonSound);
-            Debug.LogError("Player doesn't have the maze ball.");
-            return;
+            bool hasMazeBall = _playerDualHandInventory.GetInventory.Any(item => item != null && item.CompareTag("MazeBall"));
+            if (_firstTime && !hasMazeBall)
+            {
+                _audio.PlayOneShot(invalidButtonSound);
+                Debug.LogError("Player doesn't have the Maze Ball.");
+                return;
+            }
         }
 
         _animator.SetTrigger(Start);
