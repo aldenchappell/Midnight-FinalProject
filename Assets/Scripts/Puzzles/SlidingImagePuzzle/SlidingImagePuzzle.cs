@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -122,7 +123,7 @@ public class SlidingImagePuzzle : MonoBehaviour
             uniqueSprites[randomIndex] = tempSprite;
         }
 
-        //assign the unique sprites
+        //assign the random sprites
         for (int i = 0; i < gridSlotImages.Count; i++)
         {
             gridSlotImages[i].sprite = uniqueSprites[i];
@@ -179,8 +180,7 @@ public class SlidingImagePuzzle : MonoBehaviour
             ResetPuzzle();
             return; 
         }
-
-        // Swap the grid slot images
+        
         Image image1 = gridSlotImages[index1];
         Image image2 = gridSlotImages[index2];
 
@@ -217,23 +217,24 @@ public class SlidingImagePuzzle : MonoBehaviour
             gridSlotImages[7].sprite == puzzleSprites[7] &&
             gridSlotImages[8].sprite == puzzleSprites[8])
         {
-            Debug.LogError("finished");
             TogglePuzzleUI();
             _solved = true;
             _puzzle.CompletePuzzle();
             firstPersonController.canMove = true;
             firstPersonController.canRotate = true;
+
+            
         }
     }
+
+    
 
     public void InstantiateMazeballAtPlayerFeet()
     {
         if (mazeballPrefab != null)
         {
-            // Get the player's position
             Vector3 playerPosition = firstPersonController.transform.position;
-
-            // Instantiate the mazeball at the player's position
+            
             Instantiate(mazeballPrefab, playerPosition, Quaternion.identity);
         }
         else

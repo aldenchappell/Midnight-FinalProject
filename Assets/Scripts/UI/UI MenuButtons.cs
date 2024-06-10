@@ -6,7 +6,7 @@ public class UIMenuButtons : MonoBehaviour
 {
     public void TestSceneButton()
     {
-        SceneManager.LoadScene("TEST SCENE");
+        SceneManager.LoadScene("LOBBY");
         GlobalCursorManager.Instance.DisableCursor();
     }
 

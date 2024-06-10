@@ -23,7 +23,7 @@ public class HideBehindDoor : MonoBehaviour
         _mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
 
         _doorController = GetComponent<DoorController>();
-        _player = GameObject.Find("PlayerCapsule");
+        _player = GameObject.Find("Player");
         _FPC = FindObjectOfType<FirstPersonController>();
     }
 

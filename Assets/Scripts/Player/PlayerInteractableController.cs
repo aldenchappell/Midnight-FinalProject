@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using static DialogueController;
-using UnityEngine.InputSystem;
 
 public class PlayerInteractableController : MonoBehaviour
 {
@@ -25,11 +22,15 @@ public class PlayerInteractableController : MonoBehaviour
     
     private GameObject _skullCompanion;
     private PlayerDualHandInventory _playerInventory;
+    private DialogueController _dialogueController; 
+
     private void Awake()
     {
         _skullCompanion = GameObject.FindWithTag("Skull");
         _playerInventory = FindObjectOfType<PlayerDualHandInventory>()
             .GetComponent<PlayerDualHandInventory>();
+        _dialogueController = FindObjectOfType<DialogueController>(); 
+
     }
 
     private void Update()
@@ -48,15 +49,15 @@ public class PlayerInteractableController : MonoBehaviour
                 if (_interactableObject != interactable)
                 {
                     ResetHighlight();
-                    
+
                     _interactableObject = interactable;
-                    
+
                     UpdateInteractionUI(_interactableObject);
 
                     if (button == null || !interactable.GetComponent<InteractableNPC>())
                     {
                         _highlightInteractableObjectController = _interactableObject.highlightInteractableObjectController;
-                        _highlightInteractableObjectController?.ChangeColor(Color.red); 
+                        _highlightInteractableObjectController?.ChangeColor(Color.red);
                     }
                 }
             }
@@ -64,17 +65,15 @@ public class PlayerInteractableController : MonoBehaviour
         else
         {
             ResetHighlight();
-
-            // Set interaction image to default interaction icon when no interactable object is detected
-            interactionImage.sprite = defaultInteractionIcon;
-            interactionImage.rectTransform.sizeDelta = defaultIconSize;
-            
-            if (_skullCompanion != null && !_skullCompanion.GetComponent<SkullDialogue>().pickedUp)
-            {
-                Instance.DisableDialogueBox(); 
-            }
         }
-        
+
+        // Check if the player is still looking at the interactable object
+        if (_interactableObject != null && _interactableObject.GetComponent<InteractableNPC>() != null)
+        {
+            // If the interactable object is an NPC, disable the dialogue box
+            ResetInteraction();
+        }
+
         if (Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKey) && _interactableObject != null && _allowInteraction)
         {
             interactionImage.sprite = defaultInteractionIcon;
@@ -86,7 +85,6 @@ public class PlayerInteractableController : MonoBehaviour
                     interactableNPC.Interact();
                 }
             }
-
             else
             {
                 _interactableObject.onInteraction?.Invoke();
@@ -95,6 +93,7 @@ public class PlayerInteractableController : MonoBehaviour
             StartCoroutine(InteractionSpamPrevention());
         }
     }
+
 
     private void ResetHighlight()
     {
@@ -141,5 +140,18 @@ public class PlayerInteractableController : MonoBehaviour
         yield return new WaitForSeconds(spamPreventionTime);
         _allowInteraction = true;
         UpdateInteractionUI(_interactableObject);
+    }
+    
+    private void ResetInteraction()
+    {
+        if (_interactableObject != null && _interactableObject.GetComponent<InteractableNPC>() != null)
+        {
+            // If the interactable object is an NPC, disable the dialogue box
+            _dialogueController.DisableDialogueBox();
+        }
+
+        _interactableObject = null;
+        UpdateInteractionUI(null);
+        _highlightInteractableObjectController = null;
     }
 }

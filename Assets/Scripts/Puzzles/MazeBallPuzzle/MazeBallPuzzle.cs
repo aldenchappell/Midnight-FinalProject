@@ -29,8 +29,8 @@ public class MazeBallPuzzle : MonoBehaviour
     [Space(5)]
     
     [Header("Cinemachine Cameras")]
-    private CinemachineVirtualCamera _mainCam;
-    private CinemachineVirtualCamera _puzzleCam;
+    [SerializeField] private CinemachineVirtualCamera mainCam;
+    [SerializeField] private CinemachineVirtualCamera puzzleCam;
     
     [Space(5)]
     
@@ -58,9 +58,12 @@ public class MazeBallPuzzle : MonoBehaviour
     public bool solved;
     private PlayerDualHandInventory _playerDualHandInventory;
     private bool _firstTime = true;
-
-    //private PuzzlePiece _puzzlePieceRequired;    
+    
     private Quaternion _startingRotation;
+    
+    [SerializeField] private Transform polaroidTargetPos;
+    [SerializeField] private GameObject polaroidObj;
+    [SerializeField] private GameObject pfPolaroid;
     private void Awake()
     {
         _playerInteractableController = FindObjectOfType<PlayerInteractableController>();
@@ -70,8 +73,8 @@ public class MazeBallPuzzle : MonoBehaviour
         _puzzleEscape = GetComponent<PuzzleEscape>();
         _animator = GetComponent<Animator>();
         _playerDualHandInventory = FindObjectOfType<PlayerDualHandInventory>();
-        _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
-        _puzzleCam = GameObject.Find("MazePuzzleCam").GetComponent<CinemachineVirtualCamera>();
+        //_mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
+        //_puzzleCam = GameObject.Find("MazePuzzleCam").GetComponent<CinemachineVirtualCamera>();
         //_puzzlePieceRequired = originalMazeBall.GetComponent<PuzzlePiece>();
         _startingRotation = transform.rotation;
     }
@@ -163,16 +166,16 @@ public class MazeBallPuzzle : MonoBehaviour
 
     private void ToggleCamera()
     {
-        if (_mainCam.Priority > _puzzleCam.Priority)
+        if (mainCam.Priority > puzzleCam.Priority)
         {
-            _mainCam.Priority = 0;
-            _puzzleCam.Priority = 10;
-            _puzzleCam.transform.rotation = _puzzleCam.m_Follow.rotation;
+            mainCam.Priority = 0;
+            puzzleCam.Priority = 10;
+            puzzleCam.transform.rotation = puzzleCam.m_Follow.rotation;
         }
         else
         {
-            _mainCam.Priority = 10;
-            _puzzleCam.Priority = 0;
+            mainCam.Priority = 10;
+            puzzleCam.Priority = 0;
         }
     }
 
@@ -285,12 +288,24 @@ public class MazeBallPuzzle : MonoBehaviour
     public void Complete()
     {
         _animator.SetTrigger(Finish);
+        var polaroid = GameObject.FindWithTag("Polaroid");
         
+        polaroid.transform.SetParent(_playerInteractableController.gameObject.transform);
+        StartCoroutine(SpawnPolaroid());
         ToggleCamera();
         _firstPersonController.ToggleCanMove();
         _firstPersonController.canRotate = true;
         //_audio.enabled = false;
         Destroy(puzzleUI);
+    }
+    
+    private IEnumerator SpawnPolaroid()
+    {
+        yield return new WaitForSeconds(1.0f);
+        GameObject polaroid = Instantiate(pfPolaroid, polaroidTargetPos.position, Quaternion.identity);
+        polaroid.transform.SetParent(null);
+        polaroid.transform.rotation = polaroidTargetPos.rotation;
+        Destroy(polaroidObj);
     }
     
     private void ResetPuzzle()

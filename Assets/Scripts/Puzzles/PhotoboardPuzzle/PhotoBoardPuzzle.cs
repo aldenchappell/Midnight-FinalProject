@@ -39,7 +39,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
 
     private PlayerInteractableController _playerInteractableController;
     private PlayerDualHandInventory _playerDualHandInventory;
-    private PuzzlePiece _puzzlePieceRequired;
+    //private PuzzlePiece _puzzlePieceRequired;
     private PuzzleEscape _puzzleEscape;
 
     private GameObject _polaroidObj;
@@ -51,14 +51,11 @@ public class PhotoBoardPuzzle : MonoBehaviour
     {
         _puzzleAudio = GetComponent<AudioSource>();
         _puzzle = GetComponent<Puzzle>();
-        _polaroidObj = GameObject.Find("Polaroid");
         _playerDualHandInventory = FindObjectOfType<PlayerDualHandInventory>();
-        _puzzlePieceRequired = GetComponent<PuzzlePiece>();
         _puzzleEscape = GetComponent<PuzzleEscape>();
         _firstPersonController = FindObjectOfType<FirstPersonController>();
         _playerUI = GameObject.Find("PlayerUICanvas");
-        _playerInteractableController = FindObjectOfType<PlayerInteractableController>();
-        _puzzlePieceRequired = GameObject.Find("Polaroid").GetComponent<PuzzlePiece>();
+        _playerInteractableController = FindObjectOfType<PlayerInteractableController>(); ;
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("PhotoBoardPuzzleCam").GetComponent<CinemachineVirtualCamera>();
     }
@@ -250,7 +247,8 @@ public class PhotoBoardPuzzle : MonoBehaviour
         if (_isFirstTime)
         {
             _isFirstTime = false;
-
+            
+            _polaroidObj = GameObject.FindWithTag("Polaroid");
             _playerDualHandInventory.RemoveObject = _polaroidObj;
             _polaroidObj = null;
         }

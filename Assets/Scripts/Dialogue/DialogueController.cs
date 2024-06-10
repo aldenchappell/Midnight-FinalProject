@@ -28,6 +28,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private SkullDialogue skullCompanion;
     private PlayerDualHandInventory _playerInventory;
     private FirstPersonController _firstPersonController;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -121,7 +122,7 @@ public class DialogueController : MonoBehaviour
                 StartCoroutine(PreventTextOnlyDialogueSpam());
             }
         }
-        Debug.Log(_currentIndex);
+        //Debug.Log(_currentIndex);
     }
 
     private IEnumerator ReadOutLine()
