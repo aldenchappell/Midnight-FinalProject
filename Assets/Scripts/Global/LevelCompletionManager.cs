@@ -143,6 +143,7 @@ public class LevelCompletionManager : MonoBehaviour
         {
             Debug.Log("All levels completed!");
             // Game is won, handle that - load credits and/or ending cutscene?
+            ResetPuzzles();
         }
     }
 
