@@ -78,7 +78,7 @@ public class EnemyVision : MonoBehaviour
                             {
                                 targetsInSight.Add(target.transform.gameObject);
                                 lastKnownPosition = target.transform.position;
-                                print("Target " + target.name + " is in sight");
+                                //print("Target " + target.name + " is in sight");
                             }   
                         }
                         else
