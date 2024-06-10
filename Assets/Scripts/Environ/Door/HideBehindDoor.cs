@@ -16,6 +16,7 @@ public class HideBehindDoor : MonoBehaviour
     private FirstPersonController _FPC;
 
     private bool _isActive;
+    private bool _isSwitching;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class HideBehindDoor : MonoBehaviour
     private void Start()
     {
         _isActive = false;
+        _isSwitching = false;
     }
 
     private void Update()
@@ -43,11 +45,15 @@ public class HideBehindDoor : MonoBehaviour
     #region Change Hide State
     public void StartChangeState()
     {
-        StartCoroutine("ChangeHideState");
+        if(!_isSwitching)
+        {
+            StartCoroutine("ChangeHideState");
+        }
     }
     private IEnumerator ChangeHideState()
     {
         _isActive = !_isActive;
+        _isSwitching = true;
         HidePlayer();
         if(_isActive)
         {
@@ -58,6 +64,7 @@ public class HideBehindDoor : MonoBehaviour
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            
         }
         else
         {
@@ -68,9 +75,19 @@ public class HideBehindDoor : MonoBehaviour
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            
         }
+        Invoke("InteractDelay", 3f);
         
+
     }
+
+    private void InteractDelay()
+    {
+        print("Interaction is availabe");
+        _isSwitching = false;
+    }
+
     #endregion
 
     #region Input and Raycast
