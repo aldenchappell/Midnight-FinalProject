@@ -85,7 +85,7 @@ public class EnemyVision : MonoBehaviour
                         {
                             if(enableDebug)
                             {
-                                print("Debug - EnemyVision(GetTargetsInRadius): " + target.name + " Is Obstructed From View");
+                                //print("Debug - EnemyVision(GetTargetsInRadius): " + target.name + " Is Obstructed From View");
                             }
                         }
                     }
@@ -94,7 +94,7 @@ public class EnemyVision : MonoBehaviour
                 {
                     if(enableDebug)
                     {
-                        print("Debug - EnemyVision(GetTargetsInRadius): " + target.name + " Outside Enemy View");
+                        //print("Debug - EnemyVision(GetTargetsInRadius): " + target.name + " Outside Enemy View");
                     }
                 }
             }
@@ -103,7 +103,7 @@ public class EnemyVision : MonoBehaviour
         {
             if(enableDebug)
             {
-                print("Debug - EnemyVision(GetTargetsInRadius): No Targets In Radius");
+               // print("Debug - EnemyVision(GetTargetsInRadius): No Targets In Radius");
             }
         }
     }

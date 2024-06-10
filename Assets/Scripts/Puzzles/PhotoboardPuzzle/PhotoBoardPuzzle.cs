@@ -47,6 +47,8 @@ public class PhotoBoardPuzzle : MonoBehaviour
     private const int TargetPolaroidCount = 6;
     private bool _isFirstTime = true;
     private bool _isInPuzzle = false;
+    
+    
     private void Awake()
     {
         _puzzleAudio = GetComponent<AudioSource>();
@@ -77,7 +79,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
         foreach (PhotoBoardPuzzlePiece piece in puzzlePieces)
         {
             _originalPositions.Add(piece.GetPosition);
-            print(piece.name + " " + piece.GetPosition);
+            //print(piece.name + " " + piece.GetPosition);
         }
         UpdateMovesMadeUI(_movesMade);
     }
@@ -139,7 +141,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
             _solved = true;
             ExitPuzzle();
             TogglePuzzleUI();
-            
+            LevelCompletionManager.Instance.OnKeySpawn();
             if (_puzzle != null)
             {
                 _puzzle.CompletePuzzle();

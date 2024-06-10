@@ -7,6 +7,8 @@ public class PerfumeBottleSetActive : MonoBehaviour
     private GameObject _shadowBook;
     private bool isChecking;
 
+    
+    
     private void Start()
     {
         _shadowBook = GameObject.Find("BookShadow");

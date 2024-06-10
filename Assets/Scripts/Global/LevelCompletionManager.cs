@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -16,24 +17,33 @@ public class LevelCompletionManager : MonoBehaviour
     private HashSet<string> _completedLevels = new HashSet<string>();
     private HashSet<string> _completedPuzzles = new HashSet<string>();
 
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip keyDropSound;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            
         }
         else
         {
             Destroy(gameObject);
         }
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnEnable()
+    {
+        
     }
 
     public void SavePuzzleCompletion(SO_Puzzle puzzle)
     {
         if (currentLevelPuzzles == null)
         {
-            Debug.LogError("Current level puzzles list is null");
+            //Debug.LogError("Current level puzzles list is null");
             return;
         }
 
@@ -44,9 +54,6 @@ public class LevelCompletionManager : MonoBehaviour
             if (currentLevelPuzzles.Count == 0)
             {
                 SaveLevelCompletion(_currentLevel);
-
-                // Debug log to show which puzzles are completed in the current level
-                Debug.Log($"Completed puzzles in {_currentLevel}: {string.Join(", ", _completedPuzzles)}");
             }
         }
     }
@@ -85,13 +92,11 @@ public class LevelCompletionManager : MonoBehaviour
         _currentLevel = levelName;
         currentLevelPuzzles = ConvertPuzzlesToNames(puzzles);
 
-        // Debug log to check if any puzzles are not completed in the current level
-        Debug.Log("Starting level: " + _currentLevel);
         foreach (var puzzleName in currentLevelPuzzles)
         {
             if (!_completedPuzzles.Contains(puzzleName))
             {
-                Debug.Log("Incomplete puzzle: " + puzzleName);
+                //Debug.Log("Incomplete puzzle: " + puzzleName);
             }
         }
     }
@@ -111,18 +116,18 @@ public class LevelCompletionManager : MonoBehaviour
         string levelName = sceneName.ToUpper();
         if (!_completedLevels.Contains(levelName))
         {
-            Debug.Log("Level " + levelName + " not found in completed levels");
+            //Debug.Log("Level " + levelName + " not found in completed levels");
             return;
         }
 
         if (_completedPuzzles.Contains(puzzleName))
         {
-            Debug.Log("Puzzle " + puzzleName + " in level + " + levelName + " is already completed.");
+            //Debug.Log("Puzzle " + puzzleName + " in level + " + levelName + " is already completed.");
             return;
         }
 
         _completedPuzzles.Add(puzzleName);
-        Debug.Log("Puzzle " + puzzleName + " in level " + levelName + " completed.");
+        //Debug.Log("Puzzle " + puzzleName + " in level " + levelName + " completed.");
     }
 
     public void CheckAndStartNextLevel()
@@ -141,7 +146,7 @@ public class LevelCompletionManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("All levels completed!");
+            //Debug.Log("All levels completed!");
             // Game is won, handle that - load credits and/or ending cutscene?
             ResetPuzzles();
         }
@@ -150,5 +155,11 @@ public class LevelCompletionManager : MonoBehaviour
     public void OnPlayerDeath()
     {
         ResetPuzzles();
+    }
+
+    public void OnKeySpawn()
+    {
+        _audioSource.PlayOneShot(keyDropSound);
+        Debug.Log("Dropping key");
     }
 }

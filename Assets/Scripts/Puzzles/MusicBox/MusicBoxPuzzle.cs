@@ -30,5 +30,6 @@ public class MusicBoxPuzzle : MonoBehaviour
     {
         _animator.SetTrigger("PlayMusicBox");
         GetComponent<Puzzle>().CompletePuzzle();
+        LevelCompletionManager.Instance.OnKeySpawn();
     }
 }
