@@ -2855,6 +2855,7 @@ GameObject:
   - component: {fileID: 3673034532681695631}
   - component: {fileID: 8978004742829932780}
   - component: {fileID: 789293342494884951}
+  - component: {fileID: 379995510176573487}
   m_Layer: 3
   m_Name: HallwayFloorNav (12)
   m_TagString: Untagged
@@ -2962,6 +2963,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO_GroundType: {fileID: 11400000, guid: 2d0680a32df34ac42a53576668eb64fc, type: 2}
+--- !u!208 &379995510176573487
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253529732707965776}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 7.6200004, y: 200.00002, z: 200.00002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 7.6200004, y: 200.00002, z: -200.00002}
+  m_TimeToStationary: 0.5
 --- !u!1 &290523653409769903
 GameObject:
   m_ObjectHideFlags: 0
@@ -85368,6 +85385,7 @@ GameObject:
   - component: {fileID: 3525098397999669411}
   - component: {fileID: 6300005700837888019}
   - component: {fileID: 138343523499511141}
+  - component: {fileID: 4467214951749893076}
   m_Layer: 3
   m_Name: HallwayFloorNav (17)
   m_TagString: Untagged
@@ -85475,6 +85493,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO_GroundType: {fileID: 11400000, guid: 2d0680a32df34ac42a53576668eb64fc, type: 2}
+--- !u!208 &4467214951749893076
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524500000232621016}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 7.6200004, y: 200.00002, z: 200.00002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 7.6200004, y: 200.00002, z: -200.00002}
+  m_TimeToStationary: 0.5
 --- !u!1 &8533505808917507593
 GameObject:
   m_ObjectHideFlags: 0
@@ -89113,6 +89147,7 @@ GameObject:
   - component: {fileID: 2239149033616937510}
   - component: {fileID: 4391605820855949808}
   - component: {fileID: 3171230797103648041}
+  - component: {fileID: 729731953943826314}
   m_Layer: 3
   m_Name: HallwayFloorNav (13)
   m_TagString: Untagged
@@ -89220,6 +89255,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO_GroundType: {fileID: 11400000, guid: 2d0680a32df34ac42a53576668eb64fc, type: 2}
+--- !u!208 &729731953943826314
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885390099340409320}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 7.6200004, y: 200.00002, z: 200.00002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 7.6200004, y: 200.00002, z: -200.00002}
+  m_TimeToStationary: 0.5
 --- !u!1 &8887105934892900741
 GameObject:
   m_ObjectHideFlags: 0
@@ -93454,6 +93505,14 @@ PrefabInstance:
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 6708151016560172008}
+    - target: {fileID: 3084076195804208909, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084076195804208909, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0000011324881
+      objectReference: {fileID: 0}
     - target: {fileID: 4679949040821125443, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       propertyPath: targetTransform
       value: 
