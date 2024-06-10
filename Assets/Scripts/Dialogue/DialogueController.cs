@@ -25,7 +25,7 @@ public class DialogueController : MonoBehaviour
     private bool _isPrintingLine = false;
     private Coroutine _currentCoroutine = null;
 
-    [SerializeField] private SkullDialogue skullCompanion;
+    //[SerializeField] private SkullDialogue skullCompanion;
     private PlayerDualHandInventory _playerInventory;
     private FirstPersonController _firstPersonController;
     
