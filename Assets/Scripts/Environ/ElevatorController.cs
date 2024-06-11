@@ -37,7 +37,15 @@ public class ElevatorController : MonoBehaviour
         {
             isOpened = true;
             elevatorAnimator.SetBool(Open, isOpened);
-            _elevatorAudioSource.PlayOneShot(elevatorOpeningSound);
+
+            if (SceneManager.GetActiveScene().name != "LOBBY")
+            {
+                _elevatorAudioSource.PlayOneShot(elevatorOpeningSound, 1.5f);
+            }
+            else
+            {
+                _elevatorAudioSource.PlayOneShot(elevatorOpeningSound);
+            }
         }
     }
 
