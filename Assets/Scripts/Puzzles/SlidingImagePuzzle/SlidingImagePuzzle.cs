@@ -145,6 +145,10 @@ public class SlidingImagePuzzle : MonoBehaviour
             SwapSlotImages(_selectedSlotIndex, clickedIndex);
             _isFirstSlotSelected = false;
         }
+        else if (!IsAdjacentSlot(_selectedSlotIndex, clickedIndex))
+        {
+            _audio.PlayOneShot(puzzleCompletedSound);
+        }
         else
         {
             _audio.PlayOneShot(puzzleCompletedSound);

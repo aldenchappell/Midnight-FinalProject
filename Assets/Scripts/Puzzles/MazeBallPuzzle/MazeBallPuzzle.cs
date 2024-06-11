@@ -124,16 +124,6 @@ public class MazeBallPuzzle : MonoBehaviour
             return;
         }
         
-        // bool hasMazeBall = _playerDualHandInventory.GetInventory.Any(item => item != null
-        //                                                                      && item.CompareTag("MazeBall"));
-        //
-        // if (!hasMazeBall)
-        // {
-        //     _audio.PlayOneShot(invalidButtonSound);
-        //     Debug.LogError("Player doesn't have the maze ball.");
-        //     return;
-        // }
-        
         if (!_isInPuzzle)
         {
             bool hasMazeBall = _playerDualHandInventory.GetInventory.Any(item => item != null && item.CompareTag("MazeBall"));
@@ -170,7 +160,7 @@ public class MazeBallPuzzle : MonoBehaviour
         {
             mainCam.Priority = 0;
             puzzleCam.Priority = 10;
-            puzzleCam.transform.rotation = puzzleCam.m_Follow.rotation;
+            puzzleCam.transform.rotation = mazePuzzleObj.transform.rotation;
         }
         else
         {
