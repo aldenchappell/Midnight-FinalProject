@@ -994,8 +994,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPlaceObject:
+    m_PersistentCalls:
+      m_Calls: []
   interactionIcon: {fileID: 21300000, guid: a78af9cffe164384fb3c1dc91b66dae5, type: 3}
-  interactableIconSize: {x: 75, y: 75}
+  interactableIconSize: {x: 50, y: 50}
   interactableID: 0
   highlightInteractableObjectController: {fileID: 0}
 --- !u!114 &4701724430804819398
@@ -1022,7 +1025,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5b3648b8b394442b59a45a5cbe2f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPuzzleUI: {fileID: 2777906653965704721}
+  puzzleUI:
+  - {fileID: 9209491135574019892}
+  - {fileID: 4214395222006886354}
   originalSlotSprite: {fileID: 21300000, guid: 32c372952ecacfb4c93d7e5f54ad494b, type: 3}
   _solved: 0
   puzzlePieces:
@@ -1060,7 +1065,19 @@ MonoBehaviour:
   puzzle: {fileID: 11400000, guid: 657062d2af648a74d98e779355d48fb8, type: 2}
   onPuzzleCompletion:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &6450283352789623753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,7 +1136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4503656259853987943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1368,7 +1385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8477026100892897873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3107,13 +3124,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8253941457341146386}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000020861623}
   m_LocalPosition: {x: -0, y: 11.51, z: 3.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8077588202575950378}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &8492053438143962206
 GameObject:
   m_ObjectHideFlags: 0
@@ -3561,7 +3578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2710495556044973445
 RectTransform:
   m_ObjectHideFlags: 0
