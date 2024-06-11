@@ -74,7 +74,9 @@ public class PlayerInteractableController : MonoBehaviour
             ResetInteraction();
         }
 
-        if (Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKey) && _interactableObject != null && _allowInteraction)
+        if (Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyOne)
+            || Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyTwo)
+            && _interactableObject != null && _allowInteraction)
         {
             interactionImage.sprite = defaultInteractionIcon;
             interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;

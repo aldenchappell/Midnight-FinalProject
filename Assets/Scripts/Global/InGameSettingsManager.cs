@@ -19,7 +19,8 @@ public class InGameSettingsManager : MonoBehaviour
     
     
     [Header("Custom KeyBinds")]
-    public KeyCode objectInteractionKey;
+    public KeyCode objectInteractionKeyOne;
+    public KeyCode objectInteractionKeyTwo;
     public KeyCode crouchKey;
     public KeyCode sprintKey;
     public KeyCode swapInventorySlotKey;
