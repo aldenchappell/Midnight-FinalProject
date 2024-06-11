@@ -56,4 +56,10 @@ public class InGameSettingsManager : MonoBehaviour
     {
         enableFootstepSounds = !enableFootstepSounds;
     }
+
+    public void ToggleHeartbeat()
+    {
+        enableHeartbeatSounds = !enableHeartbeatSounds;
+        Debug.Log(enableHeartbeatSounds);
+    }
 }
