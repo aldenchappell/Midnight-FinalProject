@@ -34,8 +34,10 @@ public class EnemyFootsteps : MonoBehaviour
     private void Update()
     {
         //if the enemy is currently chasing, use the running footsteps, else use the walking footsteps
-        currentClips = _enemyStateController.currentState == EnemyStateController.AIState.Chase ? runningFootstepClips : walkingFootstepClips;
-
+        currentClips = _enemyStateController.currentState == EnemyStateController.AIState.Chase
+            ? runningFootstepClips
+            : walkingFootstepClips;
+        
         _footstepDelay = _enemyStateController.currentState == EnemyStateController.AIState.Chase
             ? chaseDelay
             : walkDelay;
@@ -46,13 +48,16 @@ public class EnemyFootsteps : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(_footstepDelay);
-            AudioClip clip = GetRandomClip(currentClips);
-            _source.PlayOneShot(clip, 4.0f);
+            if (currentClips.Length > 0)
+            {
+                AudioClip clip = GetRandomClip(currentClips);
+                _source.PlayOneShot(clip, 4.0f);
+            }
         }
     }
 
     private AudioClip GetRandomClip(AudioClip[] clips)
     {
-        return walkingFootstepClips[Random.Range(0, clips.Length)];
+        return clips[Random.Range(0, clips.Length)];
     }
 }
