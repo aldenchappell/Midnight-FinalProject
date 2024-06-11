@@ -12,7 +12,6 @@ public class Polaroid : MonoBehaviour
     public void IncrementPolaroidCount()
     {
         _puzzle.polaroidCount++;
-        Debug.Log(_puzzle.polaroidCount);
         Destroy(gameObject);
     }
 }
