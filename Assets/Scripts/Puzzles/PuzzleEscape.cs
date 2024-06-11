@@ -20,7 +20,6 @@ public class PuzzleEscape : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-
             EscapePressed.Invoke();
             isActive = false;
         }

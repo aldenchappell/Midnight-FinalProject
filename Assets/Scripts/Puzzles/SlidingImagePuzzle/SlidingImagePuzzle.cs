@@ -203,8 +203,6 @@ public class SlidingImagePuzzle : MonoBehaviour
         CheckForFinishedPuzzle();
     }
 
-
-
     private void CheckForFinishedPuzzle()
     {
         if (gridSlotImages[0].sprite == puzzleSprites[0] &&
@@ -222,12 +220,8 @@ public class SlidingImagePuzzle : MonoBehaviour
             _puzzle.CompletePuzzle();
             firstPersonController.canMove = true;
             firstPersonController.canRotate = true;
-
-            
         }
     }
-
-    
 
     public void InstantiateMazeballAtPlayerFeet()
     {
@@ -242,8 +236,6 @@ public class SlidingImagePuzzle : MonoBehaviour
             Debug.LogError("Mazeball prefab is not assigned in the inspector.");
         }
     }
-
-    
 
     private void UpdatePuzzleUI()
     {

@@ -22,6 +22,11 @@ public class EnemyFootsteps : MonoBehaviour
         _enemyStateController = GetComponent<EnemyStateController>();
         _source = GetComponent<AudioSource>();
         _footstepRoutine = StartCoroutine(Footsteps());
+
+        if (_enemyStateController == null)
+        {
+            StopAllCoroutines();
+        }
     }
 
     private void Update()
@@ -37,7 +42,7 @@ public class EnemyFootsteps : MonoBehaviour
         {
             yield return new WaitForSeconds(_footstepDelay);
             AudioClip clip = GetRandomClip(footstepClips);
-            _source.PlayOneShot(clip, 2.0f);
+            _source.PlayOneShot(clip, 4.0f);
         }
     }
 
