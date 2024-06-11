@@ -47,16 +47,25 @@ public class InGameSettingsManager : MonoBehaviour
         }
     }
 
-    public void ToggleViewBobbing()
+    public void ToggleViewBobbing(bool enable)
     {
-        enableViewBobbing = !enableViewBobbing;
+        enableViewBobbing = enable;
+    }
+    
+    public void ToggleHeartbeat(bool enable)
+    {
+        enableHeartbeatSounds = enable;
     }
 
-    public void ToggleFootsteps()
+    public void ToggleFootsteps(bool enable)
     {
-        enableFootstepSounds = !enableFootstepSounds;
+        enableFootstepSounds = enable;
     }
 
+    public void ToggleFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
     
     public float GetVolume(string parameter, float defaultValue)
     {
