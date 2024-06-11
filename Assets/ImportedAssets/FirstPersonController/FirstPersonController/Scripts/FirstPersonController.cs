@@ -117,6 +117,7 @@ namespace StarterAssets
 		[SerializeField] private Image standImage;
 		[SerializeField] private Sprite crouchingSprite;
 		[SerializeField] private Sprite standingSprite;
+		[SerializeField] private Sprite sprintingSprite;
 		
 		[SerializeField] private float crouchingHeight = .5f;
 		[SerializeField] private float standingHeight = 2.0f;
@@ -124,6 +125,8 @@ namespace StarterAssets
 		[SerializeField] private Vector3 crouchingCenter = new Vector3(0, 0.5f, 0);
 		[SerializeField] private Vector3 standingCenter = new Vector3(0, .93f, 0);
 		private float _originalCameraRootPosition;
+		
+		private Coroutine _fadeOutCoroutine;
 		
 		private bool IsCurrentDeviceMouse
 		{
@@ -184,18 +187,59 @@ namespace StarterAssets
 			{
 				HandleCrouching();
 			}
-		
+
 			// Set booleans for sprinting
+			bool wasSprinting = isSprinting;
 			isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && !isCrouching && Grounded;
+
+			if (wasSprinting != isSprinting)
+			{
+				HandleSprintingIcon();
+			}
 
 			if (Input.GetKeyDown(KeyCode.Escape) && !pauseManager.GameIsPaused)
 			{
 				canMove = true;
 				canRotate = true;
 			}
+            
 		}
+		
+		private void HandleSprintingIcon()
+		{
+			if (isSprinting)
+			{
+				standImage.sprite = sprintingSprite;
 
+				// Set to highest alpha value
+				standImage.color = new Color(standImage.color.r, standImage.color.g, standImage.color.b, 1.0f);
 
+				// Prevent the icon from bugging out when spamming sprint
+				if (_fadeOutCoroutine != null)
+				{
+					StopCoroutine(_fadeOutCoroutine);
+				}
+
+				// Icon will stay for 2 seconds
+				_fadeOutCoroutine = StartCoroutine(FadeOutIcon(standImage, 2.0f));
+			}
+			else
+			{
+				standImage.sprite = standingSprite;
+
+				// Set to highest alpha value
+				standImage.color = new Color(standImage.color.r, standImage.color.g, standImage.color.b, 1.0f);
+
+				// Prevent the icon from bugging out when spamming sprint
+				if (_fadeOutCoroutine != null)
+				{
+					StopCoroutine(_fadeOutCoroutine);
+				}
+
+				// Icon will stay for 2 seconds
+				_fadeOutCoroutine = StartCoroutine(FadeOutIcon(standImage, 2.0f));
+			}
+		}
 
 		private void LateUpdate()
 		{
@@ -222,7 +266,7 @@ namespace StarterAssets
 			controller.enabled = !controller.enabled;
 		}
 
-		private Coroutine fadeOutCoroutine;
+		
 
 		private void HandleCrouchingIcon()
 		{
@@ -232,26 +276,26 @@ namespace StarterAssets
 			standImage.color = new Color(standImage.color.r, standImage.color.g, standImage.color.b, 1.0f);
 
 			//prevent the icon from bugging out when spamming crouch/stand
-			if (fadeOutCoroutine != null)
+			if (_fadeOutCoroutine != null)
 			{
-				StopCoroutine(fadeOutCoroutine);
+				StopCoroutine(_fadeOutCoroutine);
 			}
             
 			//icon will stay for 2 seconds
-			fadeOutCoroutine = StartCoroutine(FadeOutIcon(standImage, 2.0f));
+			_fadeOutCoroutine = StartCoroutine(FadeOutIcon(standImage, 2.0f));
 		}
 
 		private IEnumerator FadeOutIcon(Image image, float displayTime)
 		{
 			yield return new WaitForSeconds(displayTime);
 
-			//how long it will take for the fade to finish
+			// How long it will take for the fade to finish
 			float fadeDuration = 1.0f;
 			float elapsedTime = 0.0f;
             
 			Color initialColor = image.color;
 
-			//gradually increase the alpha value
+			// Gradually increase the alpha value
 			while (elapsedTime < fadeDuration)
 			{
 				float newAlpha = Mathf.Lerp(initialColor.a, 0, elapsedTime / fadeDuration);
@@ -263,11 +307,12 @@ namespace StarterAssets
 				yield return null;
 			}
 
-			//reset the image to transparent after fading out
+			// Reset the image to transparent after fading out
 			image.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
 
-			fadeOutCoroutine = null;
+			_fadeOutCoroutine = null;
 		}
+	
 
 		#region Default Functions
 		private void GroundedCheck()
