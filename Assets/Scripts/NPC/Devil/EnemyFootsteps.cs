@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,6 +17,8 @@ public class EnemyFootsteps : MonoBehaviour
     private Coroutine _footstepRoutine;
 
     private AudioClip[] currentClips;
+
+    [SerializeField] private AudioClip demonLaughSound;
     private void Awake()
     {
         _enemyStateController = GetComponent<EnemyStateController>();
@@ -48,10 +48,15 @@ public class EnemyFootsteps : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(_footstepDelay);
-            if (currentClips.Length > 0)
+            if (currentClips.Length > 0 && !FindObjectOfType<PlayerDeathController>().isDead)
             {
                 AudioClip clip = GetRandomClip(currentClips);
                 _source.PlayOneShot(clip, 4.0f);
+            }
+            else
+            {
+                _source.PlayOneShot(demonLaughSound);
+                break;
             }
         }
     }

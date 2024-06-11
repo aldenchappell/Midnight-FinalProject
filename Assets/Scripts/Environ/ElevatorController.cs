@@ -29,6 +29,10 @@ public class ElevatorController : MonoBehaviour
     private void Awake()
     {
         _elevatorAudioSource = GetComponent<AudioSource>();
+
+        Invoke(nameof(OpenElevator), 1.0f);
+        
+        ShowElevatorLevelOnStart();
     }
 
     public void OpenElevator()
@@ -57,6 +61,31 @@ public class ElevatorController : MonoBehaviour
         }
     }
 
+    private void ShowElevatorLevelOnStart()
+    {
+        if (GetLevelName().Contains("LOBBY"))
+        {
+            floorIndexText.text = "L";
+        }
+        else if (GetLevelName().Contains("ONE"))
+        {
+            floorIndexText.text = "1";
+        }
+        else if (GetLevelName().Contains("TWO"))
+        {
+            floorIndexText.text = "2";
+        }
+        else
+        {
+            floorIndexText.text = "3";
+        }
+    }
+
+    private string GetLevelName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
     private IEnumerator CloseElevatorRoutine()
     {
         isOpened = false;
@@ -66,6 +95,18 @@ public class ElevatorController : MonoBehaviour
         yield return new WaitForSeconds(elevatorClosingSound.length);
     }
 
+    public void PlayLevelEndAnimation()
+    {
+        StartCoroutine(WaitForLevelEndAnimation());
+    }
+
+    private IEnumerator WaitForLevelEndAnimation()
+    {
+        yield return new WaitForSeconds(timeBeforeLoadingLevel - 1.0f);
+        var playerAnim = GameObject.FindObjectOfType<PlayerKeyController>().GetComponent<Animator>();
+        playerAnim.SetTrigger("End");
+    }
+    
     public void SelectLevel(int floorIndex)
     {
         if (_levelSelected)

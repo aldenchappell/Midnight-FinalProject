@@ -2021,7 +2021,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6918986076495409971}
         m_TargetAssemblyTypeName: ElevatorController, Assembly-CSharp
-        m_MethodName: OpenElevator
+        m_MethodName: CloseElevator
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2033,19 +2033,7 @@ MonoBehaviour:
         m_CallState: 2
   onElevatorTriggerExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6918986076495409971}
-        m_TargetAssemblyTypeName: ElevatorController, Assembly-CSharp
-        m_MethodName: CloseElevator
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onCooldownAlertSound: {fileID: 8300000, guid: 8d8cc863a037fd74a86b7f6cac4a48d9, type: 3}
 --- !u!1 &8052599880969757567
 GameObject:

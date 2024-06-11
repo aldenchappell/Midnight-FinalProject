@@ -27,7 +27,14 @@ public class PlayerHeartbeatController : MonoBehaviour
             return;
         }
         
-        if (InGameSettingsManager.Instance.enableHeartbeatSounds && _enemyStateController != null)
+        if(GetComponentInParent<PlayerDeathController>().isDead)
+        {
+            heartbeatAudioSource.enabled = false;
+            return;
+        }
+        
+        if (InGameSettingsManager.Instance.enableHeartbeatSounds 
+            && _enemyStateController != null)
         {
             bool isDevilChasing = IsDevilChasing();
 
