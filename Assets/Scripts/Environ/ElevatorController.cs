@@ -120,13 +120,18 @@ public class ElevatorController : MonoBehaviour
             _elevatorAudioSource.PlayOneShot(invalidLevelSound);
             Debug.Log("This level is already completed. Please select a different level.");
         }
-        else
+        else if(floorIndex != 1)
         {
             _levelSelected = true;
-            floorIndexText.text = floorIndex.ToString();
-            elevatorAnimator.SetInteger(Floor, floorIndex);
+            floorIndexText.text = (floorIndex - 1).ToString();
+            elevatorAnimator.SetInteger(Floor, floorIndex - 1);
 
             Debug.Log(floorIndex);
+            StartCoroutine(StartElevatorRoutine());
+        }
+        else
+        {
+            floorIndexText.text = "L";
             StartCoroutine(StartElevatorRoutine());
         }
     }

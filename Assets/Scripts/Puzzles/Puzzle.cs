@@ -10,7 +10,7 @@ public class Puzzle : MonoBehaviour
     {
         if (puzzle == null)
         {
-            Debug.LogError("Puzzle scriptable object is not assigned!");
+            //Debug.LogError("Puzzle scriptable object is not assigned!");
         }
     }
 
@@ -25,7 +25,7 @@ public class Puzzle : MonoBehaviour
         }
         else
         {
-            Debug.LogError("LevelCompletionManager instance is not available!");
+           // Debug.LogError("LevelCompletionManager instance is not available!");
         }
     }
 }

@@ -19,7 +19,8 @@ public class InGameSettingsManager : MonoBehaviour
     
     
     [Header("Custom KeyBinds")]
-    public KeyCode objectInteractionKey;
+    public KeyCode objectInteractionKeyOne = KeyCode.E;
+    public KeyCode objectInteractionKeyTwo = KeyCode.Mouse0;
     public KeyCode crouchKey;
     public KeyCode sprintKey;
     public KeyCode swapInventorySlotKey;
@@ -54,5 +55,37 @@ public class InGameSettingsManager : MonoBehaviour
     public void ToggleFootsteps()
     {
         enableFootstepSounds = !enableFootstepSounds;
+    }
+
+    
+    public float GetVolume(string parameter, float defaultValue)
+    {
+        float value = PlayerPrefs.GetFloat(parameter, defaultValue);
+        return value;
+    }
+    
+    public void SetVolume(string parameter, float value)
+    {
+        PlayerPrefs.SetFloat(parameter, value);
+        PlayerPrefs.Save();
+    }
+
+    public int GetQualityLevel()
+    {
+        int level = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
+        return level;
+    }
+
+    public void SetQualityLevel(int level)
+    {
+        PlayerPrefs.SetInt("QualityLevel", level);
+        QualitySettings.SetQualityLevel(level);
+        PlayerPrefs.Save();
+    }
+
+    public void ToggleHeartbeat()
+    {
+        enableHeartbeatSounds = !enableHeartbeatSounds;
+        Debug.Log(enableHeartbeatSounds);
     }
 }
