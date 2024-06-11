@@ -15,16 +15,11 @@ public class EnemyStateController : MonoBehaviour
     
     [Space(10)]
     
-    [Header("Attacking - Obsolete")]
-    // [SerializeField] private float attackRange = 2.5f;
-    // [SerializeField] private float attackCooldownTimer = 3.0f;
-    // [SerializeField] private float attackRadius = 0.5f;
-    // private bool _canAttack = true;
-    // [SerializeField] private Transform attackPoint;
+    
 
     // Script References
     private EnemyVision _enemyVision;
-    private RandomMovementController _randomMovement;
+    private SetMovment _setMovment;
     private NavMeshAgent _agent;
     private EnemyAnimator _animator;
     private EnemySuspicionSystem _suspicion;
@@ -34,7 +29,7 @@ public class EnemyStateController : MonoBehaviour
     private void Awake()
     {
         _enemyVision = GetComponent<EnemyVision>();
-        _randomMovement = GetComponent<RandomMovementController>();
+        _setMovment = GetComponent<SetMovment>();
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<EnemyAnimator>();
         _suspicion = GetComponent<EnemySuspicionSystem>();
@@ -80,7 +75,7 @@ public class EnemyStateController : MonoBehaviour
         {
             Transform target = _enemyVision.targetsLockedIn[0].transform;
             _agent.speed = chaseSpeed;
-            _randomMovement.ChasePlayer(target);
+            _setMovment.SetCurrentMovementState("Chasing", target.position);
 
             // if (_canAttack)
             //     Attack(target);
@@ -89,12 +84,13 @@ public class EnemyStateController : MonoBehaviour
         {
             Vector3 lastKnownPosition = _suspicion.lastSusPosition;
             _agent.speed = patrollingSpeed;
-            _randomMovement.Patrol(lastKnownPosition);
+            _setMovment.SetCurrentMovementState("Patrolling", lastKnownPosition);
+
         }
         else
         {
             _agent.speed = roamSpeed;
-            _randomMovement.Roam();
+            _setMovment.SetCurrentMovementState("Roaming", Vector3.zero);
         }
         
         //Set animation state based on current state (Animation triggers should be named exactly the same
