@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
-using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
