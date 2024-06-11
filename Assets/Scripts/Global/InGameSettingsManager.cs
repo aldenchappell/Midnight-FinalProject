@@ -56,4 +56,29 @@ public class InGameSettingsManager : MonoBehaviour
     {
         enableFootstepSounds = !enableFootstepSounds;
     }
+    
+    public float GetVolume(string parameter, float defaultValue)
+    {
+        float value = PlayerPrefs.GetFloat(parameter, defaultValue);
+        return value;
+    }
+    
+    public void SetVolume(string parameter, float value)
+    {
+        PlayerPrefs.SetFloat(parameter, value);
+        PlayerPrefs.Save();
+    }
+
+    public int GetQualityLevel()
+    {
+        int level = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
+        return level;
+    }
+
+    public void SetQualityLevel(int level)
+    {
+        PlayerPrefs.SetInt("QualityLevel", level);
+        QualitySettings.SetQualityLevel(level);
+        PlayerPrefs.Save();
+    }
 }
