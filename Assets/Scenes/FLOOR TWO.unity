@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00253626, g: 0.0025918866, b: 0.002277472, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -845,8 +845,36 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1361127874}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ActivatePuzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangeIsActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PuzzleEscape, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923450969510569947, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5951876479529719911, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
@@ -990,7 +1018,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5738540091222681721, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1547005394}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5954124955280132267, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1361127874}
   m_SourcePrefab: {fileID: 100100000, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
 --- !u!224 &667910978 stripped
 RectTransform:
@@ -1880,7 +1911,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 21797904456259848, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
   m_PrefabInstance: {fileID: 667910977}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1361127869}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2710a4a4b9c89a42a9634a2662bfeaf, type: 3}
@@ -2537,6 +2568,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274790695}
   m_Mesh: {fileID: -3278605250671402150, guid: f4b6d67f001b2fb4e953c742a34c08c1, type: 3}
+--- !u!1 &1361127869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5954124955280132267, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+  m_PrefabInstance: {fileID: 667910977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1361127874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361127869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b3fc7431e6aac449d2cf7ee3fccca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EscapePressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 966438449}
+        m_TargetAssemblyTypeName: BabyBlockPuzzle, Assembly-CSharp
+        m_MethodName: ActivatePuzzle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1422660327
 PrefabInstance:
   m_ObjectHideFlags: 0
