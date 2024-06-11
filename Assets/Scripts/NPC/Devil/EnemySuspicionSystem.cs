@@ -82,7 +82,7 @@ public class EnemySuspicionSystem : MonoBehaviour
     {
         while(suspicionValue > 0)
         {
-            suspicionValue -= 1;
+            suspicionValue -= 10;
             yield return new WaitForSeconds(1f);
         }
         
