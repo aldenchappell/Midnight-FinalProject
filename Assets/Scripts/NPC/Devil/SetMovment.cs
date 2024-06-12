@@ -7,11 +7,14 @@ public class SetMovment : MonoBehaviour
 {
     [SerializeField] LayerMask nodeLayer;
     [SerializeField] float maxPatrolRange;
+    [SerializeField] bool enableDebug;
 
     private Collider[] _allActiveNodes;
     private GameObject[] _allActiveDemonDoors;
 
     private NavMeshAgent _agent;
+
+    private Vector3 _currentEndDestination;
 
     private void Awake()
     {
@@ -48,8 +51,7 @@ public class SetMovment : MonoBehaviour
 
     private void CreateNewPatrolRoute()
     {
-        print("Finding patrol route");
-        if (_agent.enabled == false)
+        if (_agent.enabled == false || _currentEndDestination == Vector3.zero)
         {
             
             int randomStartIndex = Random.Range(0, _allActiveDemonDoors.Length);
@@ -70,10 +72,16 @@ public class SetMovment : MonoBehaviour
             SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex]);
             _agent.enabled = true;
             _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
+            _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
+        }
+        else if(_currentEndDestination != Vector3.zero && _agent.destination != _currentEndDestination)
+        {
+            _agent.SetDestination(_currentEndDestination);
         }
         else if(_agent.remainingDistance <= _agent.stoppingDistance)
         {
             _agent.enabled = false;
+            _currentEndDestination = Vector3.zero;
             gameObject.SetActive(false);
         }
         
@@ -94,6 +102,15 @@ public class SetMovment : MonoBehaviour
             int randomNodeIndex = Random.Range(0, _allActiveNodes.Length);
             _agent.destination = _allActiveNodes[randomNodeIndex].gameObject.transform.position;
         } 
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (enableDebug)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, maxPatrolRange);
+        }
     }
 
 }
