@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class SuspicionNodeEvent: UnityEvent<Vector3>
 {
 
@@ -35,6 +36,7 @@ public class EnemySuspicionSystem : MonoBehaviour
     private void Awake()
     {
         _COV = GetComponent<EnemyVision>();
+
     }
 
     private void Start()
@@ -54,7 +56,7 @@ public class EnemySuspicionSystem : MonoBehaviour
             SuspicionTriggered(_COV.targetsLockedIn[0].transform.position);
         }
         //Press M to add suspicion manually (testing only)
-        if(Input.GetKey("m"))
+        if(Input.GetKeyDown("m"))
         {
             SuspicionTriggered(GameObject.FindWithTag("Player").transform.position);
             print("Added Suspicion");
@@ -75,21 +77,24 @@ public class EnemySuspicionSystem : MonoBehaviour
         {
             suspicionValue = 40;
         }
-        Invoke("DelayToSuspicionLoss", .5f);
+        Invoke("DelayToSuspicionLoss", 1f);
     }
     //Lose suspicion over a period of time
     private IEnumerator SuspicionLoss()
     {
+        print("Losing suspicion");
         while(suspicionValue > 0)
         {
+            yield return new WaitForSeconds(10f);
             suspicionValue -= 10;
-            yield return new WaitForSeconds(1f);
+            
         }
         
     }
     private void DelayToSuspicionLoss()
     {
-        if(Vector3.Distance(this.transform.position, lastSusPosition) < 5)
+        print("Checking for suspicion loss");
+        if(Vector3.Distance(this.transform.position, lastSusPosition) < 16.3)
         {
             StartCoroutine(SuspicionLoss());
         }
