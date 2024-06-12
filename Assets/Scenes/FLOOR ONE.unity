@@ -4497,17 +4497,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 386678114103489907, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
-      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPickupDestroy
-      objectReference: {fileID: 0}
     - target: {fileID: 2505426710106675620, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
       propertyPath: m_Name
       value: KeyWithTag
-      objectReference: {fileID: 0}
-    - target: {fileID: 2505426710106675620, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994542995377701662, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17345,27 +17337,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087067760}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!135 &2087067764
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!1 &2097257313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3089743736282605994, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+  m_PrefabInstance: {fileID: 1167197746}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087067760}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: -0.00000011920929, z: 0}
 --- !u!1 &2102916570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6514269546951116802, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
@@ -18138,16 +18114,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
+      propertyPath: onElevatorTrigger.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
       propertyPath: onElevatorTriggerExit.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
+      propertyPath: onElevatorTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
+      propertyPath: onElevatorTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2097257313}
     - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
       propertyPath: onElevatorTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
+      propertyPath: onElevatorTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
       propertyPath: onElevatorTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CloseElevator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
+      propertyPath: onElevatorTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
       propertyPath: onElevatorTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -18162,8 +18158,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
+      propertyPath: onElevatorTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
+      propertyPath: onElevatorTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
       propertyPath: onElevatorTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
+      propertyPath: onElevatorTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5198330489604325273, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
       propertyPath: onElevatorTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
