@@ -26,6 +26,8 @@ public class InGameSettingsManager : MonoBehaviour
     public KeyCode swapInventorySlotKey;
     public KeyCode dropCurrentItem;
     
+    
+    private const string BrightnessPrefKey = "ScreenBrightness";
     private void Awake()
     {
         if (Instance == null)
@@ -55,6 +57,19 @@ public class InGameSettingsManager : MonoBehaviour
     public void ToggleHeartbeat(bool enable)
     {
         enableHeartbeatSounds = enable;
+    }
+    
+    public void SetBrightness(float value)
+    {
+        RenderSettings.ambientLight = Color.white * value;
+        PlayerPrefs.SetFloat(BrightnessPrefKey, value);
+        PlayerPrefs.Save();
+    }
+    
+    public void InitializeBrightness()
+    {
+        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, 0.5f); // Default brightness is 0.5
+        SetBrightness(brightness);
     }
 
     public void ToggleFootsteps(bool enable)
