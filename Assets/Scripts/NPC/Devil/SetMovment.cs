@@ -13,12 +13,14 @@ public class SetMovment : MonoBehaviour
     private GameObject[] _allActiveDemonDoors;
 
     private NavMeshAgent _agent;
+    private EnemySuspicionSystem _suspicion;
 
     private Vector3 _currentEndDestination;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _suspicion = GetComponent<EnemySuspicionSystem>();
     }
 
     private void Start()
@@ -50,7 +52,13 @@ public class SetMovment : MonoBehaviour
     }
 
     private void CreateNewPatrolRoute()
-    {
+    { 
+        if(_currentEndDestination != Vector3.zero)
+        {
+            print("Setting end");
+            _agent.SetDestination(_currentEndDestination);
+        }
+
         if (_agent.enabled == false || _currentEndDestination == Vector3.zero)
         {
             
@@ -74,17 +82,13 @@ public class SetMovment : MonoBehaviour
             _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
             _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
         }
-        else if(_currentEndDestination != Vector3.zero && _agent.destination != _currentEndDestination)
-        {
-            _agent.SetDestination(_currentEndDestination);
-        }
-        else if(_agent.remainingDistance <= _agent.stoppingDistance)
+        else if (Vector3.Distance(transform.position, _currentEndDestination) <= _agent.stoppingDistance + 1)
         {
             _agent.enabled = false;
             _currentEndDestination = Vector3.zero;
             gameObject.SetActive(false);
         }
-        
+
     }
 
     private void SetAIAtStartLocation(GameObject location)
@@ -95,13 +99,21 @@ public class SetMovment : MonoBehaviour
 
     private void PatrolArea(Vector3 patrolPositionCenter)
     {
-        if (_agent.destination == null || _agent.remainingDistance <= _agent.stoppingDistance)
+        if (_agent.destination == transform.position)
         {
             Collider[] _allActiveNodes = Physics.OverlapSphere(patrolPositionCenter, maxPatrolRange, nodeLayer);
 
             int randomNodeIndex = Random.Range(0, _allActiveNodes.Length);
             _agent.destination = _allActiveNodes[randomNodeIndex].gameObject.transform.position;
         } 
+        else if(_agent.remainingDistance <= _agent.stoppingDistance)
+        {
+            Collider[] _allActiveNodes = Physics.OverlapSphere(patrolPositionCenter, maxPatrolRange, nodeLayer);
+
+            int randomNodeIndex = Random.Range(0, _allActiveNodes.Length);
+            _agent.destination = _allActiveNodes[randomNodeIndex].gameObject.transform.position;
+            _suspicion.PatrolNodeReached();
+        }
     }
 
     private void OnDrawGizmos()

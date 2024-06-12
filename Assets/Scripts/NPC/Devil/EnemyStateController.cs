@@ -55,7 +55,11 @@ public class EnemyStateController : MonoBehaviour
         {
             currentState = AIState.Chase;
         }
-        else if (_suspicion.GetSuspicionValue > 0)
+        else if (_suspicion.GetSuspicionValue > 20)
+        {
+            currentState = AIState.Patrol;
+        }
+        else if(currentState == AIState.Patrol && _suspicion.GetSuspicionValue > 0)
         {
             currentState = AIState.Patrol;
         }

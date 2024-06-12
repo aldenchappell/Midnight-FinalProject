@@ -66,44 +66,27 @@ public class EnemySuspicionSystem : MonoBehaviour
     public void SuspicionTriggered(Vector3 position)
     {
         lastSusPosition = position;
-        AddSuspicion(10);
+        AdjustSuspicionValue(10);
+    }
+
+    public void PatrolNodeReached()
+    {
+        AdjustSuspicionValue(-5);
     }
     
-    private void AddSuspicion(int addedSuspicion)
+    private void AdjustSuspicionValue(int addedSuspicion)
     {
-        CancelInvoke();
         suspicionValue += addedSuspicion;
         if(suspicionValue > 40)
         {
             suspicionValue = 40;
         }
-        Invoke("DelayToSuspicionLoss", 1f);
-    }
-    //Lose suspicion over a period of time
-    private IEnumerator SuspicionLoss()
-    {
-        print("Losing suspicion");
-        while(suspicionValue > 0)
+        else if(suspicionValue < 0 )
         {
-            yield return new WaitForSeconds(10f);
-            suspicionValue -= 10;
-            
+            suspicionValue = 0;
         }
-        
     }
-    private void DelayToSuspicionLoss()
-    {
-        print("Checking for suspicion loss");
-        if(Vector3.Distance(this.transform.position, lastSusPosition) < 16.3)
-        {
-            StartCoroutine(SuspicionLoss());
-        }
-        else
-        {
-            Invoke("DelayToSuspicionLoss", .5f);
-        }
-        
-    }
+    
 
     
 }
