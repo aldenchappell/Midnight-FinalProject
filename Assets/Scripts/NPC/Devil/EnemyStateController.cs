@@ -71,6 +71,14 @@ public class EnemyStateController : MonoBehaviour
 
     private void ApplyCurrentStateBehaviour()
     {
+        bool playerIsDead = FindObjectOfType<PlayerDeathController>().isDead;
+        if(playerIsDead)
+        {
+            _animator.SetAnimationTrigger("Idle");
+            _agent.speed = 0;
+            return;
+        }
+        
         if(_previousState != currentState)
         {
             _agent.ResetPath();
@@ -80,16 +88,12 @@ public class EnemyStateController : MonoBehaviour
             Transform target = _enemyVision.targetsLockedIn[0].transform;
             _agent.speed = chaseSpeed;
             _setMovment.SetCurrentMovementState("Chasing", target.position);
-
-            // if (_canAttack)
-            //     Attack(target);
         }
         else if (currentState == AIState.Patrol)
         {
             Vector3 lastKnownPosition = _suspicion.lastSusPosition;
             _agent.speed = patrollingSpeed;
             _setMovment.SetCurrentMovementState("Patrolling", lastKnownPosition);
-
         }
         else
         {
@@ -111,42 +115,4 @@ public class EnemyStateController : MonoBehaviour
     {
         _suspicion.suspicionValue = 0;
     }
-    
-    // private void Attack(Transform target)
-    // {
-    //     if (Vector3.Distance(transform.position, target.position) < attackRange)
-    //     {
-    //        
-    //         if (Physics.SphereCast(
-    //                 attackPoint.position,
-    //                 attackRadius,
-    //                 attackPoint.forward,
-    //                 out var hitInfo,
-    //                 attackRange))
-    //         {
-    //             
-    //             if (hitInfo.collider.CompareTag("Player"))
-    //             {
-    //                 
-    //                 _animator.SetAnimationTrigger("Attack");
-    //                 
-    //                 var playerHealth = hitInfo.collider.GetComponentInParent<PlayerDeathController>();
-    //                 
-    //                 if (playerHealth != null)
-    //                 {
-    //                     playerHealth.Die();
-    //                 }
-    //             }
-    //         }
-    //
-    //         StartCoroutine(AttackCooldown());
-    //     }
-    // }
-    //
-    // private IEnumerator AttackCooldown()
-    // {
-    //     _canAttack = false;
-    //     yield return new WaitForSeconds(attackCooldownTimer);
-    //     _canAttack = true;
-    // }
 }

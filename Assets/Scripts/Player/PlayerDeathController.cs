@@ -7,7 +7,6 @@ public class PlayerDeathController : MonoBehaviour
 {
     public bool isDead = false;
     [SerializeField] private GameObject deathScreen;
-    [SerializeField] private Transform lobbySpawnPosition;
     [SerializeField] private FirstPersonController firstPersonController;
 
     private void Awake()

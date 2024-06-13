@@ -92,15 +92,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d7884446406d889498d023b855a63c67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1553864
+      value: -46.95
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7884446406d889498d023b855a63c67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8418586
+      value: -0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7884446406d889498d023b855a63c67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.3794503
+      value: 72.73
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7884446406d889498d023b855a63c67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -170,9 +170,6 @@ PrefabInstance:
       addedObject: {fileID: 575034772974994987}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d7884446406d889498d023b855a63c67, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2723887587302391900}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d7884446406d889498d023b855a63c67, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6995087683735147640}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d7884446406d889498d023b855a63c67, type: 3}
       insertIndex: -1
@@ -189,6 +186,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d7884446406d889498d023b855a63c67, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8666437365241602592}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d7884446406d889498d023b855a63c67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2678484475511396883}
   m_SourcePrefab: {fileID: 100100000, guid: d7884446406d889498d023b855a63c67, type: 3}
 --- !u!1 &2565402593616780849 stripped
 GameObject:
@@ -269,7 +269,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2565402593616780849}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -284,21 +284,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2723887587302391900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565402593616780849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e58e0afadd37d14898e18f440a231a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypointSpawnRadius: 20
-  centerPoint: {fileID: 0}
-  maxDistanceFromRandomPoint: 5
 --- !u!114 &6995087683735147640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,8 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c8fe263a0e78d43b3aa27e7c18d3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 14.2
-  coneRadius: 70
+  searchRadius: 24.99
+  coneRadius: 83
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -334,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   roamSpeed: 1.85
-  chaseSpeed: 4
+  chaseSpeed: 5
   patrollingSpeed: 2
 --- !u!114 &8392636233954885753
 MonoBehaviour:
@@ -400,6 +385,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bbe4ad365ec284c4183836480b185508, type: 3}
   chaseDelay: 0.5
   walkDelay: 0.85
+  demonLaughSound: {fileID: 8300000, guid: f773e99ff1b3b874b9fa4b18fdc3db2f, type: 3}
 --- !u!82 &8666437365241602592
 AudioSource:
   m_ObjectHideFlags: 0
@@ -496,6 +482,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2678484475511396883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565402593616780849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deb136be692ddb45842e9a1c9390a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  maxPatrolRange: 16.3
+  enableDebug: 1
 --- !u!4 &2941401126397052043 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d7884446406d889498d023b855a63c67, type: 3}
