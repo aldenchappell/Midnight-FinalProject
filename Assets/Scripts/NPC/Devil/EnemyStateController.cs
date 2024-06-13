@@ -16,7 +16,6 @@ public class EnemyStateController : MonoBehaviour
     [Space(10)]
     
     
-
     // Script References
     private EnemyVision _enemyVision;
     private SetMovment _setMovment;
@@ -37,7 +36,7 @@ public class EnemyStateController : MonoBehaviour
 
     private void Start()
     {
-        currentState = AIState.Roam; // Initialize with roaming state
+        currentState = AIState.Roam; 
         _animator.SetAnimationTrigger(currentState.ToString());
     }
 

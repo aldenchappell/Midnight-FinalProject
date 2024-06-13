@@ -14,7 +14,6 @@ public class FullscreenToggle : MonoBehaviour
 
     private void OnToggleValueChanged(bool newValue)
     {
-        // Toggle the enableHeartbeatSounds boolean in the InGameSettingsManager
         Screen.fullScreen = newValue;
         Debug.Log(newValue);
     }
