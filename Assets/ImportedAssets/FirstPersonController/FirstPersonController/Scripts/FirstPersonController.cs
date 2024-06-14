@@ -69,6 +69,16 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+		// ADded by Owen for SoundDetectionRadius
+		private float _currentSpeed;
+		public float GetCurrentSpeed
+        {
+			get
+            {
+				return _currentSpeed;
+            }
+        }
+
 	
 #if ENABLE_INPUT_SYSTEM
 		public PlayerInput _playerInput;
@@ -355,18 +365,22 @@ namespace StarterAssets
 			if (isCrouching)
 			{
 				targetSpeed = CrouchSpeed;
+				_currentSpeed = CrouchSpeed;
 			}
 			else if (input.sprint)
 			{
 				targetSpeed = SprintSpeed;
+				_currentSpeed = SprintSpeed;
 			}
 			else
 			{
 				targetSpeed = MoveSpeed;
+				_currentSpeed = MoveSpeed;
 			}
 
 			// If there is no input, set the target speed to 0
 			if (input.move == Vector2.zero) targetSpeed = 0.0f;
+			if (input.move == Vector2.zero) _currentSpeed = 0.0f;
 
 			// A reference to the player's current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;

@@ -4,14 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class SuspicionNodeEvent: UnityEvent<Vector3>
-{
+//public class SuspicionNodeEvent: UnityEvent<Vector3>
 
-}
 public class EnemySuspicionSystem : MonoBehaviour
 {
     //Unity Event to Add Suspicion
-    public SuspicionNodeEvent suspicionQue;
+    //public SuspicionNodeEvent suspicionQue;
 
     [Header("Suspicion Values")]
     [Range(0, 40)]
@@ -22,7 +20,7 @@ public class EnemySuspicionSystem : MonoBehaviour
 
     private EnemyVision _COV;
 
-    private bool _isLosingSuspicion;
+    //private bool _isLosingSuspicion;
 
     //Get Set Methods
     public float GetSuspicionValue
@@ -42,10 +40,12 @@ public class EnemySuspicionSystem : MonoBehaviour
     private void Start()
     {
         //Creating instance of suspicionQue Unity event
+        /*
         if(suspicionQue == null)
         {
             suspicionQue = new SuspicionNodeEvent();
         }
+        */
     }
 
     private void Update()
