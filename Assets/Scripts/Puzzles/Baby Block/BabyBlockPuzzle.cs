@@ -23,6 +23,7 @@ public class BabyBlockPuzzle : MonoBehaviour
     private Camera _mainCam;
     private AudioSource _audioSource;
     private Animator _animator;
+    private PatrolSystemManager _patrol;
 
     private bool _isActive;
     private bool _canAnimate;
@@ -41,6 +42,8 @@ public class BabyBlockPuzzle : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
 
         _canAnimate = true;
+
+        _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
     }
 
     private void Update()
@@ -175,6 +178,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         if(rightItem == null)
         {
             PlayAudioClip(failSound);
+            _patrol.DecreaseTimeToSpawn = -10;
         }
         else
         {

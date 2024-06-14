@@ -29,6 +29,7 @@ public class DaVinciPuzzle : MonoBehaviour
     private GlobalCursorManager _cursor;
     private FirstPersonController _FPC;
     private AudioSource _puzzleAudio;
+    private PatrolSystemManager _patrol;
 
 
     private int[] _dial1;
@@ -46,6 +47,7 @@ public class DaVinciPuzzle : MonoBehaviour
         _puzzleAudio = GetComponent<AudioSource>();
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("DaVinciPuzzleCam").GetComponent<CinemachineVirtualCamera>();
+        _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
 
         _canAnimate = true;
     }
@@ -202,6 +204,7 @@ public class DaVinciPuzzle : MonoBehaviour
             if (_canAnimate)
             {
                 print("Puzzle Failed");
+                _patrol.DecreaseTimeToSpawn = -10;
                 StartCoroutine(TriggerAnimation(true));
             }
         }
