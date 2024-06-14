@@ -6,35 +6,30 @@ public class PlayerInteractableController : MonoBehaviour
 {
     private InteractableObject _interactableObject;
     private HighlightInteractableObjectController _highlightInteractableObjectController;
-
+    private PlayerExamineObjectController _examineObjectController;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask interactableLayerMask;
     [SerializeField] private Image interactionImage;
     [SerializeField] private Sprite defaultIcon;
     [SerializeField] private Sprite defaultInteractionIcon;
+    [SerializeField] private Sprite examinationIcon;
     [SerializeField] private Sprite interactionCooldownIcon;
     [SerializeField] private Vector2 defaultIconSize;
     [SerializeField] private Vector2 defaultInteractionIconSize;
     [SerializeField] private float interactionDistance = 2.0f;
-
     [SerializeField] private float spamPreventionTime = 2.0f;
     private bool _allowInteraction = true;
-    
-    private GameObject _skullCompanion;
-    private PlayerDualHandInventory _playerInventory;
-    private DialogueController _dialogueController; 
 
     private void Awake()
     {
-        _skullCompanion = GameObject.FindWithTag("Skull");
-        _playerInventory = FindObjectOfType<PlayerDualHandInventory>()
-            .GetComponent<PlayerDualHandInventory>();
-        _dialogueController = FindObjectOfType<DialogueController>(); 
-
+        _examineObjectController = FindObjectOfType<PlayerExamineObjectController>();
     }
 
     private void Update()
     {
+        if (_examineObjectController != null && _examineObjectController.isExaminingObject) return; 
+        if (!_allowInteraction) return;
+        
         if (Physics.Raycast(
                 mainCamera.transform.position,
                 mainCamera.transform.forward,
@@ -43,7 +38,7 @@ public class PlayerInteractableController : MonoBehaviour
                 interactableLayerMask))
         {
             var interactable = hitInfo.collider.GetComponent<InteractableObject>();
-            var button = hitInfo.collider.GetComponent<Button>();
+            var examinable = hitInfo.collider.GetComponent<ExaminableObject>();
             if (interactable != null)
             {
                 if (_interactableObject != interactable)
@@ -52,13 +47,18 @@ public class PlayerInteractableController : MonoBehaviour
 
                     _interactableObject = interactable;
 
-                    UpdateInteractionUI(_interactableObject);
-
-                    if (button == null || !interactable.GetComponent<InteractableNPC>())
+                    if (examinable != null)
                     {
-                        _highlightInteractableObjectController = _interactableObject.highlightInteractableObjectController;
-                        _highlightInteractableObjectController?.ChangeColor(Color.red);
+                        interactionImage.sprite = examinationIcon;
+                        interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
                     }
+                    else
+                    {
+                        UpdateInteractionUI(_interactableObject);
+                    }
+
+                    _highlightInteractableObjectController = _interactableObject.highlightInteractableObjectController;
+                    _highlightInteractableObjectController?.ChangeColor(Color.red);
                 }
             }
         }
@@ -67,35 +67,37 @@ public class PlayerInteractableController : MonoBehaviour
             ResetHighlight();
         }
 
-        // Check if the player is still looking at the interactable object
-        if (_interactableObject != null && _interactableObject.GetComponent<InteractableNPC>() != null)
+        if (_interactableObject == null)
         {
-            // If the interactable object is an NPC, disable the dialogue box
             ResetInteraction();
         }
 
-        if (Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyOne)
-            || Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyTwo)
-            && _interactableObject != null && _allowInteraction)
+        
+        //Took out && !_examineObjectController.canExamine for bug fixing
+        if ((Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyOne)
+             || Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyTwo)))
+        {
+            if (_interactableObject != null && _allowInteraction)
+            {
+                interactionImage.sprite = defaultInteractionIcon;
+                interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
+                _interactableObject.onInteraction?.Invoke();
+                StartCoroutine(InteractionSpamPrevention());
+            }
+        }
+        else if (Input.GetKeyDown(InGameSettingsManager.Instance.itemExaminationInteractionKey)
+                 && _interactableObject != null
+                 && _interactableObject.TryGetComponent<ExaminableObject>(out var examinableObject)
+                 && !_examineObjectController.isExaminingObject
+                 && !examinableObject.isExamining)
         {
             interactionImage.sprite = defaultInteractionIcon;
             interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
-            if (_interactableObject is InteractableNPC interactableNPC)
-            {
-                if (_skullCompanion != null && _playerInventory.IsSkullInFirstSlot())
-                {
-                    interactableNPC.Interact();
-                }
-            }
-            else
-            {
-                _interactableObject.onInteraction?.Invoke();
-            }
-
+            _examineObjectController.StartExamination(examinableObject.gameObject);
+            ResetInteraction(); 
             StartCoroutine(InteractionSpamPrevention());
         }
     }
-
 
     private void ResetHighlight()
     {
@@ -110,6 +112,11 @@ public class PlayerInteractableController : MonoBehaviour
             UpdateInteractionUI(null);
             _interactableObject = null;
         }
+    }
+
+    public bool IsLookingAtInteractableObject(GameObject target)
+    {
+        return _interactableObject != null && _interactableObject.gameObject == target;
     }
 
     private void UpdateInteractionUI(InteractableObject interactable)
@@ -130,11 +137,6 @@ public class PlayerInteractableController : MonoBehaviour
         }
     }
 
-    public bool IsLookingAtInteractableObject(GameObject target)
-    {
-        return _interactableObject != null && _interactableObject.gameObject == target;
-    }
-
     private IEnumerator InteractionSpamPrevention()
     {
         _allowInteraction = false;
@@ -143,15 +145,9 @@ public class PlayerInteractableController : MonoBehaviour
         _allowInteraction = true;
         UpdateInteractionUI(_interactableObject);
     }
-    
+
     private void ResetInteraction()
     {
-        if (_interactableObject != null && _interactableObject.GetComponent<InteractableNPC>() != null)
-        {
-            // If the interactable object is an NPC, disable the dialogue box
-            _dialogueController.DisableDialogueBox();
-        }
-
         _interactableObject = null;
         UpdateInteractionUI(null);
         _highlightInteractableObjectController = null;
