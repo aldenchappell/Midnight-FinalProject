@@ -13,15 +13,17 @@ public class LightFlicker : MonoBehaviour
     public AudioClip flickerSound;
     public static AudioSource AudioSource;
 
-
+    private Renderer _sconceRenderer;
+    [SerializeField] private Material sconceOnMat, sconceOffMat;
     private GameObject _enemy;
+
     private void Awake()
     {
         _light = GetComponent<Light>();
         flickerTime = new float[2] { 0.5f, 1.5f };
         _enemy = FindObjectOfType<EnemyFlickerLightsInVicinity>()?.gameObject;
-        
-        
+
+        _sconceRenderer = GetComponentInParent<Renderer>();
         GameObject lightAudioManager = GameObject.Find("LightAudioManager");
         if (lightAudioManager != null)
         {
@@ -51,7 +53,7 @@ public class LightFlicker : MonoBehaviour
         {
             StopCoroutine(_flickerCoroutine);
             _flickerCoroutine = null;
-            _light.enabled = true; 
+            SetLightState(true); // Ensure light is turned on when flickering stops
         }
     }
 
@@ -59,16 +61,16 @@ public class LightFlicker : MonoBehaviour
     {
         while (shouldFlicker)
         {
-            _light.enabled = false;
-            
-            if (AudioSource != null && !AudioSource.isPlaying)
-            {
-                AudioSource.transform.position = transform.position; 
-                AudioSource.PlayOneShot(flickerSound, 3.0f);
-            }
+            SetLightState(false);
             yield return new WaitForSeconds(Random.Range(flickerTime[0], flickerTime[1]));
-            _light.enabled = true;
+            SetLightState(true);
             yield return new WaitForSeconds(Random.Range(flickerTime[0], flickerTime[1]));
         }
+    }
+
+    private void SetLightState(bool state)
+    {
+        _light.enabled = state;
+        _sconceRenderer.material = state ? sconceOnMat : sconceOffMat;
     }
 }

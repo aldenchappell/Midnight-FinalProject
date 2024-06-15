@@ -31,10 +31,10 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
 
                     if (!soundPlayed)
                     {
-                        if (LightFlicker.AudioSource != null)
+                        if (LightFlicker.AudioSource != null && !LightFlicker.AudioSource.isPlaying)
                         {
                             LightFlicker.AudioSource.transform.position = flicker.transform.position;
-                            LightFlicker.AudioSource.PlayOneShot(flicker.flickerSound);
+                            LightFlicker.AudioSource.PlayOneShot(flicker.flickerSound, 5.0f);
                             soundPlayed = true;
                         }
                     }
@@ -56,7 +56,7 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
