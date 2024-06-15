@@ -39,8 +39,8 @@ public class SoundDetectionRadius : MonoBehaviour
         }
         else if(currentMoveSpeed >= 2)
         {
-            currentSoundRadius = 4;
-            soundRadius = 4;
+            currentSoundRadius = 3.25f;
+            soundRadius = 3.25f;
         }
         else
         {
