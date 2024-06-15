@@ -10,6 +10,16 @@ public class PauseManager : MonoBehaviour
     public GameObject playerUI;
     public AudioSource pauseSFX;
 
+    private bool _isInPuzzle;
+
+    public bool SetPuzzleBool
+    {
+        set
+        {
+            _isInPuzzle = value;
+        }
+    }
+
     private void Start()
     {
         GameIsPaused = false;
@@ -17,7 +27,7 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !_isInPuzzle)
         {
             if (GameIsPaused)
             {
