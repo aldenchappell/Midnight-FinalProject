@@ -7,6 +7,8 @@ public class FollowPosition : MonoBehaviour
     public Transform targetTransform;
     public Vector3 offset;
     [SerializeField] private bool enableRotation = false;
+    [SerializeField] private bool enableRotationOffset;
+    [SerializeField] private Quaternion rotationOffset;
     private void Awake()
     {
         if (isPhotoBoardCam)
@@ -20,6 +22,11 @@ public class FollowPosition : MonoBehaviour
         if (enableRotation)
         {
             transform.rotation = targetTransform.rotation;
+        }
+        
+        if (enableRotationOffset)
+        {
+            transform.rotation = targetTransform.rotation * rotationOffset;
         }
     }
 }

@@ -71,11 +71,13 @@ public class PlayerInteractableController : MonoBehaviour
         {
             ResetInteraction();
         }
-
         
-        //Took out && !_examineObjectController.canExamine for bug fixing
+        
+
         if ((Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyOne)
-             || Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyTwo)))
+             || Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyTwo))
+            && _examineObjectController != null
+            && !_examineObjectController.isExaminingObject)
         {
             if (_interactableObject != null && _allowInteraction)
             {
@@ -83,12 +85,13 @@ public class PlayerInteractableController : MonoBehaviour
                 interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
                 _interactableObject.onInteraction?.Invoke();
                 StartCoroutine(InteractionSpamPrevention());
+                _examineObjectController.objectToExamine = null;
             }
         }
         else if (Input.GetKeyDown(InGameSettingsManager.Instance.itemExaminationInteractionKey)
                  && _interactableObject != null
                  && _interactableObject.TryGetComponent<ExaminableObject>(out var examinableObject)
-                 && !_examineObjectController.isExaminingObject
+                 
                  && !examinableObject.isExamining)
         {
             interactionImage.sprite = defaultInteractionIcon;
@@ -98,6 +101,7 @@ public class PlayerInteractableController : MonoBehaviour
             StartCoroutine(InteractionSpamPrevention());
         }
     }
+
 
     private void ResetHighlight()
     {

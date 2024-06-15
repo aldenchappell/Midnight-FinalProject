@@ -6245,9 +6245,10 @@ MonoBehaviour:
   interactionImage: {fileID: 2216138235636287559}
   defaultIcon: {fileID: 21300000, guid: 0ab56de02bbfe3a4e82fe41d87b47939, type: 3}
   defaultInteractionIcon: {fileID: 21300000, guid: 0ab56de02bbfe3a4e82fe41d87b47939, type: 3}
+  examinationIcon: {fileID: 21300000, guid: 74fc6e9caab724a4697f00e1ea7ad9c2, type: 3}
   interactionCooldownIcon: {fileID: 21300000, guid: b40d559512f74e84ab363970c3eae806, type: 3}
   defaultIconSize: {x: 30, y: 30}
-  defaultInteractionIconSize: {x: 0, y: 0}
+  defaultInteractionIconSize: {x: 50, y: 50}
   interactionDistance: 2
   spamPreventionTime: 1
 --- !u!114 &1798050421667250784
@@ -9158,6 +9159,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7055831652362156118}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2004233160242430803}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!114 &1185921017414210651 stripped
 MonoBehaviour:
@@ -9257,6 +9261,23 @@ MonoBehaviour:
   isDead: 0
   deathScreen: {fileID: 2856113547153784628}
   firstPersonController: {fileID: 1185921017414210651}
+--- !u!114 &2004233160242430803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185921017414210652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9cadf38711c41498cb28324129e986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToExamine: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
+  originalRotation: {x: 0, y: 0, z: 0, w: 0}
+  isExaminingObject: 0
+  canExamine: 1
 --- !u!4 &1963266304447385318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
