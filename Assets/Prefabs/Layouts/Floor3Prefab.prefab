@@ -2716,6 +2716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 939591980385582694}
   - component: {fileID: 8474892034303261126}
+  - component: {fileID: 3988370796217784989}
   m_Layer: 0
   m_Name: ExamineObjectLight
   m_TagString: Untagged
@@ -2800,6 +2801,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3988370796217784989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237776741540662033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4582471c6a2a1498579322b8f5972f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPhotoBoardCam: 0
+  targetTransform: {fileID: 952778759942854955}
+  offset: {x: 0, y: 0.5, z: 0}
+  enableRotation: 0
 --- !u!1 &241048757483059208
 GameObject:
   m_ObjectHideFlags: 0
@@ -16439,24 +16456,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e597f2115ad6754a90c85ffd99eeb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlaceObject:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionIcon: {fileID: 0}
-  interactableIconSize: {x: 0, y: 0}
-  interactableID: 0
-  highlightInteractableObjectController: {fileID: 0}
   playerCamera: {fileID: 0}
   examineCamera: {fileID: 0}
   examineLight: {fileID: 0}
   isExamining: 0
   target: {fileID: 0}
-  onExamination:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1368649013461658422
 GameObject:
   m_ObjectHideFlags: 0
@@ -34060,24 +34064,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e597f2115ad6754a90c85ffd99eeb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlaceObject:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionIcon: {fileID: 0}
-  interactableIconSize: {x: 0, y: 0}
-  interactableID: 0
-  highlightInteractableObjectController: {fileID: 0}
   playerCamera: {fileID: 2594179497241640686}
   examineCamera: {fileID: 8744485247819727785}
   examineLight: {fileID: 0}
   isExamining: 0
   target: {fileID: 0}
-  onExamination:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &3044251942246433998
 GameObject:
   m_ObjectHideFlags: 0
@@ -43624,24 +43615,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e597f2115ad6754a90c85ffd99eeb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlaceObject:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionIcon: {fileID: 0}
-  interactableIconSize: {x: 0, y: 0}
-  interactableID: 0
-  highlightInteractableObjectController: {fileID: 0}
   playerCamera: {fileID: 0}
   examineCamera: {fileID: 0}
   examineLight: {fileID: 0}
   isExamining: 0
   target: {fileID: 0}
-  onExamination:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &3856226536962260852
 GameObject:
   m_ObjectHideFlags: 0
@@ -44677,8 +44655,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3952844027048102517}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.531, z: 1.325}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.5309999, z: 1.3250009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46042,24 +46020,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e597f2115ad6754a90c85ffd99eeb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlaceObject:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionIcon: {fileID: 0}
-  interactableIconSize: {x: 0, y: 0}
-  interactableID: 0
-  highlightInteractableObjectController: {fileID: 0}
   playerCamera: {fileID: 0}
   examineCamera: {fileID: 0}
   examineLight: {fileID: 0}
   isExamining: 0
   target: {fileID: 0}
-  onExamination:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4117797157940478405
 GameObject:
   m_ObjectHideFlags: 0
@@ -51256,24 +51221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e597f2115ad6754a90c85ffd99eeb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlaceObject:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionIcon: {fileID: 0}
-  interactableIconSize: {x: 0, y: 0}
-  interactableID: 0
-  highlightInteractableObjectController: {fileID: 0}
   playerCamera: {fileID: 0}
   examineCamera: {fileID: 0}
   examineLight: {fileID: 0}
   isExamining: 0
   target: {fileID: 0}
-  onExamination:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4512122500099179325
 GameObject:
   m_ObjectHideFlags: 0
@@ -93119,24 +93071,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e597f2115ad6754a90c85ffd99eeb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlaceObject:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionIcon: {fileID: 0}
-  interactableIconSize: {x: 0, y: 0}
-  interactableID: 0
-  highlightInteractableObjectController: {fileID: 0}
   playerCamera: {fileID: 0}
   examineCamera: {fileID: 0}
   examineLight: {fileID: 0}
   isExamining: 0
   target: {fileID: 0}
-  onExamination:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &8158288135167436696
 GameObject:
   m_ObjectHideFlags: 0
@@ -107271,11 +107210,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3084076195804208909, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3084076195804208909, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3084076195804208909, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       propertyPath: m_LocalRotation.y
@@ -107381,10 +107320,10 @@ PrefabInstance:
       addedObject: {fileID: 7734237594116280873}
     - targetCorrespondingSourceObject: {fileID: 6354946541551476350, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 952778759942854955}
+      addedObject: {fileID: 939591980385582694}
     - targetCorrespondingSourceObject: {fileID: 6354946541551476350, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 939591980385582694}
+      addedObject: {fileID: 952778759942854955}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 122025824759987837, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       insertIndex: -1

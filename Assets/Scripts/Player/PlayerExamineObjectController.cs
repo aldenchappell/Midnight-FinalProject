@@ -10,10 +10,12 @@ public class PlayerExamineObjectController : MonoBehaviour
     public bool isExaminingObject = false;
     public bool canExamine = true;
     private FirstPersonController _fpController;
+    private Cinemachine.CinemachineVirtualCamera examineCamera;
 
     private void Awake()
     {
         _fpController = FindObjectOfType<FirstPersonController>();
+        examineCamera = GameObject.Find("ExamineObjectCamera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
     }
 
     public void StartExamination(GameObject examinableObj)
@@ -25,9 +27,12 @@ public class PlayerExamineObjectController : MonoBehaviour
         originalRotation = examinableObj.transform.rotation;
 
         examinableObj.transform.position = FindObjectOfType<ExaminableObject>().target.position;
-    
+
         _fpController.ToggleCanMove();
         _fpController.canRotate = false;
+
+        // Set camera rotation to match the object rotation
+        examineCamera.transform.rotation = objectToExamine.transform.rotation;
 
         StartCoroutine(ExaminationCooldown());
     }
@@ -40,7 +45,7 @@ public class PlayerExamineObjectController : MonoBehaviour
             objectToExamine.transform.rotation = originalRotation;
 
             objectToExamine = null;
-            isExaminingObject = false;
+            isExaminingObject = false; // Ensure this is set to false
         
             _fpController.ToggleCanMove();
             _fpController.canRotate = true;
@@ -61,5 +66,12 @@ public class PlayerExamineObjectController : MonoBehaviour
         canExamine = false;
         yield return new WaitForSeconds(1.0f);
         canExamine = true;
+    }
+
+    public void OnExaminationResetVectorValues()
+    {
+        originalRotation = Quaternion.identity;
+        originalPosition = Vector3.zero;
+        isExaminingObject = false;
     }
 }

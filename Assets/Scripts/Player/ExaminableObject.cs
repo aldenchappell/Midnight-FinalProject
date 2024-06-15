@@ -1,9 +1,10 @@
+using System;
 using Cinemachine;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ExaminableObject : InteractableObject
+public class ExaminableObject : MonoBehaviour
 {
     [HideInInspector] public CinemachineVirtualCamera playerCamera;
     [HideInInspector] public CinemachineVirtualCamera examineCamera;
@@ -16,22 +17,28 @@ public class ExaminableObject : InteractableObject
     private const float XRotationSpeed = 5;
     private float _initialRootX;
     private float _initialRootY;
-
-    public UnityEvent onExamination;
-    private PlayerExamineObjectController _examineObjectController;
     
-    private void Start()
+    private PlayerExamineObjectController _examineObjectController;
+    private InteractableObject _intObj;
+
+    private void Awake()
     {
         examineLight = GameObject.Find("ExamineObjectLight")?.GetComponent<Light>();
-        if (examineLight != null)
-        {
-            examineLight.enabled = false;
-        }
         _player = FindObjectOfType<FirstPersonController>();
         _examineObjectController = FindObjectOfType<PlayerExamineObjectController>();
         target = GameObject.Find("ExaminationTarget")?.transform;
         playerCamera = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         examineCamera = GameObject.Find("ExamineObjectCamera").GetComponent<CinemachineVirtualCamera>();
+        _intObj = GetComponent<InteractableObject>();
+        _intObj.onInteraction.AddListener(() => _examineObjectController.OnExaminationResetVectorValues());
+    }
+
+    private void Start()
+    {
+        if (examineLight != null)
+        {
+            examineLight.enabled = false;
+        }
     }
 
     private void Update()
@@ -55,6 +62,16 @@ public class ExaminableObject : InteractableObject
                 }
             }
         }
+        else if (isExamining) // Add this else-if to reset the state when not examining
+        {
+            isExamining = false;
+            if (examineLight != null)
+            {
+                examineLight.enabled = false;
+            }
+            playerCamera.Priority = 5;
+            examineCamera.Priority = 0;
+        }
 
         if (isExamining)
         {
@@ -67,6 +84,9 @@ public class ExaminableObject : InteractableObject
                 {
                     _examineObjectController.objectToExamine.transform.Rotate(Vector3.up, -mouseX, Space.World);
                     _examineObjectController.objectToExamine.transform.Rotate(Vector3.right, mouseY, Space.World);
+
+                    // Update the examine camera rotation to match the object's rotation
+                    examineCamera.transform.rotation = _examineObjectController.objectToExamine.transform.rotation;
                 }
             }
 

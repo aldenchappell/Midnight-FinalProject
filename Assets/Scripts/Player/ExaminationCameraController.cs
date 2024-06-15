@@ -16,31 +16,4 @@ public class ExaminationCameraController : MonoBehaviour
         originalPosition = transform.position;
         originalRotation = transform.rotation;
     }
-
-    private void Update()
-    {
-        if (isExamining)
-        {
-            // Move and rotate the camera towards the examination target
-            Vector3 targetPosition = examinationTarget.position + offset;
-            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
-            transform.LookAt(examinationTarget);
-        }
-        else
-        {
-            // Reset the camera to its original position and rotation
-            transform.position = Vector3.Lerp(transform.position, originalPosition, smoothSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, smoothSpeed * Time.deltaTime);
-        }
-    }
-
-    public void StartExamination()
-    {
-        isExamining = true;
-    }
-
-    public void StopExamination()
-    {
-        isExamining = false;
-    }
 }
