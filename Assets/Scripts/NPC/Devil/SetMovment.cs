@@ -55,7 +55,7 @@ public class SetMovment : MonoBehaviour
     { 
         if(_currentEndDestination != Vector3.zero)
         {
-            print("Setting end");
+            //print("Setting end");
             _agent.SetDestination(_currentEndDestination);
         }
 
@@ -93,7 +93,7 @@ public class SetMovment : MonoBehaviour
 
     private void SetAIAtStartLocation(GameObject location)
     {
-        print("Setting Position");
+        //print("Setting Position");
         gameObject.transform.position = location.transform.position;
     }
 

@@ -1599,6 +1599,7 @@ GameObject:
   - component: {fileID: 762029470905679808}
   - component: {fileID: 1390596873945139877}
   - component: {fileID: 3019968306688911342}
+  - component: {fileID: 7414204952730230695}
   m_Layer: 0
   m_Name: SconceRound (43)
   m_TagString: Untagged
@@ -1672,6 +1673,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7414204952730230695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140866741396268719}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536751}
 --- !u!1 &148470564331279768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +1825,7 @@ GameObject:
   - component: {fileID: 8878964972778438471}
   - component: {fileID: 5892416425024950316}
   - component: {fileID: 5915137672185296221}
+  - component: {fileID: 5970874902252878417}
   m_Layer: 0
   m_Name: SconceRound (38)
   m_TagString: Untagged
@@ -1876,6 +1899,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5970874902252878417
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160023010518387772}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.959276, y: -39.057686, z: -0.00011062626}
 --- !u!1 &176562384108446293
 GameObject:
   m_ObjectHideFlags: 0
@@ -5397,6 +5441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3716267996351600767}
   - component: {fileID: 6892907557006077347}
+  - component: {fileID: 7225682661206081794}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -5437,7 +5482,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -5481,6 +5526,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7225682661206081794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426108386504071265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &428138342464932856
 GameObject:
   m_ObjectHideFlags: 0
@@ -6081,6 +6143,7 @@ GameObject:
   - component: {fileID: 6830922337641917133}
   - component: {fileID: 5537941927624003788}
   - component: {fileID: 4235880193120002049}
+  - component: {fileID: 8940657373106270588}
   m_Layer: 0
   m_Name: SconceRound (46)
   m_TagString: Untagged
@@ -6154,6 +6217,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8940657373106270588
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453374630052529188}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.91854, y: 50.915714, z: 32.70202}
+  m_Center: {x: -18.959026, y: -39.057686, z: -0.000009254227}
 --- !u!1 &460123223887663196
 GameObject:
   m_ObjectHideFlags: 0
@@ -6769,6 +6853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5839263984119298736}
   - component: {fileID: 7403599376813410058}
+  - component: {fileID: 8914677595738877401}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -6809,7 +6894,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -6853,6 +6938,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &8914677595738877401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504493694179978094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &521089552040878273
 GameObject:
   m_ObjectHideFlags: 0
@@ -7835,6 +7937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7765620361835044205}
   - component: {fileID: 2293734210558773159}
+  - component: {fileID: 6519858854045993239}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -7875,7 +7978,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -7919,6 +8022,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &6519858854045993239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582103361600032044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &603012044737782559
 GameObject:
   m_ObjectHideFlags: 0
@@ -8052,6 +8172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8534777296513999015}
   - component: {fileID: 8990399407405753472}
+  - component: {fileID: 6371236128457647184}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -8092,7 +8213,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -8136,6 +8257,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &6371236128457647184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604307055857114573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &605168363173991561
 GameObject:
   m_ObjectHideFlags: 0
@@ -8643,6 +8781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1354877249967730726}
   - component: {fileID: 1144341592648705545}
+  - component: {fileID: 3118255657363908556}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -8683,7 +8822,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -8727,6 +8866,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3118255657363908556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663449770961211889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &678059297467905032
 GameObject:
   m_ObjectHideFlags: 0
@@ -11407,6 +11563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3250028098253323338}
   - component: {fileID: 8308563542071705844}
+  - component: {fileID: 5890820920162431864}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -11447,7 +11604,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -11491,6 +11648,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &5890820920162431864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896137014060877550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &902484832450757775
 GameObject:
   m_ObjectHideFlags: 0
@@ -11748,6 +11922,7 @@ GameObject:
   - component: {fileID: 40956239494829719}
   - component: {fileID: 7805165152040779867}
   - component: {fileID: 2355601327877547010}
+  - component: {fileID: 6280643577004326733}
   m_Layer: 0
   m_Name: SconceRound (34)
   m_TagString: Untagged
@@ -11821,6 +11996,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6280643577004326733
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909545202598184485}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.959276, y: -39.057686, z: -0.0000095367795}
 --- !u!1 &919264050068724289
 GameObject:
   m_ObjectHideFlags: 0
@@ -12496,6 +12692,7 @@ GameObject:
   - component: {fileID: 7414155749568017634}
   - component: {fileID: 4360624547838048905}
   - component: {fileID: 8099308207017014252}
+  - component: {fileID: 3172100049950963840}
   m_Layer: 0
   m_Name: SconceRound (13)
   m_TagString: Untagged
@@ -12569,6 +12766,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3172100049950963840
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980786020041339236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959333, y: -39.057686, z: -0.000009536743}
 --- !u!1 &1007611216438942674
 GameObject:
   m_ObjectHideFlags: 0
@@ -13131,10 +13349,10 @@ RectTransform:
   - {fileID: 6050718389437729399}
   m_Father: {fileID: 7051013879448019509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1200, y: 250}
+  m_AnchorMin: {x: 0.187, y: 0.053851854}
+  m_AnchorMax: {x: 0.814, y: 0.28540745}
+  m_AnchoredPosition: {x: -1, y: 3}
+  m_SizeDelta: {x: -4, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1022703821645558617
 CanvasRenderer:
@@ -13157,14 +13375,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c473e429fe9981b4a8b84a4c758e8588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14355,6 +14573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7793862374624241061}
   - component: {fileID: 1787941947071804708}
+  - component: {fileID: 1368888890164193765}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -14395,7 +14614,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -14439,6 +14658,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1368888890164193765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168227805775145751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &1172836302524865711
 GameObject:
   m_ObjectHideFlags: 0
@@ -14597,6 +14833,7 @@ GameObject:
   - component: {fileID: 1394731498278364502}
   - component: {fileID: 1284215500709731040}
   - component: {fileID: 6155613132941126377}
+  - component: {fileID: 8590689730560448448}
   m_Layer: 0
   m_Name: SconceRound (4)
   m_TagString: Untagged
@@ -14670,6 +14907,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8590689730560448448
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175090513383216263}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959333, y: -39.057686, z: -0.0009860992}
 --- !u!1 &1184701619776034664
 GameObject:
   m_ObjectHideFlags: 0
@@ -14923,6 +15181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5390407753418409740}
   - component: {fileID: 9053833113676670289}
+  - component: {fileID: 1592385154970342760}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -14963,7 +15222,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -15007,6 +15266,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1592385154970342760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217254158316754668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &1226954588361273049
 GameObject:
   m_ObjectHideFlags: 0
@@ -15164,10 +15440,10 @@ RectTransform:
   - {fileID: 6331674834047262282}
   m_Father: {fileID: 7704751184741869192}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 100}
+  m_AnchorMin: {x: 0.92333317, y: 0}
+  m_AnchorMax: {x: 1, y: 0.24400002}
+  m_AnchoredPosition: {x: 0, y: -0}
+  m_SizeDelta: {x: 0.040496826, y: -0.49010086}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &9088276717612800697
 CanvasRenderer:
@@ -15251,7 +15527,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8618610187433231794}
         m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
         m_MethodName: GoToNextLine
         m_Mode: 1
@@ -15274,6 +15550,7 @@ GameObject:
   - component: {fileID: 1892057671115716745}
   - component: {fileID: 8586900466015438609}
   - component: {fileID: 7722497071199067191}
+  - component: {fileID: 2240678139471392620}
   m_Layer: 0
   m_Name: SconceRound (55)
   m_TagString: Untagged
@@ -15347,6 +15624,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2240678139471392620
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288143812380568068}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959333, y: -39.057686, z: -0.000497818}
 --- !u!1 &1297905330322754588
 GameObject:
   m_ObjectHideFlags: 0
@@ -15802,6 +16100,7 @@ GameObject:
   - component: {fileID: 7809476712527161460}
   - component: {fileID: 2353636033039313579}
   - component: {fileID: 1547467767808745775}
+  - component: {fileID: 564377029580605938}
   m_Layer: 0
   m_Name: SconceRound (57)
   m_TagString: Untagged
@@ -15875,6 +16174,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &564377029580605938
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311742082586990067}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959333, y: -39.057686, z: -0.000497818}
 --- !u!1 &1313044669451900530
 GameObject:
   m_ObjectHideFlags: 0
@@ -15885,6 +16205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4461299005756777825}
   - component: {fileID: 6844031693491513915}
+  - component: {fileID: 8044393501929414948}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -15925,7 +16246,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -15969,6 +16290,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &8044393501929414948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313044669451900530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &1319962500999740778
 GameObject:
   m_ObjectHideFlags: 0
@@ -16988,6 +17326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6657222707230905463}
   - component: {fileID: 2066878675364687590}
+  - component: {fileID: 8346178377644377926}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -17028,7 +17367,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -17072,6 +17411,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &8346178377644377926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398954736897746665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &1407294687657457439
 GameObject:
   m_ObjectHideFlags: 0
@@ -17114,6 +17470,7 @@ GameObject:
   - component: {fileID: 7249221278375341107}
   - component: {fileID: 2828542923130653466}
   - component: {fileID: 5965782204025695056}
+  - component: {fileID: 441417779655647294}
   m_Layer: 0
   m_Name: SconceRound (45)
   m_TagString: Untagged
@@ -17187,6 +17544,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &441417779655647294
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437191384055962070}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536751}
 --- !u!1 &1455299812586719109
 GameObject:
   m_ObjectHideFlags: 0
@@ -17795,6 +18173,7 @@ GameObject:
   - component: {fileID: 1282900694294143424}
   - component: {fileID: 2222588168228906472}
   - component: {fileID: 3912534566147962205}
+  - component: {fileID: 776483833395563415}
   m_Layer: 0
   m_Name: SconceRound (33)
   m_TagString: Untagged
@@ -17868,6 +18247,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &776483833395563415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557620872069264606}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &1558721520493824874
 GameObject:
   m_ObjectHideFlags: 0
@@ -18267,6 +18667,7 @@ GameObject:
   - component: {fileID: 2423449364028146673}
   - component: {fileID: 5376826586663332735}
   - component: {fileID: 6011616865794218215}
+  - component: {fileID: 5628720991001569297}
   m_Layer: 0
   m_Name: SconceRound (11)
   m_TagString: Untagged
@@ -18340,6 +18741,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5628720991001569297
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581534187333044446}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.9583, y: -39.057686, z: -0.00011634827}
 --- !u!1 &1581969325504864667
 GameObject:
   m_ObjectHideFlags: 0
@@ -18826,6 +19248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6452651856632144270}
   - component: {fileID: 802964908562218038}
+  - component: {fileID: 503869132797740662}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -18866,7 +19289,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -18910,6 +19333,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &503869132797740662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608352708095981561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &1615831192819505450
 GameObject:
   m_ObjectHideFlags: 0
@@ -20872,6 +21312,7 @@ GameObject:
   - component: {fileID: 4370943247596056962}
   - component: {fileID: 6962357363197304216}
   - component: {fileID: 4742046634412088592}
+  - component: {fileID: 6776503655963242901}
   m_Layer: 0
   m_Name: SconceRound (3)
   m_TagString: Untagged
@@ -20945,6 +21386,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6776503655963242901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741159524993470047}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536751}
 --- !u!1 &1744101736449761826
 GameObject:
   m_ObjectHideFlags: 0
@@ -21198,6 +21660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 600907752911665685}
   - component: {fileID: 6821567216760519708}
+  - component: {fileID: 7805499809503896398}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -21238,7 +21701,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -21282,6 +21745,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7805499809503896398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766713128337820366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &1767457374707802863
 GameObject:
   m_ObjectHideFlags: 0
@@ -21771,6 +22251,7 @@ GameObject:
   - component: {fileID: 885116451905465741}
   - component: {fileID: 3784821658081542106}
   - component: {fileID: 910345874213201699}
+  - component: {fileID: 7405019911541547795}
   m_Layer: 0
   m_Name: SconceRound (22)
   m_TagString: Untagged
@@ -21844,6 +22325,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7405019911541547795
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797792792954168175}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &1799933371881376848
 GameObject:
   m_ObjectHideFlags: 0
@@ -22572,6 +23074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3932127208766193204}
   - component: {fileID: 4047906135477564660}
+  - component: {fileID: 219927181717171287}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -22612,7 +23115,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -22656,6 +23159,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &219927181717171287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916856401664238030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &1916970788917361561
 GameObject:
   m_ObjectHideFlags: 0
@@ -25280,6 +25800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7551218398180388041}
   - component: {fileID: 5902515471801093948}
+  - component: {fileID: 7991586816082163174}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -25320,7 +25841,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -25364,6 +25885,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7991586816082163174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087740951011792216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &2096593808455574272
 GameObject:
   m_ObjectHideFlags: 0
@@ -25667,6 +26205,7 @@ GameObject:
   - component: {fileID: 4429410908334927678}
   - component: {fileID: 6832328075085724911}
   - component: {fileID: 2162232838632629614}
+  - component: {fileID: 356463263558865898}
   m_Layer: 0
   m_Name: SconceRound (41)
   m_TagString: Untagged
@@ -25740,6 +26279,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &356463263558865898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139508717630871397}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959425, y: -39.057686, z: -0.0009860982}
 --- !u!1 &2146121893957891984
 GameObject:
   m_ObjectHideFlags: 0
@@ -26117,6 +26677,7 @@ GameObject:
   - component: {fileID: 1070626040541920086}
   - component: {fileID: 4288337889356739426}
   - component: {fileID: 2916400419381915368}
+  - component: {fileID: 8339783623845250096}
   m_Layer: 0
   m_Name: SconceRound (1)
   m_TagString: Untagged
@@ -26190,6 +26751,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8339783623845250096
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2161879740666390523}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959028, y: -39.057686, z: -0.0009860992}
 --- !u!1 &2179940687271606750
 GameObject:
   m_ObjectHideFlags: 0
@@ -26800,6 +27382,7 @@ GameObject:
   - component: {fileID: 5969254683988330750}
   - component: {fileID: 5068303758884748912}
   - component: {fileID: 21275189295631523}
+  - component: {fileID: 4709843087054304724}
   m_Layer: 0
   m_Name: SconceRound (19)
   m_TagString: Untagged
@@ -26873,6 +27456,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4709843087054304724
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210581241257625021}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: 0.000051498413}
 --- !u!1 &2233198508305414333
 GameObject:
   m_ObjectHideFlags: 0
@@ -27188,6 +27792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3175217407510634397}
+  - component: {fileID: 6870993138936172478}
   m_Layer: 0
   m_Name: SconceLighting
   m_TagString: Untagged
@@ -27270,6 +27875,27 @@ Transform:
   - {fileID: 8023115454213066701}
   m_Father: {fileID: 3250631539345956486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6870993138936172478
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258733149774516650}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2301438743703276383
 GameObject:
   m_ObjectHideFlags: 0
@@ -27404,6 +28030,7 @@ GameObject:
   - component: {fileID: 6256764720215022729}
   - component: {fileID: 1253865648357182246}
   - component: {fileID: 267591615635734851}
+  - component: {fileID: 7942165977186247870}
   m_Layer: 0
   m_Name: SconceRound (58)
   m_TagString: Untagged
@@ -27477,6 +28104,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7942165977186247870
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317620583674359294}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.95915, y: -39.057686, z: 0.0004787445}
 --- !u!1 &2325132668336012615
 GameObject:
   m_ObjectHideFlags: 0
@@ -29895,6 +30543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5522307336285533008}
   - component: {fileID: 8333446352097899983}
+  - component: {fileID: 2660819907702040453}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -29935,7 +30584,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -29979,6 +30628,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2660819907702040453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2570416914533414272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &2571838899945913077
 GameObject:
   m_ObjectHideFlags: 0
@@ -30951,6 +31617,7 @@ GameObject:
   - component: {fileID: 2628751974170038818}
   - component: {fileID: 8967161000960924505}
   - component: {fileID: 7465331167612871671}
+  - component: {fileID: 3839942301975531412}
   m_Layer: 0
   m_Name: SconceRound (7)
   m_TagString: Untagged
@@ -31024,6 +31691,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3839942301975531412
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2711104130035726701}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.960253, y: -39.057686, z: 0.00096702576}
 --- !u!1 &2714858739444549095
 GameObject:
   m_ObjectHideFlags: 0
@@ -31281,6 +31969,7 @@ GameObject:
   - component: {fileID: 5635811025355703012}
   - component: {fileID: 4017691136984689548}
   - component: {fileID: 1160871123722307431}
+  - component: {fileID: 2530158514418766419}
   m_Layer: 0
   m_Name: SconceRound (54)
   m_TagString: Untagged
@@ -31354,6 +32043,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2530158514418766419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725579427388217118}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: 0.0004787445}
 --- !u!1 &2744477785899615244
 GameObject:
   m_ObjectHideFlags: 0
@@ -31590,6 +32300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1430720775613792168}
   - component: {fileID: 1591749653911094297}
+  - component: {fileID: 6645868216924388648}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -31630,7 +32341,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -31674,6 +32385,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &6645868216924388648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752952526329914535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &2758255675522074529
 GameObject:
   m_ObjectHideFlags: 0
@@ -32036,6 +32764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 624600286100427648}
   - component: {fileID: 1889736440066278256}
+  - component: {fileID: 4242345837806200049}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -32076,7 +32805,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -32120,6 +32849,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &4242345837806200049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815807075834993676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &2824370531559708972
 GameObject:
   m_ObjectHideFlags: 0
@@ -32772,6 +33518,7 @@ GameObject:
   - component: {fileID: 6768695434058424907}
   - component: {fileID: 6327866708863606891}
   - component: {fileID: 7204596256240121361}
+  - component: {fileID: 5488476467261910832}
   m_Layer: 0
   m_Name: SconceRound (52)
   m_TagString: Untagged
@@ -32845,6 +33592,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5488476467261910832
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2903856009441847240}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.95915, y: -39.057686, z: -0.000009536743}
 --- !u!1 &2923012335674369482
 GameObject:
   m_ObjectHideFlags: 0
@@ -33841,6 +34609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2099874732956261488}
   - component: {fileID: 215425175463851183}
+  - component: {fileID: 2191207555721010212}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -33881,7 +34650,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -33925,6 +34694,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2191207555721010212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003963632873427532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &3014075899917268504
 GameObject:
   m_ObjectHideFlags: 0
@@ -34244,6 +35030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2211740110334762451}
   - component: {fileID: 3119647554678244735}
+  - component: {fileID: 657075604776312578}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -34284,7 +35071,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -34328,6 +35115,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &657075604776312578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044251942246433998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &3047341853955199869
 GameObject:
   m_ObjectHideFlags: 0
@@ -34585,6 +35389,7 @@ GameObject:
   - component: {fileID: 4938040951047521230}
   - component: {fileID: 2212385928009560356}
   - component: {fileID: 6808854165730302907}
+  - component: {fileID: 2676168400581664182}
   m_Layer: 0
   m_Name: SconceRound (32)
   m_TagString: Untagged
@@ -34658,6 +35463,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2676168400581664182
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3068683550712593143}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.960253, y: -39.057686, z: -0.00007534027}
 --- !u!1 &3077081325727932802
 GameObject:
   m_ObjectHideFlags: 0
@@ -34669,6 +35495,7 @@ GameObject:
   - component: {fileID: 3356620992555214343}
   - component: {fileID: 518072012507898581}
   - component: {fileID: 2837715169541829468}
+  - component: {fileID: 928298744576783655}
   m_Layer: 0
   m_Name: SconceRound (18)
   m_TagString: Untagged
@@ -34742,6 +35569,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &928298744576783655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3077081325727932802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: 0.000042915344}
 --- !u!1 &3090380806051097519
 GameObject:
   m_ObjectHideFlags: 0
@@ -34752,6 +35600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2537772490709642256}
   - component: {fileID: 5095359691259723982}
+  - component: {fileID: 12609739095668320}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -34792,7 +35641,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -34836,6 +35685,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &12609739095668320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3090380806051097519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &3091138842251414250
 GameObject:
   m_ObjectHideFlags: 0
@@ -37410,6 +38276,7 @@ GameObject:
   - component: {fileID: 4649428450162000311}
   - component: {fileID: 8005010978029581895}
   - component: {fileID: 633966974173395149}
+  - component: {fileID: 2740802661576503330}
   m_Layer: 0
   m_Name: SconceRound
   m_TagString: Untagged
@@ -37483,6 +38350,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2740802661576503330
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336519945180556817}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.0009860992}
 --- !u!1 &3343590148717036703
 GameObject:
   m_ObjectHideFlags: 0
@@ -38248,6 +39136,7 @@ GameObject:
   - component: {fileID: 4046621194063294136}
   - component: {fileID: 3909880315805564803}
   - component: {fileID: 8238796767828092574}
+  - component: {fileID: 80813232103405295}
   m_Layer: 0
   m_Name: SconceRound (4)
   m_TagString: Untagged
@@ -38321,6 +39210,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &80813232103405295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415033892972471039}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &3423751392290082459
 GameObject:
   m_ObjectHideFlags: 0
@@ -38503,6 +39413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5761365822169268154}
   - component: {fileID: 8128045689647238387}
+  - component: {fileID: 3017659074759351792}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -38543,7 +39454,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -38587,6 +39498,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3017659074759351792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440056777288779943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &3441412073110333412
 GameObject:
   m_ObjectHideFlags: 0
@@ -39025,6 +39953,7 @@ GameObject:
   - component: {fileID: 6065029562851512016}
   - component: {fileID: 6370162960565574904}
   - component: {fileID: 5150830255273172386}
+  - component: {fileID: 4130238562773308579}
   m_Layer: 0
   m_Name: SconceRound (44)
   m_TagString: Untagged
@@ -39098,6 +40027,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4130238562773308579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468298591648182498}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959333, y: -39.057686, z: -0.000009536735}
 --- !u!1 &3476079445525024410
 GameObject:
   m_ObjectHideFlags: 0
@@ -40464,6 +41414,7 @@ GameObject:
   - component: {fileID: 6867378989722127077}
   - component: {fileID: 2667037937231211176}
   - component: {fileID: 2518206701676333182}
+  - component: {fileID: 1861091486186689433}
   m_Layer: 0
   m_Name: SconceRound (9)
   m_TagString: Untagged
@@ -40537,6 +41488,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1861091486186689433
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624969247748488140}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.95976, y: -39.057686, z: -0.0009860992}
 --- !u!1 &3629017723375241898
 GameObject:
   m_ObjectHideFlags: 0
@@ -41085,6 +42057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2541582800386021718}
   - component: {fileID: 4158774046234759677}
+  - component: {fileID: 2295761148384091969}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -41125,7 +42098,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -41169,6 +42142,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2295761148384091969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660136261305919128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &3670808888234888667
 GameObject:
   m_ObjectHideFlags: 0
@@ -42332,6 +43322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6983625342039858563}
   - component: {fileID: 3215302586184012693}
+  - component: {fileID: 1257814495280487123}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -42372,7 +43363,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -42416,6 +43407,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1257814495280487123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760092614907861967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &3760511851722778705
 GameObject:
   m_ObjectHideFlags: 0
@@ -43053,6 +44061,7 @@ GameObject:
   - component: {fileID: 2611740798274639758}
   - component: {fileID: 8710056583838139713}
   - component: {fileID: 9220576052096158470}
+  - component: {fileID: 7321221262577701866}
   m_Layer: 0
   m_Name: SconceRound (44)
   m_TagString: Untagged
@@ -43126,6 +44135,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7321221262577701866
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3826478884124768477}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.960253, y: -39.057686, z: 0.00011253357}
 --- !u!1 &3834192540635225951
 GameObject:
   m_ObjectHideFlags: 0
@@ -43502,6 +44532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4380991312637388172}
   - component: {fileID: 6704825114431530653}
+  - component: {fileID: 3439812155054823024}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -43542,7 +44573,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -43586,6 +44617,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3439812155054823024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848387748259591117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &3854238557960284668
 GameObject:
   m_ObjectHideFlags: 0
@@ -45808,6 +46856,7 @@ GameObject:
   - component: {fileID: 5933063783310292036}
   - component: {fileID: 1137168881779041046}
   - component: {fileID: 5869898841165896795}
+  - component: {fileID: 4540000382850469290}
   m_Layer: 0
   m_Name: SconceRound (20)
   m_TagString: Untagged
@@ -45881,6 +46930,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4540000382850469290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100186830942080496}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &4110409568910856690
 GameObject:
   m_ObjectHideFlags: 0
@@ -46517,7 +47587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5067382493539122823
 Transform:
   m_ObjectHideFlags: 0
@@ -46554,6 +47624,7 @@ GameObject:
   - component: {fileID: 3366591727273142633}
   - component: {fileID: 6170676397421796259}
   - component: {fileID: 1021855639872456135}
+  - component: {fileID: 6981396705872427044}
   m_Layer: 0
   m_Name: SconceRound (23)
   m_TagString: Untagged
@@ -46627,6 +47698,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6981396705872427044
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135842599060261371}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &4140930659616449142
 GameObject:
   m_ObjectHideFlags: 0
@@ -46743,6 +47835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 625637394789265048}
   - component: {fileID: 849378873095342996}
+  - component: {fileID: 254713165035474330}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -46783,7 +47876,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -46827,6 +47920,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &254713165035474330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146689558441605714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4154066772372582053
 GameObject:
   m_ObjectHideFlags: 0
@@ -47221,6 +48331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2376973767571975326}
   - component: {fileID: 6635947797937354073}
+  - component: {fileID: 4949227594626644802}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -47261,7 +48372,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -47305,6 +48416,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &4949227594626644802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4243741524260096311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4245448005094181916
 GameObject:
   m_ObjectHideFlags: 0
@@ -47439,6 +48567,7 @@ GameObject:
   - component: {fileID: 3055922452567400702}
   - component: {fileID: 1980777357435087281}
   - component: {fileID: 9043263505476031264}
+  - component: {fileID: 4417955058828595942}
   m_Layer: 0
   m_Name: SconceRound (14)
   m_TagString: Untagged
@@ -47512,6 +48641,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4417955058828595942
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4253319700541346092}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959333, y: -39.057686, z: -0.000009536743}
 --- !u!1 &4259429705313262477
 GameObject:
   m_ObjectHideFlags: 0
@@ -48344,7 +49494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Line
+  m_text: Next
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -48353,8 +49503,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -48371,8 +49521,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -48786,6 +49936,7 @@ GameObject:
   m_Component:
   - component: {fileID: 476852463376653932}
   - component: {fileID: 9156023033287826756}
+  - component: {fileID: 9081234944731241543}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -48826,7 +49977,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -48870,6 +50021,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &9081234944731241543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4361534608114660237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4363294805985291945
 GameObject:
   m_ObjectHideFlags: 0
@@ -49758,6 +50926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7394538967702587223}
   - component: {fileID: 686218917348010604}
+  - component: {fileID: 2346146404484645939}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -49798,7 +50967,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -49842,6 +51011,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2346146404484645939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4399310420417824571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4416804606906718025
 GameObject:
   m_ObjectHideFlags: 0
@@ -50098,6 +51284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6241958144585661717}
   - component: {fileID: 7962368662588420654}
+  - component: {fileID: 8020321929646870564}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -50138,7 +51325,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -50182,6 +51369,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &8020321929646870564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4473426659109166343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4474269652671657191
 GameObject:
   m_ObjectHideFlags: 0
@@ -52685,6 +53889,7 @@ GameObject:
   - component: {fileID: 4623080504432781989}
   - component: {fileID: 8006095480917058949}
   - component: {fileID: 8798265874207117078}
+  - component: {fileID: 2851278412232400254}
   m_Layer: 0
   m_Name: SconceRound (5)
   m_TagString: Untagged
@@ -52758,6 +53963,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2851278412232400254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4610092239135712222}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.00013160706}
 --- !u!1 &4614682216150465387
 GameObject:
   m_ObjectHideFlags: 0
@@ -52768,6 +53994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2262200054544790989}
   - component: {fileID: 5995798117189995824}
+  - component: {fileID: 7639399735993279923}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -52808,7 +54035,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -52852,6 +54079,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7639399735993279923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614682216150465387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4616936691899198873
 GameObject:
   m_ObjectHideFlags: 0
@@ -52863,6 +54107,7 @@ GameObject:
   - component: {fileID: 4503741007298927976}
   - component: {fileID: 4725869884858922641}
   - component: {fileID: 2811892806390350542}
+  - component: {fileID: 96275055855533645}
   m_Layer: 0
   m_Name: SconceRound (51)
   m_TagString: Untagged
@@ -52936,6 +54181,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &96275055855533645
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616936691899198873}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &4654869904831920082
 GameObject:
   m_ObjectHideFlags: 0
@@ -53066,6 +54332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 333907372048065440}
   - component: {fileID: 8078019029180019927}
+  - component: {fileID: 8661961414534622222}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -53106,7 +54373,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -53150,6 +54417,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &8661961414534622222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655961493131931192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4668033975373410471
 GameObject:
   m_ObjectHideFlags: 0
@@ -53284,6 +54568,7 @@ GameObject:
   - component: {fileID: 5545177979946019836}
   - component: {fileID: 2460761890473636772}
   - component: {fileID: 4146670701843737614}
+  - component: {fileID: 5645014763632635296}
   m_Layer: 0
   m_Name: SconceRound (50)
   m_TagString: Untagged
@@ -53357,6 +54642,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5645014763632635296
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4687004819556189101}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &4695847947249581285
 GameObject:
   m_ObjectHideFlags: 0
@@ -53815,6 +55121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3313033142102438209}
   - component: {fileID: 7985529092883580987}
+  - component: {fileID: 6799075214166355159}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -53855,7 +55162,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -53899,6 +55206,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &6799075214166355159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4731150740042460705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4731212005783675606
 GameObject:
   m_ObjectHideFlags: 0
@@ -54033,6 +55357,7 @@ GameObject:
   - component: {fileID: 3840005908875930186}
   - component: {fileID: 4149025756723111883}
   - component: {fileID: 2254583400798513969}
+  - component: {fileID: 7077141879062335238}
   m_Layer: 0
   m_Name: SconceRound (42)
   m_TagString: Untagged
@@ -54106,6 +55431,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7077141879062335238
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734322336702234013}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.95941, y: -39.057686, z: -0.0009860982}
 --- !u!1 &4744713395014210043
 GameObject:
   m_ObjectHideFlags: 0
@@ -54732,6 +56078,7 @@ GameObject:
   - component: {fileID: 2436954051100878870}
   - component: {fileID: 8819114118387961256}
   - component: {fileID: 845975569150548661}
+  - component: {fileID: 3574692307430870841}
   m_Layer: 0
   m_Name: SconceRound (5)
   m_TagString: Untagged
@@ -54805,6 +56152,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3574692307430870841
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4805240029347965863}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.9583, y: -39.057686, z: -0.000009536745}
 --- !u!1 &4834232052588611060
 GameObject:
   m_ObjectHideFlags: 0
@@ -55185,6 +56553,7 @@ GameObject:
   - component: {fileID: 6890060296093387623}
   - component: {fileID: 1871594645259393718}
   - component: {fileID: 5101894911375575465}
+  - component: {fileID: 7761904998858509689}
   m_Layer: 0
   m_Name: SconceRound (27)
   m_TagString: Untagged
@@ -55258,6 +56627,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7761904998858509689
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4884982391461925867}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918537, y: 50.915714, z: 32.702015}
+  m_Center: {x: -18.959757, y: -39.057686, z: -0.000009536746}
 --- !u!1 &4889091770561256686
 GameObject:
   m_ObjectHideFlags: 0
@@ -55717,6 +57107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5463388785516457298}
   - component: {fileID: 1913187846705215294}
+  - component: {fileID: 7693015251920653927}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -55757,7 +57148,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -55801,6 +57192,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7693015251920653927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923849984777722633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4938993790191186669
 GameObject:
   m_ObjectHideFlags: 0
@@ -55811,6 +57219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1225711729385528285}
   - component: {fileID: 8156094514312389550}
+  - component: {fileID: 6889799118483763251}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -55851,7 +57260,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -55895,6 +57304,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &6889799118483763251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4938993790191186669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4942446533178074490
 GameObject:
   m_ObjectHideFlags: 0
@@ -56028,6 +57454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6368909730119831448}
   - component: {fileID: 8141071827638877720}
+  - component: {fileID: 3258453337080501467}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -56068,7 +57495,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -56112,6 +57539,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3258453337080501467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4952928648247098586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &4966999813408987769
 GameObject:
   m_ObjectHideFlags: 0
@@ -57468,6 +58912,7 @@ GameObject:
   - component: {fileID: 8096055981142413423}
   - component: {fileID: 281704623298616819}
   - component: {fileID: 7273822814033941334}
+  - component: {fileID: 6924997713156488422}
   m_Layer: 0
   m_Name: SconceRound (8)
   m_TagString: Untagged
@@ -57541,6 +58986,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6924997713156488422
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5092472937163780475}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.9583, y: -39.057686, z: -0.00013160706}
 --- !u!1 &5103745563339832564
 GameObject:
   m_ObjectHideFlags: 0
@@ -58533,6 +59999,7 @@ GameObject:
   - component: {fileID: 8343850928247445429}
   - component: {fileID: 6245739116475153444}
   - component: {fileID: 4368707529731227972}
+  - component: {fileID: 8640163014356689035}
   m_Layer: 0
   m_Name: SconceRound (35)
   m_TagString: Untagged
@@ -58606,6 +60073,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8640163014356689035
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5163269363949881802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &5182869933087596405
 GameObject:
   m_ObjectHideFlags: 0
@@ -58617,6 +60105,7 @@ GameObject:
   - component: {fileID: 4143069792766957014}
   - component: {fileID: 2360972971961690546}
   - component: {fileID: 8506301761787357008}
+  - component: {fileID: 7339196567713128623}
   m_Layer: 0
   m_Name: SconceRound (26)
   m_TagString: Untagged
@@ -58690,6 +60179,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7339196567713128623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182869933087596405}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918537, y: 50.915714, z: 32.702015}
+  m_Center: {x: -18.959269, y: -39.057686, z: -0.000009536746}
 --- !u!1 &5196098734442237818
 GameObject:
   m_ObjectHideFlags: 0
@@ -58927,6 +60437,7 @@ GameObject:
   - component: {fileID: 6581533708728463073}
   - component: {fileID: 8507853530221570011}
   - component: {fileID: 7253001472996106234}
+  - component: {fileID: 5258580316722413725}
   m_Layer: 0
   m_Name: SconceRound (48)
   m_TagString: Untagged
@@ -59000,6 +60511,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5258580316722413725
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198152706243660832}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.91854, y: 50.915714, z: 32.70202}
+  m_Center: {x: -18.95927, y: -39.057686, z: 0.0009673083}
 --- !u!1 &5249878234656643268
 GameObject:
   m_ObjectHideFlags: 0
@@ -59117,6 +60649,7 @@ GameObject:
   - component: {fileID: 920668722422402607}
   - component: {fileID: 4979998986626027194}
   - component: {fileID: 5269277374008011111}
+  - component: {fileID: 8870486539741468141}
   m_Layer: 0
   m_Name: SconceRound (5)
   m_TagString: Untagged
@@ -59190,6 +60723,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8870486539741468141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262162605393004768}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.959276, y: -39.057686, z: -0.000009536762}
 --- !u!1 &5262545465165107122
 GameObject:
   m_ObjectHideFlags: 0
@@ -60778,6 +62332,7 @@ GameObject:
   - component: {fileID: 3175071267191520943}
   - component: {fileID: 2175367229390432791}
   - component: {fileID: 2276747722472341031}
+  - component: {fileID: 651889458686060376}
   m_Layer: 0
   m_Name: SconceRound (2)
   m_TagString: Untagged
@@ -60851,6 +62406,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &651889458686060376
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5405326102907578174}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.959276, y: -39.057686, z: -0.0000095367495}
 --- !u!1 &5408881669636360970
 GameObject:
   m_ObjectHideFlags: 0
@@ -62602,6 +64178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3228801150384528026}
   - component: {fileID: 3014099160633606665}
+  - component: {fileID: 4789552057478809470}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -62642,7 +64219,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -62686,6 +64263,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &4789552057478809470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521095710547153936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &5532366044923730237
 GameObject:
   m_ObjectHideFlags: 0
@@ -62802,6 +64396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8943501197975349656}
   - component: {fileID: 7872752223122475600}
+  - component: {fileID: 677348190524878830}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -62842,7 +64437,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -62886,6 +64481,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &677348190524878830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551295418393712576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &5563542274947818697
 GameObject:
   m_ObjectHideFlags: 0
@@ -63825,6 +65437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 737346739103280234}
   - component: {fileID: 5681595390596762279}
+  - component: {fileID: 7553920526060693365}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -63865,7 +65478,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -63909,6 +65522,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7553920526060693365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664291926749600265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &5669307279167816675
 GameObject:
   m_ObjectHideFlags: 0
@@ -64289,6 +65919,7 @@ GameObject:
   - component: {fileID: 204721567923885495}
   - component: {fileID: 7684626936913309745}
   - component: {fileID: 5691373441177612024}
+  - component: {fileID: 6658855215833680513}
   m_Layer: 0
   m_Name: SconceRound (28)
   m_TagString: Untagged
@@ -64362,6 +65993,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6658855215833680513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5713101695581609664}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.960253, y: -39.057686, z: 0.00011253357}
 --- !u!1 &5737178637653416300
 GameObject:
   m_ObjectHideFlags: 0
@@ -65106,6 +66758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3794886924083092804}
   - component: {fileID: 8306831255153321662}
+  - component: {fileID: 3477446052167782139}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -65146,7 +66799,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -65190,6 +66843,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3477446052167782139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5773739420909882840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &5775185148093613633
 GameObject:
   m_ObjectHideFlags: 0
@@ -65771,6 +67441,7 @@ GameObject:
   - component: {fileID: 9024101362111672062}
   - component: {fileID: 8824772710660072871}
   - component: {fileID: 5707816121835951235}
+  - component: {fileID: 5117630965467492741}
   m_Layer: 0
   m_Name: SconceRound (36)
   m_TagString: Untagged
@@ -65844,6 +67515,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5117630965467492741
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833400763812275674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.959276, y: -39.057686, z: -0.0000095367795}
 --- !u!1 &5845723900235795064
 GameObject:
   m_ObjectHideFlags: 0
@@ -66220,6 +67912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2881220717056944334}
   - component: {fileID: 7543526203902616661}
+  - component: {fileID: 3091757138474360859}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -66260,7 +67953,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -66304,6 +67997,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3091757138474360859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5865587040751541504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &5880662324225434961
 GameObject:
   m_ObjectHideFlags: 0
@@ -66421,6 +68131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2001983245627434968}
   - component: {fileID: 8392631735255559782}
+  - component: {fileID: 7567985772947616359}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -66461,7 +68172,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -66505,6 +68216,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7567985772947616359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891132298622623582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &5922955402390602117
 GameObject:
   m_ObjectHideFlags: 0
@@ -68146,6 +69874,7 @@ GameObject:
   - component: {fileID: 7260137418984034461}
   - component: {fileID: 5960811366129172332}
   - component: {fileID: 9121241284709899176}
+  - component: {fileID: 6924496906204025352}
   m_Layer: 0
   m_Name: SconceRound (2)
   m_TagString: Untagged
@@ -68219,6 +69948,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6924496906204025352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046322805240716878}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: 0.00023460387}
 --- !u!1 &6051626188851066465
 GameObject:
   m_ObjectHideFlags: 0
@@ -70023,6 +71773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6829171234194865664}
   - component: {fileID: 7940428086205744573}
+  - component: {fileID: 1967237689112101793}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -70063,7 +71814,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -70107,6 +71858,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1967237689112101793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6171617813080457998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6172079495270009322
 GameObject:
   m_ObjectHideFlags: 0
@@ -70117,6 +71885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6923819090451114653}
   - component: {fileID: 4011550036061813062}
+  - component: {fileID: 3240139437082849175}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -70157,7 +71926,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -70201,6 +71970,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3240139437082849175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172079495270009322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6189818667286184089
 GameObject:
   m_ObjectHideFlags: 0
@@ -70727,6 +72513,7 @@ GameObject:
   - component: {fileID: 3551568254784372969}
   - component: {fileID: 254319018759633250}
   - component: {fileID: 2907754010159794807}
+  - component: {fileID: 3384193863736755267}
   m_Layer: 0
   m_Name: SconceRound (6)
   m_TagString: Untagged
@@ -70800,6 +72587,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3384193863736755267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236651830502551545}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.9583, y: -39.057686, z: -0.00013160706}
 --- !u!1 &6238784134696977323
 GameObject:
   m_ObjectHideFlags: 0
@@ -71159,6 +72967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553337502918456986}
   - component: {fileID: 3941026884303388690}
+  - component: {fileID: 15385565676265724}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -71199,7 +73008,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -71243,6 +73052,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &15385565676265724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269825515984358410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6289634843618555085
 GameObject:
   m_ObjectHideFlags: 0
@@ -71641,6 +73467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7349247427426391772}
   - component: {fileID: 1568856152637811586}
+  - component: {fileID: 5415983060062938655}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -71681,7 +73508,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -71725,6 +73552,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &5415983060062938655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6347088081999766482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6347211327429750024
 GameObject:
   m_ObjectHideFlags: 0
@@ -71932,6 +73776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1544401385020804024}
   - component: {fileID: 734103786164860293}
+  - component: {fileID: 5607934617182722942}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -71972,7 +73817,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -72016,6 +73861,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &5607934617182722942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380296713463129065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6381188332748670097
 GameObject:
   m_ObjectHideFlags: 0
@@ -72983,6 +74845,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541799878091763141}
   - component: {fileID: 8892553589508110532}
+  - component: {fileID: 3386230338562415651}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -73023,7 +74886,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -73067,6 +74930,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3386230338562415651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6423340590398842649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6435043015391526492
 GameObject:
   m_ObjectHideFlags: 0
@@ -73799,6 +75679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2851153242126899663}
   - component: {fileID: 2933874262459087220}
+  - component: {fileID: 88202662844096942}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -73839,7 +75720,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -73883,6 +75764,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &88202662844096942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466765798725675339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6488253247529976381
 GameObject:
   m_ObjectHideFlags: 0
@@ -74198,6 +76096,7 @@ GameObject:
   - component: {fileID: 7243925997238349789}
   - component: {fileID: 1930381781725332953}
   - component: {fileID: 7206479593568231768}
+  - component: {fileID: 4238781012241266478}
   m_Layer: 0
   m_Name: SconceRound (56)
   m_TagString: Untagged
@@ -74271,6 +76170,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4238781012241266478
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6523632177964012861}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &6532402173176628532
 GameObject:
   m_ObjectHideFlags: 0
@@ -74419,6 +76339,7 @@ GameObject:
   - component: {fileID: 7169345126622471995}
   - component: {fileID: 695253767407654794}
   - component: {fileID: 4428804667076543883}
+  - component: {fileID: 2790646663808555770}
   m_Layer: 0
   m_Name: SconceRound (21)
   m_TagString: Untagged
@@ -74492,6 +76413,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2790646663808555770
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536832279961026158}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536743}
 --- !u!1 &6545750540279849438
 GameObject:
   m_ObjectHideFlags: 0
@@ -74623,6 +76565,7 @@ GameObject:
   - component: {fileID: 2618883769552170587}
   - component: {fileID: 8730956041537951443}
   - component: {fileID: 4103235536578243592}
+  - component: {fileID: 8339525282804058065}
   m_Layer: 0
   m_Name: SconceRound (40)
   m_TagString: Untagged
@@ -74696,6 +76639,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8339525282804058065
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6553693114290608734}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959333, y: -39.057686, z: -0.000009536751}
 --- !u!1 &6555219544067049496
 GameObject:
   m_ObjectHideFlags: 0
@@ -75294,6 +77258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4660294828689188152}
   - component: {fileID: 2081209332063655294}
+  - component: {fileID: 58788534135612869}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -75334,7 +77299,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -75378,6 +77343,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &58788534135612869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582684866590455496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6591649136464388815
 GameObject:
   m_ObjectHideFlags: 0
@@ -75723,6 +77705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6118378027875114390}
   - component: {fileID: 2328361656555644223}
+  - component: {fileID: 2980443937899237893}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -75763,7 +77746,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -75807,6 +77790,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2980443937899237893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6644113552105532919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6663601067799311358
 GameObject:
   m_ObjectHideFlags: 0
@@ -76179,6 +78179,7 @@ GameObject:
   - component: {fileID: 3992387724644244935}
   - component: {fileID: 6440344840658743193}
   - component: {fileID: 1400328913742193397}
+  - component: {fileID: 8410651971769101692}
   m_Layer: 0
   m_Name: SconceRound (29)
   m_TagString: Untagged
@@ -76252,6 +78253,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8410651971769101692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684496945347649320}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.960253, y: -39.057686, z: 0.000051498413}
 --- !u!1 &6700360211532281630
 GameObject:
   m_ObjectHideFlags: 0
@@ -76491,6 +78513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4668346839471915293}
   - component: {fileID: 8663503969744929052}
+  - component: {fileID: 4474609578072346119}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -76531,7 +78554,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -76575,6 +78598,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &4474609578072346119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731009868809572807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &6758261684613113147
 GameObject:
   m_ObjectHideFlags: 0
@@ -77014,6 +79054,7 @@ GameObject:
   - component: {fileID: 8023115454213066701}
   - component: {fileID: 4598175453456516385}
   - component: {fileID: 2851789242934549356}
+  - component: {fileID: 264375648522665527}
   m_Layer: 0
   m_Name: SconceRound (10)
   m_TagString: Untagged
@@ -77087,6 +79128,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &264375648522665527
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788678472637335812}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.0009860992}
 --- !u!1 &6798981187280025676
 GameObject:
   m_ObjectHideFlags: 0
@@ -79027,7 +81089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6791540761067176697
 Transform:
   m_ObjectHideFlags: 0
@@ -81042,6 +83104,7 @@ GameObject:
   - component: {fileID: 9146406333297269358}
   - component: {fileID: 5088963002690199025}
   - component: {fileID: 8651527026905793272}
+  - component: {fileID: 7367036249864351663}
   m_Layer: 0
   m_Name: SconceRound
   m_TagString: Untagged
@@ -81115,6 +83178,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7367036249864351663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044358968827470459}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.95976, y: -39.057686, z: -0.000009536751}
 --- !u!1 &7046509318576106146
 GameObject:
   m_ObjectHideFlags: 0
@@ -81231,6 +83315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8135998775590140645}
   - component: {fileID: 1186146394724250431}
+  - component: {fileID: 3390981723243882798}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -81271,7 +83356,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -81315,6 +83400,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3390981723243882798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050424630294951192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &7050576413167744797
 GameObject:
   m_ObjectHideFlags: 0
@@ -82184,6 +84286,7 @@ GameObject:
   - component: {fileID: 1592128665484180541}
   - component: {fileID: 4684114173755724523}
   - component: {fileID: 6006894206949826422}
+  - component: {fileID: 609490137568243199}
   m_Layer: 0
   m_Name: SconceRound (30)
   m_TagString: Untagged
@@ -82257,6 +84360,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &609490137568243199
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7154675290052341973}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918537, y: 50.915714, z: 32.702015}
+  m_Center: {x: -18.959269, y: -39.057686, z: 0.00011253357}
 --- !u!1 &7170718749773602299
 GameObject:
   m_ObjectHideFlags: 0
@@ -83302,6 +85426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4312201123575481960}
   - component: {fileID: 112598658418528816}
+  - component: {fileID: 6414951450652952234}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -83342,7 +85467,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -83386,6 +85511,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &6414951450652952234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316623628835514753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &7349813996008855634
 GameObject:
   m_ObjectHideFlags: 0
@@ -83780,6 +85922,7 @@ GameObject:
   - component: {fileID: 369301781478675073}
   - component: {fileID: 5571569047174196664}
   - component: {fileID: 8031095616736844060}
+  - component: {fileID: 649667703220793329}
   m_Layer: 0
   m_Name: SconceRound (16)
   m_TagString: Untagged
@@ -83853,6 +85996,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &649667703220793329
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7366223529337989269}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959257, y: -39.057686, z: -0.000009536743}
 --- !u!1 &7393015443958510954
 GameObject:
   m_ObjectHideFlags: 0
@@ -83939,6 +86103,7 @@ GameObject:
   - component: {fileID: 4846855720470158995}
   - component: {fileID: 2565358507745422959}
   - component: {fileID: 6324784189289262296}
+  - component: {fileID: 8582477370272688242}
   m_Layer: 0
   m_Name: SconceRound (1)
   m_TagString: Untagged
@@ -84012,6 +86177,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8582477370272688242
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7402709528311876897}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959517, y: -39.057686, z: -0.000009536751}
 --- !u!1 &7411267887739273358
 GameObject:
   m_ObjectHideFlags: 0
@@ -86049,6 +88235,7 @@ GameObject:
   - component: {fileID: 2430326546741679281}
   - component: {fileID: 1423437658990393130}
   - component: {fileID: 3118812579926961792}
+  - component: {fileID: 5233696261452178555}
   m_Layer: 0
   m_Name: SconceRound (39)
   m_TagString: Untagged
@@ -86122,6 +88309,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5233696261452178555
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577884585900122103}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536751}
 --- !u!1 &7583685157450509103
 GameObject:
   m_ObjectHideFlags: 0
@@ -88565,6 +90773,7 @@ GameObject:
   - component: {fileID: 7678625269075468297}
   - component: {fileID: 6528215088534608404}
   - component: {fileID: 7804282722573828321}
+  - component: {fileID: 4223561980986231042}
   m_Layer: 0
   m_Name: SconceRound
   m_TagString: Untagged
@@ -88638,6 +90847,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4223561980986231042
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700831944942637095}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536751}
 --- !u!1 &7703531886482227963
 GameObject:
   m_ObjectHideFlags: 0
@@ -88649,6 +90879,7 @@ GameObject:
   - component: {fileID: 3693388599461017354}
   - component: {fileID: 5265694669118832228}
   - component: {fileID: 2876317309535054090}
+  - component: {fileID: 4823845207922486893}
   m_Layer: 0
   m_Name: SconceRound
   m_TagString: Untagged
@@ -88722,6 +90953,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4823845207922486893
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703531886482227963}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959517, y: -39.057686, z: -0.000009536751}
 --- !u!1 &7707189267327740977
 GameObject:
   m_ObjectHideFlags: 0
@@ -89261,6 +91513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4990473132284324106}
   - component: {fileID: 8890865446088784503}
+  - component: {fileID: 2964623943084992927}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -89301,7 +91554,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -89345,6 +91598,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2964623943084992927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746980486486973961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &7801046273419184892
 GameObject:
   m_ObjectHideFlags: 0
@@ -90045,6 +92315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4711778123229608756}
   - component: {fileID: 5451521648020372216}
+  - component: {fileID: 7999261452844547231}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -90085,7 +92356,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -90129,6 +92400,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7999261452844547231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836564111267659079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &7841850896471704511
 GameObject:
   m_ObjectHideFlags: 0
@@ -90334,6 +92622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3462476174755047218}
   - component: {fileID: 6722176865198684270}
+  - component: {fileID: 5446152013583236216}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -90374,7 +92663,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -90418,6 +92707,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &5446152013583236216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857373818571994341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &7883363045412359895
 GameObject:
   m_ObjectHideFlags: 0
@@ -90947,6 +93253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6013648265658616276}
   - component: {fileID: 6820745842253674063}
+  - component: {fileID: 8875732081609109108}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -90987,7 +93294,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -91031,6 +93338,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &8875732081609109108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7947406881922305339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &7949385124338537695
 GameObject:
   m_ObjectHideFlags: 0
@@ -91468,6 +93792,7 @@ GameObject:
   - component: {fileID: 4800931095728552755}
   - component: {fileID: 2404345142509349163}
   - component: {fileID: 6377057652203027322}
+  - component: {fileID: 8881438488543471297}
   m_Layer: 0
   m_Name: SconceRound (17)
   m_TagString: Untagged
@@ -91541,6 +93866,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8881438488543471297
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993018283594987061}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959105, y: -39.057686, z: -0.000009536743}
 --- !u!1 &8020199441179415544
 GameObject:
   m_ObjectHideFlags: 0
@@ -92375,6 +94721,7 @@ GameObject:
   - component: {fileID: 740205680043042156}
   - component: {fileID: 7829892035731820334}
   - component: {fileID: 5512322353881118047}
+  - component: {fileID: 3958550928556407408}
   m_Layer: 0
   m_Name: SconceRound (47)
   m_TagString: Untagged
@@ -92448,6 +94795,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3958550928556407408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8092663081117775228}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.91854, y: 50.915714, z: 32.70202}
+  m_Center: {x: -18.95927, y: -39.057686, z: 0.00023488639}
 --- !u!1 &8092887591850942755
 GameObject:
   m_ObjectHideFlags: 0
@@ -92878,6 +95246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810037787309231642}
   - component: {fileID: 201954097329461377}
+  - component: {fileID: 7545381637443134428}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -92918,7 +95287,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -92962,6 +95331,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7545381637443134428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8125245730939171492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8138033196553452536
 GameObject:
   m_ObjectHideFlags: 0
@@ -93093,6 +95479,7 @@ GameObject:
   - component: {fileID: 3283820515112924458}
   - component: {fileID: 8111618724652851100}
   - component: {fileID: 158129371055810522}
+  - component: {fileID: 8295418955725208934}
   m_Layer: 0
   m_Name: SconceRound (43)
   m_TagString: Untagged
@@ -93166,6 +95553,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8295418955725208934
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144081575271594644}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.958296, y: -39.057686, z: -0.00013160707}
 --- !u!1 &8155513998238471010
 GameObject:
   m_ObjectHideFlags: 0
@@ -93726,6 +96134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5460891300575027834}
   - component: {fileID: 51180886771869343}
+  - component: {fileID: 531581283409310199}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -93766,7 +96175,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -93810,6 +96219,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &531581283409310199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8179612620931873644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8182275727151236835
 GameObject:
   m_ObjectHideFlags: 0
@@ -94810,6 +97236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5417172888343045655}
   - component: {fileID: 1127781020044881689}
+  - component: {fileID: 5942844297747215990}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -94850,7 +97277,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -94894,6 +97321,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &5942844297747215990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8265157845107289639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8272106218447133421
 GameObject:
   m_ObjectHideFlags: 0
@@ -95270,6 +97714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1471685114223502378}
   - component: {fileID: 3747768487933876461}
+  - component: {fileID: 1782214798259504761}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -95310,7 +97755,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -95354,6 +97799,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1782214798259504761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8287795588244071299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8288591758912059285
 GameObject:
   m_ObjectHideFlags: 0
@@ -97101,6 +99563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5153566718189054633}
   - component: {fileID: 945822647366759025}
+  - component: {fileID: 2511161762682100022}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -97141,7 +99604,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -97185,6 +99648,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2511161762682100022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465769731957184204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8472064060329274317
 GameObject:
   m_ObjectHideFlags: 0
@@ -97455,6 +99935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1606727857713337645}
   - component: {fileID: 2730825916783058573}
+  - component: {fileID: 3321676195557424425}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -97495,7 +99976,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -97539,6 +100020,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3321676195557424425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8481175377078000878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8493037114636204950
 GameObject:
   m_ObjectHideFlags: 0
@@ -98863,16 +101361,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8614853616600410859}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00008395689}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7704751184741869192}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 36.5636, y: 0}
-  m_SizeDelta: {x: -173.1272, y: -100}
+  m_AnchorMin: {x: 0.14750037, y: 0.2}
+  m_AnchorMax: {x: 0.8291673, y: 0.70400006}
+  m_AnchoredPosition: {x: 1.2243958, y: -0.79559326}
+  m_SizeDelta: {x: -1.4193115, y: -1.5912018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2769478243556965470
 CanvasRenderer:
@@ -98931,8 +101429,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -99471,6 +101969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9082382480614782360}
+  - component: {fileID: 6459480027960749545}
   m_Layer: 0
   m_Name: SconceLighting
   m_TagString: Untagged
@@ -99501,6 +102000,27 @@ Transform:
   - {fileID: 2611740798274639758}
   m_Father: {fileID: 4473331085941366278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6459480027960749545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8683273651616975629}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8692486280604012284
 GameObject:
   m_ObjectHideFlags: 0
@@ -99982,6 +102502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6000365391890768538}
   - component: {fileID: 8180207119333231736}
+  - component: {fileID: 7645216699429512407}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -100022,7 +102543,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -100066,6 +102587,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7645216699429512407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703886665669749747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8720445287018984651
 GameObject:
   m_ObjectHideFlags: 0
@@ -100275,6 +102813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8324248042708264027}
   - component: {fileID: 5921151677844219117}
+  - component: {fileID: 3313517592613309939}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -100315,7 +102854,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -100359,6 +102898,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3313517592613309939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747009702095732699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8747090570798325942
 GameObject:
   m_ObjectHideFlags: 0
@@ -100370,6 +102926,7 @@ GameObject:
   - component: {fileID: 2408864128232221279}
   - component: {fileID: 1564881465928961718}
   - component: {fileID: 2702157987125615677}
+  - component: {fileID: 2059102948159374656}
   m_Layer: 0
   m_Name: SconceRound (31)
   m_TagString: Untagged
@@ -100443,6 +103000,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2059102948159374656
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747090570798325942}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918537, y: 50.915714, z: 32.702015}
+  m_Center: {x: -18.959757, y: -39.057686, z: -0.00011253357}
 --- !u!1 &8766163548190473739
 GameObject:
   m_ObjectHideFlags: 0
@@ -101093,6 +103671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911460241200956115}
   - component: {fileID: 79336805466753587}
+  - component: {fileID: 5096400513871181854}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -101133,7 +103712,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -101177,6 +103756,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &5096400513871181854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817096887469451495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8826089664581643585
 GameObject:
   m_ObjectHideFlags: 0
@@ -101310,6 +103906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4088082715304682068}
   - component: {fileID: 7120719149913019482}
+  - component: {fileID: 8001551259935451439}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -101350,7 +103947,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -101394,6 +103991,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &8001551259935451439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8826580447728182173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8839601492435837137
 GameObject:
   m_ObjectHideFlags: 0
@@ -102241,6 +104855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3869064222379238744}
   - component: {fileID: 7866880724242125055}
+  - component: {fileID: 9120002061776477730}
   m_Layer: 0
   m_Name: Point Light (11)
   m_TagString: Untagged
@@ -102281,7 +104896,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -102325,6 +104940,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &9120002061776477730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887105934892900741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1 &8900358135588739111
 GameObject:
   m_ObjectHideFlags: 0
@@ -103133,6 +105765,7 @@ GameObject:
   - component: {fileID: 6266697768441792918}
   - component: {fileID: 1020575109535447801}
   - component: {fileID: 5668636429060117238}
+  - component: {fileID: 2597182795042427215}
   m_Layer: 0
   m_Name: SconceRound (37)
   m_TagString: Untagged
@@ -103206,6 +105839,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2597182795042427215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948115832389683865}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000017166138}
 --- !u!1 &8984291685407239462
 GameObject:
   m_ObjectHideFlags: 0
@@ -103354,6 +106008,7 @@ GameObject:
   - component: {fileID: 5333342157865307934}
   - component: {fileID: 3604778362329105972}
   - component: {fileID: 54063405959407832}
+  - component: {fileID: 3540262886315776745}
   m_Layer: 0
   m_Name: SconceRound (1)
   m_TagString: Untagged
@@ -103427,6 +106082,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3540262886315776745
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8995913860180773452}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.960253, y: -39.057686, z: -0.0000095367495}
 --- !u!1 &8999464329093039151
 GameObject:
   m_ObjectHideFlags: 0
@@ -103514,6 +106190,7 @@ GameObject:
   - component: {fileID: 8445691303317527083}
   - component: {fileID: 5780321223456224907}
   - component: {fileID: 2761067632850294529}
+  - component: {fileID: 2521044296249368427}
   m_Layer: 0
   m_Name: SconceRound (3)
   m_TagString: Untagged
@@ -103587,6 +106264,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2521044296249368427
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9011067646460895738}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959272, y: -39.057686, z: -0.000009536709}
 --- !u!1 &9020117099680260540
 GameObject:
   m_ObjectHideFlags: 0
@@ -104203,6 +106901,7 @@ GameObject:
   - component: {fileID: 285889185894230576}
   - component: {fileID: 2892377282235046271}
   - component: {fileID: 7979015121849960567}
+  - component: {fileID: 8995140133681909198}
   m_Layer: 0
   m_Name: SconceRound (53)
   m_TagString: Untagged
@@ -104276,6 +106975,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8995140133681909198
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065736111083559330}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959394, y: -39.057686, z: 0.0004787445}
 --- !u!1 &9066956107593726181
 GameObject:
   m_ObjectHideFlags: 0
@@ -104287,6 +107007,7 @@ GameObject:
   - component: {fileID: 1695008822066545052}
   - component: {fileID: 6161395188907302786}
   - component: {fileID: 1959061181645155291}
+  - component: {fileID: 1971160805881769582}
   m_Layer: 0
   m_Name: SconceRound (25)
   m_TagString: Untagged
@@ -104360,6 +107081,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1971160805881769582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066956107593726181}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918552, y: 50.915714, z: 32.70203}
+  m_Center: {x: -18.959764, y: -39.057686, z: -0.000009536745}
 --- !u!1 &9079045983998192047
 GameObject:
   m_ObjectHideFlags: 0
@@ -104768,6 +107510,7 @@ GameObject:
   - component: {fileID: 2351789964853887373}
   - component: {fileID: 7880532879315314549}
   - component: {fileID: 1809973016116631513}
+  - component: {fileID: 1795033410406596306}
   m_Layer: 0
   m_Name: SconceRound (49)
   m_TagString: Untagged
@@ -104841,6 +107584,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1795033410406596306
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113701570592222260}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 33.918545, y: 50.915714, z: 32.702023}
+  m_Center: {x: -18.959333, y: -39.057686, z: -0.000009536735}
 --- !u!1 &9116925575748898983
 GameObject:
   m_ObjectHideFlags: 0
@@ -107745,6 +110509,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8618610187433231794 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7551178339261206425, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
+  m_PrefabInstance: {fileID: 2256401253821876779}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef7010250c2003439de9489a7ed4b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2584236610063652496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107899,6 +110674,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6444333892903902026, guid: f278b53a301d52c48bc81c3ee490ae50, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6741469531077095218, guid: f278b53a301d52c48bc81c3ee490ae50, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -107946,7 +110725,32 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3556154011480799366, guid: f278b53a301d52c48bc81c3ee490ae50, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6508258950402255250}
+    - targetCorrespondingSourceObject: {fileID: 2584975314204113071, guid: f278b53a301d52c48bc81c3ee490ae50, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7530955671548362481}
   m_SourcePrefab: {fileID: 100100000, guid: f278b53a301d52c48bc81c3ee490ae50, type: 3}
+--- !u!1 &904567021481263327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2584975314204113071, guid: f278b53a301d52c48bc81c3ee490ae50, type: 3}
+  m_PrefabInstance: {fileID: 3409796337190221936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7530955671548362481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904567021481263327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!4 &1084065722948767054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2331008338809025854, guid: f278b53a301d52c48bc81c3ee490ae50, type: 3}
@@ -108508,21 +111312,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost Orb NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 691736632395970214, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2028754223452830667, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
       propertyPath: onNPCInteraction.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2028754223452830667, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
-      propertyPath: onNPCInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7385314742375643464}
     - target: {fileID: 6110234439509250946, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
       propertyPath: m_Intensity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6110234439509250946, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8604458718148785631, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.28
+      value: 17.826
       objectReference: {fileID: 0}
     - target: {fileID: 8604458718148785631, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
       propertyPath: m_LocalPosition.y
@@ -108570,70 +111378,37 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 400417052539740802, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8410949521627724814, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7385314742375643464}
-    - targetCorrespondingSourceObject: {fileID: 400417052539740802, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5823447337218344287}
+      addedObject: {fileID: 8099540937344849132}
   m_SourcePrefab: {fileID: 100100000, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
 --- !u!4 &3500295880056344955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8604458718148785631, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
   m_PrefabInstance: {fileID: 5186635024253904036}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4788505230866318886 stripped
+--- !u!1 &3693817103579371690 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 400417052539740802, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8410949521627724814, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
   m_PrefabInstance: {fileID: 5186635024253904036}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7385314742375643464
+--- !u!114 &8099540937344849132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4788505230866318886}
+  m_GameObject: {fileID: 3693817103579371690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1f49f0258132954297231842f8b329e, type: 3}
+  m_Script: {fileID: 11500000, guid: a09a458cfd4f1bc4b88ba39a082b4e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: 5f75ad70d1b8f6d48b40d69bd38b3a88, type: 2}
---- !u!114 &5823447337218344287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4788505230866318886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13810721ea2449f4b98cb93a65e70177, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteraction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7385314742375643464}
-        m_TargetAssemblyTypeName: OnlyDialogueNPC, Assembly-CSharp
-        m_MethodName: Interact
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPlaceObject:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionIcon: {fileID: 21300000, guid: c862d1f64cd16504192409d18f14f309, type: 3}
-  interactableIconSize: {x: 50, y: 50}
-  interactableID: 0
-  highlightInteractableObjectController: {fileID: 0}
+  flickerTime:
+  - 0.25
+  - 0.75
+  shouldFlicker: 0
+  flickerSound: {fileID: 8300000, guid: 71d660116f71b98409884458d8d828e8, type: 3}
 --- !u!1001 &8460443346850454922
 PrefabInstance:
   m_ObjectHideFlags: 0
