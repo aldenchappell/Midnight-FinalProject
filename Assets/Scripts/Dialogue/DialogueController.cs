@@ -10,7 +10,7 @@ public class DialogueController : MonoBehaviour
 
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private float textReadingSpeed = 0.05f;
-    [SerializeField] private GameObject dialogueBox;
+    public GameObject dialogueBox;
     public AudioSource audioSource;
 
     private int _currentIndex;
@@ -25,7 +25,6 @@ public class DialogueController : MonoBehaviour
     private bool _isPrintingLine = false;
     private Coroutine _currentCoroutine = null;
 
-    //[SerializeField] private SkullDialogue skullCompanion;
     private PlayerDualHandInventory _playerInventory;
     private FirstPersonController _firstPersonController;
     
@@ -40,7 +39,6 @@ public class DialogueController : MonoBehaviour
             Destroy(gameObject);
         }
         
-        //_skullCompanion = GameObject.FindWithTag("Skull").GetComponent<SkullDialogue>();
         _playerInventory = FindObjectOfType<PlayerDualHandInventory>().GetComponent<PlayerDualHandInventory>();
         _firstPersonController = FindObjectOfType<FirstPersonController>().GetComponent<FirstPersonController>();
     }
@@ -55,7 +53,7 @@ public class DialogueController : MonoBehaviour
     {
         if (_firstPersonController.canMove && _firstPersonController.canRotate)
         {
-            dialogueBox.SetActive(false);
+            //dialogueBox.SetActive(false);
         }
     }
 
@@ -66,6 +64,7 @@ public class DialogueController : MonoBehaviour
             Debug.LogError("Dialogue lines are null or empty!");
             return;
         }
+        dialogueText.text = "";
 
         if (!_playerInventory.IsSkullInFirstSlot())
         {
@@ -77,7 +76,6 @@ public class DialogueController : MonoBehaviour
             _currentCoroutine = StartCoroutine(ReadOutLine());
         }
     }
-
 
     public void GoToNextLine()
     {
@@ -122,7 +120,6 @@ public class DialogueController : MonoBehaviour
                 StartCoroutine(PreventTextOnlyDialogueSpam());
             }
         }
-        //Debug.Log(_currentIndex);
     }
 
     private IEnumerator ReadOutLine()
@@ -174,9 +171,7 @@ public class DialogueController : MonoBehaviour
         ResetDialogueText();
         dialogueEnabled = true;
         dialogueBox.SetActive(true);
-
-        //if (GlobalCursorManager.Instance != null)
-            GlobalCursorManager.Instance.EnableCursor();
+        GlobalCursorManager.Instance.EnableCursor();
     }
 
     public void DisableDialogueBox()
@@ -189,9 +184,7 @@ public class DialogueController : MonoBehaviour
         _audioClips = null;
         audioSource.clip = null;
         dialogueText.text = "";
-
-        if (GlobalCursorManager.Instance != null)
-            GlobalCursorManager.Instance.DisableCursor();
+        GlobalCursorManager.Instance.DisableCursor();
     }
 
     private void StopDialogue()
@@ -205,6 +198,19 @@ public class DialogueController : MonoBehaviour
 
         if (audioSource.clip != null)
             audioSource.clip = null;
+    }
+
+    public void ResetDialogue()
+    {
+        if (_currentCoroutine != null)
+        {
+            StopCoroutine(_currentCoroutine);
+        }
+        dialogueText.text = "";
+        _lines = null;
+        _audioClips = null;
+        _currentIndex = 0;
+        _isPrintingLine = false;
     }
 
     private IEnumerator PreventTextOnlyDialogueSpam()

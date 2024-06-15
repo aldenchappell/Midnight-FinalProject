@@ -67,7 +67,6 @@ public class PlayerInteractableController : MonoBehaviour
         {
             ResetHighlight();
             _examineObjectController.objectToExamine = null;
-            //Debug.LogError("Object to examine is null");
         }
 
         if (_interactableObject == null)
@@ -75,8 +74,6 @@ public class PlayerInteractableController : MonoBehaviour
             ResetInteraction();
         }
         
-        
-
         if ((Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyOne)
              || Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyTwo))
             && _examineObjectController != null
@@ -94,7 +91,6 @@ public class PlayerInteractableController : MonoBehaviour
         else if (Input.GetKeyDown(InGameSettingsManager.Instance.itemExaminationInteractionKey)
                  && _interactableObject != null
                  && _interactableObject.TryGetComponent<ExaminableObject>(out var examinableObject)
-                 
                  && !examinableObject.isExamining)
         {
             interactionImage.sprite = defaultInteractionIcon;
@@ -104,7 +100,6 @@ public class PlayerInteractableController : MonoBehaviour
             StartCoroutine(InteractionSpamPrevention());
         }
     }
-
 
     private void ResetHighlight()
     {
@@ -158,5 +153,11 @@ public class PlayerInteractableController : MonoBehaviour
         _interactableObject = null;
         UpdateInteractionUI(null);
         _highlightInteractableObjectController = null;
+
+        DialogueController dialogueController = FindObjectOfType<DialogueController>();
+        dialogueController.ResetDialogue();
+        dialogueController.DisableDialogueBox();
+        
+        GlobalCursorManager.Instance.DisableCursor();
     }
 }

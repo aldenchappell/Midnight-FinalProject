@@ -102,7 +102,6 @@ namespace StarterAssets
 		[SerializeField] private PlayerDeathController deathController;
 		[SerializeField] private PauseManager pauseManager;
 		
-		
 		[Space(10)]
 		
 		
