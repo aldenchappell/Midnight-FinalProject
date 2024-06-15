@@ -7,6 +7,8 @@ public class PlayerInteractableController : MonoBehaviour
     private InteractableObject _interactableObject;
     private HighlightInteractableObjectController _highlightInteractableObjectController;
     private PlayerExamineObjectController _examineObjectController;
+    private PauseManager _pauseManager;
+    
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask interactableLayerMask;
     [SerializeField] private Image interactionImage;
@@ -23,6 +25,7 @@ public class PlayerInteractableController : MonoBehaviour
     private void Awake()
     {
         _examineObjectController = FindObjectOfType<PlayerExamineObjectController>();
+        _pauseManager = FindObjectOfType<PauseManager>();
     }
 
     private void Update()
@@ -156,13 +159,12 @@ public class PlayerInteractableController : MonoBehaviour
 
         DialogueController dialogueController = FindObjectOfType<DialogueController>();
 
-        if (dialogueController != null)
+        if (dialogueController != null && !_pauseManager.GameIsPaused)
         {
             dialogueController.ResetDialogue();
             dialogueController.DisableDialogueBox();
         
             //GlobalCursorManager.Instance.DisableCursor();
         }
-        
     }
 }

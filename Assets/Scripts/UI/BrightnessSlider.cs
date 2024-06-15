@@ -26,7 +26,6 @@ public class BrightnessSlider : MonoBehaviour
     {
         InGameSettingsManager.Instance.SetBrightness(value);
         _valueText.text = PlayerPrefs.GetFloat("ScreenBrightness").ToString("f1");
-        
-        Debug.Log(RenderSettings.ambientLight = Color.white * value);
+        //Debug.Log(RenderSettings.ambientLight = Color.white * value);
     }
 }
