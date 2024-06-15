@@ -654,6 +654,8 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   offset: {x: 0.78, y: 1.13, z: 0}
   enableRotation: 0
+  enableRotationOffset: 0
+  rotationOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1456836621840173478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,6 +1916,8 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   offset: {x: 0, y: 3, z: 0}
   enableRotation: 0
+  enableRotationOffset: 0
+  rotationOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3501408799374656451
 GameObject:
   m_ObjectHideFlags: 0
@@ -3850,6 +3854,10 @@ MonoBehaviour:
   crouchingSprite: {fileID: 21300000, guid: fbcba7a9696d6cc43bc9cf3c9fe4bed9, type: 3}
   standingSprite: {fileID: 21300000, guid: 8fce480ba92a6834b99a750202791196, type: 3}
   sprintingSprite: {fileID: 0}
+  sprintStaminaSlider: {fileID: 0}
+  sprintStaminaDecreaseRate: 1
+  sprintStaminaRecoveryRate: 0.65
+  staminaRecoveryDelay: 1.5
   crouchingHeight: 0.6
   standingHeight: 2
   timeToEnterCrouch: 0.25
@@ -5660,6 +5668,8 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   offset: {x: 0.06, y: -0.045, z: -0.05}
   enableRotation: 0
+  enableRotationOffset: 0
+  rotationOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &9218528575294346770
 GameObject:
   m_ObjectHideFlags: 0

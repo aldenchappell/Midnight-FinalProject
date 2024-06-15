@@ -147,6 +147,7 @@ namespace StarterAssets
 		[SerializeField] private Vector3 standingCenter = new Vector3(0, .93f, 0);
 		private float _originalCameraRootPosition;
 		
+		private Coroutine _fadeSliderCoroutine;
 		private Coroutine _fadeOutCoroutine;
 		
 		private bool IsCurrentDeviceMouse
@@ -189,7 +190,6 @@ namespace StarterAssets
 			_fallTimeoutDelta = FallTimeout;
 			
 			_currentSprintStamina = MaxSprintStamina;
-			//sprintStaminaSlider.maxValue = MaxSprintStamina;
 			sprintStaminaSlider.value = _currentSprintStamina;
 		}
 
@@ -240,13 +240,21 @@ namespace StarterAssets
 		{
 			if (isSprinting)
 			{
-				_currentSprintStamina -= Time.deltaTime;
+				_currentSprintStamina -= Time.deltaTime * sprintStaminaDecreaseRate;
 				if (_currentSprintStamina <= 0)
 				{
 					_currentSprintStamina = 0;
 					isSprinting = false;
 					staminaRecoveryTimer = staminaRecoveryDelay;
 				}
+
+				// Ensure the slider is fully visible when sprinting
+				if (_fadeSliderCoroutine != null)
+				{
+					StopCoroutine(_fadeSliderCoroutine);
+					_fadeSliderCoroutine = null;
+				}
+				SetSliderAlpha(1.0f);
 			}
 			else
 			{
@@ -256,16 +264,49 @@ namespace StarterAssets
 				}
 				else
 				{
-					_currentSprintStamina += Time.deltaTime;
+					_currentSprintStamina += Time.deltaTime * sprintStaminaRecoveryRate;
 					if (_currentSprintStamina > MaxSprintStamina)
 					{
 						_currentSprintStamina = MaxSprintStamina;
+
+						_fadeSliderCoroutine ??= StartCoroutine(FadeOutSlider(sprintStaminaSlider, .75f));
 					}
 				}
 			}
-            
+
 			sprintStaminaSlider.value = _currentSprintStamina / MaxSprintStamina;
 		}
+		
+		private void SetSliderAlpha(float alpha)
+		{
+			Color color = sprintStaminaSlider.fillRect.GetComponent<Image>().color;
+			color.a = alpha;
+			sprintStaminaSlider.fillRect.GetComponent<Image>().color = color;
+		}
+
+		private IEnumerator FadeOutSlider(Slider slider, float delay)
+		{
+			yield return new WaitForSeconds(delay);
+
+			float fadeDuration = .6f;
+			float elapsedTime = 0.0f;
+
+			Color initialColor = slider.fillRect.GetComponent<Image>().color;
+
+			while (elapsedTime < fadeDuration)
+			{
+				float newAlpha = Mathf.Lerp(initialColor.a, 0, elapsedTime / fadeDuration);
+				SetSliderAlpha(newAlpha);
+
+				elapsedTime += Time.deltaTime;
+				yield return null;
+			}
+
+			SetSliderAlpha(0);
+			_fadeSliderCoroutine = null;
+		}
+
+
 
 		
 		private void HandleSprintingIcon()
@@ -273,33 +314,27 @@ namespace StarterAssets
 			if (isSprinting)
 			{
 				standImage.sprite = sprintingSprite;
-
-				// Set to highest alpha value
+                
 				standImage.color = new Color(standImage.color.r, standImage.color.g, standImage.color.b, 1.0f);
-
-				// Prevent the icon from bugging out when spamming sprint
+                
 				if (_fadeOutCoroutine != null)
 				{
 					StopCoroutine(_fadeOutCoroutine);
 				}
-
-				// Icon will stay for 2 seconds
+                
 				_fadeOutCoroutine = StartCoroutine(FadeOutIcon(standImage, 2.0f));
 			}
 			else
 			{
 				standImage.sprite = standingSprite;
-
-				// Set to highest alpha value
+                
 				standImage.color = new Color(standImage.color.r, standImage.color.g, standImage.color.b, 1.0f);
-
-				// Prevent the icon from bugging out when spamming sprint
+                
 				if (_fadeOutCoroutine != null)
 				{
 					StopCoroutine(_fadeOutCoroutine);
 				}
-
-				// Icon will stay for 2 seconds
+                
 				_fadeOutCoroutine = StartCoroutine(FadeOutIcon(standImage, 2.0f));
 			}
 		}

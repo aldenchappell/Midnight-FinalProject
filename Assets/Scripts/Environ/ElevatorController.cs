@@ -30,7 +30,7 @@ public class ElevatorController : MonoBehaviour
     {
         _elevatorAudioSource = GetComponent<AudioSource>();
 
-        Invoke(nameof(OpenElevator), 1.0f);
+        Invoke(nameof(OpenElevator), .5f);
         
         ShowElevatorLevelOnStart();
     }
