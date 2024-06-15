@@ -6,6 +6,9 @@ using StarterAssets;
 
 public class HideBehindDoor : MonoBehaviour
 {
+    int hiddenLayer;
+    int defaultLayer;
+
     private CinemachineVirtualCamera _playerCam;
     [SerializeField] CinemachineVirtualCamera _doorHideCamera;
     [SerializeField] CinemachineVirtualCamera _doorSpyHoleCamera;
@@ -26,6 +29,9 @@ public class HideBehindDoor : MonoBehaviour
         _doorController = GetComponent<DoorController>();
         _player = GameObject.Find("Player");
         _FPC = FindObjectOfType<FirstPersonController>();
+
+        hiddenLayer = LayerMask.NameToLayer("Default");
+        defaultLayer = LayerMask.NameToLayer("Target");
     }
 
     private void Start()
@@ -153,12 +159,12 @@ public class HideBehindDoor : MonoBehaviour
     {
         if(_isActive)
         {
-            _player.transform.gameObject.layer = 0;
+            _player.layer = hiddenLayer;
             _FPC.ToggleCanMove();
         }
         else
         {
-            _player.transform.gameObject.layer = 6;
+            _player.layer = defaultLayer;
             _FPC.ToggleCanMove();
         }
     }

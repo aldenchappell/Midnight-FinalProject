@@ -196,4 +196,9 @@ public class PlayerDualHandInventory : MonoBehaviour
 
         return false;
     }
+
+    public void HideHandItem()
+    {
+        _inventorySlots[currentIndexSelected].GetComponent<MeshRenderer>().enabled = !_inventorySlots[currentIndexSelected].GetComponent<MeshRenderer>().enabled;
+    }
 }
