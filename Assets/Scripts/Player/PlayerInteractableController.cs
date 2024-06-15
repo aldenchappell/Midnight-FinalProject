@@ -155,9 +155,14 @@ public class PlayerInteractableController : MonoBehaviour
         _highlightInteractableObjectController = null;
 
         DialogueController dialogueController = FindObjectOfType<DialogueController>();
-        dialogueController.ResetDialogue();
-        dialogueController.DisableDialogueBox();
+
+        if (dialogueController != null)
+        {
+            dialogueController.ResetDialogue();
+            dialogueController.DisableDialogueBox();
         
-        GlobalCursorManager.Instance.DisableCursor();
+            //GlobalCursorManager.Instance.DisableCursor();
+        }
+        
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GlobalCursorManager : MonoBehaviour
@@ -17,20 +16,7 @@ public class GlobalCursorManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            EnableCursor();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            DisableCursor();
-        }
-    }
-
+    
     public void EnableCursor()
     {
         Cursor.visible = true;

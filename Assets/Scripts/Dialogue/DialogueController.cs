@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using StarterAssets;
 using TMPro;
 using UnityEngine;
 
@@ -26,7 +24,6 @@ public class DialogueController : MonoBehaviour
     private Coroutine _currentCoroutine = null;
 
     private PlayerDualHandInventory _playerInventory;
-    private FirstPersonController _firstPersonController;
     
     private void Awake()
     {
@@ -40,21 +37,12 @@ public class DialogueController : MonoBehaviour
         }
         
         _playerInventory = FindObjectOfType<PlayerDualHandInventory>().GetComponent<PlayerDualHandInventory>();
-        _firstPersonController = FindObjectOfType<FirstPersonController>().GetComponent<FirstPersonController>();
     }
 
     private void Start()
     {
         ResetDialogueText();
         DisableDialogueBox();
-    }
-
-    private void Update()
-    {
-        if (_firstPersonController.canMove && _firstPersonController.canRotate)
-        {
-            //dialogueBox.SetActive(false);
-        }
     }
 
     public void StartDialogue(string[] lines)
@@ -171,7 +159,8 @@ public class DialogueController : MonoBehaviour
         ResetDialogueText();
         dialogueEnabled = true;
         dialogueBox.SetActive(true);
-        GlobalCursorManager.Instance.EnableCursor();
+        GlobalCursorManager cursorManager = FindObjectOfType<GlobalCursorManager>();
+        cursorManager.EnableCursor();
     }
 
     public void DisableDialogueBox()
@@ -183,8 +172,8 @@ public class DialogueController : MonoBehaviour
         _lines = null;
         _audioClips = null;
         audioSource.clip = null;
-        dialogueText.text = "";
-        GlobalCursorManager.Instance.DisableCursor();
+        GlobalCursorManager cursorManager = FindObjectOfType<GlobalCursorManager>();
+        cursorManager.DisableCursor();
     }
 
     private void StopDialogue()
