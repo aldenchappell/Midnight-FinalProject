@@ -10,31 +10,49 @@ public class PlayerExamineObjectController : MonoBehaviour
     public bool isExaminingObject = false;
     public bool canExamine = true;
     private FirstPersonController _fpController;
-    private Cinemachine.CinemachineVirtualCamera examineCamera;
-
+    private Cinemachine.CinemachineVirtualCamera _examineCamera;
+    private Light _examineLight;
     private void Awake()
     {
         _fpController = FindObjectOfType<FirstPersonController>();
-        examineCamera = GameObject.Find("ExamineObjectCamera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        _examineCamera = GameObject.Find("ExamineObjectCamera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        _examineLight = GameObject.Find("ExamineObjectLight").GetComponent<Light>();
+    }
+    
+    private void Start()
+    {
+        if (_examineLight != null)
+        {
+            _examineLight.enabled = false;
+        }
     }
 
     public void StartExamination(GameObject examinableObj)
     {
-        objectToExamine = examinableObj;
-        isExaminingObject = true;
+        if (!isExaminingObject) // Ensure only one examination at a time
+        {
+            if (_examineLight != null)
+            {
+                _examineLight.enabled = true;
+            }
+            
+            objectToExamine = examinableObj;
+            isExaminingObject = true;
 
-        originalPosition = examinableObj.transform.position;
-        originalRotation = examinableObj.transform.rotation;
+            originalPosition = examinableObj.transform.position;
+            originalRotation = examinableObj.transform.rotation;
 
-        examinableObj.transform.position = FindObjectOfType<ExaminableObject>().target.position;
+            // Position the object at the examination target
+            examinableObj.transform.position = FindObjectOfType<ExaminableObject>().target.position;
 
-        _fpController.ToggleCanMove();
-        _fpController.canRotate = false;
+            _fpController.ToggleCanMove();
+            _fpController.canRotate = false;
 
-        // Set camera rotation to match the object rotation
-        examineCamera.transform.rotation = objectToExamine.transform.rotation;
+            // Set camera to look at the object
+            _examineCamera.LookAt = examinableObj.transform;
 
-        StartCoroutine(ExaminationCooldown());
+            StartCoroutine(ExaminationCooldown());
+        }
     }
 
     public void ExitExamineMode()
@@ -45,18 +63,18 @@ public class PlayerExamineObjectController : MonoBehaviour
             objectToExamine.transform.rotation = originalRotation;
 
             objectToExamine = null;
-            isExaminingObject = false; // Ensure this is set to false
-        
+            isExaminingObject = false;
+
             _fpController.ToggleCanMove();
             _fpController.canRotate = true;
-        
+
             var examinableObject = FindObjectOfType<ExaminableObject>();
             examinableObject.playerCamera.Priority = 5;
             examinableObject.examineCamera.Priority = 0;
             examinableObject.isExamining = false;
-            if (examinableObject.examineLight != null)
+            if (_examineLight != null)
             {
-                examinableObject.examineLight.enabled = false;
+                _examineLight.enabled = false;
             }
         }
     }

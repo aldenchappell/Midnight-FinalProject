@@ -378,13 +378,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: LobbyElevator
       objectReference: {fileID: 0}
+    - target: {fileID: 3310755209121967148, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991748806222630456, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
+      propertyPath: m_Size.x
+      value: 3.6348572
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991748806222630456, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
+      propertyPath: m_Size.z
+      value: 0.9455559
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991748806222630456, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
+      propertyPath: m_Center.x
+      value: -0.017148256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991748806222630456, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
+      propertyPath: m_Center.z
+      value: -0.05094403
+      objectReference: {fileID: 0}
     - target: {fileID: 7573711175692210836, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: m_Name
       value: LobbyElevatorTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 7573711175692210836, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7905311469956338483, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
@@ -3044,7 +3064,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1837200780}
         m_TargetAssemblyTypeName: ElevatorController, Assembly-CSharp
-        m_MethodName: OpenElevator
+        m_MethodName: CloseElevator
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3056,19 +3076,7 @@ MonoBehaviour:
         m_CallState: 2
   onElevatorTriggerExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1837200780}
-        m_TargetAssemblyTypeName: ElevatorController, Assembly-CSharp
-        m_MethodName: CloseElevator
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &1786345621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3630,6 +3638,14 @@ PrefabInstance:
     - target: {fileID: 6270535685669938727, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052851820613503030, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000019073486
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052851820613503030, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.40699768
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

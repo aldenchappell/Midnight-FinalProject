@@ -22,6 +22,7 @@ public class InGameSettingsManager : MonoBehaviour
     public KeyCode objectInteractionKeyOne = KeyCode.E;
     public KeyCode objectInteractionKeyTwo = KeyCode.Mouse0;
     public KeyCode itemExaminationInteractionKey = KeyCode.F;
+    public KeyCode exitInteractionKey = KeyCode.Mouse1;
     public KeyCode crouchKey = KeyCode.LeftControl;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode dropCurrentItem;

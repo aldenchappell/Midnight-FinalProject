@@ -12,8 +12,7 @@ public class Polaroid : MonoBehaviour
         _puzzle = FindObjectOfType<PhotoBoardPuzzle>();
         if (isPolaroidPrefab)
         {
-            photoBoardImage = GameObject.Find("PuzzlePiece07").GetComponent<Image>();
-            
+            photoBoardImage = GameObject.Find("PuzzlePiece07")?.GetComponent<Image>();
         }
     }
 

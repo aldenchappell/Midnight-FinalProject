@@ -39,6 +39,7 @@ public class PlayerInteractableController : MonoBehaviour
         {
             var interactable = hitInfo.collider.GetComponent<InteractableObject>();
             var examinable = hitInfo.collider.GetComponent<ExaminableObject>();
+            _examineObjectController.objectToExamine = hitInfo.collider.gameObject;
             if (interactable != null)
             {
                 if (_interactableObject != interactable)
@@ -65,6 +66,8 @@ public class PlayerInteractableController : MonoBehaviour
         else
         {
             ResetHighlight();
+            _examineObjectController.objectToExamine = null;
+            //Debug.LogError("Object to examine is null");
         }
 
         if (_interactableObject == null)
