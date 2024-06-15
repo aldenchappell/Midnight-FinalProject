@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -128,6 +129,16 @@ namespace StarterAssets
 		[SerializeField] private Sprite crouchingSprite;
 		[SerializeField] private Sprite standingSprite;
 		[SerializeField] private Sprite sprintingSprite;
+
+		[SerializeField] private Slider sprintStaminaSlider;
+		private const float MaxSprintStamina = 5.0f;
+		private float _currentSprintStamina = MaxSprintStamina;
+		[SerializeField] private float sprintStaminaDecreaseRate = 1.0f;
+		[SerializeField] private float sprintStaminaRecoveryRate = 0.5f;
+		[SerializeField] private float staminaRecoveryDelay = 2.0f; //this is the delay before stamina starts to recover after reaching 0
+		private float staminaRecoveryTimer = 0.0f;
+
+		
 		
 		[SerializeField] private float crouchingHeight = .5f;
 		[SerializeField] private float standingHeight = 2.0f;
@@ -176,13 +187,17 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			
+			_currentSprintStamina = MaxSprintStamina;
+			//sprintStaminaSlider.maxValue = MaxSprintStamina;
+			sprintStaminaSlider.value = _currentSprintStamina;
 		}
 
 		private void Update()
 		{
 			if (pauseManager.GameIsPaused) return;
 			if (deathController.isDead) return;
-			
+	
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
@@ -198,13 +213,17 @@ namespace StarterAssets
 				HandleCrouching();
 			}
 
+			// Update sprint stamina
+			
+
 			// Set booleans for sprinting
 			bool wasSprinting = isSprinting;
-			isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && !isCrouching && Grounded;
-
+			isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && !isCrouching && Grounded && _currentSprintStamina > 0;
+			
 			if (wasSprinting != isSprinting)
 			{
 				HandleSprintingIcon();
+				
 			}
 
 			if (Input.GetKeyDown(KeyCode.Escape) && !pauseManager.GameIsPaused)
@@ -212,8 +231,42 @@ namespace StarterAssets
 				canMove = true;
 				canRotate = true;
 			}
-            
+			
+			UpdateSprintStamina();
 		}
+
+
+		private void UpdateSprintStamina()
+		{
+			if (isSprinting)
+			{
+				_currentSprintStamina -= Time.deltaTime;
+				if (_currentSprintStamina <= 0)
+				{
+					_currentSprintStamina = 0;
+					isSprinting = false;
+					staminaRecoveryTimer = staminaRecoveryDelay;
+				}
+			}
+			else
+			{
+				if (staminaRecoveryTimer > 0)
+				{
+					staminaRecoveryTimer -= Time.deltaTime;
+				}
+				else
+				{
+					_currentSprintStamina += Time.deltaTime;
+					if (_currentSprintStamina > MaxSprintStamina)
+					{
+						_currentSprintStamina = MaxSprintStamina;
+					}
+				}
+			}
+            
+			sprintStaminaSlider.value = _currentSprintStamina / MaxSprintStamina;
+		}
+
 		
 		private void HandleSprintingIcon()
 		{
@@ -367,7 +420,7 @@ namespace StarterAssets
 				targetSpeed = CrouchSpeed;
 				_currentSpeed = CrouchSpeed;
 			}
-			else if (input.sprint)
+			else if (isSprinting)
 			{
 				targetSpeed = SprintSpeed;
 				_currentSpeed = SprintSpeed;
