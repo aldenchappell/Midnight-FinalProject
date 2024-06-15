@@ -16,7 +16,6 @@ public class ExaminableObject : MonoBehaviour
 
     private void Awake()
     {
-        
         _player = FindObjectOfType<FirstPersonController>();
         _examineObjectController = FindObjectOfType<PlayerExamineObjectController>();
         target = GameObject.Find("ExaminationTarget")?.transform;
@@ -43,6 +42,7 @@ public class ExaminableObject : MonoBehaviour
                 }
                 playerCamera.Priority = 0;
                 examineCamera.Priority = 5;
+                examineCamera.Follow = _examineObjectController.objectToExamine.transform;
                 examineCamera.LookAt = _examineObjectController.objectToExamine.transform;
 
                 isExamining = true;
@@ -52,7 +52,7 @@ public class ExaminableObject : MonoBehaviour
         else if (isExamining)
         {
             isExamining = false;
-
+            
             playerCamera.Priority = 5;
             examineCamera.Priority = 0;
         }
