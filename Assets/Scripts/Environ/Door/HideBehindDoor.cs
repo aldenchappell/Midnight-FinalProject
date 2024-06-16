@@ -25,6 +25,15 @@ public class HideBehindDoor : MonoBehaviour
 
     private PostProcessVolume _postProcessing;
 
+    [Header("Camera Rotation")] 
+    private bool _shouldSwitch;
+
+    private const float MinXAngle = 0;
+    private const float MaxXAngle = 5f;
+    private const float MinYAngle = -100f;
+    private const float MaxYAngle = -78f;
+    private Quaternion _originalSpyCamRotation;
+
     private void Awake()
     {
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
@@ -41,6 +50,7 @@ public class HideBehindDoor : MonoBehaviour
 
         _postProcessing = FindObjectOfType<PostProcessVolume>();
         
+        _originalSpyCamRotation = _doorSpyHoleCamera.transform.rotation;
     }
 
     private void Start()
@@ -54,6 +64,7 @@ public class HideBehindDoor : MonoBehaviour
         if(_isActive)
         {
             CheckForInput();
+            HandleInput();
         }
     }
 
@@ -115,6 +126,39 @@ public class HideBehindDoor : MonoBehaviour
             RaycastToMousePosition();
         }
     }
+    
+    private void HandleInput()
+    {
+        if (_doorSpyHoleCamera.Priority > _doorHideCamera.Priority)
+        {
+            if (Input.GetMouseButton(2))
+            {
+                float mouseX = Input.GetAxis("Mouse X");
+                float mouseY = Input.GetAxis("Mouse Y");
+
+                if (!_isSwitching)
+                {
+                    _doorSpyHoleCamera.transform.Rotate(Vector3.up, mouseX, Space.World);
+                    _doorSpyHoleCamera.transform.Rotate(Vector3.right, -mouseY, Space.Self);
+
+                    //limit rotation on x and y axis, disable z rotation
+                    Vector3 clampedRotation = _doorSpyHoleCamera.transform.localEulerAngles;
+                    clampedRotation.x = ClampSpyCamAngle(clampedRotation.x, MinXAngle, MaxXAngle); 
+                    clampedRotation.y = ClampSpyCamAngle(clampedRotation.y, MinYAngle, MaxYAngle); 
+                    clampedRotation.z = 0;
+
+                    _doorSpyHoleCamera.transform.localEulerAngles = clampedRotation;
+                }
+            }
+        }
+    }
+
+    private float ClampSpyCamAngle(float angle, float min, float max)
+    {
+        if (angle < -180f) angle += 360f;
+        if (angle > 180f) angle -= 360f;
+        return Mathf.Clamp(angle, min, max);
+    }
 
     private void RaycastToMousePosition()
     {
@@ -134,6 +178,7 @@ public class HideBehindDoor : MonoBehaviour
     #endregion
 
     #region Peep Hole Camera
+    #region old
     //old method
     // private void SwapDoorCameraPosition()
     // {
@@ -162,7 +207,7 @@ public class HideBehindDoor : MonoBehaviour
     //         }
     //     }
     // }
-    
+    #endregion
     //new method to apply fish eye effect to the post processing volume
     private void SwapDoorCameraPosition()
     {
@@ -190,6 +235,7 @@ public class HideBehindDoor : MonoBehaviour
         {
             _doorSpyHoleCamera.Priority = 0;
             _doorHideCamera.Priority = 5;
+            _doorSpyHoleCamera.transform.rotation = _originalSpyCamRotation;
 
             //return back to 0 distortion
             if (lensDistortion != null)
