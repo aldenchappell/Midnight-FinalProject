@@ -147,7 +147,7 @@ public class EnemyVision : MonoBehaviour
     {
         foreach(GameObject target in targetsLockedIn)
         {
-            if(target.layer != targetLayer && target != null)
+            if(target.layer != LayerMask.NameToLayer("Target") && target != null)
             {
                 print("Unrealizing");
                 realizationValue = 0;
