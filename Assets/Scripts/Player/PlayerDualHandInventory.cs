@@ -199,6 +199,7 @@ public class PlayerDualHandInventory : MonoBehaviour
 
     public void HideHandItem()
     {
+        print("Handling");
         foreach(GameObject item in _inventorySlots)
         {   
             if(item != null)

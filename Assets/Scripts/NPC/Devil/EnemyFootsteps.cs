@@ -19,6 +19,7 @@ public class EnemyFootsteps : MonoBehaviour
     private AudioClip[] currentClips;
 
     [SerializeField] private AudioClip demonLaughSound;
+
     private void Awake()
     {
         _enemyStateController = GetComponent<EnemyStateController>();
@@ -29,6 +30,11 @@ public class EnemyFootsteps : MonoBehaviour
         {
             StopAllCoroutines();
         }
+    }
+
+    private void OnEnable()
+    {
+        _footstepRoutine = StartCoroutine(Footsteps());
     }
 
     private void Update()

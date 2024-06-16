@@ -11,16 +11,19 @@ public class SetMovment : MonoBehaviour
 
     private Collider[] _allActiveNodes;
     private GameObject[] _allActiveDemonDoors;
+    private GameObject _player;
 
     private NavMeshAgent _agent;
     private EnemySuspicionSystem _suspicion;
 
     private Vector3 _currentEndDestination;
 
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _suspicion = GetComponent<EnemySuspicionSystem>();
+        _player = GameObject.FindWithTag("Player");
     }
 
     private void Start()
@@ -76,11 +79,19 @@ public class SetMovment : MonoBehaviour
                     randomEndIndex += 1;
                 }
             }
+            if(Vector3.Distance(_allActiveDemonDoors[randomStartIndex].transform.position, _player.transform.position) <= 5)
+            {
+                return;
+            }
+            else
+            {
+                SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex]);
+                _agent.enabled = true;
+                _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
+                _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
+            }
 
-            SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex]);
-            _agent.enabled = true;
-            _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
-            _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
+            
         }
         else if (Vector3.Distance(transform.position, _currentEndDestination) <= _agent.stoppingDistance + 1)
         {

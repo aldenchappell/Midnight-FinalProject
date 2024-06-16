@@ -55,6 +55,11 @@ public class EnemyVision : MonoBehaviour
             Invoke("RealiziationBuffer", .05f);
             isRealizing = true;
         }
+        if(targetsLockedIn.Count > 0)
+        {
+            HasTargetHid();
+        }
+        
     }
 
     //Get all targets in radius and determine if they are visible to AI
@@ -135,6 +140,18 @@ public class EnemyVision : MonoBehaviour
             //Target is no longer in sight and has been unrealized. 
             targetsLockedIn.Clear();
             isRealizing = false;
+        }
+    }
+
+    private void HasTargetHid()
+    {
+        foreach(GameObject target in targetsLockedIn)
+        {
+            if(target.layer != targetLayer && target != null)
+            {
+                print("Unrealizing");
+                realizationValue = 0;
+            }
         }
     }
 

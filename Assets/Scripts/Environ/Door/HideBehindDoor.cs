@@ -101,7 +101,6 @@ public class HideBehindDoor : MonoBehaviour
 
     private void InteractDelay()
     {
-        print("Interaction is availabe");
         _isSwitching = false;
     }
 
@@ -238,7 +237,7 @@ public class HideBehindDoor : MonoBehaviour
             _player.layer = defaultLayer;
             _FPC.ToggleCanMove();
             //Reactivate Items
-            _inventory.HideHandItem();
+            _inventory.Invoke("HideHandItem", 1f);
         }
     }
 }
