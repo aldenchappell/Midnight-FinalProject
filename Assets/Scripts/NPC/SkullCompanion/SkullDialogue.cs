@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+
 public class SkullDialogue : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> pickedUpAudioClips;
