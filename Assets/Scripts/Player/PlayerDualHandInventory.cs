@@ -205,25 +205,35 @@ public class PlayerDualHandInventory : MonoBehaviour
             {
                 if(item.activeInHierarchy)
                 {
-                    if (item.GetComponent<MeshRenderer>().enabled == false)
+                    MeshRenderer[] renderers = item.GetComponentsInChildren<MeshRenderer>();
+
+                    foreach (MeshRenderer render in renderers)
                     {
-                        item.GetComponent<MeshRenderer>().enabled = true;
+                        if (render.enabled == false)
+                        {
+                            render.enabled = true;
+                        }
+                        else
+                        {
+                            render.enabled = false;
+                        }
                     }
-                    else
-                    {
-                        item.GetComponent<MeshRenderer>().enabled = false;
-                    }
+                    
                 }
                 else
                 {
                     item.SetActive(true);
-                    if (item.GetComponent<MeshRenderer>().enabled == false)
+                    MeshRenderer[] renderers = item.GetComponentsInChildren<MeshRenderer>();
+                    foreach (MeshRenderer render in renderers)
                     {
-                        item.GetComponent<MeshRenderer>().enabled = true;
-                    }
-                    else
-                    {
-                        item.GetComponent<MeshRenderer>().enabled = false;
+                        if (render.enabled == false)
+                        {
+                            render.enabled = true;
+                        }
+                        else
+                        {
+                            render.enabled = false;
+                        }
                     }
                     item.SetActive(false);
                 }

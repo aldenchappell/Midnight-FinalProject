@@ -319,8 +319,6 @@ public class HideBehindDoor : MonoBehaviour
             _FPC.ToggleCanMove();
             //Reactivate Items
             _inventory.Invoke("HideHandItem", 1f);
-            // Reactivate Items
-            _inventory.HideHandItem();
         }
     }
 }
