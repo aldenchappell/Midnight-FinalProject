@@ -45,7 +45,7 @@ public class PlayerFootstepController : MonoBehaviour
         {
             HandleFootsteps();
         }
-        Debug.Log(InGameSettingsManager.Instance.enableFootstepSounds);
+        //Debug.Log(InGameSettingsManager.Instance.enableFootstepSounds);
     }
 
     private void HandleFootsteps()
