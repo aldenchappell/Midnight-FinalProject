@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyFlickerLightsInVicinity : MonoBehaviour
 {
+    [SerializeField] private bool enableDebug;
     [SerializeField] private float radius = 10.0f;
     private List<LightFlicker> _currentFlickeringLights = new List<LightFlicker>();
 
@@ -56,7 +57,10 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        if (enableDebug)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, radius);
+        }
     }
 }
