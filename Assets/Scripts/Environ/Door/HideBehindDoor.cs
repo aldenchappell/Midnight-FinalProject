@@ -17,6 +17,7 @@ public class HideBehindDoor : MonoBehaviour
     private DoorController _doorController;
     private GameObject _player;
     private FirstPersonController _FPC;
+    private PlayerDualHandInventory _inventory;
 
     private bool _isActive;
     private bool _isSwitching;
@@ -32,6 +33,8 @@ public class HideBehindDoor : MonoBehaviour
 
         hiddenLayer = LayerMask.NameToLayer("Default");
         defaultLayer = LayerMask.NameToLayer("Target");
+
+        _inventory = GameObject.FindAnyObjectByType<PlayerDualHandInventory>();
     }
 
     private void Start()
@@ -161,11 +164,15 @@ public class HideBehindDoor : MonoBehaviour
         {
             _player.layer = hiddenLayer;
             _FPC.ToggleCanMove();
+            //Hide items to prevent them from being seen outside of door
+            _inventory.HideHandItem();
         }
         else
         {
             _player.layer = defaultLayer;
             _FPC.ToggleCanMove();
+            //Reactivate Items
+            _inventory.HideHandItem();
         }
     }
 }
