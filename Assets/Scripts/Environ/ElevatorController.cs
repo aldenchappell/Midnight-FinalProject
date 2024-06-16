@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ElevatorController : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class ElevatorController : MonoBehaviour
     [SerializeField] private float timeBeforeLoadingLevel = 5.0f;
 
     [SerializeField] private TMP_Text floorIndexText;
-
+    [SerializeField] private TMP_Text invalidLevelText;
+    
     [Header("Audio Parameters")]
     private AudioSource _elevatorAudioSource;
     [SerializeField] private AudioClip elevatorDingSound;
@@ -26,6 +28,9 @@ public class ElevatorController : MonoBehaviour
     private static readonly int Floor = Animator.StringToHash("Floor");
     private static readonly int Open = Animator.StringToHash("Open");
 
+    private Coroutine _fadeOutCoroutine;
+    private Coroutine _closeElevatorCoroutine;
+    private Coroutine _startElevatorRoutineCoroutine;
     private void Awake()
     {
         _elevatorAudioSource = GetComponent<AudioSource>();
@@ -55,9 +60,9 @@ public class ElevatorController : MonoBehaviour
 
     public void CloseElevator()
     {
-        if (isOpened)
+        if (isOpened && _closeElevatorCoroutine == null)
         {
-            StartCoroutine(CloseElevatorRoutine());
+            _closeElevatorCoroutine = StartCoroutine(CloseElevatorRoutine());
         }
     }
 
@@ -93,6 +98,7 @@ public class ElevatorController : MonoBehaviour
         _elevatorAudioSource.PlayOneShot(elevatorClosingSound);
 
         yield return new WaitForSeconds(elevatorClosingSound.length);
+        _closeElevatorCoroutine = null;
     }
 
     public void PlayLevelEndAnimation()
@@ -112,13 +118,19 @@ public class ElevatorController : MonoBehaviour
         if (_levelSelected)
         {
             _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-            Debug.Log("A level is already being loaded. Ignoring button press.");
+            FadeText("A level is already being loaded");
             return;
         }
 
         switch (floorIndex)
         {
             case 1:
+                if (GetLevelName() == "LOBBY")
+                {
+                    _elevatorAudioSource.PlayOneShot(invalidLevelSound);
+                    FadeText("You are already on this floor.");
+                    return;
+                }
                 _selectedLevelName = "LOBBY";
                 break;
             case 2:
@@ -132,7 +144,7 @@ public class ElevatorController : MonoBehaviour
                 else
                 {
                     _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-                    Debug.Log("You must complete FLOOR ONE first.");
+                    FadeText("You must complete FLOOR ONE first.");
                     return;
                 }
                 break;
@@ -145,13 +157,13 @@ public class ElevatorController : MonoBehaviour
                 else
                 {
                     _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-                    Debug.Log("You must complete FLOOR ONE and FLOOR TWO first.");
+                    FadeText("You must complete FLOOR ONE and FLOOR TWO first.");
                     return;
                 }
                 break;
             default:
                 _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-                Debug.LogError("Invalid floor index selected.");
+                FadeText("You do not have permission to access this floor.");
                 return;
         }
 
@@ -159,23 +171,30 @@ public class ElevatorController : MonoBehaviour
         if (LevelCompletionManager.Instance.IsLevelCompleted(_selectedLevelName))
         {
             _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-            Debug.Log("This level is already completed. Please select a different level.");
+            FadeText("This level is already completed. Please select a different level.");
+            
         }
         else if(floorIndex != 1)
         {
             _levelSelected = true;
             floorIndexText.text = (floorIndex - 1).ToString();
             elevatorAnimator.SetInteger(Floor, floorIndex - 1);
-
-            Debug.Log(floorIndex);
-            StartCoroutine(StartElevatorRoutine());
+            
+            if (_startElevatorRoutineCoroutine == null)
+            {
+                _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
+            }
         }
         else
         {
             floorIndexText.text = "L";
-            StartCoroutine(StartElevatorRoutine());
+            if (_startElevatorRoutineCoroutine == null)
+            {
+                _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
+            }
         }
     }
+
 
     private IEnumerator StartElevatorRoutine()
     {
@@ -187,5 +206,43 @@ public class ElevatorController : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeLoadingLevel);
 
         SceneManager.LoadScene(_selectedLevelName);
+        _startElevatorRoutineCoroutine = null;
+    }
+
+    public void FadeText(string textElement)
+    {
+        if (_fadeOutCoroutine == null)
+        {
+            _fadeOutCoroutine = StartCoroutine(FadeOutText(2.0f));
+        }
+        invalidLevelText.text = textElement;
+    }
+    
+    private IEnumerator FadeOutText(float displayTime)
+    {
+        yield return new WaitForSeconds(displayTime);
+
+        // How long it will take for the fade to finish
+        float fadeDuration = 1.0f;
+        float elapsedTime = 0.0f;
+            
+        Color initialColor = invalidLevelText.color;
+
+        // Gradually increase the alpha value
+        while (elapsedTime < fadeDuration)
+        {
+            float newAlpha = Mathf.Lerp(initialColor.a, 0, elapsedTime / fadeDuration);
+                
+            invalidLevelText.color = new Color(initialColor.r, initialColor.g, initialColor.b, newAlpha);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+        
+        invalidLevelText.color = new Color(initialColor.r, initialColor.g, initialColor.b, 1);
+        invalidLevelText.text = "";
+
+        _fadeOutCoroutine = null;
     }
 }

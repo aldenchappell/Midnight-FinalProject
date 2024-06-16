@@ -16,7 +16,7 @@ public class BrightnessSlider : MonoBehaviour
 
     private void Start()
     {
-        float savedBrightness = PlayerPrefs.GetFloat("ScreenBrightness", 0.5f); // Default brightness is 0.5
+        float savedBrightness = PlayerPrefs.GetFloat("ScreenBrightness", 0.5f);
         _brightnessSlider.value = savedBrightness;
 
         _valueText.text = PlayerPrefs.GetFloat("ScreenBrightness").ToString("f1");

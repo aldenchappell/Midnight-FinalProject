@@ -29,12 +29,16 @@ public class InGameSettingsManager : MonoBehaviour
     
     
     private const string BrightnessPrefKey = "ScreenBrightness";
+    private const string ViewBobbingPrefKey = "ViewBobbing";
+    private const string FootstepSoundsPrefKey = "Footsteps";
+    private const string HeartbeatSoundsPrefKey = "Heartbeat";
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad((gameObject));
+            LoadSettings();
         }
         else
         {
@@ -53,11 +57,15 @@ public class InGameSettingsManager : MonoBehaviour
     public void ToggleViewBobbing(bool enable)
     {
         enableViewBobbing = enable;
+        PlayerPrefs.SetInt(ViewBobbingPrefKey, enable ? 1 : 0);
+        PlayerPrefs.Save();
     }
     
     public void ToggleHeartbeat(bool enable)
     {
         enableHeartbeatSounds = enable;
+        PlayerPrefs.SetInt(HeartbeatSoundsPrefKey, enable ? 1 : 0);
+        PlayerPrefs.Save();
     }
     
     public void SetBrightness(float value)
@@ -76,6 +84,8 @@ public class InGameSettingsManager : MonoBehaviour
     public void ToggleFootsteps(bool enable)
     {
         enableFootstepSounds = enable;
+        PlayerPrefs.SetInt(FootstepSoundsPrefKey, enable ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
     public void ToggleFullscreen(bool isFullscreen)
@@ -112,5 +122,12 @@ public class InGameSettingsManager : MonoBehaviour
     {
         enableHeartbeatSounds = !enableHeartbeatSounds;
         Debug.Log(enableHeartbeatSounds);
+    }
+    
+    private void LoadSettings()
+    {
+        enableViewBobbing = PlayerPrefs.GetInt(ViewBobbingPrefKey, 1) == 1;
+        enableFootstepSounds = PlayerPrefs.GetInt(FootstepSoundsPrefKey, 1) == 1;
+        enableHeartbeatSounds = PlayerPrefs.GetInt(HeartbeatSoundsPrefKey, 1) == 1;
     }
 }
