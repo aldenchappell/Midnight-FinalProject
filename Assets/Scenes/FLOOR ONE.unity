@@ -933,11 +933,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 5.715, y: 200.00002, z: -200.00002}
   m_TimeToStationary: 0.5
---- !u!4 &80931405 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 113800927778067130, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-  m_PrefabInstance: {fileID: 1167197746}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &85383788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7512204092634763232, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
@@ -1726,11 +1721,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 8.014, y: 200.00002, z: 7.6070004}
   m_TimeToStationary: 0.5
---- !u!224 &157113018 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1769312034478900945, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-  m_PrefabInstance: {fileID: 1167197746}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &172295928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5677,81 +5667,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -2.6690001, y: 200.00002, z: -0.105000004}
   m_TimeToStationary: 0.5
---- !u!1 &443014521
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 443014522}
-  - component: {fileID: 443014524}
-  - component: {fileID: 443014523}
-  m_Layer: 0
-  m_Name: CompassBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &443014522
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443014521}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 157113018}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 420}
-  m_SizeDelta: {x: 900, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &443014523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443014521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a8df0de6ce3e224a878f3140fc52f52, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &443014524
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443014521}
-  m_CullTransparentMesh: 1
 --- !u!1 &446662512 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2923534756838350984, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
@@ -17834,14 +17749,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1769312034478900945, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 443014522}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4810593981529044818, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1499010786}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
 --- !u!114 &1167197747 stripped
 MonoBehaviour:
@@ -23334,28 +23243,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 5.715, y: 200.00002, z: -200.00002}
   m_TimeToStationary: 0.5
---- !u!1 &1499010781 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4810593981529044818, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-  m_PrefabInstance: {fileID: 1167197746}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1499010786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499010781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7eb11d4ceb40550428bca82b62d67090, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  compassBarTransform: {fileID: 443014522}
-  markerPrefab: {fileID: 2987834342395245997, guid: f6f8f459b2ca30048ad7b490acbbc4ad, type: 3}
-  objectiveMarkerTransforms: []
-  objectiveObjectTransforms: []
-  cameraObjectTransform: {fileID: 80931405}
 --- !u!1 &1499997899 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3732367338379501493, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
