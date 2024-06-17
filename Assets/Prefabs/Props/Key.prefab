@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
       propertyPath: m_Name
-      value: Sari_key
+      value: Key
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
       propertyPath: m_Layer
@@ -107,6 +107,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -7873124030667660671, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
+    - {fileID: 4810045619830073260, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9a5acbfa9e6ee148b930c36efd9e568, type: 3}
@@ -175,10 +176,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPlaceObject:
+    m_PersistentCalls:
+      m_Calls: []
   interactionIcon: {fileID: 21300000, guid: a78af9cffe164384fb3c1dc91b66dae5, type: 3}
   interactableIconSize: {x: 75, y: 75}
   interactableID: 0
-  highlightController: {fileID: 0}
+  highlightInteractableObjectController: {fileID: 0}
 --- !u!114 &556343329122959161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0743014263620fd47a426cfd613b90d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTaggedKey: 0
+  collected: 0
 --- !u!114 &7167206007777210892
 MonoBehaviour:
   m_ObjectHideFlags: 0
