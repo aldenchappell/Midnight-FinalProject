@@ -85,7 +85,9 @@ public class SetMovment : MonoBehaviour
             }
             else
             {
+                _agent.enabled = false;
                 SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex]);
+                _agent.enabled = enabled;
                 _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
                 _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
             }

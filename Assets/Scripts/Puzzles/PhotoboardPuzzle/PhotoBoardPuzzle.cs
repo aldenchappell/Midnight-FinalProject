@@ -32,6 +32,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
     [SerializeField] private AudioClip incorrectSlotSound;
 
     private Puzzle _puzzle;
+    private PatrolSystemManager _patrol;
 
     private GameObject _playerUI;
     private CinemachineVirtualCamera _mainCam;
@@ -60,6 +61,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
         _playerInteractableController = FindObjectOfType<PlayerInteractableController>(); ;
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("PhotoBoardPuzzleCam").GetComponent<CinemachineVirtualCamera>();
+        _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
     }
 
     private void Update()
@@ -158,6 +160,8 @@ public class PhotoBoardPuzzle : MonoBehaviour
                 Debug.Log("Puzzle lost. Resetting puzzle...");
                 TogglePuzzleUI();
                 ResetPuzzle();
+                _patrol.DecreaseTimeToSpawn = 10;
+                _patrol.ReferenceToSuspicion = transform.position;
             }
         }
     }
