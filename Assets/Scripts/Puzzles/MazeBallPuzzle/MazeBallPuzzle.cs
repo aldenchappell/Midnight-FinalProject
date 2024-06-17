@@ -36,7 +36,7 @@ public class MazeBallPuzzle : MonoBehaviour
     
     [Header("Puzzle Scoring")] 
     private float _currentTimer;
-    private const float MaxTimeAllowed = 60f; //we will adjust this based on testing with finished puzzle model.
+    private const float MaxTimeAllowed = 05f; //we will adjust this based on testing with finished puzzle model.
     private PuzzleEscape _puzzleEscape;
     
     [Space(5)]
@@ -74,9 +74,7 @@ public class MazeBallPuzzle : MonoBehaviour
         _puzzleEscape = GetComponent<PuzzleEscape>();
         _animator = GetComponent<Animator>();
         _playerDualHandInventory = FindObjectOfType<PlayerDualHandInventory>();
-        //_mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
-        //_puzzleCam = GameObject.Find("MazePuzzleCam").GetComponent<CinemachineVirtualCamera>();
-        //_puzzlePieceRequired = originalMazeBall.GetComponent<PuzzlePiece>();
+
         _startingRotation = transform.rotation;
         _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
     }

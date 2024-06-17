@@ -44,6 +44,8 @@ public class SlidingImagePuzzle : MonoBehaviour
 
     private bool _solved;
     private PatrolSystemManager _patrol;
+
+    [SerializeField] private GameObject interactableMazeBall;
     private void Awake()
     {
         _puzzle = GetComponent<Puzzle>();
@@ -231,16 +233,17 @@ public class SlidingImagePuzzle : MonoBehaviour
 
     public void InstantiateMazeballAtPlayerFeet()
     {
-        if (mazeballPrefab != null)
-        {
-            Vector3 playerPosition = firstPersonController.transform.position;
-            
-            Instantiate(mazeballPrefab, playerPosition, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogError("Mazeball prefab is not assigned in the inspector.");
-        }
+        // if (mazeballPrefab != null)
+        // {
+        //     Vector3 playerPosition = firstPersonController.transform.position;
+        //     
+        //     Instantiate(mazeballPrefab, playerPosition, Quaternion.identity);
+        // }
+        // else
+        // {
+        //     Debug.LogError("Mazeball prefab is not assigned in the inspector.");
+        // }
+        interactableMazeBall.SetActive(true);
     }
 
     private void UpdatePuzzleUI()
