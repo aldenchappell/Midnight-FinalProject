@@ -5,19 +5,12 @@ using UnityEngine;
 public class MusicBoxPuzzle : MonoBehaviour
 { 
     private Animator _animator;
-    private bool _readyToAnim;
 
     private void Awake()
     {
         _animator = transform.GetComponentInChildren<Animator>();
     }
 
-    public void ReadyToAnim()
-    {
-        _readyToAnim = true;
-        
-        
-    }
 
     public void AnimateMusicBox()
     {
