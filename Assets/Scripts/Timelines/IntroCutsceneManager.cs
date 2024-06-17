@@ -8,8 +8,9 @@ public class IntroCutsceneManager : MonoBehaviour
 {
 
     public float changeTime;
-    public string sceneName;
+    //public string sceneName;
     public PlayableDirector timeline;  // Reference to the PlayableDirector component
+    public GameObject player; 
 
     // Update is called once per frame
     void Update()
@@ -18,16 +19,21 @@ public class IntroCutsceneManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || changeTime <= 0)
         {
             // Load the specified scene
-            SceneManager.LoadScene(sceneName);
+            //SceneManager.LoadScene(sceneName);
+
             // Deactivate the timeline
-            if (timeline != null)
-            {
-                timeline.Stop();
-                // Optionally, deactivate the GameObject that holds the timeline
-                timeline.gameObject.SetActive(false);
-            }
+           
+            
+            timeline.Stop();
+            // Optionally, deactivate the GameObject that holds the timeline
+            timeline.gameObject.SetActive(false);
+            player.SetActive(true);
+            
             // Optionally, deactivate this GameObject
             // gameObject.SetActive(false);
         }
+
+        // Decrease the changeTime
+        changeTime -= Time.deltaTime;
     }
 }

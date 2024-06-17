@@ -2715,6 +2715,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a899ae6998ebcaa408d374ad1b00c2cf, type: 3}
+--- !u!1 &505279293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3250516357010605658, guid: 5bfab8528aa482646bd7d9a00a882bb4, type: 3}
+  m_PrefabInstance: {fileID: 368873286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &510319900
 GameObject:
   m_ObjectHideFlags: 0
@@ -5519,6 +5524,16 @@ PlayableDirector:
     value: {fileID: 1288108437}
   - key: {fileID: -5160198164601608419, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
     value: {fileID: 1125749835}
+  - key: {fileID: -8444719029335598202, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
+    value: {fileID: 758637441}
+  - key: {fileID: -8226889309863856317, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
+    value: {fileID: 505279293}
+  - key: {fileID: 751730940000442919, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3115812547685050229, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 5213601177377537594, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 1e529cea8edae2e4186f2eb6846c034b: {fileID: 758637441}
@@ -5554,8 +5569,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeTime: 31
-  sceneName: LOBBY
   timeline: {fileID: 1077661925}
+  player: {fileID: 208222620}
 --- !u!4 &1082785753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f66a5cd00e9b683489fb854322cabfbc, type: 3}
@@ -7030,7 +7045,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429752224}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 359749891e4b55f4f963556137d210d4, type: 3}
@@ -9615,6 +9630,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.375
       objectReference: {fileID: 0}
+    - target: {fileID: 113800927778067130, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 113800927778067130, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 113800927778067130, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 231928509697799497, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -10568,6 +10595,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b0b016d4f46223438fc131e890712b5, type: 3}
       propertyPath: m_Name
       value: Radio
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b0b016d4f46223438fc131e890712b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
