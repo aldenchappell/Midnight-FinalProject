@@ -14,7 +14,18 @@ public class PatrolSystemManager : MonoBehaviour
     {
         set
         {
-            _currentTime += value;
+            if(!Demon.activeSelf)
+            {
+                _currentTime += value;
+                print(_currentTime);
+            }
+        }
+    }
+    public Vector3 ReferenceToSuspicion
+    {
+        set
+        {
+            Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(value);
         }
     }
 

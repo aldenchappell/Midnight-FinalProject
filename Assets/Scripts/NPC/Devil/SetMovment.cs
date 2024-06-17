@@ -79,23 +79,21 @@ public class SetMovment : MonoBehaviour
                     randomEndIndex += 1;
                 }
             }
-            if(Vector3.Distance(_allActiveDemonDoors[randomStartIndex].transform.position, _player.transform.position) <= 5)
+            if(Vector3.Distance(_allActiveDemonDoors[randomStartIndex].transform.position, _player.transform.position) <= 10)
             {
                 return;
             }
             else
             {
                 SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex]);
-                _agent.enabled = true;
-                _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
                 _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
+                _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
             }
 
             
         }
         else if (Vector3.Distance(transform.position, _currentEndDestination) <= _agent.stoppingDistance + 1)
         {
-            _agent.enabled = false;
             _currentEndDestination = Vector3.zero;
             gameObject.SetActive(false);
         }

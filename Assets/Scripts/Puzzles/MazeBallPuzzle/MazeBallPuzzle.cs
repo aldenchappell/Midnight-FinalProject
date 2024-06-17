@@ -57,6 +57,7 @@ public class MazeBallPuzzle : MonoBehaviour
     private bool _isInPuzzle;
     public bool solved;
     private PlayerDualHandInventory _playerDualHandInventory;
+    private PatrolSystemManager _patrol;
     private bool _firstTime = true;
     
     private Quaternion _startingRotation;
@@ -77,6 +78,7 @@ public class MazeBallPuzzle : MonoBehaviour
         //_puzzleCam = GameObject.Find("MazePuzzleCam").GetComponent<CinemachineVirtualCamera>();
         //_puzzlePieceRequired = originalMazeBall.GetComponent<PuzzlePiece>();
         _startingRotation = transform.rotation;
+        _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
     }
 
     private void Update()
@@ -269,6 +271,8 @@ public class MazeBallPuzzle : MonoBehaviour
             if (_currentTimer >= MaxTimeAllowed)
             {
                 ResetPuzzle();
+                _patrol.DecreaseTimeToSpawn = 10;
+                _patrol.ReferenceToSuspicion = transform.position;
             }
         }
         

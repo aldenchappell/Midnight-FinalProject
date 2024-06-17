@@ -7963,7 +7963,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1167197747}
         m_TargetAssemblyTypeName: PlayerDualHandInventory, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: set_PlaceObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 605171352}
@@ -17842,42 +17842,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4810593981529044818, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1499010786}
-    - targetCorrespondingSourceObject: {fileID: 1185921017414210652, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1167197749}
   m_SourcePrefab: {fileID: 100100000, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
 --- !u!114 &1167197747 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 692337379460019236, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
   m_PrefabInstance: {fileID: 1167197746}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167197748}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81e6b0cffb391644bae5a4e3dc1c4847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1167197748 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1185921017414210652, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-  m_PrefabInstance: {fileID: 1167197746}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1167197749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167197748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0196244996659e54283411ce8c814688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugEnabled: 1
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 4096
 --- !u!1 &1167657525 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7381410642958063181, guid: b131716247d113b47ac548e3ea12b0aa, type: 3}
@@ -30454,6 +30430,10 @@ PrefabInstance:
     - target: {fileID: 575034772974994987, guid: a17fcfde9df30b8498c7592155351d59, type: 3}
       propertyPath: m_Radius
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 575034772974994987, guid: a17fcfde9df30b8498c7592155351d59, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2565402593616780849, guid: a17fcfde9df30b8498c7592155351d59, type: 3}
       propertyPath: m_Name

@@ -204,7 +204,8 @@ public class DaVinciPuzzle : MonoBehaviour
             if (_canAnimate)
             {
                 print("Puzzle Failed");
-                _patrol.DecreaseTimeToSpawn = -10;
+                _patrol.DecreaseTimeToSpawn = 10;
+                _patrol.ReferenceToSuspicion = transform.position;
                 StartCoroutine(TriggerAnimation(true));
             }
         }

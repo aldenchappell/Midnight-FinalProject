@@ -178,7 +178,8 @@ public class BabyBlockPuzzle : MonoBehaviour
         if(rightItem == null)
         {
             PlayAudioClip(failSound);
-            _patrol.DecreaseTimeToSpawn = -10;
+            _patrol.DecreaseTimeToSpawn = 10;
+            _patrol.ReferenceToSuspicion = transform.position;
         }
         else
         {

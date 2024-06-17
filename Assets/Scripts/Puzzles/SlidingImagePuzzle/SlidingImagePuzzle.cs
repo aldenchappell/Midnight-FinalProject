@@ -43,6 +43,7 @@ public class SlidingImagePuzzle : MonoBehaviour
     private GameObject _playerUI;
 
     private bool _solved;
+    private PatrolSystemManager _patrol;
     private void Awake()
     {
         _puzzle = GetComponent<Puzzle>();
@@ -51,6 +52,7 @@ public class SlidingImagePuzzle : MonoBehaviour
         _playerUI = GameObject.Find("PlayerUICanvas");
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("SlidingImagePuzzleCam").GetComponent<CinemachineVirtualCamera>();
+        _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
     }
 
 
@@ -250,7 +252,8 @@ public class SlidingImagePuzzle : MonoBehaviour
     {
         _movesMade = 0;
         UpdatePuzzleUI();
-        
+        _patrol.DecreaseTimeToSpawn = 10;
+        _patrol.ReferenceToSuspicion = transform.position;
         AssignUniqueSprites();
     }
 }
