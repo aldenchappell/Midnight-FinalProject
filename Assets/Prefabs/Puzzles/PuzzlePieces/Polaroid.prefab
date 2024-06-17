@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7519059682718286996}
   - component: {fileID: 2068619555420899860}
   - component: {fileID: 961494708039604576}
+  - component: {fileID: 4925413137572428214}
   m_Layer: 7
   m_Name: Polaroid
   m_TagString: Polaroid
@@ -185,6 +186,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   examineCamera: {fileID: 0}
-  examineLight: {fileID: 0}
   isExamining: 0
   target: {fileID: 0}
+--- !u!114 &4925413137572428214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5768136494224559766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4251dadf36daff94785d8e761dc5f5a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldShowOnCompass: 1
+  compassMarkerSprite: {fileID: 11400000, guid: a23ff6cc1b9c0f448a1461890091074f, type: 2}
