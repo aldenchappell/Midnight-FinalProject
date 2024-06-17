@@ -194,6 +194,7 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			print(canMove);
 			if (pauseManager.GameIsPaused) return;
 			if (deathController.isDead) return;
 	
@@ -342,16 +343,7 @@ namespace StarterAssets
 		{
 			if (pauseManager.GameIsPaused) return;
 			
-			if (DialogueController.Instance != null && DialogueController.Instance.dialogueEnabled)
-			{
-				canMove = false;
-				//Debug.Log("disabling movement because dialogue is enabled");
-			}
-			else
-			{
-				canMove = true;
-				//Debug.Log("enabling movement because dialogue is disabled");
-			}
+			
 			
 			if(canMove && !deathController.isDead && controller.enabled)
 				CameraRotation();
@@ -360,7 +352,7 @@ namespace StarterAssets
 		public void ToggleCanMove()
 		{
 			canMove = !canMove;
-			controller.enabled = !controller.enabled;
+			//controller.enabled = !controller.enabled;
 		}
 
 		
@@ -443,7 +435,7 @@ namespace StarterAssets
 
 		private void Move()
 		{
-			if (!canMove && !controller.enabled) return;
+			if (!canMove) return;
 
 			// Set target speed based on move speed, sprint speed, and crouch speed
 			float targetSpeed;
