@@ -303,16 +303,18 @@ public class MazeBallPuzzle : MonoBehaviour
     private void ResetPuzzle()
     {
         OnInteractStartDelay();
-        
-        Destroy(originalMazeBall);
-        GameObject newBall = Instantiate(pfMazeBall, mazePuzzleBallSpawnPos.position, Quaternion.identity);
-        newBall.transform.SetParent(mazePuzzleObj.transform);
-        
-        originalMazeBall = newBall;
-        
+
+        // Make a copy of the originalMazeBall
+        //GameObject newBall = Instantiate(originalMazeBall, mazePuzzleBallSpawnPos.position, Quaternion.identity);
+        //newBall.transform.SetParent(mazePuzzleObj.transform);
+
+        // Update the reference to originalMazeBall
+        //originalMazeBall = newBall;
+        originalMazeBall.transform.position = mazePuzzleBallSpawnPos.position;
         _currentTimer = 0;
         UpdatePuzzleUI();
     }
+
 
     public void ResetRotation()
     {

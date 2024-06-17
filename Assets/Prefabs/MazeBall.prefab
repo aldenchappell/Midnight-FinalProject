@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 1342501559110281542}
   - component: {fileID: 3457598770835705519}
   - component: {fileID: 5904818036717737177}
-  - component: {fileID: 6103985418923442794}
   - component: {fileID: 3544204337402566257}
   - component: {fileID: 7473949268504872973}
   - component: {fileID: 5187755599731162374}
+  - component: {fileID: -7947427916758040659}
+  - component: {fileID: 7908048934868396637}
   m_Layer: 0
   m_Name: MazeBall
   m_TagString: Untagged
@@ -30,9 +31,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8901713987315781237}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.0000000041871804, y: 0.05428093, z: 0.00000000822145}
-  m_LocalScale: {x: 0.38129, y: 0.38129, z: 0.38129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,27 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6103985418923442794
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8901713987315781237}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.028125003
-  m_Center: {x: -9.313226e-10, y: 0.0000000018626449, z: 9.3132246e-10}
 --- !u!54 &3544204337402566257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -244,3 +224,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7947427916758040659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8901713987315781237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a872b0592db87c549a51c8666ba35399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPrefab: 1
+  dropSound: {fileID: 8300000, guid: 89f0626fd5e34a3409260f77a463afc0, type: 3}
+--- !u!135 &7908048934868396637
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8901713987315781237}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0077591008
+  m_Center: {x: 0.00017330027, y: 0.050562494, z: -0.20647848}
