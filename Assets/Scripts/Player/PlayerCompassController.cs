@@ -6,13 +6,18 @@ public class PlayerCompassController : MonoBehaviour
 {
     [SerializeField] private RectTransform compassBarTransform;
     [SerializeField] private GameObject markerPrefab; // Prefab for the marker UI element
-
+    [SerializeField] private float maxDistanceToShowMarker = 20f;
+    [SerializeField] private float distanceAngle = 30f;
+    
+    
+    
     private List<RectTransform> _objectiveMarkerTransforms = new List<RectTransform>();
     private List<Transform> _objectiveObjectTransforms = new List<Transform>();
     private List<Puzzle> _puzzlesWithListeners = new List<Puzzle>();
 
     public Transform cameraObjectTransform;
 
+    
     private void Start()
     {
         InitializeMarkers();
@@ -30,7 +35,16 @@ public class PlayerCompassController : MonoBehaviour
             }
             else
             {
-                SetCompassMarkerPosition(_objectiveMarkerTransforms[i], _objectiveObjectTransforms[i].position);
+                float distance = Vector3.Distance(cameraObjectTransform.position, _objectiveObjectTransforms[i].position);
+                if (distance <= maxDistanceToShowMarker)
+                {
+                    _objectiveMarkerTransforms[i].gameObject.SetActive(true);
+                    SetCompassMarkerPosition(_objectiveMarkerTransforms[i], _objectiveObjectTransforms[i].position);
+                }
+                else
+                {
+                    _objectiveMarkerTransforms[i].gameObject.SetActive(false);
+                }
             }
         }
     }
