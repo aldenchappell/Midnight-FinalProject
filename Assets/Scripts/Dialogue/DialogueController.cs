@@ -1,6 +1,8 @@
 using System.Collections;
+using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
@@ -24,7 +26,8 @@ public class DialogueController : MonoBehaviour
     private Coroutine _currentCoroutine = null;
 
     private PlayerDualHandInventory _playerInventory;
-    
+    private FirstPersonController _firstPersonController;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,8 +38,9 @@ public class DialogueController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        _playerInventory = FindObjectOfType<PlayerDualHandInventory>().GetComponent<PlayerDualHandInventory>();
+
+        _playerInventory = FindObjectOfType<PlayerDualHandInventory>();
+        _firstPersonController = FindObjectOfType<FirstPersonController>();
     }
 
     private void Start()
@@ -53,7 +57,7 @@ public class DialogueController : MonoBehaviour
             return;
         }
         dialogueText.text = "";
-
+        
         if (!_playerInventory.IsSkullInFirstSlot())
         {
             dialogueText.text = "";
@@ -62,6 +66,7 @@ public class DialogueController : MonoBehaviour
             _currentIndex = 0;
             EnableDialogueBox();
             _currentCoroutine = StartCoroutine(ReadOutLine());
+            
         }
     }
 
@@ -161,6 +166,7 @@ public class DialogueController : MonoBehaviour
         dialogueBox.SetActive(true);
         GlobalCursorManager cursorManager = FindObjectOfType<GlobalCursorManager>();
         cursorManager.EnableCursor();
+        _firstPersonController.canRotate = false;
     }
 
     public void DisableDialogueBox()
@@ -174,6 +180,7 @@ public class DialogueController : MonoBehaviour
         audioSource.clip = null;
         GlobalCursorManager cursorManager = FindObjectOfType<GlobalCursorManager>();
         cursorManager.DisableCursor();
+        _firstPersonController.canRotate = true;
     }
 
     private void StopDialogue()
@@ -185,6 +192,8 @@ public class DialogueController : MonoBehaviour
         ResetDialogueText();
         DisableDialogueBox();
 
+        
+        
         if (audioSource.clip != null)
             audioSource.clip = null;
     }

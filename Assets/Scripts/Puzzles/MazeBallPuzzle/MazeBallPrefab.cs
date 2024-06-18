@@ -3,7 +3,6 @@ using UnityEngine;
 public class MazeBallPrefab : MonoBehaviour
 {
     private PlayerDualHandInventory _playerDualHandInventory;
-    [SerializeField] private bool isPrefab = false;
     private AudioSource _audio;
     [SerializeField] private AudioClip dropSound;
     private void Awake()

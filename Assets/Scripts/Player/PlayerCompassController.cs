@@ -7,45 +7,76 @@ public class PlayerCompassController : MonoBehaviour
     [SerializeField] private RectTransform compassBarTransform;
     [SerializeField] private GameObject markerPrefab; // Prefab for the marker UI element
 
-    public List<RectTransform> objectiveMarkerTransforms = new List<RectTransform>();
-    public List<Transform> objectiveObjectTransforms = new List<Transform>();
+    private List<RectTransform> _objectiveMarkerTransforms = new List<RectTransform>();
+    private List<Transform> _objectiveObjectTransforms = new List<Transform>();
+    private List<Puzzle> _puzzlesWithListeners = new List<Puzzle>();
 
     public Transform cameraObjectTransform;
 
     private void Start()
     {
-        // Find all GameObjects with the tag "Compass"
-        CompassMarker[] compassObjects = GameObject.FindObjectsOfType<CompassMarker>();
+        InitializeMarkers();
+    }
 
-        foreach (var obj in compassObjects)
+    private void Update()
+    {
+        for (int i = _objectiveMarkerTransforms.Count - 1; i >= 0; i--)
         {
-            // Ensure the GameObject has a CompassMarker component
-            CompassMarker compassMarker = obj.GetComponent<CompassMarker>();
+            if (_objectiveObjectTransforms[i] == null)
+            {
+                Destroy(_objectiveMarkerTransforms[i].gameObject);
+                _objectiveMarkerTransforms.RemoveAt(i);
+                _objectiveObjectTransforms.RemoveAt(i);
+            }
+            else
+            {
+                SetCompassMarkerPosition(_objectiveMarkerTransforms[i], _objectiveObjectTransforms[i].position);
+            }
+        }
+    }
+
+    private void InitializeMarkers()
+    {
+        CompassMarker[] compassObjects = FindObjectsOfType<CompassMarker>();
+
+        foreach (var compassMarker in compassObjects)
+        {
             if (compassMarker != null)
             {
                 // Create a new marker UI element as a child of the compass bar
                 GameObject marker = Instantiate(markerPrefab, compassBarTransform);
                 RectTransform markerRectTransform = marker.GetComponent<RectTransform>();
-
-                // Set the custom image from the ScriptableObject
+                
                 Image markerImage = marker.GetComponent<Image>();
                 if (markerImage != null && compassMarker.compassMarkerSprite != null)
                 {
                     markerImage.sprite = compassMarker.compassMarkerSprite.compassMarkerSprite;
+                    markerImage.rectTransform.sizeDelta = compassMarker.compassMarkerSprite.compassMarkerSpriteSize;
                 }
+                
+                _objectiveMarkerTransforms.Add(markerRectTransform);
+                _objectiveObjectTransforms.Add(compassMarker.transform);
 
-                // Add the marker and the corresponding object's transform to the lists
-                objectiveMarkerTransforms.Add(markerRectTransform);
-                objectiveObjectTransforms.Add(obj.transform);
+                // Find the puzzle component on the same object
+                Puzzle puzzle = compassMarker.GetComponent<Puzzle>();
+                if (puzzle != null && !_puzzlesWithListeners.Contains(puzzle))
+                {
+                    puzzle.onPuzzleCompletion.AddListener(() => RemoveMarker(compassMarker.transform));
+                    _puzzlesWithListeners.Add(puzzle);
+                    //Debug.Log("added listener for removing marker on the puzzle " + puzzle.name);
+                }
             }
         }
     }
-
-    private void Update()
+    
+    public void RemoveMarker(Transform target)
     {
-        for (int i = 0; i < objectiveMarkerTransforms.Count; i++)
+        int index = _objectiveObjectTransforms.IndexOf(target);
+        if (index != -1)
         {
-            SetCompassMarkerPosition(objectiveMarkerTransforms[i], objectiveObjectTransforms[i].position);
+            Destroy(_objectiveMarkerTransforms[index].gameObject);
+            _objectiveMarkerTransforms.RemoveAt(index);
+            _objectiveObjectTransforms.RemoveAt(index);
         }
     }
 

@@ -6,4 +6,5 @@ using UnityEngine;
 public class SO_CompassMarker : ScriptableObject
 {
     public Sprite compassMarkerSprite;
+    public Vector2 compassMarkerSpriteSize = new Vector2(100,100);
 }

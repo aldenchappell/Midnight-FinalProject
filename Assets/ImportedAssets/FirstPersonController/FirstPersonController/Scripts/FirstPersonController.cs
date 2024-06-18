@@ -194,7 +194,7 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			print(canMove);
+			//print(canMove);
 			if (pauseManager.GameIsPaused) return;
 			if (deathController.isDead) return;
 	
@@ -342,10 +342,8 @@ namespace StarterAssets
 		private void LateUpdate()
 		{
 			if (pauseManager.GameIsPaused) return;
-			
-			
-			
-			if(canMove && !deathController.isDead && controller.enabled)
+            
+			if(canMove && canRotate && !deathController.isDead && controller.enabled)
 				CameraRotation();
 		}
 
