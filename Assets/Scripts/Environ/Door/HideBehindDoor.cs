@@ -105,27 +105,29 @@ public class HideBehindDoor : MonoBehaviour
     {
         _isActive = !_isActive;
         _isSwitching = true;
-        HidePlayer();
         if (_isActive)
         {
             _doorController.Invoke("HandleDoor", 0);
+            _inventory.HideHandItem();
             yield return new WaitForSeconds(1f);
             ToggleDoorUI();
             _playerCam.Priority = 0;
             _doorHideCamera.Priority = 5;
             _doorController.Invoke("HandleDoor", 2f);
-
+            Invoke("HidePlayer", 1.5f);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             _doorController.Invoke("HandleDoor", 0);
+            _inventory.HideHandItem();
             yield return new WaitForSeconds(1f);
             ToggleDoorUI();
             _playerCam.Priority = 5;
             _doorHideCamera.Priority = 0;
             _doorController.Invoke("HandleDoor", 2f);
+            Invoke("HidePlayer", 1f);
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -310,15 +312,11 @@ public class HideBehindDoor : MonoBehaviour
         {
             _player.layer = hiddenLayer;
             _FPC.ToggleCanMove();
-            // Hide items to prevent them from being seen outside of door
-            _inventory.HideHandItem();
         }
         else
         {
             _player.layer = defaultLayer;
             _FPC.ToggleCanMove();
-            //Reactivate Items
-            _inventory.Invoke("HideHandItem", 1f);
         }
     }
 }
