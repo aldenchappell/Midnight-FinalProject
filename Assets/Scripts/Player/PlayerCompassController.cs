@@ -14,6 +14,7 @@ public class PlayerCompassController : MonoBehaviour
 
     private readonly List<RectTransform> _objectiveMarkerTransforms = new List<RectTransform>();
     private readonly List<Transform> _objectiveObjectTransforms = new List<Transform>();
+    private readonly List<Transform> _removedMarkers = new List<Transform>();
     private readonly List<Puzzle> _puzzles = new List<Puzzle>();
 
     private Transform _cameraObjectTransform;
@@ -47,6 +48,9 @@ public class PlayerCompassController : MonoBehaviour
 
         if (InGameSettingsManager.Instance.enableCompass)
         {
+            bool markerHitByRaycast = false;
+            RaycastHit hitInfo;
+            
             for (int i = _objectiveMarkerTransforms.Count - 1; i >= 0; i--)
             {
                 if (_objectiveObjectTransforms[i] == null)
@@ -74,7 +78,59 @@ public class PlayerCompassController : MonoBehaviour
                 }
             }
 
-            if (anyMarkersVisible)
+            if (Physics.Raycast(_cameraObjectTransform.position,
+                    _cameraObjectTransform.forward,
+                    out hitInfo,
+                    2.0f))
+            {
+                CompassMarker compassMarker = hitInfo.collider.GetComponent<CompassMarker>();
+
+                if (compassMarker!= null)
+                {
+                    RemoveMarker(compassMarker.transform);
+                    if (!_removedMarkers.Contains(compassMarker.transform))
+                    {
+                        _removedMarkers.Add(compassMarker.transform);
+                    }
+                    markerHitByRaycast = true;
+                    Debug.Log("Detected a compass marker object " + compassMarker.gameObject.name);
+                }
+            }
+            else
+            {
+                markerHitByRaycast = false;
+            }
+
+            if (!markerHitByRaycast)
+            {
+                foreach (var removedMarker in _removedMarkers)
+                {
+                    //check to see if marker is not already in the active list
+                    if (!_objectiveObjectTransforms.Contains(removedMarker))
+                    {
+                        _objectiveObjectTransforms.Add(removedMarker);
+                        //add a new marker on the compass for the removed marker
+                        GameObject marker = Instantiate(markerPrefab, compassBarTransform);
+                        RectTransform markerRect = marker.GetComponent<RectTransform>();
+
+                        Image markerImage = marker.GetComponent<Image>();
+                        if (markerImage != null && removedMarker.GetComponent<CompassMarker>())
+                        {
+                            markerImage.sprite = removedMarker.GetComponent<CompassMarker>().compassMarkerSprite
+                                .compassMarkerSprite;
+                            markerImage.rectTransform.sizeDelta = removedMarker.GetComponent<CompassMarker>()
+                                .compassMarkerSprite.compassMarkerSpriteSize;
+                        }
+
+                        _objectiveMarkerTransforms.Add(markerRect);
+                    }
+                }
+                //After readding the markers, clear the list
+                _removedMarkers.Clear();
+            }
+            
+
+            if (anyMarkersVisible || markerHitByRaycast)
             {
                 _lastMarkerVisibleTime = Time.time;
                 if (_isFadingOut)

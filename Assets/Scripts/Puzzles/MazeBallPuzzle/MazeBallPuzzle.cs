@@ -218,10 +218,6 @@ public class MazeBallPuzzle : MonoBehaviour
                 Quaternion.Euler(newRotation),
                 Time.deltaTime * tiltSpeed);
         }
-        else
-        {
-            //_audio.PlayOneShot(invalidButtonSound);
-        }
     }
 
     // Normalize the tilt angle to ensure it stays within 0 and 360
