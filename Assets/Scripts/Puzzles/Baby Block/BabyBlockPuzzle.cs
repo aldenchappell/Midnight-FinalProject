@@ -111,11 +111,19 @@ public class BabyBlockPuzzle : MonoBehaviour
         {
             RotateObject(Vector3.up, -90);
         }
+        else if(Input.GetKey(KeyCode.D))
+        {
+            RotateObject(Vector3.up, 90);
+        }
         else if (Input.GetKey(KeyCode.W))
         {
             RotateObject(Vector3.forward, 90);
         }
-        if(Input.GetMouseButtonDown(0) && _canAnimate)
+        else if (Input.GetKey(KeyCode.S))
+        {
+            RotateObject(Vector3.forward, -90);
+        }
+        if (Input.GetMouseButtonDown(0) && _canAnimate)
         {
             RaycastToMousePosition();
         }
