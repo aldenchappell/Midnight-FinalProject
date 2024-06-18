@@ -53,6 +53,12 @@ public class InGameSettingsManager : MonoBehaviour
         enableCompass = enable;
         PlayerPrefs.SetInt(CompassPrefKey, enable ? 1 : 0);
         PlayerPrefs.Save();
+
+        PlayerCompassController compassController = FindObjectOfType<PlayerCompassController>();
+        if (compassController != null)
+        {
+            compassController.SetCompassAlpha(enable ? 1 : 0);
+        }
     }
 
     public void ToggleHeadBobbing(bool enable)
@@ -132,9 +138,5 @@ public class InGameSettingsManager : MonoBehaviour
         enableHeartbeatSounds = PlayerPrefs.GetInt(HeartbeatSoundsPrefKey, 1) == 1;
         enableCompass = PlayerPrefs.GetInt(HeartbeatSoundsPrefKey, 1) == 1;
         SetQualityLevel(GetQualityLevel());
-        // InitializeBrightness();
-        //
-        // QualitySettingsController qualitySettingsController = FindObjectOfType<QualitySettingsController>();
-        // qualitySettingsController.SetResolution(PlayerPrefs.GetInt("ResolutionIndex"));
     }
 }
