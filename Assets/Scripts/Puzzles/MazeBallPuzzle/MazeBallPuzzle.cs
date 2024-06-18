@@ -13,7 +13,6 @@ public class MazeBallPuzzle : MonoBehaviour
     private FirstPersonController _firstPersonController;
     [SerializeField] private GameObject mazePuzzleObj;
     [SerializeField] private GameObject originalMazeBall;
-    [SerializeField] private GameObject pfMazeBall;
     [SerializeField] private Transform mazePuzzleBallSpawnPos;
     
     [Header("Tilting")]
@@ -160,7 +159,7 @@ public class MazeBallPuzzle : MonoBehaviour
         {
             mainCam.Priority = 0;
             puzzleCam.Priority = 10;
-            puzzleCam.transform.rotation = mazePuzzleObj.transform.rotation;
+            //puzzleCam.transform.rotation = mazePuzzleObj.transform.rotation;
         }
         else
         {
@@ -179,16 +178,16 @@ public class MazeBallPuzzle : MonoBehaviour
             switch (directionValue)
             {
                 case 0:
-                    TiltPuzzle(Vector3.forward, 10); // Rotate around the forward (positive Z-axis)
+                    TiltPuzzle(Vector3.forward, -10); // Rotate around the forward (positive Z-axis)
                     break;
                 case 1:
-                    TiltPuzzle(Vector3.forward, -10); // Rotate around the backward (negative Z-axis)
+                    TiltPuzzle(Vector3.forward, 10); // Rotate around the backward (negative Z-axis)
                     break;
                 case 2:
-                    TiltPuzzle(Vector3.left, -10); // Rotate around the left (negative X-axis)
+                    TiltPuzzle(Vector3.left, 10); // Rotate around the left (negative X-axis)
                     break;
                 case 3:
-                    TiltPuzzle(Vector3.left, 10); // Rotate around the right (positive X-axis)
+                    TiltPuzzle(Vector3.left, -10); // Rotate around the right (positive X-axis)
                     break;
                 default:
                     Debug.LogError("Error tilting the maze puzzle. MazeBullPuzzle/DetermineTiltAxis");
@@ -300,12 +299,6 @@ public class MazeBallPuzzle : MonoBehaviour
     {
         OnInteractStartDelay();
 
-        // Make a copy of the originalMazeBall
-        //GameObject newBall = Instantiate(originalMazeBall, mazePuzzleBallSpawnPos.position, Quaternion.identity);
-        //newBall.transform.SetParent(mazePuzzleObj.transform);
-
-        // Update the reference to originalMazeBall
-        //originalMazeBall = newBall;
         originalMazeBall.transform.position = mazePuzzleBallSpawnPos.position;
         _currentTimer = 0;
         UpdatePuzzleUI();
