@@ -47,9 +47,7 @@ public class HideBehindDoor : MonoBehaviour
     private float _currentCenterX = 0f;
     private float _currentCenterY = 0f;
 
-
-    private Image[] _doorHudImages;
-    private TMP_Text[] _doorHudTexts;
+    private GameObject _doorHud;
     private GameObject _inGameUI;
     private void Awake()
     {
@@ -69,18 +67,16 @@ public class HideBehindDoor : MonoBehaviour
         
         _originalSpyCamRotation = _doorSpyHoleCamera.transform.rotation;
 
-        
-        _doorHudImages = GameObject.Find("DOORHUDPARENT").GetComponentsInChildren<Image>();
-        _doorHudTexts = GameObject.Find("DOORHUDPARENT").GetComponentsInChildren<TMP_Text>();
+        _doorHud = GameObject.Find("DOORHUD");
         _inGameUI = GameObject.Find("INGAMEUI");
-        
-        //_doorController.GetComponent<InteractableObject>().onInteraction.AddListener(ToggleDoorUI);
     }
 
     private void Start()
     {
         _isActive = false;
         _isSwitching = false;
+
+        _doorHud.SetActive(false);
     }
 
     private void Update()
@@ -105,27 +101,29 @@ public class HideBehindDoor : MonoBehaviour
     {
         _isActive = !_isActive;
         _isSwitching = true;
-        HidePlayer();
         if (_isActive)
         {
             _doorController.Invoke("HandleDoor", 0);
+            _inventory.HideHandItem();
             yield return new WaitForSeconds(1f);
             ToggleDoorUI();
             _playerCam.Priority = 0;
             _doorHideCamera.Priority = 5;
             _doorController.Invoke("HandleDoor", 2f);
-
+            Invoke("HidePlayer", 1.5f);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             _doorController.Invoke("HandleDoor", 0);
+            _inventory.HideHandItem();
             yield return new WaitForSeconds(1f);
             ToggleDoorUI();
             _playerCam.Priority = 5;
             _doorHideCamera.Priority = 0;
             _doorController.Invoke("HandleDoor", 2f);
+            Invoke("HidePlayer", 1f);
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -291,15 +289,7 @@ public class HideBehindDoor : MonoBehaviour
 
     private void ToggleDoorUI()
     {
-        foreach (var element in _doorHudImages)
-        {
-            element.enabled = !element.enabled;
-        }
-
-        foreach (var element in _doorHudTexts)
-        {
-            element.enabled = !element.enabled;
-        }
+        _doorHud.SetActive((!_doorHud.activeSelf));
         _inGameUI.SetActive(!_inGameUI.activeSelf);
     }
     #endregion
@@ -310,15 +300,11 @@ public class HideBehindDoor : MonoBehaviour
         {
             _player.layer = hiddenLayer;
             _FPC.ToggleCanMove();
-            // Hide items to prevent them from being seen outside of door
-            _inventory.HideHandItem();
         }
         else
         {
             _player.layer = defaultLayer;
             _FPC.ToggleCanMove();
-            //Reactivate Items
-            _inventory.Invoke("HideHandItem", 1f);
         }
     }
 }

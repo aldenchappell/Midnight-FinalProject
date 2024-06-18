@@ -1,11 +1,10 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerKeyController : MonoBehaviour
 {
     [SerializeField] private TMP_Text keysCollectedText;
-
+    [SerializeField] private TMP_Text pauseMenuKeysCollectedText;
     public int keys;
     
     private void Start()
@@ -23,5 +22,6 @@ public class PlayerKeyController : MonoBehaviour
     private void UpdateKeyUI()
     {
         keysCollectedText.text = keys.ToString();
+        pauseMenuKeysCollectedText.text = "Keys collected: " + keys;
     }
 }

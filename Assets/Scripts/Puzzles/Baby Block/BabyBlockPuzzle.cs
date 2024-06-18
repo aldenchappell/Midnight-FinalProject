@@ -107,23 +107,23 @@ public class BabyBlockPuzzle : MonoBehaviour
     //Check for inputs once puzzle is active.
     private void CheckForInput()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            RotateObject(false, 90);
+            RotateObject(Vector3.up, -90);
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if(Input.GetKey(KeyCode.D))
         {
-            RotateObject(false, -90);
+            RotateObject(Vector3.up, 90);
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKey(KeyCode.W))
         {
-            RotateObject(true, -90);
+            RotateObject(Vector3.forward, 90);
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
-            RotateObject(true, 90);
+            RotateObject(Vector3.forward, -90);
         }
-        if(Input.GetMouseButtonDown(0) && _canAnimate)
+        if (Input.GetMouseButtonDown(0) && _canAnimate)
         {
             RaycastToMousePosition();
         }
@@ -132,17 +132,12 @@ public class BabyBlockPuzzle : MonoBehaviour
 
     #region Rotation
     //Rotate baby block cube 
-    private void RotateObject(bool axis, int rotation)
+    private void RotateObject(Vector3 axis, float angle)
     {
-        if (axis)
-        {
-            animationChild.transform.Rotate(rotation, 0, 0);
-        }
-        else
-        {
-            animationChild.transform.Rotate(0, rotation, 0);
-        }
+        Vector3 newRotation = animationChild.transform.rotation.eulerAngles + axis * angle;
+        animationChild.transform.rotation = Quaternion.Lerp(animationChild.transform.rotation, Quaternion.Euler(newRotation), Time.deltaTime * 2);
     }
+
     #endregion
 
     #region Mouse Raycast and Check Objects
