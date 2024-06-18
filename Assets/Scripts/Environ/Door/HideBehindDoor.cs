@@ -47,9 +47,7 @@ public class HideBehindDoor : MonoBehaviour
     private float _currentCenterX = 0f;
     private float _currentCenterY = 0f;
 
-
-    private Image[] _doorHudImages;
-    private TMP_Text[] _doorHudTexts;
+    private GameObject _doorHud;
     private GameObject _inGameUI;
     private void Awake()
     {
@@ -69,18 +67,16 @@ public class HideBehindDoor : MonoBehaviour
         
         _originalSpyCamRotation = _doorSpyHoleCamera.transform.rotation;
 
-        
-        _doorHudImages = GameObject.Find("DOORHUDPARENT").GetComponentsInChildren<Image>();
-        _doorHudTexts = GameObject.Find("DOORHUDPARENT").GetComponentsInChildren<TMP_Text>();
+        _doorHud = GameObject.Find("DOORHUD");
         _inGameUI = GameObject.Find("INGAMEUI");
-        
-        //_doorController.GetComponent<InteractableObject>().onInteraction.AddListener(ToggleDoorUI);
     }
 
     private void Start()
     {
         _isActive = false;
         _isSwitching = false;
+
+        _doorHud.SetActive(false);
     }
 
     private void Update()
@@ -293,15 +289,7 @@ public class HideBehindDoor : MonoBehaviour
 
     private void ToggleDoorUI()
     {
-        foreach (var element in _doorHudImages)
-        {
-            element.enabled = !element.enabled;
-        }
-
-        foreach (var element in _doorHudTexts)
-        {
-            element.enabled = !element.enabled;
-        }
+        _doorHud.SetActive((!_doorHud.activeSelf));
         _inGameUI.SetActive(!_inGameUI.activeSelf);
     }
     #endregion
