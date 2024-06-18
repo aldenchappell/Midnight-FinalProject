@@ -1,30 +1,43 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerCompassController : MonoBehaviour
 {
-    [SerializeField] private RectTransform compassBarTransform;
-    [SerializeField] private GameObject markerPrefab; // Prefab for the marker UI element
-    [SerializeField] private float maxDistanceToShowMarker = 20f;
-    [SerializeField] private float distanceAngle = 30f;
-    
-    
-    
-    private List<RectTransform> _objectiveMarkerTransforms = new List<RectTransform>();
-    private List<Transform> _objectiveObjectTransforms = new List<Transform>();
-    private List<Puzzle> _puzzlesWithListeners = new List<Puzzle>();
+    [SerializeField] private RectTransform compassBarTransform; //compass bar
+    [SerializeField] private GameObject markerPrefab; //prefab that spawns to show marker on compass
+    private const float MaxDistanceToShowMarker = 12.5f; //maximum distance from the player to show marker
+    private const float MarkerDetectionAngle = 90f; //angle from the camera to look for markers
+    private const float CompassFadeDuration = 1.25f; //how long it takes for the compass to fade
 
-    public Transform cameraObjectTransform;
+    private readonly List<RectTransform> _objectiveMarkerTransforms = new List<RectTransform>();
+    private readonly List<Transform> _objectiveObjectTransforms = new List<Transform>();
+    private readonly List<Puzzle> _puzzles = new List<Puzzle>();
 
-    
+    private Transform _cameraObjectTransform;
+
+    private float _lastMarkerVisibleTime;
+    private const float MaxTimeWithNoMarkersFound = 1.0f;
+    private bool _isFadingOut;
+    private float _fadeStartTime;
+
+    private void Awake()
+    {
+        if (Camera.main != null) _cameraObjectTransform = Camera.main.transform;
+    }
+
     private void Start()
     {
         InitializeMarkers();
+        SetCompassAlpha(1);
     }
 
     private void Update()
     {
+        bool anyMarkersVisible = false;
+
         for (int i = _objectiveMarkerTransforms.Count - 1; i >= 0; i--)
         {
             if (_objectiveObjectTransforms[i] == null)
@@ -35,16 +48,48 @@ public class PlayerCompassController : MonoBehaviour
             }
             else
             {
-                float distance = Vector3.Distance(cameraObjectTransform.position, _objectiveObjectTransforms[i].position);
-                if (distance <= maxDistanceToShowMarker)
+                float distanceToMarker = Vector3.Distance(_cameraObjectTransform.position, _objectiveObjectTransforms[i].position);
+                Vector3 directionToMarker = (_objectiveObjectTransforms[i].position - _cameraObjectTransform.position).normalized;
+                float angleToMarker = Vector3.Angle(directionToMarker, _cameraObjectTransform.forward);
+
+                if (distanceToMarker <= MaxDistanceToShowMarker && angleToMarker <= MarkerDetectionAngle / 2)
                 {
                     _objectiveMarkerTransforms[i].gameObject.SetActive(true);
                     SetCompassMarkerPosition(_objectiveMarkerTransforms[i], _objectiveObjectTransforms[i].position);
+                    anyMarkersVisible = true;
                 }
                 else
                 {
                     _objectiveMarkerTransforms[i].gameObject.SetActive(false);
                 }
+            }
+        }
+
+        if (anyMarkersVisible)
+        {
+            _lastMarkerVisibleTime = Time.time;
+            if (_isFadingOut)
+            {
+                _isFadingOut = false;
+                SetCompassAlpha(1);
+            }
+        }
+        else if (Time.time - _lastMarkerVisibleTime > MaxTimeWithNoMarkersFound)
+        {
+            if (!_isFadingOut)
+            {
+                _isFadingOut = true;
+                _fadeStartTime = Time.time;
+            }
+            float elapsedTime = Time.time - _fadeStartTime;
+            if (elapsedTime < CompassFadeDuration)
+            {
+                float newAlpha = Mathf.Lerp(1, 0, elapsedTime / CompassFadeDuration);
+                SetCompassAlpha(newAlpha);
+            }
+            else
+            {
+                SetCompassAlpha(0);
             }
         }
     }
@@ -57,32 +102,29 @@ public class PlayerCompassController : MonoBehaviour
         {
             if (compassMarker != null)
             {
-                // Create a new marker UI element as a child of the compass bar
                 GameObject marker = Instantiate(markerPrefab, compassBarTransform);
                 RectTransform markerRectTransform = marker.GetComponent<RectTransform>();
-                
+
                 Image markerImage = marker.GetComponent<Image>();
                 if (markerImage != null && compassMarker.compassMarkerSprite != null)
                 {
                     markerImage.sprite = compassMarker.compassMarkerSprite.compassMarkerSprite;
                     markerImage.rectTransform.sizeDelta = compassMarker.compassMarkerSprite.compassMarkerSpriteSize;
                 }
-                
+
                 _objectiveMarkerTransforms.Add(markerRectTransform);
                 _objectiveObjectTransforms.Add(compassMarker.transform);
 
-                // Find the puzzle component on the same object
                 Puzzle puzzle = compassMarker.GetComponent<Puzzle>();
-                if (puzzle != null && !_puzzlesWithListeners.Contains(puzzle))
+                if (puzzle != null && !_puzzles.Contains(puzzle))
                 {
                     puzzle.onPuzzleCompletion.AddListener(() => RemoveMarker(compassMarker.transform));
-                    _puzzlesWithListeners.Add(puzzle);
-                    //Debug.Log("added listener for removing marker on the puzzle " + puzzle.name);
+                    _puzzles.Add(puzzle);
                 }
             }
         }
     }
-    
+
     public void RemoveMarker(Transform target)
     {
         int index = _objectiveObjectTransforms.IndexOf(target);
@@ -96,14 +138,36 @@ public class PlayerCompassController : MonoBehaviour
 
     private void SetCompassMarkerPosition(RectTransform markerTransform, Vector3 position)
     {
-        Vector3 dirToTarget = position - cameraObjectTransform.position;
+        Vector3 dirToTarget = position - _cameraObjectTransform.position;
 
         float angle = Vector2.SignedAngle(new Vector2(dirToTarget.x, dirToTarget.z),
-            new Vector2(cameraObjectTransform.forward.x, cameraObjectTransform.forward.z));
+            new Vector2(_cameraObjectTransform.forward.x, _cameraObjectTransform.forward.z));
         float compassXPos = Mathf.Clamp(
-            2 * angle / cameraObjectTransform.GetComponent<Camera>().fieldOfView,
+            2 * angle / _cameraObjectTransform.GetComponent<Camera>().fieldOfView,
             -1,
             1);
         markerTransform.anchoredPosition = new Vector2(compassBarTransform.rect.width / 2 * compassXPos, 0);
+    }
+
+    private void SetCompassAlpha(float alpha)
+    {
+        Image compassImage = compassBarTransform.GetComponent<Image>();
+        if (compassImage != null)
+        {
+            Color color = compassImage.color;
+            color.a = alpha;
+            compassImage.color = color;
+        }
+
+        foreach (RectTransform markerTransform in _objectiveMarkerTransforms)
+        {
+            Image markerImage = markerTransform.GetComponent<Image>();
+            if (markerImage != null)
+            {
+                Color color = markerImage.color;
+                color.a = alpha;
+                markerImage.color = color;
+            }
+        }
     }
 }
