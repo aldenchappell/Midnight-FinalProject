@@ -110,8 +110,9 @@ public class PlayerCompassController : MonoBehaviour
 
             if (!markerHitByRaycast)
             {
-                foreach (var removedMarker in _removedMarkers)
+                for (int i = _removedMarkers.Count - 1; i >= 0; i--)
                 {
+                    var removedMarker = _removedMarkers[i];
                     //check to see if marker is not already in the active list
                     if (!_objectiveObjectTransforms.Contains(removedMarker))
                     {
@@ -131,9 +132,9 @@ public class PlayerCompassController : MonoBehaviour
 
                         _objectiveMarkerTransforms.Add(markerRect);
                     }
+                    //After readding the markers, clear the list
+                    _removedMarkers.Clear();
                 }
-                //After readding the markers, clear the list
-                _removedMarkers.Clear();
             }
             
 
