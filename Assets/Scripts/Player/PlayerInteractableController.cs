@@ -76,13 +76,18 @@ public class PlayerInteractableController : MonoBehaviour
 
         if (_interactableObject != _previousInteractable)
         {
-            print("Hi");
+            //print("Hi");
             _previousInteractable = _interactableObject;
             if (_interactableObject != null && !_inPuzzle)
             {
-                print("Bye");
+                //print("Bye");
                 ResetInteraction();
             }
+        }
+
+        if (_interactableObject == null)
+        {
+            
         }
         
         if ((Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyOne)

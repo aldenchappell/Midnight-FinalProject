@@ -5,6 +5,7 @@ public class SkullDialogueLineHolder : MonoBehaviour
     private AudioSource _audioSource;
 
     [ColoredHeader("Universal Audio Clips", "#FF0000")]
+    public AudioClip[] wittyAssRemarks;
     public AudioClip demonChasingClip;
     public AudioClip demonPatrollingClip;
     public AudioClip demonRoamingClip;
@@ -13,6 +14,7 @@ public class SkullDialogueLineHolder : MonoBehaviour
     
     [ColoredHeader("Lobby Audio Clips", "#00FF00")] 
     public AudioClip lobbyOpeningClip;
+    public AudioClip findFuzeClip;
     
     [Space(10)]
     

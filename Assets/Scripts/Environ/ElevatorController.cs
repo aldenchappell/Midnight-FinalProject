@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,10 +9,13 @@ public class ElevatorController : MonoBehaviour
 {
     [SerializeField] private Animator elevatorAnimator;
 
+    public bool isLobbyElevator;
     public bool isOpened = false;
     private bool _levelSelected = false; // Ensure only one button can be pressed
     private string _selectedLevelName = "";
 
+    [SerializeField] private Transform lobbySpawnPosition;
+    
     [SerializeField] private float timeBeforeLoadingLevel = 5.0f;
 
     [SerializeField] private TMP_Text floorIndexText;
@@ -35,6 +39,19 @@ public class ElevatorController : MonoBehaviour
     {
         _elevatorAudioSource = GetComponent<AudioSource>();
 
+        if (isLobbyElevator && SceneTransitionManager.PreviouslyLoadedSceneName != "MAINMENU")
+        {
+            GameObject player = GameObject.Find("Player");
+            player.transform.position = lobbySpawnPosition.position;
+            player.transform.localRotation = lobbySpawnPosition.localRotation;
+        }
+
+        //SceneTransitionManager.UpdatePreviouslyLoadedScene(SceneManager.GetActiveScene().name);
+        Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
+    }
+
+    private void Start()
+    {
         Invoke(nameof(OpenElevator), 1f);
         
         ShowElevatorLevelOnStart();
@@ -204,6 +221,8 @@ public class ElevatorController : MonoBehaviour
         _elevatorAudioSource.PlayOneShot(elevatorMovingSound);
 
         yield return new WaitForSeconds(timeBeforeLoadingLevel);
+        
+        SceneTransitionManager.UpdatePreviouslyLoadedScene(SceneManager.GetActiveScene().name);
 
         SceneManager.LoadScene(_selectedLevelName);
         _startElevatorRoutineCoroutine = null;

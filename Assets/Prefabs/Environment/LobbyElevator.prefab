@@ -1813,6 +1813,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &5001896787517844378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4428422196523487644}
+  m_Layer: 0
+  m_Name: ElevatorSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4428422196523487644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5001896787517844378}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.974, y: 1.258, z: -0.981}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2331008338809025854}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5041175601094137201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3925,6 +3956,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b380f4da0bbf08646ac01c3591da57c6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3608905171652993616}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b380f4da0bbf08646ac01c3591da57c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4428422196523487644}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b380f4da0bbf08646ac01c3591da57c6, type: 3}
       insertIndex: -1
@@ -3980,7 +4014,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elevatorAnimator: {fileID: 4057792014077487315}
+  isLobbyElevator: 1
   isOpened: 0
+  elevatorSpawnPosition: {fileID: 4428422196523487644}
   timeBeforeLoadingLevel: 8
   floorIndexText: {fileID: 4001319457806560151}
   invalidLevelText: {fileID: 5024828954076481389}
