@@ -24,10 +24,13 @@ public class BabyBlockPuzzle : MonoBehaviour
     private AudioSource _audioSource;
     private Animator _animator;
     private PatrolSystemManager _patrol;
+    private GlobalCursorManager _cursor;
 
     private bool _isActive;
+    private bool _canExit;
     private bool _canAnimate;
     private int _correctObjectsPlaced;
+    private Vector3 _originalAnimationChildRotation;
 
     private void Awake()
     {
@@ -42,8 +45,10 @@ public class BabyBlockPuzzle : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
 
         _canAnimate = true;
+        _canExit = false;
 
         _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
+        GlobalCursorManager.Instance = _cursor;
     }
 
     private void Update()
@@ -61,6 +66,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         puzzleUI.SetActive(!puzzleUI.activeSelf);
         if(puzzleUI.activeSelf)
         {
+            GetComponent<Collider>().enabled = false;
             _FPC.ToggleCanMove();
             _playerCam.Priority = 0;
             _puzzleCam.Priority = 10;
@@ -78,13 +84,13 @@ public class BabyBlockPuzzle : MonoBehaviour
             }
 
             _isActive = true;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            FindObjectOfType<GlobalCursorManager>().EnableCursor();
+            Invoke("SetCanExit", 1f);
         }
         else
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            GetComponent<Collider>().enabled = true;
+            FindObjectOfType<GlobalCursorManager>().DisableCursor();
             _FPC.ToggleCanMove();
             _playerCam.Priority = 10;
             _puzzleCam.Priority = 0;
@@ -102,6 +108,7 @@ public class BabyBlockPuzzle : MonoBehaviour
             }
 
             _isActive = false;
+            _canExit = false;
         }
     }
     //Check for inputs once puzzle is active.
@@ -127,7 +134,17 @@ public class BabyBlockPuzzle : MonoBehaviour
         {
             RaycastToMousePosition();
         }
+        if(Input.GetMouseButtonDown(1) && _canExit)
+        {
+            ActivatePuzzle();
+        }
     }
+
+    private void SetCanExit()
+    {
+        _canExit = !_canExit;
+    }
+
     #endregion
 
     #region Rotation

@@ -26,7 +26,6 @@ public class DaVinciPuzzle : MonoBehaviour
     private int _currentDialIndex;
     private bool _isActive;
 
-    private GlobalCursorManager _cursor;
     private FirstPersonController _FPC;
     private AudioSource _puzzleAudio;
     private PatrolSystemManager _patrol;
@@ -41,7 +40,6 @@ public class DaVinciPuzzle : MonoBehaviour
 
     private void Awake()
     {
-        GlobalCursorManager.Instance = _cursor;
         _currentDialIndex = 0;
         _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
         _puzzleAudio = GetComponent<AudioSource>();
@@ -216,8 +214,7 @@ public class DaVinciPuzzle : MonoBehaviour
         puzzleUI.SetActive(!puzzleUI.activeSelf);
         if(puzzleUI.activeSelf)
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            FindObjectOfType<GlobalCursorManager>().EnableCursor();
             _FPC.ToggleCanMove();
             AdjustSelectedDial(0);
             _playerCam.Priority = 0;
@@ -226,8 +223,7 @@ public class DaVinciPuzzle : MonoBehaviour
         }
         else
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            FindObjectOfType<GlobalCursorManager>().DisableCursor();
             _FPC.ToggleCanMove();
             foreach (Transform dial in dials)
             {

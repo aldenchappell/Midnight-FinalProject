@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PlayerInteractableController : MonoBehaviour
 {
     private InteractableObject _interactableObject;
+    private InteractableObject _previousInteractable;
     private HighlightInteractableObjectController _highlightInteractableObjectController;
     private PlayerExamineObjectController _examineObjectController;
     private PauseManager _pauseManager;
@@ -21,6 +22,7 @@ public class PlayerInteractableController : MonoBehaviour
     [SerializeField] private float interactionDistance = 2.0f;
     [SerializeField] private float spamPreventionTime = 2.0f;
     private bool _allowInteraction = true;
+    public bool _inPuzzle;
 
     private void Awake()
     {
@@ -72,9 +74,15 @@ public class PlayerInteractableController : MonoBehaviour
             _examineObjectController.objectToExamine = null;
         }
 
-        if (_interactableObject == null)
+        if (_interactableObject != _previousInteractable)
         {
-            ResetInteraction();
+            print("Hi");
+            _previousInteractable = _interactableObject;
+            if (_interactableObject != null && !_inPuzzle)
+            {
+                print("Bye");
+                ResetInteraction();
+            }
         }
         
         if ((Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyOne)
@@ -82,7 +90,7 @@ public class PlayerInteractableController : MonoBehaviour
             && _examineObjectController != null
             && !_examineObjectController.isExaminingObject)
         {
-            if (_interactableObject != null && _allowInteraction)
+            if (_interactableObject != null && _allowInteraction && _previousInteractable != null)
             {
                 interactionImage.sprite = defaultInteractionIcon;
                 interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;

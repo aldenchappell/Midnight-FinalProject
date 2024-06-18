@@ -25,6 +25,7 @@ public class GlobalCursorManager : MonoBehaviour
 
     public void DisableCursor()
     {
+        print("Disabling cursor");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
