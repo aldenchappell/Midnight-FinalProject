@@ -30,67 +30,81 @@ public class PlayerCompassController : MonoBehaviour
 
     private void Start()
     {
-        InitializeMarkers();
-        SetCompassAlpha(1);
+        if (InGameSettingsManager.Instance.enableCompass)
+        {
+            InitializeMarkers();
+            SetCompassAlpha(1);
+        }
+        else
+        {
+            SetCompassAlpha(0);
+        }
     }
 
     private void Update()
     {
         bool anyMarkersVisible = false;
 
-        for (int i = _objectiveMarkerTransforms.Count - 1; i >= 0; i--)
+        if (InGameSettingsManager.Instance.enableCompass)
         {
-            if (_objectiveObjectTransforms[i] == null)
+            for (int i = _objectiveMarkerTransforms.Count - 1; i >= 0; i--)
             {
-                Destroy(_objectiveMarkerTransforms[i].gameObject);
-                _objectiveMarkerTransforms.RemoveAt(i);
-                _objectiveObjectTransforms.RemoveAt(i);
-            }
-            else
-            {
-                float distanceToMarker = Vector3.Distance(_cameraObjectTransform.position, _objectiveObjectTransforms[i].position);
-                Vector3 directionToMarker = (_objectiveObjectTransforms[i].position - _cameraObjectTransform.position).normalized;
-                float angleToMarker = Vector3.Angle(directionToMarker, _cameraObjectTransform.forward);
-
-                if (distanceToMarker <= MaxDistanceToShowMarker && angleToMarker <= MarkerDetectionAngle / 2)
+                if (_objectiveObjectTransforms[i] == null)
                 {
-                    _objectiveMarkerTransforms[i].gameObject.SetActive(true);
-                    SetCompassMarkerPosition(_objectiveMarkerTransforms[i], _objectiveObjectTransforms[i].position);
-                    anyMarkersVisible = true;
+                    Destroy(_objectiveMarkerTransforms[i].gameObject);
+                    _objectiveMarkerTransforms.RemoveAt(i);
+                    _objectiveObjectTransforms.RemoveAt(i);
                 }
                 else
                 {
-                    _objectiveMarkerTransforms[i].gameObject.SetActive(false);
+                    float distanceToMarker = Vector3.Distance(_cameraObjectTransform.position, _objectiveObjectTransforms[i].position);
+                    Vector3 directionToMarker = (_objectiveObjectTransforms[i].position - _cameraObjectTransform.position).normalized;
+                    float angleToMarker = Vector3.Angle(directionToMarker, _cameraObjectTransform.forward);
+
+                    if (distanceToMarker <= MaxDistanceToShowMarker && angleToMarker <= MarkerDetectionAngle / 2)
+                    {
+                        _objectiveMarkerTransforms[i].gameObject.SetActive(true);
+                        SetCompassMarkerPosition(_objectiveMarkerTransforms[i], _objectiveObjectTransforms[i].position);
+                        anyMarkersVisible = true;
+                    }
+                    else
+                    {
+                        _objectiveMarkerTransforms[i].gameObject.SetActive(false);
+                    }
+                }
+            }
+
+            if (anyMarkersVisible)
+            {
+                _lastMarkerVisibleTime = Time.time;
+                if (_isFadingOut)
+                {
+                    _isFadingOut = false;
+                    SetCompassAlpha(1);
+                }
+            }
+            else if (Time.time - _lastMarkerVisibleTime > MaxTimeWithNoMarkersFound)
+            {
+                if (!_isFadingOut)
+                {
+                    _isFadingOut = true;
+                    _fadeStartTime = Time.time;
+                }
+                float elapsedTime = Time.time - _fadeStartTime;
+                if (elapsedTime < CompassFadeDuration)
+                {
+                    float newAlpha = Mathf.Lerp(1, 0, elapsedTime / CompassFadeDuration);
+                    SetCompassAlpha(newAlpha);
+                }
+                else
+                {
+                    SetCompassAlpha(0);
                 }
             }
         }
-
-        if (anyMarkersVisible)
+        else
         {
-            _lastMarkerVisibleTime = Time.time;
-            if (_isFadingOut)
-            {
-                _isFadingOut = false;
-                SetCompassAlpha(1);
-            }
-        }
-        else if (Time.time - _lastMarkerVisibleTime > MaxTimeWithNoMarkersFound)
-        {
-            if (!_isFadingOut)
-            {
-                _isFadingOut = true;
-                _fadeStartTime = Time.time;
-            }
-            float elapsedTime = Time.time - _fadeStartTime;
-            if (elapsedTime < CompassFadeDuration)
-            {
-                float newAlpha = Mathf.Lerp(1, 0, elapsedTime / CompassFadeDuration);
-                SetCompassAlpha(newAlpha);
-            }
-            else
-            {
-                SetCompassAlpha(0);
-            }
+            SetCompassAlpha(0);
         }
     }
 

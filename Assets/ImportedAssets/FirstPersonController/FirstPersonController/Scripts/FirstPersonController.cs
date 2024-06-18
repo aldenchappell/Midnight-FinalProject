@@ -202,7 +202,7 @@ namespace StarterAssets
 			GroundedCheck();
 			Move();
 
-			if (InGameSettingsManager.Instance.enableViewBobbing && controller.enabled)
+			if (InGameSettingsManager.Instance.enableHeadBobbing && controller.enabled)
 			{
 				HandleHeadBob();
 			}

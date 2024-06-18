@@ -52,7 +52,7 @@ namespace TMPro.Examples
 
         void Awake()
         {
-            if (QualitySettings.vSyncCount > 0)
+            if (UnityEngine.QualitySettings.vSyncCount > 0)
                 Application.targetFrameRate = 60;
             else
                 Application.targetFrameRate = -1;

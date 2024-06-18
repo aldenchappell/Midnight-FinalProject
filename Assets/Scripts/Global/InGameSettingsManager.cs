@@ -5,11 +5,11 @@ public class InGameSettingsManager : MonoBehaviour
 {
     public static InGameSettingsManager Instance;
     
-    [Header("In Game Settings")] 
-    public bool enableViewBobbing;
+    [ColoredHeader("In Game Settings", "#FF00FF")] 
+    public bool enableHeadBobbing;
     public bool enableFootstepSounds;
     public bool enableHeartbeatSounds;
-    
+    public bool enableCompass = true;
     
     //for testing purposes only
     public bool enableJumping = false;
@@ -18,13 +18,14 @@ public class InGameSettingsManager : MonoBehaviour
     [Space(10)]
     
     
-    [Header("Custom KeyBinds")]
+    [ColoredHeader("Custom KeyBinds", "#FFFF00")]
     public KeyCode objectInteractionKeyOne = KeyCode.E;
     public KeyCode objectInteractionKeyTwo = KeyCode.Mouse0;
     public KeyCode itemExaminationInteractionKey = KeyCode.F;
     public KeyCode exitInteractionKey = KeyCode.Mouse1;
     public KeyCode crouchKey = KeyCode.LeftControl;
     public KeyCode sprintKey = KeyCode.LeftShift;
+    
     public KeyCode dropCurrentItem;
     
     
@@ -32,6 +33,7 @@ public class InGameSettingsManager : MonoBehaviour
     private const string ViewBobbingPrefKey = "ViewBobbing";
     private const string FootstepSoundsPrefKey = "Footsteps";
     private const string HeartbeatSoundsPrefKey = "Heartbeat";
+    private const string CompassPrefKey = "Compass";
     private void Awake()
     {
         if (Instance == null)
@@ -46,17 +48,16 @@ public class InGameSettingsManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void ToggleCompass(bool enable)
     {
-        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.Tab))
-        {
-            //GlobalCursorManager.Instance.EnableCursor();
-        }
+        enableCompass = enable;
+        PlayerPrefs.SetInt(CompassPrefKey, enable ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
-    public void ToggleViewBobbing(bool enable)
+    public void ToggleHeadBobbing(bool enable)
     {
-        enableViewBobbing = enable;
+        enableHeadBobbing = enable;
         PlayerPrefs.SetInt(ViewBobbingPrefKey, enable ? 1 : 0);
         PlayerPrefs.Save();
     }
@@ -77,7 +78,7 @@ public class InGameSettingsManager : MonoBehaviour
     
     public void InitializeBrightness()
     {
-        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, 0.5f); // Default brightness is 0.5
+        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, .5f); // Default brightness is 0.5
         SetBrightness(brightness);
     }
 
@@ -107,7 +108,7 @@ public class InGameSettingsManager : MonoBehaviour
 
     public int GetQualityLevel()
     {
-        int level = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
+        int level = PlayerPrefs.GetInt("QualityLevel", UnityEngine.QualitySettings.GetQualityLevel());
         return level;
     }
 
@@ -126,8 +127,14 @@ public class InGameSettingsManager : MonoBehaviour
     
     private void LoadSettings()
     {
-        enableViewBobbing = PlayerPrefs.GetInt(ViewBobbingPrefKey, 1) == 1;
+        enableHeadBobbing = PlayerPrefs.GetInt(ViewBobbingPrefKey, 1) == 1;
         enableFootstepSounds = PlayerPrefs.GetInt(FootstepSoundsPrefKey, 1) == 1;
         enableHeartbeatSounds = PlayerPrefs.GetInt(HeartbeatSoundsPrefKey, 1) == 1;
+        enableCompass = PlayerPrefs.GetInt(HeartbeatSoundsPrefKey, 1) == 1;
+        SetQualityLevel(GetQualityLevel());
+        // InitializeBrightness();
+        //
+        // QualitySettingsController qualitySettingsController = FindObjectOfType<QualitySettingsController>();
+        // qualitySettingsController.SetResolution(PlayerPrefs.GetInt("ResolutionIndex"));
     }
 }
