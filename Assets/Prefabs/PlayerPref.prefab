@@ -1726,7 +1726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.09803922}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1850,10 +1850,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1769312034478900945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 455.081}
-  m_SizeDelta: {x: 900, y: 4.623}
+  m_AnchorMin: {x: 0.26629168, y: 0.918778}
+  m_AnchorMax: {x: 0.7344792, y: 0.9243334}
+  m_AnchoredPosition: {x: -0.5, y: 0.08099365}
+  m_SizeDelta: {x: 1, y: -1.3770142}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2984919530505727097
 CanvasRenderer:
@@ -1904,7 +1904,7 @@ GameObject:
   - component: {fileID: 8166418495724699507}
   - component: {fileID: 1211827041847392565}
   - component: {fileID: 8076741512736363211}
-  - component: {fileID: 1419978387789224576}
+  - component: {fileID: 2889584291822415499}
   m_Layer: 5
   m_Name: CompassToggle
   m_TagString: Untagged
@@ -1959,7 +1959,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_ColorMultiplier: 3.72
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -2038,7 +2038,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1419978387789224576
+--- !u!114 &2889584291822415499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2047,9 +2047,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1835123860631069797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a8e9a75ee39a94e934f1641b1a5c66, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e4b99e7f7331a646a37e958a338ac55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingKey: Compass
 --- !u!1 &1904306057439498353
 GameObject:
   m_ObjectHideFlags: 0
@@ -3378,7 +3379,7 @@ GameObject:
   - component: {fileID: 3748355902276160770}
   - component: {fileID: 9094541626692367410}
   - component: {fileID: 4339418739249310722}
-  - component: {fileID: 7507950104150392839}
+  - component: {fileID: 7284151042311088265}
   m_Layer: 5
   m_Name: HeadbobToggle
   m_TagString: Untagged
@@ -3512,7 +3513,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &7507950104150392839
+--- !u!114 &7284151042311088265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3521,9 +3522,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2508581713251438664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ad0c6608ee155f4c9148ff2eaa885c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e4b99e7f7331a646a37e958a338ac55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingKey: ViewBobbing
 --- !u!1 &2527156156751828135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3733,7 +3735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.09803922}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4581,7 +4583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6425448277953028906}
   - component: {fileID: 6061852949676062437}
-  - component: {fileID: 364214442680291555}
+  - component: {fileID: 3506019312572986948}
   m_Layer: 5
   m_Name: FootstepToggle
   m_TagString: Untagged
@@ -4670,7 +4672,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
---- !u!114 &364214442680291555
+--- !u!114 &3506019312572986948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4679,9 +4681,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3289159684610889040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a04919336b5ea4386f4e83167074dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e4b99e7f7331a646a37e958a338ac55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingKey: Footsteps
 --- !u!1 &3329307259749097011
 GameObject:
   m_ObjectHideFlags: 0
@@ -9372,8 +9375,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1694498815
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+    rgba: 436207615
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.09803922}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10698,7 +10701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.09803922}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11052,8 +11055,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1694498815
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+    rgba: 436207615
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.09803922}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12128,7 +12131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9206585280443424409}
   - component: {fileID: 1891261036751718021}
-  - component: {fileID: 6693099130967959649}
+  - component: {fileID: 8409500426736312034}
   m_Layer: 5
   m_Name: HeartbeatToggle
   m_TagString: Untagged
@@ -12217,7 +12220,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
---- !u!114 &6693099130967959649
+--- !u!114 &8409500426736312034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12226,9 +12229,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7622376139081067923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc0e0a23db3eb14099ca4efde19c213, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e4b99e7f7331a646a37e958a338ac55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingKey: Heartbeat
 --- !u!1 &7699083514539393460
 GameObject:
   m_ObjectHideFlags: 0
@@ -13155,7 +13159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8280546208986798126
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13288,8 +13292,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1694498815
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+    rgba: 436207615
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.09803922}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MusicBoxPuzzle : MonoBehaviour
 { 
     private Animator _animator;
-
+    [SerializeField] private GameObject keyToSpawn;
     private void Awake()
     {
         _animator = transform.GetComponentInChildren<Animator>();
@@ -22,7 +22,24 @@ public class MusicBoxPuzzle : MonoBehaviour
     private void LoopAnimation()
     {
         _animator.SetTrigger("PlayMusicBox");
-        GetComponent<Puzzle>().CompletePuzzle();
+        
         LevelCompletionManager.Instance.OnKeySpawn();
+    }
+
+    public void InitiateKeySpawn()
+    {
+        StartCoroutine(SpawnKey());
+    }
+
+    private IEnumerator SpawnKey()
+    {
+        yield return new WaitForSeconds(4.0f);
+       
+        GetComponent<Puzzle>().CompletePuzzle();
+
+        if (!keyToSpawn.activeSelf)
+        {
+            keyToSpawn.SetActive(true);
+        }
     }
 }

@@ -48,6 +48,33 @@ public class InGameSettingsManager : MonoBehaviour
         }
     }
 
+    public void SetToggleSetting(string settingKey, bool value)
+    {
+        PlayerPrefs.SetInt(settingKey, value ? 1 : 0);
+        PlayerPrefs.Save();
+
+        switch (settingKey)
+        {
+            case ViewBobbingPrefKey:
+                enableHeadBobbing = value;
+                break;
+            case FootstepSoundsPrefKey:
+                enableFootstepSounds = value;
+                break;
+            case HeartbeatSoundsPrefKey:
+                enableHeartbeatSounds = value;
+                break;
+            case CompassPrefKey:
+                enableCompass = value;
+                PlayerCompassController compassController = FindObjectOfType<PlayerCompassController>();
+                if (compassController)
+                {
+                    compassController.SetCompassAlpha(value ? 1 : 0);
+                }
+                break;
+        }
+    }
+
     public void ToggleCompass(bool enable)
     {
         enableCompass = enable;

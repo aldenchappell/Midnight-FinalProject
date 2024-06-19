@@ -100,7 +100,7 @@ public class PlayerCompassController : MonoBehaviour
                         _removedMarkers.Add(compassMarker.transform);
                     }
                     markerHitByRaycast = true;
-                    Debug.Log("Detected a compass marker object " + compassMarker.gameObject.name);
+                    //Debug.Log("Detected a compass marker object " + compassMarker.gameObject.name);
                 }
             }
             else

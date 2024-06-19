@@ -5807,8 +5807,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2069569048236402576}
   - component: {fileID: 4869101007214584086}
-  - component: {fileID: 6797488668749091088}
   - component: {fileID: 3378260185939666022}
+  - component: {fileID: 8196820877994706295}
   m_Layer: 5
   m_Name: HeadBobToggle
   m_TagString: Untagged
@@ -5897,18 +5897,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
---- !u!114 &6797488668749091088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 471313874728166923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ad0c6608ee155f4c9148ff2eaa885c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3378260185939666022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5954,6 +5942,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8196820877994706295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471313874728166923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4b99e7f7331a646a37e958a338ac55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingKey: ViewBobbing
 --- !u!1 &473763912971821853
 GameObject:
   m_ObjectHideFlags: 0
@@ -37474,7 +37475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4893263184042734477}
   - component: {fileID: 7996900919824124219}
-  - component: {fileID: 7427094205019701472}
+  - component: {fileID: 5125357586526552467}
   m_Layer: 5
   m_Name: FootstepToggle
   m_TagString: Untagged
@@ -37563,7 +37564,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
---- !u!114 &7427094205019701472
+--- !u!114 &5125357586526552467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37572,9 +37573,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3075442086689046953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a04919336b5ea4386f4e83167074dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e4b99e7f7331a646a37e958a338ac55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingKey: Footsteps
 --- !u!1 &3090380806051097519
 GameObject:
   m_ObjectHideFlags: 0
@@ -49124,7 +49126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3477078243518374197}
   - component: {fileID: 8709963516407845145}
-  - component: {fileID: 207797388864342207}
+  - component: {fileID: 2350967840906102377}
   m_Layer: 5
   m_Name: HeartbeatToggle
   m_TagString: Untagged
@@ -49213,7 +49215,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
---- !u!114 &207797388864342207
+--- !u!114 &2350967840906102377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49222,9 +49224,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4073286039035215641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc0e0a23db3eb14099ca4efde19c213, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e4b99e7f7331a646a37e958a338ac55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingKey: Heartbeat
 --- !u!1 &4081129985965733039
 GameObject:
   m_ObjectHideFlags: 0
@@ -65606,7 +65609,6 @@ MonoBehaviour:
   puzzle: {fileID: 0}
   mazePuzzleObj: {fileID: 2853055483127504841}
   originalMazeBall: {fileID: 4190208597498778612}
-  pfMazeBall: {fileID: 4580221643152514981, guid: 503396b0225f2df43902b406eadf3d39, type: 3}
   mazePuzzleBallSpawnPos: {fileID: 4492253856180917134}
   tiltSpeed: 2.5
   minAngle: -15
@@ -115305,19 +115307,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3084076195804208909, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 0.9998634
       objectReference: {fileID: 0}
     - target: {fileID: 3084076195804208909, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3084076195804208909, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5
+      value: 0.01653251
       objectReference: {fileID: 0}
     - target: {fileID: 3084076195804208909, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3229464335635811818, guid: 9a8c3468c5985f446937e16afc405ada, type: 3}
       propertyPath: m_LocalPosition.x

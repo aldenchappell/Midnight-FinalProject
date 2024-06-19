@@ -33,11 +33,7 @@ public class LevelCompletionManager : MonoBehaviour
         }
         _audioSource = GetComponent<AudioSource>();
     }
-
-    private void OnEnable()
-    {
-        
-    }
+    
 
     public void SavePuzzleCompletion(SO_Puzzle puzzle)
     {
@@ -66,16 +62,6 @@ public class LevelCompletionManager : MonoBehaviour
     public bool IsLevelCompleted(string levelName)
     {
         return _completedLevels.Contains(levelName);
-    }
-
-    public bool IsPuzzleCompleted(string puzzleName)
-    {
-        return _completedPuzzles.Contains(puzzleName);
-    }
-
-    public void DestroyPuzzlePiece()
-    {
-        
     }
 
     public void ResetPuzzles()

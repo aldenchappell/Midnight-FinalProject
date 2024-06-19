@@ -47,7 +47,7 @@ public class ElevatorController : MonoBehaviour
         }
 
         //SceneTransitionManager.UpdatePreviouslyLoadedScene(SceneManager.GetActiveScene().name);
-        Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
+        //Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
     }
 
     private void Start()
