@@ -53,11 +53,10 @@ public class PlayerCompassController : MonoBehaviour
                 _isFadingOut = false;
                 SetCompassAlpha(1);
             }
-            
-            
+
             bool markerHitByRaycast = false;
             RaycastHit hitInfo;
-            
+
             for (int i = _objectiveMarkerTransforms.Count - 1; i >= 0; i--)
             {
                 if (_objectiveObjectTransforms[i] == null)
@@ -92,7 +91,7 @@ public class PlayerCompassController : MonoBehaviour
             {
                 CompassMarker compassMarker = hitInfo.collider.GetComponent<CompassMarker>();
 
-                if (compassMarker!= null)
+                if (compassMarker != null)
                 {
                     RemoveMarker(compassMarker.transform);
                     if (!_removedMarkers.Contains(compassMarker.transform))
@@ -100,7 +99,7 @@ public class PlayerCompassController : MonoBehaviour
                         _removedMarkers.Add(compassMarker.transform);
                     }
                     markerHitByRaycast = true;
-                    //Debug.Log("Detected a compass marker object " + compassMarker.gameObject.name);
+                    Debug.Log("Detected a compass marker object " + compassMarker.gameObject.name);
                 }
             }
             else
@@ -113,11 +112,17 @@ public class PlayerCompassController : MonoBehaviour
                 for (int i = _removedMarkers.Count - 1; i >= 0; i--)
                 {
                     var removedMarker = _removedMarkers[i];
-                    //check to see if marker is not already in the active list
+                    if (removedMarker == null)
+                    {
+                        _removedMarkers.RemoveAt(i);
+                        continue;
+                    }
+
+                    // Check to see if marker is not already in the active list
                     if (!_objectiveObjectTransforms.Contains(removedMarker))
                     {
                         _objectiveObjectTransforms.Add(removedMarker);
-                        //add a new marker on the compass for the removed marker
+                        // Add a new marker on the compass for the removed marker
                         GameObject marker = Instantiate(markerPrefab, compassBarTransform);
                         RectTransform markerRect = marker.GetComponent<RectTransform>();
 
@@ -132,11 +137,10 @@ public class PlayerCompassController : MonoBehaviour
 
                         _objectiveMarkerTransforms.Add(markerRect);
                     }
-                    //After readding the markers, clear the list
-                    _removedMarkers.Clear();
                 }
+                // After re-adding the markers, clear the list
+                _removedMarkers.Clear();
             }
-            
 
             if (anyMarkersVisible || markerHitByRaycast)
             {

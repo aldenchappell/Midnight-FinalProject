@@ -35,7 +35,7 @@ public class MazeBallPuzzle : MonoBehaviour
     
     [Header("Puzzle Scoring")] 
     private float _currentTimer;
-    private const float MaxTimeAllowed = 05f; //we will adjust this based on testing with finished puzzle model.
+    private const float MaxTimeAllowed = 45f; //we will adjust this based on testing with finished puzzle model.
     private PuzzleEscape _puzzleEscape;
     
     [Space(5)]

@@ -38,7 +38,6 @@ public class SlidingImagePuzzle : MonoBehaviour
     [SerializeField] private AudioClip correctMoveSound;
     [SerializeField] private AudioClip puzzleCompletedSound;
     
-    [SerializeField] private GameObject mazeballPrefab;
     private PuzzleEscape _puzzleEscape;
     private GameObject _playerUI;
 
