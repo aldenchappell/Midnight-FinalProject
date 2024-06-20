@@ -6,17 +6,24 @@ using StarterAssets;
 
 public class FuseBox : MonoBehaviour
 {
+    private AudioSource _radioAudio;
+    private Light[] _lobbyLights;
+    private ElevatorController _elevator;
+
     private Animator _animator;
 
     private CinemachineVirtualCamera _playerCam;
     private CinemachineVirtualCamera _puzzleCam;
     private Camera _mainCam;
+
     private Collider _boxCollider;
+
     private PlayerDualHandInventory _inventory;
     private FirstPersonController _FPC;
 
     private bool _isActive;
     private bool _fuseIn;
+    private bool _canExit;
 
     private void Awake()
     {
@@ -26,8 +33,23 @@ public class FuseBox : MonoBehaviour
         _animator = transform.GetComponent<Animator>();
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = transform.GetChild(2).GetComponent<CinemachineVirtualCamera>();
+
         _boxCollider = transform.GetComponent<Collider>();
         _isActive = false;
+
+        _lobbyLights = GameObject.FindObjectsOfType<Light>();
+        foreach(Light light in _lobbyLights)
+        {
+            if(light != GetComponent<Light>())
+            {
+                light.enabled = false;
+            }
+        }
+
+        _elevator = GameObject.FindObjectOfType<ElevatorController>();
+        _elevator.enabled = false;
+        _radioAudio = GameObject.Find("LargeRadio").GetComponent<AudioSource>();
+        _radioAudio.enabled = false;
     }
 
     private void Update()
@@ -49,6 +71,7 @@ public class FuseBox : MonoBehaviour
             _FPC.ToggleCanMove();
             AnimationsTrigger("Open");
             FindObjectOfType<GlobalCursorManager>().EnableCursor();
+            Invoke("ChangeExitBool", 1f);
         }
         else
         {
@@ -61,14 +84,20 @@ public class FuseBox : MonoBehaviour
 
     private void CheckForInput()
     {
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && _canExit)
         {
             ActivatePuzzle();
+            _canExit = false;
         }
         else if(Input.GetMouseButtonDown(0))
         {
             RaycastToMousePosition();
         }
+    }
+
+    private void ChangeExitBool()
+    {
+        _canExit = true;
     }
 
     private void RaycastToMousePosition()
@@ -85,8 +114,15 @@ public class FuseBox : MonoBehaviour
             if (objectHit.transform.CompareTag("Lever") && _fuseIn)
             {
                 AnimationsTrigger("PowerOn");
+                foreach (Light light in _lobbyLights)
+                {
+                    light.enabled = true;
+                }
                 ActivatePuzzle();
+                _radioAudio.enabled = true;
+                _elevator.enabled = true;
             }
+            
         }
     }
 
