@@ -1,10 +1,14 @@
+using System;
+using System.Net;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SkullDialogueLineHolder : MonoBehaviour
 {
-    private AudioSource _audioSource;
+    public AudioSource audioSource;
 
     [ColoredHeader("Universal Audio Clips", "#FF0000")]
+    public AudioClip[] levelCompletedClips;
     public AudioClip[] wittyAssRemarks;
     public AudioClip demonChasingClip;
     public AudioClip demonPatrollingClip;
@@ -43,24 +47,21 @@ public class SkullDialogueLineHolder : MonoBehaviour
     public AudioClip solveImageAndMazeBallPuzzlesClip;
     public AudioClip solvePolaroidPuzzleClip;
     public AudioClip collectPolaroidsClip;
-    
+
     private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
     
-    public void PlaySpecificAudioClip(AudioClip clip)
-    {
-        _audioSource.PlayOneShot(clip);
-    }
+    public void PlaySpecificSkullDialogueClip(AudioClip clip) => audioSource.PlayOneShot(clip);
+    public void PlayRandomSkullDialogueClip(AudioClip[] clips) =>
+        audioSource.PlayOneShot(clips[Random.Range(0, clips.Length)]);
 
-    public void PlayRandomAudioClip(AudioClip[] clips)
+    public void PlaySkullDialogueClipWithLogic(bool value, AudioClip clip)
     {
-        _audioSource.PlayOneShot(GetRandomAudioClip(clips));
-    }
-    
-    private AudioClip GetRandomAudioClip(AudioClip[] clips)
-    {
-        return clips[Random.Range(0, clips.Length)];
+        if (value)
+        {
+            PlaySpecificSkullDialogueClip(clip);
+        }
     }
 }
