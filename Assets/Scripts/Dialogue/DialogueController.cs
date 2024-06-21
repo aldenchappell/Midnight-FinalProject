@@ -28,6 +28,8 @@ public class DialogueController : MonoBehaviour
     private PlayerDualHandInventory _playerInventory;
     private FirstPersonController _firstPersonController;
 
+    private GameObject _currentDialogueNPC;
+
     private void Awake()
     {
         if (Instance == null)
@@ -36,6 +38,7 @@ public class DialogueController : MonoBehaviour
         }
         else
         {
+
             Destroy(gameObject);
         }
 
@@ -49,7 +52,21 @@ public class DialogueController : MonoBehaviour
         DisableDialogueBox();
     }
 
-    public void StartDialogue(string[] lines)
+    private void Update()
+    {
+        if(_currentDialogueNPC != null)
+        {
+            print(Vector3.Distance(_firstPersonController.transform.position, _currentDialogueNPC.transform.position));
+            if (Vector3.Distance(_firstPersonController.transform.position, _currentDialogueNPC.transform.position) > 5f)
+            {
+                print("Outside Distance");
+                _currentDialogueNPC = null;
+                StopDialogue();
+            }
+        }
+    }
+
+    public void StartDialogue(string[] lines, GameObject npc)
     {
         if (lines == null || lines.Length == 0)
         {
@@ -66,7 +83,7 @@ public class DialogueController : MonoBehaviour
             _currentIndex = 0;
             EnableDialogueBox();
             _currentCoroutine = StartCoroutine(ReadOutLine());
-            
+            _currentDialogueNPC = npc;
         }
     }
 

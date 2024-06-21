@@ -18,7 +18,7 @@ public class OnlyDialogueNPC : DialogueNPCBase
         {
             if (DialogueController.Instance != null)
             {
-                DialogueController.Instance.StartDialogue(dialogue.dialogueLines);
+                DialogueController.Instance.StartDialogue(dialogue.dialogueLines, this.gameObject);
             }
             else
             {
