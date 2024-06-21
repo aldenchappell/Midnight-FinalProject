@@ -9,6 +9,11 @@ public class SetMovment : MonoBehaviour
     [SerializeField] float maxPatrolRange;
     [SerializeField] bool enableDebug;
 
+    [Header("Only Assign if AI has special first time spawn event (Level One Only)")]
+    [SerializeField] GameObject firstSpawn;
+    [SerializeField] GameObject firstEnd;
+    [SerializeField] bool hasFirstTimeSpawnCondition;
+
     private Collider[] _allActiveNodes;
     private GameObject[] _allActiveDemonDoors;
     private GameObject _player;
@@ -56,6 +61,17 @@ public class SetMovment : MonoBehaviour
 
     private void CreateNewPatrolRoute()
     { 
+        if(hasFirstTimeSpawnCondition)
+        {
+            hasFirstTimeSpawnCondition = false;
+
+            _agent.enabled = false;
+            SetAIAtStartLocation(firstSpawn);
+            _agent.enabled = enabled;
+            _currentEndDestination = firstEnd.transform.position;
+            _agent.SetDestination(firstEnd.transform.position);
+        }
+
         if(_currentEndDestination != Vector3.zero)
         {
             //print("Setting end");
@@ -134,6 +150,11 @@ public class SetMovment : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, maxPatrolRange);
         }
+    }
+
+    private void SpecialFirstPatrolRoute()
+    {
+
     }
 
 }

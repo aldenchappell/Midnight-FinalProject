@@ -56,7 +56,6 @@ public class DialogueController : MonoBehaviour
     {
         if(_currentDialogueNPC != null)
         {
-            print(Vector3.Distance(_firstPersonController.transform.position, _currentDialogueNPC.transform.position));
             if (Vector3.Distance(_firstPersonController.transform.position, _currentDialogueNPC.transform.position) > 5f)
             {
                 print("Outside Distance");
