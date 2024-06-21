@@ -5,26 +5,36 @@ public class OnlyDialogueNPC : DialogueNPCBase
     public SO_NpcDialogue dialogue;
 
     private PlayerDualHandInventory _inventory;
+    private bool _canInteract;
 
     private void Awake()
     {
         _inventory = GameObject.FindAnyObjectByType<PlayerDualHandInventory>();
+        _canInteract = true;
     }
 
 
     public override void Interact()
     {
-        if(IsSkullInInventory())
+        if(IsSkullInInventory() && _canInteract)
         {
             if (DialogueController.Instance != null)
             {
+                print("Interacting");
                 DialogueController.Instance.StartDialogue(dialogue.dialogueLines, this.gameObject);
+                _canInteract = false;
+                Invoke("ChangeInteract", 4f);
             }
             else
             {
                 Debug.LogWarning("DialogueController instance not found!");
             }
         }
+    }
+
+    private void ChangeInteract()
+    {
+        _canInteract = true;
     }
 
     private bool IsSkullInInventory()

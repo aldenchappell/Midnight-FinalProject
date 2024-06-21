@@ -63,6 +63,13 @@ public class DialogueController : MonoBehaviour
                 StopDialogue();
             }
         }
+        if(_currentDialogueNPC != null)
+        {
+            if(Input.GetKeyDown("e"))
+            {
+                GoToNextLine();
+            }
+        }
     }
 
     public void StartDialogue(string[] lines, GameObject npc)
