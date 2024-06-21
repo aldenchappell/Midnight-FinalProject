@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Audio;
 
 [RequireComponent(typeof(Light))]
 public class LightFlicker : MonoBehaviour
