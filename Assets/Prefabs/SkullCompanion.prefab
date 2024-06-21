@@ -9691,7 +9691,8 @@ GameObject:
   - component: {fileID: 8280322294847666145}
   - component: {fileID: 1731513321219273687}
   - component: {fileID: 2807176487841001055}
-  m_Layer: 0
+  - component: {fileID: 412466474510675122}
+  m_Layer: 7
   m_Name: SkullCompanion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9708,7 +9709,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.995789, z: 0, w: 0.091675505}
   m_LocalPosition: {x: 12.82, y: 7.16, z: 8.915062}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4072478883229071931}
@@ -9799,14 +9800,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onInteraction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412466474510675122}
+        m_TargetAssemblyTypeName: SkullDialogue, Assembly-CSharp
+        m_MethodName: TogglePickedUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerDualHandInventory, Assembly-CSharp
+        m_MethodName: set_AdjustInventorySlots
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1974069668862667033}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPlaceObject:
     m_PersistentCalls:
       m_Calls: []
   interactionIcon: {fileID: 21300000, guid: a78af9cffe164384fb3c1dc91b66dae5, type: 3}
-  interactableIconSize: {x: 75, y: 75}
+  interactableIconSize: {x: 50, y: 50}
   interactableID: 0
   highlightInteractableObjectController: {fileID: 0}
+--- !u!114 &412466474510675122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974069668862667033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a263b4391fcf3f47850348a2f042baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickedUp: 0
+  isSkullActive: 0
 --- !u!1 &2974170983478058084
 GameObject:
   m_ObjectHideFlags: 0
