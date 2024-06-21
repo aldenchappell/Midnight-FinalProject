@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using StarterAssets;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class PlayerDeathController : MonoBehaviour
 {
     public bool isDead = false;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private FirstPersonController firstPersonController;
+    [SerializeField] CinemachineVirtualCamera _playerCam;
 
     private void Awake()
     {
@@ -33,9 +35,10 @@ public class PlayerDeathController : MonoBehaviour
     {
         if (!isDead) // Prevent multiple deaths at the same time
         {
+            _playerCam.Priority = 20;
             // Reset puzzles on player death
             LevelCompletionManager.Instance.OnPlayerDeath();
-            
+            deathScreen.transform.parent.gameObject.SetActive(true);
             deathScreen.SetActive(true);
             isDead = true;
             StartCoroutine(OnDeathLoadDeathScreenRoutine());
