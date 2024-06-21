@@ -6,13 +6,16 @@ public class LevelCompletionManager : MonoBehaviour
 {
     public static LevelCompletionManager Instance;
     public List<string> currentLevelPuzzles = new List<string>();
+    public List<string> loadedLevels = new List<string>();
     private string _currentLevel;
+    
+    private Dictionary<string, bool> _skullDialoguePlayed = new Dictionary<string, bool>();
 
     // Assign the appropriate puzzle scriptable objects in the inspector - Should be added to the lobby scene.
     public List<SO_Puzzle> level1Puzzles;
     public List<SO_Puzzle> level2Puzzles;
     public List<SO_Puzzle> level3Puzzles;
-    public List<SO_Puzzle> aldenLevelPuzzles; //testing
+
 
     private HashSet<string> _completedLevels = new HashSet<string>();
     private HashSet<string> _completedPuzzles = new HashSet<string>();
@@ -87,6 +90,22 @@ public class LevelCompletionManager : MonoBehaviour
         }
     }
 
+    public void SaveCurrentLevelAsLoaded(string levelName)
+    {
+        _currentLevel = levelName;
+        
+        loadedLevels.Add(levelName);
+        if (HasCurrentLevelAlreadyBeenLoaded(levelName))
+        {
+            loadedLevels.Remove(levelName);
+        }
+    }
+
+    private bool HasCurrentLevelAlreadyBeenLoaded(string levelName)
+    {
+        return loadedLevels.Contains(levelName);
+    }
+
     private List<string> ConvertPuzzlesToNames(List<SO_Puzzle> puzzles)
     {
         List<string> names = new List<string>();
@@ -136,6 +155,16 @@ public class LevelCompletionManager : MonoBehaviour
             // Game is won, handle that - load credits and/or ending cutscene?
             ResetPuzzles();
         }
+    }
+    
+    public bool HasSkullDialogueBeenPlayed(string levelName)
+    {
+        return _skullDialoguePlayed.ContainsKey(levelName) && _skullDialoguePlayed[levelName];
+    }
+
+    public void SetSkullDialoguePlayed(string levelName)
+    {
+        _skullDialoguePlayed[levelName] = true;
     }
 
     public void OnPlayerDeath()
