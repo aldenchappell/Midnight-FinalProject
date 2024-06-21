@@ -1,11 +1,10 @@
-using System;
-using System.Net;
 using UnityEngine;
 
 public class SkullDialogueLineHolder : MonoBehaviour
 {
     public static SkullDialogueLineHolder Instance;
-    
+
+    public bool isFirstClipOfScene = true;
     public AudioSource audioSource;
     
     public AudioClip[] levelCompletedClips;
