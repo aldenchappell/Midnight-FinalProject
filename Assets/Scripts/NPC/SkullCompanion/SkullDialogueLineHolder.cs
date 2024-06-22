@@ -52,6 +52,7 @@ public class SkullDialogueLineHolder : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {

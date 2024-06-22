@@ -84,11 +84,6 @@ public class PlayerInteractableController : MonoBehaviour
                 ResetInteraction();
             }
         }
-
-        if (_interactableObject == null)
-        {
-            
-        }
         
         if ((Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyOne)
              || Input.GetKeyDown(InGameSettingsManager.Instance.objectInteractionKeyTwo))

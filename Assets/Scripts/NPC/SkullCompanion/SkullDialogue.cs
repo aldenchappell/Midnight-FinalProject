@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 {
-    
-
     public bool pickedUp;
     private Coroutine _dialogueCoroutine;
     public bool isSkullActive;
@@ -18,6 +16,7 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
     {
         _playerInventory = FindObjectOfType<PlayerDualHandInventory>();
         _levelName = SceneManager.GetActiveScene().name;
+        Debug.Log("Awake: Current Level Name: " + _levelName);
 
         _interactableObject = GetComponent<InteractableObject>();
         _interactableObject.onInteraction.AddListener(() => PlayLevelOpeningClip(_levelName));
@@ -48,15 +47,15 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
                 PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.lobbyOpeningClip);
                 break;
-            case "FLOORONE":
+            case "FLOOR ONE":
                 PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.floorOneOpeningClip);
                 break;
-            case "FLOORTWO":
+            case "FLOOR TWO":
                 PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.floorTwoOpeningClip);
                 break;
-            case "FLOORTHREE":
+            case "FLOOR THREE":
                 PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.floorThreeOpeningClip);
                 break;
@@ -67,22 +66,31 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 
         LevelCompletionManager.Instance.SetSkullDialoguePlayed(levelName);
         LevelCompletionManager.Instance.SaveCurrentLevelAsLoaded(levelName);
+        Debug.Log("PlayLevelOpeningClip: Marked dialogue as played and saved level as loaded for " + levelName);
     }
 
     public void TogglePickedUp()
     {
         pickedUp = !pickedUp;
         isSkullActive = pickedUp;
+        Debug.Log("TogglePickedUp: pickedUp=" + pickedUp + ", isSkullActive=" + isSkullActive);
 
-        _hasBeenPickedUp = true;
-        if (_hasBeenPickedUp)
+        if (pickedUp)
         {
-            _interactableObject.onInteraction.RemoveListener(() => PlayLevelOpeningClip(_levelName));
-        }
+            if (!_hasBeenPickedUp)
+            {
+                _hasBeenPickedUp = true;
+                SkullDialogueLineHolder.Instance.audioSource.transform.position = transform.position;
+                SkullDialogueLineHolder.Instance.audioSource.transform.SetParent(gameObject.transform);
+                _interactableObject.onInteraction.RemoveListener(() => PlayLevelOpeningClip(_levelName));
+                 Debug.Log("TogglePickedUp: First time picked up, removed listener and set audio source position.");
+            }
 
-        if (_dialogueCoroutine != null)
-        {
-            StopCoroutine(_dialogueCoroutine);
+            if (_dialogueCoroutine != null)
+            {
+                StopCoroutine(_dialogueCoroutine);
+                Debug.Log("TogglePickedUp: Stopped previous dialogue coroutine.");
+            }
         }
     }
 
@@ -97,17 +105,23 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        SkullDialogueLineHolder.Instance.audioSource.transform.position = transform.position;
+        Debug.Log("PlaySpecificSkullDialogueClip: Playing clip " + clip.name);
         source.PlayOneShot(clip);
     }
 
-    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clip)
+    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
     {
-        
+        if (clips.Length == 0) return;
+
+        int randomIndex = Random.Range(0, clips.Length);
+        source.PlayOneShot(clips[randomIndex]);
     }
 
     public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
     {
-        
+        if (value)
+        {
+            PlaySpecificSkullDialogueClip(source, clip);
+        }
     }
 }

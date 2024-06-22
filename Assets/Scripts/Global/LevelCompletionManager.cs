@@ -9,7 +9,7 @@ public class LevelCompletionManager : MonoBehaviour
     public List<string> loadedLevels = new List<string>();
     private string _currentLevel;
     
-    private Dictionary<string, bool> _skullDialoguePlayed = new Dictionary<string, bool>();
+    private readonly Dictionary<string, bool> _skullDialoguePlayed = new Dictionary<string, bool>();
 
     // Assign the appropriate puzzle scriptable objects in the inspector - Should be added to the lobby scene.
     public List<SO_Puzzle> level1Puzzles;
@@ -93,16 +93,20 @@ public class LevelCompletionManager : MonoBehaviour
     public void SaveCurrentLevelAsLoaded(string levelName)
     {
         _currentLevel = levelName;
-        
-        loadedLevels.Add(levelName);
-        if (HasCurrentLevelAlreadyBeenLoaded(levelName))
+
+        if (!loadedLevels.Contains(levelName))
         {
-            loadedLevels.Remove(levelName);
+            loadedLevels.Add(levelName);
+            Debug.Log("SaveCurrentLevelAsLoaded: Loaded level " + levelName);
         }
     }
 
-    private bool HasCurrentLevelAlreadyBeenLoaded(string levelName)
+    
+    public bool HasCurrentLevelAlreadyBeenLoaded(string levelName)
     {
+        Debug.Log("HasSkullDialogueBeenPlayed: Level " 
+                  + levelName + " played status: " 
+                  + (_skullDialoguePlayed.ContainsKey(levelName) && _skullDialoguePlayed[levelName]));
         return loadedLevels.Contains(levelName);
     }
 
@@ -165,6 +169,7 @@ public class LevelCompletionManager : MonoBehaviour
     public void SetSkullDialoguePlayed(string levelName)
     {
         _skullDialoguePlayed[levelName] = true;
+        Debug.Log("SetSkullDialoguePlayed: Marked dialogue as played for " + levelName);
     }
 
     public void OnPlayerDeath()

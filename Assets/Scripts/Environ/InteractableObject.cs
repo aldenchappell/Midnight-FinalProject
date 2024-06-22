@@ -16,12 +16,11 @@ public class InteractableObject : MonoBehaviour
     [HideInInspector] public int interactableID;
 
     [HideInInspector] public HighlightInteractableObjectController highlightInteractableObjectController;
-
+    
     private void Start()
     {
         interactableID = Random.Range(0,999999);
         
         highlightInteractableObjectController = GetComponent<HighlightInteractableObjectController>();
     }
-
 }

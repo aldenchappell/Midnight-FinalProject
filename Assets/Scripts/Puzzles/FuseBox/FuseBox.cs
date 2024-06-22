@@ -38,15 +38,22 @@ public class FuseBox : MonoBehaviour
         _isActive = false;
 
         _lobbyLights = GameObject.FindObjectsOfType<Light>();
+
+        
         foreach(Light light in _lobbyLights)
         {
-            if(light != GetComponent<Light>())
+            if(!LevelCompletionManager.Instance.HasCurrentLevelAlreadyBeenLoaded("LOBBY") && light != GetComponent<Light>())
             {
                 light.enabled = false;
             }
         }
+        if (!LevelCompletionManager.Instance.HasCurrentLevelAlreadyBeenLoaded("LOBBY"))
+        {
+            LevelCompletionManager.Instance.SaveCurrentLevelAsLoaded("LOBBY");
+        }
 
-        _elevator = GameObject.FindObjectOfType<ElevatorController>();
+        
+        _elevator = FindObjectOfType<ElevatorController>();
         _elevator.enabled = false;
         _radioAudio = GameObject.Find("LargeRadio").GetComponent<AudioSource>();
         _radioAudio.enabled = false;
