@@ -50,9 +50,18 @@ public class FuseBox : MonoBehaviour
             {
                 light.enabled = false;
             }
-            else
+            else if (LevelCompletionManager.Instance.IsLevelCompleted("LOBBY"))
             {
-                fuseObject.SetActive(false);
+                if (fuseObject != null)
+                {
+                    fuseObject.SetActive(false);
+                }
+                else
+                {
+                    fuseObject = GameObject.Find("Fuse");
+                    fuseObject.SetActive(false);
+                }
+            
                 _elevator.enabled = true;
                 _elevator.OpenElevator();
                 AnimationsTrigger("PowerOn");
