@@ -12,6 +12,7 @@ public class LevelCompletionManager : MonoBehaviour
     private readonly Dictionary<string, bool> _skullDialoguePlayed = new Dictionary<string, bool>();
 
     // Assign the appropriate puzzle scriptable objects in the inspector - Should be added to the lobby scene.
+    public List<SO_Puzzle> lobbyPuzzles;
     public List<SO_Puzzle> level1Puzzles;
     public List<SO_Puzzle> level2Puzzles;
     public List<SO_Puzzle> level3Puzzles;
@@ -42,7 +43,6 @@ public class LevelCompletionManager : MonoBehaviour
     {
         if (currentLevelPuzzles == null)
         {
-            //Debug.LogError("Current level puzzles list is null");
             return;
         }
 
@@ -97,16 +97,16 @@ public class LevelCompletionManager : MonoBehaviour
         if (!loadedLevels.Contains(levelName))
         {
             loadedLevels.Add(levelName);
-            Debug.Log("SaveCurrentLevelAsLoaded: Loaded level " + levelName);
+           // Debug.Log("SaveCurrentLevelAsLoaded: Loaded level " + levelName);
         }
     }
 
     
     public bool HasCurrentLevelAlreadyBeenLoaded(string levelName)
     {
-        Debug.Log("HasSkullDialogueBeenPlayed: Level " 
-                  + levelName + " played status: " 
-                  + (_skullDialoguePlayed.ContainsKey(levelName) && _skullDialoguePlayed[levelName]));
+        //Debug.Log("HasSkullDialogueBeenPlayed: Level " 
+                 // + levelName + " played status: " 
+                //  + (_skullDialoguePlayed.ContainsKey(levelName) && _skullDialoguePlayed[levelName]));
         return loadedLevels.Contains(levelName);
     }
 
@@ -141,7 +141,11 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void CheckAndStartNextLevel()
     {
-        if (!IsLevelCompleted("FLOOR ONE"))
+        if (!IsLevelCompleted("LOBBY"))
+        {
+            StartLevel("LOBBY", lobbyPuzzles);
+        }
+        else if (!IsLevelCompleted("FLOOR ONE"))
         {
             StartLevel("FLOOR ONE", level1Puzzles);
         }
@@ -169,7 +173,7 @@ public class LevelCompletionManager : MonoBehaviour
     public void SetSkullDialoguePlayed(string levelName)
     {
         _skullDialoguePlayed[levelName] = true;
-        Debug.Log("SetSkullDialoguePlayed: Marked dialogue as played for " + levelName);
+        //Debug.Log("SetSkullDialoguePlayed: Marked dialogue as played for " + levelName);
     }
 
     public void OnPlayerDeath()

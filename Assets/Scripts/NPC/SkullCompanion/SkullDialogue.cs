@@ -16,7 +16,7 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
     {
         _playerInventory = FindObjectOfType<PlayerDualHandInventory>();
         _levelName = SceneManager.GetActiveScene().name;
-        Debug.Log("Awake: Current Level Name: " + _levelName);
+        //Debug.Log("Awake: Current Level Name: " + _levelName);
 
         _interactableObject = GetComponent<InteractableObject>();
         _interactableObject.onInteraction.AddListener(() => PlayLevelOpeningClip(_levelName));

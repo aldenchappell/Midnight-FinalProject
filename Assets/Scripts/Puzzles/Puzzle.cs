@@ -21,7 +21,6 @@ public class Puzzle : MonoBehaviour
             LevelCompletionManager.Instance.SavePuzzleCompletion(puzzle);
             LevelCompletionManager.Instance.CompletePuzzleInScene(SceneManager.GetActiveScene().name, puzzle.puzzleName);
             
-            
             onPuzzleCompletion?.Invoke();
         }
     }
