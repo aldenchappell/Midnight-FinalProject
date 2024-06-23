@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
@@ -304,7 +305,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
             source.PlayOneShot(clip);
     }
 
-    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clip)
+    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
     {
        
     }
@@ -312,5 +313,10 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
     public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
     {
        
+    }
+
+    public IEnumerator RepeatPlaySkullDialogueClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
+    {
+        yield return null;
     }
 }

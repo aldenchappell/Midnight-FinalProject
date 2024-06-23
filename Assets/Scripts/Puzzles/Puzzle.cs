@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -34,14 +35,19 @@ public class Puzzle : MonoBehaviour, IPlaySkullDialogue
             source.PlayOneShot(clip);
     }
 
-    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clip)
+    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
     {
         if(!source.isPlaying)
-            source.PlayOneShot(clip[Random.Range(0, clip.Length)]);
+            source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
     }
 
     public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
     {
         
+    }
+
+    public IEnumerator RepeatPlaySkullDialogueClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
+    {
+        yield return null;
     }
 }

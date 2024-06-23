@@ -59,4 +59,9 @@ public class SkullDialogueLineHolder : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public int GetRandomWaitTIme()
+    {
+        return Random.Range(15, 35);
+    }
 }

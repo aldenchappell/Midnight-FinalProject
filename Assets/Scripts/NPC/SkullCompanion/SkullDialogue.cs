@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -123,5 +124,10 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
         {
             PlaySpecificSkullDialogueClip(source, clip);
         }
+    }
+
+    public IEnumerator RepeatPlaySkullDialogueClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
+    {
+        yield return null;
     }
 }

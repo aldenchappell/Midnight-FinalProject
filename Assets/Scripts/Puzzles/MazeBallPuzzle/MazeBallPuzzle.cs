@@ -347,11 +347,16 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
             source.PlayOneShot(clip);
     }
 
-    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clip)
+    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
     {
     }
 
     public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
     {
+    }
+
+    public IEnumerator RepeatPlaySkullDialogueClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
+    {
+        yield return null;
     }
 }
