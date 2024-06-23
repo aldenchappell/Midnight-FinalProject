@@ -8,7 +8,7 @@ public class LevelCompletionManager : MonoBehaviour
     public List<string> currentLevelPuzzles = new List<string>();
     public List<string> loadedLevels = new List<string>();
     private string _currentLevel;
-    public bool _hasCompletedLobby;
+    public bool hasCompletedLobby;
     
     private readonly Dictionary<string, bool> _skullDialoguePlayed = new Dictionary<string, bool>();
 

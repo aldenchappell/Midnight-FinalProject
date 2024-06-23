@@ -11,11 +11,13 @@ public class PlayerKeyController : MonoBehaviour
 
     private void Start()
     {
-        keys = 0;
+        keys = PlayerPrefs.GetInt("CollectedKeys", 0); // Load the collected keys count
         UpdateKeyUI();
 
-        if(SceneManager.GetActiveScene().name == "LOBBY")
+        if (SceneManager.GetActiveScene().name == "LOBBY")
+        {
             _cubbyController = FindObjectOfType<KeyCubbyController>();
+        }
     }
 
     public void CollectKey()
@@ -23,11 +25,6 @@ public class PlayerKeyController : MonoBehaviour
         keys++;
         UpdateKeyUI();
         LevelCompletionManager.Instance.CollectKey();
-        
-        if (_cubbyController != null)
-        {
-            PlaceKeyInCubby(keys - 1); //place key in cubby at the corresponding index
-        }
     }
 
     public void PlaceKeyInCubby(int keyIndex)
@@ -35,6 +32,9 @@ public class PlayerKeyController : MonoBehaviour
         if (_cubbyController != null && _cubbyController.IsSlotAvailable(keyIndex))
         {
             _cubbyController.PlaceKey(keyIndex);
+            keys--; // Decrease the number of keys the player has after placing
+            UpdateKeyUI();
+            PlayerPrefs.SetInt("CollectedKeys", keys); // Update the collected keys count
         }
         else
         {

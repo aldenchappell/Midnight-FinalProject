@@ -1,19 +1,32 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyCubbyController : MonoBehaviour
 {
-    public List<GameObject> keySlots = new List<GameObject>(); 
+    public List<GameObject> keySlots = new List<GameObject>();
+    public List<InteractableObject> interactableKeyColliders = new List<InteractableObject>();
+
+    private PlayerKeyController _playerKeyController;
+
+    private AudioSource _audio;
+    [SerializeField] private AudioClip placeKeySound;
+    [SerializeField] private AudioClip invalidKeyPlacementSound;
+
+    private void Awake()
+    {
+        _playerKeyController = FindObjectOfType<PlayerKeyController>();
+        _audio = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
+        
         InitializeKeySlots();
+        SetupInteractionEvents();
     }
 
     private void InitializeKeySlots()
     {
-        //loop through the key slots and activate/deactivate based on placed keys
         for (int i = 0; i < keySlots.Count; i++)
         {
             bool keyPlaced = IsKeyPlaced(i);
@@ -21,14 +34,47 @@ public class KeyCubbyController : MonoBehaviour
         }
     }
 
+    private void SetupInteractionEvents()
+    {
+        for (int i = 0; i < interactableKeyColliders.Count; i++)
+        {
+            int keyIndex = i; 
+            interactableKeyColliders[i].onInteraction.AddListener(() => TryPlaceKeyInCubby(keyIndex));
+        }
+    }
+
+    private void TryPlaceKeyInCubby(int keyIndex)
+    {
+        if (_playerKeyController != null && _playerKeyController.keys > 0)
+        {
+            if (IsSlotAvailable(keyIndex))
+            {
+                _playerKeyController.PlaceKeyInCubby(keyIndex);
+            }
+            else
+            {
+                _audio.PlayOneShot(invalidKeyPlacementSound);
+                Debug.Log("Cubby slot is not available.");
+            }
+        }
+        else
+        {
+            _audio.PlayOneShot(invalidKeyPlacementSound);
+            Debug.Log("Player does not have a key to place.");
+        }
+    }
+
     public void PlaceKey(int keyIndex)
     {
         if (keyIndex >= 0 && keyIndex < keySlots.Count)
         {
-            keySlots[keyIndex].SetActive(false); //deactivate the slot where the key is placed
+            keySlots[keyIndex].SetActive(true);
+            _audio.PlayOneShot(placeKeySound);
+            PlayerPrefs.SetInt($"KeyPlaced_{keyIndex}", 1); //save key placement
         }
         else
         {
+            _audio.PlayOneShot(invalidKeyPlacementSound);
             Debug.Log("Invalid key index for placing key in cubby.");
         }
     }
@@ -37,33 +83,32 @@ public class KeyCubbyController : MonoBehaviour
     {
         if (keyIndex >= 0 && keyIndex < keySlots.Count)
         {
-            return keySlots[keyIndex].activeSelf; //return true if the slot is available 
+            return !keySlots[keyIndex].activeSelf; //return true if the slot is available
         }
-        else
-        {
-            Debug.LogWarning("Invalid key index for checking slot availability in cubby.");
-            return false;
-        }
+        
+        _audio.PlayOneShot(invalidKeyPlacementSound);
+        Debug.LogWarning("Invalid key index for checking slot availability in cubby.");
+        return false;
     }
 
     public bool IsKeyPlaced(int keyIndex)
     {
         if (keyIndex >= 0 && keyIndex < keySlots.Count)
         {
-            return !keySlots[keyIndex].activeSelf; //return true if the slot is not active (key placed)
+            return PlayerPrefs.GetInt($"KeyPlaced_{keyIndex}", 0) == 1; //return true if the key is placed
         }
-        else
-        {
-            Debug.LogWarning("Invalid key index for checking placed key in cubby.");
-            return false;
-        }
+        
+        _audio.PlayOneShot(invalidKeyPlacementSound);
+        Debug.LogWarning("Invalid key index for checking placed key in cubby.");
+        return false;
+        
     }
 
     public void ResetCubby()
     {
         foreach (var slot in keySlots)
         {
-            slot.SetActive(true);
+            slot.SetActive(false);
         }
     }
 }
