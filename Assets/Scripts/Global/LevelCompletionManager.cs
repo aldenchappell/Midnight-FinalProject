@@ -17,7 +17,7 @@ public class LevelCompletionManager : MonoBehaviour
     public List<SO_Puzzle> level2Puzzles;
     public List<SO_Puzzle> level3Puzzles;
 
-
+    private int _collectedKeys;
     private HashSet<string> _completedLevels = new HashSet<string>();
     private HashSet<string> _completedPuzzles = new HashSet<string>();
 
@@ -66,7 +66,8 @@ public class LevelCompletionManager : MonoBehaviour
     {
         return _completedLevels.Contains(levelName);
     }
-
+    
+    
     public void ResetPuzzles()
     {
         foreach (string puzzleName in currentLevelPuzzles)
@@ -181,9 +182,26 @@ public class LevelCompletionManager : MonoBehaviour
         ResetPuzzles();
     }
 
+    public void UpdateKeyCount(int keys)
+    {
+        _collectedKeys = keys;
+    }
+    
     public void OnKeySpawn()
     {
         _audioSource.PlayOneShot(keyDropSound);
         Debug.Log("Dropping key");
+    }
+    
+    public int GetCollectedKeys()
+    {
+        return _collectedKeys;
+    }
+
+    public void CollectKey()
+    {
+        _collectedKeys++;
+
+        // Optionally, trigger other events or UI updates related to key collection
     }
 }

@@ -8,7 +8,7 @@ public class FuseBox : MonoBehaviour
 {
     [SerializeField] private GameObject fuseObject;
     private AudioSource _radioAudio;
-    private Light[] _lobbyLights;
+    private List<Light>  _lobbyLights;
     private ElevatorController _elevator;
     
     private Animator _animator;
@@ -39,7 +39,16 @@ public class FuseBox : MonoBehaviour
         _boxCollider = transform.GetComponent<Collider>();
         _isActive = false;
         _puzzle = GetComponent<Puzzle>();
-        _lobbyLights = GameObject.FindObjectsOfType<Light>();
+        _lobbyLights = new List<Light>(FindObjectsOfType<Light>());
+
+        for (int i = 0; i < _lobbyLights.Count; i++)
+        {
+            if (_lobbyLights[i].gameObject.name == "ExamineObjectLight")
+            {
+                Debug.Log(_lobbyLights[i]);
+                _lobbyLights.Remove(_lobbyLights[i]);
+            }
+        }
 
         _elevator = FindObjectOfType<ElevatorController>();
         _elevator.enabled = false;

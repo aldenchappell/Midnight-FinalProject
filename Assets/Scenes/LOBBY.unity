@@ -15585,10 +15585,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1983531889}
-  - {fileID: 1490605828}
   - {fileID: 344019653}
   - {fileID: 368517990}
   - {fileID: 224521487}
+  - {fileID: 1490605828}
   - {fileID: 1272288771}
   - {fileID: 2126433583}
   - {fileID: 1538449151}
@@ -17149,6 +17149,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6270535685669938727, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342846563496454778, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6425448277953028906, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
@@ -18930,6 +18934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450651988015081}
+  - component: {fileID: 919132147510635860}
   m_Layer: 0
   m_Name: KeyCubby
   m_TagString: Untagged
@@ -18937,6 +18942,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132147510635860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147510635859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e871a83d2175b44a74da5a1625ab02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keySlots:
+  - {fileID: 1983531888}
+  - {fileID: 344019652}
+  - {fileID: 368517989}
+  - {fileID: 224521486}
+  - {fileID: 1490605827}
+  - {fileID: 1272288770}
+  - {fileID: 2126433582}
+  - {fileID: 1538449150}
+  - {fileID: 536311764}
 --- !u!1 &919132149067574765
 GameObject:
   m_ObjectHideFlags: 0
