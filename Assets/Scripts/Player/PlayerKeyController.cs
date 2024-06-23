@@ -10,6 +10,7 @@ public class PlayerKeyController : MonoBehaviour
     private void Start()
     {
         keys = 0;
+        UpdateKeyUI();
     }
 
     // This method will be the event that occurs when the player interacts with a key.

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
 
-public class PhotoBoardPuzzle : MonoBehaviour
+public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
 {
     [SerializeField] private GameObject[] puzzleUI;
 
@@ -116,7 +116,6 @@ public class PhotoBoardPuzzle : MonoBehaviour
             }
             else
             {
- 
                 CheckForPuzzleCompletion();
                 _puzzleAudio.PlayOneShot(incorrectSlotSound);
                 Debug.Log("Wrong slot");
@@ -191,14 +190,26 @@ public class PhotoBoardPuzzle : MonoBehaviour
             _puzzleAudio.PlayOneShot(incorrectSlotSound);
             return;
         }
-
+        
         // Check for polaroid only if the player is not already in the puzzle
         if (!_isInPuzzle)
         {
             bool hasPolaroid = _playerDualHandInventory.GetInventory.Any(item => item != null && item.CompareTag("Polaroid"));
-            if (_isFirstTime && !hasPolaroid || polaroidCount != TargetPolaroidCount)
+            if (polaroidCount != TargetPolaroidCount)
+            {
+                PlaySpecificSkullDialogueClip(
+                    SkullDialogueLineHolder.Instance.audioSource,
+                    SkullDialogueLineHolder.Instance.collectPolaroidsClip);
+                Debug.Log("Player hasn't collected all of the polaroids.");
+                return;
+            }
+            
+            if (_isFirstTime && !hasPolaroid)
             {
                 _puzzleAudio.PlayOneShot(incorrectSlotSound);
+                PlaySpecificSkullDialogueClip(
+                    SkullDialogueLineHolder.Instance.audioSource,
+                    SkullDialogueLineHolder.Instance.solveMazeBallPuzzleClip);
                 Debug.LogError("Player doesn't have the polaroid.");
                 return;
             }
@@ -285,5 +296,21 @@ public class PhotoBoardPuzzle : MonoBehaviour
     private void UpdateMovesMadeUI(int movesUsed)
     {
         movesMadeText.text = "Moves Made: " + movesUsed + "/" + MaxMoves;
+    }
+
+    public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
+    {
+        if(!source.isPlaying)
+            source.PlayOneShot(clip);
+    }
+
+    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clip)
+    {
+       
+    }
+
+    public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
+    {
+       
     }
 }

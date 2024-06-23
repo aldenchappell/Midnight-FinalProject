@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 public class InGameSettingsManager : MonoBehaviour
 {
     public static InGameSettingsManager Instance;
     
-    [ColoredHeader("In Game Settings", "#FF00FF")] 
+    //[ColoredHeader("In Game Settings", "#FF00FF")] 
     public bool enableHeadBobbing;
     public bool enableFootstepSounds;
     public bool enableHeartbeatSounds;
@@ -18,7 +17,7 @@ public class InGameSettingsManager : MonoBehaviour
     [Space(10)]
     
     
-    [ColoredHeader("Custom KeyBinds", "#FFFF00")]
+    //[ColoredHeader("Custom KeyBinds", "#FFFF00")]
     public KeyCode objectInteractionKeyOne = KeyCode.E;
     public KeyCode objectInteractionKeyTwo = KeyCode.Mouse0;
     public KeyCode itemExaminationInteractionKey = KeyCode.F;
@@ -27,7 +26,6 @@ public class InGameSettingsManager : MonoBehaviour
     public KeyCode sprintKey = KeyCode.LeftShift;
     
     public KeyCode dropCurrentItem;
-    
     
     private const string BrightnessPrefKey = "ScreenBrightness";
     private const string ViewBobbingPrefKey = "ViewBobbing";

@@ -132,7 +132,7 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
                 PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.solveImagePuzzleClip);
                 
-                Debug.LogError("Player doesn't have the Maze Ball.");
+                //Debug.LogError("Player doesn't have the Maze Ball.");
                 return;
             }
         }
@@ -343,7 +343,8 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        source.PlayOneShot(clip);
+        if(!source.isPlaying)
+            source.PlayOneShot(clip);
     }
 
     public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clip)

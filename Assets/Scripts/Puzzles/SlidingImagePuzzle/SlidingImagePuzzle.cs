@@ -8,7 +8,7 @@ using StarterAssets;
 using TMPro;
 using Random = UnityEngine.Random;
 
-public class SlidingImagePuzzle : MonoBehaviour
+public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
 {
     private Puzzle _puzzle;
     
@@ -232,16 +232,6 @@ public class SlidingImagePuzzle : MonoBehaviour
 
     public void InstantiateMazeballAtPlayerFeet()
     {
-        // if (mazeballPrefab != null)
-        // {
-        //     Vector3 playerPosition = firstPersonController.transform.position;
-        //     
-        //     Instantiate(mazeballPrefab, playerPosition, Quaternion.identity);
-        // }
-        // else
-        // {
-        //     Debug.LogError("Mazeball prefab is not assigned in the inspector.");
-        // }
         interactableMazeBall.SetActive(true);
     }
 
@@ -257,5 +247,21 @@ public class SlidingImagePuzzle : MonoBehaviour
         _patrol.DecreaseTimeToSpawn = 10;
         _patrol.ReferenceToSuspicion = transform.position;
         AssignUniqueSprites();
+    }
+
+    public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
+    {
+        if(!source.isPlaying)
+            source.PlayOneShot(clip);
+    }
+
+    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clip)
+    {
+        
+    }
+
+    public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
+    {
+        
     }
 }
