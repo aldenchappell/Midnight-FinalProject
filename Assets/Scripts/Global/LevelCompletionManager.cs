@@ -8,6 +8,7 @@ public class LevelCompletionManager : MonoBehaviour
     public List<string> currentLevelPuzzles = new List<string>();
     public List<string> loadedLevels = new List<string>();
     private string _currentLevel;
+    public bool _hasCompletedLobby;
     
     private readonly Dictionary<string, bool> _skullDialoguePlayed = new Dictionary<string, bool>();
 
@@ -142,11 +143,13 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void CheckAndStartNextLevel()
     {
+        /*
         if (!IsLevelCompleted("LOBBY"))
         {
             StartLevel("LOBBY", lobbyPuzzles);
         }
-        else if (!IsLevelCompleted("FLOOR ONE"))
+        */
+        if (!IsLevelCompleted("FLOOR ONE"))
         {
             StartLevel("FLOOR ONE", level1Puzzles);
         }

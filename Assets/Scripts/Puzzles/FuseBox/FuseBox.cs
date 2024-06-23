@@ -87,6 +87,15 @@ public class FuseBox : MonoBehaviour
         _radioAudio.enabled = false;
     }
 
+    private void Start()
+    {
+        print(GameObject.FindAnyObjectByType<LevelCompletionManager>()._hasCompletedLobby);
+        if(GameObject.FindAnyObjectByType<LevelCompletionManager>()._hasCompletedLobby == true)
+        {
+            PowerLobby();
+        }
+    }
+
     private void Update()
     {
         if(_isActive)
@@ -148,17 +157,24 @@ public class FuseBox : MonoBehaviour
             }
             if (objectHit.transform.CompareTag("Lever") && _fuseIn)
             {
-                               
-                AnimationsTrigger("PowerOn");
-                foreach (Light light in _lobbyLights)
-                {
-                    light.enabled = true;
-                }
-                ActivatePuzzle();
-                _radioAudio.enabled = true;
-                _elevator.enabled = true;
+
+                PowerLobby();
+                GameObject.FindAnyObjectByType<LevelCompletionManager>()._hasCompletedLobby = true;
+                print(GameObject.FindAnyObjectByType<LevelCompletionManager>()._hasCompletedLobby);
             }
         }
+    }
+
+    public void PowerLobby()
+    {
+        AnimationsTrigger("PowerOn");
+        foreach (Light light in _lobbyLights)
+        {
+            light.enabled = true;
+        }
+        //ActivatePuzzle();
+        _radioAudio.enabled = true;
+        _elevator.enabled = true;
     }
 
     private void PlaceFuse(GameObject fuseShadow)
