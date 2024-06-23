@@ -193,7 +193,6 @@ public class LevelCompletionManager : MonoBehaviour
     public void OnKeySpawn()
     {
         _audioSource.PlayOneShot(keyDropSound);
-        Debug.Log("Dropping key");
     }
     
     public int GetCollectedKeys()

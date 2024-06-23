@@ -74,10 +74,12 @@ public class PlayerDualHandInventory : MonoBehaviour
         if (_inventorySlots[currentIndexSelected] != null)
         {
             _inventorySlots[currentIndexSelected].SetActive(true);
+            _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("Default");
             _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
             _inventorySlots[currentIndexSelected].transform.parent = null;
         }
         newObject.transform.parent = this.gameObject.transform;
+        newObject.layer = LayerMask.NameToLayer("Default");
         _inventorySlots[currentIndexSelected] = newObject;
         ShowCurrentIndexItem();
         PickedUp = true; // Set picked up state to true when an item is picked up

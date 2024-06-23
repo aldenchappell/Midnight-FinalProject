@@ -208,7 +208,6 @@ public class FuseBox : MonoBehaviour
             else
             {
                 _puzzle.CompletePuzzle();
-                Debug.Log("Completed puzzle");
             }
             
         }
