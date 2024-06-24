@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d7884446406d889498d023b855a63c67, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d7884446406d889498d023b855a63c67, type: 3}
       propertyPath: m_TagString
@@ -506,6 +506,9 @@ MonoBehaviour:
     m_Bits: 2048
   maxPatrolRange: 16.3
   enableDebug: 1
+  firstSpawn: {fileID: 0}
+  firstEnd: {fileID: 0}
+  hasFirstTimeSpawnCondition: 0
 --- !u!114 &4828484304870204644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ffc5638ad74b34e9ca87fa4c01e0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableDebug: 0
   radius: 5
 --- !u!4 &2941401126397052043 stripped
 Transform:
