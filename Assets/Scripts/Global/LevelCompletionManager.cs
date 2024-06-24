@@ -82,14 +82,14 @@ public class LevelCompletionManager : MonoBehaviour
     {
         _currentLevel = levelName;
         currentLevelPuzzles = ConvertPuzzlesToNames(puzzles);
-
-        foreach (var puzzleName in currentLevelPuzzles)
-        {
-            if (!_completedPuzzles.Contains(puzzleName))
-            {
-                //Debug.Log("Incomplete puzzle: " + puzzleName);
-            }
-        }
+        //
+        // foreach (var puzzleName in currentLevelPuzzles)
+        // {
+        //     if (!_completedPuzzles.Contains(puzzleName))
+        //     {
+        //         //Debug.Log("Incomplete puzzle: " + puzzleName);
+        //     }
+        // }
     }
 
     public void SaveCurrentLevelAsLoaded(string levelName)
