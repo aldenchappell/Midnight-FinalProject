@@ -35,5 +35,6 @@ public class MusicBoxPuzzle : MonoBehaviour
         yield return new WaitForSeconds(4.0f);
        
         GetComponent<Puzzle>().CompletePuzzle();
+        GetComponent<Puzzle>().onPuzzleCompletion.Invoke();
     }
 }
