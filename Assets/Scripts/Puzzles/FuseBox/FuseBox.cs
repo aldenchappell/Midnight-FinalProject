@@ -89,8 +89,8 @@ public class FuseBox : MonoBehaviour
 
     private void Start()
     {
-        print(GameObject.FindAnyObjectByType<LevelCompletionManager>().hasCompletedLobby);
-        if(GameObject.FindAnyObjectByType<LevelCompletionManager>().hasCompletedLobby == true)
+        print(LevelCompletionManager.Instance.hasCompletedLobby);
+        if(LevelCompletionManager.Instance.hasCompletedLobby == true)
         {
             PowerLobby();
         }
@@ -159,8 +159,7 @@ public class FuseBox : MonoBehaviour
             {
 
                 PowerLobby();
-                GameObject.FindAnyObjectByType<LevelCompletionManager>().hasCompletedLobby = true;
-                print(GameObject.FindAnyObjectByType<LevelCompletionManager>().hasCompletedLobby);
+                LevelCompletionManager.Instance.hasCompletedLobby = true;
             }
         }
     }
