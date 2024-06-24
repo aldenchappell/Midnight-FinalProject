@@ -20,7 +20,6 @@ public class KeyCubbyController : MonoBehaviour
 
     private void Start()
     {
-        
         InitializeKeySlots();
         SetupInteractionEvents();
     }
@@ -101,7 +100,6 @@ public class KeyCubbyController : MonoBehaviour
         _audio.PlayOneShot(invalidKeyPlacementSound);
         Debug.LogWarning("Invalid key index for checking placed key in cubby.");
         return false;
-        
     }
 
     public void ResetCubby()
