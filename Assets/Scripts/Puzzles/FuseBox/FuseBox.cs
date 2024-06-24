@@ -89,7 +89,6 @@ public class FuseBox : MonoBehaviour
 
     private void Start()
     {
-        print(LevelCompletionManager.Instance.hasCompletedLobby);
         if(LevelCompletionManager.Instance.hasCompletedLobby == true)
         {
             PowerLobby();

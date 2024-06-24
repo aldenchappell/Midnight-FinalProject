@@ -16,7 +16,7 @@ public class IntroCutsceneManager : MonoBehaviour
     void Update()
     {
         // Check if the space bar is pressed or if the changeTime has elapsed
-        if (Input.GetKeyDown(KeyCode.Space) || changeTime <= 0)
+        if (Input.GetKeyDown(KeyCode.Space) || changeTime <= 0 || LevelCompletionManager.Instance.hasCompletedLobby == true)
         {
             // Load the specified scene
             //SceneManager.LoadScene(sceneName);
