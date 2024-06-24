@@ -4,6 +4,7 @@ public class PlayerDualHandInventory : MonoBehaviour
 {
     [Header("Item Hand Location")]
     [SerializeField] Transform handPosition;
+    [SerializeField] Transform skullOfHandPosition;
 
     public GameObject[] _inventorySlots;
     public int currentIndexSelected;
@@ -74,7 +75,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         if (_inventorySlots[currentIndexSelected] != null)
         {
             _inventorySlots[currentIndexSelected].SetActive(true);
-            _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("Default");
+            _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
             _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
             _inventorySlots[currentIndexSelected].transform.parent = null;
         }
@@ -168,7 +169,15 @@ public class PlayerDualHandInventory : MonoBehaviour
         {
             if(obj != null)
             {
-                obj.SetActive(false);
+                if(obj.CompareTag("Skull"))
+                {
+                    obj.transform.position = skullOfHandPosition.position;
+                }
+                else
+                {
+                    obj.SetActive(false);
+                }
+                
             }
         }
         if (_inventorySlots[currentIndexSelected] != null)
