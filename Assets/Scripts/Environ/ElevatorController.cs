@@ -200,6 +200,7 @@ public class ElevatorController : MonoBehaviour
             if (_startElevatorRoutineCoroutine == null)
             {
                 _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
+                StartCoroutine(CloseElevatorRoutine());
             }
         }
         else
@@ -208,6 +209,7 @@ public class ElevatorController : MonoBehaviour
             if (_startElevatorRoutineCoroutine == null)
             {
                 _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
+                StartCoroutine(CloseElevatorRoutine());
             }
         }
     }
