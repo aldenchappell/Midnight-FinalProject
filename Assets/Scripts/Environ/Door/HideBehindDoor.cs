@@ -103,6 +103,7 @@ public class HideBehindDoor : MonoBehaviour
         _isSwitching = true;
         if (_isActive)
         {
+            _FPC.ToggleCanMove();
             _doorController.Invoke("HandleDoor", 0);
             _inventory.HideHandItem();
             yield return new WaitForSeconds(1f);
@@ -299,7 +300,6 @@ public class HideBehindDoor : MonoBehaviour
         if (_isActive)
         {
             _player.layer = hiddenLayer;
-            _FPC.ToggleCanMove();
         }
         else
         {
