@@ -20,6 +20,7 @@ public class BabyBlockPuzzle : MonoBehaviour
     private FirstPersonController _FPC;
     private CinemachineVirtualCamera _playerCam;
     private CinemachineVirtualCamera _puzzleCam;
+    private Puzzle _puzzle;
     private Camera _mainCam;
     private AudioSource _audioSource;
     private Animator _animator;
