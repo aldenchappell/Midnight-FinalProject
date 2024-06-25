@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041489277, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.041483626, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10298,6 +10298,7 @@ GameObject:
   - component: {fileID: 1077661926}
   - component: {fileID: 1077661925}
   - component: {fileID: 1077661927}
+  - component: {fileID: 1077661928}
   m_Layer: 0
   m_Name: IntroCutsceneTimeline
   m_TagString: Untagged
@@ -10343,11 +10344,13 @@ PlayableDirector:
   - key: {fileID: -8226889309863856317, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
     value: {fileID: 505279293}
   - key: {fileID: 751730940000442919, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1077661928}
   - key: {fileID: -3115812547685050229, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1077661928}
   - key: {fileID: 5213601177377537594, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1077661928}
+  - key: {fileID: 6203754150686085596, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
+    value: {fileID: 1077661928}
   m_ExposedReferences:
     m_References:
     - 1e529cea8edae2e4186f2eb6846c034b: {fileID: 758637441}
@@ -10382,9 +10385,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18b7fa74c9133b42951405a68232a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTime: 31
+  changeTime: 35
   timeline: {fileID: 1077661925}
   player: {fileID: 208222620}
+--- !u!82 &1077661928
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077661924}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 62a26a47bc2e5554d848cd883d191538, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1078231992
 GameObject:
   m_ObjectHideFlags: 0
@@ -12459,11 +12558,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You must be the new housekeeper. \r\nThe elevator is out of order, so
-    before you do anything, \ncheck the note on the desk."
+  m_text: "You must be the new housekeeper. \r\nThe lobby's power must be restored,
+    so before you do anything, check the note on the desk."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2426ffce1231bba4ab191d4b82e4da4b, type: 2}
-  m_sharedMaterial: {fileID: -7788518975295999690, guid: 998fbd318333dd84bb8bcc852ea9e291, type: 2}
+  m_sharedMaterial: {fileID: -8590823192384692082, guid: 2426ffce1231bba4ab191d4b82e4da4b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12526,7 +12625,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1288108440
@@ -18707,7 +18806,7 @@ MonoBehaviour:
   m_text: The name's Constantine, I'm the hotel's watchman.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2426ffce1231bba4ab191d4b82e4da4b, type: 2}
-  m_sharedMaterial: {fileID: -7788518975295999690, guid: 998fbd318333dd84bb8bcc852ea9e291, type: 2}
+  m_sharedMaterial: {fileID: -8590823192384692082, guid: 2426ffce1231bba4ab191d4b82e4da4b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
