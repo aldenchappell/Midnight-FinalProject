@@ -277,14 +277,14 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
         if (_mainCam.Priority > _puzzleCam.Priority)
         {
             _mainCam.Priority = 0;
-            _puzzleCam.gameObject.SetActive(true);
+          // _puzzleCam.gameObject.SetActive(true);
             _puzzleCam.Priority = 10;
         }
         else
         {
             _mainCam.Priority = 10;
             _puzzleCam.Priority = 0;
-            _puzzleCam.gameObject.SetActive(false);
+           // _puzzleCam.gameObject.SetActive(false);
         }
     }
 

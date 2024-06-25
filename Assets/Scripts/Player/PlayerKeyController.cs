@@ -6,12 +6,12 @@ public class PlayerKeyController : MonoBehaviour
 {
     [SerializeField] private TMP_Text pauseMenuKeysCollectedText;
     public int keys;
-
     private KeyCubbyController _cubbyController;
 
     private void Start()
     {
-        keys = PlayerPrefs.GetInt("CollectedKeys", 0); 
+        // Get the key count from LevelCompletionManager
+        keys = LevelCompletionManager.Instance.GetCollectedKeys();
         UpdateKeyUI();
 
         if (SceneManager.GetActiveScene().name == "LOBBY")
@@ -34,7 +34,7 @@ public class PlayerKeyController : MonoBehaviour
             _cubbyController.PlaceKey(keyIndex);
             keys--; 
             UpdateKeyUI();
-            PlayerPrefs.SetInt("CollectedKeys", keys);
+            LevelCompletionManager.Instance.SetCollectedKeys(keys);
         }
         else
         {

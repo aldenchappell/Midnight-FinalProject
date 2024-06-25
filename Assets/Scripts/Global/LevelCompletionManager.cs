@@ -184,26 +184,30 @@ public class LevelCompletionManager : MonoBehaviour
     {
         ResetPuzzles();
     }
-
-    public void UpdateKeyCount(int keys)
-    {
-        _collectedKeys = keys;
-    }
     
     public void OnKeySpawn()
     {
         _audioSource.PlayOneShot(keyDropSound);
     }
     
+
     public int GetCollectedKeys()
     {
         return _collectedKeys;
     }
 
+    public void SetCollectedKeys(int keys)
+    {
+        _collectedKeys = keys;
+    }
+
     public void CollectKey()
     {
         _collectedKeys++;
-
-        // Optionally, trigger other events or UI updates related to key collection
+    }
+    
+    public void UpdateKeyCount(int keys)
+    {
+        _collectedKeys = keys;
     }
 }
