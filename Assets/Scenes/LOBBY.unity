@@ -5045,7 +5045,6 @@ Transform:
   - {fileID: 141574334}
   - {fileID: 1521519414}
   - {fileID: 347713321}
-  - {fileID: 1996548611}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &536311764
@@ -6771,6 +6770,7 @@ MonoBehaviour:
   onPuzzleCompletion:
     m_PersistentCalls:
       m_Calls: []
+  puzzleCompletionAudioClip: {fileID: 0}
 --- !u!1001 &719541030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7129,6 +7129,10 @@ PrefabInstance:
     - target: {fileID: 8805866020225630659, guid: c7728d7617a889f44949bb3b1cf6fd86, type: 3}
       propertyPath: m_Name
       value: LevelCompletionManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098441893502540768, guid: c7728d7617a889f44949bb3b1cf6fd86, type: 3}
+      propertyPath: hasCompletedLobby
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10650,7 +10654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &1077661925
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -19365,19 +19369,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 526787460}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1894424565742144308, guid: ece6427ad7e24a74eb1b7ccc6487fd00, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.915491
+      value: -0.96450806
       objectReference: {fileID: 0}
     - target: {fileID: 1894424565742144308, guid: ece6427ad7e24a74eb1b7ccc6487fd00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3036913
+      value: 1.3336931
       objectReference: {fileID: 0}
     - target: {fileID: 1894424565742144308, guid: ece6427ad7e24a74eb1b7ccc6487fd00, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.042702
+      value: 75.8873
       objectReference: {fileID: 0}
     - target: {fileID: 1894424565742144308, guid: ece6427ad7e24a74eb1b7ccc6487fd00, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19416,11 +19420,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ece6427ad7e24a74eb1b7ccc6487fd00, type: 3}
---- !u!4 &1996548611 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1894424565742144308, guid: ece6427ad7e24a74eb1b7ccc6487fd00, type: 3}
-  m_PrefabInstance: {fileID: 1996548610}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1998523069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a899ae6998ebcaa408d374ad1b00c2cf, type: 3}
@@ -22287,6 +22286,7 @@ SceneRoots:
   - {fileID: 767706747}
   - {fileID: 722254187}
   - {fileID: 1380214247}
+  - {fileID: 1996548610}
   - {fileID: 81485744}
   - {fileID: 580593643}
   - {fileID: 526787460}
