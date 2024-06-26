@@ -642,6 +642,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1da678c4ebca09f45b46885e541b4fee, type: 3}
+--- !u!1001 &1099486379
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.26755738
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.52
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.4953728
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      propertyPath: m_Name
+      value: Arm AnimationsPick Up
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1988871040}
+  m_SourcePrefab: {fileID: 100100000, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
 --- !u!1001 &1410692727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -993,6 +1053,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea5e336eb3c75ed43a6621e24a0cc4b5, type: 3}
+--- !u!1 &1988871039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a31687eb08482ab439f2448e454bca6a, type: 3}
+  m_PrefabInstance: {fileID: 1099486379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1988871040
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988871039}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f3beb7f6cac7564587ca9dad65fdb86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2114993173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1064,3 +1150,4 @@ SceneRoots:
   - {fileID: 1749038778}
   - {fileID: 970363752}
   - {fileID: 1035490669}
+  - {fileID: 1099486379}
