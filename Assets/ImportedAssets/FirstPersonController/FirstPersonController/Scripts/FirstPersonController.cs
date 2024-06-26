@@ -212,11 +212,7 @@ namespace StarterAssets
 			{
 				HandleCrouching();
 			}
-
-			// Update sprint stamina
 			
-
-			// Set booleans for sprinting
 			bool wasSprinting = isSprinting;
 			isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && !isCrouching && Grounded && _currentSprintStamina > 0;
 			
@@ -282,6 +278,8 @@ namespace StarterAssets
 			Color color = sprintStaminaSlider.fillRect.GetComponent<Image>().color;
 			color.a = alpha;
 			sprintStaminaSlider.fillRect.GetComponent<Image>().color = color;
+			Image backgroundImage = sprintStaminaSlider.transform.Find("Background").GetComponent<Image>();
+			backgroundImage.color = color;
 		}
 
 		private IEnumerator FadeOutSlider(Slider slider, float delay)
