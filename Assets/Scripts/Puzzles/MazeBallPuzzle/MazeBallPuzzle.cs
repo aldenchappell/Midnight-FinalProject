@@ -355,7 +355,7 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
     {
     }
 
-    public IEnumerator RepeatPlaySkullDialogueClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
+    public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
     {
         yield return null;
     }

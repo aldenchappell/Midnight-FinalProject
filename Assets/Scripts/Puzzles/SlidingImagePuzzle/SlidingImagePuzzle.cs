@@ -104,13 +104,11 @@ public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
         {
             _mainCam.Priority = 0;
             _puzzleCam.Priority = 10;
-            
         }
         else
         {
             _mainCam.Priority = 10;
             _puzzleCam.Priority = 0;
-            
         }
     }
     private void AssignUniqueSprites()
@@ -265,7 +263,7 @@ public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
         
     }
 
-    public IEnumerator RepeatPlaySkullDialogueClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
+    public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
     {
         if (indexOfCurrentLevelPuzzles == 3)
         {

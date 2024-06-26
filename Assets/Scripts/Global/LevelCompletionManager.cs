@@ -82,14 +82,6 @@ public class LevelCompletionManager : MonoBehaviour
     {
         _currentLevel = levelName;
         currentLevelPuzzles = ConvertPuzzlesToNames(puzzles);
-        //
-        // foreach (var puzzleName in currentLevelPuzzles)
-        // {
-        //     if (!_completedPuzzles.Contains(puzzleName))
-        //     {
-        //         //Debug.Log("Incomplete puzzle: " + puzzleName);
-        //     }
-        // }
     }
 
     public void SaveCurrentLevelAsLoaded(string levelName)
@@ -143,13 +135,16 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void CheckAndStartNextLevel()
     {
-        /*
+        //NOTE TO OWEN:
+        //PLEASE LET ME KNOW IF THIS
+        //METHOD IS CAUSING MORE ISSUES
+        //SETTING THE SPAWNPOINT IN LOBBY :)
+        //END NOTE
         if (!IsLevelCompleted("LOBBY"))
         {
             StartLevel("LOBBY", lobbyPuzzles);
         }
-        */
-        if (!IsLevelCompleted("FLOOR ONE"))
+        else if (!IsLevelCompleted("FLOOR ONE"))
         {
             StartLevel("FLOOR ONE", level1Puzzles);
         }
@@ -163,8 +158,7 @@ public class LevelCompletionManager : MonoBehaviour
         }
         else
         {
-            //Debug.Log("All levels completed!");
-            // Game is won, handle that - load credits and/or ending cutscene?
+            //game completed
             ResetPuzzles();
         }
     }
@@ -178,6 +172,10 @@ public class LevelCompletionManager : MonoBehaviour
     {
         _skullDialoguePlayed[levelName] = true;
         //Debug.Log("SetSkullDialoguePlayed: Marked dialogue as played for " + levelName);
+    }
+    public int GetRemainingPuzzlesCount()
+    {
+        return currentLevelPuzzles.Count;
     }
 
     public void OnPlayerDeath()

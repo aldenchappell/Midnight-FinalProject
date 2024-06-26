@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SkullDialogueLineHolder : MonoBehaviour
@@ -62,6 +63,58 @@ public class SkullDialogueLineHolder : MonoBehaviour
 
     public int GetRandomWaitTIme()
     {
-        return Random.Range(15, 35);
+        return Random.Range(35, 60);
+    }
+    
+    public AudioClip GetHintClipForRemainingPuzzles(List<string> remainingPuzzles)
+    {
+        if (remainingPuzzles.Contains("LobbyPuzzle"))
+        {
+            return findFuzeClip;
+        }
+        
+        if (remainingPuzzles.Contains("Bookshelf Puzzle"))
+        {
+            return findBookClip;
+        }
+
+        if (remainingPuzzles.Contains("Perfume Bottle Puzzle"))
+        {
+            return findPerfumeBottleClip;
+        }
+        
+        if (remainingPuzzles.Contains("Sliding Image Puzzle"))
+        {
+            return solveImagePuzzleClip;
+        }
+        
+        if (remainingPuzzles.Contains("Baby Block  Puzzle"))
+        {
+            return solveBabyBlockPuzzleClip;
+        }
+        
+        if (remainingPuzzles.Contains("Da Vinci Puzzle"))
+        {
+            return solveDaVinciPuzzleClip;
+        }
+        
+        if (remainingPuzzles.Contains("Music Box Puzzle"))
+        {
+            return solveMusicBoxPuzzleClip;
+        }
+        
+        if (remainingPuzzles.Contains("Maze Ball Puzzle"))
+        {
+            return solveMazeBallPuzzleClip;
+        }
+        
+        if (remainingPuzzles.Contains("Polaroid Puzzle"))
+        {
+            return solvePolaroidPuzzleClip;
+        }
+
+        return null;
+        // just in case if no specific puzzle is left
+        //return wittyAssRemarks.Length > 0 ? wittyAssRemarks[Random.Range(0, wittyAssRemarks.Length)] : null;
     }
 }

@@ -196,6 +196,15 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
         if (!_isInPuzzle)
         {
             bool hasPolaroid = _playerDualHandInventory.GetInventory.Any(item => item != null && item.CompareTag("Polaroid"));
+            
+            if (polaroidCount != TargetPolaroidCount && _isFirstTime && !hasPolaroid)
+            {
+                PlaySpecificSkullDialogueClip(
+                    SkullDialogueLineHolder.Instance.audioSource,
+                    SkullDialogueLineHolder.Instance.solveImageAndMazeBallPuzzlesClip);
+                return;
+            }
+            
             if (polaroidCount != TargetPolaroidCount)
             {
                 PlaySpecificSkullDialogueClip(
@@ -214,6 +223,8 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
                 Debug.LogError("Player doesn't have the polaroid.");
                 return;
             }
+
+            
         }
 
         // Toggle the puzzle UI
@@ -315,7 +326,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
        
     }
 
-    public IEnumerator RepeatPlaySkullDialogueClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
+    public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
     {
         yield return null;
     }

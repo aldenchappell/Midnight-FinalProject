@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,9 +7,10 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 {
     public bool pickedUp;
     private Coroutine _dialogueCoroutine;
+    private Coroutine _hintCoroutine; 
     public bool isSkullActive;
 
-    private PlayerDualHandInventory _playerInventory; // Reference to the player's inventory
+    private PlayerDualHandInventory _playerInventory; 
     private string _levelName;
     private InteractableObject _interactableObject;
     private bool _hasBeenPickedUp = false;
@@ -17,8 +19,6 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
     {
         _playerInventory = FindObjectOfType<PlayerDualHandInventory>();
         _levelName = SceneManager.GetActiveScene().name;
-        //Debug.Log("Awake: Current Level Name: " + _levelName);
-
         _interactableObject = GetComponent<InteractableObject>();
         _interactableObject.onInteraction.AddListener(() => PlayLevelOpeningClip(_levelName));
     }
@@ -37,7 +37,7 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 
     public void PlayLevelOpeningClip(string levelName)
     {
-        if (LevelCompletionManager.Instance.HasSkullDialogueBeenPlayed(levelName))
+        if (LevelCompletionManager.Instance.HasSkullDialogueBeenPlayed(levelName) || LevelCompletionManager.Instance.IsLevelCompleted(levelName))
         {
             return; 
         }
@@ -67,14 +67,31 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 
         LevelCompletionManager.Instance.SetSkullDialoguePlayed(levelName);
         LevelCompletionManager.Instance.SaveCurrentLevelAsLoaded(levelName);
-        Debug.Log("PlayLevelOpeningClip: Marked dialogue as played and saved level as loaded for " + levelName);
+        LevelCompletionManager.Instance.StartLevel(levelName, GetPuzzlesForLevel(levelName));
     }
+
+    private List<SO_Puzzle> GetPuzzlesForLevel(string levelName)
+    {
+        switch (levelName)
+        {
+            case "LOBBY":
+                return LevelCompletionManager.Instance.lobbyPuzzles;
+            case "FLOOR ONE":
+                return LevelCompletionManager.Instance.level1Puzzles;
+            case "FLOOR TWO":
+                return LevelCompletionManager.Instance.level2Puzzles;
+            case "FLOOR THREE":
+                return LevelCompletionManager.Instance.level3Puzzles;
+            default:
+                return new List<SO_Puzzle>();
+        }
+    }
+
 
     public void TogglePickedUp()
     {
         pickedUp = !pickedUp;
         isSkullActive = pickedUp;
-        Debug.Log("TogglePickedUp: pickedUp=" + pickedUp + ", isSkullActive=" + isSkullActive);
 
         if (pickedUp)
         {
@@ -84,13 +101,25 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
                 SkullDialogueLineHolder.Instance.audioSource.transform.position = transform.position;
                 SkullDialogueLineHolder.Instance.audioSource.transform.SetParent(gameObject.transform);
                 _interactableObject.onInteraction.RemoveListener(() => PlayLevelOpeningClip(_levelName));
-                 Debug.Log("TogglePickedUp: First time picked up, removed listener and set audio source position.");
             }
 
             if (_dialogueCoroutine != null)
             {
                 StopCoroutine(_dialogueCoroutine);
-                Debug.Log("TogglePickedUp: Stopped previous dialogue coroutine.");
+            }
+
+            if (_hintCoroutine != null)
+            {
+                StopCoroutine(_hintCoroutine);
+            }
+
+            _hintCoroutine = StartCoroutine(HintCoroutine());
+        }
+        else
+        {
+            if (_hintCoroutine != null)
+            {
+                StopCoroutine(_hintCoroutine);
             }
         }
     }
@@ -104,16 +133,37 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
         }
     }
 
+    private IEnumerator HintCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.GetRandomWaitTIme()); 
+            PlayHintBasedOnRemainingPuzzles();
+        }
+    }
+
+    private void PlayHintBasedOnRemainingPuzzles()
+    {
+        List<string> remainingPuzzles = LevelCompletionManager.Instance.currentLevelPuzzles;
+
+        AudioClip hintClip = SkullDialogueLineHolder.Instance.GetHintClipForRemainingPuzzles(remainingPuzzles);
+        if (hintClip != null)
+        {
+            PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource, hintClip);
+        }
+    }
+
+    #region Dialogue Interface Methods
+
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        Debug.Log("PlaySpecificSkullDialogueClip: Playing clip " + clip.name);
-        source.PlayOneShot(clip);
+        if(!source.isPlaying)
+            source.PlayOneShot(clip);
     }
 
     public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
     {
         if (clips.Length == 0) return;
-
         int randomIndex = Random.Range(0, clips.Length);
         source.PlayOneShot(clips[randomIndex]);
     }
@@ -126,8 +176,10 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
         }
     }
 
-    public IEnumerator RepeatPlaySkullDialogueClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
+    public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
     {
         yield return null;
     }
+
+    #endregion
 }

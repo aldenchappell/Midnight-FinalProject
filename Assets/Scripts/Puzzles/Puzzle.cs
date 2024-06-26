@@ -7,13 +7,7 @@ public class Puzzle : MonoBehaviour, IPlaySkullDialogue
 {
     public SO_Puzzle puzzle;
     public UnityEvent onPuzzleCompletion;
-    private void Awake()
-    {
-        if (puzzle == null)
-        {
-            //Debug.LogError("Puzzle scriptable object is not assigned!");
-        }
-    }
+    [SerializeField] private AudioClip puzzleCompletionAudioClip;
 
     public void CompletePuzzle()
     {
@@ -21,10 +15,14 @@ public class Puzzle : MonoBehaviour, IPlaySkullDialogue
         {
             LevelCompletionManager.Instance.SavePuzzleCompletion(puzzle);
             LevelCompletionManager.Instance.CompletePuzzleInScene(SceneManager.GetActiveScene().name, puzzle.puzzleName);
+
+            if (puzzleCompletionAudioClip != null)
+            {
+                PlaySpecificSkullDialogueClip(
+                    SkullDialogueLineHolder.Instance.audioSource,
+                    puzzleCompletionAudioClip);
+            }
             
-            PlayRandomSkullDialogueClip(
-                SkullDialogueLineHolder.Instance.audioSource,
-                SkullDialogueLineHolder.Instance.levelCompletedClips);
             onPuzzleCompletion?.Invoke();
         }
     }
@@ -46,7 +44,7 @@ public class Puzzle : MonoBehaviour, IPlaySkullDialogue
         
     }
 
-    public IEnumerator RepeatPlaySkullDialogueClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
+    public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
     {
         yield return null;
     }
