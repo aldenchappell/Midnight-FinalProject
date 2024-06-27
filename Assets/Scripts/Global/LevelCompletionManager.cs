@@ -140,11 +140,15 @@ public class LevelCompletionManager : MonoBehaviour
         //METHOD IS CAUSING MORE ISSUES
         //SETTING THE SPAWNPOINT IN LOBBY :)
         //END NOTE
+
+        //Note to Alden: The if statement below causes issues returning to the lobby and needs to stay disfunctional
+        /*
         if (!IsLevelCompleted("LOBBY"))
         {
             StartLevel("LOBBY", lobbyPuzzles);
         }
-        else if (!IsLevelCompleted("FLOOR ONE"))
+        */
+        if (!IsLevelCompleted("FLOOR ONE"))
         {
             StartLevel("FLOOR ONE", level1Puzzles);
         }
