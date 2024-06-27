@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -8,7 +7,7 @@ public class LevelCompletionManager : MonoBehaviour
     public List<string> currentLevelPuzzles = new List<string>();
     public List<string> loadedLevels = new List<string>();
     private string _currentLevel;
-    public bool hasCompletedLobby;
+    public bool hasCompletedLobby = false;
     
     private readonly Dictionary<string, bool> _skullDialoguePlayed = new Dictionary<string, bool>();
 
@@ -165,6 +164,7 @@ public class LevelCompletionManager : MonoBehaviour
             //game completed
             ResetPuzzles();
         }
+        InGameSettingsManager.Instance.LoadSettings();
     }
     
     public bool HasSkullDialogueBeenPlayed(string levelName)

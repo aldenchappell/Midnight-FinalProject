@@ -7,6 +7,11 @@ public class ToggleSettingsController : MonoBehaviour
 
     private Toggle _toggle;
 
+    private void Awake()
+    {
+        InGameSettingsManager.Instance.LoadSettings();
+    }
+
     private void Start()
     {
         _toggle = GetComponent<Toggle>();
