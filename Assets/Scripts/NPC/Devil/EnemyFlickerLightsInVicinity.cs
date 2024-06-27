@@ -6,19 +6,39 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
     [SerializeField] private bool enableDebug;
     [SerializeField] private float radius = 10.0f;
     private List<LightFlicker> _currentFlickeringLights = new List<LightFlicker>();
+    private LightSpawnerController _lightSpawner;
+
+    private void Awake()
+    {
+        _lightSpawner = FindObjectOfType<LightSpawnerController>();
+    }
 
     private void Update()
     {
-        HandleFlicker();
+       HandleFlicker();
     }
 
+
+    // private void HandleLighting()
+    // {
+    //     Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+    //     List<GameObject> lightHolders = new List<GameObject>();
+    //
+    //     bool lightFlickerSoundPlayed = false;
+    //
+    //     foreach (GameObject obj in lightHolders)
+    //     {
+    //         Vector3 spawnPositions = _lightSpawner.LightSpawnPosition(new List<GameObject> { obj });
+    //         //_lightSpawner.SpawnLights;
+    //     }
+    // }
     private void HandleFlicker()
     {
         Collider[] lightColliders = Physics.OverlapSphere(transform.position, radius);
         List<LightFlicker> flickeringLights = new List<LightFlicker>();
-
+    
         bool soundPlayed = false;
-
+    
         foreach (var light in lightColliders)
         {
             LightFlicker[] flickerComponents = light.GetComponentsInChildren<LightFlicker>();
@@ -29,7 +49,7 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
                 {
                     flicker.shouldFlicker = true;
                     flicker.StartFlickering();
-
+    
                     if (!soundPlayed)
                     {
                         if (LightFlicker.AudioSource != null && !LightFlicker.AudioSource.isPlaying)
@@ -42,7 +62,7 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
                 }
             }
         }
-
+    
         foreach (var flicker in _currentFlickeringLights)
         {
             if (!flickeringLights.Contains(flicker))
@@ -51,16 +71,17 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
                 flicker.StopFlickering();
             }
         }
-
+    
         _currentFlickeringLights = flickeringLights;
     }
+    
+    
 
     private void OnDrawGizmos()
     {
-        if (enableDebug)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, radius);
-        }
+        if (!enableDebug) return;
+        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

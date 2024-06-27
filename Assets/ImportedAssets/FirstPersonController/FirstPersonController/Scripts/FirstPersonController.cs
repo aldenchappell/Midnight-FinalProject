@@ -135,7 +135,7 @@ namespace StarterAssets
 		[SerializeField] private float sprintStaminaDecreaseRate = 1.0f;
 		[SerializeField] private float sprintStaminaRecoveryRate = 0.5f;
 		[SerializeField] private float staminaRecoveryDelay = 2.0f; //this is the delay before stamina starts to recover after reaching 0
-		private float staminaRecoveryTimer = 0.0f;
+		private float _staminaRecoveryTimer = 0.0f;
 
 		
 		
@@ -148,6 +148,8 @@ namespace StarterAssets
 		
 		private Coroutine _fadeSliderCoroutine;
 		private Coroutine _fadeOutCoroutine;
+
+		private PlayerArmsAnimationController _playerArms;
 		
 		private bool IsCurrentDeviceMouse
 		{
@@ -172,6 +174,8 @@ namespace StarterAssets
 			_defaultYPos = _mainCamera.transform.localPosition.y;
 
 			_originalCameraRootPosition = cameraRoot.transform.localPosition.y;
+
+			_playerArms = FindObjectOfType<PlayerArmsAnimationController>();
 		}
 
 		private void Start()
@@ -241,7 +245,7 @@ namespace StarterAssets
 				{
 					_currentSprintStamina = 0;
 					isSprinting = false;
-					staminaRecoveryTimer = staminaRecoveryDelay;
+					_staminaRecoveryTimer = staminaRecoveryDelay;
 				}
 
 				// Ensure the slider is fully visible when sprinting
@@ -254,9 +258,9 @@ namespace StarterAssets
 			}
 			else
 			{
-				if (staminaRecoveryTimer > 0)
+				if (_staminaRecoveryTimer > 0)
 				{
-					staminaRecoveryTimer -= Time.deltaTime;
+					_staminaRecoveryTimer -= Time.deltaTime;
 				}
 				else
 				{
@@ -441,11 +445,14 @@ namespace StarterAssets
 			{
 				targetSpeed = CrouchSpeed;
 				_currentSpeed = CrouchSpeed;
+				
 			}
 			else if (isSprinting)
 			{
 				targetSpeed = SprintSpeed;
 				_currentSpeed = SprintSpeed;
+				
+				_playerArms.SetArmAnimationState(_playerArms.running);
 			}
 			else
 			{
@@ -453,10 +460,15 @@ namespace StarterAssets
 				_currentSpeed = MoveSpeed;
 			}
 
+			
+
 			// If there is no input, set the target speed to 0
 			if (input.move == Vector2.zero) targetSpeed = 0.0f;
 			if (input.move == Vector2.zero) _currentSpeed = 0.0f;
-
+			//if (input.move == Vector2.zero) //if th playing isn't moving, set the animation to idle
+				//_playerArms.SetArmAnimationState(_playerArms.idle);
+			
+			
 			// A reference to the player's current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
 
