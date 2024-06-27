@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerInteractableController : MonoBehaviour
 {
-    private InteractableObject _interactableObject;
+    [HideInInspector] public InteractableObject interactableObject;
     private InteractableObject _previousInteractable;
     private HighlightInteractableObjectController _highlightInteractableObjectController;
     private PlayerExamineObjectController _examineObjectController;
@@ -47,11 +47,11 @@ public class PlayerInteractableController : MonoBehaviour
             _examineObjectController.objectToExamine = hitInfo.collider.gameObject;
             if (interactable != null)
             {
-                if (_interactableObject != interactable)
+                if (interactableObject != interactable)
                 {
                     ResetHighlight();
 
-                    _interactableObject = interactable;
+                    interactableObject = interactable;
 
                     if (examinable != null)
                     {
@@ -60,10 +60,10 @@ public class PlayerInteractableController : MonoBehaviour
                     }
                     else
                     {
-                        UpdateInteractionUI(_interactableObject);
+                        UpdateInteractionUI(interactableObject);
                     }
 
-                    _highlightInteractableObjectController = _interactableObject.highlightInteractableObjectController;
+                    _highlightInteractableObjectController = interactableObject.highlightInteractableObjectController;
                     _highlightInteractableObjectController?.ChangeColor(Color.red);
                 }
             }
@@ -74,11 +74,11 @@ public class PlayerInteractableController : MonoBehaviour
             _examineObjectController.objectToExamine = null;
         }
 
-        if (_interactableObject != _previousInteractable)
+        if (interactableObject != _previousInteractable)
         {
             //print("Hi");
-            _previousInteractable = _interactableObject;
-            if (_interactableObject != null && !_inPuzzle)
+            _previousInteractable = interactableObject;
+            if (interactableObject != null && !_inPuzzle)
             {
                 //print("Bye");
                 ResetInteraction();
@@ -90,18 +90,18 @@ public class PlayerInteractableController : MonoBehaviour
             && _examineObjectController != null
             && !_examineObjectController.isExaminingObject)
         {
-            if (_interactableObject != null && _allowInteraction && _previousInteractable != null)
+            if (interactableObject != null && _allowInteraction && _previousInteractable != null)
             {
                 interactionImage.sprite = defaultInteractionIcon;
                 interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
-                _interactableObject.onInteraction?.Invoke();
+                interactableObject.onInteraction?.Invoke();
                 StartCoroutine(InteractionSpamPrevention());
                 _examineObjectController.objectToExamine = null;
             }
         }
         else if (Input.GetKeyDown(InGameSettingsManager.Instance.itemExaminationInteractionKey)
-                 && _interactableObject != null
-                 && _interactableObject.TryGetComponent<ExaminableObject>(out var examinableObject)
+                 && interactableObject != null
+                 && interactableObject.TryGetComponent<ExaminableObject>(out var examinableObject)
                  && !examinableObject.isExamining)
         {
             interactionImage.sprite = defaultInteractionIcon;
@@ -120,16 +120,16 @@ public class PlayerInteractableController : MonoBehaviour
             _highlightInteractableObjectController = null;
         }
 
-        if (_interactableObject != null)
+        if (interactableObject != null)
         {
             UpdateInteractionUI(null);
-            _interactableObject = null;
+            interactableObject = null;
         }
     }
 
     public bool IsLookingAtInteractableObject(GameObject target)
     {
-        return _interactableObject != null && _interactableObject.gameObject == target;
+        return interactableObject != null && interactableObject.gameObject == target;
     }
 
     private void UpdateInteractionUI(InteractableObject interactable)
@@ -153,15 +153,15 @@ public class PlayerInteractableController : MonoBehaviour
     private IEnumerator InteractionSpamPrevention()
     {
         _allowInteraction = false;
-        UpdateInteractionUI(_interactableObject);
+        UpdateInteractionUI(interactableObject);
         yield return new WaitForSeconds(spamPreventionTime);
         _allowInteraction = true;
-        UpdateInteractionUI(_interactableObject);
+        UpdateInteractionUI(interactableObject);
     }
 
     private void ResetInteraction()
     {
-        _interactableObject = null;
+        interactableObject = null;
         UpdateInteractionUI(null);
         _highlightInteractableObjectController = null;
 

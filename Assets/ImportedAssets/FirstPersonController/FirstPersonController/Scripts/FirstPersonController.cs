@@ -452,7 +452,7 @@ namespace StarterAssets
 				targetSpeed = SprintSpeed;
 				_currentSpeed = SprintSpeed;
 				
-				_playerArms.SetArmAnimationState(_playerArms.running);
+				//_playerArms.SetArmAnimationState(_playerArms.running);
 			}
 			else
 			{
