@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class InGameSettingsManager : MonoBehaviour
@@ -46,6 +47,23 @@ public class InGameSettingsManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        CheckFirstLaunch();
+    }
+    
+    void CheckFirstLaunch()
+    {
+        if (!PlayerPrefs.HasKey("FirstLaunch"))
+        {
+            Debug.Log("First Launch");
+            PlayerPrefs.DeleteAll(); 
+            PlayerPrefs.SetInt("FirstLaunch", 1); 
+            PlayerPrefs.Save(); 
+        }
+        
+    }
+    
     public void SetToggleSetting(string settingKey, bool value)
     {
         PlayerPrefs.SetInt(settingKey, value ? 1 : 0);
@@ -109,7 +127,7 @@ public class InGameSettingsManager : MonoBehaviour
     
     public void InitializeBrightness()
     {
-        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, .5f); // Default brightness is 0.5
+        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, .25f);
         SetBrightness(brightness);
     }
 
@@ -155,13 +173,26 @@ public class InGameSettingsManager : MonoBehaviour
         enableHeartbeatSounds = !enableHeartbeatSounds;
         Debug.Log(enableHeartbeatSounds);
     }
-    
-    private void LoadSettings()
+    public void LoadSettings()
     {
         enableHeadBobbing = PlayerPrefs.GetInt(ViewBobbingPrefKey, 1) == 1;
         enableFootstepSounds = PlayerPrefs.GetInt(FootstepSoundsPrefKey, 1) == 1;
         enableHeartbeatSounds = PlayerPrefs.GetInt(HeartbeatSoundsPrefKey, 1) == 1;
-        enableCompass = PlayerPrefs.GetInt(HeartbeatSoundsPrefKey, 1) == 1;
+        enableCompass = PlayerPrefs.GetInt(CompassPrefKey, 1) == 1; 
+
         SetQualityLevel(GetQualityLevel());
+        InitializeBrightness();
+        InitializeVolumes(); // Initialize volumes here
     }
+
+    // Initialize volumes to their saved values or default to 0.5f
+    private void InitializeVolumes()
+    {
+        SetVolume(BrightnessPrefKey, PlayerPrefs.GetFloat(BrightnessPrefKey, 0.5f));
+        SetVolume(ViewBobbingPrefKey, PlayerPrefs.GetFloat(ViewBobbingPrefKey, 0.5f));
+        SetVolume(FootstepSoundsPrefKey, PlayerPrefs.GetFloat(FootstepSoundsPrefKey, 0.5f));
+        SetVolume(HeartbeatSoundsPrefKey, PlayerPrefs.GetFloat(HeartbeatSoundsPrefKey, 0.5f));
+        SetVolume(CompassPrefKey, PlayerPrefs.GetFloat(CompassPrefKey, 0.5f));
+    }
+
 }
