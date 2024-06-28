@@ -18,17 +18,17 @@ public class VolumeController : MonoBehaviour
 
     private void Start()
     {
-        InGameSettingsManager.Instance.LoadSettings(); // Ensure settings are loaded
-        float savedVolume = InGameSettingsManager.Instance.GetVolume(volumeParameter, 0.5f); // Default to 0.5f
+        InGameSettingsManager.Instance.LoadSettings(); 
+        float savedVolume = InGameSettingsManager.Instance.GetVolume(volumeParameter, 0.5f); 
         slider.value = savedVolume;
-        HandleSliderValueChanged(savedVolume); // Update mixer and text based on initial value
+        HandleSliderValueChanged(savedVolume); 
     }
 
     private void HandleSliderValueChanged(float value)
     {
         if (value <= 0f)
         {
-            mixer.SetFloat(volumeParameter, -80f); // Muted
+            mixer.SetFloat(volumeParameter, -80f); 
             volumeText.text = "0";
         }
         else
@@ -37,14 +37,13 @@ public class VolumeController : MonoBehaviour
             volumeText.text = value.ToString("f1");
         }
 
-        InGameSettingsManager.Instance.SetVolume(volumeParameter, value); // Update PlayerPrefs
+        InGameSettingsManager.Instance.SetVolume(volumeParameter, value); 
     }
 
-    // Function to load volume externally if needed
     public void LoadVolume()
     {
-        float savedVolume = InGameSettingsManager.Instance.GetVolume(volumeParameter, 0.5f); // Default to 0.5f
+        float savedVolume = InGameSettingsManager.Instance.GetVolume(volumeParameter, 0.5f); 
         slider.value = savedVolume;
-        HandleSliderValueChanged(savedVolume); // Update mixer and text based on loaded value
+        HandleSliderValueChanged(savedVolume); 
     }
 }
