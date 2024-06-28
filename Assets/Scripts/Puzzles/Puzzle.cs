@@ -29,19 +29,26 @@ public class Puzzle : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        if(!source.isPlaying)
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        {
             source.PlayOneShot(clip);
+        }
     }
 
     public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
     {
-        if(!source.isPlaying)
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        {
             source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
+        }
     }
 
     public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
     {
-        
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        {
+            
+        }
     }
 
     public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)

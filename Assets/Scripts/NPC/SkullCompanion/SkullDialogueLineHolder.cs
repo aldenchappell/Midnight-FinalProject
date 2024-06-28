@@ -61,6 +61,8 @@ public class SkullDialogueLineHolder : MonoBehaviour
         }
     }
 
+    public bool IsAudioSourcePlaying() => audioSource.isPlaying;
+    
     public int GetRandomWaitTIme()
     {
         return Random.Range(35, 60);

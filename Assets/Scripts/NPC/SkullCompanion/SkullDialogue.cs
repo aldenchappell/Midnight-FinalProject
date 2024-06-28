@@ -45,19 +45,23 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
         switch (levelName)
         {
             case "LOBBY":
-                PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+                 PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.lobbyOpeningClip);
                 break;
             case "FLOOR ONE":
-                PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.floorOneOpeningClip);
                 break;
             case "FLOOR TWO":
-                PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.floorTwoOpeningClip);
                 break;
             case "FLOOR THREE":
-                PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.floorThreeOpeningClip);
                 break;
             default:
@@ -147,7 +151,7 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
         List<string> remainingPuzzles = LevelCompletionManager.Instance.currentLevelPuzzles;
 
         AudioClip hintClip = SkullDialogueLineHolder.Instance.GetHintClipForRemainingPuzzles(remainingPuzzles);
-        if (hintClip != null)
+        if (hintClip != null && !SkullDialogueLineHolder.Instance.audioSource.isPlaying)
         {
             PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource, hintClip);
         }
@@ -157,22 +161,29 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        if(!source.isPlaying)
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
             source.PlayOneShot(clip);
     }
 
     public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
     {
-        if (clips.Length == 0) return;
-        int randomIndex = Random.Range(0, clips.Length);
-        source.PlayOneShot(clips[randomIndex]);
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        {
+            if (clips.Length == 0) return;
+            int randomIndex = Random.Range(0, clips.Length);
+            source.PlayOneShot(clips[randomIndex]);
+        }
+        
     }
 
     public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
     {
-        if (value)
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
         {
-            PlaySpecificSkullDialogueClip(source, clip);
+            if (value)
+            {
+                PlaySpecificSkullDialogueClip(source, clip);
+            }
         }
     }
 
