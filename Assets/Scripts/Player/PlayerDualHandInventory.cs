@@ -16,7 +16,14 @@ public class PlayerDualHandInventory : MonoBehaviour
             return _inventorySlots;
         }
     }
-
+    public GameObject GetCurrentHandItem
+    {
+        get
+        {
+            return _inventorySlots[currentIndexSelected];
+        }
+    }
+ 
     public bool PickedUp { get; private set; } // New property to track if any item is picked up
 
     private void Start()
