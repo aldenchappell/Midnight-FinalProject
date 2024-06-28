@@ -8,9 +8,9 @@ public class FuseBox : MonoBehaviour
 {
     [SerializeField] private GameObject fuseObject;
     private AudioSource _radioAudio;
-    private List<Light>  _lobbyLights;
+    private List<Light> _lobbyLights;
     private ElevatorController _elevator;
-    
+
     private Animator _animator;
 
     private CinemachineVirtualCamera _playerCam;
@@ -27,6 +27,7 @@ public class FuseBox : MonoBehaviour
     private bool _canExit;
 
     private Puzzle _puzzle;
+
     private void Awake()
     {
         _inventory = GameObject.FindAnyObjectByType<PlayerDualHandInventory>();
@@ -52,12 +53,15 @@ public class FuseBox : MonoBehaviour
 
         _elevator = FindObjectOfType<ElevatorController>();
         _elevator.enabled = false;
-        
-        foreach(Light light in _lobbyLights)
+
+        foreach (Light light in _lobbyLights)
         {
-            if(!LevelCompletionManager.Instance.IsLevelCompleted("LOBBY") && light != GetComponent<Light>())
+            if (!LevelCompletionManager.Instance.IsLevelCompleted("LOBBY") && light != GetComponent<Light>())
             {
-                light.enabled = false;
+                if (light.gameObject.tag != "LobbyLight")
+                {
+                    light.enabled = false;
+                }
             }
             else if (LevelCompletionManager.Instance.IsLevelCompleted("LOBBY"))
             {
@@ -70,7 +74,7 @@ public class FuseBox : MonoBehaviour
                     fuseObject = GameObject.Find("Fuse");
                     fuseObject.SetActive(false);
                 }
-            
+
                 _elevator.enabled = true;
                 _elevator.OpenElevator();
                 AnimationsTrigger("PowerOn");
@@ -81,8 +85,8 @@ public class FuseBox : MonoBehaviour
             LevelCompletionManager.Instance.SaveCurrentLevelAsLoaded("LOBBY");
         }
 
-        
-        
+
+
         _radioAudio = GameObject.Find("LargeRadio").GetComponent<AudioSource>();
         _radioAudio.enabled = false;
     }
@@ -98,7 +102,7 @@ public class FuseBox : MonoBehaviour
 
     private void Update()
     {
-        if(_isActive)
+        if (_isActive)
         {
             CheckForInput();
         }
@@ -133,7 +137,7 @@ public class FuseBox : MonoBehaviour
             ActivatePuzzle();
             _canExit = false;
         }
-        else if(Input.GetMouseButtonDown(0))
+        else if (Input.GetMouseButtonDown(0))
         {
             RaycastToMousePosition();
         }
@@ -179,10 +183,10 @@ public class FuseBox : MonoBehaviour
             {
                 light.enabled = true;
             }
-            
+
             _radioAudio.enabled = true;
             _elevator.enabled = true;
-            
+
             PlayerPrefs.SetInt("LobbyPowered", 1);
             PlayerPrefs.Save();
         }
@@ -207,7 +211,7 @@ public class FuseBox : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
     private void AnimationsTrigger(string trigger)
@@ -224,7 +228,8 @@ public class FuseBox : MonoBehaviour
             {
                 _puzzle.CompletePuzzle();
             }
-            
+
         }
     }
+
 }
