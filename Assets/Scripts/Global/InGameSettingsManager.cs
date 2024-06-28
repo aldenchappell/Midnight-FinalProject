@@ -182,10 +182,9 @@ public class InGameSettingsManager : MonoBehaviour
 
         SetQualityLevel(GetQualityLevel());
         InitializeBrightness();
-        InitializeVolumes(); // Initialize volumes here
+        InitializeVolumes(); 
     }
 
-    // Initialize volumes to their saved values or default to 0.5f
     private void InitializeVolumes()
     {
         SetVolume(BrightnessPrefKey, PlayerPrefs.GetFloat(BrightnessPrefKey, 0.5f));

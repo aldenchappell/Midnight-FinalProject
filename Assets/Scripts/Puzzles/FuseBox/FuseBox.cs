@@ -89,11 +89,12 @@ public class FuseBox : MonoBehaviour
 
     private void Start()
     {
-        if(LevelCompletionManager.Instance.hasCompletedLobby == true)
+        if (PlayerPrefs.HasKey("LobbyPowered") && PlayerPrefs.GetInt("LobbyPowered") == 1)
         {
             PowerLobby();
         }
     }
+
 
     private void Update()
     {
@@ -154,25 +155,41 @@ public class FuseBox : MonoBehaviour
             {
                 PlaceFuse(objectHit.gameObject);
             }
-            if (objectHit.transform.CompareTag("Lever") && _fuseIn)
+            if (objectHit.CompareTag("Lever") && _fuseIn)
             {
+                //LevelCompletionManager.Instance.hasCompletedLobby = true;
+                PowerLobby(); // Only trigger power if fuse is in and lever is pulled
 
-                PowerLobby();
-                LevelCompletionManager.Instance.hasCompletedLobby = true;
+                // Optionally, you can set PlayerPrefs here as well
+                PlayerPrefs.SetInt("LobbyPowered", 1);
+                PlayerPrefs.Save();
             }
         }
     }
 
+
     public void PowerLobby()
     {
-        AnimationsTrigger("PowerOn");
-        foreach (Light light in _lobbyLights)
+        if (_fuseIn && LevelCompletionManager.Instance.hasCompletedLobby)
         {
-            light.enabled = true;
+            AnimationsTrigger("PowerOn");
+
+            // Enable lobby lights
+            foreach (Light light in _lobbyLights)
+            {
+                light.enabled = true;
+            }
+            
+            _radioAudio.enabled = true;
+            _elevator.enabled = true;
+            
+            PlayerPrefs.SetInt("LobbyPowered", 1);
+            PlayerPrefs.Save();
         }
-        //ActivatePuzzle();
-        _radioAudio.enabled = true;
-        _elevator.enabled = true;
+        else
+        {
+            Debug.Log("Fuse and/or lever not activated yet.");
+        }
     }
 
     private void PlaceFuse(GameObject fuseShadow)

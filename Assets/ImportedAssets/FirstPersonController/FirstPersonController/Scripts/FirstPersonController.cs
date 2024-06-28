@@ -202,33 +202,36 @@ namespace StarterAssets
 
         private void UpdateArmAnimations()
         {
-            if (isSprinting)
+            if (_playerArms != null)
             {
-                _playerArms.SetRunning(true);
-                _playerArms.SetWalking(false);
-                _playerArms.SetIdle(false);
-                _playerArms.SetCrouching(false);
-            }
-            else if (input.move != Vector2.zero && !isCrouching)
-            {
-                _playerArms.SetRunning(false);
-                _playerArms.SetWalking(true);
-                _playerArms.SetIdle(false);
-                _playerArms.SetCrouching(false);
-            }
-            else if (isCrouching)
-            {
-                _playerArms.SetRunning(false);
-                _playerArms.SetWalking(false);
-                _playerArms.SetIdle(false);
-                _playerArms.SetCrouching(true);
-            }
-            else
-            {
-                _playerArms.SetRunning(false);
-                _playerArms.SetWalking(false);
-                _playerArms.SetIdle(true);
-                _playerArms.SetCrouching(false);
+                if (isSprinting)
+                {
+                    _playerArms.SetRunning(true);
+                    _playerArms.SetWalking(false);
+                    _playerArms.SetIdle(false);
+                    _playerArms.SetCrouching(false);
+                }
+                else if (input.move != Vector2.zero && !isCrouching)
+                {
+                    _playerArms.SetRunning(false);
+                    _playerArms.SetWalking(true);
+                    _playerArms.SetIdle(false);
+                    _playerArms.SetCrouching(false);
+                }
+                else if (isCrouching)
+                {
+                    _playerArms.SetRunning(false);
+                    _playerArms.SetWalking(false);
+                    _playerArms.SetIdle(false);
+                    _playerArms.SetCrouching(true);
+                }
+                else
+                {
+                    _playerArms.SetRunning(false);
+                    _playerArms.SetWalking(false);
+                    _playerArms.SetIdle(true);
+                    _playerArms.SetCrouching(false);
+                }
             }
         }
         
