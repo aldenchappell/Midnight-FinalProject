@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MusicBoxPuzzle : MonoBehaviour
-{ 
+{
+    [SerializeField] GameObject key;
     private Animator _animator;
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class MusicBoxPuzzle : MonoBehaviour
         gameObject.transform.GetChild(2).gameObject.SetActive(false);
         _animator.SetTrigger("PlayMusicBox");
         Invoke("LoopAnimation", 4.04f);
-        Invoke("InitiateKeySpawn", 4.04f);
+        Invoke("InitiateKeySpawn", 0f);
 
     }
     private void LoopAnimation()
@@ -35,7 +36,8 @@ public class MusicBoxPuzzle : MonoBehaviour
         yield return new WaitForSeconds(4.0f);
        
         GetComponent<Puzzle>().CompletePuzzle();
-        GetComponent<Puzzle>().onPuzzleCompletion.Invoke();
+        //GetComponent<Puzzle>().onPuzzleCompletion.Invoke();
+        key.SetActive(true);
         LevelCompletionManager.Instance.OnKeySpawn();
     }
 }

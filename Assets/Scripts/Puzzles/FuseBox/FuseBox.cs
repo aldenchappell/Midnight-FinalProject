@@ -44,16 +44,22 @@ public class FuseBox : MonoBehaviour
 
         for (int i = 0; i < _lobbyLights.Count; i++)
         {
-            if (_lobbyLights[i].gameObject.name == "ExamineObjectLight")
+            if (_lobbyLights[i].gameObject.name == "ExamineObjectLight" || _lobbyLights[i].gameObject.name == "Light KEEP ON")
             {
                 Debug.Log(_lobbyLights[i]);
                 _lobbyLights.Remove(_lobbyLights[i]);
             }
         }
 
+        foreach (Light light in _lobbyLights)
+        {
+            light.enabled = false;
+        }
+
         _elevator = FindObjectOfType<ElevatorController>();
         _elevator.enabled = false;
 
+        /*
         foreach (Light light in _lobbyLights)
         {
             if (!LevelCompletionManager.Instance.IsLevelCompleted("LOBBY") && light != GetComponent<Light>())
@@ -84,7 +90,9 @@ public class FuseBox : MonoBehaviour
         {
             LevelCompletionManager.Instance.SaveCurrentLevelAsLoaded("LOBBY");
         }
+        */
 
+        
 
 
         _radioAudio = GameObject.Find("LargeRadio").GetComponent<AudioSource>();
@@ -93,9 +101,17 @@ public class FuseBox : MonoBehaviour
 
     private void Start()
     {
+        /*
         if (PlayerPrefs.HasKey("LobbyPowered") && PlayerPrefs.GetInt("LobbyPowered") == 1)
         {
             PowerLobby();
+        }
+        */
+        if(LevelCompletionManager.Instance.hasCompletedLobby == true)
+        {
+            PowerLobby();
+            GameObject.FindGameObjectWithTag("Fuse").SetActive(false);
+            this.gameObject.GetComponent<InteractableObject>().enabled = false;
         }
     }
 
@@ -161,7 +177,7 @@ public class FuseBox : MonoBehaviour
             }
             if (objectHit.CompareTag("Lever") && _fuseIn)
             {
-                //LevelCompletionManager.Instance.hasCompletedLobby = true;
+                LevelCompletionManager.Instance.hasCompletedLobby = true;
                 PowerLobby(); // Only trigger power if fuse is in and lever is pulled
 
                 // Optionally, you can set PlayerPrefs here as well
@@ -174,9 +190,7 @@ public class FuseBox : MonoBehaviour
 
     public void PowerLobby()
     {
-        if (_fuseIn && LevelCompletionManager.Instance.hasCompletedLobby)
-        {
-            AnimationsTrigger("PowerOn");
+           AnimationsTrigger("PowerOn");
 
             // Enable lobby lights
             foreach (Light light in _lobbyLights)
@@ -187,13 +201,8 @@ public class FuseBox : MonoBehaviour
             _radioAudio.enabled = true;
             _elevator.enabled = true;
 
-            PlayerPrefs.SetInt("LobbyPowered", 1);
-            PlayerPrefs.Save();
-        }
-        else
-        {
-            Debug.Log("Fuse and/or lever not activated yet.");
-        }
+            //PlayerPrefs.SetInt("LobbyPowered", 1);
+            //PlayerPrefs.Save();
     }
 
     private void PlaceFuse(GameObject fuseShadow)

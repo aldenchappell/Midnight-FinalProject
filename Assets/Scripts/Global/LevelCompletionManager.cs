@@ -189,6 +189,7 @@ public class LevelCompletionManager : MonoBehaviour
     
     public void OnKeySpawn()
     {
+        print("Key spawn Audio");
         _audioSource.PlayOneShot(keyDropSound);
     }
     

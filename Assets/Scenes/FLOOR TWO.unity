@@ -7896,6 +7896,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1522926465}
     m_Modifications:
     - target: {fileID: 282724173230843667, guid: e6d77cb38b44fe54b84713c3f1fd73f3, type: 3}
+      propertyPath: key
+      value: 
+      objectReference: {fileID: 759980314}
+    - target: {fileID: 282724173230843667, guid: e6d77cb38b44fe54b84713c3f1fd73f3, type: 3}
       propertyPath: keyToSpawn
       value: 
       objectReference: {fileID: 759980314}
@@ -7913,7 +7917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582732580437335042, guid: e6d77cb38b44fe54b84713c3f1fd73f3, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5582732580437335042, guid: e6d77cb38b44fe54b84713c3f1fd73f3, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -8018,19 +8022,8 @@ MonoBehaviour:
   puzzle: {fileID: 11400000, guid: c94dacb1982527247bc518aff25cb7b1, type: 2}
   onPuzzleCompletion:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 759980314}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
+  puzzleCompletionAudioClip: {fileID: 0}
 --- !u!114 &1422660332
 MonoBehaviour:
   m_ObjectHideFlags: 0
