@@ -6,7 +6,7 @@ public class EnemyAnimator : MonoBehaviour
 
     void Awake()
     {
-        _animator = GetComponent<Animator>();
+        _animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     public void SetAnimationTrigger(string animationName)
