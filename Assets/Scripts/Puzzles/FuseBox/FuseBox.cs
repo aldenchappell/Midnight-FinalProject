@@ -179,8 +179,7 @@ public class FuseBox : MonoBehaviour
             {
                 LevelCompletionManager.Instance.hasCompletedLobby = true;
                 PowerLobby(); // Only trigger power if fuse is in and lever is pulled
-
-                // Optionally, you can set PlayerPrefs here as well
+                
                 PlayerPrefs.SetInt("LobbyPowered", 1);
                 PlayerPrefs.Save();
             }
@@ -201,8 +200,7 @@ public class FuseBox : MonoBehaviour
             _radioAudio.enabled = true;
             _elevator.enabled = true;
 
-            //PlayerPrefs.SetInt("LobbyPowered", 1);
-            //PlayerPrefs.Save();
+        
     }
 
     private void PlaceFuse(GameObject fuseShadow)

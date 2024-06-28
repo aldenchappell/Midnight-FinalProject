@@ -349,18 +349,24 @@ namespace StarterAssets
         {
             if (Grounded)
             {
+                // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
 
+                // stop our velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
                 {
                     _verticalVelocity = -2f;
                 }
 
+                // Jump
                 if (input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+                    // the square root of H * -2 * G = how much velocity needed to reach desired height
+                    if(InGameSettingsManager.Instance.enableJumping)
+                        _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
                 }
 
+                // jump timeout
                 if (_jumpTimeoutDelta >= 0.0f)
                 {
                     _jumpTimeoutDelta -= Time.deltaTime;
@@ -368,14 +374,20 @@ namespace StarterAssets
             }
             else
             {
+                // reset the jump timeout timer
                 _jumpTimeoutDelta = JumpTimeout;
 
+                // fall timeout
                 if (_fallTimeoutDelta >= 0.0f)
                 {
                     _fallTimeoutDelta -= Time.deltaTime;
                 }
+
+                // if we are not grounded, do not jump
+                input.jump = false;
             }
 
+            // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
@@ -385,44 +397,71 @@ namespace StarterAssets
         private void HandleHeadBob()
         {
             if (!Grounded) return;
-            if (Mathf.Abs(_currentSpeed) < .1f) return;
+			
+            //Head bob while crouching is currently disabled.
+            
+            if (Mathf.Abs(input.move.x) != 0.0f && !isCrouching || Mathf.Abs(input.move.y) != 0.0f && !isCrouching)
+            {
+                //Debug.Log("Moving");
+                _timer += Time.deltaTime * (isSprinting ? sprintBobSpeed : walkBobSpeed);
 
-            _timer += Time.deltaTime * (isSprinting ? sprintBobSpeed : walkBobSpeed);
-            _mainCamera.transform.localPosition = new Vector3(
-                _mainCamera.transform.localPosition.x,
-                _defaultYPos + Mathf.Sin(_timer) * (isSprinting ? sprintBobAmount : walkBobAmount),
-                _mainCamera.transform.localPosition.z);
+                cameraRoot.transform.localPosition = new Vector3(
+                    cameraRoot.transform.localPosition.x,
+                    _defaultYPos + Mathf.Sin(_timer) * (isSprinting ? sprintBobAmount : walkBobAmount),
+                    cameraRoot.transform.localPosition.z
+                );
+            }
         }
 
         private void HandleCrouching()
         {
-            isCrouching = !isCrouching;
-            _inCrouchAnimation = true;
             StartCoroutine(CrouchAndStandRoutine());
+
             HandleCrouchingIcon();
         }
 
+
         private IEnumerator CrouchAndStandRoutine()
         {
+            _inCrouchAnimation = true;
+
             float timeElapsed = 0;
-            float targetHeight = isCrouching ? crouchingHeight : standingHeight;
+            float targetHeight = isCrouching ? standingHeight : crouchingHeight;
             float currentHeight = controller.height;
-            Vector3 targetCenter = isCrouching ? crouchingCenter : standingCenter;
+
+            Vector3 targetCenter = isCrouching ? standingCenter : crouchingCenter;
             Vector3 currentCenter = controller.center;
+
+            // Calculate target and current positions for cameraRoot
+            Vector3 targetCameraRootPosition =
+                isCrouching ? new Vector3(0, _defaultYPos, 0)
+                    : new Vector3(0, crouchingHeight, 0);
+			
+            Vector3 currentCameraRootPosition = cameraRoot.transform.localPosition;
 
             while (timeElapsed < timeToEnterCrouch)
             {
-                controller.height = Mathf.Lerp(currentHeight, targetHeight, timeElapsed / timeToEnterCrouch);
-                controller.center = Vector3.Lerp(currentCenter, targetCenter, timeElapsed / timeToEnterCrouch);
-                cameraRoot.transform.localPosition = new Vector3(cameraRoot.transform.localPosition.x, Mathf.Lerp(_originalCameraRootPosition, _originalCameraRootPosition - _originalCameraRootPosition + crouchingCenter.y, timeElapsed / timeToEnterCrouch), cameraRoot.transform.localPosition.z);
+                float t = timeElapsed / timeToEnterCrouch;
+
+                controller.height = Mathf.Lerp(currentHeight, targetHeight, t);
+                controller.center = Vector3.Lerp(currentCenter, targetCenter, t);
+
+                // Interpolate the cameraRoot position
+                cameraRoot.transform.localPosition = Vector3.Lerp(currentCameraRootPosition, targetCameraRootPosition, t);
+
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
 
             controller.height = targetHeight;
             controller.center = targetCenter;
+            cameraRoot.transform.localPosition = targetCameraRootPosition;
+
+            // Toggle crouch state
+            isCrouching = !isCrouching;
             _inCrouchAnimation = false;
         }
+    
 
         private void HandleSprintingIcon()
         {
