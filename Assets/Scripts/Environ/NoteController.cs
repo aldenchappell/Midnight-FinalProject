@@ -7,7 +7,7 @@ public class NoteController : MonoBehaviour
 {
     public SO_Note note;
     [SerializeField] private TMP_Text noteText, noteInstructionsText;
-
+    [SerializeField] private GameObject notePanel; 
     //where the note will be placed when picked up and parented to.
     private Transform _pickupPosition;
     //rotation of the note when dropped
@@ -60,6 +60,7 @@ public class NoteController : MonoBehaviour
 
         noteText.text = note.noteText;
         noteInstructionsText.gameObject.SetActive(true);
+        notePanel.SetActive(true);
 
         // Lerping position and rotation
         StartCoroutine(LerpToPositionAndRotation(transform, _pickupPosition, pickupSpeed));
@@ -82,6 +83,7 @@ public class NoteController : MonoBehaviour
 
         noteText.text = "";
         noteInstructionsText.gameObject.SetActive(false);
+        notePanel.SetActive(false);
 
         _isPickedUp = false; 
         
