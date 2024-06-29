@@ -53,7 +53,9 @@ public class PlayerInteractableController : MonoBehaviour
             if (interactable != null)
             {
                 _playerArms.SetPickingUp(true);
-                _playerInventory.HideHandItem();
+                if(_playerInventory.GetInventory.Length > 0)
+                    _playerInventory.HideHandItem();
+                
                 if (interactableObject != interactable)
                 {
                     ResetHighlight();
