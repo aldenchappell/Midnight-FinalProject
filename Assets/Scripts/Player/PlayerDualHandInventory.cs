@@ -84,6 +84,7 @@ public class PlayerDualHandInventory : MonoBehaviour
             _inventorySlots[currentIndexSelected].SetActive(true);
             _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
             _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
+            _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
             _inventorySlots[currentIndexSelected].transform.parent = null;
         }
         newObject.transform.parent = this.gameObject.transform;
@@ -107,10 +108,12 @@ public class PlayerDualHandInventory : MonoBehaviour
                 else
                 {
                     _inventorySlots[currentIndexSelected].transform.parent = null; 
+                    
                 }
                 
                 _inventorySlots[currentIndexSelected].transform.position = obj.transform.position;
                 _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
+                _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
                 obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
                 Destroy(_inventorySlots[currentIndexSelected].GetComponent<InteractableObject>());
                 Destroy(obj);
@@ -190,8 +193,9 @@ public class PlayerDualHandInventory : MonoBehaviour
         if (_inventorySlots[currentIndexSelected] != null)
         {
             _inventorySlots[currentIndexSelected].SetActive(true);
-            _inventorySlots[currentIndexSelected].transform.parent = this.gameObject.transform;
+            _inventorySlots[currentIndexSelected].transform.parent = handPosition.parent.gameObject.transform;
             _inventorySlots[currentIndexSelected].transform.localPosition = handPosition.localPosition;
+            _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = false;
         }
     }
     

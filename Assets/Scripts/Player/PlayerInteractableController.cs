@@ -24,10 +24,15 @@ public class PlayerInteractableController : MonoBehaviour
     private bool _allowInteraction = true;
     public bool _inPuzzle;
 
+    private PlayerDualHandInventory _playerInventory;
+    private PlayerArmsAnimationController _playerArms;
+
     private void Awake()
     {
         _examineObjectController = FindObjectOfType<PlayerExamineObjectController>();
         _pauseManager = FindObjectOfType<PauseManager>();
+        _playerArms = FindObjectOfType<PlayerArmsAnimationController>();
+        _playerInventory = FindObjectOfType<PlayerDualHandInventory>();
     }
 
     private void Update()
@@ -47,10 +52,10 @@ public class PlayerInteractableController : MonoBehaviour
             _examineObjectController.objectToExamine = hitInfo.collider.gameObject;
             if (interactable != null)
             {
+                _playerArms.SetPickingUp(true);
                 if (interactableObject != interactable)
                 {
                     ResetHighlight();
-
                     interactableObject = interactable;
 
                     if (examinable != null)
@@ -67,20 +72,23 @@ public class PlayerInteractableController : MonoBehaviour
                     _highlightInteractableObjectController?.ChangeColor(Color.red);
                 }
             }
+            else
+            {
+                _playerArms.SetPickingUp(false);
+            }
         }
         else
         {
+            _playerArms.SetPickingUp(false);
             ResetHighlight();
             _examineObjectController.objectToExamine = null;
         }
 
         if (interactableObject != _previousInteractable)
         {
-            //print("Hi");
             _previousInteractable = interactableObject;
             if (interactableObject != null && !_inPuzzle)
             {
-                //print("Bye");
                 ResetInteraction();
             }
         }
@@ -92,8 +100,9 @@ public class PlayerInteractableController : MonoBehaviour
         {
             if (interactableObject != null && _allowInteraction && _previousInteractable != null)
             {
+                _playerArms.SetPickedUp();
                 interactionImage.sprite = defaultInteractionIcon;
-                interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
+                interactionImage.rectTransform.sizeDelta = defaultIconSize;
                 interactableObject.onInteraction?.Invoke();
                 StartCoroutine(InteractionSpamPrevention());
                 _examineObjectController.objectToExamine = null;
@@ -105,12 +114,13 @@ public class PlayerInteractableController : MonoBehaviour
                  && !examinableObject.isExamining)
         {
             interactionImage.sprite = defaultInteractionIcon;
-            interactionImage.rectTransform.sizeDelta = defaultInteractionIconSize;
+            interactionImage.rectTransform.sizeDelta = defaultIconSize;
             _examineObjectController.StartExamination(examinableObject.gameObject);
             ResetInteraction(); 
             StartCoroutine(InteractionSpamPrevention());
         }
     }
+
 
     private void ResetHighlight()
     {
@@ -165,6 +175,7 @@ public class PlayerInteractableController : MonoBehaviour
         UpdateInteractionUI(null);
         _highlightInteractableObjectController = null;
 
+        _playerArms.SetPickingUp(false);
         DialogueController dialogueController = FindObjectOfType<DialogueController>();
 
         if (dialogueController != null && !_pauseManager.GameIsPaused)

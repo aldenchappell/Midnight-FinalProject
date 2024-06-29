@@ -39,9 +39,9 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
     
         bool soundPlayed = false;
     
-        foreach (var light in lightColliders)
+        foreach (var lightCollider in lightColliders)
         {
-            LightFlicker[] flickerComponents = light.GetComponentsInChildren<LightFlicker>();
+            LightFlicker[] flickerComponents = lightCollider.GetComponentsInChildren<LightFlicker>();
             foreach (var flicker in flickerComponents)
             {
                 flickeringLights.Add(flicker);
@@ -75,8 +75,6 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
         _currentFlickeringLights = flickeringLights;
     }
     
-    
-
     private void OnDrawGizmos()
     {
         if (!enableDebug) return;

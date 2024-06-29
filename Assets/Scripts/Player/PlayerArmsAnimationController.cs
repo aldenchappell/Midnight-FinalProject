@@ -38,5 +38,10 @@ public class PlayerArmsAnimationController : MonoBehaviour
     {
         animator.SetBool("isRunningWithItem", isRunningWithItem);
     }
+
+    public void SetPickedUp()
+    {
+        animator.SetTrigger("pickedUp");
+    }
 }
 

@@ -111,6 +111,7 @@ namespace StarterAssets
         private Coroutine _fadeSliderCoroutine;
         private Coroutine _fadeOutCoroutine;
 
+        private PlayerDualHandInventory _playerInventory;
         private PlayerArmsAnimationController _playerArms;
 
        // private Animator _animator;  
@@ -132,6 +133,7 @@ namespace StarterAssets
             _defaultYPos = _mainCamera.transform.localPosition.y;
             _originalCameraRootPosition = cameraRoot.transform.localPosition.y;
             _playerArms = FindObjectOfType<PlayerArmsAnimationController>();
+            _playerInventory = GetComponent<PlayerDualHandInventory>();
             //_animator = GetComponent<Animator>(); // Initialize Animator component
         }
 
@@ -202,12 +204,24 @@ namespace StarterAssets
 
         private void UpdateArmAnimations()
         {
-            if (_playerArms != null)
+            
+            if (_playerArms != null && _playerInventory.GetCurrentHandItem == null)
             {
                 if (isSprinting)
                 {
+                    _playerArms.SetIsRunningWithItem(false);
                     _playerArms.SetRunning(true);
                     _playerArms.SetWalking(false);
+                    _playerArms.SetPickingUp(false);
+                    _playerArms.SetIdle(false);
+                    _playerArms.SetCrouching(false);
+                }
+                else if (isSprinting && _playerInventory.GetCurrentHandItem != null)
+                {
+                    _playerArms.SetIsRunningWithItem(true);
+                    _playerArms.SetRunning(false);
+                    _playerArms.SetWalking(false);
+                    _playerArms.SetPickingUp(false);
                     _playerArms.SetIdle(false);
                     _playerArms.SetCrouching(false);
                 }
@@ -215,6 +229,7 @@ namespace StarterAssets
                 {
                     _playerArms.SetRunning(false);
                     _playerArms.SetWalking(true);
+                    _playerArms.SetPickingUp(false);
                     _playerArms.SetIdle(false);
                     _playerArms.SetCrouching(false);
                 }
@@ -222,6 +237,7 @@ namespace StarterAssets
                 {
                     _playerArms.SetRunning(false);
                     _playerArms.SetWalking(false);
+                    _playerArms.SetPickingUp(false);
                     _playerArms.SetIdle(false);
                     _playerArms.SetCrouching(true);
                 }
@@ -229,6 +245,7 @@ namespace StarterAssets
                 {
                     _playerArms.SetRunning(false);
                     _playerArms.SetWalking(false);
+                    _playerArms.SetPickingUp(false);
                     _playerArms.SetIdle(true);
                     _playerArms.SetCrouching(false);
                 }
