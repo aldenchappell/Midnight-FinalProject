@@ -132,7 +132,7 @@ public class EnemyVision : MonoBehaviour
         }
         else if(targetsInSight.Count <= 0 && realizationValue > 0)
         {
-            realizationValue -= 1;
+            realizationValue -= 2;
             Invoke("RealiziationBuffer", 1f);
         }
         else

@@ -53,7 +53,7 @@ public class SoundDetectionRadius : MonoBehaviour
             Collider[] targets = Physics.OverlapSphere(transform.position, soundRadius, targetLayer);
             if(targets.Length > 0 && !_onDelay)
             {
-                targets[0].GetComponent<EnemySuspicionSystem>().SuspicionTriggered(transform.position);
+                targets[0].GetComponent<EnemySuspicionSystem>().SuspicionTriggered(transform.position, 20);
                 _onDelay = true;
                 Invoke("ResetDelay", 1f);
             }

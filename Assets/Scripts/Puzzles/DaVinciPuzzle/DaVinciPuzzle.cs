@@ -203,7 +203,6 @@ public class DaVinciPuzzle : MonoBehaviour
             {
                 print("Puzzle Failed");
                 _patrol.DecreaseTimeToSpawn = 10;
-                _patrol.ReferenceToSuspicion = transform.position;
                 StartCoroutine(TriggerAnimation(true));
             }
         }

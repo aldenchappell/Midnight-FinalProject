@@ -10,7 +10,7 @@ public class PatrolSystemManager : MonoBehaviour
 
     private float _currentTime;
 
-    public float DecreaseTimeToSpawn
+    public int DecreaseTimeToSpawn
     {
         set
         {
@@ -19,15 +19,21 @@ public class PatrolSystemManager : MonoBehaviour
                 _currentTime += value;
                 print(_currentTime);
             }
+            else
+            {
+                Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(GameObject.Find("Player").transform.position, value);
+            }
         }
     }
+    /*
     public Vector3 ReferenceToSuspicion
     {
         set
         {
-            Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(value);
+            Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(value, value);
         }
     }
+    */
 
     private void Update()
     {

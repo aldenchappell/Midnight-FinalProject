@@ -5962,7 +5962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1f5c9b3c882074e976b6d7fd3d3b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenSpawns: 10
+  timeBetweenSpawns: 60
   Demon: {fileID: 286118600}
   hasFirstTimeSpawnCondition: 1
 --- !u!4 &843520379
@@ -10050,6 +10050,18 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 843520378}
+        m_TargetAssemblyTypeName: PatrolSystemManager, Assembly-CSharp
+        m_MethodName: set_DecreaseTimeToSpawn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 20
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2

@@ -243,7 +243,6 @@ public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
         _movesMade = 0;
         UpdatePuzzleUI();
         _patrol.DecreaseTimeToSpawn = 10;
-        _patrol.ReferenceToSuspicion = transform.position;
         AssignUniqueSprites();
     }
 

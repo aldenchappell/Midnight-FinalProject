@@ -53,20 +53,14 @@ public class EnemySuspicionSystem : MonoBehaviour
         //If the demon is actively chasing the player, trigger suspicion continuously
         if(_COV.targetsLockedIn.Count > 0)
         {
-            SuspicionTriggered(_COV.targetsLockedIn[0].transform.position);
-        }
-        //Press M to add suspicion manually (testing only)
-        if(Input.GetKeyDown("m"))
-        {
-            SuspicionTriggered(GameObject.FindWithTag("Player").transform.position);
-            print("Added Suspicion");
+            SuspicionTriggered(_COV.targetsLockedIn[0].transform.position, 40);
         }
     }
     //Adds suspicion and gets the position of where it occured
-    public void SuspicionTriggered(Vector3 position)
+    public void SuspicionTriggered(Vector3 position, int value)
     {
         lastSusPosition = position;
-        AdjustSuspicionValue(10);
+        AdjustSuspicionValue(value);
     }
 
     public void PatrolNodeReached()

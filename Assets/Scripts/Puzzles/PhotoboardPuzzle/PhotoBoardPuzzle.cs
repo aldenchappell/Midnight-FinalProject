@@ -167,7 +167,6 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
                 TogglePuzzleUI();
                 ResetPuzzle();
                 _patrol.DecreaseTimeToSpawn = 10;
-                _patrol.ReferenceToSuspicion = transform.position;
             }
         }
     }

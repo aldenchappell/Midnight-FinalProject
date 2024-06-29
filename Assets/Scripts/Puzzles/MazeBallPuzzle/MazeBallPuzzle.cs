@@ -284,7 +284,6 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
             {
                 ResetPuzzle();
                 _patrol.DecreaseTimeToSpawn = 10;
-                _patrol.ReferenceToSuspicion = transform.position;
             }
         }
         
