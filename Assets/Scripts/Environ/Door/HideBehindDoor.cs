@@ -152,8 +152,6 @@ public class HideBehindDoor : MonoBehaviour
     {
         if (_doorSpyHoleCamera.Priority > _doorHideCamera.Priority)
         {
-            if (Input.GetMouseButton(2))
-            {
                 float mouseX = Input.GetAxis("Mouse X");
                 float mouseY = Input.GetAxis("Mouse Y");
 
@@ -180,7 +178,6 @@ public class HideBehindDoor : MonoBehaviour
                         lensDistortion.centerX.value = _currentCenterX;
                         lensDistortion.centerY.value = _currentCenterY;
                     }
-                }
             }
         }
     }
