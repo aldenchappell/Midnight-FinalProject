@@ -16,11 +16,11 @@ public class Radio : MonoBehaviour
     {
         if (_audio.isPlaying)
         {
-            _audio.Pause();
+            _audio.volume = 0f;
         }
         else
         {
-            _audio.UnPause();
+            _audio.volume = 1f;
         }
     }
 }

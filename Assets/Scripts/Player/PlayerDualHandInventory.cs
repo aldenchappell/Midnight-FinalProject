@@ -235,7 +235,18 @@ public class PlayerDualHandInventory : MonoBehaviour
         foreach (GameObject item in _inventorySlots)
         {
             if(item != null)
-                _inventorySlots[currentIndexSelected].SetActive(false);
+            {
+                if(item.CompareTag("Skull"))
+                {
+                    item.transform.position = skullOfHandPosition.position;
+                    item.GetComponent<MeshRenderer>().enabled = false;
+                    GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = .5f;
+                }
+                else
+                {
+                    _inventorySlots[currentIndexSelected].SetActive(false);
+                }
+            } 
         }
 
         /*
