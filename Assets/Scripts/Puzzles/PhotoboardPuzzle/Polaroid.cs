@@ -23,7 +23,7 @@ public class Polaroid : MonoBehaviour
 
     private void Start()
     {
-        polaroidCountText.text = "Polaroids collected: " + _puzzle.polaroidCount;
+        //polaroidCountText.text = "Polaroids collected: " + _puzzle.polaroidCount;
     }
 
     public void IncrementPolaroidCount()

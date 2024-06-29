@@ -23,7 +23,7 @@ public class HideBehindDoor : MonoBehaviour
     private FirstPersonController _FPC;
     private PlayerDualHandInventory _inventory;
 
-    private bool _isActive;
+    public bool isActive;
     private bool _isSwitching;
 
     private PostProcessVolume _postProcessing;
@@ -73,7 +73,7 @@ public class HideBehindDoor : MonoBehaviour
 
     private void Start()
     {
-        _isActive = false;
+        isActive = false;
         _isSwitching = false;
 
         _doorHud.SetActive(false);
@@ -81,7 +81,7 @@ public class HideBehindDoor : MonoBehaviour
 
     private void Update()
     {
-        if (_isActive)
+        if (isActive)
         {
             CheckForInput();
             HandleRotationInput();
@@ -99,9 +99,9 @@ public class HideBehindDoor : MonoBehaviour
 
     private IEnumerator ChangeHideState()
     {
-        _isActive = !_isActive;
+        isActive = !isActive;
         _isSwitching = true;
-        if (_isActive)
+        if (isActive)
         {
             _FPC.ToggleCanMove();
             _doorController.Invoke("HandleDoor", 0);
@@ -294,7 +294,7 @@ public class HideBehindDoor : MonoBehaviour
 
     private void HidePlayer()
     {
-        if (_isActive)
+        if (isActive)
         {
             _player.layer = hiddenLayer;
         }

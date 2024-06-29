@@ -4127,7 +4127,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Polaroids Collected: '
+  m_text: 'Polaroids Collected: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 998fbd318333dd84bb8bcc852ea9e291, type: 2}
   m_sharedMaterial: {fileID: -7788518975295999690, guid: 998fbd318333dd84bb8bcc852ea9e291, type: 2}
@@ -5323,6 +5323,14 @@ PrefabInstance:
     - target: {fileID: 7296059525838519283, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861388797520701875, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: defaultIconSize.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861388797520701875, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: defaultIconSize.y
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8066200669116031393, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_AnchorMax.x
@@ -65452,6 +65460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _doorHideCamera: {fileID: 2501615011951914852}
   _doorSpyHoleCamera: {fileID: 400013959904374081}
+  isActive: 0
 --- !u!23 &4070326348653734357
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -75648,6 +75657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _doorHideCamera: {fileID: 6774214094417593875}
   _doorSpyHoleCamera: {fileID: 8734855556530242614}
+  isActive: 0
 --- !u!1 &4958797534232772187
 GameObject:
   m_ObjectHideFlags: 0
