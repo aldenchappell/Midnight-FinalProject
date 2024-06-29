@@ -81,11 +81,13 @@ public class PlayerDualHandInventory : MonoBehaviour
     {
         if (_inventorySlots[currentIndexSelected] != null)
         {
+            _inventorySlots[currentIndexSelected].transform.parent = null;
             _inventorySlots[currentIndexSelected].SetActive(true);
             _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
             _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
+            _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
             _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
-            _inventorySlots[currentIndexSelected].transform.parent = null;
+            
         }
         newObject.transform.parent = this.gameObject.transform;
         newObject.layer = LayerMask.NameToLayer("Default");
