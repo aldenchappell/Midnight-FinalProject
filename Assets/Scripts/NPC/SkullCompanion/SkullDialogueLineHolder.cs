@@ -4,7 +4,8 @@ using UnityEngine;
 public class SkullDialogueLineHolder : MonoBehaviour
 {
     public static SkullDialogueLineHolder Instance;
-
+    public static SkullDialogue SkullDialogue;
+    
     public bool isFirstClipOfScene = true;
     public AudioSource audioSource;
     
@@ -54,6 +55,7 @@ public class SkullDialogueLineHolder : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SkullDialogue = FindObjectOfType<SkullDialogue>();
         }
         else
         {

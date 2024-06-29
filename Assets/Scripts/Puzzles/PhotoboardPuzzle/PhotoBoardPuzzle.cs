@@ -197,7 +197,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
         {
             bool hasPolaroid = _playerDualHandInventory.GetInventory.Any(item => item != null && item.CompareTag("Polaroid"));
             
-            if (polaroidCount != TargetPolaroidCount && _isFirstTime && !hasPolaroid)
+            if (polaroidCount != TargetPolaroidCount && _isFirstTime && !hasPolaroid && SkullDialogueLineHolder.SkullDialogue.pickedUp)
             {
                 PlaySpecificSkullDialogueClip(
                     SkullDialogueLineHolder.Instance.audioSource,
@@ -205,7 +205,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
                 return;
             }
             
-            if (polaroidCount != TargetPolaroidCount)
+            if (polaroidCount != TargetPolaroidCount && SkullDialogueLineHolder.SkullDialogue.pickedUp)
             {
                 PlaySpecificSkullDialogueClip(
                     SkullDialogueLineHolder.Instance.audioSource,
@@ -214,7 +214,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
                 return;
             }
             
-            if (_isFirstTime && !hasPolaroid)
+            if (_isFirstTime && !hasPolaroid && SkullDialogueLineHolder.SkullDialogue.pickedUp)
             {
                 _puzzleAudio.PlayOneShot(incorrectSlotSound);
                 PlaySpecificSkullDialogueClip(

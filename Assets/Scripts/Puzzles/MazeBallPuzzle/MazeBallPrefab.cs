@@ -16,7 +16,8 @@ public class MazeBallPrefab : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
-        _audio.PlayOneShot(dropSound);
+        Debug.Log(other.gameObject.name);
+        //_audio.PlayOneShot(dropSound);
         Debug.Log("hit ground");
     }
 }

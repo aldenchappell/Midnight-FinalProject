@@ -191,9 +191,8 @@ namespace StarterAssets
             }
 
             UpdateSprintStamina();
-            UpdateAnimator(); // Update Animator based on movement state
-
-            // Update arm animations based on player's state
+            
+            UpdateAnimator();
             UpdateArmAnimations();
         }
         
@@ -212,7 +211,7 @@ namespace StarterAssets
             
             if (_playerArms != null)
             {
-                if (isSprinting && _playerInventory.GetCurrentHandItem != null)
+                if (isSprinting && _playerInventory.GetCurrentHandItem != null && input.move != Vector2.zero)
                 {
                     _playerArms.SetIsRunningWithItem(true);
                     _playerArms.SetRunning(false);
@@ -221,7 +220,7 @@ namespace StarterAssets
                     _playerArms.SetIdle(false);
                     _playerArms.SetCrouching(false);
                 }
-                else if (isSprinting && _playerInventory.GetCurrentHandItem == null)
+                else if (isSprinting && _playerInventory.GetCurrentHandItem == null && input.move != Vector2.zero)
                 {
                     _playerArms.SetIsRunningWithItem(false);
                     _playerArms.SetRunning(true);
@@ -529,7 +528,7 @@ namespace StarterAssets
 
         private void HandleSprintingIcon()
         {
-            if (isSprinting)
+            if (isSprinting && input.move != Vector2.zero)
             {
                 standImage.sprite = sprintingSprite;
                 standImage.color = Color.white;

@@ -64,6 +64,9 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
     [SerializeField] private Transform polaroidTargetPos;
     [SerializeField] private GameObject polaroidObj;
     [SerializeField] private GameObject pfPolaroid;
+
+    private GameObject _playerArms;
+    
     private void Awake()
     {
         _playerInteractableController = FindObjectOfType<PlayerInteractableController>();
@@ -76,6 +79,7 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
 
         _startingRotation = transform.rotation;
         _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
+        _playerArms = FindObjectOfType<PlayerArmsAnimationController>().gameObject;
     }
 
     private void Update()
@@ -162,12 +166,13 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
         {
             mainCam.Priority = 0;
             puzzleCam.Priority = 10;
-            //puzzleCam.transform.rotation = mazePuzzleObj.transform.rotation;
+            _playerArms.SetActive(false);
         }
         else
         {
             mainCam.Priority = 10;
             puzzleCam.Priority = 0;
+            _playerArms.SetActive(true);
         }
     }
 
@@ -301,8 +306,11 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
     private void ResetPuzzle()
     {
         OnInteractStartDelay();
-
-        originalMazeBall.transform.position = mazePuzzleBallSpawnPos.position;
+        if (originalMazeBall != null)
+        {
+            originalMazeBall.transform.position = mazePuzzleBallSpawnPos.position;
+        }
+        
         _currentTimer = 0;
         UpdatePuzzleUI();
     }
