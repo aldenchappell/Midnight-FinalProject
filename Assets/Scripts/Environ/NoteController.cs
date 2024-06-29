@@ -38,8 +38,8 @@ public class NoteController : MonoBehaviour
 
         if (noteText == null) return;
 
-        // Check if the note is picked up and F is pressed to drop it
-        if (_isPickedUp && Input.GetKeyDown(KeyCode.F))
+        // Check if the note is picked up and E is pressed to drop it
+        if (_isPickedUp && Input.GetKeyDown(KeyCode.E))
         {
             DropNote();
         }
@@ -73,7 +73,7 @@ public class NoteController : MonoBehaviour
         }
     }
 
-    private void DropNote()
+    public void DropNote()
     {
         transform.SetParent(null);
 
