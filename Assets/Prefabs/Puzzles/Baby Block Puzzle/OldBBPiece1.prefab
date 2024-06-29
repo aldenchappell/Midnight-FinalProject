@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5640152438278476588
+--- !u!1 &6162708179001288406
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2095115988941239043}
-  - component: {fileID: 6662582567070018074}
-  - component: {fileID: 8878997418379730964}
-  - component: {fileID: 127667029457748388}
-  - component: {fileID: 1987482054036100547}
+  - component: {fileID: 3239377382462503526}
+  - component: {fileID: 1787575854607030685}
+  - component: {fileID: 5058251310397639150}
+  - component: {fileID: 3581034779510601138}
+  - component: {fileID: 8920171754475802333}
   m_Layer: 7
-  m_Name: BBPiece3
-  m_TagString: BabyBlock3
+  m_Name: OldBBPiece1
+  m_TagString: BabyBlock1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2095115988941239043
+--- !u!4 &3239377382462503526
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5640152438278476588}
+  m_GameObject: {fileID: 6162708179001288406}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.353, y: 0.72, z: 11.48}
+  m_LocalPosition: {x: 25.737, y: 0.89, z: 11.576}
   m_LocalScale: {x: 0.07595379, y: 0.07595379, z: 0.07595379}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6662582567070018074
+--- !u!33 &1787575854607030685
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5640152438278476588}
-  m_Mesh: {fileID: -7076563918467866422, guid: 88c5de83dca119f4da9599f255862143, type: 3}
---- !u!23 &8878997418379730964
+  m_GameObject: {fileID: 6162708179001288406}
+  m_Mesh: {fileID: -8539345367094638494, guid: 88c5de83dca119f4da9599f255862143, type: 3}
+--- !u!23 &5058251310397639150
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5640152438278476588}
+  m_GameObject: {fileID: 6162708179001288406}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &127667029457748388
+--- !u!114 &3581034779510601138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5640152438278476588}
+  m_GameObject: {fileID: 6162708179001288406}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13810721ea2449f4b98cb93a65e70177, type: 3}
@@ -105,7 +105,7 @@ MonoBehaviour:
         m_MethodName: set_AdjustInventorySlots
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5640152438278476588}
+          m_ObjectArgument: {fileID: 6162708179001288406}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -116,13 +116,13 @@ MonoBehaviour:
   interactableIconSize: {x: 0, y: 0}
   interactableID: 0
   highlightInteractableObjectController: {fileID: 0}
---- !u!65 &1987482054036100547
+--- !u!65 &8920171754475802333
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5640152438278476588}
+  m_GameObject: {fileID: 6162708179001288406}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -135,5 +135,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.168484, y: 0.9030138, z: 1.168484}
-  m_Center: {x: 0.44614908, y: 1.6277583, z: -0.4901344}
+  m_Size: {x: 0.96751493, y: 0.96751493, z: 0.967515}
+  m_Center: {x: 0.45474812, y: -0.31859595, z: -1.6308157}
