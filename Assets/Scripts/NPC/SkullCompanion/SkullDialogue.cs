@@ -45,7 +45,7 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
         switch (levelName)
         {
             case "LOBBY":
-                if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+                if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && !LevelCompletionManager.Instance.hasCompletedLobby)
                  PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.lobbyOpeningClip);
                 break;

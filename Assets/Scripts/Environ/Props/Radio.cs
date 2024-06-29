@@ -14,13 +14,8 @@ public class Radio : MonoBehaviour
 
     public void ToggleRadio()
     {
-        if (_audio.isPlaying)
-        {
-            _audio.volume = 0f;
-        }
-        else
-        {
-            _audio.volume = 1f;
-        }
+        _audio.volume = !_playing ? 0.41f : 0f;
+
+        _playing = !_playing;
     }
 }
