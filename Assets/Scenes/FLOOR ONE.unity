@@ -2185,6 +2185,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3124225600794122892, guid: 5d59958cda44b7a48afd68c489948e94, type: 3}
   m_PrefabInstance: {fileID: 279533264}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &286118600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3099090116777816262, guid: 3b4b4cb3a608c594e9e716b2a720e9c3, type: 3}
+  m_PrefabInstance: {fileID: 1613426082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &287215247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6700601513939138458, guid: eee67f546dd8b3745b6cd111088c26de, type: 3}
@@ -5735,7 +5740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenSpawns: 10
-  Demon: {fileID: 0}
+  Demon: {fileID: 286118600}
   hasFirstTimeSpawnCondition: 1
 --- !u!4 &843520379
 Transform:
@@ -11492,6 +11497,10 @@ PrefabInstance:
     - target: {fileID: 3099090116777816262, guid: 3b4b4cb3a608c594e9e716b2a720e9c3, type: 3}
       propertyPath: m_Name
       value: Demon
+      objectReference: {fileID: 0}
+    - target: {fileID: 3099090116777816262, guid: 3b4b4cb3a608c594e9e716b2a720e9c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5313423287848350769, guid: 3b4b4cb3a608c594e9e716b2a720e9c3, type: 3}
       propertyPath: m_LocalPosition.x
