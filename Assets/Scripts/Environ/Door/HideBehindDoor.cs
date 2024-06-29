@@ -22,7 +22,8 @@ public class HideBehindDoor : MonoBehaviour
     private GameObject _player;
     private FirstPersonController _FPC;
     private PlayerDualHandInventory _inventory;
-
+    private PlayerInteractableController _interactableController;
+    
     public bool isActive;
     private bool _isSwitching;
 
@@ -49,6 +50,7 @@ public class HideBehindDoor : MonoBehaviour
 
     private GameObject _doorHud;
     private GameObject _inGameUI;
+    
     private void Awake()
     {
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
@@ -57,7 +59,8 @@ public class HideBehindDoor : MonoBehaviour
         _doorController = GetComponent<DoorController>();
         _player = GameObject.Find("Player");
         _FPC = FindObjectOfType<FirstPersonController>();
-
+        _interactableController = FindObjectOfType<PlayerInteractableController>();
+        
         hiddenLayer = LayerMask.NameToLayer("Default");
         defaultLayer = LayerMask.NameToLayer("Target");
 
@@ -203,6 +206,8 @@ public class HideBehindDoor : MonoBehaviour
                 _isSwitching = true;
                 SwapDoorCameraPosition();
                 Invoke("InteractDelay", 1f);
+
+                StartCoroutine(_interactableController.InteractionSpamPrevention());
             }
         }
     }
@@ -297,11 +302,13 @@ public class HideBehindDoor : MonoBehaviour
         if (isActive)
         {
             _player.layer = hiddenLayer;
+            _inventory.HideHandItem();
         }
         else
         {
             _player.layer = defaultLayer;
             _FPC.ToggleCanMove();
+            _inventory.ShowCurrentIndexItem();
         }
     }
 }

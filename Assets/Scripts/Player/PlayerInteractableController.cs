@@ -163,7 +163,7 @@ public class PlayerInteractableController : MonoBehaviour
         }
     }
 
-    private IEnumerator InteractionSpamPrevention()
+    public IEnumerator InteractionSpamPrevention()
     {
         _allowInteraction = false;
         UpdateInteractionUI(interactableObject);
