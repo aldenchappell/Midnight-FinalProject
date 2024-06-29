@@ -11,6 +11,7 @@ public class MazeBallPrefab : MonoBehaviour
         
         var interactableObject = GetComponent<InteractableObject>();
         interactableObject.onInteraction.AddListener(() => _playerDualHandInventory.AdjustInventorySlots = gameObject);
+        interactableObject.onPlaceObject.AddListener(() => _playerDualHandInventory.RemoveObject = gameObject);
         _audio = GetComponent<AudioSource>();
     }
     

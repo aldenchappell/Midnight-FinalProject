@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,14 +15,13 @@ public class Polaroid : MonoBehaviour
         if (isPolaroidPrefab)
         {
             photoBoardImage = GameObject.Find("PuzzlePiece07")?.GetComponent<Image>();
-            polaroidCountText = GameObject.Find("PolaroidCountText")?.GetComponent<TMP_Text>();
         }
-        
     }
 
     private void Start()
     {
-        //polaroidCountText.text = "Polaroids collected: " + _puzzle.polaroidCount;
+        if(!isPolaroidPrefab)
+            polaroidCountText.text = "Polaroids collected: " + _puzzle.polaroidCount;
     }
 
     public void IncrementPolaroidCount()
