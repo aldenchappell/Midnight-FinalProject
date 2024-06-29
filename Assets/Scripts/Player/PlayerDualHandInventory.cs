@@ -175,7 +175,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
     }
     #endregion
-    private void ShowCurrentIndexItem()
+    public void ShowCurrentIndexItem()
     {
         foreach(GameObject obj in _inventorySlots)
         {
