@@ -256,7 +256,6 @@ namespace StarterAssets
         public void ToggleCanMove()
         {
             canMove = !canMove;
-            //controller.enabled = !controller.enabled;
         }
 
         private void UpdateSprintStamina()
