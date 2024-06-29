@@ -195,6 +195,7 @@ public class PlayerDualHandInventory : MonoBehaviour
             _inventorySlots[currentIndexSelected].SetActive(true);
             _inventorySlots[currentIndexSelected].transform.parent = handPosition.parent.gameObject.transform;
             _inventorySlots[currentIndexSelected].transform.localPosition = handPosition.localPosition;
+            _inventorySlots[currentIndexSelected].transform.localEulerAngles = handPosition.localEulerAngles;
             _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = false;
         }
     }
