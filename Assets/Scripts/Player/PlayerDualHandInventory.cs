@@ -231,6 +231,12 @@ public class PlayerDualHandInventory : MonoBehaviour
 
     public void HideHandItem()
     {
+        foreach (GameObject item in _inventorySlots)
+        {
+            _inventorySlots[currentIndexSelected].SetActive(false);
+        }
+
+        /*
         foreach(GameObject item in _inventorySlots)
         {   
             if(item != null)
@@ -272,5 +278,6 @@ public class PlayerDualHandInventory : MonoBehaviour
                 
             }
         }
+        */
     }
 }
