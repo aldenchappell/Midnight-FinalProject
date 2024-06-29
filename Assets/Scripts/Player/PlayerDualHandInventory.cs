@@ -182,6 +182,8 @@ public class PlayerDualHandInventory : MonoBehaviour
                 if(obj.CompareTag("Skull"))
                 {
                     obj.transform.position = skullOfHandPosition.position;
+                    obj.GetComponent<MeshRenderer>().enabled = false;
+                    GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = .5f;
                 }
                 else
                 {
@@ -197,6 +199,11 @@ public class PlayerDualHandInventory : MonoBehaviour
             _inventorySlots[currentIndexSelected].transform.localPosition = handPosition.localPosition;
             _inventorySlots[currentIndexSelected].transform.localEulerAngles = handPosition.localEulerAngles;
             _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = false;
+            if (_inventorySlots[currentIndexSelected].CompareTag("Skull"))
+            {
+                _inventorySlots[currentIndexSelected].GetComponent<MeshRenderer>().enabled = true;
+                GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = 1f;
+            }
         }
     }
     

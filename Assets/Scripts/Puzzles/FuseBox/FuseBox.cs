@@ -44,10 +44,12 @@ public class FuseBox : MonoBehaviour
 
         for (int i = 0; i < _lobbyLights.Count; i++)
         {
-            if (_lobbyLights[i].gameObject.name == "ExamineObjectLight" || _lobbyLights[i].gameObject.name == "Light KEEP ON")
+            if (_lobbyLights[i].gameObject.name == "ExamineObjectLight" || _lobbyLights[i].gameObject.CompareTag("LobbyLight"))
             {
+                print("Removed");
                 Debug.Log(_lobbyLights[i]);
                 _lobbyLights.Remove(_lobbyLights[i]);
+                i -= 1;
             }
         }
 
