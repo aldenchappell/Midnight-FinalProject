@@ -11,17 +11,17 @@ public class MazeBallPrefab : MonoBehaviour
         
         var interactableObject = GetComponent<InteractableObject>();
         interactableObject.onInteraction.AddListener(() => _playerDualHandInventory.AdjustInventorySlots = gameObject);
-        interactableObject.onInteraction.AddListener(() => _playerDualHandInventory.PlaceObjectInPuzzle(gameObject));
+        //interactableObject.onInteraction.AddListener(() => _playerDualHandInventory.PlaceObjectInPuzzle(gameObject));
         
-        InteractableObject maze = GameObject.Find("MazeBallBase").GetComponent<InteractableObject>();
-        maze.onPlaceObject.AddListener(() => _playerDualHandInventory.PlaceObjectInPuzzle(gameObject));
+        //InteractableObject maze = GameObject.Find("MazeBallBase").GetComponent<InteractableObject>();
+        //maze.onPlaceObject.AddListener(() => _playerDualHandInventory.PlaceObjectInPuzzle(gameObject));
         _audio = GetComponent<AudioSource>();
     }
     
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log(other.gameObject.name);
-        //_audio.PlayOneShot(dropSound);
-        Debug.Log("hit ground");
+        //Debug.Log(other.gameObject.name);
+        _audio.PlayOneShot(dropSound);
+        //Debug.Log("hit ground");
     }
 }

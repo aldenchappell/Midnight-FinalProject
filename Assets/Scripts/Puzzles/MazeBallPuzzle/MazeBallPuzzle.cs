@@ -14,6 +14,9 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
     [SerializeField] private GameObject mazePuzzleObj;
     [SerializeField] private GameObject originalMazeBall;
     [SerializeField] private Transform mazePuzzleBallSpawnPos;
+    [SerializeField] private Transform startingPosition;
+    [SerializeField] private Transform inPuzzlePosition;
+    
     
     [Header("Tilting")]
     [SerializeField] private float tiltSpeed;
@@ -171,12 +174,16 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
             mainCam.Priority = 0;
             puzzleCam.Priority = 10;
             _playerArms.SetActive(false);
+            StartCoroutine(LerpToPosition(gameObject, inPuzzlePosition));
+            //transform.position = inPuzzlePosition.position;
         }
         else
         {
             mainCam.Priority = 10;
             puzzleCam.Priority = 0;
             _playerArms.SetActive(true);
+            StartCoroutine(LerpToPosition(gameObject, startingPosition));
+            //transform.position = startingPosition.position;
         }
     }
 
@@ -296,6 +303,8 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
         _firstPersonController.canRotate = true;
         //_audio.enabled = false;
         Destroy(puzzleUI);
+        
+        StartCoroutine(LerpToPosition(gameObject, inPuzzlePosition));
     }
     
     private IEnumerator SpawnPolaroid()
@@ -336,6 +345,19 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
         {
             lerpTime += Time.deltaTime * lerpSpeed;
             mazePuzzleObj.transform.rotation = Quaternion.Lerp(startRot, targetRot, lerpTime);
+            yield return null;
+        }
+    }
+
+    private IEnumerator LerpToPosition(GameObject obj, Transform target)
+    {
+        float lerpTime = 0f;
+        float lerpSpeed = 1.0f;
+
+        while (lerpTime < 1f)
+        {
+            lerpTime += Time.deltaTime * lerpSpeed;
+            obj.transform.position = Vector3.Lerp(obj.transform.position, target.position, lerpTime);
             yield return null;
         }
     }
