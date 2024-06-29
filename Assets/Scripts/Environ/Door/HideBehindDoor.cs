@@ -64,7 +64,7 @@ public class HideBehindDoor : MonoBehaviour
         hiddenLayer = LayerMask.NameToLayer("Default");
         defaultLayer = LayerMask.NameToLayer("Target");
 
-        _inventory = GameObject.FindAnyObjectByType<PlayerDualHandInventory>();
+        _inventory = FindAnyObjectByType<PlayerDualHandInventory>();
 
         _postProcessing = FindObjectOfType<PostProcessVolume>();
         
@@ -108,7 +108,7 @@ public class HideBehindDoor : MonoBehaviour
         {
             _FPC.ToggleCanMove();
             _doorController.Invoke("HandleDoor", 0);
-            _inventory.HideHandItem();
+            //_inventory.HideHandItem();
             yield return new WaitForSeconds(1f);
             ToggleDoorUI();
             _playerCam.Priority = 0;
@@ -121,7 +121,7 @@ public class HideBehindDoor : MonoBehaviour
         else
         {
             _doorController.Invoke("HandleDoor", 0);
-            _inventory.HideHandItem();
+            //_inventory.HideHandItem();
             yield return new WaitForSeconds(1f);
             ToggleDoorUI();
             _playerCam.Priority = 5;
@@ -155,32 +155,32 @@ public class HideBehindDoor : MonoBehaviour
     {
         if (_doorSpyHoleCamera.Priority > _doorHideCamera.Priority)
         {
-                float mouseX = Input.GetAxis("Mouse X");
-                float mouseY = Input.GetAxis("Mouse Y");
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
 
-                if (!_isSwitching)
+            if (!_isSwitching)
+            {
+                _doorSpyHoleCamera.transform.Rotate(Vector3.up, mouseX, Space.World);
+                _doorSpyHoleCamera.transform.Rotate(Vector3.right, -mouseY, Space.Self);
+
+                
+                Vector3 clampedRotation = _doorSpyHoleCamera.transform.localEulerAngles;
+                clampedRotation.x = ClampSpyCamAngle(clampedRotation.x, MinXAngle, MaxXAngle); 
+                clampedRotation.y = ClampSpyCamAngle(clampedRotation.y, MinYAngle, MaxYAngle); 
+                clampedRotation.z = 0;
+
+                _doorSpyHoleCamera.transform.localEulerAngles = clampedRotation;
+
+                _postProcessing.profile.TryGetSettings(out LensDistortion lensDistortion);
+
+                if (lensDistortion != null)
                 {
-                    _doorSpyHoleCamera.transform.Rotate(Vector3.up, mouseX, Space.World);
-                    _doorSpyHoleCamera.transform.Rotate(Vector3.right, -mouseY, Space.Self);
+                    _currentCenterX = Mathf.Clamp(_currentCenterX - (mouseX * Time.deltaTime * DistortionLerpSpeed), MinCenterX, MaxCenterX);
+                    _currentCenterY = Mathf.Clamp(_currentCenterY - (mouseY * Time.deltaTime * DistortionLerpSpeed), MinCenterY, MaxCenterY);
 
-                    
-                    Vector3 clampedRotation = _doorSpyHoleCamera.transform.localEulerAngles;
-                    clampedRotation.x = ClampSpyCamAngle(clampedRotation.x, MinXAngle, MaxXAngle); 
-                    clampedRotation.y = ClampSpyCamAngle(clampedRotation.y, MinYAngle, MaxYAngle); 
-                    clampedRotation.z = 0;
-
-                    _doorSpyHoleCamera.transform.localEulerAngles = clampedRotation;
-
-                    _postProcessing.profile.TryGetSettings(out LensDistortion lensDistortion);
-
-                    if (lensDistortion != null)
-                    {
-                        _currentCenterX = Mathf.Clamp(_currentCenterX - (mouseX * Time.deltaTime * DistortionLerpSpeed), MinCenterX, MaxCenterX);
-                        _currentCenterY = Mathf.Clamp(_currentCenterY - (mouseY * Time.deltaTime * DistortionLerpSpeed), MinCenterY, MaxCenterY);
-
-                        lensDistortion.centerX.value = _currentCenterX;
-                        lensDistortion.centerY.value = _currentCenterY;
-                    }
+                    lensDistortion.centerX.value = _currentCenterX;
+                    lensDistortion.centerY.value = _currentCenterY;
+                }
             }
         }
     }
