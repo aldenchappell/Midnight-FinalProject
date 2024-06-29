@@ -5,10 +5,13 @@ using UnityEngine;
 public class MusicBoxPuzzle : MonoBehaviour
 {
     [SerializeField] GameObject key;
+
+    private AudioSource _audioSource;
     private Animator _animator;
     private void Awake()
     {
         _animator = transform.GetComponentInChildren<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -16,6 +19,7 @@ public class MusicBoxPuzzle : MonoBehaviour
     {
         gameObject.transform.GetChild(2).gameObject.SetActive(false);
         _animator.SetTrigger("PlayMusicBox");
+        _audioSource.Play();
         Invoke("LoopAnimation", 4.04f);
         Invoke("InitiateKeySpawn", 0f);
 
