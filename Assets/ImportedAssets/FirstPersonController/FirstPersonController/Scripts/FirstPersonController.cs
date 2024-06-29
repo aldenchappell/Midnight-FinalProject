@@ -114,7 +114,9 @@ namespace StarterAssets
         private PlayerDualHandInventory _playerInventory;
         private PlayerArmsAnimationController _playerArms;
 
-       // private Animator _animator;  
+        private Color _originalSliderColor;
+        private Color _originalBackgroundColor;
+        private Color _originalFillColor;
 
         private bool IsCurrentDeviceMouse => 
 #if ENABLE_INPUT_SYSTEM
@@ -134,7 +136,10 @@ namespace StarterAssets
             _originalCameraRootPosition = cameraRoot.transform.localPosition.y;
             _playerArms = FindObjectOfType<PlayerArmsAnimationController>();
             _playerInventory = GetComponent<PlayerDualHandInventory>();
-            //_animator = GetComponent<Animator>(); // Initialize Animator component
+            
+            _originalSliderColor = sprintStaminaSlider.fillRect.GetComponent<Image>().color;
+            _originalBackgroundColor = sprintStaminaSlider.transform.Find("Background").GetComponent<Image>().color;
+            _originalFillColor = sprintStaminaSlider.transform.Find("Image").GetComponent<Image>().color;
         }
 
         private void Start()
@@ -205,18 +210,9 @@ namespace StarterAssets
         private void UpdateArmAnimations()
         {
             
-            if (_playerArms != null && _playerInventory.GetCurrentHandItem == null)
+            if (_playerArms != null)
             {
-                if (isSprinting)
-                {
-                    _playerArms.SetIsRunningWithItem(false);
-                    _playerArms.SetRunning(true);
-                    _playerArms.SetWalking(false);
-                    _playerArms.SetPickingUp(false);
-                    _playerArms.SetIdle(false);
-                    _playerArms.SetCrouching(false);
-                }
-                else if (isSprinting && _playerInventory.GetCurrentHandItem != null)
+                if (isSprinting && _playerInventory.GetCurrentHandItem != null)
                 {
                     _playerArms.SetIsRunningWithItem(true);
                     _playerArms.SetRunning(false);
@@ -225,6 +221,16 @@ namespace StarterAssets
                     _playerArms.SetIdle(false);
                     _playerArms.SetCrouching(false);
                 }
+                else if (isSprinting && _playerInventory.GetCurrentHandItem == null)
+                {
+                    _playerArms.SetIsRunningWithItem(false);
+                    _playerArms.SetRunning(true);
+                    _playerArms.SetWalking(false);
+                    _playerArms.SetPickingUp(false);
+                    _playerArms.SetIdle(false);
+                    _playerArms.SetCrouching(false);
+                }
+                
                 else if (input.move != Vector2.zero && !isCrouching)
                 {
                     _playerArms.SetRunning(false);
@@ -260,7 +266,7 @@ namespace StarterAssets
 
         private void UpdateSprintStamina()
         {
-            if (isSprinting)
+            if (isSprinting && input.move != Vector2.zero)
             {
                 _currentSprintStamina -= Time.deltaTime * sprintStaminaDecreaseRate;
                 if (_currentSprintStamina <= 0)
@@ -270,6 +276,7 @@ namespace StarterAssets
                     _staminaRecoveryTimer = staminaRecoveryDelay;
                 }
 
+                // Ensure the slider is fully visible when sprinting
                 if (_fadeSliderCoroutine != null)
                 {
                     StopCoroutine(_fadeSliderCoroutine);
@@ -289,6 +296,7 @@ namespace StarterAssets
                     if (_currentSprintStamina > MaxSprintStamina)
                     {
                         _currentSprintStamina = MaxSprintStamina;
+
                         _fadeSliderCoroutine ??= StartCoroutine(FadeOutSlider(sprintStaminaSlider, .75f));
                     }
                 }
@@ -296,6 +304,46 @@ namespace StarterAssets
 
             sprintStaminaSlider.value = _currentSprintStamina / MaxSprintStamina;
         }
+		
+        private void SetSliderAlpha(float alpha)
+        {
+            Color sliderColor = _originalSliderColor;
+            sliderColor.a = alpha;
+            sprintStaminaSlider.fillRect.GetComponent<Image>().color = sliderColor;
+
+            Image backgroundImage = sprintStaminaSlider.transform.Find("Background").GetComponent<Image>();
+            Color backgroundColor = _originalBackgroundColor;
+            backgroundColor.a = alpha;
+            backgroundImage.color = backgroundColor;
+
+            Image sprintSliderFillImage = sprintStaminaSlider.transform.Find("Image").GetComponent<Image>();
+            Color fillColor = _originalFillColor;
+            fillColor.a = alpha;
+            sprintSliderFillImage.color = fillColor;
+        }
+
+        private IEnumerator FadeOutSlider(Slider slider, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
+            float fadeDuration = .6f;
+            float elapsedTime = 0.0f;
+
+            Color initialColor = slider.fillRect.GetComponent<Image>().color;
+
+            while (elapsedTime < fadeDuration)
+            {
+                float newAlpha = Mathf.Lerp(initialColor.a, 0, elapsedTime / fadeDuration);
+                SetSliderAlpha(newAlpha);
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            SetSliderAlpha(0);
+            _fadeSliderCoroutine = null;
+        }
+
 
         private void LateUpdate()
         {
@@ -517,25 +565,6 @@ namespace StarterAssets
                 Color newColor = image.color;
                 newColor.a -= Time.deltaTime * 2;
                 image.color = newColor;
-                yield return null;
-            }
-        }
-
-        private void SetSliderAlpha(float alpha)
-        {
-            Color newColor = sprintStaminaSlider.fillRect.GetComponent<Image>().color;
-            newColor.a = alpha;
-            sprintStaminaSlider.fillRect.GetComponent<Image>().color = newColor;
-        }
-
-        private IEnumerator FadeOutSlider(Slider slider, float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            while (slider.fillRect.GetComponent<Image>().color.a > 0)
-            {
-                Color newColor = slider.fillRect.GetComponent<Image>().color;
-                newColor.a -= Time.deltaTime * 2;
-                slider.fillRect.GetComponent<Image>().color = newColor;
                 yield return null;
             }
         }

@@ -53,11 +53,12 @@ public class PlayerInteractableController : MonoBehaviour
             if (interactable != null)
             {
                 _playerArms.SetPickingUp(true);
+                _playerInventory.HideHandItem();
                 if (interactableObject != interactable)
                 {
                     ResetHighlight();
                     interactableObject = interactable;
-
+                    _playerInventory.ShowCurrentIndexItem();
                     if (examinable != null)
                     {
                         interactionImage.sprite = examinationIcon;
@@ -75,11 +76,13 @@ public class PlayerInteractableController : MonoBehaviour
             else
             {
                 _playerArms.SetPickingUp(false);
+                _playerInventory.ShowCurrentIndexItem();
             }
         }
         else
         {
             _playerArms.SetPickingUp(false);
+            _playerInventory.ShowCurrentIndexItem();
             ResetHighlight();
             _examineObjectController.objectToExamine = null;
         }
@@ -176,6 +179,7 @@ public class PlayerInteractableController : MonoBehaviour
         _highlightInteractableObjectController = null;
 
         _playerArms.SetPickingUp(false);
+        _playerInventory.ShowCurrentIndexItem();
         DialogueController dialogueController = FindObjectOfType<DialogueController>();
 
         if (dialogueController != null && !_pauseManager.GameIsPaused)
