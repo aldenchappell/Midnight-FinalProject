@@ -14,8 +14,8 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
     [SerializeField] private GameObject mazePuzzleObj;
     [SerializeField] private GameObject originalMazeBall;
     [SerializeField] private Transform mazePuzzleBallSpawnPos;
-    [SerializeField] private Transform startingPosition;
     [SerializeField] private Transform inPuzzlePosition;
+    [SerializeField] private Transform startingPosition;
     
     
     [Header("Tilting")]
@@ -174,16 +174,16 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
             mainCam.Priority = 0;
             puzzleCam.Priority = 10;
             _playerArms.SetActive(false);
+            polaroidObj.SetActive(false);
             StartCoroutine(LerpToPosition(gameObject, inPuzzlePosition));
-            //transform.position = inPuzzlePosition.position;
         }
         else
         {
             mainCam.Priority = 10;
             puzzleCam.Priority = 0;
             _playerArms.SetActive(true);
+            polaroidObj.SetActive(true);
             StartCoroutine(LerpToPosition(gameObject, startingPosition));
-            //transform.position = startingPosition.position;
         }
     }
 
@@ -293,6 +293,9 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
 
     public void Complete()
     {
+        StartCoroutine(LerpToPosition(gameObject, inPuzzlePosition));
+        polaroidObj.SetActive(true);
+        
         _animator.SetTrigger(Finish);
         var polaroid = GameObject.FindWithTag("Polaroid");
         
@@ -303,8 +306,6 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
         _firstPersonController.canRotate = true;
         //_audio.enabled = false;
         Destroy(puzzleUI);
-        
-        StartCoroutine(LerpToPosition(gameObject, inPuzzlePosition));
     }
     
     private IEnumerator SpawnPolaroid()
@@ -348,11 +349,11 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
             yield return null;
         }
     }
-
+    
     private IEnumerator LerpToPosition(GameObject obj, Transform target)
     {
         float lerpTime = 0f;
-        float lerpSpeed = 1.0f;
+        float lerpSpeed = .25f;
 
         while (lerpTime < 1f)
         {
