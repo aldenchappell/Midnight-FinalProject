@@ -133,8 +133,12 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
             if (_firstTime && !hasMazeBall)
             {
                 _audio.PlayOneShot(invalidButtonSound);
-                PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
-                    SkullDialogueLineHolder.Instance.solveImagePuzzleClip);
+                if (SkullDialogueLineHolder.SkullDialogue.pickedUp)
+                {
+                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                        SkullDialogueLineHolder.Instance.solveImagePuzzleClip);
+                }
+                
                 
                 //Debug.LogError("Player doesn't have the Maze Ball.");
                 return;

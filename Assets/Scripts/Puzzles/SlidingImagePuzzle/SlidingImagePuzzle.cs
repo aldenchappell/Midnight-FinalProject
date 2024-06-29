@@ -249,7 +249,7 @@ public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        if(!source.isPlaying)
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
             source.PlayOneShot(clip);
     }
 
@@ -265,17 +265,20 @@ public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
 
     public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
     {
-        if (indexOfCurrentLevelPuzzles == 3)
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
         {
-            while (true)
+            if (indexOfCurrentLevelPuzzles == 3)
             {
-                if (source.isPlaying) yield return null;
+                while (true)
+                {
+                    if (source.isPlaying) yield return null;
 
-                yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.GetRandomWaitTIme());
-                source.PlayOneShot(clip);
-                yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.GetRandomWaitTIme());
+                    yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.GetRandomWaitTIme());
+                    source.PlayOneShot(clip);
+                    yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.GetRandomWaitTIme());
+                }
             }
+            yield return null;
         }
-        yield return null;
     }
 }

@@ -161,13 +161,13 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
             source.PlayOneShot(clip);
     }
 
     public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
     {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
         {
             if (clips.Length == 0) return;
             int randomIndex = Random.Range(0, clips.Length);
@@ -178,7 +178,7 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
     {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
         {
             if (value)
             {

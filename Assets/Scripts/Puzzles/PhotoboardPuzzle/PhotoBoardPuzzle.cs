@@ -41,7 +41,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
 
     private PlayerInteractableController _playerInteractableController;
     private PlayerDualHandInventory _playerDualHandInventory;
-    //private PuzzlePiece _puzzlePieceRequired;
+    private PauseManager _pause;
     private PuzzleEscape _puzzleEscape;
 
     private GameObject _polaroidObj;
@@ -63,6 +63,12 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("PhotoBoardPuzzleCam").GetComponent<CinemachineVirtualCamera>();
         _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
+        _pause = FindObjectOfType<PauseManager>();
+
+        foreach (var element in puzzleUI)
+        {
+            element.SetActive(false);
+        }
     }
 
     private void Update()
@@ -191,40 +197,35 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
             _puzzleAudio.PlayOneShot(incorrectSlotSound);
             return;
         }
-        
-        // Check for polaroid only if the player is not already in the puzzle
+
+        // Check if the player is already in the puzzle
         if (!_isInPuzzle)
         {
             bool hasPolaroid = _playerDualHandInventory.GetInventory.Any(item => item != null && item.CompareTag("Polaroid"));
-            
-            if (polaroidCount != TargetPolaroidCount && _isFirstTime && !hasPolaroid && SkullDialogueLineHolder.SkullDialogue.pickedUp)
+
+            // Check if it's the first time the player is interacting with the puzzle and they don't have a polaroid
+            if (_isFirstTime)
             {
-                PlaySpecificSkullDialogueClip(
-                    SkullDialogueLineHolder.Instance.audioSource,
-                    SkullDialogueLineHolder.Instance.solveImageAndMazeBallPuzzlesClip);
-                return;
+                if (!hasPolaroid && SkullDialogueLineHolder.SkullDialogue.pickedUp)
+                {
+                    _puzzleAudio.PlayOneShot(incorrectSlotSound);
+                    PlaySpecificSkullDialogueClip(
+                        SkullDialogueLineHolder.Instance.audioSource,
+                        SkullDialogueLineHolder.Instance.solveMazeBallPuzzleClip);
+                    return;
+                }
             }
-            
-            if (polaroidCount != TargetPolaroidCount && SkullDialogueLineHolder.SkullDialogue.pickedUp)
+
+            // Check if the player has collected all polaroids or is holding a polaroid
+            if (polaroidCount != TargetPolaroidCount || !hasPolaroid)
             {
                 PlaySpecificSkullDialogueClip(
                     SkullDialogueLineHolder.Instance.audioSource,
                     SkullDialogueLineHolder.Instance.collectPolaroidsClip);
-                Debug.Log("Player hasn't collected all of the polaroids.");
+                Debug.Log("Player hasn't collected all of the polaroids or isn't holding a polaroid.");
+                _puzzleAudio.PlayOneShot(incorrectSlotSound, .25f);
                 return;
             }
-            
-            if (_isFirstTime && !hasPolaroid && SkullDialogueLineHolder.SkullDialogue.pickedUp)
-            {
-                _puzzleAudio.PlayOneShot(incorrectSlotSound);
-                PlaySpecificSkullDialogueClip(
-                    SkullDialogueLineHolder.Instance.audioSource,
-                    SkullDialogueLineHolder.Instance.solveMazeBallPuzzleClip);
-                Debug.LogError("Player doesn't have the polaroid.");
-                return;
-            }
-
-            
         }
 
         // Toggle the puzzle UI
@@ -237,8 +238,8 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
         }
 
         // Toggle canMove and cursor visibility based on puzzle activity
-        _firstPersonController.canMove = !isPuzzleActive;
-        _firstPersonController.controller.enabled = !isPuzzleActive;
+        _firstPersonController.canMove = !isPuzzleActive && !_pause.GameIsPaused;
+        _firstPersonController.controller.enabled = !isPuzzleActive && !_pause.GameIsPaused;
 
         if (isPuzzleActive)
         {
@@ -254,6 +255,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
         ToggleCamera();
         PlacePolaroid();
     }
+
 
     private void ExitPuzzle()
     {
@@ -278,7 +280,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
             _isFirstTime = false;
             
             _polaroidObj = GameObject.FindWithTag("Polaroid");
-            _playerDualHandInventory.RemoveObject = _polaroidObj;
+            _playerDualHandInventory.PlaceObjectInPuzzle(_polaroidObj);
             _polaroidObj = null;
         }
     }
@@ -288,14 +290,12 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
         if (_mainCam.Priority > _puzzleCam.Priority)
         {
             _mainCam.Priority = 0;
-          // _puzzleCam.gameObject.SetActive(true);
             _puzzleCam.Priority = 10;
         }
         else
         {
             _mainCam.Priority = 10;
             _puzzleCam.Priority = 0;
-           // _puzzleCam.gameObject.SetActive(false);
         }
     }
 
@@ -312,7 +312,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
         {
             source.PlayOneShot(clip);
         }

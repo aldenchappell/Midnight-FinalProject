@@ -231,7 +231,6 @@ public class PlayerDualHandInventory : MonoBehaviour
 
     public void HideHandItem()
     {
-        
         foreach (GameObject item in _inventorySlots)
         {
             if(item != null)
@@ -242,7 +241,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                     item.GetComponent<MeshRenderer>().enabled = false;
                     GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = .5f;
                 }
-                else
+                else if(_inventorySlots[currentIndexSelected] != null)
                 {
                     _inventorySlots[currentIndexSelected].SetActive(false);
                 }

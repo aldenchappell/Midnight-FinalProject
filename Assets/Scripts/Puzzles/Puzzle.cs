@@ -29,7 +29,7 @@ public class Puzzle : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
         {
             source.PlayOneShot(clip);
         }
@@ -37,7 +37,7 @@ public class Puzzle : MonoBehaviour, IPlaySkullDialogue
 
     public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
     {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
         {
             source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
         }
@@ -45,7 +45,7 @@ public class Puzzle : MonoBehaviour, IPlaySkullDialogue
 
     public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
     {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        if (value && !SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
         {
             
         }
