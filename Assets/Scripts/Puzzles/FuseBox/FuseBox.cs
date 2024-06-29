@@ -111,9 +111,10 @@ public class FuseBox : MonoBehaviour
         */
         if(LevelCompletionManager.Instance.hasCompletedLobby == true)
         {
+            print("Removing");
             PowerLobby();
-            GameObject.FindGameObjectWithTag("Fuse").SetActive(false);
-            this.gameObject.GetComponent<InteractableObject>().enabled = false;
+            GameObject.Find("Fuse").SetActive(false);
+            Destroy(this.gameObject.GetComponent<InteractableObject>());
         }
     }
 
