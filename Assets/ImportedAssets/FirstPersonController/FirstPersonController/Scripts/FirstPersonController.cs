@@ -191,7 +191,7 @@ namespace StarterAssets
             }
 
             UpdateSprintStamina();
-            
+    
             UpdateAnimator();
             UpdateArmAnimations();
         }
@@ -484,10 +484,7 @@ namespace StarterAssets
         private void HandleCrouching()
         {
             StartCoroutine(CrouchAndStandRoutine());
-
-            HandleCrouchingIcon();
         }
-
 
         private IEnumerator CrouchAndStandRoutine()
         {
@@ -504,7 +501,7 @@ namespace StarterAssets
             Vector3 targetCameraRootPosition =
                 isCrouching ? new Vector3(0, _defaultYPos, 0)
                     : new Vector3(0, crouchingHeight, 0);
-			
+    
             Vector3 currentCameraRootPosition = cameraRoot.transform.localPosition;
 
             while (timeElapsed < timeToEnterCrouch)
@@ -528,6 +525,8 @@ namespace StarterAssets
             // Toggle crouch state
             isCrouching = !isCrouching;
             _inCrouchAnimation = false;
+            
+            HandleCrouchingIcon();
         }
     
 
