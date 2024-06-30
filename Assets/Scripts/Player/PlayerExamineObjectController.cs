@@ -12,6 +12,8 @@ public class PlayerExamineObjectController : MonoBehaviour
     private FirstPersonController _fpController;
     private Cinemachine.CinemachineVirtualCamera examineCamera;
     private Light _examineLight;
+
+    [SerializeField] private GameObject examinationUI;
     private void Awake()
     {
         _fpController = FindObjectOfType<FirstPersonController>();
@@ -57,6 +59,8 @@ public class PlayerExamineObjectController : MonoBehaviour
             {
                 _examineLight.enabled = true;
             }
+
+            examinationUI.SetActive(true);
         }
         
     }
@@ -85,6 +89,8 @@ public class PlayerExamineObjectController : MonoBehaviour
             {
                 _examineLight.enabled = false;
             }
+
+            examinationUI.SetActive(false);
         }
     }
 
