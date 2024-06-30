@@ -18,7 +18,7 @@ public class LevelCompletionManager : MonoBehaviour
     public List<SO_Puzzle> level3Puzzles;
 
     private int _collectedKeys;
-    private HashSet<string> _completedLevels = new HashSet<string>();
+    public HashSet<string> completedLevels = new HashSet<string>();
     private HashSet<string> _completedPuzzles = new HashSet<string>();
 
     private AudioSource _audioSource;
@@ -59,12 +59,12 @@ public class LevelCompletionManager : MonoBehaviour
 
     private void SaveLevelCompletion(string levelName)
     {
-        _completedLevels.Add(levelName);
+        completedLevels.Add(levelName);
     }
 
     public bool IsLevelCompleted(string levelName)
     {
-        return _completedLevels.Contains(levelName);
+        return completedLevels.Contains(levelName);
     }
     
     
@@ -116,7 +116,7 @@ public class LevelCompletionManager : MonoBehaviour
     public void CompletePuzzleInScene(string sceneName, string puzzleName)
     {
         string levelName = sceneName.ToUpper();
-        if (!_completedLevels.Contains(levelName))
+        if (!completedLevels.Contains(levelName))
         {
             //Debug.Log("Level " + levelName + " not found in completed levels");
             return;
@@ -189,7 +189,7 @@ public class LevelCompletionManager : MonoBehaviour
     
     public void OnKeySpawn()
     {
-        print("Key spawn Audio");
+        //print("Key spawn Audio");
         _audioSource.PlayOneShot(keyDropSound);
     }
     

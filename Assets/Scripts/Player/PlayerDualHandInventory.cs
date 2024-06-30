@@ -205,9 +205,9 @@ public class PlayerDualHandInventory : MonoBehaviour
                 item.transform.parent = handPositions[item.GetComponent<ObjectSize>().objectSize.handPositionIndex].parent.gameObject.transform;
                 item.transform.localPosition = handPositions[item.GetComponent<ObjectSize>().objectSize.handPositionIndex].localPosition;
                 item.transform.localEulerAngles = handPositions[item.GetComponent<ObjectSize>().objectSize.handPositionIndex].localEulerAngles;
-                Debug.Log(
-                    item.gameObject.name + " was moved to the " +
-                    item.GetComponent<ObjectSize>().objectSize.handPositionIndex + " index.");
+                //Debug.Log(
+                    //item.gameObject.name + " was moved to the " +
+                   // item.GetComponent<ObjectSize>().objectSize.handPositionIndex + " index.");
             }
             else
             {
@@ -215,8 +215,8 @@ public class PlayerDualHandInventory : MonoBehaviour
                 item.transform.parent = defaultHand.parent.gameObject.transform;
                 item.transform.localPosition = defaultHand.localPosition;
                 item.transform.localEulerAngles = defaultHand.localEulerAngles;
-                Debug.Log("There is no ObjectSize component on the "
-                          + item.gameObject.name + ". Defaulting to small.");
+                //Debug.Log("There is no ObjectSize component on the "
+                         // + item.gameObject.name + ". Defaulting to small.");
             }
             
             item.GetComponent<Collider>().enabled = false;
