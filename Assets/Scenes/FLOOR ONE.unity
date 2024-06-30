@@ -8652,6 +8652,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8351495695378716297, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 184046526}
     - target: {fileID: 8373744855708130496, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -2.5
@@ -8682,9 +8686,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1185921017414210652, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1167197749}
     - targetCorrespondingSourceObject: {fileID: 5286010683935965536, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 223052567}
@@ -8697,32 +8698,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 692337379460019236, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
   m_PrefabInstance: {fileID: 1167197746}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167197748}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81e6b0cffb391644bae5a4e3dc1c4847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1167197748 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1185921017414210652, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-  m_PrefabInstance: {fileID: 1167197746}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1167197749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167197748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4f26f6a32adfb498bffe3cc930d2ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _floorBoardSounds: []
-  _audioSource: {fileID: 184046526}
-  suspicionAmount: 30
 --- !u!4 &1186845120 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4466302210089400624, guid: 1ac80bd802b18744fa0d425641084644, type: 3}
