@@ -65,7 +65,7 @@ public class EnemySuspicionSystem : MonoBehaviour
 
     public void PatrolNodeReached()
     {
-        AdjustSuspicionValue(-5);
+        AdjustSuspicionValue(8);
     }
     
     private void AdjustSuspicionValue(int addedSuspicion)
