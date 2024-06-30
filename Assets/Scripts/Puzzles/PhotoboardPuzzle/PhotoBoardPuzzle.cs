@@ -227,6 +227,10 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
             }
         }
 
+        GameObject polaroid = GameObject.FindWithTag("Polaroid");
+        if (polaroid)
+            _playerDualHandInventory.RemoveObject = polaroid;
+
         // Toggle the puzzle UI
         bool isPuzzleActive = !puzzleUI[0].activeSelf;
         _isInPuzzle = isPuzzleActive;

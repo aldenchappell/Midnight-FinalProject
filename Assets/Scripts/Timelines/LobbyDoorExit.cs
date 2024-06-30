@@ -12,12 +12,16 @@ public class LobbyDoorExit : MonoBehaviour
     private Coroutine _textCoroutine;
     public void PlayOutroCutscene()
     {
-        if (LevelCompletionManager.Instance.completedLevels.Count == 4)
+        if (LevelCompletionManager.Instance.IsLevelCompleted("LOBBY") &&
+            LevelCompletionManager.Instance.IsLevelCompleted("FLOOR ONE") &&
+            LevelCompletionManager.Instance.IsLevelCompleted("FLOOR TWO") &&
+            LevelCompletionManager.Instance.IsLevelCompleted("FLOOR THREE"))
         {
             outroCutscene.SetActive(true);
         }
         else
         {
+            //meaning that the prompt is already showing, so cancel that one and start a new one.
             if (_textCoroutine != null)
             {
                 StopCoroutine(_textCoroutine);
@@ -42,17 +46,18 @@ public class LobbyDoorExit : MonoBehaviour
 
     private IEnumerator Fade(float startingAlpha, float endingAlpha, float duration)
     {
-        float time = 0f;
-        Color panelColor = textPanel.color;
-        Color textColor = text.color;
+        var time = 0f;
+        var panelColor = textPanel.color;
+        var textColor = text.color;
 
         textPanel.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
 
+        //fading
         while (time < duration)
         {
             time += Time.deltaTime;
-            float desiredAlpha = Mathf.Lerp(startingAlpha, endingAlpha, time / duration);
+            var desiredAlpha = Mathf.Lerp(startingAlpha, endingAlpha, time / duration);
 
             panelColor.a = desiredAlpha;
             textColor.a = desiredAlpha;

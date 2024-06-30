@@ -11,11 +11,10 @@ public class MazeBallPrefab : MonoBehaviour
         
         var interactableObject = GetComponent<InteractableObject>();
         interactableObject.onInteraction.AddListener(() => _playerDualHandInventory.AdjustInventorySlots = gameObject);
-        //interactableObject.onInteraction.AddListener(() => _playerDualHandInventory.PlaceObjectInPuzzle(gameObject));
-        
-        //InteractableObject maze = GameObject.Find("MazeBallBase").GetComponent<InteractableObject>();
-        //maze.onPlaceObject.AddListener(() => _playerDualHandInventory.PlaceObjectInPuzzle(gameObject));
+
         _audio = GetComponent<AudioSource>();
+
+        GameObject puzzle = FindObjectOfType<MazeBallPuzzle>().marble = gameObject;
     }
     
     private void OnCollisionEnter(Collision other)

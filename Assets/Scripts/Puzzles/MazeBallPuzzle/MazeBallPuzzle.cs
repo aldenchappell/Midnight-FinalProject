@@ -69,6 +69,7 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
     [SerializeField] private GameObject pfPolaroid;
 
     private GameObject _playerArms;
+    public GameObject marble;
     
     private void Awake()
     {
@@ -147,7 +148,11 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
                 return;
             }
         }
-
+        
+        //remove the marble from the player inventory
+        if(marble)
+            _playerDualHandInventory.RemoveObject = GameObject.FindWithTag("MazeBall");
+        
         _animator.SetTrigger(Start);
 
         bool isActive = !puzzleUI.activeSelf;
@@ -174,16 +179,16 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
             mainCam.Priority = 0;
             puzzleCam.Priority = 10;
             _playerArms.SetActive(false);
+            polaroidObj.SetActive(false);
             StartCoroutine(LerpToPosition(gameObject, inPuzzlePosition));
-            //transform.position = inPuzzlePosition.position;
         }
         else
         {
             mainCam.Priority = 10;
             puzzleCam.Priority = 0;
             _playerArms.SetActive(true);
+            polaroidObj.SetActive(true);
             StartCoroutine(LerpToPosition(gameObject, startingPosition));
-            //transform.position = startingPosition.position;
         }
     }
 
@@ -292,18 +297,20 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
 
     public void Complete()
     {
+        polaroidObj.SetActive(true);
         _animator.SetTrigger(Finish);
         var polaroid = GameObject.FindWithTag("Polaroid");
         
         polaroid.transform.SetParent(_playerInteractableController.gameObject.transform);
         StartCoroutine(SpawnPolaroid());
+        
         ToggleCamera();
         _firstPersonController.ToggleCanMove();
         _firstPersonController.canRotate = true;
-        //_audio.enabled = false;
+        
         Destroy(puzzleUI);
         
-        StartCoroutine(LerpToPosition(gameObject, inPuzzlePosition));
+        StartCoroutine(LerpToPosition(gameObject, startingPosition));
     }
     
     private IEnumerator SpawnPolaroid()
