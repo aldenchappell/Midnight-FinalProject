@@ -196,7 +196,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         else
         {
             PlayAudioClip(winSound);
-            StartCoroutine(PlayAnimation(slot.gameObject, System.Array.IndexOf(currentItems, rightItem), animationChild));
+            StartCoroutine(PlayAnimation(slot.gameObject, System.Array.IndexOf(currentItems, rightItem), animationChild, rightItem));
             _correctObjectsPlaced++;
         }
     }
@@ -229,7 +229,7 @@ public class BabyBlockPuzzle : MonoBehaviour
     }
     #endregion
 
-    private IEnumerator PlayAnimation(GameObject slot, int index, GameObject parent)
+    private IEnumerator PlayAnimation(GameObject slot, int index, GameObject parent, GameObject heldObject)
     {
         _canAnimate = false;
         switch (slot.name)
@@ -253,7 +253,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         _animator.SetTrigger("Return");
-        _playerInv.PlaceObjectInPuzzle(slot);
+        _playerInv.RemoveObject = heldObject;
         CheckForCompletion();
         _canAnimate = true;
     }

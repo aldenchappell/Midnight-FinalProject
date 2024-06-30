@@ -25,15 +25,15 @@ public class PatrolSystemManager : MonoBehaviour
             }
         }
     }
-    /*
-    public Vector3 ReferenceToSuspicion
+    
+    public int RaiseSuspicion
     {
         set
         {
-            Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(value, value);
+            Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(GameObject.Find("Player").transform.position, value);
         }
     }
-    */
+    
 
     private void Update()
     {
