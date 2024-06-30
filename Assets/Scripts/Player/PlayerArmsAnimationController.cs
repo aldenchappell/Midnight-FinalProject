@@ -1,8 +1,16 @@
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class PlayerArmsAnimationController : MonoBehaviour
 {
     [HideInInspector] public Animator animator;
+
+    //public Transform rightHand;
+    //public Transform[] rightFingerTargets;
+    //public MultiAimConstraint[] fingerConstraints;
+
+    //private GameObject _heldObject;
+    //private bool _isHoldingObject = false;
 
     private void Awake()
     {
@@ -44,4 +52,3 @@ public class PlayerArmsAnimationController : MonoBehaviour
         animator.SetTrigger("pickedUp");
     }
 }
-

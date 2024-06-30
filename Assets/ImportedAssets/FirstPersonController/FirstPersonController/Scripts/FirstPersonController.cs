@@ -208,54 +208,59 @@ namespace StarterAssets
 
         private void UpdateArmAnimations()
         {
-            
             if (_playerArms != null)
             {
-                if (isSprinting && _playerInventory.GetCurrentHandItem != null && input.move != Vector2.zero)
+                switch (isSprinting)
                 {
-                    _playerArms.SetIsRunningWithItem(true);
-                    _playerArms.SetRunning(false);
-                    _playerArms.SetWalking(false);
-                    _playerArms.SetPickingUp(false);
-                    _playerArms.SetIdle(false);
-                    _playerArms.SetCrouching(false);
-                }
-                else if (isSprinting && _playerInventory.GetCurrentHandItem == null && input.move != Vector2.zero)
-                {
-                    _playerArms.SetIsRunningWithItem(false);
-                    _playerArms.SetRunning(true);
-                    _playerArms.SetWalking(false);
-                    _playerArms.SetPickingUp(false);
-                    _playerArms.SetIdle(false);
-                    _playerArms.SetCrouching(false);
-                }
-                
-                else if (input.move != Vector2.zero && !isCrouching)
-                {
-                    _playerArms.SetRunning(false);
-                    _playerArms.SetWalking(true);
-                    _playerArms.SetPickingUp(false);
-                    _playerArms.SetIdle(false);
-                    _playerArms.SetCrouching(false);
-                }
-                else if (isCrouching)
-                {
-                    _playerArms.SetRunning(false);
-                    _playerArms.SetWalking(false);
-                    _playerArms.SetPickingUp(false);
-                    _playerArms.SetIdle(false);
-                    _playerArms.SetCrouching(true);
-                }
-                else
-                {
-                    _playerArms.SetRunning(false);
-                    _playerArms.SetWalking(false);
-                    _playerArms.SetPickingUp(false);
-                    _playerArms.SetIdle(true);
-                    _playerArms.SetCrouching(false);
+                    case true when _playerInventory.GetCurrentHandItem != null && input.move != Vector2.zero:
+                        _playerArms.SetIsRunningWithItem(true);
+                        _playerArms.SetRunning(false);
+                        _playerArms.SetWalking(false);
+                        _playerArms.SetPickingUp(false);
+                        _playerArms.SetIdle(false);
+                        _playerArms.SetCrouching(false);
+                        break;
+                    case true when _playerInventory.GetCurrentHandItem == null && input.move != Vector2.zero:
+                        _playerArms.SetIsRunningWithItem(false);
+                        _playerArms.SetRunning(true);
+                        _playerArms.SetWalking(false);
+                        _playerArms.SetPickingUp(false);
+                        _playerArms.SetIdle(false);
+                        _playerArms.SetCrouching(false);
+                        break;
+                    default:
+                    {
+                        if (input.move != Vector2.zero && !isCrouching)
+                        {
+                            _playerArms.SetRunning(false);
+                            _playerArms.SetWalking(true);
+                            _playerArms.SetPickingUp(false);
+                            _playerArms.SetIdle(false);
+                            _playerArms.SetCrouching(false);
+                        }
+                        else if (isCrouching)
+                        {
+                            _playerArms.SetRunning(false);
+                            _playerArms.SetWalking(false);
+                            _playerArms.SetPickingUp(false);
+                            _playerArms.SetIdle(false);
+                            _playerArms.SetCrouching(true);
+                        }
+                        else
+                        {
+                            _playerArms.SetRunning(false);
+                            _playerArms.SetWalking(false);
+                            _playerArms.SetPickingUp(false);
+                            _playerArms.SetIdle(true);
+                            _playerArms.SetCrouching(false);
+                        }
+
+                        break;
+                    }
                 }
             }
         }
+
         
         
         public void ToggleCanMove()

@@ -3,12 +3,14 @@ using UnityEngine;
 public class PlayerDualHandInventory : MonoBehaviour
 {
     [Header("Item Hand Location")]
-    [SerializeField] Transform handPosition;
+    public Transform[] handPositions;
+    [SerializeField] Transform defaultHand;
     [SerializeField] Transform skullOfHandPosition;
 
     public GameObject[] _inventorySlots;
     public int currentIndexSelected;
 
+    private PlayerArmsAnimationController _armsAnimationController;
     public GameObject[] GetInventory
     {
         get
@@ -31,6 +33,8 @@ public class PlayerDualHandInventory : MonoBehaviour
         _inventorySlots = new GameObject[2];
         currentIndexSelected = 0;
         PickedUp = false; // Initialize picked up state
+        
+        _armsAnimationController = FindObjectOfType<PlayerArmsAnimationController>();
     }
     private void Update()
     {
@@ -76,7 +80,6 @@ public class PlayerDualHandInventory : MonoBehaviour
 
 
     #region Inventory Methods
-    // Swap current interactable object in hand for another in the environment
     private void SwapObjectsInInventory(GameObject newObject)
     {
         if (_inventorySlots[currentIndexSelected] != null)
@@ -87,16 +90,22 @@ public class PlayerDualHandInventory : MonoBehaviour
             _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
             _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
             _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
-            
         }
+
         newObject.transform.parent = this.gameObject.transform;
         newObject.layer = LayerMask.NameToLayer("Default");
         _inventorySlots[currentIndexSelected] = newObject;
         ShowCurrentIndexItem();
-        PickedUp = true; // Set picked up state to true when an item is picked up
+        PickedUp = true;
+
+        
+        if (_armsAnimationController != null)
+        {
+           // _armsAnimationController.HoldObject(newObject);
+           // _armsAnimationController.SetHoldingObject(true); 
+        }
     }
 
-    // Place interactable object in hand in the position given
     private void PlaceObjectFromInventory(GameObject obj)
     {
         if (_inventorySlots[currentIndexSelected] != null)
@@ -120,11 +129,15 @@ public class PlayerDualHandInventory : MonoBehaviour
                 Destroy(_inventorySlots[currentIndexSelected].GetComponent<InteractableObject>());
                 Destroy(obj);
                 _inventorySlots[currentIndexSelected] = null;
+                
+                if (_armsAnimationController != null)
+                {
+                    //_armsAnimationController.SetHoldingObject(false); // Call SetHoldingObject here
+                }
             }
         }
     }
 
-    // Place object from either inventory slots without having to hold it
     public void PlaceObjectInPuzzle(GameObject obj)
     {
         foreach(GameObject item in _inventorySlots)
@@ -175,36 +188,51 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
     }
     #endregion
+    
     public void ShowCurrentIndexItem()
     {
-        foreach(GameObject obj in _inventorySlots)
-        {
-            if(obj != null)
-            {
-                if(obj.CompareTag("Skull"))
-                {
-                    obj.transform.position = skullOfHandPosition.position;
-                    obj.GetComponent<MeshRenderer>().enabled = false;
-                    GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = .5f;
-                }
-                else
-                {
-                    obj.SetActive(false);
-                }
-                
-            }
-        }
+        HideHandItem(); // Hide any currently held item
+
         if (_inventorySlots[currentIndexSelected] != null)
         {
-            _inventorySlots[currentIndexSelected].SetActive(true);
-            _inventorySlots[currentIndexSelected].transform.parent = handPosition.parent.gameObject.transform;
-            _inventorySlots[currentIndexSelected].transform.localPosition = handPosition.localPosition;
-            _inventorySlots[currentIndexSelected].transform.localEulerAngles = handPosition.localEulerAngles;
-            _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = false;
-            if (_inventorySlots[currentIndexSelected].CompareTag("Skull"))
+            GameObject item = _inventorySlots[currentIndexSelected];
+
+            // Set item position and visibility
+            item.SetActive(true);
+            
+            if (item.GetComponent<ObjectSize>() && handPositions.Length > 0)
             {
-                _inventorySlots[currentIndexSelected].GetComponent<MeshRenderer>().enabled = true;
+                item.transform.parent = handPositions[item.GetComponent<ObjectSize>().objectSize.handPositionIndex].parent.gameObject.transform;
+                item.transform.localPosition = handPositions[item.GetComponent<ObjectSize>().objectSize.handPositionIndex].localPosition;
+                item.transform.localEulerAngles = handPositions[item.GetComponent<ObjectSize>().objectSize.handPositionIndex].localEulerAngles;
+                Debug.Log(
+                    item.gameObject.name + " was moved to the " +
+                    item.GetComponent<ObjectSize>().objectSize.handPositionIndex + " index.");
+            }
+            else
+            {
+                //if the object hasn't been assigned an ObjectSize, default to small object size.
+                item.transform.parent = defaultHand.parent.gameObject.transform;
+                item.transform.localPosition = defaultHand.localPosition;
+                item.transform.localEulerAngles = defaultHand.localEulerAngles;
+                Debug.Log("There is no ObjectSize component on the "
+                          + item.gameObject.name + ". Defaulting to small.");
+            }
+            
+            item.GetComponent<Collider>().enabled = false;
+
+            // Special handling for Skull item
+            if (item.CompareTag("Skull"))
+            {
+                item.GetComponent<MeshRenderer>().enabled = true;
                 GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = 1f;
+            }
+
+            // Update arms animation controller with the object held
+            if (_armsAnimationController != null)
+            {
+                //_armsAnimationController.HoldObject(item);
+                //_armsAnimationController.SetHoldingObject(true);
             }
         }
     }
@@ -233,63 +261,32 @@ public class PlayerDualHandInventory : MonoBehaviour
     {
         foreach (GameObject item in _inventorySlots)
         {
-            if(item != null)
+            if (item != null)
             {
-                if(item.CompareTag("Skull"))
+                if (item.CompareTag("Skull"))
                 {
                     item.transform.position = skullOfHandPosition.position;
                     item.GetComponent<MeshRenderer>().enabled = false;
                     GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = .5f;
                 }
-                else if(_inventorySlots[currentIndexSelected] != null)
-                {
-                    _inventorySlots[currentIndexSelected].SetActive(false);
-                }
-            } 
-        }
-
-        /*
-        foreach(GameObject item in _inventorySlots)
-        {   
-            if(item != null)
-            {
-                if(item.activeInHierarchy)
-                {
-                    MeshRenderer[] renderers = item.GetComponentsInChildren<MeshRenderer>();
-
-                    foreach (MeshRenderer render in renderers)
-                    {
-                        if (render.enabled == false)
-                        {
-                            render.enabled = true;
-                        }
-                        else
-                        {
-                            render.enabled = false;
-                        }
-                    }
-                    
-                }
                 else
                 {
-                    item.SetActive(true);
-                    MeshRenderer[] renderers = item.GetComponentsInChildren<MeshRenderer>();
-                    foreach (MeshRenderer render in renderers)
-                    {
-                        if (render.enabled == false)
-                        {
-                            render.enabled = true;
-                        }
-                        else
-                        {
-                            render.enabled = false;
-                        }
-                    }
                     item.SetActive(false);
                 }
-                
             }
         }
-        */
+    }
+    
+    private int GetObjectIndex(string tag)
+    {
+        return 0;
+    }
+
+    private float CalculateObjectSize(GameObject obj)
+    {
+        if(obj)
+            return obj.transform.localScale.magnitude;
+
+        return 1.0f; 
     }
 }
