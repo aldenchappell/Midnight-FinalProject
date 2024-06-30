@@ -53,7 +53,7 @@ public class PlayerInteractableController : MonoBehaviour
             if (interactable != null)
             {
                 _playerArms.SetPickingUp(true);
-                if(_playerInventory.GetInventory.Length > 0)
+                if(_playerInventory.GetInventory.Length > 0 && !interactable.GetComponent<Puzzle>())
                     _playerInventory.HideHandItem();
                 
                 if (interactableObject != interactable)

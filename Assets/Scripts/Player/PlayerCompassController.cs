@@ -48,14 +48,7 @@ public class PlayerCompassController : MonoBehaviour
 
         if (InGameSettingsManager.Instance.enableCompass)
         {
-            if (_isFadingOut)
-            {
-                _isFadingOut = false;
-                SetCompassAlpha(1);
-            }
-
             bool markerHitByRaycast = false;
-            RaycastHit hitInfo;
 
             for (int i = _objectiveMarkerTransforms.Count - 1; i >= 0; i--)
             {
@@ -86,7 +79,7 @@ public class PlayerCompassController : MonoBehaviour
 
             if (Physics.Raycast(_cameraObjectTransform.position,
                     _cameraObjectTransform.forward,
-                    out hitInfo,
+                    out var hitInfo,
                     2.0f))
             {
                 CompassMarker compassMarker = hitInfo.collider.GetComponent<CompassMarker>();
@@ -174,6 +167,7 @@ public class PlayerCompassController : MonoBehaviour
             SetCompassAlpha(0);
         }
     }
+
 
     private void InitializeMarkers()
     {

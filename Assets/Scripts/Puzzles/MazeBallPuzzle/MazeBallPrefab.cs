@@ -14,7 +14,7 @@ public class MazeBallPrefab : MonoBehaviour
 
         _audio = GetComponent<AudioSource>();
 
-        GameObject puzzle = FindObjectOfType<MazeBallPuzzle>().marble = gameObject;
+        FindObjectOfType<MazeBallPuzzle>().marble = gameObject;
     }
     
     private void OnCollisionEnter(Collision other)

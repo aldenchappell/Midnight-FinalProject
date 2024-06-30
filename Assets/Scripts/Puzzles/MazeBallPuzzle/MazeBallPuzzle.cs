@@ -149,10 +149,6 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
             }
         }
         
-        //remove the marble from the player inventory
-        if(marble)
-            _playerDualHandInventory.RemoveObject = GameObject.FindWithTag("MazeBall");
-        
         _animator.SetTrigger(Start);
 
         bool isActive = !puzzleUI.activeSelf;
@@ -311,6 +307,10 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
         Destroy(puzzleUI);
         
         StartCoroutine(LerpToPosition(gameObject, startingPosition));
+        if (GameObject.FindWithTag("MazeBall") != null)
+        {
+            _playerDualHandInventory.RemoveObject = GameObject.FindWithTag("MazeBall");
+        }
     }
     
     private IEnumerator SpawnPolaroid()
