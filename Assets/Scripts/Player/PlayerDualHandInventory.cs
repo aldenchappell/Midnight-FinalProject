@@ -77,8 +77,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
     }
     #endregion
-
-
+    
     #region Inventory Methods
     private void SwapObjectsInInventory(GameObject newObject)
     {
@@ -88,20 +87,30 @@ public class PlayerDualHandInventory : MonoBehaviour
             _inventorySlots[currentIndexSelected].SetActive(true);
             _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
             
-            _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
-
-            if (!_inventorySlots[currentIndexSelected].GetComponent<SkullController>())
+            if(!_inventorySlots[currentIndexSelected].CompareTag("Skull"))
+                _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
+        
+            
+            if(_inventorySlots[currentIndexSelected].GetComponent<SkullDialogue>())
             {
+                //this is the line that prevents the skull from 
+                if (_inventorySlots[currentIndexSelected].transform.Find("GhostPlacement"))
+                {
+                    Debug.Log("Moving to " + newObject.name + "'s ghost placement position.");
+                    _inventorySlots[currentIndexSelected].transform.position =
+                        newObject.transform.Find("GhostPlacement").position;
+                    _inventorySlots[currentIndexSelected].transform.eulerAngles =
+                        newObject.transform.Find("GhostPlacement").eulerAngles;
+                }
+                else return;
+
+            }
+            else if (!_inventorySlots[currentIndexSelected].GetComponent<SkullDialogue>()
+                     && !_inventorySlots[currentIndexSelected].transform.Find("GhostPlacement"))
+            {
+                Debug.Log(newObject.name + "does not have a ghost position.");
                 _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
                 _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
-            }
-            else if(_inventorySlots[currentIndexSelected].transform.Find("GhostPlacement"))
-            {
-                Debug.Log("Moving to " + newObject.name + "'s ghost placement position.");
-                _inventorySlots[currentIndexSelected].transform.position =
-                    newObject.transform.Find("GhostPlacement").position;
-                _inventorySlots[currentIndexSelected].transform.eulerAngles =
-                    newObject.transform.Find("GhostPlacement").eulerAngles;
             }
         }
 
@@ -271,6 +280,7 @@ public class PlayerDualHandInventory : MonoBehaviour
             {
                 if (item.CompareTag("Skull"))
                 {
+                    item.GetComponent<Collider>().enabled = false;
                     item.transform.position = skullOfHandPosition.position;
                     item.GetComponent<MeshRenderer>().enabled = false;
                     GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = .5f;
