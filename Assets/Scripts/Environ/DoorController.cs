@@ -16,6 +16,12 @@ public class DoorController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _soundController = FindObjectOfType<EnvironmentalSoundController>();
+
+        if (GetComponent<AudioSource>())
+        {
+            AudioSource source = GetComponent<AudioSource>();
+            Destroy(source);
+        }
     }
 
     public void HandleDoor()
