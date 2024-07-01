@@ -139,6 +139,13 @@ public class ElevatorController : MonoBehaviour
             return;
         }
 
+        if (LevelCompletionManager.Instance.hasKey)
+        {
+            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
+            FadeText("You must return the key before entering a new level.");
+            return;
+        }
+
         switch (floorIndex)
         {
             case 1:

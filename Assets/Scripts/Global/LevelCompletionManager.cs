@@ -23,7 +23,8 @@ public class LevelCompletionManager : MonoBehaviour
 
     private AudioSource _audioSource;
     [SerializeField] private AudioClip keyDropSound;
-    
+
+    public bool hasKey = false;
     public bool allLevelsCompleted = false;
     private void Awake()
     {
@@ -195,6 +196,7 @@ public class LevelCompletionManager : MonoBehaviour
     public void CollectKey()
     {
         _collectedKeys++;
+        hasKey = true;
     }
     
     public void UpdateKeyCount(int keys)

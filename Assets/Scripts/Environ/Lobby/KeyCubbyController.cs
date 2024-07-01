@@ -69,7 +69,8 @@ public class KeyCubbyController : MonoBehaviour
         {
             keySlots[keyIndex].SetActive(true);
             _audio.PlayOneShot(placeKeySound);
-            PlayerPrefs.SetInt($"KeyPlaced_{keyIndex}", 1); //save key placement
+            PlayerPrefs.SetInt($"KeyPlaced_{keyIndex}", 1);
+            LevelCompletionManager.Instance.hasKey = false;
         }
         else
         {
