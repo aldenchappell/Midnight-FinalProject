@@ -156,7 +156,6 @@ public class ElevatorController : MonoBehaviour
                 _selectedLevelName = "FLOOR ONE";
                 break;
             case 3:
-                CheckForHasKey();
                 if (LevelCompletionManager.Instance.IsLevelCompleted("FLOOR ONE"))
                 {
                     _selectedLevelName = "FLOOR TWO";
@@ -169,7 +168,6 @@ public class ElevatorController : MonoBehaviour
                 }
                 break;
             case 4:
-                CheckForHasKey(); 
                 if (LevelCompletionManager.Instance.IsLevelCompleted("FLOOR ONE") &&
                     LevelCompletionManager.Instance.IsLevelCompleted("FLOOR TWO"))
                 {
@@ -218,16 +216,12 @@ public class ElevatorController : MonoBehaviour
         }
     }
 
-    private void CheckForHasKey()
+    public void PromptKeyPlacement()
     {
-        if (LevelCompletionManager.Instance.hasKey)
-        {
-            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-            FadeText("You must return the key before entering a new level.");
-            return;
-        }
+        _elevatorAudioSource.PlayOneShot(invalidLevelSound);
+        FadeText("You must return the key before entering a new level.");
     }
-
+    
 
     private IEnumerator StartElevatorRoutine()
     {

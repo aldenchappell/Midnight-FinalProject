@@ -6,7 +6,7 @@ public class PlayerArmsAnimationController : MonoBehaviour
 {
     [HideInInspector] public Animator animator;
 
-    private bool _shouldPickup;
+    private bool _shouldPickup = true;
 
     private void Awake()
     {
