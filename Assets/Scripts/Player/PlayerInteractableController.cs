@@ -52,6 +52,7 @@ public class PlayerInteractableController : MonoBehaviour
             _examineObjectController.objectToExamine = hitInfo.collider.gameObject;
             if (interactable != null)
             {
+                
                 _playerArms.SetPickingUp(true);
                 if(_playerInventory.GetInventory.Length > 0 && !interactable.GetComponent<Puzzle>())
                     _playerInventory.HideHandItem();
