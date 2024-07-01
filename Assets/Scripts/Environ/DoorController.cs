@@ -1,22 +1,21 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class DoorController : MonoBehaviour
 {
     public bool canBeOpened = true;
-
+    private EnvironmentalSoundController _soundController;
     [SerializeField] private float doorInteractionCooldown = 1.5f;
 
     private Animator _animator;
 
-    private AudioSource _audio;
+    //private AudioSource _audio;
     [SerializeField] private AudioClip openDoorSound, closeDoorSound;
     
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _audio = GetComponent<AudioSource>();
+        _soundController = FindObjectOfType<EnvironmentalSoundController>();
     }
 
     public void HandleDoor()
@@ -37,7 +36,8 @@ public class DoorController : MonoBehaviour
     private void OpenDoor()
     {
         _animator.SetBool("Open", true);
-        _audio.PlayOneShot(openDoorSound);
+        _soundController.transform.position = transform.position;
+        _soundController.audioSource.PlayOneShot(openDoorSound);
         
         StartDoorInteractionCooldown();
     }
@@ -45,7 +45,8 @@ public class DoorController : MonoBehaviour
     private void CloseDoor()
     {
         _animator.SetBool("Open", false);
-        _audio.PlayOneShot(closeDoorSound);
+        _soundController.transform.position = transform.position;
+        _soundController.audioSource.PlayOneShot(closeDoorSound);
         
         StartDoorInteractionCooldown();
     }
