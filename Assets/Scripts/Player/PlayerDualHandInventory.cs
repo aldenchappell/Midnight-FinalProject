@@ -87,9 +87,22 @@ public class PlayerDualHandInventory : MonoBehaviour
             _inventorySlots[currentIndexSelected].transform.parent = null;
             _inventorySlots[currentIndexSelected].SetActive(true);
             _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
-            _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
-            _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
+            
             _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
+
+            if (!_inventorySlots[currentIndexSelected].GetComponent<SkullController>())
+            {
+                _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
+                _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
+            }
+            else if(_inventorySlots[currentIndexSelected].transform.Find("GhostPlacement"))
+            {
+                Debug.Log("Moving to " + newObject.name + "'s ghost placement position.");
+                _inventorySlots[currentIndexSelected].transform.position =
+                    newObject.transform.Find("GhostPlacement").position;
+                _inventorySlots[currentIndexSelected].transform.eulerAngles =
+                    newObject.transform.Find("GhostPlacement").eulerAngles;
+            }
         }
 
         newObject.transform.parent = this.gameObject.transform;
@@ -97,13 +110,6 @@ public class PlayerDualHandInventory : MonoBehaviour
         _inventorySlots[currentIndexSelected] = newObject;
         ShowCurrentIndexItem();
         PickedUp = true;
-
-        
-        if (_armsAnimationController != null)
-        {
-           // _armsAnimationController.HoldObject(newObject);
-           // _armsAnimationController.SetHoldingObject(true); 
-        }
     }
 
     private void PlaceObjectFromInventory(GameObject obj)
