@@ -20,6 +20,7 @@ public class SetMovment : MonoBehaviour
 
     private NavMeshAgent _agent;
     private EnemySuspicionSystem _suspicion;
+    private PatrolSystemManager _patrolManager;
 
     private Vector3 _currentEndDestination;
 
@@ -29,6 +30,7 @@ public class SetMovment : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _suspicion = GetComponent<EnemySuspicionSystem>();
         _player = GameObject.FindWithTag("Player");
+        _patrolManager = GameObject.FindObjectOfType<PatrolSystemManager>();
     }
 
     private void Start()
@@ -38,7 +40,12 @@ public class SetMovment : MonoBehaviour
 
     public void SetCurrentMovementState(string state, Vector3 setPosition)
     {
-       switch(state)
+        if (hasFirstTimeSpawnCondition)
+        {
+            _patrolManager.RaiseSuspicion = -40;
+            state = "Roaming";
+        }
+        switch (state)
         {
             case "Roaming":
                 CreateNewPatrolRoute();

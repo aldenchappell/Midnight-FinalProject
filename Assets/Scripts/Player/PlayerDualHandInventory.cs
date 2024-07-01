@@ -89,26 +89,29 @@ public class PlayerDualHandInventory : MonoBehaviour
             
             if(!_inventorySlots[currentIndexSelected].CompareTag("Skull"))
                 _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
-        
-            
-            if(_inventorySlots[currentIndexSelected].GetComponent<SkullDialogue>())
+    
+            // Functionality to place skull in proper position;
+            if (_inventorySlots[currentIndexSelected].GetComponent<SkullDialogue>())
             {
-                //this is the line that prevents the skull from 
-                if (_inventorySlots[currentIndexSelected].transform.Find("GhostPlacement"))
+                if(newObject.transform.Find("GhostPlacement"))
                 {
                     Debug.Log("Moving to " + newObject.name + "'s ghost placement position.");
                     _inventorySlots[currentIndexSelected].transform.position =
                         newObject.transform.Find("GhostPlacement").position;
                     _inventorySlots[currentIndexSelected].transform.eulerAngles =
                         newObject.transform.Find("GhostPlacement").eulerAngles;
+                    _inventorySlots[currentIndexSelected].transform.GetComponent<MeshRenderer>().enabled = true;
+                    _inventorySlots[currentIndexSelected].transform.GetComponent<Collider>().enabled = true;
                 }
-                else return;
-
+                else
+                {
+                    _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
+                    _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
+                }
+                
             }
-            else if (!_inventorySlots[currentIndexSelected].GetComponent<SkullDialogue>()
-                     && !_inventorySlots[currentIndexSelected].transform.Find("GhostPlacement"))
+            else
             {
-                Debug.Log(newObject.name + "does not have a ghost position.");
                 _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
                 _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
             }
