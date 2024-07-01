@@ -44,6 +44,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
     private PauseManager _pause;
     private PuzzleEscape _puzzleEscape;
 
+    private GameObject _playerArms;
     private GameObject _polaroidObj;
     public int polaroidCount;
     private const int TargetPolaroidCount = 6;
@@ -64,7 +65,8 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
         _puzzleCam = GameObject.Find("PhotoBoardPuzzleCam").GetComponent<CinemachineVirtualCamera>();
         _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
         _pause = FindObjectOfType<PauseManager>();
-
+        _playerArms = GameObject.Find("Arms");
+        
         foreach (var element in puzzleUI)
         {
             element.SetActive(false);
@@ -283,7 +285,7 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
             _isFirstTime = false;
             
             _polaroidObj = GameObject.FindWithTag("Polaroid");
-            _playerDualHandInventory.PlaceObjectInPuzzle(_polaroidObj);
+           // _playerDualHandInventory.PlaceObjectInPuzzle(_polaroidObj);
             _polaroidObj = null;
         }
     }
@@ -294,11 +296,13 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
         {
             _mainCam.Priority = 0;
             _puzzleCam.Priority = 10;
+            _playerArms.SetActive(false);
         }
         else
         {
             _mainCam.Priority = 10;
             _puzzleCam.Priority = 0;
+            _playerArms.SetActive(true);
         }
     }
 

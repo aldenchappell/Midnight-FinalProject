@@ -109,15 +109,6 @@ public class LevelCompletionManager : MonoBehaviour
         }
     }
 
-    
-    public bool HasCurrentLevelAlreadyBeenLoaded(string levelName)
-    {
-        //Debug.Log("HasSkullDialogueBeenPlayed: Level " 
-                 // + levelName + " played status: " 
-                //  + (_skullDialoguePlayed.ContainsKey(levelName) && _skullDialoguePlayed[levelName]));
-        return loadedLevels.Contains(levelName);
-    }
-
     private List<string> ConvertPuzzlesToNames(List<SO_Puzzle> puzzles)
     {
         List<string> names = new List<string>();
@@ -149,19 +140,6 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void CheckAndStartNextLevel()
     {
-        //NOTE TO OWEN:
-        //PLEASE LET ME KNOW IF THIS
-        //METHOD IS CAUSING MORE ISSUES
-        //SETTING THE SPAWNPOINT IN LOBBY :)
-        //END NOTE
-
-        //Note to Alden: The if statement below causes issues returning to the lobby and needs to stay disfunctional
-        /*
-        if (!IsLevelCompleted("LOBBY"))
-        {
-            StartLevel("LOBBY", lobbyPuzzles);
-        }
-        */
         if (!IsLevelCompleted("FLOOR ONE"))
         {
             StartLevel("FLOOR ONE", level1Puzzles);
@@ -173,7 +151,6 @@ public class LevelCompletionManager : MonoBehaviour
         else if (!IsLevelCompleted("FLOOR THREE"))
         {
             StartLevel("FLOOR THREE", level3Puzzles);
-            allLevelsCompleted = true;
         }
         else
         {
@@ -191,11 +168,6 @@ public class LevelCompletionManager : MonoBehaviour
     public void SetSkullDialoguePlayed(string levelName)
     {
         _skullDialoguePlayed[levelName] = true;
-        //Debug.Log("SetSkullDialoguePlayed: Marked dialogue as played for " + levelName);
-    }
-    public int GetRemainingPuzzlesCount()
-    {
-        return currentLevelPuzzles.Count;
     }
 
     public void OnPlayerDeath()
@@ -228,5 +200,10 @@ public class LevelCompletionManager : MonoBehaviour
     public void UpdateKeyCount(int keys)
     {
         _collectedKeys = keys;
+    }
+
+    public void FinishGame()
+    {
+        allLevelsCompleted = true;
     }
 }

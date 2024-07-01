@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KeyController : MonoBehaviour
 {
@@ -20,9 +20,18 @@ public class KeyController : MonoBehaviour
         if (_interactable != null && _playerKeyController != null)
         {
             _interactable.onInteraction.AddListener(_elevatorController.OpenElevator);
-            
-            if(isTaggedKey)
+
+            if (isTaggedKey)
+            {
                 _interactable.onInteraction.AddListener(_playerKeyController.CollectKey);
+            }
+                
+
+            if (isTaggedKey && SceneManager.GetActiveScene().name == "FLOOR THREE")
+            {
+                _interactable.onInteraction.AddListener(LevelCompletionManager.Instance.FinishGame);
+                Debug.Log("Adding listener to finish the fuckin game");
+            }
             
         }
         else

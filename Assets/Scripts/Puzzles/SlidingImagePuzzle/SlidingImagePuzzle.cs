@@ -40,6 +40,7 @@ public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
     
     private PuzzleEscape _puzzleEscape;
     private GameObject _playerUI;
+    private GameObject _playerArms;
 
     private bool _solved;
     private PatrolSystemManager _patrol;
@@ -54,6 +55,7 @@ public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
         _mainCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("SlidingImagePuzzleCam").GetComponent<CinemachineVirtualCamera>();
         _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
+        _playerArms = GameObject.Find("Arms");
     }
 
 
@@ -104,11 +106,13 @@ public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
         {
             _mainCam.Priority = 0;
             _puzzleCam.Priority = 10;
+            _playerArms.SetActive(false);
         }
         else
         {
             _mainCam.Priority = 10;
             _puzzleCam.Priority = 0;
+            _playerArms.SetActive(true);
         }
     }
     private void AssignUniqueSprites()

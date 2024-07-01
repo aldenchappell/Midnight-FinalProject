@@ -5,7 +5,7 @@ public class Radio : MonoBehaviour
 {
     private InteractableObject _intObj;
     private AudioSource _audio;
-    private bool _playing;
+    private bool _playing = true;
     private void Awake()
     {
         _audio = GetComponent<AudioSource>();
