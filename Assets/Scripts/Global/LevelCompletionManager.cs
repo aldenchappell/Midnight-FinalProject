@@ -23,6 +23,8 @@ public class LevelCompletionManager : MonoBehaviour
 
     private AudioSource _audioSource;
     [SerializeField] private AudioClip keyDropSound;
+    
+    public bool allLevelsCompleted = false;
     private void Awake()
     {
         if (Instance == null)
@@ -38,6 +40,17 @@ public class LevelCompletionManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
     
+    
+    private void Update()
+    {
+        #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            allLevelsCompleted = true;
+        }
+        #endif
+    }
+
 
     public void SavePuzzleCompletion(SO_Puzzle puzzle)
     {
@@ -61,7 +74,8 @@ public class LevelCompletionManager : MonoBehaviour
     {
         completedLevels.Add(levelName);
     }
-
+    
+    
     public bool IsLevelCompleted(string levelName)
     {
         return completedLevels.Contains(levelName);
@@ -70,11 +84,12 @@ public class LevelCompletionManager : MonoBehaviour
     
     public void ResetPuzzles()
     {
-        foreach (string puzzleName in currentLevelPuzzles)
-        {
-            _completedPuzzles.Remove(puzzleName);
-        }
-        currentLevelPuzzles = new List<string>();
+        _completedPuzzles.Clear();
+        completedLevels.Clear();
+        currentLevelPuzzles.Clear();
+        loadedLevels.Clear();
+        _collectedKeys = 0;
+        allLevelsCompleted = false;
     }
 
     public void StartLevel(string levelName, List<SO_Puzzle> puzzles)
@@ -158,6 +173,7 @@ public class LevelCompletionManager : MonoBehaviour
         else if (!IsLevelCompleted("FLOOR THREE"))
         {
             StartLevel("FLOOR THREE", level3Puzzles);
+            allLevelsCompleted = true;
         }
         else
         {
