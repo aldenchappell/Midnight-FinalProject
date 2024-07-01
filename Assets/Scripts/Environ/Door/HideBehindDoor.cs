@@ -106,6 +106,7 @@ public class HideBehindDoor : MonoBehaviour
         _isSwitching = true;
         if (isActive)
         {
+            _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             _FPC.ToggleCanMove();
             _doorController.Invoke("HandleDoor", 0);
             //_inventory.HideHandItem();
@@ -120,6 +121,7 @@ public class HideBehindDoor : MonoBehaviour
         }
         else
         {
+            _mainCamera.transform.GetChild(2).gameObject.SetActive(true);
             _doorController.Invoke("HandleDoor", 0);
             //_inventory.HideHandItem();
             yield return new WaitForSeconds(1f);

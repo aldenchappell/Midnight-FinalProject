@@ -26,6 +26,7 @@ public class BabyBlockPuzzle : MonoBehaviour
     private Animator _animator;
     private PatrolSystemManager _patrol;
     private GlobalCursorManager _cursor;
+    private Camera _mainCamera;
 
     private bool _isActive;
     private bool _canExit;
@@ -37,6 +38,7 @@ public class BabyBlockPuzzle : MonoBehaviour
     {
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("BabyBlockPuzzleCam").GetComponent<CinemachineVirtualCamera>();
+        _mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
 
         _playerInv = GameObject.FindFirstObjectByType<PlayerDualHandInventory>();
         _mainCam = GameObject.Find("MainCamera").GetComponent<Camera>();
@@ -67,6 +69,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         puzzleUI.SetActive(!puzzleUI.activeSelf);
         if(puzzleUI.activeSelf)
         {
+            _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             GetComponent<Collider>().enabled = false;
             _FPC.ToggleCanMove();
             _playerCam.Priority = 0;
@@ -90,6 +93,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         }
         else
         {
+            _mainCamera.transform.GetChild(2).gameObject.SetActive(true);
             GetComponent<Collider>().enabled = true;
             FindObjectOfType<GlobalCursorManager>().DisableCursor();
             _FPC.ToggleCanMove();

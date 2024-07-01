@@ -22,6 +22,7 @@ public class DaVinciPuzzle : MonoBehaviour
 
     private CinemachineVirtualCamera _playerCam;
     private CinemachineVirtualCamera _puzzleCam;
+    private Camera _mainCamera;
 
     private int _currentDialIndex;
     private bool _isActive;
@@ -46,6 +47,7 @@ public class DaVinciPuzzle : MonoBehaviour
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("DaVinciPuzzleCam").GetComponent<CinemachineVirtualCamera>();
         _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
+        _mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
 
         _canAnimate = true;
     }
@@ -213,6 +215,7 @@ public class DaVinciPuzzle : MonoBehaviour
         puzzleUI.SetActive(!puzzleUI.activeSelf);
         if(puzzleUI.activeSelf)
         {
+            _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             FindObjectOfType<GlobalCursorManager>().EnableCursor();
             _FPC.ToggleCanMove();
             AdjustSelectedDial(0);
@@ -222,6 +225,7 @@ public class DaVinciPuzzle : MonoBehaviour
         }
         else
         {
+            _mainCamera.transform.GetChild(2).gameObject.SetActive(true);
             FindObjectOfType<GlobalCursorManager>().DisableCursor();
             _FPC.ToggleCanMove();
             foreach (Transform dial in dials)
