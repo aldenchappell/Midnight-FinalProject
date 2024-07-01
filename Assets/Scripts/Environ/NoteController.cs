@@ -1,112 +1,64 @@
 using System.Collections;
+using StarterAssets;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class NoteController : MonoBehaviour
 {
     public SO_Note note;
-    [SerializeField] private TMP_Text noteText, noteInstructionsText;
+    [SerializeField] private TMP_Text noteText;
     [SerializeField] private GameObject notePanel; 
-    //where the note will be placed when picked up and parented to.
-    private Transform _pickupPosition;
-    //rotation of the note when dropped
-    private Transform _dropPosition;
 
-    private Rigidbody _rigidBody;
     private bool _isPickedUp = false;
-
-    // Speed at which the note moves to the pickup position and rotation
-    [SerializeField] private float pickupSpeed = 5f;
 
     private AudioSource _audio;
     [SerializeField] private AudioClip pickupClip, paperFallingClip;
+
+    private FirstPersonController _firstPersonController;
     private void Awake()
     {
-        _rigidBody = GetComponent<Rigidbody>();
         _audio = GetComponent<AudioSource>();
-
-        _pickupPosition = GameObject.Find("NotePickupPosition").transform;
-        _dropPosition = GameObject.Find("ObjectDropPosition").transform;
-
-        _rigidBody.isKinematic = true;
+        _firstPersonController = FindObjectOfType<FirstPersonController>();
     }
 
-    private void Update()
+    public void ToggleUI()
     {
-        if (note == null) return;
-
-        if (noteText == null) return;
-
-        // Check if the note is picked up and E is pressed to drop it
-        if (_isPickedUp && Input.GetKeyDown(KeyCode.E))
+        if (!_isPickedUp)
+        {
+            PickupNote();
+        }
+        else
         {
             DropNote();
         }
+        _isPickedUp = !_isPickedUp;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void PickupNote()
     {
-        _rigidBody.isKinematic = false;
-
-        _audio.enabled = false;
-    }
-
-    public void PickupNote()
-    {
-        if (_isPickedUp) return; 
-
-        _rigidBody.isKinematic = true; 
-
-        noteText.text = note.noteText;
-        noteInstructionsText.gameObject.SetActive(true);
         notePanel.SetActive(true);
-
-        // Lerping position and rotation
-        StartCoroutine(LerpToPositionAndRotation(transform, _pickupPosition, pickupSpeed));
-
-        _isPickedUp = true;
-
-        if (_audio)
+        noteText.text = note.noteText;
+        if (_audio && !_audio.isPlaying)
         {
             _audio.PlayOneShot(pickupClip);
         }
+        
+        //GlobalCursorManager.Instance.EnableCursor();
+        _firstPersonController.canMove = false;
+        _firstPersonController.canRotate = false;
     }
 
-    public void DropNote()
+    private void DropNote()
     {
-        transform.SetParent(null);
-
-        transform.rotation = _dropPosition.rotation;
-
-        _rigidBody.isKinematic = false;
-
-        noteText.text = "";
-        noteInstructionsText.gameObject.SetActive(false);
         notePanel.SetActive(false);
-
-        _isPickedUp = false; 
-        
-        if (_audio)
+        noteText.text = "";
+        if (_audio && !_audio.isPlaying)
         {
             _audio.PlayOneShot(paperFallingClip);
         }
-    }
-
-    // Coroutine to lerp position and rotation
-    private IEnumerator LerpToPositionAndRotation(Transform pos, Transform targetPos, float speed)
-    {
-        float lerpTime = 0f;
-        Vector3 startPos = pos.position;
-        Quaternion startRot = pos.rotation;
-
-        while (lerpTime < 1f)
-        {
-            lerpTime += Time.deltaTime * speed;
-            pos.position = Vector3.Lerp(startPos, targetPos.position, lerpTime);
-            pos.rotation = Quaternion.Lerp(startRot, targetPos.rotation, lerpTime);
-            pos.SetParent(targetPos);
-            yield return null;
-        }
+        
+        //GlobalCursorManager.Instance.DisableCursor();
+        _firstPersonController.canMove = true;
+        _firstPersonController.canRotate = true;
     }
 }

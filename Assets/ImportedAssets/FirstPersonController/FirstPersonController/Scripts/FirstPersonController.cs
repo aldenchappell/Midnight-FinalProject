@@ -164,7 +164,8 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
-            Move();
+            if(canMove)
+                Move();
 
             if (InGameSettingsManager.Instance.enableHeadBobbing && controller.enabled)
             {
