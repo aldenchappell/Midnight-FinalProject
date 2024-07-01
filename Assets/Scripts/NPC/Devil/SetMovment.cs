@@ -44,9 +44,17 @@ public class SetMovment : MonoBehaviour
                 CreateNewPatrolRoute();
                 break;
             case "Chasing":
+                if(_agent.enabled != true)
+                {
+                    _agent.enabled = true;
+                }
                 SetChasePlayer(setPosition);
                 break;
             case "Patrolling":
+                if (_agent.enabled != true)
+                {
+                    _agent.enabled = true;
+                }
                 PatrolArea(setPosition);
                 break;
         }

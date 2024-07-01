@@ -23,6 +23,11 @@ public class RandomSuspicionEvents : MonoBehaviour
         _isRunning = false;
     }
 
+    private void Start()
+    {
+        //Invoke("StartAttemptingEvents", 10f);
+    }
+
     private void Update()
     {
         if(!_isRunning)
@@ -34,6 +39,7 @@ public class RandomSuspicionEvents : MonoBehaviour
     // Chance for suspicion event that uses variables from other player scripts
     private IEnumerator ChanceForPlayerRelatedSuspicionEvent()
     {
+        print("Attempting");
         _isRunning = true;
         float delay;
         float chance = Random.Range(0, 101);
@@ -64,6 +70,11 @@ public class RandomSuspicionEvents : MonoBehaviour
 
 
         yield return new WaitForSeconds(delay);
+        _isRunning = false;
+    }
+
+    private void StartAttemptingEvents()
+    {
         _isRunning = false;
     }
 
