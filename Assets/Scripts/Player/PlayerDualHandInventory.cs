@@ -107,6 +107,8 @@ public class PlayerDualHandInventory : MonoBehaviour
                 {
                     _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
                     _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
+                    _inventorySlots[currentIndexSelected].transform.GetComponent<MeshRenderer>().enabled = true;
+                    _inventorySlots[currentIndexSelected].transform.GetComponent<Collider>().enabled = true;
                 }
                 
             }
