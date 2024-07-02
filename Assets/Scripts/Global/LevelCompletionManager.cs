@@ -85,10 +85,16 @@ public class LevelCompletionManager : MonoBehaviour
     
     public void ResetPuzzles()
     {
-        _completedPuzzles.Clear();
-        completedLevels.Clear();
-        currentLevelPuzzles.Clear();
-        loadedLevels.Clear();
+        foreach (string puzzleName in currentLevelPuzzles)
+        {
+            _completedPuzzles.Remove(puzzleName);
+        }
+        currentLevelPuzzles = new List<string>();
+        
+        //_completedPuzzles.Clear();
+       // completedLevels.Clear();
+       // currentLevelPuzzles.Clear();
+        //loadedLevels.Clear();
         _collectedKeys = 0;
         allLevelsCompleted = false;
     }
