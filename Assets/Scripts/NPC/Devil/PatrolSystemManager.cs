@@ -24,6 +24,7 @@ public class PatrolSystemManager : MonoBehaviour
             }
             else
             {
+                print("Raising");
                 Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(GameObject.Find("Player").transform.position, value);
             }
         }
@@ -33,6 +34,7 @@ public class PatrolSystemManager : MonoBehaviour
     {
         set
         {
+            print("Raising");
             Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(GameObject.Find("Player").transform.position, value);
         }
     }

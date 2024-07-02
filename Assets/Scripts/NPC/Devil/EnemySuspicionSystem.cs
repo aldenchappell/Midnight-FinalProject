@@ -50,6 +50,7 @@ public class EnemySuspicionSystem : MonoBehaviour
 
     private void Update()
     {
+        print(_COV.targetsLockedIn.Count);
         //If the demon is actively chasing the player, trigger suspicion continuously
         if(_COV.targetsLockedIn.Count > 0)
         {
@@ -59,13 +60,14 @@ public class EnemySuspicionSystem : MonoBehaviour
     //Adds suspicion and gets the position of where it occured
     public void SuspicionTriggered(Vector3 position, int value)
     {
+        print("Triggered");
         lastSusPosition = position;
         AdjustSuspicionValue(value);
     }
 
     public void PatrolNodeReached()
     {
-        AdjustSuspicionValue(8);
+        AdjustSuspicionValue(-8);
     }
     
     private void AdjustSuspicionValue(int addedSuspicion)
