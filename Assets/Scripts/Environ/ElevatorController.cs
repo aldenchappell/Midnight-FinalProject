@@ -36,6 +36,7 @@ public class ElevatorController : MonoBehaviour
     private Coroutine _closeElevatorCoroutine;
     private Coroutine _startElevatorRoutineCoroutine;
 
+    [SerializeField] private Animator playerAnim;
     [SerializeField] private GameObject elevatorUI;
     private void Awake()
     {
@@ -135,8 +136,7 @@ public class ElevatorController : MonoBehaviour
 
     private IEnumerator WaitForLevelEndAnimation()
     {
-        yield return new WaitForSeconds(timeBeforeLoadingLevel - 1.0f);
-        var playerAnim = GameObject.FindObjectOfType<PlayerKeyController>().GetComponent<Animator>();
+        yield return new WaitForSeconds(timeBeforeLoadingLevel - 3.0f);
         playerAnim.SetTrigger("End");
     }
     
@@ -211,11 +211,11 @@ public class ElevatorController : MonoBehaviour
             return;
         }
 
-        // Set _levelSelected to true to indicate successful level selection
+        
         _levelSelected = true;
 
-        // Update floor index text
-        floorIndexText.text = (floorIndex - 1).ToString();
+        floorIndexText.text = _selectedLevelName == "LOBBY" ? "L" : (floorIndex - 1).ToString();
+        
 
         // Set elevator floor animation
         elevatorAnimator.SetInteger(Floor, floorIndex - 1);
