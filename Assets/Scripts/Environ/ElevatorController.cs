@@ -142,21 +142,25 @@ public class ElevatorController : MonoBehaviour
     
     public void SelectLevel(int floorIndex)
     {
+        // Check if player is in the lobby without enough keys
+        if (GetLevelName() == "LOBBY" && LevelCompletionManager.Instance.GetCollectedKeys() < 1)
+        {
+            PromptKeyPlacement(true);
+            return;
+        }
+
+        // Check if player is not in the lobby and has no keys
         if (GetLevelName() != "LOBBY" && LevelCompletionManager.Instance.GetCollectedKeys() <= 0)
         {
             PromptKeyPlacement(false);
             return;
         }
-        if (GetLevelName() == "LOBBY" && LevelCompletionManager.Instance.GetCollectedKeys() >= 1)
-        {
-            PromptKeyPlacement(true);
-            return;
-        }
-        
 
+        // Determine the selected level based on floor index
         switch (floorIndex)
         {
             case 1:
+                // If already on lobby, show message and return
                 if (GetLevelName() == "LOBBY")
                 {
                     _elevatorAudioSource.PlayOneShot(invalidLevelSound);
@@ -199,60 +203,34 @@ public class ElevatorController : MonoBehaviour
                 return;
         }
 
-        // Check if the level is already completed
+        // Check if the selected level is already completed
         if (LevelCompletionManager.Instance.IsLevelCompleted(_selectedLevelName))
         {
             _elevatorAudioSource.PlayOneShot(invalidLevelSound);
             FadeText("This level is already completed. Please select a different level.");
-            if(_selectedLevelName != "LOBBY")
-            {
-                _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-                FadeText("This level is already completed. Please select a different level.");
-            }
-
-            
+            return;
         }
-        else if(floorIndex != 1)
+
+        // Set _levelSelected to true to indicate successful level selection
+        _levelSelected = true;
+
+        // Update floor index text
+        floorIndexText.text = (floorIndex - 1).ToString();
+
+        // Set elevator floor animation
+        elevatorAnimator.SetInteger(Floor, floorIndex - 1);
+
+        // Start elevator routine if not already started
+        if (_startElevatorRoutineCoroutine == null)
         {
-            _levelSelected = true;
-            floorIndexText.text = (floorIndex - 1).ToString();
-            elevatorAnimator.SetInteger(Floor, floorIndex - 1);
-            
-            if (_startElevatorRoutineCoroutine == null)
-            {
-                _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
-                StartCoroutine(CloseElevatorRoutine());
-            }
-
-            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-            FadeText("This level is already completed. Please select a different level.");
-
+            _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
         }
-        else
-        {
-            if (floorIndex != 1)
-            {
-                _levelSelected = true;
-                floorIndexText.text = (floorIndex - 1).ToString();
-                elevatorAnimator.SetInteger(Floor, floorIndex - 1);
 
-                if (_startElevatorRoutineCoroutine == null)
-                {
-                    _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
-                    StartCoroutine(CloseElevatorRoutine());
-                }
-            }
-            else
-            {
-                floorIndexText.text = "L";
-                if (_startElevatorRoutineCoroutine == null)
-                {
-                    _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
-                    StartCoroutine(CloseElevatorRoutine());
-                }
-            }
-        }
+        // Close elevator
+        CloseElevator();
+        PlayLevelEndAnimation();
     }
+
 
     public void PromptKeyPlacement(bool isLobby)
     {
