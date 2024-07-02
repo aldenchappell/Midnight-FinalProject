@@ -8,8 +8,8 @@ public class SetMovment : MonoBehaviour
     [SerializeField] LayerMask nodeLayer;
     [SerializeField] float maxPatrolRange;
     [SerializeField] bool enableDebug;
-    [SerializeField] GameObject appearAnimPrefab;
-    [SerializeField] GameObject disappearAnimPrefab;
+    [SerializeField] GameObject animPref;
+
 
     [Header("Only Assign if AI has special first time spawn event (Level One Only)")]
     [SerializeField] GameObject firstSpawn;
