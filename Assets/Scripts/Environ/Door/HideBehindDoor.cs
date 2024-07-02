@@ -106,7 +106,7 @@ public class HideBehindDoor : MonoBehaviour
         _isSwitching = true;
         if (isActive)
         {
-            gameObject.layer
+            //gameObject.layer
             _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             _FPC.ToggleCanMove();
             _doorController.Invoke("HandleDoor", 0);
