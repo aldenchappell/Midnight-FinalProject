@@ -35,6 +35,8 @@ public class ElevatorController : MonoBehaviour
     private Coroutine _fadeOutCoroutine;
     private Coroutine _closeElevatorCoroutine;
     private Coroutine _startElevatorRoutineCoroutine;
+
+    [SerializeField] private GameObject elevatorUI;
     private void Awake()
     {
         _elevatorAudioSource = GetComponent<AudioSource>();
@@ -45,7 +47,7 @@ public class ElevatorController : MonoBehaviour
             player.transform.position = lobbySpawnPosition.position;
             player.transform.localRotation = lobbySpawnPosition.localRotation;
         }
-
+        
         //SceneTransitionManager.UpdatePreviouslyLoadedScene(SceneManager.GetActiveScene().name);
         //Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
     }
@@ -63,7 +65,7 @@ public class ElevatorController : MonoBehaviour
         {
             isOpened = true;
             elevatorAnimator.SetBool(Open, isOpened);
-
+            
             if (SceneManager.GetActiveScene().name != "LOBBY")
             {
                 _elevatorAudioSource.PlayOneShot(elevatorOpeningSound, 1.5f);
@@ -80,7 +82,14 @@ public class ElevatorController : MonoBehaviour
         if (isOpened && _closeElevatorCoroutine == null)
         {
             _closeElevatorCoroutine = StartCoroutine(CloseElevatorRoutine());
+            
+            ToggleElevatorButtons();
         }
+    }
+
+    public void ToggleElevatorButtons()
+    {
+        elevatorUI.SetActive(!elevatorUI.activeSelf);
     }
 
     private void ShowElevatorLevelOnStart()
@@ -120,7 +129,7 @@ public class ElevatorController : MonoBehaviour
 
     public void PlayLevelEndAnimation()
     {
-        if(!_levelSelected)
+        if(!_levelSelected && _startElevatorRoutineCoroutine == null)
             StartCoroutine(WaitForLevelEndAnimation());
     }
 
@@ -133,18 +142,16 @@ public class ElevatorController : MonoBehaviour
     
     public void SelectLevel(int floorIndex)
     {
-        if (_levelSelected)
+        if (GetLevelName() != "LOBBY" && LevelCompletionManager.Instance.GetCollectedKeys() <= 0)
         {
-            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-            FadeText("A level is already being loaded");
+            PromptKeyPlacement(false);
             return;
         }
-        
-        // if (floorIndex != 1 && LevelCompletionManager.Instance.hasKey)
-        // {
-        //     PromptKeyPlacement();
-        //     return;
-        // }
+        if (GetLevelName() == "LOBBY" && LevelCompletionManager.Instance.GetCollectedKeys() >= 1)
+        {
+            PromptKeyPlacement(true);
+            return;
+        }
         
 
         switch (floorIndex)
@@ -195,6 +202,8 @@ public class ElevatorController : MonoBehaviour
         // Check if the level is already completed
         if (LevelCompletionManager.Instance.IsLevelCompleted(_selectedLevelName))
         {
+            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
+            FadeText("This level is already completed. Please select a different level.");
             if(_selectedLevelName != "LOBBY")
             {
                 _elevatorAudioSource.PlayOneShot(invalidLevelSound);
@@ -213,25 +222,45 @@ public class ElevatorController : MonoBehaviour
                 _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
                 StartCoroutine(CloseElevatorRoutine());
             }
+
+            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
+            FadeText("This level is already completed. Please select a different level.");
+
         }
         else
         {
-            floorIndexText.text = "L";
-            if (_startElevatorRoutineCoroutine == null)
+            if (floorIndex != 1)
             {
-                _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
-                StartCoroutine(CloseElevatorRoutine());
+                _levelSelected = true;
+                floorIndexText.text = (floorIndex - 1).ToString();
+                elevatorAnimator.SetInteger(Floor, floorIndex - 1);
+
+                if (_startElevatorRoutineCoroutine == null)
+                {
+                    _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
+                    StartCoroutine(CloseElevatorRoutine());
+                }
+            }
+            else
+            {
+                floorIndexText.text = "L";
+                if (_startElevatorRoutineCoroutine == null)
+                {
+                    _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
+                    StartCoroutine(CloseElevatorRoutine());
+                }
             }
         }
     }
 
-    public void PromptKeyPlacement()
+    public void PromptKeyPlacement(bool isLobby)
     {
         _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-        FadeText("You must return the key before entering a new level.");
+        FadeText(isLobby
+            ? "You must return the key before entering a new level."
+            : "You must collect the key before returning to the lobby.");
     }
     
-
     private IEnumerator StartElevatorRoutine()
     {
         _elevatorAudioSource.PlayOneShot(elevatorDingSound);
@@ -243,6 +272,7 @@ public class ElevatorController : MonoBehaviour
         
         SceneTransitionManager.UpdatePreviouslyLoadedScene(SceneManager.GetActiveScene().name);
 
+        
         SceneManager.LoadScene(_selectedLevelName);
         _startElevatorRoutineCoroutine = null;
     }

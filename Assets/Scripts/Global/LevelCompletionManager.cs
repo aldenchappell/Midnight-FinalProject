@@ -95,6 +95,10 @@ public class LevelCompletionManager : MonoBehaviour
        // completedLevels.Clear();
        // currentLevelPuzzles.Clear();
         //loadedLevels.Clear();
+    }
+
+    public void ResetGame()
+    {
         _collectedKeys = 0;
         allLevelsCompleted = false;
     }
@@ -162,6 +166,7 @@ public class LevelCompletionManager : MonoBehaviour
         else
         {
             //game completed
+            //ResetGame();
             ResetPuzzles();
         }
         InGameSettingsManager.Instance.LoadSettings();

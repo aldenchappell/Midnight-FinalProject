@@ -24,6 +24,7 @@ public class KeyController : MonoBehaviour
             if (isTaggedKey)
             {
                 _interactable.onInteraction.AddListener(_playerKeyController.CollectKey);
+                _interactable.onInteraction.AddListener(() => _elevatorController.ToggleElevatorButtons());
             }
                 
 

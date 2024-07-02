@@ -192,5 +192,20 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
         yield return null;
     }
 
+    public IEnumerator WaitForCurrentClipToEndAndPlay(bool random, AudioClip[] clips, AudioClip clip)
+    {
+        if (pickedUp && SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        {
+            yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.audioSource.clip.length);
+            if (random)
+            {
+                PlayRandomSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource, clips);
+            }
+            else
+            {
+                PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource, clip);
+            }
+        }
+    }
     #endregion
 }
