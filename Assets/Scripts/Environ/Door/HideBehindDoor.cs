@@ -106,7 +106,7 @@ public class HideBehindDoor : MonoBehaviour
         _isSwitching = true;
         if (isActive)
         {
-            //gameObject.layer
+            gameObject.layer = LayerMask.NameToLayer("Default");
             _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             _FPC.ToggleCanMove();
             _doorController.Invoke("HandleDoor", 0);
@@ -122,6 +122,7 @@ public class HideBehindDoor : MonoBehaviour
         }
         else
         {
+            gameObject.layer = LayerMask.NameToLayer("InteractableObject");
             GetComponent<InteractableObject>().enabled = true;
             _mainCamera.transform.GetChild(2).gameObject.SetActive(true);
             _doorController.Invoke("HandleDoor", 0);
