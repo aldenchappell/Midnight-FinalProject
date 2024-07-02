@@ -91,7 +91,7 @@ public class SetMovment : MonoBehaviour
 
         if (_agent.enabled == false || _currentEndDestination == Vector3.zero)
         {
-            if(spawnLocal == null)
+            if(spawnLocal != null)
             {
                 int randomEndIndex = Random.Range(0, _allActiveDemonDoors.Length);
                 if (_allActiveDemonDoors[randomEndIndex] == spawnLocal)
