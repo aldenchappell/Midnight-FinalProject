@@ -159,7 +159,7 @@ public class HideBehindDoor : MonoBehaviour
 
             StartCoroutine(_interactableController.InteractionSpamPrevention());
         }
-        else if(Input.GetKeyDown(KeyCode.E) && _isSwitching == false)
+        else if(Input.GetMouseButtonDown(1) && _isSwitching == false)
         {
             StartChangeState();
         }
