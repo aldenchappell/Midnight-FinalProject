@@ -16,7 +16,7 @@ public class OnlyDialogueNPC : DialogueNPCBase
 
     public override void Interact()
     {
-        if(IsSkullInInventory() && _canInteract)
+        if(_canInteract)
         {
             if (DialogueController.Instance != null)
             {

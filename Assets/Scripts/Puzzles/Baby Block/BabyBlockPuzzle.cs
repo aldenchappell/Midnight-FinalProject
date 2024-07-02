@@ -27,6 +27,7 @@ public class BabyBlockPuzzle : MonoBehaviour
     private PatrolSystemManager _patrol;
     private GlobalCursorManager _cursor;
     private Camera _mainCamera;
+    private PuzzleEscape _puzzleEscape;
 
     private bool _isActive;
     private bool _canExit;
@@ -51,6 +52,7 @@ public class BabyBlockPuzzle : MonoBehaviour
         _canExit = false;
 
         _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
+        _puzzleEscape = GetComponent<PuzzleEscape>();
         GlobalCursorManager.Instance = _cursor;
     }
 
@@ -67,7 +69,8 @@ public class BabyBlockPuzzle : MonoBehaviour
     public void ActivatePuzzle()
     {
         puzzleUI.SetActive(!puzzleUI.activeSelf);
-        if(puzzleUI.activeSelf)
+        _puzzleEscape.ChangeIsActive();
+        if (puzzleUI.activeSelf)
         {
             _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             GetComponent<Collider>().enabled = false;
