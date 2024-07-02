@@ -8,6 +8,7 @@ public class SetMovment : MonoBehaviour
     [SerializeField] LayerMask nodeLayer;
     [SerializeField] float maxPatrolRange;
     [SerializeField] bool enableDebug;
+    [SerializeField] GameObject pentAnim;
 
     [Header("Only Assign if AI has special first time spawn event (Level One Only)")]
     public GameObject firstSpawn;
@@ -147,6 +148,9 @@ public class SetMovment : MonoBehaviour
         else if (Vector3.Distance(transform.position, _currentEndDestination) <= _agent.stoppingDistance + 1)
         {
             _currentEndDestination = Vector3.zero;
+            GameObject demonAnim = Instantiate(pentAnim, transform.position, Quaternion.identity);
+            demonAnim.GetComponent<Animator>().SetTrigger("Despawn");
+            Destroy(demonAnim, 5.15f);
             gameObject.SetActive(false);
         }
 
