@@ -64,8 +64,11 @@ public class PatrolSystemManager : MonoBehaviour
 
     public void ForceDemonSpawn()
     {
-        _currentTime = 0;
-        GenerateStartPoint();
+        if(!Demon.activeSelf)
+        {
+            _currentTime = 0;
+            GenerateStartPoint();
+        }
     }
 
     public void FirstTimeSpawn()
