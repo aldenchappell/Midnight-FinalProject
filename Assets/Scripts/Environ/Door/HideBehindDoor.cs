@@ -106,6 +106,7 @@ public class HideBehindDoor : MonoBehaviour
         _isSwitching = true;
         if (isActive)
         {
+            gameObject.layer
             _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             _FPC.ToggleCanMove();
             _doorController.Invoke("HandleDoor", 0);
@@ -121,6 +122,7 @@ public class HideBehindDoor : MonoBehaviour
         }
         else
         {
+            GetComponent<InteractableObject>().enabled = true;
             _mainCamera.transform.GetChild(2).gameObject.SetActive(true);
             _doorController.Invoke("HandleDoor", 0);
             //_inventory.HideHandItem();
@@ -149,7 +151,16 @@ public class HideBehindDoor : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && _isSwitching == false)
         {
-            RaycastToMousePosition();
+            //RaycastToMousePosition();
+            _isSwitching = true;
+            SwapDoorCameraPosition();
+            Invoke("InteractDelay", 1f);
+
+            StartCoroutine(_interactableController.InteractionSpamPrevention());
+        }
+        else if(Input.GetKeyDown(KeyCode.E) && _isSwitching == false)
+        {
+            StartChangeState();
         }
     }
     

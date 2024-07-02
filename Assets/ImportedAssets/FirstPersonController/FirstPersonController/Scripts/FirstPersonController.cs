@@ -159,7 +159,7 @@ namespace StarterAssets
 
         private void Update()
         {
-            if (pauseManager.GameIsPaused) return;
+            //if (pauseManager.GameIsPaused) return;
             if (deathController.isDead) return;
 
             JumpAndGravity();
@@ -184,12 +184,14 @@ namespace StarterAssets
             {
                 HandleSprintingIcon();
             }
+            /*
 
             if (Input.GetKeyDown(KeyCode.Escape) && !pauseManager.GameIsPaused)
             {
                 canMove = true;
                 canRotate = true;
             }
+            */
 
             UpdateSprintStamina();
     
@@ -351,7 +353,7 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
-            if (pauseManager.GameIsPaused) return;
+            //if (pauseManager.GameIsPaused) return;
             if (deathController.isDead) return;
 
             CameraRotation();
