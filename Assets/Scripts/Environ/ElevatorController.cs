@@ -143,7 +143,7 @@ public class ElevatorController : MonoBehaviour
     public void SelectLevel(int floorIndex)
     {
         // Check if player is in the lobby without enough keys
-        if (GetLevelName() == "LOBBY" && LevelCompletionManager.Instance.GetCollectedKeys() < 1)
+        if (GetLevelName() == "LOBBY" && LevelCompletionManager.Instance.GetCollectedKeys() >= 1)
         {
             PromptKeyPlacement(true);
             return;
@@ -214,7 +214,23 @@ public class ElevatorController : MonoBehaviour
         
         _levelSelected = true;
 
-        floorIndexText.text = _selectedLevelName == "LOBBY" ? "L" : (floorIndex - 1).ToString();
+        if (_selectedLevelName == "LOBBY")
+        {
+            floorIndexText.text = "L";
+        }
+        else if (_selectedLevelName == "FLOOR ONE")
+        {
+            floorIndexText.text = "1";
+        }
+        else if (_selectedLevelName == "FLOOR TWO")
+        {
+            floorIndexText.text = "2";
+        }
+        else if (_selectedLevelName == "FLOOR THREE")
+        {
+            floorIndexText.text = "3";
+        }
+        
         
 
         // Set elevator floor animation
