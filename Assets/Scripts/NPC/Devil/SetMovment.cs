@@ -83,10 +83,12 @@ public class SetMovment : MonoBehaviour
             hasFirstTimeSpawnCondition = false;
 
             _agent.enabled = false;
-            SetAIAtStartLocation(firstSpawn);
-            _agent.enabled = enabled;
             _currentEndDestination = firstEnd.transform.position;
-            _agent.SetDestination(firstEnd.transform.position);
+            GameObject newAnim = Instantiate(animPref, firstSpawn.transform.position, Quaternion.identity);
+            newAnim.GetComponent<Animator>().SetTrigger("Spawn");
+            Destroy(newAnim, 5.15f);
+            StartCoroutine(SetAIRoute(firstSpawn, firstEnd));
+
         }
 
         if(_currentEndDestination != Vector3.zero)
@@ -119,10 +121,12 @@ public class SetMovment : MonoBehaviour
             else
             {
                 _agent.enabled = false;
-                SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex]);
-                _agent.enabled = enabled;
                 _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
-                _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
+                GameObject newAnim = Instantiate(animPref, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
+                newAnim.GetComponent<Animator>().SetTrigger("Spawn");
+                Destroy(newAnim, 5.15f);
+                StartCoroutine(SetAIRoute(_allActiveDemonDoors[randomStartIndex], _allActiveDemonDoors[randomEndIndex]));
+
             }
 
             
@@ -130,15 +134,21 @@ public class SetMovment : MonoBehaviour
         else if (Vector3.Distance(transform.position, _currentEndDestination) <= _agent.stoppingDistance + 1)
         {
             _currentEndDestination = Vector3.zero;
+            GameObject newAnim = Instantiate(animPref, transform.position, transform.rotation);
+            newAnim.GetComponent<Animator>().SetTrigger("Despawn");
+            Destroy(newAnim, .28f);
             gameObject.SetActive(false);
         }
 
     }
 
-    private void SetAIAtStartLocation(GameObject location)
+    private IEnumerator SetAIRoute(GameObject start, GameObject end)
     {
+        yield return new WaitForSeconds(5.15f);
         //print("Setting Position");
-        gameObject.transform.position = location.transform.position;
+        gameObject.transform.position = start.transform.position;
+        _agent.enabled = enabled;
+        _agent.SetDestination(end.transform.position);
     }
 
     private void PatrolArea(Vector3 patrolPositionCenter)
