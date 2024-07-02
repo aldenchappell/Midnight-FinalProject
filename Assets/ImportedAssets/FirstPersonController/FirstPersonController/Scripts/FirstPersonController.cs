@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
@@ -180,6 +181,12 @@ namespace StarterAssets
             bool wasSprinting = isSprinting;
             isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && !isCrouching && Grounded && _currentSprintStamina > 0;
 
+            if (isCrouching && Input.GetKey(InGameSettingsManager.Instance.sprintKey))
+            {
+                isCrouching = false;
+                isSprinting = true;
+            }
+            
             if (wasSprinting != isSprinting)
             {
                 HandleSprintingIcon();
