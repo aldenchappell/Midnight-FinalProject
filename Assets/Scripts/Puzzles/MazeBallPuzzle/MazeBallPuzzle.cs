@@ -148,7 +148,7 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
                 return;
             }
         }
-        
+        _playerDualHandInventory.RemoveObject = marble;
         _animator.SetTrigger(Start);
 
         bool isActive = !puzzleUI.activeSelf;
