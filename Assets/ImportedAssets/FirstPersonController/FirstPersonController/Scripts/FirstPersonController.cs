@@ -376,19 +376,16 @@ namespace StarterAssets
         {
             if (!canRotate) return;
 
-            if (input.look.sqrMagnitude >= _threshold)
-            {
-                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+            float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+            _cinemachineTargetPitch += input.look.y * RotationSpeed * deltaTimeMultiplier * InGameSettingsManager.Instance.GetMouseSensitivity() / 100.0f;
+            _rotationVelocity = input.look.x * RotationSpeed * deltaTimeMultiplier * InGameSettingsManager.Instance.GetMouseSensitivity() / 100.0f;
 
-                _cinemachineTargetPitch += input.look.y * RotationSpeed * deltaTimeMultiplier;
-                _rotationVelocity = input.look.x * RotationSpeed * deltaTimeMultiplier;
-
-                _cinemachineTargetPitch = Mathf.Clamp(_cinemachineTargetPitch, BottomClamp, TopClamp);
-
-                CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
-                transform.Rotate(Vector3.up * _rotationVelocity);
-            }
+            
+            _cinemachineTargetPitch = Mathf.Clamp(_cinemachineTargetPitch, BottomClamp, TopClamp);
+            CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+            transform.Rotate(Vector3.up * _rotationVelocity);
         }
+
 
         private void Move()
         {

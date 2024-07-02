@@ -33,6 +33,10 @@ public class InGameSettingsManager : MonoBehaviour
     private const string FootstepSoundsPrefKey = "Footsteps";
     private const string HeartbeatSoundsPrefKey = "Heartbeat";
     private const string CompassPrefKey = "Compass";
+    
+    //Sensitivity
+    public float minMouseSensitivity = 50.0f;
+    public float maxMouseSensitivity = 150.0f;
     private void Awake()
     {
         if (Instance == null)
@@ -63,6 +67,21 @@ public class InGameSettingsManager : MonoBehaviour
         }
         
     }
+    
+    public float GetMouseSensitivity()
+    {
+        float sensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 100.0f);
+        sensitivity = Mathf.Clamp(sensitivity, minMouseSensitivity, maxMouseSensitivity);
+        return sensitivity;
+    }
+
+    public void SetMouseSensitivity(float sensitivity)
+    {
+        float clampedSensitivity = Mathf.Clamp(sensitivity, minMouseSensitivity, maxMouseSensitivity);
+        PlayerPrefs.SetFloat("MouseSensitivity", clampedSensitivity);
+        PlayerPrefs.Save();
+    }
+    
     
     public void SetToggleSetting(string settingKey, bool value)
     {
@@ -178,8 +197,8 @@ public class InGameSettingsManager : MonoBehaviour
         enableHeadBobbing = PlayerPrefs.GetInt(ViewBobbingPrefKey, 1) == 1;
         enableFootstepSounds = PlayerPrefs.GetInt(FootstepSoundsPrefKey, 1) == 1;
         enableHeartbeatSounds = PlayerPrefs.GetInt(HeartbeatSoundsPrefKey, 1) == 1;
-        enableCompass = PlayerPrefs.GetInt(CompassPrefKey, 1) == 1; 
-
+        enableCompass = PlayerPrefs.GetInt(CompassPrefKey, 1) == 1;
+        
         SetQualityLevel(GetQualityLevel());
         InitializeBrightness();
         InitializeVolumes(); 

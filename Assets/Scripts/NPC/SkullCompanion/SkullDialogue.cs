@@ -11,7 +11,6 @@ public class SkullDialogue : MonoBehaviour
     private string _levelName;
     private InteractableObject _interactableObject;
     private bool _hasBeenPickedUp = false;
-    private bool _isSkullActive = false;
 
     private void Awake()
     {
@@ -48,9 +47,6 @@ public class SkullDialogue : MonoBehaviour
                 _wittyAssRemarksCoroutine = null;
             }
         }
-
-        // Update the skull's active status
-        _isSkullActive = isSkullActiveInInventory;
     }
 
     private bool IsSkullActiveInInventory()
@@ -67,8 +63,7 @@ public class SkullDialogue : MonoBehaviour
 
     public void TogglePickedUp()
     {
-        _hasBeenPickedUp = true; 
-        _isSkullActive = true;
+        _hasBeenPickedUp = true;
         
         SkullDialogueLineHolder.Instance.audioSource.transform.SetParent(gameObject.transform);
         SkullDialogueLineHolder.Instance.audioSource.transform.position = transform.position;
