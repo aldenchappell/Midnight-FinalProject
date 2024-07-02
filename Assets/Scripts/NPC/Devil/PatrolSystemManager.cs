@@ -6,9 +6,12 @@ public class PatrolSystemManager : MonoBehaviour
 {
     [SerializeField] float timeBetweenSpawns;
     [SerializeField] GameObject Demon;
+    [SerializeField] GameObject pentAnim;
     [SerializeField] bool hasFirstTimeSpawnCondition;
 
     private float _currentTime;
+    private GameObject[] _allActiveDemonDoors;
+
 
     public int DecreaseTimeToSpawn
     {
@@ -33,7 +36,12 @@ public class PatrolSystemManager : MonoBehaviour
             Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(GameObject.Find("Player").transform.position, value);
         }
     }
-    
+
+    private void Start()
+    {
+        _allActiveDemonDoors = GameObject.FindGameObjectsWithTag("DemonDoor");
+    }
+
 
     private void Update()
     {
@@ -50,14 +58,14 @@ public class PatrolSystemManager : MonoBehaviour
         if(_currentTime >= timeBetweenSpawns)
         {
             _currentTime = 0;
-            Demon.SetActive(true);
+            GenerateStartPoint();
         }
     }
 
     public void ForceDemonSpawn()
     {
         _currentTime = 0;
-        Demon.SetActive(true);
+        GenerateStartPoint();
     }
 
     public void FirstTimeSpawn()
@@ -65,8 +73,26 @@ public class PatrolSystemManager : MonoBehaviour
         if (!Demon.activeSelf)
         {
             hasFirstTimeSpawnCondition = false;
-            Demon.SetActive(true);
+            GameObject demonAnim = Instantiate(pentAnim, Demon.GetComponent<SetMovment>().firstSpawn.transform.position, Quaternion.identity);
+            demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
+            Destroy(demonAnim, 5.15f);
+            Invoke("SetDemonActive", 5.15f);
         }  
+    }
+
+    private void GenerateStartPoint()
+    {
+        int randomStartIndex = Random.Range(0, _allActiveDemonDoors.Length);
+        Demon.GetComponent<SetMovment>().spawnLocal = _allActiveDemonDoors[randomStartIndex];
+        GameObject demonAnim = Instantiate(pentAnim, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
+        demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
+        Destroy(demonAnim, 5.15f);
+        Invoke("SetDemonActive", 5.15f);
+    }
+
+    private void SetDemonActive()
+    {
+        Demon.SetActive(true);
     }
 
 

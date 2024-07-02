@@ -8,13 +8,13 @@ public class SetMovment : MonoBehaviour
     [SerializeField] LayerMask nodeLayer;
     [SerializeField] float maxPatrolRange;
     [SerializeField] bool enableDebug;
-    [SerializeField] GameObject animPref;
-
 
     [Header("Only Assign if AI has special first time spawn event (Level One Only)")]
-    [SerializeField] GameObject firstSpawn;
+    public GameObject firstSpawn;
     [SerializeField] GameObject firstEnd;
     [SerializeField] bool hasFirstTimeSpawnCondition;
+
+    public GameObject spawnLocal;
 
     private Collider[] _allActiveNodes;
     private GameObject[] _allActiveDemonDoors;
@@ -22,7 +22,6 @@ public class SetMovment : MonoBehaviour
 
     private NavMeshAgent _agent;
     private EnemySuspicionSystem _suspicion;
-    private PatrolSystemManager _patrolManager;
 
     private Vector3 _currentEndDestination;
 
@@ -32,7 +31,6 @@ public class SetMovment : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _suspicion = GetComponent<EnemySuspicionSystem>();
         _player = GameObject.FindWithTag("Player");
-        _patrolManager = GameObject.FindObjectOfType<PatrolSystemManager>();
     }
 
     private void Start()
@@ -42,12 +40,7 @@ public class SetMovment : MonoBehaviour
 
     public void SetCurrentMovementState(string state, Vector3 setPosition)
     {
-        if (hasFirstTimeSpawnCondition)
-        {
-            _patrolManager.RaiseSuspicion = -40;
-            state = "Roaming";
-        }
-        switch (state)
+       switch(state)
         {
             case "Roaming":
                 CreateNewPatrolRoute();
@@ -83,12 +76,10 @@ public class SetMovment : MonoBehaviour
             hasFirstTimeSpawnCondition = false;
 
             _agent.enabled = false;
+            SetAIAtStartLocation(firstSpawn);
+            _agent.enabled = enabled;
             _currentEndDestination = firstEnd.transform.position;
-            GameObject newAnim = Instantiate(animPref, firstSpawn.transform.position, Quaternion.identity);
-            newAnim.GetComponent<Animator>().SetTrigger("Spawn");
-            Destroy(newAnim, 5.15f);
-            StartCoroutine(SetAIRoute(firstSpawn, firstEnd));
-
+            _agent.SetDestination(firstEnd.transform.position);
         }
 
         if(_currentEndDestination != Vector3.zero)
@@ -99,56 +90,72 @@ public class SetMovment : MonoBehaviour
 
         if (_agent.enabled == false || _currentEndDestination == Vector3.zero)
         {
-            
-            int randomStartIndex = Random.Range(0, _allActiveDemonDoors.Length);
-            int randomEndIndex = Random.Range(0, _allActiveDemonDoors.Length);
+            if(spawnLocal == null)
+            {
+                int randomEndIndex = Random.Range(0, _allActiveDemonDoors.Length);
+                if (_allActiveDemonDoors[randomEndIndex] == spawnLocal)
+                {
+                    if (randomEndIndex == _allActiveDemonDoors.Length - 1)
+                    {
+                        randomEndIndex -= 1;
+                    }
+                    else
+                    {
+                        randomEndIndex += 1;
+                    }
+                }
+                _agent.enabled = false;
+                SetAIAtStartLocation(spawnLocal);
+                _agent.enabled = enabled;
+                _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
+                _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
 
-            if (randomEndIndex == randomStartIndex)
-            {
-                if (randomEndIndex == _allActiveDemonDoors.Length - 1)
-                {
-                    randomEndIndex -= 1;
-                }
-                else
-                {
-                    randomEndIndex += 1;
-                }
-            }
-            if(Vector3.Distance(_allActiveDemonDoors[randomStartIndex].transform.position, _player.transform.position) <= 10)
-            {
-                return;
             }
             else
             {
-                _agent.enabled = false;
-                _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
-                GameObject newAnim = Instantiate(animPref, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
-                newAnim.GetComponent<Animator>().SetTrigger("Spawn");
-                Destroy(newAnim, 5.15f);
-                StartCoroutine(SetAIRoute(_allActiveDemonDoors[randomStartIndex], _allActiveDemonDoors[randomEndIndex]));
+                int randomStartIndex = Random.Range(0, _allActiveDemonDoors.Length);
+                int randomEndIndex = Random.Range(0, _allActiveDemonDoors.Length);
 
+                if (randomEndIndex == randomStartIndex)
+                {
+                    if (randomEndIndex == _allActiveDemonDoors.Length - 1)
+                    {
+                        randomEndIndex -= 1;
+                    }
+                    else
+                    {
+                        randomEndIndex += 1;
+                    }
+                }
+                if (Vector3.Distance(_allActiveDemonDoors[randomStartIndex].transform.position, _player.transform.position) <= 10)
+                {
+                    return;
+                }
+                else
+                {
+                    _agent.enabled = false;
+                    SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex]);
+                    _agent.enabled = enabled;
+                    _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
+                    _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
+                }
             }
+            
 
             
         }
         else if (Vector3.Distance(transform.position, _currentEndDestination) <= _agent.stoppingDistance + 1)
         {
             _currentEndDestination = Vector3.zero;
-            GameObject newAnim = Instantiate(animPref, transform.position, transform.rotation);
-            newAnim.GetComponent<Animator>().SetTrigger("Despawn");
-            Destroy(newAnim, .28f);
             gameObject.SetActive(false);
         }
 
     }
 
-    private IEnumerator SetAIRoute(GameObject start, GameObject end)
+    private void SetAIAtStartLocation(GameObject location)
     {
-        yield return new WaitForSeconds(5.15f);
         //print("Setting Position");
-        gameObject.transform.position = start.transform.position;
-        _agent.enabled = enabled;
-        _agent.SetDestination(end.transform.position);
+        gameObject.transform.position = location.transform.position;
     }
 
     private void PatrolArea(Vector3 patrolPositionCenter)
