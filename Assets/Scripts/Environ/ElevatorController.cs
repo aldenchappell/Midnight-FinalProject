@@ -138,7 +138,12 @@ public class ElevatorController : MonoBehaviour
             FadeText("A level is already being loaded");
             return;
         }
-
+        
+        if (floorIndex != 1 && LevelCompletionManager.Instance.hasKey)
+        {
+            PromptKeyPlacement();
+            return;
+        }
         
 
         switch (floorIndex)

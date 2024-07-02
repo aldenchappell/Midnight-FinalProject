@@ -33,8 +33,10 @@ public class PlayerDeathController : MonoBehaviour
 
     private void Die()
     {
-        if (!isDead) // Prevent multiple deaths at the same time
+        if (!isDead) 
         {
+            GameObject playerUI = GameObject.Find("INGAMEUI");
+            playerUI.SetActive(false);
             _playerCam.Priority = 20;
             // Reset puzzles on player death
             LevelCompletionManager.Instance.OnPlayerDeath();

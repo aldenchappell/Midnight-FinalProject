@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
@@ -6,7 +5,12 @@ public class PlayerArmsAnimationController : MonoBehaviour
 {
     [HideInInspector] public Animator animator;
 
-    private bool _shouldPickup = true;
+    //public Transform rightHand;
+    //public Transform[] rightFingerTargets;
+    //public MultiAimConstraint[] fingerConstraints;
+
+    //private GameObject _heldObject;
+    //private bool _isHoldingObject = false;
 
     private void Awake()
     {
@@ -35,12 +39,7 @@ public class PlayerArmsAnimationController : MonoBehaviour
 
     public void SetPickingUp(bool isPickingUp)
     {
-        if (_shouldPickup)
-        {
-            animator.SetBool("isPickingUp", isPickingUp);
-            StartCoroutine(ShouldSetPickingUpTimer());
-        }
-        
+        animator.SetBool("isPickingUp", isPickingUp);
     }
 
     public void SetIsRunningWithItem(bool isRunningWithItem)
@@ -51,12 +50,5 @@ public class PlayerArmsAnimationController : MonoBehaviour
     public void SetPickedUp()
     {
         animator.SetTrigger("pickedUp");
-    }
-
-    private IEnumerator ShouldSetPickingUpTimer()
-    {
-        _shouldPickup = false;
-        yield return new WaitForSeconds(1.2f);
-        _shouldPickup = true;
     }
 }
