@@ -139,11 +139,11 @@ public class ElevatorController : MonoBehaviour
             return;
         }
         
-        if (floorIndex != 1 && LevelCompletionManager.Instance.hasKey)
-        {
-            PromptKeyPlacement();
-            return;
-        }
+        // if (floorIndex != 1 && LevelCompletionManager.Instance.hasKey)
+        // {
+        //     PromptKeyPlacement();
+        //     return;
+        // }
         
 
         switch (floorIndex)
