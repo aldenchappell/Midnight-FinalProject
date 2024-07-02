@@ -120,7 +120,8 @@ public class ElevatorController : MonoBehaviour
 
     public void PlayLevelEndAnimation()
     {
-        StartCoroutine(WaitForLevelEndAnimation());
+        if(!_levelSelected)
+            StartCoroutine(WaitForLevelEndAnimation());
     }
 
     private IEnumerator WaitForLevelEndAnimation()
