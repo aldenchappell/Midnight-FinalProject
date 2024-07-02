@@ -208,59 +208,70 @@ namespace StarterAssets
         }
 
         private void UpdateArmAnimations()
+{
+    if (_playerArms != null)
+    {
+        if (isSprinting)
         {
-            if (_playerArms != null)
-            {
-                switch (isSprinting)
-                {
-                    case true when _playerInventory.GetCurrentHandItem != null && input.move != Vector2.zero:
-                        _playerArms.SetIsRunningWithItem(true);
-                        _playerArms.SetRunning(false);
-                        _playerArms.SetWalking(false);
-                        _playerArms.SetPickingUp(false);
-                        _playerArms.SetIdle(false);
-                        _playerArms.SetCrouching(false);
-                        break;
-                    case true when _playerInventory.GetCurrentHandItem == null && input.move != Vector2.zero:
-                        _playerArms.SetIsRunningWithItem(false);
-                        _playerArms.SetRunning(true);
-                        _playerArms.SetWalking(false);
-                        _playerArms.SetPickingUp(false);
-                        _playerArms.SetIdle(false);
-                        _playerArms.SetCrouching(false);
-                        break;
-                    default:
-                    {
-                        if (input.move != Vector2.zero && !isCrouching)
-                        {
-                            _playerArms.SetRunning(false);
-                            _playerArms.SetWalking(true);
-                            _playerArms.SetPickingUp(false);
-                            _playerArms.SetIdle(false);
-                            _playerArms.SetCrouching(false);
-                        }
-                        else if (isCrouching)
-                        {
-                            _playerArms.SetRunning(false);
-                            _playerArms.SetWalking(false);
-                            _playerArms.SetPickingUp(false);
-                            _playerArms.SetIdle(false);
-                            _playerArms.SetCrouching(true);
-                        }
-                        else
-                        {
-                            _playerArms.SetRunning(false);
-                            _playerArms.SetWalking(false);
-                            _playerArms.SetPickingUp(false);
-                            _playerArms.SetIdle(true);
-                            _playerArms.SetCrouching(false);
-                        }
+            // Determine if the player is holding an item while sprinting
+            bool isHoldingItem = _playerInventory.GetCurrentHandItem != null;
 
-                        break;
-                    }
-                }
+            // Set animation parameters based on sprinting and holding item state
+            _playerArms.SetIsRunningWithItem(isHoldingItem);
+            _playerArms.SetRunning(!isHoldingItem); // Play running animation if not holding an item
+            _playerArms.SetWalking(false);
+            _playerArms.SetPickingUp(false);
+            _playerArms.SetIdle(false);
+            _playerArms.SetCrouching(false);
+        }
+        else
+        {
+            // Determine if the player is moving
+            bool isMoving = input.move != Vector2.zero;
+
+            if (isMoving && !isCrouching)
+            {
+                // Set animation parameters based on walking state
+                _playerArms.SetRunning(false);
+                _playerArms.SetWalking(true);
+                _playerArms.SetPickingUp(false);
+                _playerArms.SetIdle(false);
+                _playerArms.SetCrouching(false);
+            }
+            else if (isCrouching)
+            {
+                // Set animation parameters based on crouching state
+                _playerArms.SetRunning(false);
+                _playerArms.SetWalking(false);
+                _playerArms.SetPickingUp(false);
+                _playerArms.SetIdle(false);
+                _playerArms.SetCrouching(true);
+            }
+            else
+            {
+                // Set animation parameters for idle state
+                _playerArms.SetRunning(false);
+                _playerArms.SetWalking(false);
+                _playerArms.SetPickingUp(false);
+                _playerArms.SetIdle(true);
+                _playerArms.SetCrouching(false);
+            }
+
+            // Check if the player is picking up an item
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                // Call the method to pick up an item
+                _playerArms.SetPickingUp(true);
+            }
+            else if (Input.GetKeyUp(KeyCode.E))
+            {
+                // Call the method to reset picking up
+                _playerArms.SetPickingUp(false);
             }
         }
+    }
+}
+
 
         
         
