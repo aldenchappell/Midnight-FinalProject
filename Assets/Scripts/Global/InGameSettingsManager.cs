@@ -35,8 +35,8 @@ public class InGameSettingsManager : MonoBehaviour
     private const string CompassPrefKey = "Compass";
     
     //Sensitivity
-    public float minMouseSensitivity = 50.0f;
-    public float maxMouseSensitivity = 150.0f;
+    public float minMouseSensitivity = 10.0f;
+    public float maxMouseSensitivity = 200.0f;
     private void Awake()
     {
         if (Instance == null)
