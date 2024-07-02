@@ -195,11 +195,8 @@ public class ElevatorController : MonoBehaviour
         // Check if the level is already completed
         if (LevelCompletionManager.Instance.IsLevelCompleted(_selectedLevelName))
         {
-            if(_selectedLevelName != "LOBBY")
-            {
-                _elevatorAudioSource.PlayOneShot(invalidLevelSound);
-                FadeText("This level is already completed. Please select a different level.");
-            }
+            _elevatorAudioSource.PlayOneShot(invalidLevelSound);
+            FadeText("This level is already completed. Please select a different level.");
             
         }
         else if(floorIndex != 1)
