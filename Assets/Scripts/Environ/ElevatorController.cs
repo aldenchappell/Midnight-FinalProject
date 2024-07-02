@@ -209,6 +209,7 @@ public class ElevatorController : MonoBehaviour
                 _elevatorAudioSource.PlayOneShot(invalidLevelSound);
                 FadeText("This level is already completed. Please select a different level.");
             }
+
             
         }
         else if(floorIndex != 1)
