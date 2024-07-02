@@ -834,6 +834,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2099765574839296165, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2331008338809025854, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -888,23 +892,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2738979375293615316, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2738979375293615316, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2738979375293615316, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 642454525}
+      objectReference: {fileID: 2081859184}
+    - target: {fileID: 2738979375293615316, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 2738979375293615316, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_text
+      value: SetElevatorFloorText
       objectReference: {fileID: 0}
     - target: {fileID: 2738979375293615316, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: TMPro.TMP_Text, Unity.TextMeshPro
+      value: ElevatorController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2738979375293615316, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
@@ -912,15 +920,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2738979375293615316, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: 3
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -929,7 +937,7 @@ PrefabInstance:
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 642454525}
+      objectReference: {fileID: 2081859184}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -939,8 +947,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_text
+      value: SetElevatorFloorText
       objectReference: {fileID: 0}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -948,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: TMPro.TMP_Text, Unity.TextMeshPro
+      value: ElevatorController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -960,7 +972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: 1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2835706746594409166, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -984,27 +996,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6741469531077095218, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6741469531077095218, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6741469531077095218, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 642454525}
+      objectReference: {fileID: 2081859184}
+    - target: {fileID: 6741469531077095218, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 6741469531077095218, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_text
+      value: SetElevatorFloorText
       objectReference: {fileID: 0}
     - target: {fileID: 6741469531077095218, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: TMPro.TMP_Text, Unity.TextMeshPro
+      value: ElevatorController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6741469531077095218, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: 2
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6918986076495409971, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
       propertyPath: elevatorUI
@@ -7722,17 +7738,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a79fb83d7b847454d90e0dfe186dc5d3, type: 3}
---- !u!114 &642454525 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4001319457806560151, guid: e72e0be140d086841b66aa4b40a1446d, type: 3}
-  m_PrefabInstance: {fileID: 81485744}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &649956531
 PrefabInstance:
   m_ObjectHideFlags: 0

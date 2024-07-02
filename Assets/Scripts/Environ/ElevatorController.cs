@@ -202,6 +202,7 @@ public class ElevatorController : MonoBehaviour
                 FadeText("You do not have permission to access this floor.");
                 return;
         }
+        
 
         // Check if the selected level is already completed
         if (LevelCompletionManager.Instance.IsLevelCompleted(_selectedLevelName))
@@ -214,6 +215,23 @@ public class ElevatorController : MonoBehaviour
         
         _levelSelected = true;
 
+        SetElevatorFloorText();
+        
+        elevatorAnimator.SetInteger(Floor, floorIndex - 1);
+        
+        _startElevatorRoutineCoroutine ??= StartCoroutine(StartElevatorRoutine());
+
+        // Close elevator
+        CloseElevator();
+        PlayLevelEndAnimation();
+    }
+
+    private void SetElevatorFloorText()
+    {
+        if (_selectedLevelName == null) return;
+        //NOTE: NOT WORKING BECAUSE ALL UI ELEMENTS GET DISABLED
+        //WHEN THE ELEVATOR CLOSES
+        
         if (_selectedLevelName == "LOBBY")
         {
             floorIndexText.text = "L";
@@ -230,24 +248,12 @@ public class ElevatorController : MonoBehaviour
         {
             floorIndexText.text = "3";
         }
-        
-        
-
-        // Set elevator floor animation
-        elevatorAnimator.SetInteger(Floor, floorIndex - 1);
-
-        // Start elevator routine if not already started
-        if (_startElevatorRoutineCoroutine == null)
+        else
         {
-            _startElevatorRoutineCoroutine = StartCoroutine(StartElevatorRoutine());
+            _selectedLevelName = "L";
         }
-
-        // Close elevator
-        CloseElevator();
-        PlayLevelEndAnimation();
     }
-
-
+    
     public void PromptKeyPlacement(bool isLobby)
     {
         _elevatorAudioSource.PlayOneShot(invalidLevelSound);
