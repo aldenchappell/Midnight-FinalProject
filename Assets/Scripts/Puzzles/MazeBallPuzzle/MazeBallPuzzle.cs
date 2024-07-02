@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Cinemachine;
 
-public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
+public class MazeBallPuzzle : MonoBehaviour
 {
     [HideInInspector] public Puzzle puzzle;
 
@@ -137,14 +137,7 @@ public class MazeBallPuzzle : MonoBehaviour, IPlaySkullDialogue
             if (_firstTime && !hasMazeBall)
             {
                 _audio.PlayOneShot(invalidButtonSound);
-                if (SkullDialogueLineHolder.SkullDialogue.pickedUp)
-                {
-                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
-                        SkullDialogueLineHolder.Instance.solveImagePuzzleClip);
-                }
                 
-                
-                //Debug.LogError("Player doesn't have the Maze Ball.");
                 return;
             }
         }

@@ -39,7 +39,7 @@ public class RandomSuspicionEvents : MonoBehaviour
     // Chance for suspicion event that uses variables from other player scripts
     private IEnumerator ChanceForPlayerRelatedSuspicionEvent()
     {
-        print("Attempting");
+        //print("Attempting");
         _isRunning = true;
         float delay;
         float chance = Random.Range(0, 101);
@@ -56,7 +56,7 @@ public class RandomSuspicionEvents : MonoBehaviour
 
         if(chance >= 75)
         {
-            print("Sussing");
+            //print("Sussing");
             delay = 60f;
             _patrolManager.RaiseSuspicion = suspicionAmount;
             _audioSource.gameObject.transform.position = transform.position;

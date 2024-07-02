@@ -1,19 +1,17 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
+public class SkullDialogue : MonoBehaviour
 {
-    public bool pickedUp;
-    private Coroutine _dialogueCoroutine;
-    private Coroutine _hintCoroutine; 
-    public bool isSkullActive;
+    private Coroutine _wittyAssRemarksCoroutine;
 
-    private PlayerDualHandInventory _playerInventory; 
+    private PlayerDualHandInventory _playerInventory;
     private string _levelName;
     private InteractableObject _interactableObject;
     private bool _hasBeenPickedUp = false;
+    private bool _isSkullActive = false;
 
     private void Awake()
     {
@@ -25,44 +23,95 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        CheckSkullStatus();
+    }
+
+    private void CheckSkullStatus()
+    {
+        bool isSkullActiveInInventory = IsSkullActiveInInventory();
+        
+        //if constantine has been picked up at least once and is not active in inventory, start playing witty remarks
+        if (_hasBeenPickedUp && !isSkullActiveInInventory)
         {
-            UpdateSkullActiveStatus(0);
+            //Debug.Log("Starting Witty Ass Remarks");
+            if (_wittyAssRemarksCoroutine == null)
+            {
+                _wittyAssRemarksCoroutine = StartCoroutine(PlayWittyAssRemarks());
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else
         {
-            UpdateSkullActiveStatus(1);
+            //Debug.Log("Stopping Witty Ass Remarks");
+            if (_wittyAssRemarksCoroutine != null)
+            {
+                StopCoroutine(_wittyAssRemarksCoroutine);
+                _wittyAssRemarksCoroutine = null;
+            }
+        }
+
+        // Update the skull's active status
+        _isSkullActive = isSkullActiveInInventory;
+    }
+
+    private bool IsSkullActiveInInventory()
+    {
+        for (int i = 0; i < _playerInventory.GetInventory.Length; i++)
+        {
+            if (_playerInventory.GetInventory[i] == gameObject)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void TogglePickedUp()
+    {
+        _hasBeenPickedUp = true; 
+        _isSkullActive = true;
+        
+        SkullDialogueLineHolder.Instance.audioSource.transform.SetParent(gameObject.transform);
+        SkullDialogueLineHolder.Instance.audioSource.transform.position = transform.position;
+        _interactableObject.onInteraction.RemoveListener(() => PlayLevelOpeningClip(_levelName));
+    }
+
+    private IEnumerator PlayWittyAssRemarks()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.GetRandomWaitTime());
+            SkullDialogueLineHolder.Instance.PlayRandomClip(SkullDialogueLineHolder.Instance.wittyAssRemarks);
         }
     }
 
-    public void PlayLevelOpeningClip(string levelName)
+    private void PlayLevelOpeningClip(string levelName)
     {
         if (LevelCompletionManager.Instance.HasSkullDialogueBeenPlayed(levelName) || LevelCompletionManager.Instance.IsLevelCompleted(levelName))
         {
-            return; 
+            return;
         }
 
         switch (levelName)
         {
             case "LOBBY":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && !LevelCompletionManager.Instance.hasCompletedLobby)
-                 PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
-                    SkullDialogueLineHolder.Instance.lobbyOpeningClip);
+                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                        SkullDialogueLineHolder.Instance.lobbyOpeningClip);
                 break;
             case "FLOOR ONE":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
                     PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
-                    SkullDialogueLineHolder.Instance.floorOneOpeningClip);
+                        SkullDialogueLineHolder.Instance.floorOneOpeningClip);
                 break;
             case "FLOOR TWO":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
                     PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
-                    SkullDialogueLineHolder.Instance.floorTwoOpeningClip);
+                        SkullDialogueLineHolder.Instance.floorTwoOpeningClip);
                 break;
             case "FLOOR THREE":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
                     PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
-                    SkullDialogueLineHolder.Instance.floorThreeOpeningClip);
+                        SkullDialogueLineHolder.Instance.floorThreeOpeningClip);
                 break;
             default:
                 Debug.Log("Error playing level opening clip: SkullDialogue/PlayLevelOpeningClip");
@@ -91,121 +140,12 @@ public class SkullDialogue : MonoBehaviour, IPlaySkullDialogue
         }
     }
 
-
-    public void TogglePickedUp()
-    {
-        pickedUp = !pickedUp;
-        isSkullActive = pickedUp;
-
-        if (pickedUp)
-        {
-            if (!_hasBeenPickedUp)
-            {
-                _hasBeenPickedUp = true;
-                SkullDialogueLineHolder.Instance.audioSource.transform.position = transform.position;
-                SkullDialogueLineHolder.Instance.audioSource.transform.SetParent(gameObject.transform);
-                _interactableObject.onInteraction.RemoveListener(() => PlayLevelOpeningClip(_levelName));
-            }
-
-            if (_dialogueCoroutine != null)
-            {
-                StopCoroutine(_dialogueCoroutine);
-            }
-
-            if (_hintCoroutine != null)
-            {
-                StopCoroutine(_hintCoroutine);
-            }
-
-            _hintCoroutine = StartCoroutine(HintCoroutine());
-        }
-        else
-        {
-            if (_hintCoroutine != null)
-            {
-                StopCoroutine(_hintCoroutine);
-            }
-        }
-    }
-
-    private void UpdateSkullActiveStatus(int slotIndex)
-    {
-        if (_playerInventory != null && _playerInventory.GetInventory.Length > slotIndex)
-        {
-            isSkullActive = _playerInventory.GetInventory[slotIndex] == gameObject;
-            pickedUp = isSkullActive;
-        }
-    }
-
-    private IEnumerator HintCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.GetRandomWaitTIme()); 
-            PlayHintBasedOnRemainingPuzzles();
-        }
-    }
-
-    private void PlayHintBasedOnRemainingPuzzles()
-    {
-        List<string> remainingPuzzles = LevelCompletionManager.Instance.currentLevelPuzzles;
-
-        AudioClip hintClip = SkullDialogueLineHolder.Instance.GetHintClipForRemainingPuzzles(remainingPuzzles);
-        if (hintClip != null && !SkullDialogueLineHolder.Instance.audioSource.isPlaying)
-        {
-            PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource, hintClip);
-        }
-    }
-
-    #region Dialogue Interface Methods
-
     public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
     {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
+        if (SkullDialogueLineHolder.Instance.CanPlayAudio() && !SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        {
             source.PlayOneShot(clip);
-    }
-
-    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
-    {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
-        {
-            if (clips.Length == 0) return;
-            int randomIndex = Random.Range(0, clips.Length);
-            source.PlayOneShot(clips[randomIndex]);
-        }
-        
-    }
-
-    public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
-    {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
-        {
-            if (value)
-            {
-                PlaySpecificSkullDialogueClip(source, clip);
-            }
+            SkullDialogueLineHolder.Instance.RecordAudioPlayTime();
         }
     }
-
-    public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
-    {
-        yield return null;
-    }
-
-    public IEnumerator WaitForCurrentClipToEndAndPlay(bool random, AudioClip[] clips, AudioClip clip)
-    {
-        if (pickedUp && SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
-        {
-            yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.audioSource.clip.length);
-            if (random)
-            {
-                PlayRandomSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource, clips);
-            }
-            else
-            {
-                PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource, clip);
-            }
-        }
-    }
-    #endregion
 }

@@ -16,14 +16,10 @@ public class SkullDialogueLineHolder : MonoBehaviour
     public AudioClip demonRoamingClip;
     
     [Space(10)]
-    
-
     public AudioClip lobbyOpeningClip;
     public AudioClip findFuzeClip;
     
     [Space(10)]
-    
-
     public AudioClip floorOneOpeningClip;
     public AudioClip findBookClip;
     public AudioClip returnBookClip;
@@ -31,8 +27,6 @@ public class SkullDialogueLineHolder : MonoBehaviour
     public AudioClip returnPerfumeBottleClip;
     
     [Space(10)]
-    
-
     public AudioClip floorTwoOpeningClip;
     public AudioClip solveBabyBlockPuzzleClip;
     public AudioClip solveDaVinciPuzzleClip;
@@ -40,8 +34,6 @@ public class SkullDialogueLineHolder : MonoBehaviour
     public AudioClip solveMusicBoxPuzzleClip;
     
     [Space(10)]
-    
-
     public AudioClip floorThreeOpeningClip;
     public AudioClip solveImagePuzzleClip;
     public AudioClip solveMazeBallPuzzleClip;
@@ -49,6 +41,10 @@ public class SkullDialogueLineHolder : MonoBehaviour
     public AudioClip solvePolaroidPuzzleClip;
     public AudioClip collectPolaroidsClip;
     
+    
+    private const float AudioCooldownTime = 5f; // Adjust this value as needed
+    private float _lastAudioPlayTime = -Mathf.Infinity;
+
     private void Awake()
     {
         if (Instance == null)
@@ -62,63 +58,55 @@ public class SkullDialogueLineHolder : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    public bool CanPlayAudio()
+    {
+        return Time.time >= _lastAudioPlayTime + AudioCooldownTime;
+    }
+
+    public void RecordAudioPlayTime()
+    {
+        _lastAudioPlayTime = Time.time;
+    }
 
     public bool IsAudioSourcePlaying() => audioSource.isPlaying;
-    
-    public int GetRandomWaitTIme()
+
+    public void PlaySpecificClip(AudioClip clip)
     {
-        return Random.Range(35, 60);
+        if (CanPlayAudio() && !IsAudioSourcePlaying())
+        {
+            audioSource.PlayOneShot(clip);
+            RecordAudioPlayTime();
+        }
     }
-    
+
+    public void PlayRandomClip(AudioClip[] clips)
+    {
+        if (CanPlayAudio() && clips.Length > 0 && !IsAudioSourcePlaying())
+        {
+            int randomIndex = Random.Range(0, clips.Length);
+            audioSource.PlayOneShot(clips[randomIndex]);
+            RecordAudioPlayTime();
+        }
+    }
+
+
+    public int GetRandomWaitTime()
+    {
+        return Random.Range(15,45);
+    }
+
     public AudioClip GetHintClipForRemainingPuzzles(List<string> remainingPuzzles)
     {
-        if (remainingPuzzles.Contains("LobbyPuzzle"))
-        {
-            return findFuzeClip;
-        }
-        
-        if (remainingPuzzles.Contains("Bookshelf Puzzle"))
-        {
-            return findBookClip;
-        }
-
-        if (remainingPuzzles.Contains("Perfume Bottle Puzzle"))
-        {
-            return findPerfumeBottleClip;
-        }
-        
-        if (remainingPuzzles.Contains("Sliding Image Puzzle"))
-        {
-            return solveImagePuzzleClip;
-        }
-        
-        if (remainingPuzzles.Contains("Baby Block  Puzzle"))
-        {
-            return solveBabyBlockPuzzleClip;
-        }
-        
-        if (remainingPuzzles.Contains("Da Vinci Puzzle"))
-        {
-            return solveDaVinciPuzzleClip;
-        }
-        
-        if (remainingPuzzles.Contains("Music Box Puzzle"))
-        {
-            return solveMusicBoxPuzzleClip;
-        }
-        
-        if (remainingPuzzles.Contains("Maze Ball Puzzle"))
-        {
-            return solveMazeBallPuzzleClip;
-        }
-        
-        if (remainingPuzzles.Contains("Polaroid Puzzle"))
-        {
-            return solvePolaroidPuzzleClip;
-        }
-
+        if (remainingPuzzles.Contains("LobbyPuzzle")) return findFuzeClip;
+        if (remainingPuzzles.Contains("Bookshelf Puzzle")) return findBookClip;
+        if (remainingPuzzles.Contains("Perfume Bottle Puzzle")) return findPerfumeBottleClip;
+        if (remainingPuzzles.Contains("Sliding Image Puzzle")) return solveImagePuzzleClip;
+        if (remainingPuzzles.Contains("Baby Block Puzzle")) return solveBabyBlockPuzzleClip;
+        if (remainingPuzzles.Contains("Da Vinci Puzzle")) return solveDaVinciPuzzleClip;
+        if (remainingPuzzles.Contains("Music Box Puzzle")) return solveMusicBoxPuzzleClip;
+        if (remainingPuzzles.Contains("Maze Ball Puzzle")) return solveMazeBallPuzzleClip;
+        if (remainingPuzzles.Contains("Polaroid Puzzle")) return solvePolaroidPuzzleClip;
         return null;
-        // just in case if no specific puzzle is left
-        //return wittyAssRemarks.Length > 0 ? wittyAssRemarks[Random.Range(0, wittyAssRemarks.Length)] : null;
     }
 }

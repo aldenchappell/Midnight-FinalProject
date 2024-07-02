@@ -8,7 +8,7 @@ using StarterAssets;
 using TMPro;
 using Random = UnityEngine.Random;
 
-public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
+public class SlidingImagePuzzle : MonoBehaviour
 {
     private Puzzle _puzzle;
     
@@ -248,40 +248,5 @@ public class SlidingImagePuzzle : MonoBehaviour, IPlaySkullDialogue
         UpdatePuzzleUI();
         _patrol.DecreaseTimeToSpawn = 10;
         AssignUniqueSprites();
-    }
-
-    public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
-    {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
-            source.PlayOneShot(clip);
-    }
-
-    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
-    {
-        
-    }
-
-    public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
-    {
-        
-    }
-
-    public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
-    {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
-        {
-            if (indexOfCurrentLevelPuzzles == 3)
-            {
-                while (true)
-                {
-                    if (source.isPlaying) yield return null;
-
-                    yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.GetRandomWaitTIme());
-                    source.PlayOneShot(clip);
-                    yield return new WaitForSeconds(SkullDialogueLineHolder.Instance.GetRandomWaitTIme());
-                }
-            }
-            yield return null;
-        }
     }
 }

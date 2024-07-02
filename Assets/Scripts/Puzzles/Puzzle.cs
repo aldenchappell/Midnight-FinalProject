@@ -1,9 +1,8 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class Puzzle : MonoBehaviour, IPlaySkullDialogue
+public class Puzzle : MonoBehaviour
 {
     public SO_Puzzle puzzle;
     public UnityEvent onPuzzleCompletion;
@@ -18,41 +17,14 @@ public class Puzzle : MonoBehaviour, IPlaySkullDialogue
 
             if (puzzleCompletionAudioClip != null)
             {
-                PlaySpecificSkullDialogueClip(
-                    SkullDialogueLineHolder.Instance.audioSource,
-                    puzzleCompletionAudioClip);
+                if (SkullDialogueLineHolder.Instance.CanPlayAudio())
+                {
+                    SkullDialogueLineHolder.Instance.audioSource.PlayOneShot(puzzleCompletionAudioClip);
+                    SkullDialogueLineHolder.Instance.RecordAudioPlayTime();
+                }
             }
             
             onPuzzleCompletion?.Invoke();
         }
-    }
-
-    public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
-    {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
-        {
-            source.PlayOneShot(clip);
-        }
-    }
-
-    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
-    {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
-        {
-            source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
-        }
-    }
-
-    public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
-    {
-        if (value && !SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
-        {
-            
-        }
-    }
-
-    public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
-    {
-        yield return null;
     }
 }

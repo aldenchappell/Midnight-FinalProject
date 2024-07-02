@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
 
-public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
+public class PhotoBoardPuzzle : MonoBehaviour
 {
     [SerializeField] private GameObject[] puzzleUI;
 
@@ -207,12 +207,10 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
             // Check if it's the first time the player is interacting with the puzzle and they don't have a polaroid
             if (_isFirstTime)
             {
-                if (!hasPolaroid && SkullDialogueLineHolder.SkullDialogue.pickedUp)
+                if (!hasPolaroid)
                 {
                     _puzzleAudio.PlayOneShot(incorrectSlotSound);
-                    PlaySpecificSkullDialogueClip(
-                        SkullDialogueLineHolder.Instance.audioSource,
-                        SkullDialogueLineHolder.Instance.solveMazeBallPuzzleClip);
+
                     return;
                 }
             }
@@ -220,9 +218,6 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
             // Check if the player has collected all polaroids or is holding a polaroid
             if (polaroidCount != TargetPolaroidCount || !hasPolaroid)
             {
-                PlaySpecificSkullDialogueClip(
-                    SkullDialogueLineHolder.Instance.audioSource,
-                    SkullDialogueLineHolder.Instance.collectPolaroidsClip);
                 Debug.Log("Player hasn't collected all of the polaroids or isn't holding a polaroid.");
                 _puzzleAudio.PlayOneShot(incorrectSlotSound, .25f);
                 return;
@@ -315,35 +310,5 @@ public class PhotoBoardPuzzle : MonoBehaviour, IPlaySkullDialogue
     private void UpdateMovesMadeUI(int movesUsed)
     {
         movesMadeText.text = "Moves Made: " + movesUsed + "/" + MaxMoves;
-    }
-
-    public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
-    {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SkullDialogueLineHolder.SkullDialogue.pickedUp)
-        {
-            source.PlayOneShot(clip);
-        }
-            
-    }
-
-    public void PlayRandomSkullDialogueClip(AudioSource source, AudioClip[] clips)
-    {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
-        {
-            
-        }
-    }
-
-    public void PlaySpecificSkullDialogueClipWithLogic(bool value, AudioSource source, AudioClip clip)
-    {
-        if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
-        {
-            
-        }
-    }
-
-    public IEnumerator PlaySkullDialoguePuzzleHintClip(int indexOfCurrentLevelPuzzles, AudioSource source, AudioClip clip)
-    {
-        yield return null;
     }
 }

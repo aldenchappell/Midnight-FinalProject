@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,11 +10,9 @@ public class PlayerKeyController : MonoBehaviour
     private KeyCubbyController _cubbyController;
     private SkullDialogue _skullDialogue;
 
-
     private void Awake()
     {
         _skullDialogue = FindObjectOfType<SkullDialogue>();
-        
     }
 
     private void Start()
@@ -23,8 +21,6 @@ public class PlayerKeyController : MonoBehaviour
         keys = LevelCompletionManager.Instance.GetCollectedKeys();
         UpdateKeyUI();
 
-        
-        
         if (SceneManager.GetActiveScene().name == "LOBBY")
         {
             _cubbyController = FindObjectOfType<KeyCubbyController>();
@@ -36,23 +32,9 @@ public class PlayerKeyController : MonoBehaviour
         keys++;
         UpdateKeyUI();
         LevelCompletionManager.Instance.CollectKey();
-        
-        //Tell the player to return to the elevator to return the key
-        if (_skullDialogue != null)
-        {
-            if(!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
-                _skullDialogue.PlayRandomSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
-                SkullDialogueLineHolder.Instance.levelCompletedClips);
-            else
-            {
-                //wait until current audio clip is done playing, then play a clip
-                StartCoroutine(_skullDialogue.WaitForCurrentClipToEndAndPlay(
-                    true,
-                    SkullDialogueLineHolder.Instance.levelCompletedClips,
-                    null));
-                Debug.Log(SkullDialogueLineHolder.Instance.audioSource.clip);
-            }
-        }
+
+        // Play level completion clip if a key is collected
+        PlayLevelCompletionClip();
     }
 
     public void PlaceKeyInCubby(int keyIndex)
@@ -60,9 +42,15 @@ public class PlayerKeyController : MonoBehaviour
         if (_cubbyController != null && _cubbyController.IsSlotAvailable(keyIndex))
         {
             _cubbyController.PlaceKey(keyIndex);
-            keys--; 
+            keys--;
             UpdateKeyUI();
             LevelCompletionManager.Instance.SetCollectedKeys(keys);
+
+            // Play level completion clip when placing the last key in the cubby
+            if (keys == 0)
+            {
+                PlayLevelCompletionClip();
+            }
         }
         else
         {
@@ -73,5 +61,14 @@ public class PlayerKeyController : MonoBehaviour
     private void UpdateKeyUI()
     {
         pauseMenuKeysCollectedText.text = "Keys collected: " + keys;
+    }
+
+    private void PlayLevelCompletionClip()
+    {
+        if (_skullDialogue != null && !SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        {
+            _skullDialogue.PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                SkullDialogueLineHolder.Instance.levelCompletedClips[Random.Range(0, SkullDialogueLineHolder.Instance.levelCompletedClips.Length)]);
+        }
     }
 }

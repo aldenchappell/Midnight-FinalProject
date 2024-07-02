@@ -211,48 +211,35 @@ public class PlayerDualHandInventory : MonoBehaviour
     
     public void ShowCurrentIndexItem()
     {
-        HideHandItem(); // Hide any currently held item
+        HideHandItem();
 
         if (_inventorySlots[currentIndexSelected] != null)
         {
             GameObject item = _inventorySlots[currentIndexSelected];
-
-            // Set item position and visibility
             item.SetActive(true);
-            
+
             if (item.GetComponent<ObjectSize>() && handPositions.Length > 0)
             {
-                item.transform.parent = handPositions[item.GetComponent<ObjectSize>().objectSize.handPositionIndex].parent.gameObject.transform;
-                item.transform.localPosition = handPositions[item.GetComponent<ObjectSize>().objectSize.handPositionIndex].localPosition;
-                item.transform.localEulerAngles = handPositions[item.GetComponent<ObjectSize>().objectSize.handPositionIndex].localEulerAngles;
-                //Debug.Log(
-                    //item.gameObject.name + " was moved to the " +
-                   // item.GetComponent<ObjectSize>().objectSize.handPositionIndex + " index.");
+                // Set position and rotation based on ObjectSize
+                int index = item.GetComponent<ObjectSize>().objectSize.handPositionIndex;
+                item.transform.parent = handPositions[index].parent;
+                item.transform.localPosition = handPositions[index].localPosition;
+                item.transform.localEulerAngles = handPositions[index].localEulerAngles;
             }
             else
             {
-                //if the object hasn't been assigned an ObjectSize, default to small object size.
-                item.transform.parent = defaultHand.parent.gameObject.transform;
+                // Default to small object size
+                item.transform.parent = defaultHand.parent;
                 item.transform.localPosition = defaultHand.localPosition;
                 item.transform.localEulerAngles = defaultHand.localEulerAngles;
-                //Debug.Log("There is no ObjectSize component on the "
-                         // + item.gameObject.name + ". Defaulting to small.");
             }
-            
+
             item.GetComponent<Collider>().enabled = false;
 
-            // Special handling for Skull item
             if (item.CompareTag("Skull"))
             {
                 item.GetComponent<MeshRenderer>().enabled = true;
                 GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = 1f;
-            }
-
-            // Update arms animation controller with the object held
-            if (_armsAnimationController != null)
-            {
-                //_armsAnimationController.HoldObject(item);
-                //_armsAnimationController.SetHoldingObject(true);
             }
         }
     }
