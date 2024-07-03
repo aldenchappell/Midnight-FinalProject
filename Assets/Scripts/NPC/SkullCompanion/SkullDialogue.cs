@@ -49,7 +49,7 @@ public class SkullDialogue : MonoBehaviour
         }
     }
 
-    private bool IsSkullActiveInInventory()
+    public bool IsSkullActiveInInventory()
     {
         for (int i = 0; i < _playerInventory.GetInventory.Length; i++)
         {

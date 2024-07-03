@@ -51,6 +51,7 @@ public class LampController : MonoBehaviour
 
     public void HandleLamp(Lamp lamp)
     {
+        if (!LevelCompletionManager.Instance.hasCompletedLobby) return;
         MoveToLamp(lamp);
         PlaySound();
         ToggleLights(lamp);

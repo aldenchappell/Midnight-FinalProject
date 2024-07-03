@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerInteractableController : MonoBehaviour
@@ -106,12 +107,24 @@ public class PlayerInteractableController : MonoBehaviour
         {
             if (interactableObject != null && _allowInteraction && _previousInteractable != null)
             {
-                _playerArms.SetPickedUp();
-                interactionImage.sprite = defaultInteractionIcon;
-                interactionImage.rectTransform.sizeDelta = defaultIconSize;
-                interactableObject.onInteraction?.Invoke();
-                StartCoroutine(InteractionSpamPrevention());
-                _examineObjectController.objectToExamine = null;
+                if (SceneManager.GetActiveScene().name == "LOBBY"
+                    && !LevelCompletionManager.Instance.hasCompletedLobby
+                    && !interactableObject.CompareTag("Fuse")
+                    && !interactableObject.CompareTag("Skull")
+                    && !interactableObject.GetComponent<NoteController>()
+                    && !interactableObject.GetComponent<FuseBox>())
+                {
+                    SkullDialogueLineHolder.Instance.PlaySpecificClip(SkullDialogueLineHolder.Instance.findFuzeClip);
+                }
+                else
+                {
+                    _playerArms.SetPickedUp();
+                    interactionImage.sprite = defaultInteractionIcon;
+                    interactionImage.rectTransform.sizeDelta = defaultIconSize;
+                    interactableObject.onInteraction?.Invoke();
+                    StartCoroutine(InteractionSpamPrevention());
+                    _examineObjectController.objectToExamine = null;
+                }
             }
         }
         else if (Input.GetKeyDown(InGameSettingsManager.Instance.itemExaminationInteractionKey)
@@ -126,7 +139,6 @@ public class PlayerInteractableController : MonoBehaviour
             StartCoroutine(InteractionSpamPrevention());
         }
     }
-
 
     private void ResetHighlight()
     {
