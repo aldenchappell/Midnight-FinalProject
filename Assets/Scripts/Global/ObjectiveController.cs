@@ -1,25 +1,28 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ObjectiveController : MonoBehaviour
 {
-    private Dictionary<Scene, string> sceneObjectives = new Dictionary<Scene, string>();
+    private TaskController taskController;
+    private List<Objective> objectives = new List<Objective>();
 
-    private void Awake()
+    private void Start()
     {
-        InitializeObjectives();    
+        taskController = FindObjectOfType<TaskController>();
+        if (taskController == null)
+        {
+            Debug.LogError("TaskController not found in the scene.");
+        }
+        UpdateTaskList();
     }
 
-    private void InitializeObjectives()
+    public void RegisterObjective(Objective objective)
     {
-        
+        objectives.Add(objective);
     }
-    
-    
-    
-    
-    private string GetCurrentSceneName() => SceneManager.GetActiveScene().name;
+
+    public void UpdateTaskList()
+    {
+        taskController.UpdateObjectiveText(objectives.ToArray());
+    }
 }

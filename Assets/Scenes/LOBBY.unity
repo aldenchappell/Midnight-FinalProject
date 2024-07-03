@@ -8572,6 +8572,7 @@ GameObject:
   - component: {fileID: 692997495}
   - component: {fileID: 692997499}
   - component: {fileID: 692997500}
+  - component: {fileID: 692997501}
   m_Layer: 7
   m_Name: Fuse
   m_TagString: Fuse
@@ -8694,6 +8695,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 692997501}
+        m_TargetAssemblyTypeName: Objective, Assembly-CSharp
+        m_MethodName: CompleteObjective
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPlaceObject:
     m_PersistentCalls:
       m_Calls: []
@@ -8714,6 +8727,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectSize: {fileID: 11400000, guid: c6797f6e5c5e44d4f8e2d86c313b3467, type: 2}
+--- !u!114 &692997501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692997494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36267fa677f381744ab244bc2539d2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: '* Find the fuse.'
+  isCompleted: 0
+  order: 0
 --- !u!1001 &702087048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8964,8 +8992,35 @@ MonoBehaviour:
   puzzle: {fileID: 11400000, guid: e19d7b96b17c31e4f852b2f7b6e1c8f3, type: 2}
   onPuzzleCompletion:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 718002601}
+        m_TargetAssemblyTypeName: Objective, Assembly-CSharp
+        m_MethodName: CompleteObjective
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   puzzleCompletionAudioClip: {fileID: 8300000, guid: 93742f77363bd844a8e473cc4c604256, type: 3}
+--- !u!114 &718002601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718002592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36267fa677f381744ab244bc2539d2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: '* Turn the power back on.'
+  isCompleted: 0
+  order: 1
 --- !u!1001 &722254187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22159,6 +22214,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a2bdcb6e8c699fa4ba0327e22928bfb3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 718002600}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a2bdcb6e8c699fa4ba0327e22928bfb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 718002601}
   m_SourcePrefab: {fileID: 100100000, guid: a2bdcb6e8c699fa4ba0327e22928bfb3, type: 3}
 --- !u!1001 &1380214247
 PrefabInstance:
@@ -27411,10 +27469,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.000035643578
       objectReference: {fileID: 0}
-    - target: {fileID: 2773546625910633460, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5630490845543064191, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_Name
       value: PlayerPref
@@ -27494,10 +27548,6 @@ PrefabInstance:
     - target: {fileID: 7052851820613503030, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000166893
-      objectReference: {fileID: 0}
-    - target: {fileID: 7423958766855703888, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7591035619111048940, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_AnchorMax.y

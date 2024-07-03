@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using StarterAssets;
+using UnityEngine.SceneManagement;
 
 public class FuseBox : MonoBehaviour
 {
@@ -198,6 +199,12 @@ public class FuseBox : MonoBehaviour
             light.enabled = true;
         }
 
+        Objective objective = GetComponent<Objective>();
+        if (objective != null)
+        {
+            objective.CompleteObjective();
+        }
+        
         //turn on all lamps and enable emissives
         FindObjectOfType<LampController>().PowerOnLamps();
 
