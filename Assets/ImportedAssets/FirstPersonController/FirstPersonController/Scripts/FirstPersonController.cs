@@ -249,8 +249,9 @@ namespace StarterAssets
                         {
                             if (_playerInventory.GetCurrentHandItem != null)
                             {
-                                _playerArms.SetRunning(false);
+                                _playerArms.SetIsRunningWithItem(false);
                                 _playerArms.SetWalkingWithItem(true);
+                                _playerArms.SetRunning(false);
                                 _playerArms.SetWalking(false);
                                 _playerArms.SetPickingUp(false);
                                 _playerArms.SetIdle(false);
@@ -258,9 +259,10 @@ namespace StarterAssets
                             }
                             else
                             {
+                                _playerArms.SetIsRunningWithItem(false);
+                                _playerArms.SetWalkingWithItem(false);
                                 _playerArms.SetRunning(false);
                                 _playerArms.SetWalking(true);
-                                _playerArms.SetWalkingWithItem(false);
                                 _playerArms.SetPickingUp(false);
                                 _playerArms.SetIdle(false);
                                 _playerArms.SetCrouching(false);
@@ -268,8 +270,9 @@ namespace StarterAssets
                         }
                         else if (isCrouching)
                         {
-                            _playerArms.SetRunning(false);
+                            _playerArms.SetIsRunningWithItem(false);
                             _playerArms.SetWalkingWithItem(false);
+                            _playerArms.SetRunning(false);
                             _playerArms.SetWalking(false);
                             _playerArms.SetPickingUp(false);
                             _playerArms.SetIdle(false);
@@ -277,9 +280,10 @@ namespace StarterAssets
                         }
                         else
                         {
+                            _playerArms.SetIsRunningWithItem(false);
+                            _playerArms.SetWalkingWithItem(false);
                             _playerArms.SetRunning(false);
                             _playerArms.SetWalking(false);
-                            _playerArms.SetWalkingWithItem(false);
                             _playerArms.SetPickingUp(false);
                             _playerArms.SetIdle(true);
                             _playerArms.SetCrouching(false);
@@ -289,6 +293,7 @@ namespace StarterAssets
                 }
             }
         }
+
 
 
         
