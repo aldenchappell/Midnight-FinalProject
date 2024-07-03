@@ -210,7 +210,10 @@ namespace StarterAssets
         {
             if (_playerArms != null)
             {
-                _playerArms.animator.SetBool("isWalking", input.move != Vector2.zero && !isSprinting && !isCrouching);
+                _playerArms.animator.SetBool("isWalking", input.move != Vector2.zero
+                                                          && !isSprinting
+                                                          && !isCrouching
+                                                          && _playerInventory.GetCurrentHandItem == null);
                 _playerArms.animator.SetBool("isRunning", isSprinting);
                 _playerArms.animator.SetBool("isCrouching", isCrouching);
             }
@@ -225,6 +228,7 @@ namespace StarterAssets
                     case true when _playerInventory.GetCurrentHandItem != null && input.move != Vector2.zero:
                         _playerArms.SetIsRunningWithItem(true);
                         _playerArms.SetRunning(false);
+                        _playerArms.SetWalkingWithItem(false);
                         _playerArms.SetWalking(false);
                         _playerArms.SetPickingUp(false);
                         _playerArms.SetIdle(false);
@@ -233,6 +237,7 @@ namespace StarterAssets
                     case true when _playerInventory.GetCurrentHandItem == null && input.move != Vector2.zero:
                         _playerArms.SetIsRunningWithItem(false);
                         _playerArms.SetRunning(true);
+                        _playerArms.SetWalkingWithItem(false);
                         _playerArms.SetWalking(false);
                         _playerArms.SetPickingUp(false);
                         _playerArms.SetIdle(false);
@@ -242,15 +247,29 @@ namespace StarterAssets
                     {
                         if (input.move != Vector2.zero && !isCrouching)
                         {
-                            _playerArms.SetRunning(false);
-                            _playerArms.SetWalking(true);
-                            _playerArms.SetPickingUp(false);
-                            _playerArms.SetIdle(false);
-                            _playerArms.SetCrouching(false);
+                            if (_playerInventory.GetCurrentHandItem != null)
+                            {
+                                _playerArms.SetRunning(false);
+                                _playerArms.SetWalkingWithItem(true);
+                                _playerArms.SetWalking(false);
+                                _playerArms.SetPickingUp(false);
+                                _playerArms.SetIdle(false);
+                                _playerArms.SetCrouching(false);
+                            }
+                            else
+                            {
+                                _playerArms.SetRunning(false);
+                                _playerArms.SetWalking(true);
+                                _playerArms.SetWalkingWithItem(false);
+                                _playerArms.SetPickingUp(false);
+                                _playerArms.SetIdle(false);
+                                _playerArms.SetCrouching(false);
+                            }
                         }
                         else if (isCrouching)
                         {
                             _playerArms.SetRunning(false);
+                            _playerArms.SetWalkingWithItem(false);
                             _playerArms.SetWalking(false);
                             _playerArms.SetPickingUp(false);
                             _playerArms.SetIdle(false);
@@ -260,6 +279,7 @@ namespace StarterAssets
                         {
                             _playerArms.SetRunning(false);
                             _playerArms.SetWalking(false);
+                            _playerArms.SetWalkingWithItem(false);
                             _playerArms.SetPickingUp(false);
                             _playerArms.SetIdle(true);
                             _playerArms.SetCrouching(false);
@@ -269,6 +289,7 @@ namespace StarterAssets
                 }
             }
         }
+
 
         
         

@@ -26,6 +26,11 @@ public class PlayerArmsAnimationController : MonoBehaviour
     {
         animator.SetBool("isWalking", isWalking);
     }
+    
+    public void SetWalkingWithItem(bool isWalkingWithItem)
+    {
+        animator.SetBool("isWalkingWithItem", isWalkingWithItem);
+    }
 
     public void SetIdle(bool isIdle)
     {
