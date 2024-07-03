@@ -9,6 +9,7 @@ public class FuseBox : MonoBehaviour
     [SerializeField] private GameObject fuseObject;
     private AudioSource _radioAudio;
     private List<Light> _lobbyLights;
+    private List<Material> _lobbyEmissives;
     private ElevatorController _elevator;
 
     private Animator _animator;
@@ -41,61 +42,12 @@ public class FuseBox : MonoBehaviour
         _isActive = false;
         _puzzle = GetComponent<Puzzle>();
         _lobbyLights = new List<Light>(FindObjectsOfType<Light>());
-
-        for (int i = 0; i < _lobbyLights.Count; i++)
-        {
-            if (_lobbyLights[i].gameObject.name == "ExamineObjectLight" || _lobbyLights[i].gameObject.CompareTag("LobbyLight"))
-            {
-                print("Removed");
-                Debug.Log(_lobbyLights[i]);
-                _lobbyLights.Remove(_lobbyLights[i]);
-                i -= 1;
-            }
-        }
-
-        foreach (Light light in _lobbyLights)
-        {
-            light.enabled = false;
-        }
+        _lobbyEmissives = new List<Material>();
+        
 
         _elevator = FindObjectOfType<ElevatorController>();
         _elevator.enabled = false;
-
-        /*
-        foreach (Light light in _lobbyLights)
-        {
-            if (!LevelCompletionManager.Instance.IsLevelCompleted("LOBBY") && light != GetComponent<Light>())
-            {
-                if (light.gameObject.tag != "LobbyLight")
-                {
-                    light.enabled = false;
-                }
-            }
-            else if (LevelCompletionManager.Instance.IsLevelCompleted("LOBBY"))
-            {
-                if (fuseObject != null)
-                {
-                    fuseObject.SetActive(false);
-                }
-                else
-                {
-                    fuseObject = GameObject.Find("Fuse");
-                    fuseObject.SetActive(false);
-                }
-
-                _elevator.enabled = true;
-                _elevator.OpenElevator();
-                AnimationsTrigger("PowerOn");
-            }
-        }
-        if (!LevelCompletionManager.Instance.HasCurrentLevelAlreadyBeenLoaded("LOBBY"))
-        {
-            LevelCompletionManager.Instance.SaveCurrentLevelAsLoaded("LOBBY");
-        }
-        */
-
         
-
 
         _radioAudio = GameObject.Find("LargeRadio").GetComponent<AudioSource>();
         _radioAudio.enabled = false;
@@ -103,18 +55,17 @@ public class FuseBox : MonoBehaviour
 
     private void Start()
     {
-        /*
-        if (PlayerPrefs.HasKey("LobbyPowered") && PlayerPrefs.GetInt("LobbyPowered") == 1)
+        InitializeLighting();
+
+        if (LevelCompletionManager.Instance.hasCompletedLobby)
         {
-            PowerLobby();
-        }
-        */
-        if(LevelCompletionManager.Instance.hasCompletedLobby == true)
-        {
-            print("Removing");
             PowerLobby();
             GameObject.Find("Fuse").SetActive(false);
             Destroy(this.gameObject.GetComponent<InteractableObject>());
+        }
+        else
+        {
+            ToggleEmissives(false);
         }
     }
 
@@ -124,6 +75,53 @@ public class FuseBox : MonoBehaviour
         if (_isActive)
         {
             CheckForInput();
+        }
+    }
+
+    private void InitializeLighting()
+    {
+        //lights
+        for (int i = 0; i < _lobbyLights.Count; i++)
+        {
+            if (_lobbyLights[i].gameObject.name == "ExamineObjectLight" || _lobbyLights[i].gameObject.CompareTag("LobbyLight"))
+            {
+                //print("Removed");
+                //Debug.Log(_lobbyLights[i]);
+                _lobbyLights.Remove(_lobbyLights[i]);
+                i -= 1;
+            }
+        }
+
+        foreach (Light light in _lobbyLights)
+        {
+            light.enabled = false;
+            
+            //add the renderers of the light parents to the emissives list
+            Renderer rend = light.GetComponentInParent<Renderer>();
+            if (rend != null)
+            {
+                Material material = rend.material;
+                if (material != null && material.IsKeywordEnabled("_EMISSION"))
+                {
+                    _lobbyEmissives.Add(material);
+                }
+            }
+        }
+    }
+
+    private void ToggleEmissives(bool enable)
+    {
+        //emissives
+        foreach (var mat in _lobbyEmissives)
+        {
+            if (enable)
+            {
+                mat.EnableKeyword("_EMISSION");
+            }
+            else
+            {
+                mat.DisableKeyword("_EMISSION");
+            }
         }
     }
 
@@ -190,21 +188,23 @@ public class FuseBox : MonoBehaviour
     }
 
 
-    public void PowerLobby()
+    private void PowerLobby()
     {
-           AnimationsTrigger("PowerOn");
+        AnimationsTrigger("PowerOn");
 
-            // Enable lobby lights
-            foreach (Light light in _lobbyLights)
-            {
-                light.enabled = true;
-            }
+        // Enable lobby lights
+        foreach (Light light in _lobbyLights)
+        {
+            light.enabled = true;
+        }
 
-            _radioAudio.enabled = true;
-            _elevator.enabled = true;
+        //turn on all lamps and enable emissives
+        FindObjectOfType<LampController>().PowerOnLamps();
 
-        
+        _radioAudio.enabled = true;
+        _elevator.enabled = true;
     }
+
 
     private void PlaceFuse(GameObject fuseShadow)
     {

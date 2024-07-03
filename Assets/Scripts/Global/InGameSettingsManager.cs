@@ -212,5 +212,4 @@ public class InGameSettingsManager : MonoBehaviour
         SetVolume(HeartbeatSoundsPrefKey, PlayerPrefs.GetFloat(HeartbeatSoundsPrefKey, 0.5f));
         SetVolume(CompassPrefKey, PlayerPrefs.GetFloat(CompassPrefKey, 0.5f));
     }
-
 }

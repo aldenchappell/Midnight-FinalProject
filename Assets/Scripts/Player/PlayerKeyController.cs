@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerKeyController : MonoBehaviour
 {
     [SerializeField] private TMP_Text pauseMenuKeysCollectedText;
+    [SerializeField] private TMP_Text inGameKeysCollectedText;
     public int keys;
     private KeyCubbyController _cubbyController;
     private SkullDialogue _skullDialogue;
@@ -61,6 +62,7 @@ public class PlayerKeyController : MonoBehaviour
     private void UpdateKeyUI()
     {
         pauseMenuKeysCollectedText.text = "Keys collected: " + keys;
+        inGameKeysCollectedText.text = keys.ToString();
     }
 
     private void PlayLevelCompletionClip()

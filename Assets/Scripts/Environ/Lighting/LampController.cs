@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class LampController : MonoBehaviour
@@ -16,13 +17,25 @@ public class LampController : MonoBehaviour
 
     private void Start()
     {
-        Init();
+        if (SceneManager.GetActiveScene().name == "LOBBY")
+        {
+            Init();
+
+            if (LevelCompletionManager.Instance.hasCompletedLobby)
+            {
+                ToggleAllLamps(true);
+            }
+            else
+            {
+                ToggleAllLamps(false);
+            }
+        }
     }
 
     private void Init()
     {
         GameObject[] foundLamps = GameObject.FindGameObjectsWithTag("Lamp");
-        
+
         _lamps.Clear();
 
         foreach (GameObject lampObject in foundLamps)
@@ -71,5 +84,30 @@ public class LampController : MonoBehaviour
     private void MoveToLamp(Lamp lamp)
     {
         transform.position = lamp.transform.position;
+    }
+
+    private void ToggleAllLamps(bool enable)
+    {
+        foreach (var lamp in _lamps)
+        {
+            lamp.on = enable;
+            Light lampLight = lamp.GetComponentInChildren<Light>();
+            Renderer renderer = lamp.GetComponentInChildren<Renderer>();
+            if (enable)
+            {
+                renderer.material.EnableKeyword("_EMISSION");
+                lampLight.enabled = true;
+            }
+            else
+            {
+                renderer.material.DisableKeyword("_EMISSION");
+                lampLight.enabled = false;
+            }
+        }
+    }
+
+    public void PowerOnLamps()
+    {
+        ToggleAllLamps(true);
     }
 }

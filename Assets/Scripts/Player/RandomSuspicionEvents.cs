@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
+using UnityEngine.SceneManagement;
 
 public class RandomSuspicionEvents : MonoBehaviour
 {
@@ -22,15 +23,10 @@ public class RandomSuspicionEvents : MonoBehaviour
         _FPC = GameObject.FindAnyObjectByType<FirstPersonController>();
         _isRunning = false;
     }
-
-    private void Start()
-    {
-        //Invoke("StartAttemptingEvents", 10f);
-    }
-
+    
     private void Update()
     {
-        if(!_isRunning)
+        if(!_isRunning && SceneManager.GetActiveScene().name != "LOBBY")
         {
             StartCoroutine("ChanceForPlayerRelatedSuspicionEvent");
         }
