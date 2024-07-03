@@ -42,8 +42,8 @@ public class DoorController : MonoBehaviour
     private void OpenDoor()
     {
         _animator.SetBool("Open", true);
-        _soundController.transform.position = transform.position;
-        _soundController.audioSource.PlayOneShot(openDoorSound);
+        
+        EnvironmentalSoundController.Instance.PlaySound(openDoorSound, transform.position);
         
         StartDoorInteractionCooldown();
     }
@@ -51,8 +51,7 @@ public class DoorController : MonoBehaviour
     private void CloseDoor()
     {
         _animator.SetBool("Open", false);
-        _soundController.transform.position = transform.position;
-        _soundController.audioSource.PlayOneShot(closeDoorSound);
+        EnvironmentalSoundController.Instance.PlaySound(openDoorSound, transform.position);
         
         StartDoorInteractionCooldown();
     }

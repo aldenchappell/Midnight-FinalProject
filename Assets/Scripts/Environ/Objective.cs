@@ -25,5 +25,7 @@ public class Objective : MonoBehaviour
     {
         isCompleted = true;
         objectiveController.UpdateTaskList();
+        
+        EnvironmentalSoundController.Instance.PlaySound(objectiveController.pencilSound,transform.position);
     }
 }

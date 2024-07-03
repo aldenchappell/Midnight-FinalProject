@@ -2,18 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(AudioSource))]
 public class LampController : MonoBehaviour
 {
-    private AudioSource _source;
     [SerializeField] private AudioClip pullLampSound;
-
+    
     private List<Lamp> _lamps = new List<Lamp>();
-
-    private void Awake()
-    {
-        _source = GetComponent<AudioSource>();
-    }
+    
 
     private void Start()
     {
@@ -59,10 +53,7 @@ public class LampController : MonoBehaviour
 
     private void PlaySound()
     {
-        if (!_source.isPlaying && pullLampSound != null)
-        {
-            _source.PlayOneShot(pullLampSound);
-        }
+        EnvironmentalSoundController.Instance.PlaySound(pullLampSound, transform.position);
     }
 
     private void ToggleLights(Lamp lamp)

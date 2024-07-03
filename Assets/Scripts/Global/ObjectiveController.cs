@@ -6,6 +6,7 @@ public class ObjectiveController : MonoBehaviour
     private TaskController taskController;
     private List<Objective> objectives = new List<Objective>();
 
+    public AudioClip pencilSound;
     private void Start()
     {
         taskController = FindObjectOfType<TaskController>();

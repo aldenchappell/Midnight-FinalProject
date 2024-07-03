@@ -9,10 +9,9 @@ public class TaskController : MonoBehaviour
     [SerializeField] private TMP_Text objectiveText;
 
     private bool isTaskUIOpen = false;
-
     private void Start()
     {
-        taskUI.SetActive(false);
+        //taskUI.SetActive(false);
     }
 
     void Update()
