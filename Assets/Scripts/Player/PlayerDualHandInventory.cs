@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDualHandInventory : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerDualHandInventory : MonoBehaviour
     public int currentIndexSelected;
 
     private PlayerArmsAnimationController _armsAnimationController;
+    private Dictionary<GameObject, Vector3> _originalScales = new Dictionary<GameObject, Vector3>();
     public GameObject[] GetInventory
     {
         get
@@ -36,6 +38,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         
         _armsAnimationController = FindObjectOfType<PlayerArmsAnimationController>();
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -120,6 +123,12 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
 
         newObject.transform.parent = this.gameObject.transform;
+
+        if (!_originalScales.ContainsKey(newObject))
+        {
+            _originalScales.Add(newObject, newObject.transform.localScale);
+        }
+        newObject.transform.localScale = _originalScales[newObject]; // Reset to the original scale
         newObject.layer = LayerMask.NameToLayer("Default");
         _inventorySlots[currentIndexSelected] = newObject;
         ShowCurrentIndexItem();
@@ -232,6 +241,15 @@ public class PlayerDualHandInventory : MonoBehaviour
                 item.transform.parent = defaultHand.parent;
                 item.transform.localPosition = defaultHand.localPosition;
                 item.transform.localEulerAngles = defaultHand.localEulerAngles;
+            }
+
+            if (_originalScales.ContainsKey(item))
+            {
+                item.transform.localScale = _originalScales[item]; // Reset to the original scale
+            }
+            else
+            {
+                _originalScales.Add(item, item.transform.localScale);
             }
 
             item.GetComponent<Collider>().enabled = false;
