@@ -3,27 +3,30 @@ using UnityEngine;
 
 public class ObjectiveController : MonoBehaviour
 {
-    private TaskController taskController;
-    private List<Objective> objectives = new List<Objective>();
-
+    private TaskController _taskController;
+    private List<Objective> _objectives = new List<Objective>();
     public AudioClip pencilSound;
+
     private void Start()
     {
-        taskController = FindObjectOfType<TaskController>();
-        if (taskController == null)
+        _taskController = FindObjectOfType<TaskController>();
+        if (_taskController == null)
         {
             Debug.LogError("TaskController not found in the scene.");
         }
-        UpdateTaskList();
+        else
+        {
+            UpdateTaskList();
+        }
     }
 
     public void RegisterObjective(Objective objective)
     {
-        objectives.Add(objective);
+        _objectives.Add(objective);
     }
 
     public void UpdateTaskList()
     {
-        taskController.UpdateObjectiveText(objectives.ToArray());
+        _taskController.UpdateObjectiveText(_objectives.ToArray());
     }
 }

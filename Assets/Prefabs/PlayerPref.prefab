@@ -1998,7 +1998,6 @@ GameObject:
   - component: {fileID: 2004233160242430803}
   - component: {fileID: 8057340738646221295}
   - component: {fileID: 8351495695378716297}
-  - component: {fileID: 6547780720505708884}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2391,19 +2390,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: edd3bfe77f668f842bf636d9263ec343, type: 3}
   _audioSource: {fileID: 0}
   suspicionAmount: 10
---- !u!114 &6547780720505708884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185921017414210652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f28d644f591c90040a119cf47a1881b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pencilSound: {fileID: 8300000, guid: d7214be563b103744b5c52f472d50ed1, type: 3}
 --- !u!1 &1202013837276425020
 GameObject:
   m_ObjectHideFlags: 0
@@ -11771,7 +11757,6 @@ GameObject:
   - component: {fileID: 4172018636825518932}
   - component: {fileID: 4308704011728133273}
   - component: {fileID: 5145312093165518224}
-  - component: {fileID: 3705575913500103047}
   - component: {fileID: 4796928240922287626}
   - component: {fileID: 2414290843207655139}
   - component: {fileID: 6390002439482406701}
@@ -11909,22 +11894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cde35715a35cb46b381b71d8d9a154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3705575913500103047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4810593981529044818}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0688965857bdfff4cb38abbd15d83b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameIsPaused: 0
-  pauseMenuUI: {fileID: 1126664445299647486}
-  playerUIElements: []
-  pauseSFX: {fileID: 4796928240922287626}
 --- !u!82 &4796928240922287626
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13987,6 +13956,7 @@ GameObject:
   - component: {fileID: 7861388797520701875}
   - component: {fileID: 1798050421667250784}
   - component: {fileID: 5926765812707825414}
+  - component: {fileID: 5370101735394925759}
   m_Layer: 0
   m_Name: PlayerPref
   m_TagString: Untagged
@@ -14080,6 +14050,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5370101735394925759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5630490845543064191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28d644f591c90040a119cf47a1881b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pencilSound: {fileID: 8300000, guid: d7214be563b103744b5c52f472d50ed1, type: 3}
 --- !u!1 &5714604423870653263
 GameObject:
   m_ObjectHideFlags: 0
@@ -15524,7 +15507,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3705575913500103047}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -17249,7 +17232,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3705575913500103047}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
         m_MethodName: LoadMenu
         m_Mode: 1

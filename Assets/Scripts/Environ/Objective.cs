@@ -6,26 +6,28 @@ public class Objective : MonoBehaviour
     public bool isCompleted = false;
     public int order;
 
-    private ObjectiveController objectiveController;
+    private ObjectiveController _objectiveController;
 
     private void Start()
     {
-        objectiveController = FindObjectOfType<ObjectiveController>();
-        if (objectiveController == null)
+        _objectiveController = FindObjectOfType<ObjectiveController>();
+        if (_objectiveController == null)
         {
             Debug.LogError("ObjectiveController not found in the scene.");
         }
         else
         {
-            objectiveController.RegisterObjective(this);
+            //Debug.Log("Registering objective " + description);
+            _objectiveController.RegisterObjective(this);
+            _objectiveController.UpdateTaskList();
         }
     }
 
     public void CompleteObjective()
     {
         isCompleted = true;
-        objectiveController.UpdateTaskList();
+        _objectiveController.UpdateTaskList();
         
-        EnvironmentalSoundController.Instance.PlaySound(objectiveController.pencilSound,transform.position);
+        EnvironmentalSoundController.Instance.PlaySound(_objectiveController.pencilSound, transform.position);
     }
 }

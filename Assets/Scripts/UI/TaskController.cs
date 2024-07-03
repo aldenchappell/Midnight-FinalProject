@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -8,19 +10,15 @@ public class TaskController : MonoBehaviour
     [SerializeField] private Animator taskUIAnimator;
     [SerializeField] private TMP_Text objectiveText;
 
-    private bool isTaskUIOpen = false;
-    private void Start()
-    {
-        //taskUI.SetActive(false);
-    }
-
-    void Update()
+    private bool _isTaskUIOpen = false;
+    
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            isTaskUIOpen = !isTaskUIOpen;
+            _isTaskUIOpen = !_isTaskUIOpen;
 
-            if (isTaskUIOpen)
+            if (_isTaskUIOpen)
             {
                 taskUI.SetActive(true);
                 taskUIAnimator.SetTrigger("Popout");
@@ -37,20 +35,25 @@ public class TaskController : MonoBehaviour
     public void UpdateObjectiveText(Objective[] objectives)
     {
         objectiveText.text = "";
-
-        //sort objectives - thank you stack overflow :)
+        
+        //ty stackoverflow :) 
         var sortedObjectives = objectives.OrderBy(o => o.order).ToList();
+
+        StringBuilder sb = new StringBuilder();
 
         foreach (var objective in sortedObjectives)
         {
             if (objective.isCompleted)
             {
-                objectiveText.text += $"<s>{objective.description}</s>\n";
+                sb.AppendLine($"<s>{objective.description}</s>");
             }
             else
             {
-                objectiveText.text += $"{objective.description}\n";
+                sb.AppendLine($"{objective.description}");
             }
         }
+        
+        objectiveText.text = sb.ToString();
     }
+
 }
