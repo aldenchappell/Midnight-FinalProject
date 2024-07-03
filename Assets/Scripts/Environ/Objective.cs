@@ -6,6 +6,7 @@ public class Objective : MonoBehaviour
     public bool isCompleted = false;
     public int order;
 
+    public bool disableAtRuntime;
     private ObjectiveController _objectiveController;
 
     private void Start()
@@ -20,6 +21,11 @@ public class Objective : MonoBehaviour
             //Debug.Log("Registering objective " + description);
             _objectiveController.RegisterObjective(this);
             _objectiveController.UpdateTaskList();
+        }
+
+        if (disableAtRuntime)
+        {
+            gameObject.SetActive(false);
         }
     }
 
