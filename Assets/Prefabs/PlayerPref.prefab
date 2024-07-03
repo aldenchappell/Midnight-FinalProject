@@ -11754,6 +11754,7 @@ GameObject:
   - component: {fileID: 4678789567651858490}
   - component: {fileID: 3801129124152924774}
   - component: {fileID: 2731963216469790221}
+  - component: {fileID: 4172018636825518932}
   - component: {fileID: 4308704011728133273}
   - component: {fileID: 5145312093165518224}
   - component: {fileID: 3705575913500103047}
@@ -11852,6 +11853,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4172018636825518932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810593981529044818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12269c4b437f544ab1e81c91c56cfcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskUI: {fileID: 7423958766855703888}
+  taskUIAnimator: {fileID: 1624673778958795260}
+  objectiveTexts: []
 --- !u!114 &4308704011728133273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18915,7 +18931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7896482421180225155
 RectTransform:
   m_ObjectHideFlags: 0

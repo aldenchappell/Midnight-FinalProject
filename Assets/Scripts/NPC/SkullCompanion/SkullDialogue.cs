@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SkullDialogue : MonoBehaviour
 {
+    //Animation stuff
+    public Animator skullAnimator;
+
     private Coroutine _wittyAssRemarksCoroutine;
 
     private PlayerDualHandInventory _playerInventory;
@@ -90,22 +93,22 @@ public class SkullDialogue : MonoBehaviour
         {
             case "LOBBY":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && !LevelCompletionManager.Instance.hasCompletedLobby)
-                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                    SkullDialogueLineHolder.Instance.PlaySpecificClip(
                         SkullDialogueLineHolder.Instance.lobbyOpeningClip);
                 break;
             case "FLOOR ONE":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
-                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                    SkullDialogueLineHolder.Instance.PlaySpecificClip(
                         SkullDialogueLineHolder.Instance.floorOneOpeningClip);
                 break;
             case "FLOOR TWO":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
-                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                    SkullDialogueLineHolder.Instance.PlaySpecificClip(
                         SkullDialogueLineHolder.Instance.floorTwoOpeningClip);
                 break;
             case "FLOOR THREE":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
-                    PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
+                    SkullDialogueLineHolder.Instance.PlaySpecificClip(
                         SkullDialogueLineHolder.Instance.floorThreeOpeningClip);
                 break;
             default:
@@ -132,15 +135,6 @@ public class SkullDialogue : MonoBehaviour
                 return LevelCompletionManager.Instance.level3Puzzles;
             default:
                 return new List<SO_Puzzle>();
-        }
-    }
-
-    public void PlaySpecificSkullDialogueClip(AudioSource source, AudioClip clip)
-    {
-        if (SkullDialogueLineHolder.Instance.CanPlayAudio() && !SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
-        {
-            source.PlayOneShot(clip);
-            SkullDialogueLineHolder.Instance.RecordAudioPlayTime();
         }
     }
 }

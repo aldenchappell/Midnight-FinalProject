@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,6 +59,14 @@ public class SkullDialogueLineHolder : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private IEnumerator StartDialogueAnimation(float speakingTime)
+    {
+        SkullDialogue.skullAnimator.SetBool("Speaking", true);
+        Debug.Log(SkullDialogue.skullAnimator.GetBool("Speaking"));
+        yield return new WaitForSeconds(speakingTime);
+        SkullDialogue.skullAnimator.SetBool("Speaking", false);
+    }
     
     public bool CanPlayAudio()
     {
@@ -76,6 +85,7 @@ public class SkullDialogueLineHolder : MonoBehaviour
         if (CanPlayAudio() && !IsAudioSourcePlaying())
         {
             audioSource.PlayOneShot(clip);
+            StartCoroutine(StartDialogueAnimation(clip.length - .3f));
             RecordAudioPlayTime();
         }
     }
@@ -85,10 +95,14 @@ public class SkullDialogueLineHolder : MonoBehaviour
         if (CanPlayAudio() && clips.Length > 0 && !IsAudioSourcePlaying())
         {
             int randomIndex = Random.Range(0, clips.Length);
-            audioSource.PlayOneShot(clips[randomIndex]);
+            AudioClip selectedClip = clips[randomIndex];
+        
+            audioSource.PlayOneShot(selectedClip);
+            StartCoroutine(StartDialogueAnimation(selectedClip.length - .3f));
             RecordAudioPlayTime();
         }
     }
+
 
 
     public int GetRandomWaitTime()

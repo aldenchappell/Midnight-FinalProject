@@ -313,6 +313,14 @@ public class MazeBallPuzzle : MonoBehaviour
         polaroid.transform.SetParent(null);
         polaroid.transform.rotation = polaroidTargetPos.rotation;
         Destroy(polaroidObj);
+        
+        //instantiate a new object for the ghost placement
+        GameObject ghostPlacement = new GameObject();
+        Instantiate(ghostPlacement, transform.position, Quaternion.identity);
+        ghostPlacement.transform.SetParent(mazePuzzleObj.transform);
+        ghostPlacement.transform.position = mazePuzzleObj.transform.Find("GhostPlacementTarget").position;
+        ghostPlacement.transform.rotation = mazePuzzleObj.transform.Find("GhostPlacementTarget").rotation;
+        ghostPlacement.gameObject.name = "GhostPlacement";
     }
     
     private void ResetPuzzle()

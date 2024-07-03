@@ -69,8 +69,9 @@ public class PlayerKeyController : MonoBehaviour
     {
         if (_skullDialogue != null && !SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
         {
-            _skullDialogue.PlaySpecificSkullDialogueClip(SkullDialogueLineHolder.Instance.audioSource,
-                SkullDialogueLineHolder.Instance.levelCompletedClips[Random.Range(0, SkullDialogueLineHolder.Instance.levelCompletedClips.Length)]);
+            SkullDialogueLineHolder.Instance.PlaySpecificClip(
+                SkullDialogueLineHolder.Instance.levelCompletedClips
+                    [Random.Range(0, SkullDialogueLineHolder.Instance.levelCompletedClips.Length)]);
         }
     }
 }
