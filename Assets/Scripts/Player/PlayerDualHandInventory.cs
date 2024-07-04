@@ -270,18 +270,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
         return false;
     }
-
-    public bool MatchPuzzlePieceInInventory(PuzzlePiece activePuzzlePiece)
-    {
-        if (_inventorySlots.Length > 0 && _inventorySlots[1] != null)
-        {
-            return _inventorySlots[1].GetComponent<PuzzlePiece>().puzzlePieceName
-                   == activePuzzlePiece.GetComponent<PuzzlePiece>().puzzlePieceName;
-        }
-
-        return false;
-    }
-
+    
     public void HideHandItem()
     {
         foreach (GameObject item in _inventorySlots)
@@ -301,18 +290,5 @@ public class PlayerDualHandInventory : MonoBehaviour
                 }
             }
         }
-    }
-    
-    private int GetObjectIndex(string tag)
-    {
-        return 0;
-    }
-
-    private float CalculateObjectSize(GameObject obj)
-    {
-        if(obj)
-            return obj.transform.localScale.magnitude;
-
-        return 1.0f; 
     }
 }
