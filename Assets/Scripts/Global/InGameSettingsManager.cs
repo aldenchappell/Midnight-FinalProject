@@ -37,6 +37,10 @@ public class InGameSettingsManager : MonoBehaviour
     //Sensitivity
     public float minMouseSensitivity = 10.0f;
     public float maxMouseSensitivity = 200.0f;
+    
+    //Brightness
+    public float minBrightness = 0.01f;
+    public float maxBrightness = .025f;
     private void Awake()
     {
         if (Instance == null)
@@ -139,8 +143,9 @@ public class InGameSettingsManager : MonoBehaviour
     
     public void SetBrightness(float value)
     {
-        RenderSettings.ambientLight = Color.white * value;
-        PlayerPrefs.SetFloat(BrightnessPrefKey, value);
+        float clampedBrightness = Mathf.Clamp(value, minBrightness, maxBrightness);
+        RenderSettings.ambientLight = Color.white * clampedBrightness;
+        PlayerPrefs.SetFloat(BrightnessPrefKey, clampedBrightness);
         PlayerPrefs.Save();
     }
     

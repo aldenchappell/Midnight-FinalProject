@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Audio;
 
 [RequireComponent(typeof(Light))]
 public class LightFlicker : MonoBehaviour
@@ -15,13 +14,12 @@ public class LightFlicker : MonoBehaviour
 
     private Renderer _sconceRenderer;
     [SerializeField] private Material sconceOnMat, sconceOffMat;
-    private GameObject _enemy;
+    [HideInInspector] public GameObject enemy;
 
     private void Awake()
     {
         _light = GetComponent<Light>();
-        flickerTime = new float[2] { 0.5f, 1.5f };
-        _enemy = FindObjectOfType<EnemyFlickerLightsInVicinity>()?.gameObject;
+        flickerTime = new float[] { 0.25f, .75f };
 
         _sconceRenderer = GetComponentInParent<Renderer>();
         GameObject lightAudioManager = GameObject.Find("LightAudioManager");
@@ -33,7 +31,7 @@ public class LightFlicker : MonoBehaviour
 
     private void Start()
     {
-        if (shouldFlicker && _enemy != null)
+        if (shouldFlicker && enemy != null)
         {
             StartFlickering();
         }
@@ -41,7 +39,7 @@ public class LightFlicker : MonoBehaviour
 
     public void StartFlickering()
     {
-        if (_flickerCoroutine == null && _enemy != null)
+        if (_flickerCoroutine == null && enemy != null)
         {
             _flickerCoroutine = StartCoroutine(FlickerLights());
         }

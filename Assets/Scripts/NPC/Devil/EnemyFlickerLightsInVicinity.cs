@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,15 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
 {
     [SerializeField] private float radius = 10.0f;
     private List<LightFlicker> _currentFlickeringLights = new List<LightFlicker>();
+
+    private void Awake()
+    {
+        LightFlicker[] lights = FindObjectsOfType<LightFlicker>();
+        foreach (var light in lights)
+        {
+            light.enemy = gameObject;
+        }
+    }
 
     private void Update()
     {
@@ -56,7 +66,7 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
