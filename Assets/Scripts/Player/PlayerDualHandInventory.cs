@@ -101,8 +101,8 @@ public class PlayerDualHandInventory : MonoBehaviour
                     Debug.Log("Moving to " + newObject.name + "'s ghost placement position.");
                     _inventorySlots[currentIndexSelected].transform.position =
                         newObject.transform.Find("GhostPlacement").position;
-                    _inventorySlots[currentIndexSelected].transform.eulerAngles =
-                        newObject.transform.Find("GhostPlacement").eulerAngles;
+                    _inventorySlots[currentIndexSelected].transform.localRotation =
+                        newObject.transform.Find("GhostPlacement").localRotation;
                     _inventorySlots[currentIndexSelected].transform.GetComponent<MeshRenderer>().enabled = true;
                     _inventorySlots[currentIndexSelected].transform.GetComponent<Collider>().enabled = true;
                 }
