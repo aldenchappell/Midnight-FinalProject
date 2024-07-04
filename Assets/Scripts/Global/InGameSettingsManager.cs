@@ -52,7 +52,6 @@ public class InGameSettingsManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad((gameObject));
-            InitializePostProcessing();
             LoadSettings();
         }
         else
@@ -146,36 +145,18 @@ public class InGameSettingsManager : MonoBehaviour
         PlayerPrefs.SetInt(HeartbeatSoundsPrefKey, enable ? 1 : 0);
         PlayerPrefs.Save();
     }
-    
-    private void InitializePostProcessing()
-    {
-        _postProcessVolume = GameObject.Find("ExposureCam").GetComponent<PostProcessVolume>();
-        if (_postProcessVolume != null && _postProcessVolume.profile != null)
-        {
-            _postProcessVolume.profile.TryGetSettings(out _autoExposure);
-        }
-    }
 
     public void SetBrightness(float value)
     {
         float clampedBrightness = Mathf.Clamp(value, minBrightness, maxBrightness);
-
-        if (_autoExposure != null)
-        {
-            _autoExposure.keyValue.value = clampedBrightness;
-        }
-        else
-        {
-            Debug.Log("exposure is null");
-        }
-
+        RenderSettings.ambientLight = Color.white * clampedBrightness;
         PlayerPrefs.SetFloat(BrightnessPrefKey, clampedBrightness);
         PlayerPrefs.Save();
     }
-
+    
     public void InitializeBrightness()
     {
-        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, 0.5f);
+        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, .25f);
         SetBrightness(brightness);
     }
     public void ToggleFootsteps(bool enable)

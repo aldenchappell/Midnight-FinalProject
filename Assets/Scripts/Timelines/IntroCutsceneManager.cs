@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,15 @@ public class IntroCutsceneManager : MonoBehaviour
     public float changeTime;
     //public string sceneName;
     public PlayableDirector timeline;  // Reference to the PlayableDirector component
-    public GameObject player; 
+    public GameObject player;
 
-    // Update is called once per frame
+    private GameObject _camera;
+
+    private void Awake()
+    {
+        _camera = GameObject.Find("MainCamera");
+    }
+    
     void Update()
     {
         // Check if the space bar is pressed or if the changeTime has elapsed
@@ -25,9 +32,11 @@ public class IntroCutsceneManager : MonoBehaviour
            
             
             timeline.Stop();
+            player.SetActive(true);
+            _camera.SetActive(true);
             // Optionally, deactivate the GameObject that holds the timeline
             timeline.gameObject.SetActive(false);
-            player.SetActive(true);
+            
             
             // Optionally, deactivate this GameObject
             // gameObject.SetActive(false);

@@ -48,9 +48,6 @@ public class ElevatorController : MonoBehaviour
             player.transform.position = lobbySpawnPosition.position;
             player.transform.localRotation = lobbySpawnPosition.localRotation;
         }
-        
-        //SceneTransitionManager.UpdatePreviouslyLoadedScene(SceneManager.GetActiveScene().name);
-        //Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
     }
 
     private void Start()
@@ -136,7 +133,7 @@ public class ElevatorController : MonoBehaviour
 
     private IEnumerator WaitForLevelEndAnimation()
     {
-        yield return new WaitForSeconds(timeBeforeLoadingLevel - 3.0f);
+        yield return new WaitForSeconds(timeBeforeLoadingLevel - 2.0f);
         playerAnim.SetTrigger("End");
     }
     
@@ -268,8 +265,9 @@ public class ElevatorController : MonoBehaviour
         yield return new WaitForSeconds(elevatorDingSound.length + 0.5f);
 
         _elevatorAudioSource.PlayOneShot(elevatorMovingSound);
-
-        yield return new WaitForSeconds(timeBeforeLoadingLevel);
+        StartCoroutine(WaitForLevelEndAnimation());
+        
+        yield return new WaitForSeconds(timeBeforeLoadingLevel - 1);
         
         SceneTransitionManager.UpdatePreviouslyLoadedScene(SceneManager.GetActiveScene().name);
 
