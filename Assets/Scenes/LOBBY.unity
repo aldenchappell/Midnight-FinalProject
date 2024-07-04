@@ -6227,7 +6227,7 @@ MonoBehaviour:
   isGlobal: 1
   blendDistance: 0
   weight: 1
-  priority: 0
+  priority: 100
 --- !u!65 &510319902
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27460,8 +27460,24 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 113800927778067133, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_BackGroundColor.a
-      value: 0
+      propertyPath: m_Depth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 113800927778067133, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: near clip plane
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 113800927778067133, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 652324671488222968, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 652324671488222968, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 16351
       objectReference: {fileID: 0}
     - target: {fileID: 1030113448943600088, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_SizeDelta.x

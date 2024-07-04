@@ -1,11 +1,10 @@
-using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BrightnessSlider : MonoBehaviour
 {
     private Slider _brightnessSlider;
+
     private void Awake()
     {
         _brightnessSlider = GetComponent<Slider>();
@@ -17,8 +16,10 @@ public class BrightnessSlider : MonoBehaviour
         _brightnessSlider.value = savedBrightness;
     }
 
+
     public void OnBrightnessSliderValueChanged(float value)
     {
+        //Debug.Log("Brightness slider value changed: " + value);
         InGameSettingsManager.Instance.SetBrightness(value);
     }
 }

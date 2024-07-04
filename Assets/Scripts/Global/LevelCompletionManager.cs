@@ -168,6 +168,7 @@ public class LevelCompletionManager : MonoBehaviour
             //game completed
             //ResetGame();
             ResetPuzzles();
+            ResetGame();
         }
         InGameSettingsManager.Instance.LoadSettings();
     }
@@ -184,7 +185,8 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
-        ResetPuzzles();
+        //ResetPuzzles();
+        //ResetGame();
     }
     
     public void OnKeySpawn()

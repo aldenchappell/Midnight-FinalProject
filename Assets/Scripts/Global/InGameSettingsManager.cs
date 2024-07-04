@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class InGameSettingsManager : MonoBehaviour
 {
@@ -38,6 +40,9 @@ public class InGameSettingsManager : MonoBehaviour
     public float minMouseSensitivity = 10.0f;
     public float maxMouseSensitivity = 200.0f;
     
+    private PostProcessVolume _postProcessVolume;
+    private AutoExposure _autoExposure;
+    
     //Brightness
     public float minBrightness = 0.01f;
     public float maxBrightness = .025f;
@@ -47,6 +52,7 @@ public class InGameSettingsManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad((gameObject));
+            InitializePostProcessing();
             LoadSettings();
         }
         else
@@ -141,20 +147,37 @@ public class InGameSettingsManager : MonoBehaviour
         PlayerPrefs.Save();
     }
     
+    private void InitializePostProcessing()
+    {
+        _postProcessVolume = GameObject.Find("ExposureCam").GetComponent<PostProcessVolume>();
+        if (_postProcessVolume != null && _postProcessVolume.profile != null)
+        {
+            _postProcessVolume.profile.TryGetSettings(out _autoExposure);
+        }
+    }
+
     public void SetBrightness(float value)
     {
         float clampedBrightness = Mathf.Clamp(value, minBrightness, maxBrightness);
-        RenderSettings.ambientLight = Color.white * clampedBrightness;
+
+        if (_autoExposure != null)
+        {
+            _autoExposure.keyValue.value = clampedBrightness;
+        }
+        else
+        {
+            Debug.Log("exposure is null");
+        }
+
         PlayerPrefs.SetFloat(BrightnessPrefKey, clampedBrightness);
         PlayerPrefs.Save();
     }
-    
+
     public void InitializeBrightness()
     {
-        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, .25f);
+        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, 0.5f);
         SetBrightness(brightness);
     }
-
     public void ToggleFootsteps(bool enable)
     {
         enableFootstepSounds = enable;
@@ -207,6 +230,7 @@ public class InGameSettingsManager : MonoBehaviour
         SetQualityLevel(GetQualityLevel());
         InitializeBrightness();
         InitializeVolumes(); 
+        InitializeBrightness();
     }
 
     private void InitializeVolumes()
