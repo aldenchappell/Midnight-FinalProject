@@ -9,6 +9,8 @@ public class TaskController : MonoBehaviour
     [SerializeField] private GameObject taskUI;
     [SerializeField] private Animator taskUIAnimator;
     [SerializeField] private TMP_Text objectiveText;
+    [SerializeField] private AudioSource canvasSource;
+    [SerializeField] private AudioClip taskSFX;
 
     private bool _isTaskUIOpen = false;
     
@@ -18,6 +20,8 @@ public class TaskController : MonoBehaviour
         {
             _isTaskUIOpen = !_isTaskUIOpen;
 
+            canvasSource.PlayOneShot(taskSFX);
+            
             if (_isTaskUIOpen)
             {
                 taskUI.SetActive(true);
