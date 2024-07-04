@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.04
   m_LinearFogStart: -44.02
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.7076095, g: 0.8207547, b: 0.70073867, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041432478, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.041489277, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8742,6 +8742,7 @@ MonoBehaviour:
   description: '* Find the fuse.'
   isCompleted: 0
   order: 0
+  disableAtRuntime: 0
 --- !u!1001 &702087048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8953,7 +8954,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactionIcon: {fileID: 21300000, guid: a78af9cffe164384fb3c1dc91b66dae5, type: 3}
-  interactableIconSize: {x: 50, y: 50}
+  interactableIconSize: {x: 30, y: 30}
   interactableID: 0
   highlightInteractableObjectController: {fileID: 0}
 --- !u!65 &718002598
@@ -9021,6 +9022,7 @@ MonoBehaviour:
   description: '* Turn the power back on.'
   isCompleted: 0
   order: 1
+  disableAtRuntime: 0
 --- !u!1001 &722254187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21825,6 +21827,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8755677446674373861, guid: a44a0e740062dc54688ffd76575bcf78, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 07294ad2c3a25d6419d9e0efe4d05e2e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27457,14 +27463,6 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.a
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 204672913157765811, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1004462200556490102, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.9980469
-      objectReference: {fileID: 0}
     - target: {fileID: 1030113448943600088, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_SizeDelta.x
       value: -2.1
@@ -27472,6 +27470,10 @@ PrefabInstance:
     - target: {fileID: 1030113448943600088, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 1.0499878
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126664445299647486, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2431997135297008152, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27564,6 +27566,10 @@ PrefabInstance:
     - target: {fileID: 7052851820613503030, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000166893
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400695589698320180, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7591035619111048940, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_AnchorMax.y
@@ -27660,10 +27666,6 @@ PrefabInstance:
     - target: {fileID: 8066200669116031393, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8291665447495844239, guid: 2bf394e73b3ca044d9fb8a1caae0e5ed, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
