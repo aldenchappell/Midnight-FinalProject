@@ -8,10 +8,13 @@ using UnityEngine.SceneManagement;
 public class FuseBox : MonoBehaviour
 {
     [SerializeField] private GameObject fuseObject;
+    [SerializeField] GameObject puzzleUI;
+
     private AudioSource _radioAudio;
     private List<Light> _lobbyLights;
     private List<Material> _lobbyEmissives;
     private ElevatorController _elevator;
+    private GameObject _arms;
 
     private Animator _animator;
 
@@ -23,6 +26,7 @@ public class FuseBox : MonoBehaviour
 
     private PlayerDualHandInventory _inventory;
     private FirstPersonController _FPC;
+    private PuzzleEscape _escape;
 
     private bool _isActive;
     private bool _fuseIn;
@@ -33,6 +37,8 @@ public class FuseBox : MonoBehaviour
 
     private void Awake()
     {
+        _arms = GameObject.Find("Arms");
+        _escape = GetComponent<PuzzleEscape>();
         _inventory = GameObject.FindAnyObjectByType<PlayerDualHandInventory>();
         _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
         _mainCam = GameObject.Find("MainCamera").GetComponent<Camera>();
@@ -63,6 +69,7 @@ public class FuseBox : MonoBehaviour
         InitializeLighting();
 
         //instead of checking the hasCompletedLobby variable, check the stored playerprefs value.
+
         if (PlayerPrefs.GetInt("LobbyPowered", 0) == 1)
         {
             PowerLobby();
@@ -140,8 +147,11 @@ public class FuseBox : MonoBehaviour
     {
         _isActive = !_isActive;
         _boxCollider.enabled = !_boxCollider.enabled;
+        _escape.ChangeIsActive();
         if (_isActive)
         {
+            puzzleUI.SetActive(true);
+            _arms.SetActive(false);
             _playerCam.Priority = 0;
             _puzzleCam.Priority = 10;
             _FPC.ToggleCanMove();
@@ -151,6 +161,8 @@ public class FuseBox : MonoBehaviour
         }
         else
         {
+            puzzleUI.SetActive(false);
+            _arms.SetActive(true);
             _playerCam.Priority = 10;
             _puzzleCam.Priority = 0;
             _FPC.ToggleCanMove();
@@ -232,6 +244,7 @@ public class FuseBox : MonoBehaviour
             {
                 if (item.transform.CompareTag(fuseShadow.tag))
                 {
+                    fuseShadow.GetComponent<Renderer>().material = fuseShadow.transform.parent.transform.GetChild(1).GetComponent<Renderer>().material;
                     AnimationsTrigger("Place");
                     _inventory.RemoveObject = item;
                     _fuseIn = true;
