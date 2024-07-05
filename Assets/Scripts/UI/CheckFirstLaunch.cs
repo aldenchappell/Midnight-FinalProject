@@ -16,5 +16,11 @@ public class CheckFirstLaunch : MonoBehaviour
             PlayerPrefs.SetInt("FirstLaunch", 1); 
             PlayerPrefs.Save(); 
         }
+        else
+        {
+            Debug.Log("Not first launch");
+            PlayerPrefs.SetInt("FirstLaunch", 0);
+            PlayerPrefs.Save();
+        }
     }
 }
