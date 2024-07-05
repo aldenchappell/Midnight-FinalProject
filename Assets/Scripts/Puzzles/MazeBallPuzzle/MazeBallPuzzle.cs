@@ -16,6 +16,7 @@ public class MazeBallPuzzle : MonoBehaviour
     [SerializeField] private Transform mazePuzzleBallSpawnPos;
     [SerializeField] private Transform startingPosition;
     [SerializeField] private Transform inPuzzlePosition;
+    [SerializeField] GameObject colliderChild;
     
     
     [Header("Tilting")]
@@ -117,7 +118,7 @@ public class MazeBallPuzzle : MonoBehaviour
             HandleTimer(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && _playerInteractableController.IsLookingAtInteractableObject(gameObject))
+        if (Input.GetMouseButtonDown(1) && _isInPuzzle)
         {
             _puzzleEscape.EscapePressed?.Invoke();
         }
@@ -152,10 +153,14 @@ public class MazeBallPuzzle : MonoBehaviour
         InitializeBall();
 
         _firstPersonController.ToggleCanMove();
-
+        if(isActive)
+        {
+            colliderChild.layer = LayerMask.NameToLayer("Default");
+        }
         if (!isActive)
         {
             ResetRotation();
+            colliderChild.layer = LayerMask.NameToLayer("InteractableObject");
         }
 
         ToggleCamera();
