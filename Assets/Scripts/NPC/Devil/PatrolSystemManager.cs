@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PatrolSystemManager : MonoBehaviour
 {
@@ -12,6 +14,12 @@ public class PatrolSystemManager : MonoBehaviour
     private float _currentTime;
     private GameObject[] _allActiveDemonDoors;
 
+    private PlayerCameraShake _shakeCam;
+
+    private void Awake()
+    {
+        _shakeCam = FindObjectOfType<PlayerCameraShake>();
+    }
 
     public int DecreaseTimeToSpawn
     {
@@ -99,6 +107,8 @@ public class PatrolSystemManager : MonoBehaviour
     {
         Demon.SetActive(true);
         Debug.Log("Shaking player camera");
-        StartCoroutine(FindObjectOfType<PlayerCameraShake>().ShakeTime());
+        
+        if(_shakeCam != null)
+            _shakeCam.TriggerShake();
     }
 }

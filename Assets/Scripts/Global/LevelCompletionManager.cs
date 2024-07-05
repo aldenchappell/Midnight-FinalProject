@@ -19,7 +19,7 @@ public class LevelCompletionManager : MonoBehaviour
     public List<SO_Puzzle> level3Puzzles;
 
     private int _collectedKeys;
-    public HashSet<string> completedLevels = new HashSet<string>();
+    private HashSet<string> _completedLevels = new HashSet<string>();
     private HashSet<string> _completedPuzzles = new HashSet<string>();
 
     private AudioSource _audioSource;
@@ -74,13 +74,13 @@ public class LevelCompletionManager : MonoBehaviour
 
     private void SaveLevelCompletion(string levelName)
     {
-        completedLevels.Add(levelName);
+        _completedLevels.Add(levelName);
     }
     
     
     public bool IsLevelCompleted(string levelName)
     {
-        return completedLevels.Contains(levelName);
+        return _completedLevels.Contains(levelName);
     }
     
     
@@ -91,11 +91,6 @@ public class LevelCompletionManager : MonoBehaviour
             _completedPuzzles.Remove(puzzleName);
         }
         currentLevelPuzzles = new List<string>();
-        
-        //_completedPuzzles.Clear();
-       // completedLevels.Clear();
-       // currentLevelPuzzles.Clear();
-        //loadedLevels.Clear();
     }
 
     public void ResetGame()
@@ -107,8 +102,6 @@ public class LevelCompletionManager : MonoBehaviour
     public void FinishGame()
     {
         allLevelsCompleted = true;
-        // Handle other game finish actions if needed
-        // Ensure to keep the lobby powered until the game is won
         PowerLobbyIfNeeded();
     }
 
@@ -155,7 +148,7 @@ public class LevelCompletionManager : MonoBehaviour
     public void CompletePuzzleInScene(string sceneName, string puzzleName)
     {
         string levelName = sceneName.ToUpper();
-        if (!completedLevels.Contains(levelName))
+        if (!_completedLevels.Contains(levelName))
         {
             //Debug.Log("Level " + levelName + " not found in completed levels");
             return;

@@ -8,10 +8,11 @@ public class InGameSettingsManager : MonoBehaviour
     public static InGameSettingsManager Instance;
     
     //[ColoredHeader("In Game Settings", "#FF00FF")] 
-    public bool enableHeadBobbing;
-    public bool enableFootstepSounds;
-    public bool enableHeartbeatSounds;
+    public bool enableHeadBobbing = true;
+    public bool enableFootstepSounds = true;
+    public bool enableHeartbeatSounds = true;
     public bool enableCompass = true;
+    public bool enableShaking = true;
     
     //for testing purposes only
     public bool enableJumping = false;
@@ -58,23 +59,6 @@ public class InGameSettingsManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        CheckFirstLaunch();
-    }
-    
-    void CheckFirstLaunch()
-    {
-        if (!PlayerPrefs.HasKey("FirstLaunch"))
-        {
-            Debug.Log("First Launch");
-            PlayerPrefs.DeleteAll(); 
-            PlayerPrefs.SetInt("FirstLaunch", 1); 
-            PlayerPrefs.Save(); 
-        }
-        
     }
     
     public float GetMouseSensitivity()

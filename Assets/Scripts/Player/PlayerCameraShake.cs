@@ -1,63 +1,115 @@
-using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class PlayerCameraShake : MonoBehaviour
 {
-    private CinemachineVirtualCamera _shakeCam;
-    private float _shakeIntensity = 1f;
-    private float _shakeTime = .2f;
-
+    private CinemachineVirtualCamera _shakeCam; 
+    [SerializeField] private NoiseSettings handheldNormalMild;
+    [SerializeField] private NoiseSettings shakeProfile;
+    private CinemachineBasicMultiChannelPerlin _perlinChannel;
+    
+    private const float ShakeIntensity = 3f;
+    private const float ShakeTime = 3.1f;
     private float _timer;
-    private CinemachineBasicMultiChannelPerlin _cbmcp;
 
-    public bool _shouldShake;
+    [SerializeField] private Transform debrisPos;
+    [SerializeField] private GameObject fallingDebris;
+    [SerializeField] private AudioClip fallingDebrisClip;
+    private AudioSource _audio;
+    private bool _shaking;
+    private GameObject _debris;
     private void Awake()
     {
         _shakeCam = GetComponent<CinemachineVirtualCamera>();
+        _audio = GetComponentInChildren<AudioSource>();
+        
+        if (_shakeCam != null)
+        {
+            _perlinChannel = _shakeCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        }
     }
 
     private void Update()
     {
-        if (_shouldShake)
+        if (InGameSettingsManager.Instance.enableShaking)
         {
-            Shake();
-            StartCoroutine(ShakeTime());
-        }
+            #region Cheats
+#if UNITY_EDITOR
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                TriggerShake();
+            }
 
-        if (_timer > 0)
-        {
-            _timer -= Time.deltaTime;
-
-            if (_timer <= 0)
+            if (_shaking && Input.GetKeyDown(KeyCode.L))
             {
                 StopShake();
             }
+#endif
+            #endregion
+            if (_timer > 0)
+            {
+                _timer -= Time.deltaTime;
+                if (_timer <= 0)
+                {
+                    StopShake();
+                }
+            }
+        }
+        
+        else
+        {
+            StopShake();
         }
     }
 
-    public void Shake()
+    public void TriggerShake()
     {
-        _cbmcp = _shakeCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        _cbmcp.m_AmplitudeGain = _shakeIntensity;
+        if (_perlinChannel != null && !_shaking)
+        {
+            _perlinChannel.m_NoiseProfile = shakeProfile;
+            _perlinChannel.m_AmplitudeGain = ShakeIntensity;
+            _timer = ShakeTime;
+            _shaking = true;
+            StartCoroutine(FallingDebris());
 
-        _timer = _shakeTime;
+            if (_audio != null)
+                _audio.PlayOneShot(fallingDebrisClip);
+        }
     }
 
     private void StopShake()
     {
-        _cbmcp = _shakeCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        _cbmcp.m_AmplitudeGain = 0f;
+        if (_perlinChannel != null)
+        {
+            _perlinChannel.m_NoiseProfile = handheldNormalMild;
+            _perlinChannel.m_AmplitudeGain = 0f;
 
-        _timer = 0;
+            _shaking = false;
+        }
     }
 
-    public IEnumerator ShakeTime()
+    private IEnumerator FallingDebris()
     {
-        _shouldShake = true;
-        yield return new WaitForSeconds(2.0f);
-        _shouldShake = false;
+        _debris = Instantiate(fallingDebris, debrisPos.position, debrisPos.localRotation);
+        var debrisParticleSystem = _debris.GetComponent<ParticleSystem>();
+        _debris.transform.SetParent(debrisPos);
+        debrisParticleSystem.Play();
+        
+        yield return new WaitForSeconds(ShakeTime);
+        
+        var emissionModule = debrisParticleSystem.emission;
+        float extendedDebrisLifetime = 1.0f; 
+        float emissionRate = emissionModule.rateOverTime.constant;
+        float emissionRateReduction = emissionRate / extendedDebrisLifetime;
+
+        for (float i = 0; i < extendedDebrisLifetime; i += Time.deltaTime)
+        {
+            emissionModule.rateOverTime = Mathf.Max(0.0f, emissionRate - (emissionRateReduction * i));
+            yield return null;
+        }
+        
+        debrisParticleSystem.Stop();
+        Destroy(_debris, debrisParticleSystem.main.startLifetime.constant);
     }
 }

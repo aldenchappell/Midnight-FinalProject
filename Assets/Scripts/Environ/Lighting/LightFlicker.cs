@@ -70,7 +70,7 @@ public class LightFlicker : MonoBehaviour
     private void SetLightState(bool state)
     {
         _light.enabled = state;
-        
-        _sconceRenderer.material = state ? sconceOnMat : sconceOffMat;
+        if(lamp)
+            _sconceRenderer.material = state ? sconceOnMat : sconceOffMat;
     }
 }

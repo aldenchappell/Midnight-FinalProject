@@ -201,11 +201,7 @@ public class FuseBox : MonoBehaviour
             }
             if (objectHit.CompareTag("Lever") && _fuseIn)
             {
-                LevelCompletionManager.Instance.hasCompletedLobby = true;
                 PowerLobby(); // Only trigger power if fuse is in and lever is pulled
-                
-                PlayerPrefs.SetInt("LobbyPowered", 1);
-                PlayerPrefs.Save();
             }
         }
     }
@@ -221,10 +217,15 @@ public class FuseBox : MonoBehaviour
             light.enabled = true;
         }
 
+        LevelCompletionManager.Instance.hasCompletedLobby = true;
+        PlayerPrefs.SetInt("LobbyPowered", 1);
+        PlayerPrefs.Save();
+        
         
         if (_objective != null)
         {
             _objective.CompleteObjective();
+            
         }
         
         //turn on all lamps and enable emissives
@@ -267,11 +268,8 @@ public class FuseBox : MonoBehaviour
             else
             {
                 _puzzle.CompletePuzzle();
-                if (!LevelCompletionManager.Instance.hasCompletedLobby)
-                    LevelCompletionManager.Instance.hasCompletedLobby = true;
             }
 
         }
     }
-
 }
