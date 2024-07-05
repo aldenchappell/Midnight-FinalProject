@@ -73,6 +73,10 @@ public class SlidingImagePuzzle : MonoBehaviour
         {
             _puzzleEscape.EscapePressed?.Invoke();
         }
+        if(Input.GetMouseButtonDown(1) && puzzleUI.activeSelf)
+        {
+            TogglePuzzleUI();
+        }
     }
 
     public void TogglePuzzleUI()
