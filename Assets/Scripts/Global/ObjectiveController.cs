@@ -7,7 +7,7 @@ public class ObjectiveController : MonoBehaviour
     private List<Objective> _objectives = new List<Objective>();
     public AudioClip pencilSound;
 
-    private void Start()
+    private void Awake()
     {
         _taskController = FindObjectOfType<TaskController>();
         if (_taskController == null)
@@ -23,6 +23,7 @@ public class ObjectiveController : MonoBehaviour
     public void RegisterObjective(Objective objective)
     {
         _objectives.Add(objective);
+        UpdateTaskList();
     }
 
     public void UpdateTaskList()

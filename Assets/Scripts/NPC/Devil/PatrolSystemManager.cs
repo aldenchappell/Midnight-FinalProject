@@ -98,10 +98,7 @@ public class PatrolSystemManager : MonoBehaviour
     private void SetDemonActive()
     {
         Demon.SetActive(true);
+        Debug.Log("Shaking player camera");
+        StartCoroutine(FindObjectOfType<PlayerCameraShake>().ShakeTime());
     }
-
-
-
-    
-
 }

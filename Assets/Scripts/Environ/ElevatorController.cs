@@ -48,6 +48,7 @@ public class ElevatorController : MonoBehaviour
             player.transform.position = lobbySpawnPosition.position;
             player.transform.localRotation = lobbySpawnPosition.localRotation;
         }
+        
     }
 
     private void Start()
@@ -133,7 +134,7 @@ public class ElevatorController : MonoBehaviour
 
     private IEnumerator WaitForLevelEndAnimation()
     {
-        yield return new WaitForSeconds(timeBeforeLoadingLevel - 2.0f);
+        yield return new WaitForSeconds(timeBeforeLoadingLevel - 3.5f);
         playerAnim.SetTrigger("End");
     }
     

@@ -111,6 +111,7 @@ public class PlayerInteractableController : MonoBehaviour
                     && !LevelCompletionManager.Instance.hasCompletedLobby
                     && !interactableObject.CompareTag("Fuse")
                     && !interactableObject.CompareTag("Skull")
+                    && !interactableObject.CompareTag("Bell")
                     && !interactableObject.GetComponent<NoteController>()
                     && !interactableObject.GetComponent<FuseBox>())
                 {

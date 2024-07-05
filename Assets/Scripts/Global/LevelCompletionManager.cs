@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class LevelCompletionManager : MonoBehaviour
 {
@@ -101,6 +102,27 @@ public class LevelCompletionManager : MonoBehaviour
     {
         _collectedKeys = 0;
         allLevelsCompleted = false;
+    }
+    
+    public void FinishGame()
+    {
+        allLevelsCompleted = true;
+        // Handle other game finish actions if needed
+        // Ensure to keep the lobby powered until the game is won
+        PowerLobbyIfNeeded();
+    }
+
+    private void PowerLobbyIfNeeded()
+    {
+        if (allLevelsCompleted && !hasCompletedLobby)
+        {
+            hasCompletedLobby = true;
+            PlayerPrefs.SetInt("LobbyPowered", 1);
+            PlayerPrefs.Save();
+            
+            if(SceneManager.GetActiveScene().name == "LOBBY")
+                FindObjectOfType<FuseBox>().PowerLobby();
+        }
     }
 
     public void StartLevel(string levelName, List<SO_Puzzle> puzzles)
@@ -215,10 +237,5 @@ public class LevelCompletionManager : MonoBehaviour
     public void UpdateKeyCount(int keys)
     {
         _collectedKeys = keys;
-    }
-
-    public void FinishGame()
-    {
-        allLevelsCompleted = true;
     }
 }

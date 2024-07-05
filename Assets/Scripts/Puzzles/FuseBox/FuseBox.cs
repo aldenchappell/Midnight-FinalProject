@@ -29,6 +29,7 @@ public class FuseBox : MonoBehaviour
     private bool _canExit;
 
     private Puzzle _puzzle;
+    private Objective _objective;
 
     private void Awake()
     {
@@ -52,16 +53,25 @@ public class FuseBox : MonoBehaviour
 
         _radioAudio = GameObject.Find("LargeRadio").GetComponent<AudioSource>();
         _radioAudio.enabled = false;
+        _objective = GetComponent<Objective>();
+        
+        
     }
 
     private void Start()
     {
         InitializeLighting();
 
-        if (LevelCompletionManager.Instance.hasCompletedLobby)
+        //instead of checking the hasCompletedLobby variable, check the stored playerprefs value.
+        if (PlayerPrefs.GetInt("LobbyPowered", 0) == 1)
         {
             PowerLobby();
-            GameObject.Find("Fuse").SetActive(false);
+            GameObject fuse = GameObject.Find("Fuse");
+            Renderer fuseRend = fuse.GetComponent<Renderer>();
+            fuseRend.enabled = false;
+            Destroy(fuse.GetComponent<InteractableObject>());
+            
+            
             Destroy(this.gameObject.GetComponent<InteractableObject>());
         }
         else
@@ -189,7 +199,7 @@ public class FuseBox : MonoBehaviour
     }
 
 
-    private void PowerLobby()
+    public void PowerLobby()
     {
         AnimationsTrigger("PowerOn");
 
@@ -199,10 +209,10 @@ public class FuseBox : MonoBehaviour
             light.enabled = true;
         }
 
-        Objective objective = GetComponent<Objective>();
-        if (objective != null)
+        
+        if (_objective != null)
         {
-            objective.CompleteObjective();
+            _objective.CompleteObjective();
         }
         
         //turn on all lamps and enable emissives
@@ -244,6 +254,8 @@ public class FuseBox : MonoBehaviour
             else
             {
                 _puzzle.CompletePuzzle();
+                if (!LevelCompletionManager.Instance.hasCompletedLobby)
+                    LevelCompletionManager.Instance.hasCompletedLobby = true;
             }
 
         }
