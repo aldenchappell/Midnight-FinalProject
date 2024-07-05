@@ -13,6 +13,7 @@ public class SlidingImagePuzzle : MonoBehaviour
     private Puzzle _puzzle;
     
     [SerializeField] private GameObject puzzleUI;
+    [SerializeField] GameObject puzzleHud;
 
     [SerializeField] private Sprite[] puzzleSprites;
     [SerializeField] private List<Image> gridSlotImages;
@@ -87,13 +88,17 @@ public class SlidingImagePuzzle : MonoBehaviour
         firstPersonController.controller.enabled = !puzzleUI.activeSelf;
         if (puzzleUI.activeSelf)
         {
+            print("Blarn");
             GlobalCursorManager.Instance.EnableCursor();
             _playerUI.SetActive(false);
+            GetComponent<Collider>().enabled = false;
         }
         else
         {
             GlobalCursorManager.Instance.DisableCursor();
             _playerUI.SetActive(true);
+            GetComponent<Collider>().enabled = true;
+
         }
         
         ToggleCamera();

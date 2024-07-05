@@ -23,13 +23,16 @@ public class DaVinciPuzzle : MonoBehaviour
     private CinemachineVirtualCamera _playerCam;
     private CinemachineVirtualCamera _puzzleCam;
     private Camera _mainCamera;
+    private GameObject _arms;
 
     private int _currentDialIndex;
     private bool _isActive;
+    private bool _canExit;
 
     private FirstPersonController _FPC;
     private AudioSource _puzzleAudio;
     private PatrolSystemManager _patrol;
+    private PuzzleEscape _escape;
 
 
     private int[] _dial1;
@@ -41,6 +44,8 @@ public class DaVinciPuzzle : MonoBehaviour
 
     private void Awake()
     {
+        _arms = GameObject.Find("Arms");
+        _escape = GetComponent<PuzzleEscape>();
         _currentDialIndex = 0;
         _FPC = GameObject.FindFirstObjectByType<FirstPersonController>();
         _puzzleAudio = GetComponent<AudioSource>();
@@ -64,7 +69,9 @@ public class DaVinciPuzzle : MonoBehaviour
         _dial3[0] = 0;
         _dial4[0] = 0;
 
-        
+        _canExit = false;
+
+
     }
 
     private void Update()
@@ -167,6 +174,10 @@ public class DaVinciPuzzle : MonoBehaviour
             AdjustTargetDialLetter(1, _currentDialIndex);
             RotateUp(dials[_currentDialIndex].gameObject);
         }
+        if(Input.GetMouseButtonDown(1) && _canExit)
+        {
+            ActivatePuzzleUI();
+        }
         //print(_dial1[0] + " " + _dial2[0] + " " + _dial3[0] + " " + _dial4[0]);
     }
 
@@ -212,9 +223,11 @@ public class DaVinciPuzzle : MonoBehaviour
 
     public void ActivatePuzzleUI()
     {
+        _escape.ChangeIsActive();
         puzzleUI.SetActive(!puzzleUI.activeSelf);
         if(puzzleUI.activeSelf)
         {
+            GetComponent<Collider>().enabled = false;
             _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             FindObjectOfType<GlobalCursorManager>().EnableCursor();
             _FPC.ToggleCanMove();
@@ -222,9 +235,12 @@ public class DaVinciPuzzle : MonoBehaviour
             _playerCam.Priority = 0;
             _puzzleCam.Priority = 5;
             _isActive = true;
+            _arms.SetActive(false);
+            Invoke("ChangeExitBool", 1f);
         }
         else
         {
+            GetComponent<Collider>().enabled = true;
             _mainCamera.transform.GetChild(2).gameObject.SetActive(true);
             FindObjectOfType<GlobalCursorManager>().DisableCursor();
             _FPC.ToggleCanMove();
@@ -235,10 +251,17 @@ public class DaVinciPuzzle : MonoBehaviour
             _playerCam.Priority = 5;
             _puzzleCam.Priority = 0;
             _isActive = false;
+            _arms.SetActive(true);
+            _canExit = false;
         }
         
     }
     #endregion
+
+    private void ChangeExitBool()
+    {
+        _canExit = true;
+    }
 
     #region Rotate Dials
     public void RotateUp(GameObject dial)

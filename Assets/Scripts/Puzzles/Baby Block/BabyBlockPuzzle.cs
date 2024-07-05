@@ -8,6 +8,7 @@ public class BabyBlockPuzzle : MonoBehaviour
 {
     [Header("Puzzle UI")]
     [SerializeField] GameObject puzzleUI;
+    [SerializeField] GameObject puzzleHud;
     [Header("Animation Child")]
     [SerializeField] GameObject animationChild;
     [Header("Complete Material")]
@@ -28,6 +29,7 @@ public class BabyBlockPuzzle : MonoBehaviour
     private GlobalCursorManager _cursor;
     private Camera _mainCamera;
     private PuzzleEscape _puzzleEscape;
+    private GameObject _arms;
 
     private bool _isActive;
     private bool _canExit;
@@ -37,6 +39,7 @@ public class BabyBlockPuzzle : MonoBehaviour
 
     private void Awake()
     {
+        _arms = GameObject.Find("Arms");
         _playerCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
         _puzzleCam = GameObject.Find("BabyBlockPuzzleCam").GetComponent<CinemachineVirtualCamera>();
         _mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
@@ -72,6 +75,8 @@ public class BabyBlockPuzzle : MonoBehaviour
         _puzzleEscape.ChangeIsActive();
         if (puzzleUI.activeSelf)
         {
+            puzzleHud.SetActive(true);
+            _arms.SetActive(false);
             _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             GetComponent<Collider>().enabled = false;
             _FPC.ToggleCanMove();
@@ -96,6 +101,8 @@ public class BabyBlockPuzzle : MonoBehaviour
         }
         else
         {
+            puzzleHud.SetActive(false);
+            _arms.SetActive(false);
             _mainCamera.transform.GetChild(2).gameObject.SetActive(true);
             GetComponent<Collider>().enabled = true;
             FindObjectOfType<GlobalCursorManager>().DisableCursor();
