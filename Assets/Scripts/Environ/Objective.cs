@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Objective : MonoBehaviour
 {
@@ -14,30 +13,21 @@ public class Objective : MonoBehaviour
     {
         _objectiveController = FindObjectOfType<ObjectiveController>();
         
-
-        if (LevelCompletionManager.Instance.hasCompletedLobby)
-        {
-            if (SceneManager.GetActiveScene().name == "LOBBY")
-            {
-                if(!GetComponent<LobbyDoorExit>() && !gameObject.CompareTag("CubbyKey"))
-                    CompleteObjective();
-            }
-        }
-        
         if (disableAtRuntime)
         {
             gameObject.SetActive(false);
         }
-
-        if (!LevelCompletionManager.Instance.allLevelsCompleted && GetComponent<LobbyDoorExit>())
-        {
-            Destroy(GetComponent<Objective>());
-        }
+        
+        
     }
 
     private void Start()
     {
-        _objectiveController.RegisterObjective(this);
+        if(!GetComponent<LobbyDoorExit>())
+            _objectiveController.RegisterObjective(this);
+        
+        if(GetComponent<LobbyDoorExit>() && LevelCompletionManager.Instance.allLevelsCompleted)
+            _objectiveController.RegisterObjective(this);
     }
 
     public void CompleteObjective()

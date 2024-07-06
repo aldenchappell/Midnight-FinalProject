@@ -7,13 +7,12 @@ public class KeyCubbyController : MonoBehaviour
     public List<InteractableObject> interactableKeyColliders = new List<InteractableObject>();
 
     private PlayerKeyController _playerKeyController;
-
     private AudioSource _audio;
     [SerializeField] private AudioClip placeKeySound;
     [SerializeField] private AudioClip invalidKeyPlacementSound;
 
     private bool _isReturnKeyObjectiveCompleted;
-
+    private Objective _returnKeyObjective;
     private ObjectiveController _objectiveController;
 
     private void Awake()
@@ -21,46 +20,32 @@ public class KeyCubbyController : MonoBehaviour
         _playerKeyController = FindObjectOfType<PlayerKeyController>();
         _audio = GetComponent<AudioSource>();
         _objectiveController = FindObjectOfType<ObjectiveController>();
-
-        if (!LevelCompletionManager.Instance.hasCompletedLobby) return;
+        if (LevelCompletionManager.Instance.hasCompletedLobby)
+        {
+            SetupLobbyObjectives();
+        }
     }
 
     private void Start()
     {
         InitializeKeySlots();
         SetupInteractionEvents();
-        SetupLobbyObjectives();
     }
 
     private void SetupLobbyObjectives()
     {
-        if (LevelCompletionManager.Instance.hasCompletedLobby)
+        if (LevelCompletionManager.Instance.hasKey && !_isReturnKeyObjectiveCompleted)
         {
-            if (LevelCompletionManager.Instance.hasKey && !_isReturnKeyObjectiveCompleted)
+            bool returnKeyObjectiveExists = _objectiveController.ObjectiveExists("* Return the key to the front desk.");
+
+            if (!returnKeyObjectiveExists)
             {
-                bool returnKeyObjectiveExists = _objectiveController.ObjectiveExists("* Return the key to the front desk.");
+                // Objective to return key to front desk
+                _returnKeyObjective = gameObject.AddComponent<Objective>();
+                _returnKeyObjective.description = "* Return the key to the front desk.";
+                _returnKeyObjective.order = 2;
 
-                if (!returnKeyObjectiveExists)
-                {
-                    //objective to return key to front desk
-                    Objective returnKeyObjective = gameObject.AddComponent<Objective>();
-                    returnKeyObjective.description = "* Return the key to the front desk.";
-                    returnKeyObjective.order = 2;
-
-                    // interaction listeners for each interactable key collider
-                    foreach (var interactable in interactableKeyColliders)
-                    {
-                        interactable.onInteraction.AddListener(() =>
-                        {
-                            returnKeyObjective.CompleteObjective();
-                            _isReturnKeyObjectiveCompleted = true;
-                            _objectiveController.UpdateTaskList();
-                            Debug.Log( interactable.onInteraction);
-                        });
-                    }
-
-                    _objectiveController.RegisterObjective(returnKeyObjective);
-                }
+                _objectiveController.RegisterObjective(_returnKeyObjective);
             }
         }
     }
@@ -90,6 +75,11 @@ public class KeyCubbyController : MonoBehaviour
             if (IsSlotAvailable(keyIndex))
             {
                 _playerKeyController.PlaceKeyInCubby(keyIndex);
+                if (_returnKeyObjective != null)
+                {
+                    _returnKeyObjective.CompleteObjective();
+                    _isReturnKeyObjectiveCompleted = true;
+                }
             }
             else
             {

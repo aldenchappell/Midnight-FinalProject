@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,6 +29,15 @@ public class PauseManager : MonoBehaviour
         }
     }
 
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus && GameIsPaused)
+        {
+            GlobalCursorManager.Instance.EnableCursor();
+            Debug.Log("Application now active");
+        }
+    }
+
     public void Resume()
     {
         // cursor state
@@ -37,22 +47,21 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
         // ui managing
         pauseMenuUI.SetActive(false);
-        
+
         GameIsPaused = false;
         AudioListener.pause = false;
         pauseSFX.Play();
 
-        
         HideBehindDoor[] hiderDoors = FindObjectsOfType<HideBehindDoor>();
-        
+
         foreach (var element in playerUIElements)
         {
             bool shouldBeActive = true;
-            
+
             if (element.gameObject.name.Contains("DOOR") || element.gameObject.name.Contains("Puzzle"))
             {
                 shouldBeActive = false;
-                
+
                 foreach (var hiderDoor in hiderDoors)
                 {
                     if (hiderDoor == null) return;
@@ -78,7 +87,7 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 0f;
         // ui managing
         pauseMenuUI.SetActive(true);
-        
+
         GameIsPaused = true;
         pauseSFX.Play();
         AudioListener.pause = true;

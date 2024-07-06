@@ -113,7 +113,8 @@ public class PlayerInteractableController : MonoBehaviour
                     && !interactableObject.CompareTag("Skull")
                     && !interactableObject.CompareTag("Bell")
                     && !interactableObject.GetComponent<NoteController>()
-                    && !interactableObject.GetComponent<FuseBox>())
+                    && !interactableObject.GetComponent<FuseBox>()
+                    && !interactableObject.GetComponent<OnlyDialogueNPC>())
                 {
                     SkullDialogueLineHolder.Instance.PlaySpecificClip(SkullDialogueLineHolder.Instance.findFuzeClip);
                 }

@@ -83,6 +83,6 @@ public class PatrolSystemManager : MonoBehaviour
         
         if(_shakeCam != null)
             _shakeCam.TriggerShake();
-        Demon.transform.GetChild(0).gameObject.SetActive(false);
+        //Demon.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

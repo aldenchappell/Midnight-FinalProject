@@ -22,9 +22,9 @@ public class EnemyStateController : MonoBehaviour
     private NavMeshAgent _agent;
     private EnemyAnimator _animator;
     private EnemySuspicionSystem _suspicion;
-    
-    
-    
+
+
+    private PlayerDeathController _playerDeathController;
     private void Awake()
     {
         _enemyVision = GetComponent<EnemyVision>();
@@ -32,6 +32,9 @@ public class EnemyStateController : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<EnemyAnimator>();
         _suspicion = GetComponent<EnemySuspicionSystem>();
+        _playerDeathController = FindObjectOfType<PlayerDeathController>();
+        
+        //ApplyCurrentStateBehaviour();
     }
 
     private void Start()
@@ -70,8 +73,8 @@ public class EnemyStateController : MonoBehaviour
 
     private void ApplyCurrentStateBehaviour()
     {
-        bool playerIsDead = FindObjectOfType<PlayerDeathController>().isDead;
-        if(playerIsDead)
+       
+        if(_playerDeathController.isDead)
         {
             _animator.SetAnimationTrigger("Idle");
             _agent.speed = 0;

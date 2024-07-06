@@ -128,7 +128,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         {
             _originalScales.Add(newObject, newObject.transform.localScale);
         }
-        newObject.transform.localScale = _originalScales[newObject]; // Reset to the original scale
+        //newObject.transform.localScale = _originalScales[newObject];
         newObject.layer = LayerMask.NameToLayer("Default");
         _inventorySlots[currentIndexSelected] = newObject;
         ShowCurrentIndexItem();

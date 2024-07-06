@@ -29,7 +29,7 @@ public class DialogueController : MonoBehaviour
     private FirstPersonController _firstPersonController;
 
     private GameObject _currentDialogueNPC;
-
+    private bool _inDialogue = false;
     private void Awake()
     {
         if (Instance == null)
@@ -65,7 +65,7 @@ public class DialogueController : MonoBehaviour
         }
         if(_currentDialogueNPC != null)
         {
-            if(Input.GetKeyDown("e"))
+            if(Input.GetKeyDown(KeyCode.E))
             {
                 GoToNextLine();
             }
@@ -79,6 +79,10 @@ public class DialogueController : MonoBehaviour
             Debug.LogError("Dialogue lines are null or empty!");
             return;
         }
+        
+        if(_inDialogue) return;
+
+        _inDialogue = true;
         dialogueText.text = "";
         
         if (!_playerInventory.IsSkullInFirstSlot())
@@ -215,7 +219,7 @@ public class DialogueController : MonoBehaviour
         ResetDialogueText();
         DisableDialogueBox();
 
-        
+        _inDialogue = false;
         
         if (audioSource.clip != null)
             audioSource.clip = null;
