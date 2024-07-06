@@ -23,8 +23,12 @@ public class KeyController : MonoBehaviour
 
             if (isTaggedKey)
             {
-                _interactable.onInteraction.AddListener(_playerKeyController.CollectKey);
                 _interactable.onInteraction.AddListener(() => _elevatorController.ToggleElevatorButtons());
+                
+                //fix for constantine saying return key when placing key in lobby
+                if(SceneManager.GetActiveScene().name != "LOBBY")
+                    _interactable.onInteraction.AddListener(_playerKeyController.CollectKey);
+                
             }
                 
 

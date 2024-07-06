@@ -230,4 +230,10 @@ public class LevelCompletionManager : MonoBehaviour
     {
         _collectedKeys = keys;
     }
+    
+    public void CompleteObjective(Objective objective)
+    {
+        objective.isCompleted = true;
+        FindObjectOfType<ObjectiveController>().UpdateTaskList();
+    }
 }
