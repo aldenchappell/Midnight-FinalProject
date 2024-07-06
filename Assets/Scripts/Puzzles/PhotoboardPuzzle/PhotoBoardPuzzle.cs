@@ -45,7 +45,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
     private GameObject _playerArms;
     private GameObject _polaroidObj;
     public int polaroidCount;
-    private const int TargetPolaroidCount = 6;
+    private const int TargetPolaroidCount = 7;
     private bool _isFirstTime = true;
     private bool _isInPuzzle = false;
 
@@ -206,12 +206,11 @@ public class PhotoBoardPuzzle : MonoBehaviour
         // Check if the player is already in the puzzle
         if (!_isInPuzzle)
         {
-            bool hasPolaroid = _playerDualHandInventory.GetInventory.Any(item => item != null && item.CompareTag("Polaroid"));
 
             // Check if it's the first time the player is interacting with the puzzle and they don't have a polaroid
             if (_isFirstTime)
             {
-                if (polaroidCount != TargetPolaroidCount || !hasPolaroid)
+                if (polaroidCount != TargetPolaroidCount)
                 {
                     _puzzleAudio.PlayOneShot(incorrectSlotSound);
                     return;
@@ -219,7 +218,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
             }
 
             // Check if the player has collected all polaroids or is holding a polaroid
-            if (_isFirstTime && polaroidCount == TargetPolaroidCount && hasPolaroid)
+            if (_isFirstTime && polaroidCount == TargetPolaroidCount)
             {
                 GameObject polaroid = GameObject.FindWithTag("Polaroid");
                 if (polaroid)
