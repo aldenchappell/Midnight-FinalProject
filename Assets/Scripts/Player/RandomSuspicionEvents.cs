@@ -41,7 +41,7 @@ public class RandomSuspicionEvents : MonoBehaviour
         float chance = Random.Range(0, 101);
         float speedModifier = _FPC.GetCurrentSpeed * .1f;
 
-        if(speedModifier == 0)
+        if(speedModifier == 0 || _FPC.canMove == false)
         {
             chance = 0;
         }

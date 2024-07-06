@@ -110,7 +110,6 @@ public class HideBehindDoor : MonoBehaviour
             _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
             _FPC.ToggleCanMove();
             _doorController.Invoke("HandleDoor", 0);
-            //_inventory.HideHandItem();
             yield return new WaitForSeconds(1f);
             ToggleDoorUI();
             _playerCam.Priority = 0;
@@ -133,7 +132,8 @@ public class HideBehindDoor : MonoBehaviour
             _doorHideCamera.Priority = 0;
             _doorController.Invoke("HandleDoor", 2f);
             Invoke("HidePlayer", 1f);
-
+            yield return new WaitForSeconds(2f);
+            SwapDoorCameraPosition();
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
