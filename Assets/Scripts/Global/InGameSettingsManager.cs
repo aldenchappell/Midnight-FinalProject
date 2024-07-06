@@ -75,7 +75,14 @@ public class InGameSettingsManager : MonoBehaviour
         PlayerPrefs.Save();
     }
     
-    
+    /// <summary>
+    /// PUT THIS METHOD ON EVERY TOGGLE.
+    /// APPLY THE TOGGLESETTINGSCONTROLLER TO THE TOGGLE AS WELL.
+    /// GO TO THE TOP OF THIS SCRIPT WHERE ALL OF THE 'PREF' KEYS ARE DECLARED
+    /// IF THERE ISNT A SETTING FOR THE DESIRED TOGGLE, DECLARE A NEW ONE AND MAKE ANOTHER CASE BELOW!
+    /// </summary>
+    /// <param name="settingKey"></param>
+    /// <param name="value"></param>
     public void SetToggleSetting(string settingKey, bool value)
     {
         PlayerPrefs.SetInt(settingKey, value ? 1 : 0);

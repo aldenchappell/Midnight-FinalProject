@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 public class UIMenuButtons : MonoBehaviour
 {
     [SerializeField] private GameObject startGamePanel;
+    private static bool isFirstTimeLobbyLoaded = true;
+
     public void StartGameButton()
     {
         GlobalCursorManager.Instance.DisableCursor();
 
-        if (InGameSettingsManager.Instance.isFirstLaunch)
+        if (InGameSettingsManager.Instance.isFirstLaunch && isFirstTimeLobbyLoaded)
         {
             startGamePanel.SetActive(true);
             GlobalCursorManager.Instance.EnableCursor();
+            isFirstTimeLobbyLoaded = false; 
         }
         else
         {
