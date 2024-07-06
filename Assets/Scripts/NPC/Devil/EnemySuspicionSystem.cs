@@ -56,11 +56,16 @@ public class EnemySuspicionSystem : MonoBehaviour
         {
             SuspicionTriggered(_COV.targetsLockedIn[0].transform.position, 40);
         }
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            suspicionValue = 0;
+        }
     }
     //Adds suspicion and gets the position of where it occured
     public void SuspicionTriggered(Vector3 position, int value)
     {
-        //print("Triggered");
+        print("Triggered");
+        print(value);
         lastSusPosition = position;
         AdjustSuspicionValue(value);
     }

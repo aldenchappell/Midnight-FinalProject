@@ -48,6 +48,12 @@ public class SoundDetectionRadius : MonoBehaviour
             soundRadius = 0;
         }
 
+        if(_FPC.canMove == false)
+        {
+            currentSoundRadius = 0;
+            soundRadius = 0;
+        }
+
         if(soundRadius > 0)
         {
             Collider[] targets = Physics.OverlapSphere(transform.position, soundRadius, targetLayer);

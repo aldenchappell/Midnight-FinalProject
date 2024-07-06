@@ -162,6 +162,7 @@ public class HideBehindDoor : MonoBehaviour
         else if(Input.GetMouseButtonDown(1) && _isSwitching == false)
         {
             StartChangeState();
+
         }
     }
     
