@@ -10,7 +10,7 @@ public class UIMenuButtons : MonoBehaviour
     {
         GlobalCursorManager.Instance.DisableCursor();
 
-        if (!InGameSettingsManager.Instance.isFirstLaunch)
+        if (InGameSettingsManager.Instance.isFirstLaunch)
         {
             startGamePanel.SetActive(true);
             GlobalCursorManager.Instance.EnableCursor();
@@ -29,6 +29,7 @@ public class UIMenuButtons : MonoBehaviour
 
     public void ExitButton()
     {
+        PlayerPrefs.DeleteAll();
         Application.Quit();
     }
 }

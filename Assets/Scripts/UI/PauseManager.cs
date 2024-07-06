@@ -99,6 +99,7 @@ public class PauseManager : MonoBehaviour
 
     public void QuitGame()
     {
+        PlayerPrefs.DeleteAll();
         Debug.Log("Quitting Game...");
         Application.Quit();
     }

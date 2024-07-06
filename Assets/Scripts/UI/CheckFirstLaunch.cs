@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class CheckFirstLaunch : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
         CheckForFirstLaunch();
     }
-    
+
     private void CheckForFirstLaunch()
     {
-        if (InGameSettingsManager.Instance.isFirstLaunch)
-            InGameSettingsManager.Instance.isFirstLaunch = false;
+        if (!InGameSettingsManager.Instance.isFirstLaunch)
+            InGameSettingsManager.Instance.isFirstLaunch = true;
     }
 }

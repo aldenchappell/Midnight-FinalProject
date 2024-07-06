@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,7 +12,6 @@ public class WinSceneUI : MonoBehaviour
         Cursor.visible = true;
         
         mainMenuButton.onClick.AddListener(LevelCompletionManager.Instance.ResetPuzzles);
-        
     }
     public void OnMenuButtonPress()
     {
@@ -22,6 +19,7 @@ public class WinSceneUI : MonoBehaviour
     }
     public void OnQuitButtonPress()
     {
+        PlayerPrefs.DeleteAll();
         Application.Quit();
     }
 }
