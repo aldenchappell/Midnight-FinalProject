@@ -318,7 +318,11 @@ public class DaVinciPuzzle : MonoBehaviour
             animatorChild.SetTrigger("WinTrigger");
             GetComponent<BoxCollider>().enabled = false;
             yield return new WaitForSeconds(4.30f);
-            GivePlayerCrank();
+            Transform crank = transform.GetChild(6).transform.GetChild(6);
+            Transform crankAnim = transform.GetChild(6).transform.GetChild(5);
+            crank.parent = null;
+            crank.gameObject.SetActive(true);
+            crankAnim.gameObject.SetActive(false);
             Destroy(GetComponent<PuzzleEscape>());
         }
         _canAnimate = true;
