@@ -25,6 +25,7 @@ public class SetMovment : MonoBehaviour
     private EnemySuspicionSystem _suspicion;
 
     private Vector3 _currentEndDestination;
+    private bool _isPreppingToSpawn;
 
 
     private void Awake()
@@ -37,30 +38,36 @@ public class SetMovment : MonoBehaviour
     private void Start()
     {
         _allActiveDemonDoors = GameObject.FindGameObjectsWithTag("DemonDoor");
+        _currentEndDestination = Vector3.zero;
     }
 
     public void SetCurrentMovementState(string state, Vector3 setPosition)
     {
-       switch(state)
-        {
-            case "Roaming":
-                CreateNewPatrolRoute();
-                break;
-            case "Chasing":
-                if(_agent.enabled != true)
-                {
-                    _agent.enabled = true;
-                }
-                SetChasePlayer(setPosition);
-                break;
-            case "Patrolling":
-                if (_agent.enabled != true)
-                {
-                    _agent.enabled = true;
-                }
-                PatrolArea(setPosition);
-                break;
-        }
+        
+       if(!_isPreppingToSpawn)
+       {
+            switch (state)
+            {
+                case "Roaming":
+                    CreateNewPatrolRoute();
+                    break;
+                case "Chasing":
+                    if (_agent.enabled != true)
+                    {
+                        _agent.enabled = true;
+                    }
+                    SetChasePlayer(setPosition);
+                    break;
+                case "Patrolling":
+                    if (_agent.enabled != true)
+                    {
+                        _agent.enabled = true;
+                    }
+                    PatrolArea(setPosition);
+                    break;
+            }
+       }
+       
     }
 
     
@@ -75,21 +82,18 @@ public class SetMovment : MonoBehaviour
         if(hasFirstTimeSpawnCondition)
         {
             hasFirstTimeSpawnCondition = false;
+            _isPreppingToSpawn = true;
 
             _agent.enabled = false;
             SetAIAtStartLocation(firstSpawn);
-            _agent.enabled = enabled;
             _currentEndDestination = firstEnd.transform.position;
-            _agent.SetDestination(firstEnd.transform.position);
+            GameObject demonAnim = Instantiate(pentAnim, firstSpawn.transform.position, Quaternion.identity);
+            demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
+            Destroy(demonAnim, 5.15f);
+            Invoke("GoForwardChild", 5.15f);
         }
 
-        if(_currentEndDestination != Vector3.zero)
-        {
-            //print("Setting end");
-            _agent.SetDestination(_currentEndDestination);
-        }
-
-        if (_agent.enabled == false || _currentEndDestination == Vector3.zero)
+        else if (_agent.enabled == false || _currentEndDestination == Vector3.zero)
         {
             if(spawnLocal != null)
             {
@@ -134,11 +138,14 @@ public class SetMovment : MonoBehaviour
                 }
                 else
                 {
+                    _isPreppingToSpawn = true;
                     _agent.enabled = false;
                     SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex]);
-                    _agent.enabled = enabled;
                     _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
-                    _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
+                    GameObject demonAnim = Instantiate(pentAnim, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
+                    demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
+                    Destroy(demonAnim, 5.15f);
+                    Invoke("GoForwardChild", 5.15f);
                 }
             }
             
@@ -153,7 +160,19 @@ public class SetMovment : MonoBehaviour
             Destroy(demonAnim, 5.15f);
             gameObject.SetActive(false);
         }
+        else
+        {
+            _agent.SetDestination(_currentEndDestination);
+        }
 
+    }
+
+    private void GoForwardChild()
+    {
+        _isPreppingToSpawn = false;
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        _agent.enabled = enabled;
+        _agent.SetDestination(_currentEndDestination);
     }
 
     private void SetAIAtStartLocation(GameObject location)
