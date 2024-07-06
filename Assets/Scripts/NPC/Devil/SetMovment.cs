@@ -157,7 +157,7 @@ public class SetMovment : MonoBehaviour
             _currentEndDestination = Vector3.zero;
             GameObject demonAnim = Instantiate(pentAnim, transform.position, Quaternion.identity);
             demonAnim.GetComponent<Animator>().SetTrigger("Despawn");
-            Destroy(demonAnim, 5.15f);
+            Destroy(demonAnim, 2f);
             gameObject.SetActive(false);
         }
         else
