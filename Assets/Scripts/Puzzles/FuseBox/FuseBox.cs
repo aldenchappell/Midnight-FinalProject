@@ -11,7 +11,6 @@ public class FuseBox : MonoBehaviour
     [SerializeField] GameObject puzzleUI;
     [SerializeField] GameObject leverParticle;
     [SerializeField] GameObject fuseParticle;
-    [SerializeField] GameObject elevatorSpawnLocal;
 
     private AudioSource _radioAudio;
     private List<Light> _lobbyLights;
@@ -75,7 +74,6 @@ public class FuseBox : MonoBehaviour
 
         if (LevelCompletionManager.Instance.hasCompletedLobby)
         {
-            GameObject.Find("PlayerPref").transform.position = elevatorSpawnLocal.transform.position;
             PowerLobby();
             GameObject fuse = GameObject.Find("Fuse");
             fuse.transform.GetChild(1).gameObject.SetActive(false);
