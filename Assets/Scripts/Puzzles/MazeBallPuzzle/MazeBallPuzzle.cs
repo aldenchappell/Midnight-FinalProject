@@ -68,6 +68,7 @@ public class MazeBallPuzzle : MonoBehaviour
     [SerializeField] private Transform polaroidTargetPos;
     [SerializeField] private GameObject polaroidObj;
     [SerializeField] private GameObject pfPolaroid;
+    [SerializeField] private GameObject preSpawnedPolaroid;
 
     private GameObject _playerArms;
     public GameObject marble;
@@ -314,9 +315,11 @@ public class MazeBallPuzzle : MonoBehaviour
     private IEnumerator SpawnPolaroid()
     {
         yield return new WaitForSeconds(1.0f);
-        GameObject polaroid = Instantiate(pfPolaroid, polaroidTargetPos.position, Quaternion.identity);
-        polaroid.transform.SetParent(null);
-        polaroid.transform.rotation = polaroidTargetPos.rotation;
+        //GameObject polaroid = Instantiate(pfPolaroid, polaroidTargetPos.position, Quaternion.identity);
+        preSpawnedPolaroid.SetActive(true);
+        preSpawnedPolaroid.transform.position = polaroidTargetPos.position;
+        preSpawnedPolaroid.transform.SetParent(null);
+        preSpawnedPolaroid.transform.rotation = polaroidTargetPos.rotation;
         Destroy(polaroidObj);
         
         //instantiate a new object for the ghost placement
