@@ -9,6 +9,8 @@ public class FuseBox : MonoBehaviour
 {
     [SerializeField] private GameObject fuseObject;
     [SerializeField] GameObject puzzleUI;
+    [SerializeField] GameObject leverParticle;
+    [SerializeField] GameObject fuseParticle;
 
     private AudioSource _radioAudio;
     private List<Light> _lobbyLights;
@@ -74,6 +76,9 @@ public class FuseBox : MonoBehaviour
         {
             PowerLobby();
             GameObject fuse = GameObject.Find("Fuse");
+            fuse.transform.GetChild(1).gameObject.SetActive(false);
+            leverParticle.SetActive(false);
+            fuseParticle.SetActive(false);
             Renderer fuseRend = fuse.GetComponent<Renderer>();
             fuseRend.enabled = false;
             Destroy(fuse.GetComponent<InteractableObject>());
@@ -210,6 +215,9 @@ public class FuseBox : MonoBehaviour
     public void PowerLobby()
     {
         AnimationsTrigger("PowerOn");
+
+        leverParticle.SetActive(false);
+        fuseParticle.SetActive(false);
 
         // Enable lobby lights
         foreach (Light light in _lobbyLights)
