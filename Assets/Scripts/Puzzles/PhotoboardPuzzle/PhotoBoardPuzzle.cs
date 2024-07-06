@@ -79,6 +79,10 @@ public class PhotoBoardPuzzle : MonoBehaviour
         {
             _puzzleEscape.EscapePressed?.Invoke();
         }
+        if (Input.GetMouseButtonDown(1) && _isInPuzzle)
+        {
+            TogglePuzzleUI();
+        }
     }
 
     private void Start()
@@ -245,11 +249,13 @@ public class PhotoBoardPuzzle : MonoBehaviour
         {
             GlobalCursorManager.Instance.EnableCursor();
             _playerUI.SetActive(false);
+            GetComponent<Collider>().enabled = false;
         }
         else
         {
             GlobalCursorManager.Instance.DisableCursor();
             _playerUI.SetActive(true);
+            GetComponent<Collider>().enabled = true;
         }
 
         ToggleCamera();

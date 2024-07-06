@@ -10206,7 +10206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenSpawns: 60
   Demon: {fileID: 286118600}
-  pentAnim: {fileID: 768265551357601573, guid: 2b36b5e96487fdb4f817b65307acdb5a, type: 3}
   hasFirstTimeSpawnCondition: 1
 --- !u!4 &843520379
 Transform:
@@ -10525,11 +10524,28 @@ MonoBehaviour:
         m_CallState: 2
   onPlaceObject:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877110851}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   interactionIcon: {fileID: 21300000, guid: a78af9cffe164384fb3c1dc91b66dae5, type: 3}
   interactableIconSize: {x: 50, y: 50}
   interactableID: 0
   highlightInteractableObjectController: {fileID: 0}
+--- !u!1 &877110851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3246367076328337975, guid: 570bf9584a5d3c84d92c9ade9c4f0711, type: 3}
+  m_PrefabInstance: {fileID: 877110848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &877110852
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13474,7 +13490,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 843520378}
         m_TargetAssemblyTypeName: PatrolSystemManager, Assembly-CSharp
-        m_MethodName: FirstTimeSpawn
+        m_MethodName: ForceDemonSpawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13498,11 +13514,28 @@ MonoBehaviour:
         m_CallState: 2
   onPlaceObject:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1110164860}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Barf
+          m_BoolArgument: 0
+        m_CallState: 2
   interactionIcon: {fileID: 21300000, guid: a78af9cffe164384fb3c1dc91b66dae5, type: 3}
   interactableIconSize: {x: 50, y: 50}
   interactableID: 0
   highlightInteractableObjectController: {fileID: 0}
+--- !u!1 &1110164860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7973227143490660387, guid: ae7945bf99209d04ea17feb5dcdade0f, type: 3}
+  m_PrefabInstance: {fileID: 1110164855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1110164862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18001,10 +18034,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5562672099818730137, guid: 368d54e4026797a4bbe1d06ecfa38a7d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4b98e51cddd2cc843b288eed5d783838, type: 2}
     - target: {fileID: -8679921383154817045, guid: 5400c0235f2f5ac4eafd6c542c1b700b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.9634
@@ -18085,6 +18114,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PerfumeBottle
       objectReference: {fileID: 0}
+    - target: {fileID: -5562672099818730137, guid: 368d54e4026797a4bbe1d06ecfa38a7d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4b98e51cddd2cc843b288eed5d783838, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -2196876210422282342, guid: 368d54e4026797a4bbe1d06ecfa38a7d, type: 3}

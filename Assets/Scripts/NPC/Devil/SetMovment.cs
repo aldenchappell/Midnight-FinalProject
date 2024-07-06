@@ -163,6 +163,7 @@ public class SetMovment : MonoBehaviour
         else
         {
             _agent.SetDestination(_currentEndDestination);
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
 
     }

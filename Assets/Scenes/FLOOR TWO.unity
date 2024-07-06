@@ -217,6 +217,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31213b7ce8dc27f4c8909cfd569522da, type: 3}
+--- !u!1 &7114548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4629447882316858102, guid: 31213b7ce8dc27f4c8909cfd569522da, type: 3}
+  m_PrefabInstance: {fileID: 7114547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &13374926
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,6 +2123,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31213b7ce8dc27f4c8909cfd569522da, type: 3}
+--- !u!1 &247500033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4629447882316858102, guid: 31213b7ce8dc27f4c8909cfd569522da, type: 3}
+  m_PrefabInstance: {fileID: 247500032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &248523427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 199184945129313562, guid: 37a9a59e06e4fac41b02ae655cd0e88d, type: 3}
@@ -7460,7 +7470,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: b1e6a368ffd7c434895a5592e46f2257, type: 2}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -7471,6 +7481,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 946373470}
@@ -7479,11 +7493,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8953351177319368638}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 247500033}
+    - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
@@ -7495,6 +7517,10 @@ PrefabInstance:
       value: CompleteObjective
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PatrolSystemManager, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -7503,11 +7529,19 @@ PrefabInstance:
       value: Objective, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
@@ -7519,11 +7553,19 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: -7782464635796056977, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 21797904456259848, guid: 173f5124067576f4eab1b5434eb92c0f, type: 3}
@@ -9730,7 +9772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -9741,6 +9783,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 946373470}
@@ -9749,11 +9795,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1184722965}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1554084927}
+    - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
@@ -9765,6 +9819,10 @@ PrefabInstance:
       value: CompleteObjective
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PatrolSystemManager, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -9773,11 +9831,19 @@ PrefabInstance:
       value: Objective, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
@@ -9789,11 +9855,19 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
       propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315707682437308356, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
+      propertyPath: onPuzzleCompletion.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7768759100172949002, guid: ca03c90b371ad3d4eb556ccca196e5b8, type: 3}
@@ -16352,7 +16426,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenSpawns: 60
   Demon: {fileID: 339694815}
-  pentAnim: {fileID: 768265551357601573, guid: 2b36b5e96487fdb4f817b65307acdb5a, type: 3}
   hasFirstTimeSpawnCondition: 0
 --- !u!4 &946373471
 Transform:
@@ -22813,6 +22886,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7114548}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   puzzleCompletionAudioClip: {fileID: 0}
 --- !u!1 &1422660330 stripped
 GameObject:
@@ -25284,6 +25369,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31213b7ce8dc27f4c8909cfd569522da, type: 3}
+--- !u!1 &1554084927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4629447882316858102, guid: 31213b7ce8dc27f4c8909cfd569522da, type: 3}
+  m_PrefabInstance: {fileID: 1554084926}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1559056962
 PrefabInstance:
   m_ObjectHideFlags: 0
