@@ -12,7 +12,7 @@ public class KeyCubbyController : MonoBehaviour
     [SerializeField] private AudioClip placeKeySound;
     [SerializeField] private AudioClip invalidKeyPlacementSound;
 
-    private bool isReturnKeyObjectiveCompleted = false; // Flag to track objective completion
+    private bool _isReturnKeyObjectiveCompleted; 
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class KeyCubbyController : MonoBehaviour
         {
             List<Objective> objectives = new List<Objective>();
 
-            if (LevelCompletionManager.Instance.hasKey && !isReturnKeyObjectiveCompleted)
+            if (LevelCompletionManager.Instance.hasKey && !_isReturnKeyObjectiveCompleted)
             {
                 // objective to return key to front desk
                 Objective returnKeyObjective = new Objective();
@@ -48,7 +48,7 @@ public class KeyCubbyController : MonoBehaviour
                     interactable.onInteraction.AddListener(() =>
                     {
                         returnKeyObjective.CompleteObjective();
-                        isReturnKeyObjectiveCompleted = true; // Mark the objective as completed
+                        _isReturnKeyObjectiveCompleted = true;
                         FindObjectOfType<TaskController>().UpdateObjectiveText(objectives.ToArray());
                     });
                 }
@@ -142,7 +142,7 @@ public class KeyCubbyController : MonoBehaviour
     {
         if (keyIndex >= 0 && keyIndex < keySlots.Count)
         {
-            return !keySlots[keyIndex].activeSelf; // Return true if the slot is available
+            return !keySlots[keyIndex].activeSelf; 
         }
 
         _audio.PlayOneShot(invalidKeyPlacementSound);
@@ -154,7 +154,7 @@ public class KeyCubbyController : MonoBehaviour
     {
         if (keyIndex >= 0 && keyIndex < keySlots.Count)
         {
-            return PlayerPrefs.GetInt($"KeyPlaced_{keyIndex}", 0) == 1; // Return true if the key is placed
+            return PlayerPrefs.GetInt($"KeyPlaced_{keyIndex}", 0) == 1;
         }
 
         _audio.PlayOneShot(invalidKeyPlacementSound);
