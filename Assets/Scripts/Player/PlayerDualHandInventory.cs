@@ -155,6 +155,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                 _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
                 _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
                 obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
+                _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
                 Destroy(_inventorySlots[currentIndexSelected].GetComponent<InteractableObject>());
                 Destroy(obj);
                 _inventorySlots[currentIndexSelected] = null;
