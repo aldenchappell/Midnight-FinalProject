@@ -8,11 +8,9 @@ public class PatrolSystemManager : MonoBehaviour
 {
     [SerializeField] float timeBetweenSpawns;
     [SerializeField] GameObject Demon;
-    [SerializeField] GameObject pentAnim;
     [SerializeField] bool hasFirstTimeSpawnCondition;
 
     private float _currentTime;
-    private GameObject[] _allActiveDemonDoors;
 
     private PlayerCameraShake _shakeCam;
 
@@ -47,10 +45,6 @@ public class PatrolSystemManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        _allActiveDemonDoors = GameObject.FindGameObjectsWithTag("DemonDoor");
-    }
 
 
     private void Update()
@@ -68,7 +62,7 @@ public class PatrolSystemManager : MonoBehaviour
         if(_currentTime >= timeBetweenSpawns)
         {
             _currentTime = 0;
-            GenerateStartPoint();
+            SetDemonActive();
         }
     }
 
@@ -77,38 +71,18 @@ public class PatrolSystemManager : MonoBehaviour
         if(!Demon.activeSelf)
         {
             _currentTime = 0;
-            GenerateStartPoint();
+            SetDemonActive();
         }
-    }
-
-    public void FirstTimeSpawn()
-    {
-        if (!Demon.activeSelf)
-        {
-            hasFirstTimeSpawnCondition = false;
-            GameObject demonAnim = Instantiate(pentAnim, Demon.GetComponent<SetMovment>().firstSpawn.transform.position, Quaternion.identity);
-            demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
-            Destroy(demonAnim, 5.15f);
-            Invoke("SetDemonActive", 5.15f);
-        }  
-    }
-
-    private void GenerateStartPoint()
-    {
-        int randomStartIndex = Random.Range(0, _allActiveDemonDoors.Length);
-        Demon.GetComponent<SetMovment>().spawnLocal = _allActiveDemonDoors[randomStartIndex];
-        GameObject demonAnim = Instantiate(pentAnim, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
-        demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
-        Destroy(demonAnim, 5.15f);
-        Invoke("SetDemonActive", 5.15f);
     }
 
     private void SetDemonActive()
     {
+        hasFirstTimeSpawnCondition = false;
         Demon.SetActive(true);
         Debug.Log("Shaking player camera");
         
         if(_shakeCam != null)
             _shakeCam.TriggerShake();
+        Demon.transform.GetChild(0).gameObject.SetActive(false);
     }
 }
