@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 
 public class InGameSettingsManager : MonoBehaviour
@@ -20,6 +18,7 @@ public class InGameSettingsManager : MonoBehaviour
 
     [Space(10)]
     
+    public bool isFirstLaunch = true;
     
     //[ColoredHeader("Custom KeyBinds", "#FFFF00")]
     public KeyCode objectInteractionKeyOne = KeyCode.E;

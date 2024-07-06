@@ -218,9 +218,6 @@ public class FuseBox : MonoBehaviour
         }
 
         LevelCompletionManager.Instance.hasCompletedLobby = true;
-        PlayerPrefs.SetInt("LobbyPowered", 1);
-        PlayerPrefs.Save();
-        
         
         if (_objective != null)
         {
