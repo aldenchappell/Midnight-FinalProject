@@ -81,7 +81,7 @@ public class PlayerKeyController : MonoBehaviour
 
     private void PlayLevelCompletionClip()
     {
-        if (_skullDialogue != null && !SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
+        if (_skullDialogue != null && !SkullDialogueLineHolder.Instance.IsAudioSourcePlaying() && SceneManager.GetActiveScene().name != "LOBBY")
         {
             SkullDialogueLineHolder.Instance.PlaySpecificClip(
                 SkullDialogueLineHolder.Instance.levelCompletedClips

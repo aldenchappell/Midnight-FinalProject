@@ -12,12 +12,15 @@ public class KeyCubbyController : MonoBehaviour
     [SerializeField] private AudioClip placeKeySound;
     [SerializeField] private AudioClip invalidKeyPlacementSound;
 
-    private bool _isReturnKeyObjectiveCompleted; 
+    private bool _isReturnKeyObjectiveCompleted;
+
+    private ObjectiveController _objectiveController;
 
     private void Awake()
     {
         _playerKeyController = FindObjectOfType<PlayerKeyController>();
         _audio = GetComponent<AudioSource>();
+        _objectiveController = FindObjectOfType<ObjectiveController>();
 
         if (!LevelCompletionManager.Instance.hasCompletedLobby) return;
     }
@@ -33,53 +36,34 @@ public class KeyCubbyController : MonoBehaviour
     {
         if (LevelCompletionManager.Instance.hasCompletedLobby)
         {
-            List<Objective> objectives = new List<Objective>();
-
             if (LevelCompletionManager.Instance.hasKey && !_isReturnKeyObjectiveCompleted)
             {
-                // objective to return key to front desk
-                Objective returnKeyObjective = new Objective();
-                returnKeyObjective.description = "* Return the key to the front desk.";
-                returnKeyObjective.order = 2;
+                bool returnKeyObjectiveExists = _objectiveController.ObjectiveExists("* Return the key to the front desk.");
 
-                // add interaction listener to each interactable key collider
-                foreach (var interactable in interactableKeyColliders)
+                if (!returnKeyObjectiveExists)
                 {
-                    interactable.onInteraction.AddListener(() =>
+                    //objective to return key to front desk
+                    Objective returnKeyObjective = gameObject.AddComponent<Objective>();
+                    returnKeyObjective.description = "* Return the key to the front desk.";
+                    returnKeyObjective.order = 2;
+
+                    // interaction listeners for each interactable key collider
+                    foreach (var interactable in interactableKeyColliders)
                     {
-                        returnKeyObjective.CompleteObjective();
-                        _isReturnKeyObjectiveCompleted = true;
-                        FindObjectOfType<TaskController>().UpdateObjectiveText(objectives.ToArray());
-                    });
+                        interactable.onInteraction.AddListener(() =>
+                        {
+                            returnKeyObjective.CompleteObjective();
+                            _isReturnKeyObjectiveCompleted = true;
+                            _objectiveController.UpdateTaskList();
+                            Debug.Log( interactable.onInteraction);
+                        });
+                    }
+
+                    _objectiveController.RegisterObjective(returnKeyObjective);
                 }
-
-                objectives.Add(returnKeyObjective);
-            }
-
-            // check if all levels are completed to add exit objective
-            if (LevelCompletionManager.Instance.allLevelsCompleted)
-            {
-                var revolvingDoors = FindObjectOfType<LobbyDoorExit>();
-                Objective exitObjective = new Objective();
-                exitObjective.description = "* Exit the hotel through the revolving doors.";
-                exitObjective.order = 3;
-
-                revolvingDoors.GetComponent<InteractableObject>().onInteraction.AddListener(() =>
-                {
-                    exitObjective.CompleteObjective();
-                    LevelCompletionManager.Instance.CompleteObjective(exitObjective);
-                });
-
-                objectives.Add(exitObjective);
-            }
-
-            foreach (var objective in objectives)
-            {
-                FindObjectOfType<ObjectiveController>().RegisterObjective(objective);
             }
         }
     }
-
 
     private void InitializeKeySlots()
     {
@@ -137,12 +121,11 @@ public class KeyCubbyController : MonoBehaviour
         }
     }
 
-
     public bool IsSlotAvailable(int keyIndex)
     {
         if (keyIndex >= 0 && keyIndex < keySlots.Count)
         {
-            return !keySlots[keyIndex].activeSelf; 
+            return !keySlots[keyIndex].activeSelf;
         }
 
         _audio.PlayOneShot(invalidKeyPlacementSound);

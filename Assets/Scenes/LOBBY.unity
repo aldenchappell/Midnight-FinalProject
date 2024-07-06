@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041489277, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.041432478, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -35937,16 +35937,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8918280151278745874}
+    - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8918280151278745875}
+    - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayOutroCutscene
       objectReference: {fileID: 0}
     - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CompleteObjective
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LobbyDoorExit, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Objective, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942402752450008774, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6077140697512288847, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
       propertyPath: m_Color.a
@@ -35971,6 +35999,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9151305576807169029, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8918280151278745874}
+    - targetCorrespondingSourceObject: {fileID: 9151305576807169029, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8918280151278745875}
   m_SourcePrefab: {fileID: 100100000, guid: 5a99e53336ac6464d95a455cecadaf06, type: 3}
 --- !u!114 &2330025154806691542 stripped
 MonoBehaviour:
@@ -47378,6 +47409,22 @@ MonoBehaviour:
   outroCutscene: {fileID: 1673424562}
   textPanel: {fileID: 2330025154806691543}
   text: {fileID: 2330025154806691542}
+--- !u!114 &8918280151278745875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155298510563813664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36267fa677f381744ab244bc2539d2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: '* Exit the hotel through the revolving doors.'
+  isCompleted: 0
+  order: 3
+  disableAtRuntime: 0
 --- !u!198 &8966077934918262280
 ParticleSystem:
   m_ObjectHideFlags: 0

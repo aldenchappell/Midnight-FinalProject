@@ -13,13 +13,14 @@ public class Objective : MonoBehaviour
     private void Awake()
     {
         _objectiveController = FindObjectOfType<ObjectiveController>();
-        _objectiveController.RegisterObjective(this);
+        
 
         if (LevelCompletionManager.Instance.hasCompletedLobby)
         {
             if (SceneManager.GetActiveScene().name == "LOBBY")
             {
-                CompleteObjective();
+                if(!GetComponent<LobbyDoorExit>() && !gameObject.CompareTag("CubbyKey"))
+                    CompleteObjective();
             }
         }
         
@@ -27,6 +28,16 @@ public class Objective : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        if (!LevelCompletionManager.Instance.allLevelsCompleted && GetComponent<LobbyDoorExit>())
+        {
+            Destroy(GetComponent<Objective>());
+        }
+    }
+
+    private void Start()
+    {
+        _objectiveController.RegisterObjective(this);
     }
 
     public void CompleteObjective()

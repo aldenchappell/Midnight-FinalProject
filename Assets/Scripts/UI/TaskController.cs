@@ -40,16 +40,17 @@ public class TaskController : MonoBehaviour
     {
         objectiveText.text = "";
         
-        //ty stackoverflow :) 
+        //ty stackoverflow :)
         var sortedObjectives = objectives.OrderBy(o => o.order).ToList();
 
+        // StringBuilder to build the objective text
         StringBuilder sb = new StringBuilder();
 
         foreach (var objective in sortedObjectives)
         {
             if (objective.isCompleted)
             {
-                sb.AppendLine($"<s>{objective.description}</s>");
+                sb.AppendLine($"<s>{objective.description}</s>"); 
             }
             else
             {
@@ -59,5 +60,4 @@ public class TaskController : MonoBehaviour
         
         objectiveText.text = sb.ToString();
     }
-
 }

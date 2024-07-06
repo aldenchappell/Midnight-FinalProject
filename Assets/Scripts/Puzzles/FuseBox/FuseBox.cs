@@ -82,8 +82,8 @@ public class FuseBox : MonoBehaviour
             Renderer fuseRend = fuse.GetComponent<Renderer>();
             fuseRend.enabled = false;
             Destroy(fuse.GetComponent<InteractableObject>());
-            ParticleSystem particles = fuse.GetComponentInChildren<ParticleSystem>();
-            particles.Stop();
+            //ParticleSystem particles = fuse.GetComponentInChildren<ParticleSystem>();
+            //particles.Stop();
             
             Destroy(this.gameObject.GetComponent<InteractableObject>());
         }
