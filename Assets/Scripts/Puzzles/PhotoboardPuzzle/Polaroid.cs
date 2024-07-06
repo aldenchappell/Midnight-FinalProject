@@ -22,39 +22,38 @@ public class Polaroid : MonoBehaviour
         if (polaroidCountText != null && polaroidCountImage != null)
         {
             fadeUI.fadeDuration = 3.0f;
-            fadeUI.FadeText(polaroidCountText);
-            fadeUI.FadeImage(polaroidCountImage);
+            fadeUI.FadeOutText(polaroidCountText);
+            fadeUI.FadeOutImage(polaroidCountImage);
         }
     }
 
     private void Start()
     {
         if(!isPolaroidPrefab)
-            polaroidCountText.text = "Polaroids collected: " + _puzzle.polaroidCount;
+            polaroidCountText.text =  _puzzle.polaroidCount.ToString();
     }
 
     public void IncrementPolaroidCount()
     {
-        if (!isPolaroidPrefab)
+        _puzzle.polaroidCount++;
+        
+        FadeUI fadeUI = FindObjectOfType<FadeUI>();
+        
+        if (polaroidCountText != null && polaroidCountImage != null)
         {
-            _puzzle.polaroidCount++;
-            
-            FadeUI fadeUI = FindObjectOfType<FadeUI>();
-            if (polaroidCountText != null && polaroidCountImage != null)
-            {
-                fadeUI.fadeDuration = 3.0f;
-                fadeUI.FadeText(polaroidCountText);
-                fadeUI.FadeImage(polaroidCountImage);
-            }
-            
-            polaroidCountText.text = "Polaroids collected: " + _puzzle.polaroidCount;
-            if (_puzzle.polaroidCount == 6)
-            {
-                GameObject polaroidPuzzleObjective = GameObject.Find("PuzzleObjective");
-                polaroidPuzzleObjective.GetComponent<Objective>().CompleteObjective();
-            }
-            Destroy(gameObject);
+            fadeUI.fadeDuration = 3.0f;
+            fadeUI.FadeInAndOutText(polaroidCountText);
+            fadeUI.FadeInAndOutImage(polaroidCountImage);
         }
+        
+        polaroidCountText.text = _puzzle.polaroidCount.ToString();
+        if (_puzzle.polaroidCount == 6)
+        {
+            GameObject polaroidPuzzleObjective = GameObject.Find("PuzzleObjective");
+            polaroidPuzzleObjective.GetComponent<Objective>().CompleteObjective();
+        }
+        
+        Destroy(gameObject);
     }
 
     public void SetPhotoBoardPieceAlpha()

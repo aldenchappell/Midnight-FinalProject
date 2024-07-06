@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,8 +20,8 @@ public class PlayerKeyController : MonoBehaviour
         if (inGameKeysCollectedText != null && inGameKeysImage != null)
         {
             fadeUI.fadeDuration = 3.0f;
-            fadeUI.FadeText(inGameKeysCollectedText);
-            fadeUI.FadeImage(inGameKeysImage);
+            fadeUI.FadeOutText(inGameKeysCollectedText);
+            fadeUI.FadeOutImage(inGameKeysImage);
         }
     }
 
@@ -47,8 +46,8 @@ public class PlayerKeyController : MonoBehaviour
         if (inGameKeysCollectedText != null && inGameKeysImage != null)
         {
             fadeUI.fadeDuration = 3.0f;
-            fadeUI.FadeText(inGameKeysCollectedText);
-            fadeUI.FadeImage(inGameKeysImage);
+            fadeUI.FadeInAndOutText(inGameKeysCollectedText);
+            fadeUI.FadeInAndOutImage(inGameKeysImage);
         }
         
         PlayLevelCompletionClip();
