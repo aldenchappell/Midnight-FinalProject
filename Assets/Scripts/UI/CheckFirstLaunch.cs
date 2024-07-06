@@ -11,14 +11,14 @@ public class CheckFirstLaunch : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("FirstLaunch"))
         {
-            Debug.Log("First Launch");
+            //Debug.Log("First Launch");
             PlayerPrefs.DeleteAll(); 
             PlayerPrefs.SetInt("FirstLaunch", 1); 
             PlayerPrefs.Save(); 
         }
         else
         {
-            Debug.Log("Not first launch");
+            //Debug.Log("Not first launch");
             PlayerPrefs.SetInt("FirstLaunch", 0);
             PlayerPrefs.Save();
         }

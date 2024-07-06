@@ -70,7 +70,7 @@ public class FuseBox : MonoBehaviour
 
         //instead of checking the hasCompletedLobby variable, check the stored playerprefs value.
 
-        if (PlayerPrefs.GetInt("LobbyPowered", 0) == 1)
+        if (LevelCompletionManager.Instance.hasCompletedLobby)
         {
             PowerLobby();
             GameObject fuse = GameObject.Find("Fuse");
