@@ -32,7 +32,8 @@ public class Polaroid : MonoBehaviour
             polaroidCountText.text = "Polaroids collected: " + _puzzle.polaroidCount;
             if (_puzzle.polaroidCount == 6)
             {
-                _puzzle.GetComponentInChildren<Objective>().CompleteObjective();
+                GameObject polaroidPuzzleObjective = GameObject.Find("PuzzleObjective");
+                polaroidPuzzleObjective.GetComponent<Objective>().CompleteObjective();
             }
             Destroy(gameObject);
         }
