@@ -102,42 +102,51 @@ public class HideBehindDoor : MonoBehaviour
 
     private IEnumerator ChangeHideState()
     {
-        isActive = !isActive;
-        _isSwitching = true;
-        if (isActive)
+        if(!_isSwitching)
         {
-            gameObject.layer = LayerMask.NameToLayer("Default");
-            _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
-            _FPC.ToggleCanMove();
-            _doorController.Invoke("HandleDoor", 0);
-            yield return new WaitForSeconds(1f);
-            ToggleDoorUI();
-            _playerCam.Priority = 0;
-            _doorHideCamera.Priority = 5;
-            _doorController.Invoke("HandleDoor", 2f);
-            Invoke("HidePlayer", 1.5f);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            isActive = !isActive;
+            _isSwitching = true;
+            if (isActive)
+            {
+                gameObject.layer = LayerMask.NameToLayer("Default");
+                _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
+                _FPC.ToggleCanMove();
+                _doorController.Invoke("HandleDoor", 0);
+                yield return new WaitForSeconds(1f);
+                ToggleDoorUI();
+                _playerCam.Priority = 0;
+                _doorHideCamera.Priority = 5;
+                _doorController.Invoke("HandleDoor", 2f);
+                Invoke("HidePlayer", 1.5f);
+                yield return new WaitForSeconds(3f);
+                SwapDoorCameraPosition();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                Invoke("InteractDelay", 2f);
+            }
+            else
+            {
+                SwapDoorCameraPosition();
+                yield return new WaitForSeconds(1f);
+                gameObject.layer = LayerMask.NameToLayer("InteractableObject");
+                GetComponent<InteractableObject>().enabled = true;
+                _mainCamera.transform.GetChild(2).gameObject.SetActive(true);
+                _doorController.Invoke("HandleDoor", 0);
+                //_inventory.HideHandItem();
+                yield return new WaitForSeconds(1f);
+                ToggleDoorUI();
+                _playerCam.Priority = 5;
+                _doorHideCamera.Priority = 0;
+                _doorController.Invoke("HandleDoor", 2f);
+                Invoke("HidePlayer", 1f);
+
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Invoke("InteractDelay", 4f);
+            }
+            
         }
-        else
-        {
-            gameObject.layer = LayerMask.NameToLayer("InteractableObject");
-            GetComponent<InteractableObject>().enabled = true;
-            _mainCamera.transform.GetChild(2).gameObject.SetActive(true);
-            _doorController.Invoke("HandleDoor", 0);
-            //_inventory.HideHandItem();
-            yield return new WaitForSeconds(1f);
-            ToggleDoorUI();
-            _playerCam.Priority = 5;
-            _doorHideCamera.Priority = 0;
-            _doorController.Invoke("HandleDoor", 2f);
-            Invoke("HidePlayer", 1f);
-            yield return new WaitForSeconds(2f);
-            SwapDoorCameraPosition();
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        Invoke("InteractDelay", 4f);
+       
     }
 
     private void InteractDelay()
@@ -150,6 +159,7 @@ public class HideBehindDoor : MonoBehaviour
     #region Input and Raycast
     private void CheckForInput()
     {
+        /*
         if (Input.GetMouseButtonDown(0) && _isSwitching == false)
         {
             //RaycastToMousePosition();
@@ -159,7 +169,8 @@ public class HideBehindDoor : MonoBehaviour
 
             StartCoroutine(_interactableController.InteractionSpamPrevention());
         }
-        else if(Input.GetMouseButtonDown(1) && _isSwitching == false)
+        */
+        if(Input.GetMouseButtonDown(1))
         {
             StartChangeState();
 
@@ -209,6 +220,7 @@ public class HideBehindDoor : MonoBehaviour
         return Mathf.Clamp(angle, min, max);
     }
 
+    /*
     private void RaycastToMousePosition()
     {
         RaycastHit hit;
@@ -226,6 +238,7 @@ public class HideBehindDoor : MonoBehaviour
             }
         }
     }
+    */
     #endregion
 
     #region Peep Hole Camera
