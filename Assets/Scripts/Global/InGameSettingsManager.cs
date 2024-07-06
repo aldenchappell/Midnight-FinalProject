@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 
 public class InGameSettingsManager : MonoBehaviour
@@ -20,6 +18,7 @@ public class InGameSettingsManager : MonoBehaviour
 
     [Space(10)]
     
+    public bool isFirstLaunch = true;
     
     //[ColoredHeader("Custom KeyBinds", "#FFFF00")]
     public KeyCode objectInteractionKeyOne = KeyCode.E;
@@ -36,6 +35,7 @@ public class InGameSettingsManager : MonoBehaviour
     private const string FootstepSoundsPrefKey = "Footsteps";
     private const string HeartbeatSoundsPrefKey = "Heartbeat";
     private const string CompassPrefKey = "Compass";
+    private const string ShakePrefKey = "Shake";
     
     //Sensitivity
     public float minMouseSensitivity = 10.0f;
@@ -99,6 +99,11 @@ public class InGameSettingsManager : MonoBehaviour
                 {
                     compassController.SetCompassAlpha(value ? 1 : 0);
                 }
+                break;
+            case ShakePrefKey:
+                enableShaking = value;
+                break;
+            default: Debug.Log("Error setting toggle setting.");
                 break;
         }
     }

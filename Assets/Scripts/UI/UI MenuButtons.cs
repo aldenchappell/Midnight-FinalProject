@@ -10,7 +10,7 @@ public class UIMenuButtons : MonoBehaviour
     {
         GlobalCursorManager.Instance.DisableCursor();
 
-        if (PlayerPrefs.GetInt("FirstLaunch", 0) == 1)
+        if (!InGameSettingsManager.Instance.isFirstLaunch)
         {
             startGamePanel.SetActive(true);
             GlobalCursorManager.Instance.EnableCursor();
@@ -21,7 +21,7 @@ public class UIMenuButtons : MonoBehaviour
         }
     }
 
-    public void LoadLobby()
+    private void LoadLobby()
     {
         SceneManager.LoadScene("LOBBY");
         GlobalCursorManager.Instance.DisableCursor();
