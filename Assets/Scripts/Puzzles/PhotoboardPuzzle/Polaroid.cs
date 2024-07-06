@@ -47,7 +47,7 @@ public class Polaroid : MonoBehaviour
         }
         
         polaroidCountText.text = _puzzle.polaroidCount.ToString();
-        if (_puzzle.polaroidCount == 6)
+        if (_puzzle.polaroidCount == 7)
         {
             GameObject polaroidPuzzleObjective = GameObject.Find("PuzzleObjective");
             polaroidPuzzleObjective.GetComponent<Objective>().CompleteObjective();
