@@ -15,7 +15,7 @@ public class Objective : MonoBehaviour
         _objectiveController = FindObjectOfType<ObjectiveController>();
         _objectiveController.RegisterObjective(this);
 
-        if (PlayerPrefs.GetInt("LobbyPowered", 0) == 1)
+        if (LevelCompletionManager.Instance.hasCompletedLobby)
         {
             if (SceneManager.GetActiveScene().name == "LOBBY")
             {
@@ -36,7 +36,6 @@ public class Objective : MonoBehaviour
         {
             _objectiveController.UpdateTaskList();
             EnvironmentalSoundController.Instance.PlaySound(_objectiveController.pencilSound, transform.position);
-            //Debug.Log("Finished objective " + description);
         }
         else
         {
