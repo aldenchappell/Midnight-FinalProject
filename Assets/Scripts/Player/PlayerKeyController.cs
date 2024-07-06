@@ -2,10 +2,12 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerKeyController : MonoBehaviour
 {
     [SerializeField] private TMP_Text pauseMenuKeysCollectedText;
+    [SerializeField] private Image inGameKeysImage;
     [SerializeField] private TMP_Text inGameKeysCollectedText;
     public int keys;
     private KeyCubbyController _cubbyController;
@@ -14,6 +16,14 @@ public class PlayerKeyController : MonoBehaviour
     private void Awake()
     {
         _skullDialogue = FindObjectOfType<SkullDialogue>();
+        
+        FadeUI fadeUI = FindObjectOfType<FadeUI>();
+        if (inGameKeysCollectedText != null && inGameKeysImage != null)
+        {
+            fadeUI.fadeDuration = 3.0f;
+            fadeUI.FadeText(inGameKeysCollectedText);
+            fadeUI.FadeImage(inGameKeysImage);
+        }
     }
 
     private void Start()
@@ -32,6 +42,14 @@ public class PlayerKeyController : MonoBehaviour
         keys++;
         UpdateKeyUI();
         LevelCompletionManager.Instance.CollectKey();
+        
+        FadeUI fadeUI = FindObjectOfType<FadeUI>();
+        if (inGameKeysCollectedText != null && inGameKeysImage != null)
+        {
+            fadeUI.fadeDuration = 3.0f;
+            fadeUI.FadeText(inGameKeysCollectedText);
+            fadeUI.FadeImage(inGameKeysImage);
+        }
         
         PlayLevelCompletionClip();
     }
