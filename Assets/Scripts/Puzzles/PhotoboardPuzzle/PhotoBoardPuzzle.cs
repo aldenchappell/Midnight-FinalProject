@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
@@ -14,8 +12,8 @@ public class PhotoBoardPuzzle : MonoBehaviour
 
     //Added by Owen
     [SerializeField] Sprite originalSlotSprite;
-    
-    [SerializeField] private bool _solved = false;
+
+    private bool _solved = false;
     private FirstPersonController _firstPersonController;
 
     private PhotoBoardPuzzlePiece _currentSelectedPuzzlePiece;
@@ -50,8 +48,8 @@ public class PhotoBoardPuzzle : MonoBehaviour
     private const int TargetPolaroidCount = 6;
     private bool _isFirstTime = true;
     private bool _isInPuzzle = false;
-    
-    
+
+
     private void Awake()
     {
         _puzzleAudio = GetComponent<AudioSource>();
@@ -66,7 +64,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
         _patrol = GameObject.Find("DemonPatrolManager").GetComponent<PatrolSystemManager>();
         _pause = FindObjectOfType<PauseManager>();
         _playerArms = GameObject.Find("Arms");
-        
+
         foreach (var element in puzzleUI)
         {
             element.SetActive(false);
@@ -116,13 +114,13 @@ public class PhotoBoardPuzzle : MonoBehaviour
                 slotButton.GetComponent<Image>().sprite = _currentSelectedPuzzlePiece.GetComponent<Image>().sprite;
                 var color = slotButton.GetComponent<Image>().color;
                 slotButton.GetComponent<Image>().color = new Color(color.r, color.g, color.b, 255f);
-                
+
                 _currentSelectedPuzzlePiece.GetComponent<Button>().interactable = false;
 
 
                 _currentSelectedPuzzlePiece = null;
 
-       
+
                 CheckForPuzzleCompletion();
 
                 _puzzleAudio.PlayOneShot(correctSlotSound);
@@ -139,7 +137,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
     private void CheckForPuzzleCompletion()
     {
         bool isPuzzleComplete = true;
-        
+
         for (int i = 0; i < puzzleSlots.Length; i++)
         {
             if (puzzleSlots[i].GetComponent<Image>().sprite != puzzlePieces[i].GetComponent<Image>().sprite)
@@ -151,6 +149,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
 
         if (isPuzzleComplete)
         {
+            GetComponent<Objective>().CompleteObjective();
             Debug.Log("Puzzle completed");
             _solved = true;
             ExitPuzzle();
@@ -177,6 +176,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
         }
     }
 
+    
     private void ResetPuzzle()
     {
         // Return all pieces to original positions
@@ -211,26 +211,25 @@ public class PhotoBoardPuzzle : MonoBehaviour
             // Check if it's the first time the player is interacting with the puzzle and they don't have a polaroid
             if (_isFirstTime)
             {
-                if (!hasPolaroid)
+                if (polaroidCount != TargetPolaroidCount || !hasPolaroid)
                 {
                     _puzzleAudio.PlayOneShot(incorrectSlotSound);
-
                     return;
                 }
             }
 
             // Check if the player has collected all polaroids or is holding a polaroid
-            if (polaroidCount != TargetPolaroidCount || !hasPolaroid)
+            if (_isFirstTime && polaroidCount == TargetPolaroidCount && hasPolaroid)
             {
-                Debug.Log("Player hasn't collected all of the polaroids or isn't holding a polaroid.");
-                _puzzleAudio.PlayOneShot(incorrectSlotSound, .25f);
-                return;
+                GameObject polaroid = GameObject.FindWithTag("Polaroid");
+                if (polaroid)
+                {
+                    _playerDualHandInventory.RemoveObject = polaroid;
+                    Destroy(polaroid);
+                    _isFirstTime = false;
+                }
             }
         }
-
-        GameObject polaroid = GameObject.FindWithTag("Polaroid");
-        if (polaroid)
-            _playerDualHandInventory.RemoveObject = polaroid;
 
         // Toggle the puzzle UI
         bool isPuzzleActive = !puzzleUI[0].activeSelf;
@@ -259,9 +258,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
         }
 
         ToggleCamera();
-        PlacePolaroid();
     }
-
 
     private void ExitPuzzle()
     {
@@ -272,25 +269,13 @@ public class PhotoBoardPuzzle : MonoBehaviour
         {
             elm.SetActive(false);
         }
-                
+
         _firstPersonController.canMove = true;
         _firstPersonController.controller.enabled = true;
-        
+
         ToggleCamera();
     }
 
-    private void PlacePolaroid()
-    {
-        if (_isFirstTime)
-        {
-            _isFirstTime = false;
-            
-            _polaroidObj = GameObject.FindWithTag("Polaroid");
-           // _playerDualHandInventory.PlaceObjectInPuzzle(_polaroidObj);
-            _polaroidObj = null;
-        }
-    }
-    
     private void ToggleCamera()
     {
         if (_mainCam.Priority > _puzzleCam.Priority)
