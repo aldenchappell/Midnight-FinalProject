@@ -110,8 +110,8 @@ public class LevelCompletionManager : MonoBehaviour
         if (allLevelsCompleted && !hasCompletedLobby)
         {
             hasCompletedLobby = true;
-            PlayerPrefs.SetInt("LobbyPowered", 1);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetInt("LobbyPowered", 1);
+           // PlayerPrefs.Save();
             
             if(SceneManager.GetActiveScene().name == "LOBBY")
                 FindObjectOfType<FuseBox>().PowerLobby();
@@ -180,13 +180,12 @@ public class LevelCompletionManager : MonoBehaviour
         }
         else
         {
-            //game completed
-            //ResetGame();
-            ResetPuzzles();
-            ResetGame();
+            Debug.Log("Game complete");
+            FinishGame(); 
         }
         InGameSettingsManager.Instance.LoadSettings();
     }
+
     
     public bool HasSkullDialogueBeenPlayed(string levelName)
     {
