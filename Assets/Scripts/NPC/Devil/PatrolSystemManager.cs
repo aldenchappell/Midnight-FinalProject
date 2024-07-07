@@ -83,6 +83,9 @@ public class PatrolSystemManager : MonoBehaviour
         
         if(_shakeCam != null)
             _shakeCam.TriggerShake();
+        
+       // FindObjectOfType<PlayerHeartbeatController>().enemyStateController = GetComponent<EnemyStateController>();
+        //FindObjectOfType<PlayerHeartbeatController>().shouldCheckHeartbeat = true;
         Demon.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

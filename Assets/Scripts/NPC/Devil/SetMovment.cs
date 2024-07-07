@@ -160,6 +160,7 @@ public class SetMovment : MonoBehaviour
             GameObject demonAnim = Instantiate(pentAnim, transform.position, Quaternion.identity);
             demonAnim.GetComponent<Animator>().SetTrigger("Despawn");
             Destroy(demonAnim, 2f);
+            //FindObjectOfType<PlayerHeartbeatController>().shouldCheckHeartbeat = false;
             gameObject.SetActive(false);
         }
         else

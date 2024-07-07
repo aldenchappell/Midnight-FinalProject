@@ -5,26 +5,23 @@ public class InitialLaunchBrightnessSlider : MonoBehaviour
 {
     [SerializeField] private Image _image;
 
-    private const string BrightnessPrefKey = "ScreenBrightness"; // Adjust if different in your settings manager
-    private const float MinBrightness = .6f;
+    private const string BrightnessPrefKey = "ScreenBrightness"; 
+    private const float MinBrightness = .35f;
     private const float MaxBrightness = 1f;
 
     private void Start()
     {
-        // Initialize brightness based on saved settings
-        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, 0.25f); // Default to 0.25 if not set
+        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, 0.25f); 
         UpdateImageBrightness(brightness);
     }
 
     public void OnBrightnessSliderValueChanged(float value)
     {
-        float clampedBrightness = Mathf.Clamp(value, 0f, 1f); // Assuming slider value is normalized (0 to 1)
+        float clampedBrightness = Mathf.Clamp(value, 0f, 1f); 
         float brightness = Mathf.Lerp(MinBrightness, MaxBrightness, clampedBrightness);
-
-        // Update brightness in settings manager
+        
         SetBrightness(brightness);
-
-        // Update image alpha based on brightness
+        
         UpdateImageBrightness(brightness);
     }
 
