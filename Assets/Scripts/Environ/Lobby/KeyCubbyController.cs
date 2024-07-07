@@ -15,8 +15,6 @@ public class KeyCubbyController : MonoBehaviour
     private Objective _returnKeyObjective;
     private ObjectiveController _objectiveController;
 
-    private SaveData _saveData;
-
     private void Awake()
     {
         _playerKeyController = FindObjectOfType<PlayerKeyController>();
@@ -26,7 +24,6 @@ public class KeyCubbyController : MonoBehaviour
 
     private void Start()
     {
-        _saveData = SaveSystem.Load();
         InitializeKeySlots();
         SetupInteractionEvents();
         
@@ -34,12 +31,6 @@ public class KeyCubbyController : MonoBehaviour
         {
             SetupLobbyObjectives();
         }
-        
-        // if(InGameSettingsManager.Instance.isFirstLaunch)
-        // {
-        //     ResetCubby();
-        //     Debug.Log("Resetting cubby due to first launch");
-        // }
     }
 
     private void SetupLobbyObjectives()
@@ -50,6 +41,7 @@ public class KeyCubbyController : MonoBehaviour
 
             if (!returnKeyObjectiveExists)
             {
+                // Objective to return key to front desk
                 _returnKeyObjective = gameObject.AddComponent<Objective>();
                 _returnKeyObjective.description = "* Return the key to the front desk.";
                 _returnKeyObjective.order = 2;
@@ -65,7 +57,6 @@ public class KeyCubbyController : MonoBehaviour
         {
             bool keyPlaced = IsKeyPlaced(i);
             keySlots[i].SetActive(keyPlaced);
-            Debug.Log($"Key slot {i} initialized to {keyPlaced}");
         }
     }
 
@@ -110,16 +101,9 @@ public class KeyCubbyController : MonoBehaviour
         {
             keySlots[keyIndex].SetActive(true);
             _audio.PlayOneShot(placeKeySound);
-
-            if (!_saveData.placedKeys.Contains(keyIndex))
-            {
-                _saveData.placedKeys.Add(keyIndex);
-            }
-
-            SaveSystem.Save(_saveData);
+            PlayerPrefs.SetInt($"KeyPlaced_{keyIndex}", 1);
 
             LevelCompletionManager.Instance.hasKey = false;
-            Debug.Log($"Key placed in slot {keyIndex}");
         }
         else
         {
@@ -142,17 +126,21 @@ public class KeyCubbyController : MonoBehaviour
 
     public bool IsKeyPlaced(int keyIndex)
     {
-        return _saveData != null && _saveData.placedKeys.Contains(keyIndex);
+        if (keyIndex >= 0 && keyIndex < keySlots.Count)
+        {
+            return PlayerPrefs.GetInt($"KeyPlaced_{keyIndex}", 0) == 1;
+        }
+
+        _audio.PlayOneShot(invalidKeyPlacementSound);
+        Debug.LogWarning("Invalid key index for checking placed key in cubby.");
+        return false;
     }
 
     public void ResetCubby()
     {
-        _saveData.placedKeys.Clear();
-        SaveSystem.Save(_saveData);
         foreach (var slot in keySlots)
         {
             slot.SetActive(false);
         }
-        Debug.Log("Cubby reset");
     }
 }

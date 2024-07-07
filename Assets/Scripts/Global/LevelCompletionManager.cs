@@ -27,8 +27,6 @@ public class LevelCompletionManager : MonoBehaviour
 
     public bool hasKey = false;
     public bool allLevelsCompleted = false;
-
-    private SaveData _saveData;
     private void Awake()
     {
         if (Instance == null)
@@ -42,7 +40,6 @@ public class LevelCompletionManager : MonoBehaviour
             Destroy(gameObject);
         }
         _audioSource = GetComponent<AudioSource>();
-        _saveData = SaveSystem.Load();
     }
     
     
@@ -100,16 +97,6 @@ public class LevelCompletionManager : MonoBehaviour
     {
         _collectedKeys = 0;
         allLevelsCompleted = false;
-        hasCompletedLobby = false;
-        _saveData.placedKeys.Clear();
-        SaveSystem.Save(_saveData);
-        ResetPuzzles();
-        
-        KeyCubbyController keyCubbyController = FindObjectOfType<KeyCubbyController>();
-        if (keyCubbyController != null)
-        {
-            keyCubbyController.ResetCubby();
-        }
     }
     
     public void FinishGame()
@@ -123,6 +110,8 @@ public class LevelCompletionManager : MonoBehaviour
         if (allLevelsCompleted && !hasCompletedLobby)
         {
             hasCompletedLobby = true;
+            //PlayerPrefs.SetInt("LobbyPowered", 1);
+           // PlayerPrefs.Save();
             
             if(SceneManager.GetActiveScene().name == "LOBBY")
                 FindObjectOfType<FuseBox>().PowerLobby();

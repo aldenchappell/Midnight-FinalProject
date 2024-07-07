@@ -17,11 +17,12 @@ public class PlayerKeyController : MonoBehaviour
         _skullDialogue = FindObjectOfType<SkullDialogue>();
         
         FadeUI fadeUI = FindObjectOfType<FadeUI>();
-        if (inGameKeysCollectedText == null || inGameKeysImage == null) return;
-        
-        fadeUI.fadeDuration = 3.0f;
-        fadeUI.FadeInAndOutText(inGameKeysCollectedText);
-        fadeUI.FadeInAndOutImage(inGameKeysImage);
+        if (inGameKeysCollectedText != null && inGameKeysImage != null)
+        {
+            fadeUI.fadeDuration = 3.0f;
+            fadeUI.FadeOutText(inGameKeysCollectedText);
+            fadeUI.FadeOutImage(inGameKeysImage);
+        }
     }
 
     private void Start()
