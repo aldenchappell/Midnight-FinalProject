@@ -9,9 +9,12 @@ public class PauseManager : MonoBehaviour
     public GameObject[] playerUIElements;
     public AudioSource pauseSFX;
 
+
+    private SaveData _saveData;
     private void Start()
     {
         GameIsPaused = false;
+        _saveData = SaveSystem.Load();
     }
 
     void Update()
@@ -108,6 +111,8 @@ public class PauseManager : MonoBehaviour
 
     public void QuitGame()
     {
+        _saveData.placedKeys.Clear();
+        SaveSystem.Save(_saveData);
         PlayerPrefs.DeleteAll();
         Debug.Log("Quitting Game...");
         Application.Quit();

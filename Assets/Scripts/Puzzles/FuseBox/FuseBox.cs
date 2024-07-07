@@ -76,6 +76,7 @@ public class FuseBox : MonoBehaviour
         {
             PowerLobby();
             GameObject fuse = GameObject.Find("Fuse");
+            fuse.GetComponent<Objective>().CompleteObjective();
             fuse.transform.GetChild(1).gameObject.SetActive(false);
             leverParticle.SetActive(false);
             fuseParticle.SetActive(false);

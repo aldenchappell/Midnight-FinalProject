@@ -14063,7 +14063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8281358012038076761, guid: f1380c4bc5b389a4fbfa631d1d9a5703, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8281358012038076761, guid: f1380c4bc5b389a4fbfa631d1d9a5703, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -14072,7 +14072,7 @@ PrefabInstance:
     - target: {fileID: 8281358012038076761, guid: f1380c4bc5b389a4fbfa631d1d9a5703, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 857325744}
+      objectReference: {fileID: 0}
     - target: {fileID: 8281358012038076761, guid: f1380c4bc5b389a4fbfa631d1d9a5703, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: CompleteObjective
@@ -14987,9 +14987,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 524794987}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 53142263692094858, guid: f1380c4bc5b389a4fbfa631d1d9a5703, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 857325744}
     - targetCorrespondingSourceObject: {fileID: 9011386445083751919, guid: f1380c4bc5b389a4fbfa631d1d9a5703, type: 3}
       insertIndex: -1
       addedObject: {fileID: 532752220}
@@ -15012,27 +15009,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7990546641548884914, guid: f1380c4bc5b389a4fbfa631d1d9a5703, type: 3}
   m_PrefabInstance: {fileID: 857325739}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &857325743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 53142263692094858, guid: f1380c4bc5b389a4fbfa631d1d9a5703, type: 3}
-  m_PrefabInstance: {fileID: 857325739}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &857325744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857325743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36267fa677f381744ab244bc2539d2b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: '* Collect the key and return it to the lobby.'
-  isCompleted: 0
-  order: 4
-  disableAtRuntime: 0
 --- !u!1001 &863445984
 PrefabInstance:
   m_ObjectHideFlags: 0
