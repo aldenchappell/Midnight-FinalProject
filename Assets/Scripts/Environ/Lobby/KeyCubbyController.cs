@@ -22,8 +22,6 @@ public class KeyCubbyController : MonoBehaviour
         _playerKeyController = FindObjectOfType<PlayerKeyController>();
         _audio = GetComponent<AudioSource>();
         _objectiveController = FindObjectOfType<ObjectiveController>();
-
-         
     }
 
     private void Start()
