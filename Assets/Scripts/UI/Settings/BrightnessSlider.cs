@@ -19,7 +19,6 @@ public class BrightnessSlider : MonoBehaviour
 
     public void OnBrightnessSliderValueChanged(float value)
     {
-        //Debug.Log("Brightness slider value changed: " + value);
         InGameSettingsManager.Instance.SetBrightness(value);
     }
 }
