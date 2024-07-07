@@ -228,32 +228,32 @@ public class PlayerDualHandInventory : MonoBehaviour
             GameObject item = _inventorySlots[currentIndexSelected];
             item.SetActive(true);
 
-            /*
-            if (item.GetComponent<ObjectSize>() && handPositions.Length > 0)
-            {
-                // Set position and rotation based on ObjectSize
-                int index = item.GetComponent<ObjectSize>().objectSize.handPositionIndex;
-                item.transform.parent = handPositions[index].parent;
-                item.transform.localPosition = handPositions[index].localPosition;
-                item.transform.localEulerAngles = handPositions[index].localEulerAngles;
-            }
-            else
+            
+            // if (item.GetComponent<ObjectSize>() && handPositions.Length > 0)
+            // {
+            //     // Set position and rotation based on ObjectSize
+            //     int index = item.GetComponent<ObjectSize>().objectSize.handPositionIndex;
+            //     item.transform.parent = handPositions[index].parent;
+            //     item.transform.localPosition = handPositions[index].localPosition;
+            //     item.transform.localEulerAngles = handPositions[index].localEulerAngles;
+            // }
+            // else
             {
                 // Default to small object size
                 item.transform.parent = defaultHand.parent;
                 item.transform.localPosition = defaultHand.localPosition;
                 item.transform.localEulerAngles = defaultHand.localEulerAngles;
             }
-
-            if (_originalScales.ContainsKey(item))
-            {
-                item.transform.localScale = _originalScales[item]; // Reset to the original scale
-            }
-            else
-            {
-                _originalScales.Add(item, item.transform.localScale);
-            }
-            */
+            //
+            // if (_originalScales.ContainsKey(item))
+            // {
+            //     item.transform.localScale = _originalScales[item]; // Reset to the original scale
+            // }
+            // else
+            // {
+            //     _originalScales.Add(item, item.transform.localScale);
+            // }
+            
 
             item.GetComponent<Collider>().enabled = false;
 
