@@ -7,7 +7,7 @@ public class InitialLaunchBrightnessSlider : MonoBehaviour
 
     private const string BrightnessPrefKey = "ScreenBrightness"; 
     private const float MinBrightness = .35f;
-    private const float MaxBrightness = 1f;
+    private const float MaxBrightness = .75f;
 
     private void Start()
     {

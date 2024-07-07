@@ -35,7 +35,8 @@ public class KeyCubbyController : MonoBehaviour
 
         if (SceneTransitionManager.PreviouslyLoadedSceneName == "MAINMENU")
         {
-            //ResetCubby();
+            Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
+            ResetCubby();
         }
     }
     
@@ -61,9 +62,9 @@ public class KeyCubbyController : MonoBehaviour
     {
         for (int i = 0; i < keySlots.Count; i++)
         {
-            bool keyPlaced = IsKeyPlaced(i);
-            keySlots[i].SetActive(keyPlaced);
-            Debug.Log($"Key at index {keySlots[i]} active state is {keyPlaced}");
+            //bool keyPlaced = IsKeyPlaced(i);
+            keySlots[i].SetActive(cubbyKeys[i].cubbyKey.placed);
+            Debug.Log($"Key at index {keySlots[i]} active state is {cubbyKeys[i].cubbyKey.placed}");
         }
     }
 
