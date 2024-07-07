@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,12 @@ public class UIMenuButtons : MonoBehaviour
 
     private void LoadLobby()
     {
+        StartCoroutine(FadeThenLoad());
+    }
+
+    private IEnumerator FadeThenLoad()
+    {
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("LOBBY");
         GlobalCursorManager.Instance.DisableCursor();
     }
