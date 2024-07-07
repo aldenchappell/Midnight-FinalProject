@@ -55,6 +55,7 @@ public class SetMovment : MonoBehaviour
                     if (_agent.enabled != true)
                     {
                         _agent.enabled = true;
+                        gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     }
                     SetChasePlayer(setPosition);
                     break;
@@ -62,6 +63,7 @@ public class SetMovment : MonoBehaviour
                     if (_agent.enabled != true)
                     {
                         _agent.enabled = true;
+                        gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     }
                     PatrolArea(setPosition);
                     break;
