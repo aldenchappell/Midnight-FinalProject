@@ -93,10 +93,23 @@ public class LevelCompletionManager : MonoBehaviour
         currentLevelPuzzles = new List<string>();
     }
 
-    public void ResetGame()
+    public void ResetGame(bool shouldResetCubby)
     {
         _collectedKeys = 0;
+        hasKey = false;
+        
         allLevelsCompleted = false;
+        
+        ResetPuzzles();
+        
+        _completedLevels.Clear();
+        _completedPuzzles.Clear();
+        _skullDialoguePlayed.Clear();
+        
+        hasCompletedLobby = false;
+        
+        if(shouldResetCubby)
+            FindObjectOfType<KeyCubbyController>().ResetCubby();
     }
     
     public void FinishGame()
@@ -110,8 +123,6 @@ public class LevelCompletionManager : MonoBehaviour
         if (allLevelsCompleted && !hasCompletedLobby)
         {
             hasCompletedLobby = true;
-            //PlayerPrefs.SetInt("LobbyPowered", 1);
-           // PlayerPrefs.Save();
             
             if(SceneManager.GetActiveScene().name == "LOBBY")
                 FindObjectOfType<FuseBox>().PowerLobby();
@@ -199,7 +210,8 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
-        ResetGame();
+        //ResetGame();
+        ResetPuzzles();
     }
     
     public void OnKeySpawn()

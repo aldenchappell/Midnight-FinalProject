@@ -18,7 +18,7 @@ public class EnemyStateController : MonoBehaviour
     
     // Script References
     private EnemyVision _enemyVision;
-    private SetMovment _setMovment;
+    private SetMovement _setMovement;
     private NavMeshAgent _agent;
     private EnemyAnimator _animator;
     private EnemySuspicionSystem _suspicion;
@@ -28,7 +28,7 @@ public class EnemyStateController : MonoBehaviour
     private void Awake()
     {
         _enemyVision = GetComponent<EnemyVision>();
-        _setMovment = GetComponent<SetMovment>();
+        _setMovement = GetComponent<SetMovement>();
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<EnemyAnimator>();
         _suspicion = GetComponent<EnemySuspicionSystem>();
@@ -89,18 +89,18 @@ public class EnemyStateController : MonoBehaviour
         {
             Transform target = _enemyVision.targetsLockedIn[0].transform;
             _agent.speed = chaseSpeed;
-            _setMovment.SetCurrentMovementState("Chasing", target.position);
+            _setMovement.SetCurrentMovementState("Chasing", target.position);
         }
         else if (currentState == AIState.Patrol)
         {
             Vector3 lastKnownPosition = _suspicion.lastSusPosition;
             _agent.speed = patrollingSpeed;
-            _setMovment.SetCurrentMovementState("Patrolling", lastKnownPosition);
+            _setMovement.SetCurrentMovementState("Patrolling", lastKnownPosition);
         }
         else
         {
             _agent.speed = roamSpeed;
-            _setMovment.SetCurrentMovementState("Roaming", Vector3.zero);
+            _setMovement.SetCurrentMovementState("Roaming", Vector3.zero);
         }
         
         //Set animation state based on current state (Animation triggers should be named exactly the same

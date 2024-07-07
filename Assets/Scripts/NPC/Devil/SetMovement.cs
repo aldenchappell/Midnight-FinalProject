@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SetMovment : MonoBehaviour
+public class SetMovement : MonoBehaviour
 {
     [SerializeField] LayerMask nodeLayer;
     [SerializeField] float maxPatrolRange;

@@ -29,7 +29,6 @@ public class PlayerHeartbeatController : MonoBehaviour
             FindEnemyReference();
             if (_enemyStateController == null)
             {
-                //heartbeatAudioSource.enabled = false;
                 return;
             }
         }

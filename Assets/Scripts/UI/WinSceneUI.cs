@@ -11,7 +11,7 @@ public class WinSceneUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
-        mainMenuButton.onClick.AddListener(LevelCompletionManager.Instance.ResetPuzzles);
+        mainMenuButton.onClick.AddListener(() => LevelCompletionManager.Instance.ResetGame(false));
     }
     public void OnMenuButtonPress()
     {

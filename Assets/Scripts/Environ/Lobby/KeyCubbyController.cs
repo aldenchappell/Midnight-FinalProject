@@ -35,7 +35,7 @@ public class KeyCubbyController : MonoBehaviour
 
         if (SceneTransitionManager.PreviouslyLoadedSceneName == "MAINMENU")
         {
-            ResetCubby();
+            //ResetCubby();
         }
     }
     
@@ -146,7 +146,7 @@ public class KeyCubbyController : MonoBehaviour
         return false;
     }
 
-    private void ResetCubby()
+    public void ResetCubby()
     {
         foreach (var slot in keySlots)
         {
