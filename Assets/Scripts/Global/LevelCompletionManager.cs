@@ -199,13 +199,11 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
-        //ResetPuzzles();
-        //ResetGame();
+        ResetGame();
     }
     
     public void OnKeySpawn()
     {
-        //print("Key spawn Audio");
         _audioSource.PlayOneShot(keyDropSound);
     }
     

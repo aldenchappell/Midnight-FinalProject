@@ -45,8 +45,8 @@ public class InGameSettingsManager : MonoBehaviour
     private AutoExposure _autoExposure;
     
     //Brightness
-    public float minBrightness = 0.01f;
-    public float maxBrightness = .025f;
+    private const float MinBrightness = 0.05f;
+    private const float MaxBrightness = .75f;
     private void Awake()
     {
         if (Instance == null)
@@ -80,6 +80,7 @@ public class InGameSettingsManager : MonoBehaviour
     /// APPLY THE TOGGLESETTINGSCONTROLLER TO THE TOGGLE AS WELL.
     /// GO TO THE TOP OF THIS SCRIPT WHERE ALL OF THE 'PREF' KEYS ARE DECLARED
     /// IF THERE ISNT A SETTING FOR THE DESIRED TOGGLE, DECLARE A NEW ONE AND MAKE ANOTHER CASE BELOW!
+    /// Questions? Ask Alden.
     /// </summary>
     /// <param name="settingKey"></param>
     /// <param name="value"></param>
@@ -144,17 +145,18 @@ public class InGameSettingsManager : MonoBehaviour
 
     public void SetBrightness(float value)
     {
-        float clampedBrightness = Mathf.Clamp(value, minBrightness, maxBrightness);
-        RenderSettings.ambientLight = Color.white * clampedBrightness;
+        float clampedBrightness = Mathf.Clamp(value, MinBrightness, MaxBrightness);
+        RenderSettings.ambientLight = new Color(clampedBrightness, clampedBrightness, clampedBrightness, 1);
         PlayerPrefs.SetFloat(BrightnessPrefKey, clampedBrightness);
         PlayerPrefs.Save();
     }
     
-    public void InitializeBrightness()
+    private void InitializeBrightness()
     {
         float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, .25f);
         SetBrightness(brightness);
     }
+    
     public void ToggleFootsteps(bool enable)
     {
         enableFootstepSounds = enable;
