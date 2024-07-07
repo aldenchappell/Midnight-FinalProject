@@ -228,6 +228,7 @@ public class PlayerDualHandInventory : MonoBehaviour
             GameObject item = _inventorySlots[currentIndexSelected];
             item.SetActive(true);
 
+            /*
             if (item.GetComponent<ObjectSize>() && handPositions.Length > 0)
             {
                 // Set position and rotation based on ObjectSize
@@ -252,12 +253,14 @@ public class PlayerDualHandInventory : MonoBehaviour
             {
                 _originalScales.Add(item, item.transform.localScale);
             }
+            */
 
             item.GetComponent<Collider>().enabled = false;
 
             if (item.CompareTag("Skull"))
             {
                 item.GetComponent<MeshRenderer>().enabled = true;
+                item.transform.GetChild(0).gameObject.SetActive(true);
                 GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = 1f;
             }
         }
@@ -283,6 +286,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                     item.GetComponent<Collider>().enabled = false;
                     item.transform.position = skullOfHandPosition.position;
                     item.GetComponent<MeshRenderer>().enabled = false;
+                    item.transform.GetChild(0).gameObject.SetActive(false);
                     GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = .5f;
                 }
                 else
