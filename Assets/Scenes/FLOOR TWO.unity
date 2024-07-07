@@ -8774,6 +8774,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2505426710106675620, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
   m_PrefabInstance: {fileID: 1833096278}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &759980317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8388984645142030032, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
+  m_PrefabInstance: {fileID: 1833096278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759980314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0743014263620fd47a426cfd613b90d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &761392876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9055637489367787848, guid: 2010a27773a539e4388c1df6b687fb5c, type: 3}
@@ -18279,7 +18290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36267fa677f381744ab244bc2539d2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: '* Solve the Da Vinci Puzzle.'
+  description: '* Solve the combination lock.'
   isCompleted: 0
   order: 1
   disableAtRuntime: 0
@@ -28737,8 +28748,36 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 386678114103489907, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 386678114103489907, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 386678114103489907, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 759980317}
+    - target: {fileID: 386678114103489907, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 386678114103489907, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnPickupDestroy
+      objectReference: {fileID: 0}
+    - target: {fileID: 386678114103489907, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnPickupDestroy
+      objectReference: {fileID: 0}
+    - target: {fileID: 386678114103489907, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 386678114103489907, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2505426710106675620, guid: 211eac48fb49864498efd630c1cd4b08, type: 3}
       propertyPath: m_Name
