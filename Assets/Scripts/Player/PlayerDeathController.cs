@@ -7,6 +7,9 @@ using Cinemachine;
 public class PlayerDeathController : MonoBehaviour
 {
     public bool isDead = false;
+
+    [HideInInspector] public bool isDying = false;
+
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private FirstPersonController firstPersonController;
     [SerializeField] CinemachineVirtualCamera _playerCam;
@@ -24,6 +27,7 @@ public class PlayerDeathController : MonoBehaviour
 
         if (enemy != null && enemy.CheckForChaseState())
         {
+            isDying = true;
             Die();
 
             enemy.ResetSuspicionValue();

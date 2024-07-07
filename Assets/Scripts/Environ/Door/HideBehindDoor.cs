@@ -21,6 +21,7 @@ public class HideBehindDoor : MonoBehaviour
     private DoorController _doorController;
     private GameObject _player;
     private FirstPersonController _FPC;
+    private PlayerDeathController _deathController;
     private PlayerDualHandInventory _inventory;
     private PlayerInteractableController _interactableController;
     
@@ -59,6 +60,7 @@ public class HideBehindDoor : MonoBehaviour
         _doorController = GetComponent<DoorController>();
         _player = GameObject.Find("Player");
         _FPC = FindObjectOfType<FirstPersonController>();
+        _deathController = FindObjectOfType<PlayerDeathController>();
         _interactableController = FindObjectOfType<PlayerInteractableController>();
         
         hiddenLayer = LayerMask.NameToLayer("Default");
@@ -320,8 +322,11 @@ public class HideBehindDoor : MonoBehaviour
 
     private void ToggleDoorUI()
     {
-        _doorHud.SetActive((!_doorHud.activeSelf));
-        _inGameUI.SetActive(!_inGameUI.activeSelf);
+        if(!_deathController.isDying)
+        {
+            _doorHud.SetActive((!_doorHud.activeSelf));
+            _inGameUI.SetActive(!_inGameUI.activeSelf);
+        }
     }
     #endregion
 

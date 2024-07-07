@@ -64,8 +64,6 @@ public class EnemySuspicionSystem : MonoBehaviour
     //Adds suspicion and gets the position of where it occured
     public void SuspicionTriggered(Vector3 position, int value)
     {
-        print("Triggered");
-        print(value);
         lastSusPosition = position;
         AdjustSuspicionValue(value);
     }
