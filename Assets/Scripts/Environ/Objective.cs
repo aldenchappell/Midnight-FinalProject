@@ -25,9 +25,12 @@ public class Objective : MonoBehaviour
     {
         if(!GetComponent<LobbyDoorExit>())
             _objectiveController.RegisterObjective(this);
-        
-        if(GetComponent<LobbyDoorExit>() && LevelCompletionManager.Instance.allLevelsCompleted)
+
+        if (GetComponent<LobbyDoorExit>() && LevelCompletionManager.Instance.allLevelsCompleted)
+        {
             _objectiveController.RegisterObjective(this);
+            GetComponent<LobbyDoorExit>().particles.SetActive(true);
+        }
     }
 
     public void CompleteObjective()

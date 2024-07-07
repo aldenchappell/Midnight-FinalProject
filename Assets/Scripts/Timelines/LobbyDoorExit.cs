@@ -8,7 +8,7 @@ public class LobbyDoorExit : MonoBehaviour
     [SerializeField] private GameObject outroCutscene;
     [SerializeField] private Image textPanel;
     [SerializeField] private TMP_Text text;
-
+    public GameObject particles;
     private Coroutine _textCoroutine;
     public void PlayOutroCutscene()
     {
