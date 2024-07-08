@@ -9,6 +9,7 @@ public class SetMovement : MonoBehaviour
     [SerializeField] float maxPatrolRange;
     [SerializeField] bool enableDebug;
     [SerializeField] GameObject pentAnim;
+    private EnemyVision _enemyVision;
 
     [Header("Only Assign if AI has special first time spawn event (Level One Only)")]
     public GameObject firstSpawn;
@@ -33,6 +34,7 @@ public class SetMovement : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _suspicion = GetComponent<EnemySuspicionSystem>();
         _player = GameObject.FindWithTag("Player");
+        _enemyVision = GetComponent<EnemyVision>();
     }
 
     private void Start()
@@ -80,7 +82,7 @@ public class SetMovement : MonoBehaviour
     }
 
     private void CreateNewPatrolRoute()
-    { 
+    {
         if(hasFirstTimeSpawnCondition)
         {
             hasFirstTimeSpawnCondition = false;
@@ -174,6 +176,8 @@ public class SetMovement : MonoBehaviour
     private void GoForwardChild()
     {
         _isPreppingToSpawn = false;
+        MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
+        _enemyVision.enabled = true;
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         _agent.enabled = enabled;
         _agent.SetDestination(_currentEndDestination);

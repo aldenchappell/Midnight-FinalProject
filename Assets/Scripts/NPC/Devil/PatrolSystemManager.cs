@@ -78,14 +78,15 @@ public class PatrolSystemManager : MonoBehaviour
     private void SetDemonActive()
     {
         hasFirstTimeSpawnCondition = false;
+        Demon.transform.GetChild(0).gameObject.SetActive(false);
         Demon.SetActive(true);
-        Debug.Log("Shaking player camera");
         
-        if(_shakeCam != null)
+        Debug.Log("Shaking player camera");
+        Demon.GetComponent<EnemyVision>().enabled = false;
+        if (_shakeCam != null)
             _shakeCam.TriggerShake();
         
        // FindObjectOfType<PlayerHeartbeatController>().enemyStateController = GetComponent<EnemyStateController>();
         //FindObjectOfType<PlayerHeartbeatController>().shouldCheckHeartbeat = true;
-        Demon.transform.GetChild(0).gameObject.SetActive(false);
     }
 }
