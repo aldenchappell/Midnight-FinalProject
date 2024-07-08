@@ -115,6 +115,8 @@ public class PlayerDualHandInventory : MonoBehaviour
                         newObject.transform.Find("GhostPlacement").localRotation;
                     _inventorySlots[currentIndexSelected].transform.GetComponent<MeshRenderer>().enabled = true;
                     _inventorySlots[currentIndexSelected].transform.GetComponent<Collider>().enabled = true;
+                    Transform ghostPosition = newObject.transform.Find("GhostPlacement");
+                    Destroy(ghostPosition.gameObject);
                 }
                 else
                 {
@@ -129,10 +131,16 @@ public class PlayerDualHandInventory : MonoBehaviour
             {
                 _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
                 _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
+                Transform ghostPosition = newObject.transform.Find("GhostPlacement");
+                if (ghostPosition != null)
+                {
+                    Destroy(ghostPosition.gameObject);
+                }  
             }
             UpdateInventoryUI();
         }
 
+        newObject.GetComponent<Collider>().enabled = false;
         newObject.transform.parent = this.gameObject.transform;
 
         if (!_originalScales.ContainsKey(newObject))
