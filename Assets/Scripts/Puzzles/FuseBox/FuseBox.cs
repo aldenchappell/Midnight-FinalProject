@@ -256,6 +256,7 @@ public class FuseBox : MonoBehaviour
                     AnimationsTrigger("Place");
                     _inventory.RemoveObject = item;
                     _fuseIn = true;
+                    fuseParticle.SetActive(false);
                 }
             }
         }
