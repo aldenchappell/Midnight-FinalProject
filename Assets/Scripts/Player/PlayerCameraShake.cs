@@ -56,8 +56,6 @@ public class PlayerCameraShake : MonoBehaviour
             _shaking = true;
             StartCoroutine(FallingDebris());
 
-            Debug.Log("starting shake");
-            
             if (_audio != null)
                 _audio.PlayOneShot(fallingDebrisClip);
         }
@@ -71,8 +69,6 @@ public class PlayerCameraShake : MonoBehaviour
             _perlinChannel.m_AmplitudeGain = 0f;
 
             _shaking = false;
-            
-            Debug.Log("stopping shake");
         }
     }
 

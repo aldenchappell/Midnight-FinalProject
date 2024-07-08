@@ -144,6 +144,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         _inventorySlots[currentIndexSelected] = newObject;
         ShowCurrentIndexItem();
         PickedUp = true;
+        UpdateInventoryUI();
     }
 
     private void PlaceObjectFromInventory(GameObject obj)
