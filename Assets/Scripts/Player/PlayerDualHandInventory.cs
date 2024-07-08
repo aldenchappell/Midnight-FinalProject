@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ public class PlayerDualHandInventory : MonoBehaviour
 
     [SerializeField] private Image[] inventorySlotImages = new Image[2];
     [SerializeField] private Image[] inventorySlotBorders = new Image[2];
+    [SerializeField] private TMP_Text[] inventorySlotIndexTexts = new TMP_Text[2];
     public GameObject[] GetInventory
     {
         get
@@ -306,27 +308,28 @@ public class PlayerDualHandInventory : MonoBehaviour
 
     private void UpdateInventoryUI()
     {
-        Color selectedSlotColor = new Color(1, 1, 1, 1f);
-        Color inactiveSlotColor = new Color(1, 1, 1, .5f);
+        //for some reason unity doesnt support ranged RBGs so we gotta divide
+        Color selectedSlotColor = new Color(70f / 255f, 70f / 255f, 70f / 255f, 1f);
+        Color inactiveSlotColor = new Color(70f / 255f, 70f / 255f, 70f / 255f, 0.5f);
 
         for (int i = 0; i < _inventorySlots.Length; i++)
         {
             if (_inventorySlots[i] != null)
             {
-                if(_inventorySlots[i].GetComponent<InventoryObject>())
+                if (_inventorySlots[i].GetComponent<InventoryObject>())
                     inventorySlotImages[i].sprite = _inventorySlots[i].GetComponent<InventoryObject>().GetItemImage();
-                
+
                 inventorySlotImages[i].color = new Color(
                     inventorySlotImages[i].color.r,
                     inventorySlotImages[i].color.g,
-                    inventorySlotImages[i].color.b, 1);//255 alpha
+                    inventorySlotImages[i].color.b, 1); //255 alpha
             }
             else
             {
                 inventorySlotImages[i].color = new Color(
                     inventorySlotImages[i].color.r,
                     inventorySlotImages[i].color.g,
-                    inventorySlotImages[i].color.b, 0);//0 alpha
+                    inventorySlotImages[i].color.b, 0); //0 alpha
             }
         }
 
@@ -334,12 +337,33 @@ public class PlayerDualHandInventory : MonoBehaviour
         {
             case 0:
                 inventorySlotBorders[0].color = selectedSlotColor;
+                inventorySlotIndexTexts[0].color = new Color(
+                    inventorySlotIndexTexts[0].color.r,
+                    inventorySlotIndexTexts[0].color.g,
+                    inventorySlotIndexTexts[0].color.b,
+                    selectedSlotColor.a); 
                 inventorySlotBorders[1].color = inactiveSlotColor;
+                inventorySlotIndexTexts[1].color = new Color(
+                    inventorySlotIndexTexts[1].color.r,
+                    inventorySlotIndexTexts[1].color.g,
+                    inventorySlotIndexTexts[1].color.b,
+                    inactiveSlotColor.a); 
                 break;
             case 1:
                 inventorySlotBorders[1].color = selectedSlotColor;
+                inventorySlotIndexTexts[1].color = new Color(
+                    inventorySlotIndexTexts[1].color.r,
+                    inventorySlotIndexTexts[1].color.g,
+                    inventorySlotIndexTexts[1].color.b,
+                    selectedSlotColor.a); 
                 inventorySlotBorders[0].color = inactiveSlotColor;
+                inventorySlotIndexTexts[0].color = new Color(
+                    inventorySlotIndexTexts[0].color.r,
+                    inventorySlotIndexTexts[0].color.g,
+                    inventorySlotIndexTexts[0].color.b,
+                    inactiveSlotColor.a); 
                 break;
         }
     }
+
 }
