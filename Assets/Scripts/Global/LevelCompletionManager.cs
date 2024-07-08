@@ -19,6 +19,8 @@ public class LevelCompletionManager : MonoBehaviour
     public List<SO_Puzzle> level3Puzzles;
 
     private int _collectedKeys;
+    //Added this line for fix: Owen
+    public int _keysReturned = 0;
     private HashSet<string> _completedLevels = new HashSet<string>();
     private HashSet<string> _completedPuzzles = new HashSet<string>();
 
@@ -107,6 +109,7 @@ public class LevelCompletionManager : MonoBehaviour
         _skullDialoguePlayed.Clear();
         
         hasCompletedLobby = false;
+        _keysReturned = 0;
         
         if(shouldResetCubby)
             FindObjectOfType<KeyCubbyController>().ResetCubby();
