@@ -25,5 +25,6 @@ public class ToggleSettingsController : MonoBehaviour
     private void OnToggleValueChanged(bool value)
     {
         InGameSettingsManager.Instance.SetToggleSetting(settingKey, value);
+        Debug.Log("Turning " + settingKey + " to " + value);
     }
 }
