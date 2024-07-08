@@ -14,12 +14,18 @@ public class PlayerHeartbeatController : MonoBehaviour
 
     private EnemyStateController _enemyStateController;
     private Coroutine _enemyCloseCoroutine;
-
+    
+    private FadeUI _fadeUI;
+    
     private void Awake()
     {
         heartbeatAudioSource.volume = 0.0f;
-
         enemyCloseImage.enabled = false;
+        _fadeUI = FindObjectOfType<FadeUI>();
+        
+        Color color = enemyCloseImage.color;
+        color.a = Mathf.Clamp(color.a, 0, 43f / 255f);
+        enemyCloseImage.color = color;
     }
 
     private void Update()
@@ -135,10 +141,18 @@ public class PlayerHeartbeatController : MonoBehaviour
             }
 
             float distanceToEnemy = Vector3.Distance(transform.position, _enemyStateController.gameObject.transform.position);
-            float proximityFactor = Mathf.Clamp01(1 - (distanceToEnemy / maxDistance));
+            float proximityFactor = Mathf.Clamp01(1 - (distanceToEnemy / maxDistance + -5));
             float flashInterval = Mathf.Lerp(1.0f, 0.1f, proximityFactor);
 
+            // Toggle the image enabled state
             enemyCloseImage.enabled = !enemyCloseImage.enabled;
+
+            // Fade in and out the image very fast
+            if (enemyCloseImage.enabled)
+            {
+                StartCoroutine(_fadeUI.FadeEnemyCloseImage(enemyCloseImage));
+            }
+
             yield return new WaitForSeconds(flashInterval);
         }
     }

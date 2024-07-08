@@ -130,4 +130,41 @@ public class FadeUI : MonoBehaviour
         finalColor.a = 1;
         image.color = finalColor;
     }
+    
+    public IEnumerator FadeEnemyCloseImage(Image image)
+    {
+        float fadeDuration = 0.1f; // Very fast fade duration
+        float startAlpha = image.color.a;
+        float rate = 1.0f / fadeDuration;
+        float progress = 0.0f;
+
+        // Fade in
+        while (progress < 1.0f)
+        {
+            Color imgColor = image.color;
+            imgColor.a = Mathf.Lerp(startAlpha, 43f / 255f, progress);
+            image.color = imgColor;
+            progress += rate * Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the alpha is clamped
+        Color finalColor = image.color;
+        finalColor.a = 43f / 255f;
+        image.color = finalColor;
+
+        // Fade out
+        progress = 0.0f;
+        while (progress < 1.0f)
+        {
+            Color imgColor = image.color;
+            imgColor.a = Mathf.Lerp(43f / 255f, 0, progress);
+            image.color = imgColor;
+            progress += rate * Time.deltaTime;
+            yield return null;
+        }
+
+        finalColor.a = 0;
+        image.color = finalColor;
+    }
 }
