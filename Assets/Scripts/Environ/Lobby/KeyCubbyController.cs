@@ -27,12 +27,15 @@ public class KeyCubbyController : MonoBehaviour
     {
         InitializeKeySlots();
         SetupInteractionEvents();
-        
+        ActivateReturnedKeys();
+
+
         if (LevelCompletionManager.Instance.hasCompletedLobby)
         {
             SetupLobbyObjectives();
         }
 
+        //Might cause issues resetting progress before player is finished?
         if (SceneTransitionManager.PreviouslyLoadedSceneName == "MAINMENU")
         {
             Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
@@ -115,6 +118,8 @@ public class KeyCubbyController : MonoBehaviour
             
 
             LevelCompletionManager.Instance.hasKey = false;
+            //Added this line for fix: Owen
+            LevelCompletionManager.Instance._keysReturned++;
         }
         else
         {
@@ -135,6 +140,7 @@ public class KeyCubbyController : MonoBehaviour
         return false;
     }
 
+    //Reworked this method for new functionality: Owen
     public bool IsKeyPlaced(int keyIndex)
     {
         if (keyIndex >= 0 && keyIndex < keySlots.Count)
@@ -157,6 +163,18 @@ public class KeyCubbyController : MonoBehaviour
         foreach (var key in cubbyKeys)
         {
             key.cubbyKey.placed = false;
+        }
+    }
+
+    //Added this method as part of fix: Owen
+    private void ActivateReturnedKeys()
+    {
+        if(LevelCompletionManager.Instance._keysReturned > 0)
+        {
+            for(int i = 0; i < LevelCompletionManager.Instance._keysReturned; i++)
+            {
+                IsKeyPlaced(i);
+            }
         }
     }
 }
