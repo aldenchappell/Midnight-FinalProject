@@ -123,7 +123,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                     _inventorySlots[currentIndexSelected].transform.GetComponent<MeshRenderer>().enabled = true;
                     _inventorySlots[currentIndexSelected].transform.GetComponent<Collider>().enabled = true;
                 }
-                
+                UpdateInventoryUI();
             }
             else
             {
