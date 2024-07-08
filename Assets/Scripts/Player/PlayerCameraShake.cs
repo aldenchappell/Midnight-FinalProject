@@ -32,31 +32,14 @@ public class PlayerCameraShake : MonoBehaviour
 
     private void Update()
     {
-        if (InGameSettingsManager.Instance.enableShaking)
+        if (_timer > 0)
         {
-            #region Cheats
-#if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                TriggerShake();
-            }
-
-            if (_shaking && Input.GetKeyDown(KeyCode.L))
+            _timer -= Time.deltaTime;
+            if (_timer <= 0)
             {
                 StopShake();
             }
-#endif
-            #endregion
-            if (_timer > 0)
-            {
-                _timer -= Time.deltaTime;
-                if (_timer <= 0)
-                {
-                    StopShake();
-                }
-            }
         }
-        
         else
         {
             StopShake();
