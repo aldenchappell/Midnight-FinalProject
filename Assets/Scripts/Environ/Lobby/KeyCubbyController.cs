@@ -36,11 +36,13 @@ public class KeyCubbyController : MonoBehaviour
         }
 
         //Might cause issues resetting progress before player is finished?
+
         if (SceneTransitionManager.PreviouslyLoadedSceneName == "MAINMENU")
         {
             Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
             ResetCubby();
         }
+
     }
     
     private void SetupLobbyObjectives()
@@ -140,7 +142,7 @@ public class KeyCubbyController : MonoBehaviour
         return false;
     }
 
-    //Reworked this method for new functionality: Owen
+
     public bool IsKeyPlaced(int keyIndex)
     {
         if (keyIndex >= 0 && keyIndex < keySlots.Count)
@@ -173,7 +175,8 @@ public class KeyCubbyController : MonoBehaviour
         {
             for(int i = 0; i < LevelCompletionManager.Instance._keysReturned; i++)
             {
-                IsKeyPlaced(i);
+                cubbyKeys[i].cubbyKey.placed = true;
+                cubbyKeys[i].keyObject.SetActive(true);
             }
         }
     }
