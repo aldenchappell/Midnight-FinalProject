@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDualHandInventory : MonoBehaviour
 {
@@ -8,11 +9,15 @@ public class PlayerDualHandInventory : MonoBehaviour
     [SerializeField] Transform defaultHand;
     [SerializeField] Transform skullOfHandPosition;
 
+    
     public GameObject[] _inventorySlots;
     public int currentIndexSelected;
 
     private PlayerArmsAnimationController _armsAnimationController;
     private Dictionary<GameObject, Vector3> _originalScales = new Dictionary<GameObject, Vector3>();
+
+    [SerializeField] private Image[] inventorySlotImages = new Image[2];
+    [SerializeField] private Image[] inventorySlotBorders = new Image[2];
     public GameObject[] GetInventory
     {
         get
@@ -35,7 +40,7 @@ public class PlayerDualHandInventory : MonoBehaviour
         _inventorySlots = new GameObject[2];
         currentIndexSelected = 0;
         PickedUp = false; // Initialize picked up state
-        
+        UpdateInventoryUI();
         _armsAnimationController = FindObjectOfType<PlayerArmsAnimationController>();
     }
 
@@ -45,13 +50,16 @@ public class PlayerDualHandInventory : MonoBehaviour
         {
             currentIndexSelected = 0;
             ShowCurrentIndexItem();
+            UpdateInventoryUI();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentIndexSelected = 1;
             ShowCurrentIndexItem();
+            UpdateInventoryUI();
         }
     }
+
 
     #region Public methods
     // Adjust inventory when picking up a new interactable object
@@ -120,6 +128,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                 _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
                 _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
             }
+            UpdateInventoryUI();
         }
 
         newObject.transform.parent = this.gameObject.transform;
@@ -154,16 +163,13 @@ public class PlayerDualHandInventory : MonoBehaviour
                 _inventorySlots[currentIndexSelected].transform.position = obj.transform.position;
                 _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
                 _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
+                UpdateInventoryUI();
                 obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
                 _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
                 Destroy(_inventorySlots[currentIndexSelected].GetComponent<InteractableObject>());
                 Destroy(obj);
                 _inventorySlots[currentIndexSelected] = null;
                 
-                if (_armsAnimationController != null)
-                {
-                    //_armsAnimationController.SetHoldingObject(false); // Call SetHoldingObject here
-                }
             }
         }
     }
@@ -189,7 +195,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                     _inventorySlots[index].transform.position = obj.transform.position;
                     _inventorySlots[index].transform.eulerAngles = obj.transform.eulerAngles;
                     _inventorySlots[index].SetActive(true);
-
+                    UpdateInventoryUI();
                     obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
                     Destroy(_inventorySlots[index].GetComponent<InteractableObject>());
                     Destroy(obj);
@@ -211,6 +217,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                 {
                     int index = System.Array.IndexOf(_inventorySlots, item);
                     Destroy(_inventorySlots[index]);
+                    UpdateInventoryUI();
                     _inventorySlots[index] = null;
                     break;
                 }
@@ -294,6 +301,45 @@ public class PlayerDualHandInventory : MonoBehaviour
                     item.SetActive(false);
                 }
             }
+        }
+    }
+
+    private void UpdateInventoryUI()
+    {
+        Color selectedSlotColor = new Color(1, 1, 1, 1f);
+        Color inactiveSlotColor = new Color(1, 1, 1, .5f);
+
+        for (int i = 0; i < _inventorySlots.Length; i++)
+        {
+            if (_inventorySlots[i] != null)
+            {
+                if(_inventorySlots[i].GetComponent<InventoryObject>())
+                    inventorySlotImages[i].sprite = _inventorySlots[i].GetComponent<InventoryObject>().GetItemImage();
+                
+                inventorySlotImages[i].color = new Color(
+                    inventorySlotImages[i].color.r,
+                    inventorySlotImages[i].color.g,
+                    inventorySlotImages[i].color.b, 1);//255 alpha
+            }
+            else
+            {
+                inventorySlotImages[i].color = new Color(
+                    inventorySlotImages[i].color.r,
+                    inventorySlotImages[i].color.g,
+                    inventorySlotImages[i].color.b, 0);//0 alpha
+            }
+        }
+
+        switch (currentIndexSelected)
+        {
+            case 0:
+                inventorySlotBorders[0].color = selectedSlotColor;
+                inventorySlotBorders[1].color = inactiveSlotColor;
+                break;
+            case 1:
+                inventorySlotBorders[1].color = selectedSlotColor;
+                inventorySlotBorders[0].color = inactiveSlotColor;
+                break;
         }
     }
 }
