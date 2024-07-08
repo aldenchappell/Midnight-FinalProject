@@ -37,11 +37,6 @@ public class PlayerArmsAnimationController : MonoBehaviour
         animator.SetBool("isIdle", isIdle);
     }
 
-    public void SetCrouching(bool isCrouching)
-    {
-        animator.SetBool("isCrouching", isCrouching);
-    }
-
     public void SetPickingUp(bool isPickingUp)
     {
         animator.SetBool("isPickingUp", isPickingUp);

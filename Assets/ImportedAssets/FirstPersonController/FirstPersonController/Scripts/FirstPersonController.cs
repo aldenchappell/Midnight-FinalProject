@@ -215,7 +215,6 @@ namespace StarterAssets
                                                           && !isCrouching
                                                           && _playerInventory.GetCurrentHandItem == null);
                 _playerArms.animator.SetBool("isRunning", isSprinting);
-                _playerArms.animator.SetBool("isCrouching", isCrouching);
             }
         }
 
@@ -225,23 +224,21 @@ namespace StarterAssets
             {
                 switch (isSprinting)
                 {
-                    case true when _playerInventory.GetCurrentHandItem != null && input.move != Vector2.zero:
+                    case true when _playerInventory.GetCurrentHandItem != null && !isCrouching && input.move != Vector2.zero:
                         _playerArms.SetIsRunningWithItem(true);
                         _playerArms.SetRunning(false);
                         _playerArms.SetWalkingWithItem(false);
                         _playerArms.SetWalking(false);
                         _playerArms.SetPickingUp(false);
                         _playerArms.SetIdle(false);
-                        _playerArms.SetCrouching(false);
                         break;
-                    case true when _playerInventory.GetCurrentHandItem == null && input.move != Vector2.zero:
+                    case true when _playerInventory.GetCurrentHandItem == null && !isCrouching && input.move != Vector2.zero:
                         _playerArms.SetIsRunningWithItem(false);
                         _playerArms.SetRunning(true);
                         _playerArms.SetWalkingWithItem(false);
                         _playerArms.SetWalking(false);
                         _playerArms.SetPickingUp(false);
                         _playerArms.SetIdle(false);
-                        _playerArms.SetCrouching(false);
                         break;
                     default:
                     {
@@ -255,7 +252,6 @@ namespace StarterAssets
                                 _playerArms.SetWalking(false);
                                 _playerArms.SetPickingUp(false);
                                 _playerArms.SetIdle(false);
-                                _playerArms.SetCrouching(false);
                             }
                             else
                             {
@@ -265,7 +261,6 @@ namespace StarterAssets
                                 _playerArms.SetWalking(true);
                                 _playerArms.SetPickingUp(false);
                                 _playerArms.SetIdle(false);
-                                _playerArms.SetCrouching(false);
                             }
                         }
                         else if (isCrouching)
@@ -276,7 +271,6 @@ namespace StarterAssets
                             _playerArms.SetWalking(false);
                             _playerArms.SetPickingUp(false);
                             _playerArms.SetIdle(false);
-                            _playerArms.SetCrouching(true);
                         }
                         else
                         {
@@ -286,17 +280,12 @@ namespace StarterAssets
                             _playerArms.SetWalking(false);
                             _playerArms.SetPickingUp(false);
                             _playerArms.SetIdle(true);
-                            _playerArms.SetCrouching(false);
                         }
                         break;
                     }
                 }
             }
         }
-
-
-
-        
         
         public void ToggleCanMove()
         {
