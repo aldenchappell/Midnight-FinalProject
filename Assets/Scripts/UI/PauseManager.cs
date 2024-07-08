@@ -8,15 +8,17 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject[] playerUIElements;
     public AudioSource pauseSFX;
+    public bool inDoor;
 
     private void Start()
     {
         GameIsPaused = false;
+        inDoor = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !inDoor)
         {
             if (GameIsPaused)
             {

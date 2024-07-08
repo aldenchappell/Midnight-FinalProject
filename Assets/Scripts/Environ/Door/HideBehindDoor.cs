@@ -24,6 +24,7 @@ public class HideBehindDoor : MonoBehaviour
     private PlayerDeathController _deathController;
     private PlayerDualHandInventory _inventory;
     private PlayerInteractableController _interactableController;
+    private PauseManager _pauseManager;
     
     public bool isActive;
     private bool _isSwitching;
@@ -62,7 +63,8 @@ public class HideBehindDoor : MonoBehaviour
         _FPC = FindObjectOfType<FirstPersonController>();
         _deathController = FindObjectOfType<PlayerDeathController>();
         _interactableController = FindObjectOfType<PlayerInteractableController>();
-        
+        _pauseManager = GameObject.FindObjectOfType<PauseManager>();
+
         hiddenLayer = LayerMask.NameToLayer("Default");
         defaultLayer = LayerMask.NameToLayer("Target");
 
@@ -110,6 +112,7 @@ public class HideBehindDoor : MonoBehaviour
             _isSwitching = true;
             if (isActive)
             {
+                _pauseManager.inDoor = true;
                 gameObject.layer = LayerMask.NameToLayer("Default");
                 _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
                 _FPC.ToggleCanMove();
@@ -145,6 +148,7 @@ public class HideBehindDoor : MonoBehaviour
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 Invoke("InteractDelay", 4f);
+                _pauseManager.inDoor = false;
             }
             
         }
