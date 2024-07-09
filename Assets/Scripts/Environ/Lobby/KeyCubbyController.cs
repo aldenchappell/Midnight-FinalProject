@@ -56,7 +56,7 @@ public class KeyCubbyController : MonoBehaviour
                 // Objective to return key to front desk
                 _returnKeyObjective = gameObject.AddComponent<Objective>();
                 _returnKeyObjective.description = "* Return the key to the front desk.";
-                _returnKeyObjective.order = 2;
+                _returnKeyObjective.order = 3;
 
                 _objectiveController.RegisterObjective(_returnKeyObjective);
             }

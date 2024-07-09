@@ -11,7 +11,8 @@ public class FuseBox : MonoBehaviour
     [SerializeField] GameObject puzzleUI;
     [SerializeField] GameObject leverParticle;
     [SerializeField] GameObject fuseParticle;
-
+    [SerializeField] private GameObject elevatorObj;
+    
     private AudioSource _radioAudio;
     private List<Light> _lobbyLights;
     private List<Material> _lobbyEmissives;
@@ -36,7 +37,8 @@ public class FuseBox : MonoBehaviour
 
     private Puzzle _puzzle;
     private Objective _objective;
-
+    
+    
     private void Awake()
     {
         _arms = GameObject.Find("Arms");
@@ -220,7 +222,11 @@ public class FuseBox : MonoBehaviour
 
         leverParticle.SetActive(false);
         fuseParticle.SetActive(false);
-
+        
+        if (elevatorObj)
+        {
+            elevatorObj.SetActive(true);
+        }
         // Enable lobby lights
         foreach (Light light in _lobbyLights)
         {
