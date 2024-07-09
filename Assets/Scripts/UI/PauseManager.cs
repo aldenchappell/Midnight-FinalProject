@@ -14,6 +14,8 @@ public class PauseManager : MonoBehaviour
     {
         GameIsPaused = false;
         inDoor = false;
+        InGameSettingsManager.Instance.LoadSettings();
+        pauseMenuUI.SetActive(false);
     }
 
     void Update()
