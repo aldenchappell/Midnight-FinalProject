@@ -6,7 +6,7 @@ public class ResolutionManager : MonoBehaviour
 
     private void Start()
     {
-        _resolutions = Screen.resolutions;
+        //_resolutions = Screen.resolutions;
         ApplySavedResolution();
     }
 
