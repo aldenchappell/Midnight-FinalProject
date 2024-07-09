@@ -116,6 +116,7 @@ public class KeyCubbyController : MonoBehaviour
         {
             cubbyKeys[keyIndex].keyObject.SetActive(true);
             cubbyKeys[keyIndex].cubbyKey.placed = true;
+            cubbyKeys[keyIndex].particles.SetActive(false);
             _audio.PlayOneShot(placeKeySound);
             
 
