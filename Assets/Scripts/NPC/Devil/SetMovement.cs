@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class SetMovement : MonoBehaviour
 {
@@ -28,7 +31,10 @@ public class SetMovement : MonoBehaviour
     private Vector3 _currentEndDestination;
     private bool _isPreppingToSpawn;
 
+    public UnityEvent onDemonSpawn;
 
+    
+    
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -41,6 +47,9 @@ public class SetMovement : MonoBehaviour
     {
         _allActiveDemonDoors = GameObject.FindGameObjectsWithTag("DemonDoor");
         _currentEndDestination = Vector3.zero;
+        
+        
+        onDemonSpawn.Invoke();
     }
 
     public void SetCurrentMovementState(string state, Vector3 setPosition)
@@ -93,6 +102,7 @@ public class SetMovement : MonoBehaviour
             _currentEndDestination = firstEnd.transform.position;
             GameObject demonAnim = Instantiate(pentAnim, firstSpawn.transform.position, Quaternion.identity);
             demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
+            FindObjectOfType<PlayerCameraShake>().TriggerShake();
             Destroy(demonAnim, 5.15f);
             Invoke("GoForwardChild", 5.15f);
         }
@@ -148,6 +158,7 @@ public class SetMovement : MonoBehaviour
                     _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
                     GameObject demonAnim = Instantiate(pentAnim, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
                     demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
+                    FindObjectOfType<PlayerCameraShake>().TriggerShake();
                     Destroy(demonAnim, 5.15f);
                     Invoke("GoForwardChild", 5.15f);
                 }

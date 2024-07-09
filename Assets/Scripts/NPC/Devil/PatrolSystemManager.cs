@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class PatrolSystemManager : MonoBehaviour
 {
@@ -11,10 +7,6 @@ public class PatrolSystemManager : MonoBehaviour
     [SerializeField] bool hasFirstTimeSpawnCondition;
 
     private float _currentTime;
-
-    
-
-    
 
     public int DecreaseTimeToSpawn
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCameraShake : MonoBehaviour
 {
-    private CinemachineVirtualCamera _shakeCam; 
+    [SerializeField] private CinemachineVirtualCamera _shakeCam; 
     [SerializeField] private NoiseSettings handheldNormalMild;
     [SerializeField] private NoiseSettings shakeProfile;
     private CinemachineBasicMultiChannelPerlin _perlinChannel;
@@ -19,19 +19,34 @@ public class PlayerCameraShake : MonoBehaviour
     private AudioSource _audio;
     private bool _shaking;
     private GameObject _debris;
+    
     private void Awake()
     {
         _shakeCam = GetComponent<CinemachineVirtualCamera>();
         _audio = GetComponentInChildren<AudioSource>();
-        
-        if (_shakeCam != null)
+
+        if (_shakeCam == null)
         {
-            _perlinChannel = _shakeCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            _shakeCam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
+            Debug.Log("Shake cam ref re added");
+        }
+        
+        _perlinChannel = _shakeCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        if (_perlinChannel != null)
+        {
+            Debug.Log("Perlin channel found.");
+        }
+        else
+        {
+            Debug.Log("Perlin channel NOT found.");
         }
     }
 
+
     private void Update()
     {
+        
         if (_timer > 0)
         {
             _timer -= Time.deltaTime;
@@ -48,7 +63,9 @@ public class PlayerCameraShake : MonoBehaviour
 
     public void TriggerShake()
     {
-        if (_perlinChannel != null && !_shaking)
+        Debug.Log("Triggering camera shake");
+
+        if (!_shaking)
         {
             _perlinChannel.m_NoiseProfile = shakeProfile;
             _perlinChannel.m_AmplitudeGain = ShakeIntensity;
