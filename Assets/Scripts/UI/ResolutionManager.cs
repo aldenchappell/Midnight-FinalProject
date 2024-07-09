@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 public class ResolutionManager : MonoBehaviour
 {
     private Resolution[] _resolutions;
 
-    private void Awake()
+    private void Start()
     {
         _resolutions = Screen.resolutions;
         ApplySavedResolution();
