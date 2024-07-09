@@ -165,6 +165,7 @@ public class ElevatorController : MonoBehaviour
                     FadeText("You are already on this floor.");
                     return;
                 }
+                LevelCompletionManager.Instance.SaveLevelCompletion(LevelCompletionManager.Instance._currentLevel);
                 _selectedLevelName = "LOBBY";
                 break;
             case 2:
