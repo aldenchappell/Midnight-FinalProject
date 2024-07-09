@@ -13,8 +13,8 @@ public class QualitySettingsController : MonoBehaviour
         InitializeResolutionDropdown();
         InitializeQualityDropdown();
         
-        int savedResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", _resolutions.Length - 1);
-        SetResolution(_resolutions.Length - 1);
+       // int savedResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", _resolutions.Length - 1);
+        //SetResolution(_resolutions.Length - 1);
     }
 
     private void InitializeResolutionDropdown()
