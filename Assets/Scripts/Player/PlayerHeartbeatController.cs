@@ -61,7 +61,7 @@ public class PlayerHeartbeatController : MonoBehaviour
             {
                 if (_enemyCloseCoroutine == null)
                 {
-                    _enemyCloseCoroutine = StartCoroutine(EnemyCloseRoutine());
+                    //EnemyCloseRoutine();
                 }
             }
             else
@@ -130,19 +130,19 @@ public class PlayerHeartbeatController : MonoBehaviour
         }
     }
 
-    private IEnumerator EnemyCloseRoutine()
+    private void EnemyCloseRoutine()
     {
-        while (true)
-        {
+      
             if (_enemyStateController == null || !_enemyStateController.gameObject.activeInHierarchy)
             {
                 enemyCloseImage.enabled = false;
-                yield break;
+                return;
+                //yield break;
             }
 
             float distanceToEnemy = Vector3.Distance(transform.position, _enemyStateController.gameObject.transform.position);
             float proximityFactor = Mathf.Clamp01(1 - (distanceToEnemy / maxDistance + -5));
-            float flashInterval = Mathf.Lerp(1.0f, 0.1f, proximityFactor);
+            //float flashInterval = Mathf.Lerp(1.0f, 0.1f, proximityFactor);
 
             // Toggle the image enabled state
             enemyCloseImage.enabled = !enemyCloseImage.enabled;
@@ -153,7 +153,7 @@ public class PlayerHeartbeatController : MonoBehaviour
                 StartCoroutine(_fadeUI.FadeEnemyCloseImage(enemyCloseImage));
             }
 
-            yield return new WaitForSeconds(flashInterval);
+            //yield return new WaitForSeconds(flashInterval);
         }
-    }
+    
 }
