@@ -15,6 +15,7 @@ public class LobbyDoorExit : MonoBehaviour
         if (LevelCompletionManager.Instance.allLevelsCompleted)
         {
             outroCutscene.SetActive(true);
+            LevelCompletionManager.Instance.ResetGame(true);
         }
         else
         {
