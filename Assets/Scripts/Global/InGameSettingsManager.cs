@@ -47,6 +47,9 @@ public class InGameSettingsManager : MonoBehaviour
     //Brightness
     private const float MinBrightness = 0.05f;
     private const float MaxBrightness = .75f;
+
+    public int _resolutionIndex;
+
     private void Awake()
     {
         if (Instance == null)

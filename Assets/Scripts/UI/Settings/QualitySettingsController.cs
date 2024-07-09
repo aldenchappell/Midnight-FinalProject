@@ -66,7 +66,9 @@ public class QualitySettingsController : MonoBehaviour
             Resolution resolution = _resolutions[resolutionIndex];
             Debug.Log("Setting Resolution: " + resolution.width + " x " + resolution.height);
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-            
+
+            InGameSettingsManager.Instance._resolutionIndex = resolutionIndex;
+            print(InGameSettingsManager.Instance._resolutionIndex);
             PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
             PlayerPrefs.Save();
         }
