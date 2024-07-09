@@ -7,7 +7,7 @@ public class LevelCompletionManager : MonoBehaviour
     public static LevelCompletionManager Instance;
     public List<string> currentLevelPuzzles = new List<string>();
     public List<string> loadedLevels = new List<string>();
-    private string _currentLevel;
+    public string _currentLevel;
     public bool hasCompletedLobby = false;
     
     private readonly Dictionary<string, bool> _skullDialoguePlayed = new Dictionary<string, bool>();
@@ -67,16 +67,17 @@ public class LevelCompletionManager : MonoBehaviour
         if (currentLevelPuzzles.Contains(puzzle.puzzleName))
         {
             currentLevelPuzzles.Remove(puzzle.puzzleName);
-            if (currentLevelPuzzles.Count == 0)
-            {
-                SaveLevelCompletion(_currentLevel);
-            }
+            
         }
     }
 
-    private void SaveLevelCompletion(string levelName)
+    public void SaveLevelCompletion(string levelName)
     {
-        _completedLevels.Add(levelName);
+        print("Checking for level comp");
+        if (currentLevelPuzzles.Count == 0)
+        {
+            _completedLevels.Add(levelName);
+        }
     }
     
     
