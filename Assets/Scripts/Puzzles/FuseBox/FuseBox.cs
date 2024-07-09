@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using StarterAssets;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class FuseBox : MonoBehaviour
@@ -72,8 +73,6 @@ public class FuseBox : MonoBehaviour
     {
         InitializeLighting();
 
-        //instead of checking the hasCompletedLobby variable, check the stored playerprefs value.
-
         if (LevelCompletionManager.Instance.hasCompletedLobby)
         {
             PowerLobby();
@@ -112,9 +111,7 @@ public class FuseBox : MonoBehaviour
         {
             if (_lobbyLights[i].gameObject.name == "ExamineObjectLight" || _lobbyLights[i].gameObject.CompareTag("LobbyLight"))
             {
-                //print("Removed");
-                //Debug.Log(_lobbyLights[i]);
-                _lobbyLights.Remove(_lobbyLights[i]);
+                _lobbyLights.RemoveAt(i);
                 i -= 1;
             }
         }
@@ -122,8 +119,8 @@ public class FuseBox : MonoBehaviour
         foreach (Light light in _lobbyLights)
         {
             light.enabled = false;
-            
-            //add the renderers of the light parents to the emissives list
+
+            //check for renderre on parent
             Renderer rend = light.GetComponentInParent<Renderer>();
             if (rend != null)
             {
@@ -131,6 +128,18 @@ public class FuseBox : MonoBehaviour
                 if (material != null && material.IsKeywordEnabled("_EMISSION"))
                 {
                     _lobbyEmissives.Add(material);
+                    continue; //if an emissive is found continue to find the ones that dont have the renderer as a parent
+                }
+            }
+
+            // this is to get the renderer on the objects that have the renderer on the parent object
+            rend = light.GetComponent<Renderer>();
+            if (rend != null)
+            {
+                Material mat = rend.material;
+                if (mat != null && mat.IsKeywordEnabled("_EMISSION"))
+                {
+                    _lobbyEmissives.Add(mat);
                 }
             }
         }
@@ -238,7 +247,6 @@ public class FuseBox : MonoBehaviour
         if (_objective != null)
         {
             _objective.CompleteObjective();
-            
         }
         
         //turn on all lamps and enable emissives
@@ -246,6 +254,9 @@ public class FuseBox : MonoBehaviour
 
         _radioAudio.enabled = true;
         _elevator.enabled = true;
+
+        //enable all emissives
+        ToggleEmissives(true);
     }
 
 

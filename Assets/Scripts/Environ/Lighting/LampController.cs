@@ -7,7 +7,6 @@ public class LampController : MonoBehaviour
     [SerializeField] private AudioClip pullLampSound;
     
     private List<Lamp> _lamps = new List<Lamp>();
-    
 
     private void Start()
     {
@@ -60,19 +59,19 @@ public class LampController : MonoBehaviour
     {
         lamp.on = !lamp.on;
         Light lampLight = lamp.GetComponentInChildren<Light>();
-        Renderer rend;
-        
-        rend = !lamp.isLamp ? GetComponent<Renderer>() : lamp.GetComponentInChildren<Renderer>();
+        Renderer rend = !lamp.isLamp ? GetComponent<Renderer>() : lamp.GetComponentInChildren<Renderer>();
         
         if (lamp.on)
         {
             rend.material.EnableKeyword("_EMISSION");
             lampLight.enabled = true;
+            Debug.Log($"Enabled emissive material: {rend.material.name} on {rend.gameObject.name}");
         }
         else
         {
             rend.material.DisableKeyword("_EMISSION");
             lampLight.enabled = false;
+            Debug.Log($"Disabled emissive material: {rend.material.name} on {rend.gameObject.name}");
         }
     }
 
