@@ -108,9 +108,9 @@ public class InGameSettingsManager : MonoBehaviour
                     compassController.SetCompassAlpha(value ? 1 : 0);
                 }
                 break;
-            case ShakePrefKey:
-                enableShaking = value;
-                break;
+            // case ShakePrefKey:
+            //     enableShaking = value;
+            //     break;
             default: Debug.Log("Error setting toggle setting.");
                 break;
         }
