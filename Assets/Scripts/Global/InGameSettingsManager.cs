@@ -19,6 +19,7 @@ public class InGameSettingsManager : MonoBehaviour
     [Space(10)]
     
     public bool isFirstLaunch = true;
+    public bool hasSetFirstTime = false;
     
     //[ColoredHeader("Custom KeyBinds", "#FFFF00")]
     public KeyCode objectInteractionKeyOne = KeyCode.E;

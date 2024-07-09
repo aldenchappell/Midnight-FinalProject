@@ -14,7 +14,7 @@ public class QualitySettingsController : MonoBehaviour
         InitializeQualityDropdown();
         
         int savedResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", _resolutions.Length - 1);
-        SetResolution(_resolutions.Length - 1);
+        SetFirstTimeRes();
     }
 
     private void InitializeResolutionDropdown()
@@ -64,7 +64,7 @@ public class QualitySettingsController : MonoBehaviour
         if (resolutionIndex >= 0 && resolutionIndex < _resolutions.Length)
         {
             Resolution resolution = _resolutions[resolutionIndex];
-            Debug.Log("Setting Resolution: " + resolution.width + " x " + resolution.height);
+            Debug.Log("Setting Resolution BLa: " + resolution.width + " x " + resolution.height);
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
 
             InGameSettingsManager.Instance._resolutionIndex = resolutionIndex;
@@ -82,5 +82,15 @@ public class QualitySettingsController : MonoBehaviour
     {
         InGameSettingsManager.Instance.SetQualityLevel(qualityLevel);
         Debug.Log("Current Quality Level: " + QualitySettings.names[QualitySettings.GetQualityLevel()]);
+    }
+
+    public void SetFirstTimeRes()
+    {
+        if(!InGameSettingsManager.Instance.hasSetFirstTime)
+        {
+            print("Setting first");
+            SetResolution(_resolutions.Length - 1);
+            InGameSettingsManager.Instance.hasSetFirstTime = true;
+        }
     }
 }
