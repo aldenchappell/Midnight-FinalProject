@@ -1,4 +1,8 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PatrolSystemManager : MonoBehaviour
 {
@@ -7,6 +11,13 @@ public class PatrolSystemManager : MonoBehaviour
     [SerializeField] bool hasFirstTimeSpawnCondition;
 
     private float _currentTime;
+
+    private PlayerCameraShake _shakeCam;
+
+    private void Awake()
+    {
+        _shakeCam = FindObjectOfType<PlayerCameraShake>();
+    }
 
     public int DecreaseTimeToSpawn
     {
@@ -70,10 +81,12 @@ public class PatrolSystemManager : MonoBehaviour
         Demon.transform.GetChild(0).gameObject.SetActive(false);
         Demon.SetActive(true);
         
+        Debug.Log("Shaking player camera");
         Demon.GetComponent<EnemyVision>().enabled = false;
+        if (_shakeCam != null)
+            _shakeCam.TriggerShake();
         
-        
-        //FindObjectOfType<PlayerHeartbeatController>().enemyStateController = GetComponent<EnemyStateController>();
+        // FindObjectOfType<PlayerHeartbeatController>().enemyStateController = GetComponent<EnemyStateController>();
         //FindObjectOfType<PlayerHeartbeatController>().shouldCheckHeartbeat = true;
     }
 }
