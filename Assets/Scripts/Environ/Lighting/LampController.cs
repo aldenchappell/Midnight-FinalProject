@@ -60,7 +60,16 @@ public class LampController : MonoBehaviour
     {
         lamp.on = !lamp.on;
         Light lampLight = lamp.GetComponentInChildren<Light>();
-        Renderer renderer = lamp.GetComponentInChildren<Renderer>();
+        Renderer renderer = null;
+        if (!lamp.isLamp)
+        {
+            renderer = GetComponent<Renderer>();
+        }
+        else
+        {
+            renderer = lamp.GetComponentInChildren<Renderer>();
+
+        }
         if (lamp.on)
         {
             renderer.material.EnableKeyword("_EMISSION");

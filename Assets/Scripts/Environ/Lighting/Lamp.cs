@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class Lamp : MonoBehaviour
 {
     public bool on = true;
-    
+    public bool isLamp = true;
     private LampController _lampController;
 
     [System.Serializable]
