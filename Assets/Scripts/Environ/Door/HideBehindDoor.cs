@@ -112,13 +112,14 @@ public class HideBehindDoor : MonoBehaviour
             _isSwitching = true;
             if (isActive)
             {
+                _doorHud.SetActive(true);
+                _inGameUI.SetActive(false);
                 _pauseManager.inDoor = true;
                 gameObject.layer = LayerMask.NameToLayer("Default");
                 _mainCamera.transform.GetChild(2).gameObject.SetActive(false);
                 _FPC.ToggleCanMove();
                 _doorController.Invoke("HandleDoor", 0);
                 yield return new WaitForSeconds(1f);
-                ToggleDoorUI();
                 _playerCam.Priority = 0;
                 _doorHideCamera.Priority = 5;
                 _doorController.Invoke("HandleDoor", 2f);
@@ -131,6 +132,8 @@ public class HideBehindDoor : MonoBehaviour
             }
             else
             {
+                _doorHud.SetActive(false);
+                _inGameUI.SetActive(true);
                 SwapDoorCameraPosition();
                 yield return new WaitForSeconds(1f);
                 gameObject.layer = LayerMask.NameToLayer("InteractableObject");
@@ -139,7 +142,6 @@ public class HideBehindDoor : MonoBehaviour
                 _doorController.Invoke("HandleDoor", 0);
                 //_inventory.HideHandItem();
                 yield return new WaitForSeconds(1f);
-                ToggleDoorUI();
                 _playerCam.Priority = 5;
                 _doorHideCamera.Priority = 0;
                 _doorController.Invoke("HandleDoor", 2f);
