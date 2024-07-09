@@ -89,7 +89,7 @@ public class SetMovement : MonoBehaviour
             _isPreppingToSpawn = true;
 
             _agent.enabled = false;
-            SetAIAtStartLocation(firstSpawn);
+            SetAIAtStartLocation(firstSpawn.transform.position);
             _currentEndDestination = firstEnd.transform.position;
             GameObject demonAnim = Instantiate(pentAnim, firstSpawn.transform.position, Quaternion.identity);
             demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
@@ -114,7 +114,7 @@ public class SetMovement : MonoBehaviour
                     }
                 }
                 _agent.enabled = false;
-                SetAIAtStartLocation(spawnLocal);
+                SetAIAtStartLocation(spawnLocal.transform.position);
                 _agent.enabled = enabled;
                 _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
                 _agent.SetDestination(_allActiveDemonDoors[randomEndIndex].transform.position);
@@ -144,7 +144,7 @@ public class SetMovement : MonoBehaviour
                 {
                     _isPreppingToSpawn = true;
                     _agent.enabled = false;
-                    SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex]);
+                    SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex].transform.position);
                     _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
                     GameObject demonAnim = Instantiate(pentAnim, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
                     demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
@@ -158,9 +158,11 @@ public class SetMovement : MonoBehaviour
         }
         else if (Vector3.Distance(transform.position, _currentEndDestination) <= _agent.stoppingDistance + 1)
         {
-            _currentEndDestination = Vector3.zero;
             GameObject demonAnim = Instantiate(pentAnim, transform.position, Quaternion.identity);
             demonAnim.GetComponent<Animator>().SetTrigger("Despawn");
+            _agent.enabled = false;
+            SetAIAtStartLocation(Vector3.zero);
+            _currentEndDestination = Vector3.zero;
             Destroy(demonAnim, 2f);
             //FindObjectOfType<PlayerHeartbeatController>().shouldCheckHeartbeat = false;
             gameObject.SetActive(false);
@@ -183,10 +185,10 @@ public class SetMovement : MonoBehaviour
         _agent.SetDestination(_currentEndDestination);
     }
 
-    private void SetAIAtStartLocation(GameObject location)
+    private void SetAIAtStartLocation(Vector3 location)
     {
         //print("Setting Position");
-        gameObject.transform.position = location.transform.position;
+        gameObject.transform.position = location;
     }
 
     private void PatrolArea(Vector3 patrolPositionCenter)
