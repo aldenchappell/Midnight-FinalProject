@@ -18,7 +18,7 @@ public class Lamp : MonoBehaviour
 
     private void Start()
     {
-        var onInteraction = GetComponent<InteractableObject>().onInteraction;
+        var onInteraction = GetComponent<InteractableObject>()?.onInteraction;
         var demonPatrolManager = FindObjectOfType<PatrolSystemManager>();
         if (onInteraction != null)
         {
