@@ -67,16 +67,16 @@ public class LevelCompletionManager : MonoBehaviour
         if (currentLevelPuzzles.Contains(puzzle.puzzleName))
         {
             currentLevelPuzzles.Remove(puzzle.puzzleName);
-            
+            if (currentLevelPuzzles.Count == 0)
+            {
+                SaveLevelCompletion(_currentLevel);
+            }
         }
     }
 
     private void SaveLevelCompletion(string levelName)
     {
-        if (currentLevelPuzzles.Count == 0)
-        {
-            _completedLevels.Add(levelName);
-        }
+        _completedLevels.Add(levelName);
     }
     
     
