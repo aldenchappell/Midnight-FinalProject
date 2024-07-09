@@ -39,6 +39,8 @@ public class PlayerDeathController : MonoBehaviour
     {
         if (!isDead) 
         {
+            LevelCompletionManager.Instance.UpdateKeyCount(0);
+            LevelCompletionManager.Instance.hasKey = false;
             GameObject playerUI = GameObject.Find("INGAMEUI");
             playerUI.SetActive(false);
             _playerCam.Priority = 20;

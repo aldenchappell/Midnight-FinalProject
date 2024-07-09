@@ -60,7 +60,7 @@ public class InGameSettingsManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     public float GetMouseSensitivity()
     {
         float sensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 100.0f);
