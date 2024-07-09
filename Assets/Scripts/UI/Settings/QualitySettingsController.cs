@@ -12,9 +12,11 @@ public class QualitySettingsController : MonoBehaviour
         _resolutions = Screen.resolutions;
         InitializeResolutionDropdown();
         InitializeQualityDropdown();
-        
-        int savedResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", _resolutions.Length - 1);
+
         SetFirstTimeRes();
+
+        // Add listener to quality dropdown
+        qualityDropdown.onValueChanged.AddListener(OnQualityDropdownValueChanged);
     }
 
     private void InitializeResolutionDropdown()
@@ -54,9 +56,23 @@ public class QualitySettingsController : MonoBehaviour
 
     private void InitializeQualityDropdown()
     {
+        qualityDropdown.ClearOptions();
+        List<string> options = new List<string>();
+        foreach (string name in QualitySettings.names)
+        {
+            options.Add(name);
+        }
+        qualityDropdown.AddOptions(options);
+
         int savedQualityLevel = InGameSettingsManager.Instance.GetQualityLevel();
         qualityDropdown.value = savedQualityLevel;
         qualityDropdown.RefreshShownValue();
+    }
+
+    private void OnQualityDropdownValueChanged(int qualityLevel)
+    {
+        Debug.Log("Quality Dropdown Changed: " + qualityLevel);
+        SetQuality(qualityLevel);
     }
 
     public void SetResolution(int resolutionIndex)
@@ -80,15 +96,23 @@ public class QualitySettingsController : MonoBehaviour
 
     public void SetQuality(int qualityLevel)
     {
-        InGameSettingsManager.Instance.SetQualityLevel(qualityLevel);
-        Debug.Log("Current Quality Level: " + QualitySettings.names[QualitySettings.GetQualityLevel()]);
+        if (qualityLevel >= 0 && qualityLevel < QualitySettings.names.Length)
+        {
+            QualitySettings.SetQualityLevel(qualityLevel, true);
+            InGameSettingsManager.Instance.SetQualityLevel(qualityLevel);
+            Debug.Log("Setting Quality Level to: " + QualitySettings.names[qualityLevel]);
+        }
+        else
+        {
+            Debug.LogError("Invalid quality level: " + qualityLevel);
+        }
     }
 
     public void SetFirstTimeRes()
     {
-        if(!InGameSettingsManager.Instance.hasSetFirstTime)
+        if (!InGameSettingsManager.Instance.hasSetFirstTime)
         {
-            print("Setting first");
+            Debug.Log("Setting resolution for the first time");
             SetResolution(_resolutions.Length - 1);
             InGameSettingsManager.Instance.hasSetFirstTime = true;
         }
