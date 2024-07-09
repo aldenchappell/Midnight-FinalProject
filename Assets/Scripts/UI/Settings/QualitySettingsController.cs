@@ -79,5 +79,6 @@ public class QualitySettingsController : MonoBehaviour
     public void SetQuality(int qualityLevel)
     {
         InGameSettingsManager.Instance.SetQualityLevel(qualityLevel);
+        Debug.Log("Current Quality Level: " + QualitySettings.names[QualitySettings.GetQualityLevel()]);
     }
 }
