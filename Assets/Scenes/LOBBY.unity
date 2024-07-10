@@ -7847,11 +7847,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0b217f1447e06b4bab5b1d05134505f, type: 3}
---- !u!1 &505279293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3250516357010605658, guid: 5bfab8528aa482646bd7d9a00a882bb4, type: 3}
-  m_PrefabInstance: {fileID: 368873286}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &505714869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14260,6 +14255,7 @@ GameObject:
   - component: {fileID: 692997499}
   - component: {fileID: 692997500}
   - component: {fileID: 692997501}
+  - component: {fileID: 692997502}
   m_Layer: 7
   m_Name: Fuse
   m_TagString: Fuse
@@ -14431,6 +14427,19 @@ MonoBehaviour:
   isCompleted: 0
   order: 0
   disableAtRuntime: 0
+--- !u!114 &692997502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692997494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd3cb8eae4ad2d4c8da194784bc0050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 21300000, guid: 080549c646757fc4890e51093e88f7b7, type: 3}
 --- !u!1001 &702087048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27054,7 +27063,7 @@ PlayableDirector:
   - key: {fileID: -8444719029335598202, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
     value: {fileID: 758637441}
   - key: {fileID: -8226889309863856317, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
-    value: {fileID: 505279293}
+    value: {fileID: 0}
   - key: {fileID: 751730940000442919, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}
     value: {fileID: 1077661928}
   - key: {fileID: -3115812547685050229, guid: e91a4df4edf7d1e41a9481a2effa8e33, type: 2}

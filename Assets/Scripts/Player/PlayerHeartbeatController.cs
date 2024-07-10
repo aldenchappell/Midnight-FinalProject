@@ -148,10 +148,10 @@ public class PlayerHeartbeatController : MonoBehaviour
             enemyCloseImage.enabled = !enemyCloseImage.enabled;
 
             // Fade in and out the image very fast
-            if (enemyCloseImage.enabled)
-            {
-                StartCoroutine(_fadeUI.FadeEnemyCloseImage(enemyCloseImage));
-            }
+            // if (enemyCloseImage.enabled)
+            // {
+            //     StartCoroutine(_fadeUI.FadeEnemyCloseImage(enemyCloseImage));
+            // }
 
             //yield return new WaitForSeconds(flashInterval);
         }
