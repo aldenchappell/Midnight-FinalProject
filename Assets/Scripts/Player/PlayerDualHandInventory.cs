@@ -179,6 +179,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                 _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
                 Destroy(_inventorySlots[currentIndexSelected].GetComponent<InteractableObject>());
                 Destroy(obj);
+                UpdateInventoryUI();
                 _inventorySlots[currentIndexSelected] = null;
                 
             }
@@ -202,20 +203,19 @@ public class PlayerDualHandInventory : MonoBehaviour
                     {
                         _inventorySlots[index].transform.parent = null;
                     }
-
+            
                     _inventorySlots[index].transform.position = obj.transform.position;
                     _inventorySlots[index].transform.eulerAngles = obj.transform.eulerAngles;
                     _inventorySlots[index].SetActive(true);
-                    UpdateInventoryUI();
+                    
                     obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
                     Destroy(_inventorySlots[index].GetComponent<InteractableObject>());
                     Destroy(obj);
+                    UpdateInventoryUI();
                     _inventorySlots[index] = null;
                 }
             }
-           
         }
-        
     }
 
     private void RemoveObjectInInventory(GameObject obj)
@@ -228,10 +228,11 @@ public class PlayerDualHandInventory : MonoBehaviour
                 {
                     int index = System.Array.IndexOf(_inventorySlots, item);
                     Destroy(_inventorySlots[index]);
-                    UpdateInventoryUI();
                     _inventorySlots[index] = null;
+                    UpdateInventoryUI();
                     break;
                 }
+                
             } 
         }
     }
@@ -280,6 +281,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                 GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = 1f;
             }
         }
+        UpdateInventoryUI();
     }
     
     public bool IsSkullInFirstSlot()
@@ -310,6 +312,7 @@ public class PlayerDualHandInventory : MonoBehaviour
                     item.SetActive(false);
                 }
             }
+            UpdateInventoryUI();
         }
     }
 
