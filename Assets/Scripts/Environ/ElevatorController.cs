@@ -38,6 +38,7 @@ public class ElevatorController : MonoBehaviour
 
     [SerializeField] private Animator playerAnim;
     [SerializeField] private GameObject elevatorUI;
+    
     private void Awake()
     {
         _elevatorAudioSource = GetComponent<AudioSource>();

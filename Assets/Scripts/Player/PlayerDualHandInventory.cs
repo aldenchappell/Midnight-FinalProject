@@ -305,7 +305,9 @@ public class PlayerDualHandInventory : MonoBehaviour
                     item.transform.position = skullOfHandPosition.position;
                     item.GetComponent<MeshRenderer>().enabled = false;
                     //item.transform.GetChild(0).gameObject.SetActive(false);
-                    GameObject.Find("SkullDialogueHolder").GetComponent<AudioSource>().volume = .5f;
+                    GameObject skull = GameObject.Find("SkullDialogueHolder");
+                    if(skull != null)    
+                        skull.GetComponent<AudioSource>().volume = .5f;
                 }
                 else
                 {
