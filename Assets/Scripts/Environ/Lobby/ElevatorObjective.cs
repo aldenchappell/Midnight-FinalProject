@@ -6,7 +6,14 @@ public class ElevatorObjective : MonoBehaviour
     private bool shouldCheckTrigger = false;
     private void Start()
     {
-        Invoke(nameof(Disable), 1.0f);
+        if(LevelCompletionManager.Instance._keysReturned >= 2 && LevelCompletionManager.Instance.hasKey)
+        {
+            return;
+        }
+        else
+        {
+            Invoke(nameof(Disable), 1.0f);
+        }
     }
 
     private void Disable()

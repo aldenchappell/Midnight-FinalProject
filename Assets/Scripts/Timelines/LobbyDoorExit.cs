@@ -12,7 +12,7 @@ public class LobbyDoorExit : MonoBehaviour
     private Coroutine _textCoroutine;
     public void PlayOutroCutscene()
     {
-        if (LevelCompletionManager.Instance.allLevelsCompleted)
+        if (LevelCompletionManager.Instance._keysReturned >= 3)
         {
             outroCutscene.SetActive(true);
             LevelCompletionManager.Instance.ResetGame(true);
