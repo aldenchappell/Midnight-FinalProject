@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,12 @@ public class PauseManager : MonoBehaviour
     public GameObject[] playerUIElements;
     public AudioSource pauseSFX;
     public bool inDoor;
+    private GlobalCursorManager _cursorManager;
+
+    private void Awake()
+    {
+        _cursorManager = FindObjectOfType<GlobalCursorManager>();
+    }
 
     private void Start()
     {
@@ -37,7 +44,7 @@ public class PauseManager : MonoBehaviour
     {
         if (hasFocus && GameIsPaused)
         {
-            GlobalCursorManager.Instance.EnableCursor();
+            _cursorManager.EnableCursor();
             Debug.Log("Application now active");
         }
     }
