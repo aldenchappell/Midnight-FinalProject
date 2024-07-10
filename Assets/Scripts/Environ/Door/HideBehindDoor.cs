@@ -50,7 +50,7 @@ public class HideBehindDoor : MonoBehaviour
     private float _currentCenterX = 0f;
     private float _currentCenterY = 0f;
 
-    private GameObject _doorHud;
+    [SerializeField] GameObject _doorHud;
     private GameObject _inGameUI;
     
     private void Awake()
@@ -74,7 +74,6 @@ public class HideBehindDoor : MonoBehaviour
         
         _originalSpyCamRotation = _doorSpyHoleCamera.transform.rotation;
 
-        _doorHud = GameObject.Find("DOORHUD");
         _inGameUI = GameObject.Find("INGAMEUI");
     }
 
