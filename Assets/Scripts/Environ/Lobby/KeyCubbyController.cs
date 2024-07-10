@@ -6,6 +6,7 @@ public class KeyCubbyController : MonoBehaviour
     public List<GameObject> keySlots = new List<GameObject>();
     public List<InteractableObject> interactableKeyColliders = new List<InteractableObject>();
     public List<CubbyKey> cubbyKeys = new List<CubbyKey>();
+    public List<GameObject> cubbyParticles = new List<GameObject>();
     
     private PlayerKeyController _playerKeyController;
     private AudioSource _audio;
@@ -178,6 +179,7 @@ public class KeyCubbyController : MonoBehaviour
             {
                 cubbyKeys[i].cubbyKey.placed = true;
                 cubbyKeys[i].keyObject.SetActive(true);
+                cubbyParticles[i].SetActive(false);
             }
         }
     }
