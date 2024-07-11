@@ -17,8 +17,6 @@ public class Objective : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        
-        
     }
 
     private void Start()
@@ -36,6 +34,9 @@ public class Objective : MonoBehaviour
     public void CompleteObjective()
     {
         bool isLobbyDoor = GetComponent<LobbyDoorExit>() && !LevelCompletionManager .Instance.allLevelsCompleted;
+
+        if (isLobbyDoor && LevelCompletionManager.Instance._keysReturned < 3) return;
+        
         isCompleted = true;
         if (_objectiveController != null)
         {

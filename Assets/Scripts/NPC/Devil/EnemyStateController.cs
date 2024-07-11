@@ -41,6 +41,8 @@ public class EnemyStateController : MonoBehaviour
     {
         currentState = AIState.Roam; 
         _animator.SetAnimationTrigger(currentState.ToString());
+
+        FindObjectOfType<EnemyCloseUI>().shouldHandleImage = true;
     }
 
     private void Update()

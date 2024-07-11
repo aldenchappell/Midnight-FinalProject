@@ -10,8 +10,8 @@ public class EnemyCloseUI : MonoBehaviour
     [SerializeField] private GameObject demon;
 
     private PlayerDeathController _deathController;
-    private bool _isFadingOut = false;
-
+    private bool _isFadingOut;
+    public bool shouldHandleImage;
     private void Awake()
     {
         _deathController = GetComponent<PlayerDeathController>();
@@ -20,6 +20,7 @@ public class EnemyCloseUI : MonoBehaviour
     private void Start()
     {
         enemyCloseImage.enabled = false;
+        //StartCoroutine(FadeOutImage(enemyCloseImage));
     }
 
     void Update()
@@ -28,7 +29,7 @@ public class EnemyCloseUI : MonoBehaviour
 
         float distanceToDemon = Vector3.Distance(transform.position, demon.transform.position);
 
-        if (distanceToDemon <= maximumDistanceThreshold && !_deathController.isDead)
+        if (distanceToDemon <= maximumDistanceThreshold && !_deathController.isDead && shouldHandleImage)
         {
             HandleEnemyCloseImageTransparency(distanceToDemon);
             enemyCloseImage.enabled = true;
