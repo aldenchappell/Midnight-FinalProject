@@ -17,8 +17,6 @@ public class Objective : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        
-        
     }
 
     private void Start()

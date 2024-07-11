@@ -163,6 +163,8 @@ public class SetMovement : MonoBehaviour
             _agent.enabled = false;
             SetAIAtStartLocation(Vector3.zero);
             _currentEndDestination = Vector3.zero;
+            //TO STOP THE UPDATE FROM CHECKING FOR DISTANCE TO DEMON
+            FindObjectOfType<EnemyCloseUI>().shouldHandleImage = false;
             Destroy(demonAnim, 2f);
             //FindObjectOfType<PlayerHeartbeatController>().shouldCheckHeartbeat = false;
             gameObject.SetActive(false);

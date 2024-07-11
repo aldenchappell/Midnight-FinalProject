@@ -42,4 +42,9 @@ public class UIMenuButtons : MonoBehaviour
         PlayerPrefs.DeleteAll();
         Application.Quit();
     }
+
+    public void LoadUrl(string url)
+    {
+        Application.OpenURL(url);
+    }
 }
