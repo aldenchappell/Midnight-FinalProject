@@ -42,7 +42,12 @@ public class PlayerDeathController : MonoBehaviour
             LevelCompletionManager.Instance.UpdateKeyCount(0);
             LevelCompletionManager.Instance.hasKey = false;
             GameObject playerUI = GameObject.Find("INGAMEUI");
-            playerUI.SetActive(false);
+            
+            if(playerUI != null)
+            {
+                playerUI.SetActive(false);
+            }
+            
             _playerCam.Priority = 20;
             // Reset puzzles on player death
             LevelCompletionManager.Instance.OnPlayerDeath();

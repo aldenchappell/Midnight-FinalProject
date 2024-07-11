@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class FadeUI : MonoBehaviour
 {
@@ -129,6 +130,11 @@ public class FadeUI : MonoBehaviour
         Color finalColor = image.color;
         finalColor.a = 1;
         image.color = finalColor;
+    }
+
+    public void ImageFadeIn(Image image)
+    {
+        StartCoroutine(FadeInImage(image));
     }
     
     public IEnumerator FadeEnemyCloseImage(Image image)

@@ -6,7 +6,7 @@ public class Objective : MonoBehaviour
     public bool isCompleted = false;
     public int order;
     public bool disableAtRuntime;
-
+    
     private ObjectiveController _objectiveController;
 
     private void Awake()
@@ -35,6 +35,7 @@ public class Objective : MonoBehaviour
 
     public void CompleteObjective()
     {
+        bool isLobbyDoor = GetComponent<LobbyDoorExit>() && !LevelCompletionManager .Instance.allLevelsCompleted;
         isCompleted = true;
         if (_objectiveController != null)
         {

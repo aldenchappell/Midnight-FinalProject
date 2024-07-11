@@ -44,18 +44,6 @@ public class LevelCompletionManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
     
-    
-    private void Update()
-    {
-        #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            allLevelsCompleted = true;
-        }
-        #endif
-    }
-
-
     public void SavePuzzleCompletion(SO_Puzzle puzzle)
     {
         if (currentLevelPuzzles == null)

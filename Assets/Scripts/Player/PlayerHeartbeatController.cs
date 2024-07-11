@@ -10,22 +10,22 @@ public class PlayerHeartbeatController : MonoBehaviour
     [SerializeField] private float maxHeartBeatVolume = 0.75f;
     [SerializeField] private float volumeChangeSpeed = 1.5f;
     [SerializeField] private float maxDistance = 15.0f;
-    [SerializeField] private Image enemyCloseImage;
+    //[SerializeField] private Image enemyCloseImage;
 
     private EnemyStateController _enemyStateController;
-    private Coroutine _enemyCloseCoroutine;
-    
-    private FadeUI _fadeUI;
+    // private Coroutine _enemyCloseCoroutine;
+    //
+    // private FadeUI _fadeUI;
     
     private void Awake()
     {
         heartbeatAudioSource.volume = 0.0f;
-        enemyCloseImage.enabled = false;
-        _fadeUI = FindObjectOfType<FadeUI>();
-        
-        Color color = enemyCloseImage.color;
-        color.a = Mathf.Clamp(color.a, 0, 43f / 255f);
-        enemyCloseImage.color = color;
+        // enemyCloseImage.enabled = false;
+        // _fadeUI = FindObjectOfType<FadeUI>();
+        //
+        // Color color = enemyCloseImage.color;
+        // color.a = Mathf.Clamp(color.a, 0, 43f / 255f);
+        // enemyCloseImage.color = color;
     }
 
     private void Update()
@@ -42,9 +42,7 @@ public class PlayerHeartbeatController : MonoBehaviour
         if (GetComponentInParent<PlayerDeathController>().isDead)
         {
             heartbeatAudioSource.enabled = false;
-            
             StopAllCoroutines();
-            enemyCloseImage.enabled = false;
             
             return;
         }
@@ -56,23 +54,6 @@ public class PlayerHeartbeatController : MonoBehaviour
             bool isDevilChasing = IsDevilChasing();
 
             HandleHeartBeat(isDevilChasing, enemyClose, distanceToEnemy);
-
-            if (enemyClose)
-            {
-                if (_enemyCloseCoroutine == null)
-                {
-                    //EnemyCloseRoutine();
-                }
-            }
-            else
-            {
-                if (_enemyCloseCoroutine != null)
-                {
-                    StopCoroutine(_enemyCloseCoroutine);
-                    _enemyCloseCoroutine = null;
-                    enemyCloseImage.enabled = false;
-                }
-            }
         }
     }
 
@@ -106,7 +87,6 @@ public class PlayerHeartbeatController : MonoBehaviour
         //heartbeat volume is based on realization value only when the enemy is not chasing
         if (!isEnemyChasing)
         {
-            // Smoothly interpolate the current volume to the minimum volume
             heartbeatAudioSource.volume = Mathf.Lerp(
                 heartbeatAudioSource.volume,
                 minHeartBeatVolume,
@@ -129,31 +109,4 @@ public class PlayerHeartbeatController : MonoBehaviour
                 Time.deltaTime * volumeChangeSpeed);
         }
     }
-
-    private void EnemyCloseRoutine()
-    {
-      
-            if (_enemyStateController == null || !_enemyStateController.gameObject.activeInHierarchy)
-            {
-                enemyCloseImage.enabled = false;
-                return;
-                //yield break;
-            }
-
-            float distanceToEnemy = Vector3.Distance(transform.position, _enemyStateController.gameObject.transform.position);
-            float proximityFactor = Mathf.Clamp01(1 - (distanceToEnemy / maxDistance + -5));
-            //float flashInterval = Mathf.Lerp(1.0f, 0.1f, proximityFactor);
-
-            // Toggle the image enabled state
-            enemyCloseImage.enabled = !enemyCloseImage.enabled;
-
-            // Fade in and out the image very fast
-            // if (enemyCloseImage.enabled)
-            // {
-            //     StartCoroutine(_fadeUI.FadeEnemyCloseImage(enemyCloseImage));
-            // }
-
-            //yield return new WaitForSeconds(flashInterval);
-        }
-    
 }

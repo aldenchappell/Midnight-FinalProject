@@ -2109,6 +2109,7 @@ GameObject:
   - component: {fileID: 8057340738646221295}
   - component: {fileID: 8351495695378716297}
   - component: {fileID: 7095205172720064066}
+  - component: {fileID: 9098847314570742797}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2524,6 +2525,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pencilSound: {fileID: 8300000, guid: d7214be563b103744b5c52f472d50ed1, type: 3}
+--- !u!114 &9098847314570742797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185921017414210652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bbb32f738658b409f94821ae551f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCloseImage: {fileID: 6823089005192007176}
+  maximumDistanceThreshold: 15
+  demon: {fileID: 0}
 --- !u!1 &1202013837276425020
 GameObject:
   m_ObjectHideFlags: 0
@@ -10360,7 +10376,6 @@ MonoBehaviour:
   maxHeartBeatVolume: 1
   volumeChangeSpeed: 5
   maxDistance: 20
-  enemyCloseImage: {fileID: 6823089005192007176}
 --- !u!1 &4057408946275460172
 GameObject:
   m_ObjectHideFlags: 0
