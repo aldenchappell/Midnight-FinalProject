@@ -61,7 +61,7 @@ public class PlayerCameraShake : MonoBehaviour
             _perlinChannel.m_AmplitudeGain = ShakeIntensity;
             _timer = ShakeTime;
             _shaking = true;
-            StartCoroutine(FallingDebris());
+            StartCoroutine(TriggerFallingDebris());
 
             if (_audio != null)
                 _audio.PlayOneShot(fallingDebrisClip);
@@ -79,7 +79,7 @@ public class PlayerCameraShake : MonoBehaviour
         }
     }
 
-    private IEnumerator FallingDebris()
+    private IEnumerator TriggerFallingDebris()
     {
         _debris = Instantiate(fallingDebris, debrisPos.position, debrisPos.localRotation);
         var debrisParticleSystem = _debris.GetComponent<ParticleSystem>();

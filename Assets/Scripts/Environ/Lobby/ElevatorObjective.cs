@@ -2,32 +2,29 @@ using UnityEngine;
 
 public class ElevatorObjective : MonoBehaviour
 {
-    private bool shouldCheckTrigger = false;
+    private bool _shouldCheckTrigger;
 
-    private void Awake()
+    private void Start()
     {
         if (LevelCompletionManager.Instance._keysReturned >= 2 && LevelCompletionManager.Instance.hasKey)
         {
             gameObject.SetActive(false);
         }
-    }
-
-    private void Start()
-    {
+        
         Invoke(nameof(Disable), 1.0f);
     }
 
     private void Disable()
     {
         gameObject.SetActive(false);
-        shouldCheckTrigger = true;
+        _shouldCheckTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 
-        if (shouldCheckTrigger)
+        if (_shouldCheckTrigger)
         {
             GetComponent<Objective>().CompleteObjective();
             Destroy(gameObject);

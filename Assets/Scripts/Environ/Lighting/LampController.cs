@@ -65,13 +65,13 @@ public class LampController : MonoBehaviour
         {
             rend.material.EnableKeyword("_EMISSION");
             lampLight.enabled = true;
-            Debug.Log($"Enabled emissive material: {rend.material.name} on {rend.gameObject.name}");
+            //Debug.Log($"Enabled emissive material: {rend.material.name} on {rend.gameObject.name}");
         }
         else
         {
             rend.material.DisableKeyword("_EMISSION");
             lampLight.enabled = false;
-            Debug.Log($"Disabled emissive material: {rend.material.name} on {rend.gameObject.name}");
+            //Debug.Log($"Disabled emissive material: {rend.material.name} on {rend.gameObject.name}");
         }
     }
 

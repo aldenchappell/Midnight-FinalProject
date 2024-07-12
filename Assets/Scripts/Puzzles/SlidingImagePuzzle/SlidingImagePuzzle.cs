@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -132,6 +131,7 @@ public class SlidingImagePuzzle : MonoBehaviour
         for (int i = uniqueSprites.Count - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
+            // ReSharper disable once SwapViaDeconstruction
             Sprite tempSprite = uniqueSprites[i];
             uniqueSprites[i] = uniqueSprites[randomIndex];
             uniqueSprites[randomIndex] = tempSprite;
@@ -202,6 +202,7 @@ public class SlidingImagePuzzle : MonoBehaviour
         Image image1 = gridSlotImages[index1];
         Image image2 = gridSlotImages[index2];
 
+        // ReSharper disable once SwapViaDeconstruction
         Sprite tempSprite = image1.sprite;
         image1.sprite = image2.sprite;
         image2.sprite = tempSprite;
