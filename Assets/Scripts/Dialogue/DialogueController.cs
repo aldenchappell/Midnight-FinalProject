@@ -15,8 +15,9 @@ public class DialogueController : MonoBehaviour
 
     private int _currentIndex;
     private string[] _lines;
-    private AudioClip[] _audioClips;
-
+    [SerializeField] private AudioClip[] whisperSoundClips;
+    
+    
     [HideInInspector] public bool dialogueEnabled;
 
     private const float NoAudioDialogueSpamPreventionTime = 1.0f;
@@ -30,6 +31,8 @@ public class DialogueController : MonoBehaviour
 
     private GameObject _currentDialogueNPC;
     private bool _inDialogue = false;
+    
+    
     private void Awake()
     {
         if (Instance == null)
@@ -89,7 +92,7 @@ public class DialogueController : MonoBehaviour
         {
             dialogueText.text = "";
             _lines = lines;
-            _audioClips = null;
+            
             _currentIndex = 0;
             EnableDialogueBox();
             _currentCoroutine = StartCoroutine(ReadOutLine());
@@ -111,15 +114,13 @@ public class DialogueController : MonoBehaviour
                 {
                     StopCoroutine(_currentCoroutine);
                 }
-
-                if (_audioClips != null && _audioClips.Length > 0)
-                {
-                    _currentCoroutine = StartCoroutine(ReadOutLineWithAudio());
-                }
-                else
-                {
-                    _currentCoroutine = StartCoroutine(ReadOutLine());
-                }
+                
+                //reset the whisper sound effect when going to the next line
+                audioSource.Stop();
+                audioSource.clip = null;
+                
+                
+                _currentCoroutine = StartCoroutine(ReadOutLine());
             }
             else
             {
@@ -131,14 +132,8 @@ public class DialogueController : MonoBehaviour
             StopCoroutine(_currentCoroutine);
             dialogueText.text = _lines[_currentIndex];
             _isPrintingLine = false;
-            if (_audioClips != null && _audioClips.Length > 0)
-            {
-                StartCoroutine(PreventTextWithAudioDialogueSpam());
-            }
-            else
-            {
-                StartCoroutine(PreventTextOnlyDialogueSpam());
-            }
+
+            StartCoroutine(PreventTextOnlyDialogueSpam());
         }
     }
 
@@ -146,6 +141,11 @@ public class DialogueController : MonoBehaviour
     {
         _isPrintingLine = true;
         dialogueText.text = "";
+        
+        //play whisper sound when npc is reading out lines
+        audioSource.clip = GetRandomAudioClip(whisperSoundClips);
+        audioSource.Play();
+        
         foreach (char character in _lines[_currentIndex])
         {
             dialogueText.text += character;
@@ -153,32 +153,6 @@ public class DialogueController : MonoBehaviour
         }
         _isPrintingLine = false;
         StartCoroutine(PreventTextOnlyDialogueSpam());
-    }
-
-    private IEnumerator ReadOutLineWithAudio()
-    {
-        _isPrintingLine = true;
-        dialogueText.text = "";
-
-        if (_audioClips != null && _audioClips.Length > 0)
-        {
-            audioSource.clip = _audioClips[_currentIndex % _audioClips.Length];
-            audioSource.Play();
-        }
-
-        foreach (char character in _lines[_currentIndex])
-        {
-            dialogueText.text += character;
-            yield return new WaitForSeconds(textReadingSpeed);
-        }
-
-        if (_audioClips != null && _audioClips.Length > 0)
-        {
-            yield return new WaitForSeconds(audioSource.clip.length);
-        }
-
-        _isPrintingLine = false;
-        StartCoroutine(PreventTextWithAudioDialogueSpam());
     }
 
     private void ResetDialogueText()
@@ -203,10 +177,11 @@ public class DialogueController : MonoBehaviour
         dialogueBox.SetActive(false);
         _shouldPrintText = true;
         _lines = null;
-        _audioClips = null;
+        
         audioSource.clip = null;
         GlobalCursorManager cursorManager = FindObjectOfType<GlobalCursorManager>();
         cursorManager.DisableCursor();
+        
         _firstPersonController.canRotate = true;
     }
 
@@ -233,7 +208,7 @@ public class DialogueController : MonoBehaviour
         }
         dialogueText.text = "";
         _lines = null;
-        _audioClips = null;
+        
         _currentIndex = 0;
         _isPrintingLine = false;
     }
@@ -245,10 +220,8 @@ public class DialogueController : MonoBehaviour
         _shouldPrintText = true;
     }
 
-    private IEnumerator PreventTextWithAudioDialogueSpam()
+    private AudioClip GetRandomAudioClip(AudioClip[] clips)
     {
-        _shouldPrintText = false;
-        yield return new WaitForSeconds(WithAudioDialogueSpamPreventionTime);
-        _shouldPrintText = true;
+        return clips[Random.Range(0, clips.Length)];
     }
 }
