@@ -160,12 +160,11 @@ namespace StarterAssets
 
         private void Update()
         {
-            //if (pauseManager.GameIsPaused) return;
             if (deathController.isDead) return;
 
             JumpAndGravity();
             GroundedCheck();
-            if(canMove)
+            if (canMove)
                 Move();
 
             if (InGameSettingsManager.Instance.enableHeadBobbing && controller.enabled)
@@ -181,30 +180,31 @@ namespace StarterAssets
             bool wasSprinting = isSprinting;
             isSprinting = Input.GetKey(InGameSettingsManager.Instance.sprintKey) && !isCrouching && Grounded && _currentSprintStamina > 0;
 
+            if (input.move != Vector2.zero && isSprinting)
+            {
+                isSprinting = true;
+            }
+            else
+            {
+                isSprinting = false;
+            }
+
             if (isCrouching && Input.GetKey(InGameSettingsManager.Instance.sprintKey))
             {
                 isCrouching = false;
                 isSprinting = true;
             }
-            
+
             if (wasSprinting != isSprinting)
             {
                 HandleSprintingIcon();
             }
-            /*
-
-            if (Input.GetKeyDown(KeyCode.Escape) && !pauseManager.GameIsPaused)
-            {
-                canMove = true;
-                canRotate = true;
-            }
-            */
 
             UpdateSprintStamina();
-    
             UpdateAnimator();
             UpdateArmAnimations();
         }
+
         
         private void UpdateAnimator()
         {
@@ -433,6 +433,7 @@ namespace StarterAssets
 
             controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         }
+
 
         private void JumpAndGravity()
         {

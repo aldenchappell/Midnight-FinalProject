@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PerhapsWhatIsThis : MonoBehaviour
+public class Piano : MonoBehaviour
 {
     [SerializeField] private InteractableObject[] bababooeys;
     [SerializeField] private AudioClip[] bababooeyClips;
@@ -10,19 +10,19 @@ public class PerhapsWhatIsThis : MonoBehaviour
 
     private void Awake()
     {
-        AssignAudioClipToBabaBooey();
+        AssignAudioClipToKey();
     }
 
-    private void AssignAudioClipToBabaBooey()
+    private void AssignAudioClipToKey()
     {
         for (int i = 0; i < bababooeys.Length; i++)
         {
             int index = i;
-            bababooeys[i].onInteraction.AddListener(() => PlayBababooeySound(bababooeys[index], bababooeyClips[index]));
+            bababooeys[i].onInteraction.AddListener(() => PlayKeySound(bababooeys[index], bababooeyClips[index]));
         }
     }
 
-    public void PlayBababooeySound(InteractableObject key, AudioClip note)
+    private void PlayKeySound(InteractableObject key, AudioClip note)
     {
         EnvironmentalSoundController.Instance.PlaySound(note, transform.position);
         StartCoroutine(PlayArtificialKeyAnimation(key.transform));
