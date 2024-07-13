@@ -112,6 +112,7 @@ public class PlayerInteractableController : MonoBehaviour
                     && !interactableObject.CompareTag("Fuse")
                     && !interactableObject.CompareTag("Skull")
                     && !interactableObject.CompareTag("Bell")
+                    && !interactableObject.CompareTag("PianoKey")
                     && !interactableObject.GetComponent<NoteController>()
                     && !interactableObject.GetComponent<FuseBox>()
                     && !interactableObject.GetComponent<OnlyDialogueNPC>()
