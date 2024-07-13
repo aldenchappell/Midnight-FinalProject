@@ -71,6 +71,7 @@ public class EnemyStateController : MonoBehaviour
         {
             currentState = AIState.Roam;
         }
+        _animator.SetAnimationTrigger(currentState.ToString());
     }
 
     private void ApplyCurrentStateBehaviour()
@@ -107,7 +108,7 @@ public class EnemyStateController : MonoBehaviour
         
         //Set animation state based on current state (Animation triggers should be named exactly the same
         //as the current state's name for this to properly work. - Alden)
-        _animator.SetAnimationTrigger(currentState.ToString());
+        
     }
 
     public bool CheckForChaseState()
