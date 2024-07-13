@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ElevatorController : MonoBehaviour
 {
@@ -217,7 +215,7 @@ public class ElevatorController : MonoBehaviour
 
         SetElevatorFloorText();
         
-        elevatorAnimator.SetInteger(Floor, floorIndex - 1);
+        //elevatorAnimator.SetInteger(Floor, floorIndex - 1);
         
         _startElevatorRoutineCoroutine ??= StartCoroutine(StartElevatorRoutine());
 
