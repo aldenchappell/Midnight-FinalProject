@@ -148,8 +148,8 @@ public class SetMovement : MonoBehaviour
                     _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
                     GameObject demonAnim = Instantiate(pentAnim, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
                     demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
-                    Destroy(demonAnim, 5.15f);
-                    Invoke("GoForwardChild", 5.15f);
+                    Destroy(demonAnim, 10.15f);
+                    Invoke("GoForwardChild", 10.15f);
                 }
             }
             
@@ -165,7 +165,7 @@ public class SetMovement : MonoBehaviour
             _currentEndDestination = Vector3.zero;
             //TO STOP THE UPDATE FROM CHECKING FOR DISTANCE TO DEMON
             FindObjectOfType<EnemyCloseUI>().shouldHandleImage = false;
-            Destroy(demonAnim, 2f);
+            Destroy(demonAnim, 7.05f);
             //FindObjectOfType<PlayerHeartbeatController>().shouldCheckHeartbeat = false;
             gameObject.SetActive(false);
         }
