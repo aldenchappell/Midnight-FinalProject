@@ -447,34 +447,15 @@ namespace StarterAssets
                 {
                     _verticalVelocity = -2f;
                 }
-
-                // Jump
-                if (input.jump && _jumpTimeoutDelta <= 0.0f)
-                {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    if(InGameSettingsManager.Instance.enableJumping)
-                        _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-                }
-
-                // jump timeout
-                if (_jumpTimeoutDelta >= 0.0f)
-                {
-                    _jumpTimeoutDelta -= Time.deltaTime;
-                }
+                
             }
             else
             {
-                // reset the jump timeout timer
-                _jumpTimeoutDelta = JumpTimeout;
-
                 // fall timeout
                 if (_fallTimeoutDelta >= 0.0f)
                 {
                     _fallTimeoutDelta -= Time.deltaTime;
                 }
-
-                // if we are not grounded, do not jump
-                input.jump = false;
             }
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)

@@ -26,11 +26,11 @@ public class PatrolSystemManager : MonoBehaviour
             if(!Demon.activeSelf)
             {
                 _currentTime += value;
-                print(_currentTime);
+               //print(_currentTime);
             }
             else
             {
-                print("Raising");
+                //print("Raising");
                 Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(GameObject.Find("Player").transform.position, value);
             }
         }
@@ -40,7 +40,7 @@ public class PatrolSystemManager : MonoBehaviour
     {
         set
         {
-            print("Raising");
+            //print("Raising");
             Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(GameObject.Find("Player").transform.position, value);
         }
     }

@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 21382578253754018}
   - component: {fileID: 4248333823865247168}
   - component: {fileID: 8965394499203633000}
-  - component: {fileID: 3501923624559088065}
   m_Layer: 10
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -288,23 +287,6 @@ MonoBehaviour:
   - {fileID: 3509706698011977500}
   pauseSFX: {fileID: 4796928240922287626}
   inDoor: 0
---- !u!114 &3501923624559088065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113800927778067135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb4677fbe4f02834882c86a805d22a00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handheldNormalMild: {fileID: 11400000, guid: 03f04e88c8266774ab1598924ff0f239, type: 2}
-  shakeProfile: {fileID: 11400000, guid: bcb662e5d3dcf9248beedaa6344b7b5d, type: 2}
-  debrisPos: {fileID: 2260710749678243222}
-  fallingDebris: {fileID: 5866570065191796616, guid: 40cdc209b569e6b4f90a0fa02f531804, type: 3}
-  fallingDebrisClip: {fileID: 8300000, guid: fd53b43f612058f4da936f47d7492015, type: 3}
 --- !u!1 &208362555822820845
 GameObject:
   m_ObjectHideFlags: 0
@@ -22756,15 +22738,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.70710576
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70710784
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.z
