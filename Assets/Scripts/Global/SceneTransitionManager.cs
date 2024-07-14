@@ -6,7 +6,6 @@ public class SceneTransitionManager : MonoBehaviour
 
     private void Awake()
     {
-        
         DontDestroyOnLoad(gameObject);
     }
 

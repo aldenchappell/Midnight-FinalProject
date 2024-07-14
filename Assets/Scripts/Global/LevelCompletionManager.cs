@@ -66,7 +66,7 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void SaveLevelCompletion(string levelName)
     {
-        print("Checking for level comp");
+        //print("Checking for level comp");
         if (currentLevelPuzzles.Count == 0)
         {
             _completedLevels.Add(levelName);
@@ -189,7 +189,7 @@ public class LevelCompletionManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Game complete");
+            //Debug.Log("Game complete");
             FinishGame(); 
         }
         InGameSettingsManager.Instance.LoadSettings();
@@ -252,7 +252,9 @@ public class LevelCompletionManager : MonoBehaviour
     public void UnlockSecretRoom()
     {
         SecretBookshelf bookshelf = FindObjectOfType<SecretBookshelf>();
-        bookshelf.interactable.onInteraction.AddListener(bookshelf.UnlockBookshelfAccess);
+        
+        if (bookshelf != null)
+            bookshelf.interactable.onInteraction.AddListener(bookshelf.UnlockBookshelfAccess);
     }
     public void CompleteObjective(Objective objective)
     {

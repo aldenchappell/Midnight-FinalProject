@@ -40,7 +40,7 @@ public class KeyCubbyController : MonoBehaviour
 
         if (SceneTransitionManager.PreviouslyLoadedSceneName == "MAINMENU")
         {
-            Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
+            //Debug.Log(SceneTransitionManager.PreviouslyLoadedSceneName);
             ResetCubby();
         }
 
@@ -70,7 +70,7 @@ public class KeyCubbyController : MonoBehaviour
         {
             //bool keyPlaced = IsKeyPlaced(i);
             keySlots[i].SetActive(cubbyKeys[i].cubbyKey.placed);
-            Debug.Log($"Key at index {keySlots[i]} active state is {cubbyKeys[i].cubbyKey.placed}");
+           // Debug.Log($"Key at index {keySlots[i]} active state is {cubbyKeys[i].cubbyKey.placed}");
         }
     }
 
@@ -91,7 +91,7 @@ public class KeyCubbyController : MonoBehaviour
             {
                 _playerProgressionController.PlaceKeyInCubby(keyIndex);
                 cubbyKeys[keyIndex].cubbyKey.placed = true;
-                Debug.Log($"Key at index {cubbyKeys[keyIndex]} has been placed.");
+              //  Debug.Log($"Key at index {cubbyKeys[keyIndex]} has been placed.");
                 if (_returnKeyObjective != null)
                 {
                     _returnKeyObjective.CompleteObjective();
@@ -101,13 +101,13 @@ public class KeyCubbyController : MonoBehaviour
             else
             {
                 _audio.PlayOneShot(invalidKeyPlacementSound);
-                Debug.Log("Cubby slot is not available.");
+               // Debug.Log("Cubby slot is not available.");
             }
         }
         else
         {
             _audio.PlayOneShot(invalidKeyPlacementSound);
-            Debug.Log("Player does not have a key to place.");
+           // Debug.Log("Player does not have a key to place.");
         }
     }
 
@@ -128,7 +128,7 @@ public class KeyCubbyController : MonoBehaviour
         else
         {
             _audio.PlayOneShot(invalidKeyPlacementSound);
-            Debug.Log("Invalid key index for placing key in cubby.");
+           // Debug.Log("Invalid key index for placing key in cubby.");
         }
     }
 
@@ -140,7 +140,7 @@ public class KeyCubbyController : MonoBehaviour
         }
 
         _audio.PlayOneShot(invalidKeyPlacementSound);
-        Debug.LogWarning("Invalid key index for checking slot availability in cubby.");
+       // Debug.LogWarning("Invalid key index for checking slot availability in cubby.");
         return false;
     }
 
@@ -153,7 +153,7 @@ public class KeyCubbyController : MonoBehaviour
         }
         
         _audio.PlayOneShot(invalidKeyPlacementSound);
-        Debug.LogWarning("Invalid key index for checking placed key in cubby.");
+       // Debug.LogWarning("Invalid key index for checking placed key in cubby.");
         return false;
     }
 

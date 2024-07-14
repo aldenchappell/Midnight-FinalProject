@@ -45,7 +45,7 @@ public class PauseManager : MonoBehaviour
         if (hasFocus && GameIsPaused)
         {
             _cursorManager.EnableCursor();
-            Debug.Log("Application now active");
+           // Debug.Log("Application now active");
         }
     }
 
@@ -112,7 +112,7 @@ public class PauseManager : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        Debug.Log("Loading Menu...");
+        //Debug.Log("Loading Menu...");
         SceneManager.LoadScene("MAINMENU");
         AudioListener.pause = false;
     }
@@ -120,7 +120,7 @@ public class PauseManager : MonoBehaviour
     public void QuitGame()
     {
         PlayerPrefs.DeleteAll();
-        Debug.Log("Quitting Game...");
+       // Debug.Log("Quitting Game...");
         Application.Quit();
     }
 }

@@ -46,8 +46,8 @@ public class QualitySettingsController : MonoBehaviour
             currentResolutionIndex = savedResolutionIndex;
         }
         
-        Debug.Log("Saved Resolution Index: " + savedResolutionIndex);
-        Debug.Log("Applying Resolution: " + _resolutions[currentResolutionIndex].width + " x " + _resolutions[currentResolutionIndex].height);
+        //Debug.Log("Saved Resolution Index: " + savedResolutionIndex);
+        //Debug.Log("Applying Resolution: " + _resolutions[currentResolutionIndex].width + " x " + _resolutions[currentResolutionIndex].height);
         
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
@@ -71,7 +71,7 @@ public class QualitySettingsController : MonoBehaviour
 
     private void OnQualityDropdownValueChanged(int qualityLevel)
     {
-        Debug.Log("Quality Dropdown Changed: " + qualityLevel);
+       // Debug.Log("Quality Dropdown Changed: " + qualityLevel);
         SetQuality(qualityLevel);
     }
 
@@ -80,17 +80,17 @@ public class QualitySettingsController : MonoBehaviour
         if (resolutionIndex >= 0 && resolutionIndex < _resolutions.Length)
         {
             Resolution resolution = _resolutions[resolutionIndex];
-            Debug.Log("Setting Resolution BLa: " + resolution.width + " x " + resolution.height);
+            //Debug.Log("Setting Resolution BLa: " + resolution.width + " x " + resolution.height);
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
 
             InGameSettingsManager.Instance._resolutionIndex = resolutionIndex;
-            print(InGameSettingsManager.Instance._resolutionIndex);
+           // print(InGameSettingsManager.Instance._resolutionIndex);
             PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
             PlayerPrefs.Save();
         }
         else
         {
-            Debug.LogError("Invalid resolution index: " + resolutionIndex);
+           // Debug.LogError("Invalid resolution index: " + resolutionIndex);
         }
     }
 
@@ -100,11 +100,11 @@ public class QualitySettingsController : MonoBehaviour
         {
             QualitySettings.SetQualityLevel(qualityLevel, true);
             InGameSettingsManager.Instance.SetQualityLevel(qualityLevel);
-            Debug.Log("Setting Quality Level to: " + QualitySettings.names[qualityLevel]);
+           // Debug.Log("Setting Quality Level to: " + QualitySettings.names[qualityLevel]);
         }
         else
         {
-            Debug.LogError("Invalid quality level: " + qualityLevel);
+          //  Debug.LogError("Invalid quality level: " + qualityLevel);
         }
     }
 
@@ -112,7 +112,7 @@ public class QualitySettingsController : MonoBehaviour
     {
         if (!InGameSettingsManager.Instance.hasSetFirstTime)
         {
-            Debug.Log("Setting resolution for the first time");
+           // Debug.Log("Setting resolution for the first time");
             SetResolution(_resolutions.Length - 1);
             InGameSettingsManager.Instance.hasSetFirstTime = true;
         }

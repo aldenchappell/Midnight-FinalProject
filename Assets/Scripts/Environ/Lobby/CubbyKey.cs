@@ -12,13 +12,13 @@ public class CubbyKey : MonoBehaviour
         {
             keyObject.SetActive(true);
             particles.SetActive(false);
-            Debug.Log("Activating cubby key. Has been placed.");
+            //Debug.Log("Activating cubby key. Has been placed.");
         }
         else
         {
             keyObject.SetActive(false);
             particles.SetActive(true);
-            Debug.Log("Deactivating cubby key. Not placed.");
+            //Debug.Log("Deactivating cubby key. Not placed.");
         }
     }
 }
