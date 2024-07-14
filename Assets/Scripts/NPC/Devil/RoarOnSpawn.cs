@@ -5,14 +5,15 @@ using UnityEngine;
 public class RoarOnSpawn : MonoBehaviour
 {
     [SerializeField] AudioClip roar;
+    public bool isSpawn;
     // Start is called before the first frame update
     void Start()
     {
-        if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Summoning"))
+        if(isSpawn)
         {
-            
+            Invoke("Roar", 3f);
         }
-        Invoke("Roar", 3f);
+        
         //
     }
 

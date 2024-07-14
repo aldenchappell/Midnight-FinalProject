@@ -90,9 +90,11 @@ public class SetMovement : MonoBehaviour
 
             _agent.enabled = false;
             SetAIAtStartLocation(firstSpawn.transform.position);
+            GetComponent<AudioSource>().enabled = false;
             _currentEndDestination = firstEnd.transform.position;
             GameObject demonAnim = Instantiate(pentAnim, firstSpawn.transform.position, Quaternion.identity);
             demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
+            demonAnim.GetComponent<RoarOnSpawn>().isSpawn = true;
             Destroy(demonAnim, 5.15f);
             Invoke("GoForwardChild", 5.15f);
         }
@@ -144,10 +146,12 @@ public class SetMovement : MonoBehaviour
                 {
                     _isPreppingToSpawn = true;
                     _agent.enabled = false;
+                    GetComponent<AudioSource>().enabled = false;
                     SetAIAtStartLocation(_allActiveDemonDoors[randomStartIndex].transform.position);
                     _currentEndDestination = _allActiveDemonDoors[randomEndIndex].transform.position;
                     GameObject demonAnim = Instantiate(pentAnim, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
                     demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
+                    demonAnim.GetComponent<RoarOnSpawn>().isSpawn = true;
                     Destroy(demonAnim, 10.15f);
                     Invoke("GoForwardChild", 10.15f);
                 }
@@ -185,6 +189,7 @@ public class SetMovement : MonoBehaviour
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         _agent.enabled = enabled;
         _agent.SetDestination(_currentEndDestination);
+        GetComponent<AudioSource>().enabled = true;
     }
 
     private void SetAIAtStartLocation(Vector3 location)
