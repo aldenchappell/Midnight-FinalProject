@@ -72,12 +72,12 @@ public class SoundDetectionRadius : MonoBehaviour
         _onDelay = false;
     }
 
-    private void OnDrawGizmos()
-    {
-        if(debugEnabled)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, currentSoundRadius);
-        }
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     if(debugEnabled)
+    //     {
+    //         Gizmos.color = Color.green;
+    //         Gizmos.DrawWireSphere(transform.position, currentSoundRadius);
+    //     }
+    // }
 }

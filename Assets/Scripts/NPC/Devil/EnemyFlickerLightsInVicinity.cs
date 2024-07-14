@@ -64,9 +64,9 @@ public class EnemyFlickerLightsInVicinity : MonoBehaviour
         _currentFlickeringLights = flickeringLights;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(transform.position, radius);
+    // }
 }

@@ -24,9 +24,12 @@ public class PlayerCompassController : MonoBehaviour
     private bool _isFadingOut;
     private float _fadeStartTime;
 
+    private float _cosMarkerDetectionAngle;
+
     private void Awake()
     {
         if (Camera.main != null) _cameraObjectTransform = Camera.main.transform;
+        _cosMarkerDetectionAngle = Mathf.Cos(MarkerDetectionAngle * Mathf.Deg2Rad / 2);
     }
 
     private void Start()
@@ -62,9 +65,9 @@ public class PlayerCompassController : MonoBehaviour
                 {
                     float distanceToMarker = Vector3.Distance(_cameraObjectTransform.position, _objectiveObjectTransforms[i].position);
                     Vector3 directionToMarker = (_objectiveObjectTransforms[i].position - _cameraObjectTransform.position).normalized;
-                    float angleToMarker = Vector3.Angle(directionToMarker, _cameraObjectTransform.forward);
+                    float dotProduct = Vector3.Dot(directionToMarker, _cameraObjectTransform.forward);
 
-                    if (distanceToMarker <= MaxDistanceToShowMarker && angleToMarker <= MarkerDetectionAngle / 2)
+                    if (distanceToMarker <= MaxDistanceToShowMarker && dotProduct >= _cosMarkerDetectionAngle)
                     {
                         _objectiveMarkerTransforms[i].gameObject.SetActive(true);
                         SetCompassMarkerPosition(_objectiveMarkerTransforms[i], _objectiveObjectTransforms[i].position);

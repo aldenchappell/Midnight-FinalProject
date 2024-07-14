@@ -212,14 +212,14 @@ public class SetMovement : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        if (enableDebug)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, maxPatrolRange);
-        }
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     if (enableDebug)
+    //     {
+    //         Gizmos.color = Color.red;
+    //         Gizmos.DrawWireSphere(transform.position, maxPatrolRange);
+    //     }
+    // }
 
     private void SpecialFirstPatrolRoute()
     {

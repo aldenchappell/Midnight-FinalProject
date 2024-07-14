@@ -156,16 +156,16 @@ public class EnemyVision : MonoBehaviour
     }
 
     //Debug Gizmos
-    private void OnDrawGizmos()
-    {
-        if(enableDebug)
-        {
-            Gizmos.DrawWireSphere(transform.position, searchRadius);
-            Vector3 line1 = new Vector3(Mathf.Sin((coneRadius/2) * Mathf.Deg2Rad), 0, Mathf.Cos(coneRadius * Mathf.Deg2Rad));
-            Vector3 line2 = new Vector3(Mathf.Sin((-coneRadius/2) * Mathf.Deg2Rad), 0, Mathf.Cos(coneRadius * Mathf.Deg2Rad));
-            Gizmos.DrawLine(transform.position, transform.position + line1 * searchRadius);
-            Gizmos.DrawLine(transform.position, transform.position + line2 * searchRadius);
-            
-        }
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     if(enableDebug)
+    //     {
+    //         Gizmos.DrawWireSphere(transform.position, searchRadius);
+    //         Vector3 line1 = new Vector3(Mathf.Sin((coneRadius/2) * Mathf.Deg2Rad), 0, Mathf.Cos(coneRadius * Mathf.Deg2Rad));
+    //         Vector3 line2 = new Vector3(Mathf.Sin((-coneRadius/2) * Mathf.Deg2Rad), 0, Mathf.Cos(coneRadius * Mathf.Deg2Rad));
+    //         Gizmos.DrawLine(transform.position, transform.position + line1 * searchRadius);
+    //         Gizmos.DrawLine(transform.position, transform.position + line2 * searchRadius);
+    //         
+    //     }
+    // }
 }
