@@ -116,7 +116,7 @@ public class LevelCompletionManager : MonoBehaviour
     public void FinishGame()
     {
         allLevelsCompleted = true;
-        PowerLobbyIfNeeded();
+        //PowerLobbyIfNeeded();
     }
 
     private void PowerLobbyIfNeeded()

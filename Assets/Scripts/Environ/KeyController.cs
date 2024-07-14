@@ -34,7 +34,7 @@ public class KeyController : MonoBehaviour
 
             if (isTaggedKey && SceneManager.GetActiveScene().name == "FLOOR THREE")
             {
-                _interactable.onInteraction.AddListener(LevelCompletionManager.Instance.FinishGame);
+                _interactable.onInteraction.AddListener(() => LevelCompletionManager.Instance.FinishGame());
                 Debug.Log("Adding listener to finish the fuckin game");
             }
             
