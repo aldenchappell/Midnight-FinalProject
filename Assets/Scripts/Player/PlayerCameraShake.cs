@@ -22,17 +22,12 @@ public class PlayerCameraShake : MonoBehaviour
     
     private void Awake()
     {
-        Debug.Log("PlayerCameraShake Awake");
         _shakeCam = GetComponent<CinemachineVirtualCamera>();
         _audio = GetComponentInChildren<AudioSource>();
 
         if (_shakeCam != null)
         {
             _perlinChannel = _shakeCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        }
-        else
-        {
-            Debug.LogWarning("CinemachineVirtualCamera component not found.");
         }
     }
 

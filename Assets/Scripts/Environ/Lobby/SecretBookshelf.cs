@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -59,35 +61,59 @@ public class SecretBookshelf : MonoBehaviour
 
     private IEnumerator FadeBookshelf()
     {
-        GameObject secretDoorBookshelf = GameObject.Find("SecretDoorBookshelf");
-        if (secretDoorBookshelf == null)
+        Renderer[] childRenderers = GetComponentsInChildren<Renderer>();
+        Renderer parentRenderer = GetComponent<Renderer>();
+
+        //add the parent object to the renderer list 
+        Renderer[] allRenderers = new Renderer[childRenderers.Length + 1];
+        allRenderers[0] = parentRenderer;
+        Array.Copy(childRenderers, 0, allRenderers, 1, childRenderers.Length);
+
+        //set rendering mode to fade
+        foreach (Renderer r in allRenderers)
         {
-            yield break;
+            Material material = r.material;
+            material.SetRenderingMode(RenderingMode.Fade);
         }
-
-        Renderer bookshelfRenderer = secretDoorBookshelf.GetComponent<Renderer>();
-
-        Color startingColor = bookshelfRenderer.material.color;
-        float startingAlpha = startingColor.a;
 
         float duration = 4.0f;
         float elapsedTime = 0f;
 
+        //get the initial colors and alphas
+        Color[] startingColors = new Color[allRenderers.Length];
+        float[] startingAlphas = new float[allRenderers.Length];
+
+        for (int i = 0; i < allRenderers.Length; i++)
+        {
+            startingColors[i] = allRenderers[i].material.color;
+            startingAlphas[i] = startingColors[i].a;
+        }
+
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            float newAlpha = Mathf.Lerp(startingAlpha, 0f, elapsedTime / duration);
-            Color newColor = new Color(startingColor.r, startingColor.g, startingColor.b, newAlpha);
-            bookshelfRenderer.material.color = newColor;
+            float newAlpha = Mathf.Lerp(1f, 0f, elapsedTime / duration);
+
+            for (int i = 0; i < allRenderers.Length; i++)
+            {
+                Color newColor = new Color(startingColors[i].r, startingColors[i].g, startingColors[i].b, newAlpha);
+                allRenderers[i].material.color = newColor;
+            }
+
             yield return null;
         }
 
-        Color finalColor = new Color(startingColor.r, startingColor.g, startingColor.b, 0f);
-        bookshelfRenderer.material.color = finalColor;
+        for (int i = 0; i < allRenderers.Length; i++)
+        {
+            Color finalColor = new Color(startingColors[i].r, startingColors[i].g, startingColors[i].b, 0f);
+            allRenderers[i].material.color = finalColor;
+        }
 
-        secretDoorBookshelf.gameObject.SetActive(false);
+        //deactivate after all renderers have faded out
+        gameObject.SetActive(false);
     }
 
+    
     private void FadeInAndOutText()
     {
         if (_textCoroutine != null)

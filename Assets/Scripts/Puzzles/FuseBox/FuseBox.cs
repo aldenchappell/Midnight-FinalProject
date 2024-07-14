@@ -14,7 +14,7 @@ public class FuseBox : MonoBehaviour
     [SerializeField] GameObject fuseParticle;
     [SerializeField] private GameObject elevatorObj;
     
-    private AudioSource _radioAudio;
+    private GameObject[] _radioAudio;
     private List<Light> _lobbyLights;
     private List<Material> _lobbyEmissives;
     private ElevatorController _elevator;
@@ -60,10 +60,17 @@ public class FuseBox : MonoBehaviour
 
         _elevator = FindObjectOfType<ElevatorController>();
         _elevator.enabled = false;
+
+
+        _radioAudio = GameObject.FindGameObjectsWithTag("Radio");
+        foreach (var r in _radioAudio)
+        {
+            r.GetComponent<AudioSource>().enabled = false;
+        }
         
 
-        _radioAudio = GameObject.Find("LargeRadio").GetComponent<AudioSource>();
-        _radioAudio.enabled = false;
+        
+        //_radioAudio.enabled = false;
         _objective = GetComponent<Objective>();
         
         
@@ -252,7 +259,10 @@ public class FuseBox : MonoBehaviour
         //turn on all lamps and enable emissives
         FindObjectOfType<LampController>().PowerOnLamps();
 
-        _radioAudio.enabled = true;
+        foreach (var r in _radioAudio)
+        {
+            r.GetComponent<AudioSource>().enabled = true;
+        }
         _elevator.enabled = true;
 
         //enable all emissives
