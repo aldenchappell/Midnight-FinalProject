@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class KeyController : MonoBehaviour
 {
     private InteractableObject _interactable;
-    private PlayerKeyController _playerKeyController;
+    private PlayerProgressionController _playerProgressionController;
     private ElevatorController _elevatorController;
 
     public bool isTaggedKey;
@@ -13,11 +13,11 @@ public class KeyController : MonoBehaviour
     {
         _interactable = GetComponent<InteractableObject>();
         
-        _playerKeyController = FindObjectOfType<PlayerKeyController>();
+        _playerProgressionController = FindObjectOfType<PlayerProgressionController>();
         
         _elevatorController = FindObjectOfType<ElevatorController>();
         
-        if (_interactable != null && _playerKeyController != null)
+        if (_interactable != null && _playerProgressionController != null)
         {
             _interactable.onInteraction.AddListener(_elevatorController.OpenElevator);
 
@@ -27,7 +27,7 @@ public class KeyController : MonoBehaviour
                 
                 //fix for constantine saying return key when placing key in lobby
                 if(SceneManager.GetActiveScene().name != "LOBBY")
-                    _interactable.onInteraction.AddListener(_playerKeyController.CollectKey);
+                    _interactable.onInteraction.AddListener(_playerProgressionController.CollectKey);
                 
             }
                 

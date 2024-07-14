@@ -19,6 +19,7 @@ public class LevelCompletionManager : MonoBehaviour
     public List<SO_Puzzle> level3Puzzles;
 
     private int _collectedKeys;
+    private int _collectedIdols;
     //Added this line for fix: Owen
     public int _keysReturned = 0;
     private HashSet<string> _completedLevels = new HashSet<string>();
@@ -231,6 +232,26 @@ public class LevelCompletionManager : MonoBehaviour
     public void UpdateKeyCount(int keys)
     {
         _collectedKeys = keys;
+    }
+    
+    public int GetCollectedIdols()
+    {
+        return _collectedIdols;
+    }
+
+    public void CollectIdol()
+    {
+        _collectedIdols++;
+    }
+
+    public void UnlockSecretRoom()
+    {
+        GameObject secretRoomParent = GameObject.Find("SecretRoomParent");
+
+        if (secretRoomParent != null)
+        {
+            secretRoomParent.SetActive(true);
+        }
     }
     
     public void CompleteObjective(Objective objective)

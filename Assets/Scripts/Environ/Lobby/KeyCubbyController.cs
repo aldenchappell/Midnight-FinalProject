@@ -8,7 +8,7 @@ public class KeyCubbyController : MonoBehaviour
     public List<CubbyKey> cubbyKeys = new List<CubbyKey>();
     public List<GameObject> cubbyParticles = new List<GameObject>();
     
-    private PlayerKeyController _playerKeyController;
+    private PlayerProgressionController _playerProgressionController;
     private AudioSource _audio;
     [SerializeField] private AudioClip placeKeySound;
     [SerializeField] private AudioClip invalidKeyPlacementSound;
@@ -19,7 +19,7 @@ public class KeyCubbyController : MonoBehaviour
 
     private void Awake()
     {
-        _playerKeyController = FindObjectOfType<PlayerKeyController>();
+        _playerProgressionController = FindObjectOfType<PlayerProgressionController>();
         _audio = GetComponent<AudioSource>();
         _objectiveController = FindObjectOfType<ObjectiveController>();
     }
@@ -85,11 +85,11 @@ public class KeyCubbyController : MonoBehaviour
 
     private void TryPlaceKeyInCubby(int keyIndex)
     {
-        if (_playerKeyController != null && _playerKeyController.keys > 0)
+        if (_playerProgressionController != null && _playerProgressionController.keys > 0)
         {
             if (IsSlotAvailable(keyIndex))
             {
-                _playerKeyController.PlaceKeyInCubby(keyIndex);
+                _playerProgressionController.PlaceKeyInCubby(keyIndex);
                 cubbyKeys[keyIndex].cubbyKey.placed = true;
                 Debug.Log($"Key at index {cubbyKeys[keyIndex]} has been placed.");
                 if (_returnKeyObjective != null)

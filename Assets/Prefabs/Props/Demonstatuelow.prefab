@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 2053920142162775636}
   - component: {fileID: 1288612356318695014}
   - component: {fileID: 5547998195958007379}
-  m_Layer: 0
+  - component: {fileID: 7911053010576735987}
+  - component: {fileID: 6043686161059756245}
+  - component: {fileID: 349692576473278022}
+  m_Layer: 7
   m_Name: Demonstatuelow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,14 +29,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050814475399967970}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.2381518, z: -0, w: 0.97122794}
+  m_LocalRotation: {x: 0, y: -0.23815207, z: 0, w: 0.97122794}
   m_LocalPosition: {x: -5.5429, y: 6.9226, z: 27.6631}
   m_LocalScale: {x: 1.4066528, y: 1.4066528, z: 1.4066528}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7884172065624281112}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -27.555, z: 0}
 --- !u!33 &1288612356318695014
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84,6 +87,62 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7911053010576735987
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050814475399967970}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.030883051, y: 0.087972276, z: 0.02483822}
+  m_Center: {x: 0.0030674406, y: 0.043790486, z: 0.0029762385}
+--- !u!114 &6043686161059756245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050814475399967970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13810721ea2449f4b98cb93a65e70177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlaceObject:
+    m_PersistentCalls:
+      m_Calls: []
+  interactionIcon: {fileID: 21300000, guid: a78af9cffe164384fb3c1dc91b66dae5, type: 3}
+  interactableIconSize: {x: 30, y: 30}
+  interactableID: 0
+  highlightInteractableObjectController: {fileID: 0}
+--- !u!114 &349692576473278022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050814475399967970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d05a194582d6d742abf3cc33b3cd990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idolCollectionClip: {fileID: 8300000, guid: dd12d891f3d339f4294443f5c94e5c70, type: 3}
 --- !u!1 &5103081851887245201
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +171,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7884172065624281112}
@@ -4951,7 +5010,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7884172065624281112}
