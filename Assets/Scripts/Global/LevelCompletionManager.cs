@@ -104,10 +104,13 @@ public class LevelCompletionManager : MonoBehaviour
         _skullDialoguePlayed.Clear();
         
         hasCompletedLobby = false;
-        _keysReturned = 0;
-        
-        if(shouldResetCubby)
+        //_keysReturned = 0;
+
+        if (shouldResetCubby)
+        {
             FindObjectOfType<KeyCubbyController>().ResetCubby();
+            _keysReturned = 0;
+        }
     }
     
     public void FinishGame()
