@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,7 +26,10 @@ public class PlayerProgressionController : MonoBehaviour
             fadeUI.FadeOutText(inGameKeysCollectedText);
             fadeUI.FadeOutImage(inGameKeysImage);
         }
+        
+        
     }
+    
 
     private void Start()
     {
@@ -87,11 +91,9 @@ public class PlayerProgressionController : MonoBehaviour
 
         if (LevelCompletionManager.Instance.GetCollectedIdols() >= 9)
         {
-            LevelCompletionManager.Instance.UnlockSecretRoom();
+            LevelCompletionManager.Instance.allIdolsCollected = true;
         }
     }
-    
-    
     #endregion
     private void UpdateProgressionUI()
     {

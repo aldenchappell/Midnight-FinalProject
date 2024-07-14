@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -20,8 +21,11 @@ public class LevelCompletionManager : MonoBehaviour
 
     private int _collectedKeys;
     private int _collectedIdols;
+    public bool allIdolsCollected;
     //Added this line for fix: Owen
+    
     public int _keysReturned = 0;
+    
     private HashSet<string> _completedLevels = new HashSet<string>();
     private HashSet<string> _completedPuzzles = new HashSet<string>();
 
@@ -91,6 +95,7 @@ public class LevelCompletionManager : MonoBehaviour
         hasKey = false;
         
         allLevelsCompleted = false;
+        allIdolsCollected = false;
         
         ResetPuzzles();
         
@@ -246,14 +251,9 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void UnlockSecretRoom()
     {
-        GameObject secretRoomParent = GameObject.Find("SecretRoomParent");
-
-        if (secretRoomParent != null)
-        {
-            secretRoomParent.SetActive(true);
-        }
+        SecretBookshelf bookshelf = FindObjectOfType<SecretBookshelf>();
+        bookshelf.interactable.onInteraction.AddListener(bookshelf.UnlockBookshelfAccess);
     }
-    
     public void CompleteObjective(Objective objective)
     {
         objective.isCompleted = true;
