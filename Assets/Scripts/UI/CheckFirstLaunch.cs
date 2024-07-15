@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CheckFirstLaunch : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         CheckForFirstLaunch();
     }
