@@ -12,17 +12,17 @@ public class UIMenuButtons : MonoBehaviour
     public void StartGameButton()
     {
         GlobalCursorManager.Instance.DisableCursor();
-
         if (InGameSettingsManager.Instance.isFirstLaunch && isFirstTimeLobbyLoaded)
         {
             startGamePanel.SetActive(true);
             GlobalCursorManager.Instance.EnableCursor();
-            isFirstTimeLobbyLoaded = false; 
+            isFirstTimeLobbyLoaded = false;
         }
         else
         {
             LoadLobby();
         }
+        
     }
 
     private void LoadLobby()
