@@ -15,7 +15,8 @@ public class WinSceneUI : MonoBehaviour
     }
     public void OnMenuButtonPress()
     {
-        SceneManager.LoadScene("MAINMENU");
+        //SceneManager.LoadScene("MAINMENU");
+        Loader.Load(Loader.Scene.MAINMENU);
     }
     public void OnQuitButtonPress()
     {

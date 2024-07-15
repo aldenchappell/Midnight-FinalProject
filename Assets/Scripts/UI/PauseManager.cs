@@ -113,7 +113,8 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         //Debug.Log("Loading Menu...");
-        SceneManager.LoadScene("MAINMENU");
+        //SceneManager.LoadScene("MAINMENU");
+        Loader.Load(Loader.Scene.MAINMENU);
         LevelCompletionManager.Instance.ResetGame(true);
         AudioListener.pause = false;
     }

@@ -168,12 +168,12 @@ public class ElevatorController : MonoBehaviour
                 _selectedLevelName = "LOBBY";
                 break;
             case 2:
-                _selectedLevelName = "FLOOR ONE";
+                _selectedLevelName = "FLOORONE";
                 break;
             case 3:
-                if (LevelCompletionManager.Instance.IsLevelCompleted("FLOOR ONE"))
+                if (LevelCompletionManager.Instance.IsLevelCompleted("FLOORONE"))
                 {
-                    _selectedLevelName = "FLOOR TWO";
+                    _selectedLevelName = "FLOORTWO";
                 }
                 else
                 {
@@ -183,10 +183,10 @@ public class ElevatorController : MonoBehaviour
                 }
                 break;
             case 4:
-                if (LevelCompletionManager.Instance.IsLevelCompleted("FLOOR ONE") &&
-                    LevelCompletionManager.Instance.IsLevelCompleted("FLOOR TWO"))
+                if (LevelCompletionManager.Instance.IsLevelCompleted("FLOORONE") &&
+                    LevelCompletionManager.Instance.IsLevelCompleted("FLOORTWO"))
                 {
-                    _selectedLevelName = "FLOOR THREE";
+                    _selectedLevelName = "FLOORTHREE";
                 }
                 else
                 {
@@ -234,15 +234,15 @@ public class ElevatorController : MonoBehaviour
         {
             floorIndexText.text = "L";
         }
-        else if (_selectedLevelName == "FLOOR ONE")
+        else if (_selectedLevelName == "FLOORONE")
         {
             floorIndexText.text = "1";
         }
-        else if (_selectedLevelName == "FLOOR TWO")
+        else if (_selectedLevelName == "FLOORTWO")
         {
             floorIndexText.text = "2";
         }
-        else if (_selectedLevelName == "FLOOR THREE")
+        else if (_selectedLevelName == "FLOORTHREE")
         {
             floorIndexText.text = "3";
         }
@@ -273,7 +273,26 @@ public class ElevatorController : MonoBehaviour
         SceneTransitionManager.UpdatePreviouslyLoadedScene(SceneManager.GetActiveScene().name);
 
         
-        SceneManager.LoadScene(_selectedLevelName);
+        //SceneManager.LoadScene(_selectedLevelName);
+        switch (_selectedLevelName)
+        {
+            case "LOBBY":
+                Loader.Load(Loader.Scene.LOBBY);
+                break;
+            case "FLOORONE":
+                Loader.Load(Loader.Scene.FLOORONE);
+                break;
+            case "FLOORTWO":
+                Loader.Load(Loader.Scene.FLOORTWO);
+                break;
+            case "FLOORTHREE":
+                Loader.Load(Loader.Scene.FLOORTHREE);
+                break;
+            default:
+                Debug.Log("Error loading " + _selectedLevelName + " in ElevatorController/StartElevaterRoutine");
+                Loader.Load(Loader.Scene.LOBBY);
+                break;
+        }
         _startElevatorRoutineCoroutine = null;
     }
 

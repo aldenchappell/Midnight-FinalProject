@@ -69,6 +69,7 @@ public class PlayerDeathController : MonoBehaviour
     private void ReturnToLobby()
     {
         //TO BE CHANGED TO LOBBY
-        SceneManager.LoadScene("LOBBY");
+        //SceneManager.LoadScene("LOBBY");
+        Loader.Load(Loader.Scene.LOBBY);
     }
 }

@@ -96,17 +96,17 @@ public class SkullDialogue : MonoBehaviour
                     SkullDialogueLineHolder.Instance.PlaySpecificClip(
                         SkullDialogueLineHolder.Instance.lobbyOpeningClip);
                 break;
-            case "FLOOR ONE":
+            case "FLOORONE":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
                     SkullDialogueLineHolder.Instance.PlaySpecificClip(
                         SkullDialogueLineHolder.Instance.floorOneOpeningClip);
                 break;
-            case "FLOOR TWO":
+            case "FLOORTWO":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
                     SkullDialogueLineHolder.Instance.PlaySpecificClip(
                         SkullDialogueLineHolder.Instance.floorTwoOpeningClip);
                 break;
-            case "FLOOR THREE":
+            case "FLOORTHREE":
                 if (!SkullDialogueLineHolder.Instance.IsAudioSourcePlaying())
                     SkullDialogueLineHolder.Instance.PlaySpecificClip(
                         SkullDialogueLineHolder.Instance.floorThreeOpeningClip);
@@ -127,11 +127,11 @@ public class SkullDialogue : MonoBehaviour
         {
             case "LOBBY":
                 return LevelCompletionManager.Instance.lobbyPuzzles;
-            case "FLOOR ONE":
+            case "FLOORONE":
                 return LevelCompletionManager.Instance.level1Puzzles;
-            case "FLOOR TWO":
+            case "FLOORTWO":
                 return LevelCompletionManager.Instance.level2Puzzles;
-            case "FLOOR THREE":
+            case "FLOORTHREE":
                 return LevelCompletionManager.Instance.level3Puzzles;
             default:
                 return new List<SO_Puzzle>();

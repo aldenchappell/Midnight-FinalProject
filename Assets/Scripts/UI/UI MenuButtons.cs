@@ -33,7 +33,9 @@ public class UIMenuButtons : MonoBehaviour
     private IEnumerator FadeThenLoad()
     {
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("LOBBY");
+        
+        //SceneManager.LoadScene("LOBBY"))
+        Loader.Load(Loader.Scene.LOBBY);
         GlobalCursorManager.Instance.DisableCursor();
     }
 

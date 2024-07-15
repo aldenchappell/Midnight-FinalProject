@@ -165,17 +165,17 @@ public class LevelCompletionManager : MonoBehaviour
 
     public void CheckAndStartNextLevel()
     {
-        if (!IsLevelCompleted("FLOOR ONE"))
+        if (!IsLevelCompleted("FLOORONE"))
         {
-            StartLevel("FLOOR ONE", level1Puzzles);
+            StartLevel("FLOORONE", level1Puzzles);
         }
-        else if (!IsLevelCompleted("FLOOR TWO"))
+        else if (!IsLevelCompleted("FLOORTWO"))
         {
-            StartLevel("FLOOR TWO", level2Puzzles);
+            StartLevel("FLOORTWO", level2Puzzles);
         }
-        else if (!IsLevelCompleted("FLOOR THREE"))
+        else if (!IsLevelCompleted("FLOORTHREE"))
         {
-            StartLevel("FLOOR THREE", level3Puzzles);
+            StartLevel("FLOORTHREE", level3Puzzles);
         }
         else
         {

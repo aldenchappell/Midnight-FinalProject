@@ -19,8 +19,8 @@ public class OutroCutsceneManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || changeTime <= 0)
         {
             //Load the specified scene
-            SceneManager.LoadScene(sceneName);
-
+            //SceneManager.LoadScene(sceneName);
+            Loader.Load(Loader.Scene.MAINMENU);
             // Deactivate the timeline
 
 
