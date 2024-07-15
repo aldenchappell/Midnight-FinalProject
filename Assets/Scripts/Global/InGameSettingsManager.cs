@@ -50,6 +50,7 @@ public class InGameSettingsManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad((gameObject));
             LoadSettings();
+            GameObject.Find("Options");
         }
         else
         {
