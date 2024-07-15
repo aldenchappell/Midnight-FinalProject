@@ -167,11 +167,11 @@ public class InGameSettingsManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public int GetQualityLevel()
-    {
-        int level = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
-        return level;
-    }
+    // public int GetQualityLevel()
+    // {
+    //     int level = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
+    //     return level;
+    // }
 
     public void SetQualityLevel(int level)
     {
@@ -187,12 +187,12 @@ public class InGameSettingsManager : MonoBehaviour
         enableHeartbeatSounds = PlayerPrefs.GetInt(HeartbeatSoundsPrefKey, 1) == 1;
         enableCompass = PlayerPrefs.GetInt(CompassPrefKey, 1) == 1;
         
-        SetQualityLevel(GetQualityLevel());
+        //SetQualityLevel(QualitySettings.GetQualityLevel());
         InitializeBrightness();
         InitializeVolumes();
 
         // Check if the first time resolution setting has been set
-        hasSetFirstTime = PlayerPrefs.GetInt("HasSetFirstTime", 0) == 1;
+        //hasSetFirstTime = PlayerPrefs.GetInt("HasSetFirstTime", 0) == 1;
     }
 
     private void InitializeVolumes()
