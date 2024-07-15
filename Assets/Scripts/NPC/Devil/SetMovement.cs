@@ -95,6 +95,7 @@ public class SetMovement : MonoBehaviour
             GameObject demonAnim = Instantiate(pentAnim, firstSpawn.transform.position, Quaternion.identity);
             demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
             demonAnim.GetComponent<RoarOnSpawn>().isSpawn = true;
+            transform.rotation = demonAnim.transform.rotation;
             Destroy(demonAnim, 5.15f);
             Invoke("GoForwardChild", 5.15f);
         }
@@ -152,6 +153,7 @@ public class SetMovement : MonoBehaviour
                     GameObject demonAnim = Instantiate(pentAnim, _allActiveDemonDoors[randomStartIndex].transform.position, Quaternion.identity);
                     demonAnim.GetComponent<Animator>().SetTrigger("Spawn");
                     demonAnim.GetComponent<RoarOnSpawn>().isSpawn = true;
+                    transform.rotation = demonAnim.transform.rotation;
                     Destroy(demonAnim, 10.15f);
                     Invoke("GoForwardChild", 10.15f);
                 }
@@ -162,7 +164,7 @@ public class SetMovement : MonoBehaviour
         }
         else if (Vector3.Distance(transform.position, _currentEndDestination) <= _agent.stoppingDistance + 1)
         {
-            GameObject demonAnim = Instantiate(pentAnim, transform.position, Quaternion.identity);
+            GameObject demonAnim = Instantiate(pentAnim, transform.position, transform.rotation);
             demonAnim.GetComponent<Animator>().SetTrigger("Despawn");
             _agent.enabled = false;
             SetAIAtStartLocation(Vector3.zero);

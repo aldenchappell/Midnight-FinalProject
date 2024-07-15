@@ -11,7 +11,7 @@ public class RoarOnSpawn : MonoBehaviour
     {
         if(isSpawn)
         {
-            Invoke("Roar", 3f);
+            Invoke("Roar", 2f);
         }
         
         //
