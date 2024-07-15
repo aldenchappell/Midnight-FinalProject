@@ -12,7 +12,7 @@ public class QualitySettingsController : MonoBehaviour
     private int _currentResolutionIndex = 0;
 
     [SerializeField] private GameObject[] disableOnRuntimeObjects;
-    
+    [SerializeField] private GameObject soundSettings;
     [Obsolete("Obsolete")]
     private void Start()
     {
@@ -23,11 +23,11 @@ public class QualitySettingsController : MonoBehaviour
         resolutionDropdown.ClearOptions();
         _currentRefreshRate = Screen.currentResolution.refreshRate;
 
-        Debug.Log("Refresh Rate: " + _currentRefreshRate);
+        //Debug.Log("Refresh Rate: " + _currentRefreshRate);
 
         for (int i = 0; i < _resolutions.Length; i++)
         {
-            Debug.Log("Resolution: " + _resolutions[i]);
+            //Debug.Log("Resolution: " + _resolutions[i]);
             if (_resolutions[i].refreshRate == _currentRefreshRate)
             {
                 _filteredResolutions.Add(_resolutions[i]);
@@ -65,7 +65,7 @@ public class QualitySettingsController : MonoBehaviour
             PlayerPrefs.SetInt("Resolution", resolutionIndex);
             PlayerPrefs.Save();
         
-            Debug.Log("Setting resolution to " + res.width + "x" + res.height);
+            //Debug.Log("Setting resolution to " + res.width + "x" + res.height);
         }
     }
 
@@ -75,7 +75,7 @@ public class QualitySettingsController : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex);
         PlayerPrefs.SetInt("QualityLevel", qualityIndex);
         
-        Debug.Log("Setting quality to " + QualitySettings.GetQualityLevel());
+        //Debug.Log("Setting quality to " + PlayerPrefs.GetInt("QualityLevel"));
     }
 
     private void LoadSettings()
@@ -99,8 +99,15 @@ public class QualitySettingsController : MonoBehaviour
 
         SetResolution(savedResolutionIndex);
         SetQuality(PlayerPrefs.GetInt("QualityLevel", 2));
-        Debug.Log("Loading settings. Quality level is " + QualitySettings.GetQualityLevel() + "\n" + "Resolution is "
-                  + Screen.currentResolution.width + "x" + Screen.currentResolution.height);
+        qualityDropdown.value = PlayerPrefs.GetInt("QualityLevel");
+        
+        InGameSettingsManager.Instance.InitializeVolumes();
+        InGameSettingsManager.Instance.InitializeBrightness();
+        InGameSettingsManager.Instance.SetMouseSensitivity(PlayerPrefs.GetFloat("MouseSensitivity", 100.0f));
+
+
+        // Debug.Log("Loading settings. Quality level is " + QualitySettings.GetQualityLevel() + "\n" + "Resolution is "
+        //           + Screen.currentResolution.width + "x" + Screen.currentResolution.height);
     }
 
 
@@ -111,6 +118,8 @@ public class QualitySettingsController : MonoBehaviour
             if(obj != null)
                 obj.SetActive(false);
         }
+        if(soundSettings != null)
+            soundSettings.SetActive(false);
     }
     
     #region Old Settings

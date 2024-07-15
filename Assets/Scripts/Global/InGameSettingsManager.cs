@@ -137,7 +137,7 @@ public class InGameSettingsManager : MonoBehaviour
         PlayerPrefs.Save();
     }
     
-    private void InitializeBrightness()
+    public void InitializeBrightness()
     {
         float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, .25f);
         SetBrightness(brightness);
@@ -195,7 +195,7 @@ public class InGameSettingsManager : MonoBehaviour
         //hasSetFirstTime = PlayerPrefs.GetInt("HasSetFirstTime", 0) == 1;
     }
 
-    private void InitializeVolumes()
+    public void InitializeVolumes()
     {
         SetVolume(BrightnessPrefKey, PlayerPrefs.GetFloat(BrightnessPrefKey, 0.5f));
         SetVolume(ViewBobbingPrefKey, PlayerPrefs.GetFloat(ViewBobbingPrefKey, 0.5f));
