@@ -17,7 +17,7 @@ public static class Loader
     }
 
     private static Action _onLoaderCallback;
-    private static AsyncOperation loadingAsyncOperation;
+    private static AsyncOperation _loadingAsyncOperation;
 
     public static void Load(Scene scene)
     {
@@ -34,9 +34,9 @@ public static class Loader
     {
         yield return null;
         
-        loadingAsyncOperation = SceneManager.LoadSceneAsync(scene.ToString());
+        _loadingAsyncOperation = SceneManager.LoadSceneAsync(scene.ToString());
 
-        while (!loadingAsyncOperation.isDone)
+        while (!_loadingAsyncOperation.isDone)
         {
             yield return null;
         }
@@ -44,13 +44,13 @@ public static class Loader
 
     public static float GetLoadingProgress()
     {
-        return loadingAsyncOperation?.progress ?? 1f;
+        return _loadingAsyncOperation?.progress ?? 1f;
     }
 
     public static void LoaderCallback()
     {
         if (_onLoaderCallback != null)
-        {
+        { 
             _onLoaderCallback();
             _onLoaderCallback = null;
         }
