@@ -6,18 +6,15 @@ public class ToggleSettingsController : MonoBehaviour
     public string settingKey;
 
     private Toggle _toggle;
-
-    private void Awake()
-    {
-        InGameSettingsManager.Instance.LoadSettings();
-    }
+    
 
     private void Start()
     {
         _toggle = GetComponent<Toggle>();
 
         if (InGameSettingsManager.Instance == null) return;
-
+        InGameSettingsManager.Instance.LoadSettings();
+        
         _toggle.isOn = PlayerPrefs.GetInt(settingKey, 1) == 1;
         _toggle.onValueChanged.AddListener(OnToggleValueChanged);
     }

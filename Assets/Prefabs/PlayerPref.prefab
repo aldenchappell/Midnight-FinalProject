@@ -6026,7 +6026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3910571132301498232
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12753,6 +12753,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 6926266069868629513}
   qualityDropdown: {fileID: 8666373676821787602}
+  disableOnRuntimeObjects:
+  - {fileID: 2240425493531207795}
 --- !u!114 &6390002439482406701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16275,11 +16277,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: High
+    - m_Text: Low
       m_Image: {fileID: 21300000, guid: 7442511af63fe4945ba3a323516be7ea, type: 3}
     - m_Text: Medium
       m_Image: {fileID: 21300000, guid: 7442511af63fe4945ba3a323516be7ea, type: 3}
-    - m_Text: Low
+    - m_Text: High
       m_Image: {fileID: 21300000, guid: 7442511af63fe4945ba3a323516be7ea, type: 3}
   m_OnValueChanged:
     m_PersistentCalls:
