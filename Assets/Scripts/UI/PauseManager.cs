@@ -112,10 +112,14 @@ public class PauseManager : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
+        if(LevelCompletionManager.Instance.hasKey && SceneManager.GetActiveScene().name != "LOBBY")
+        {
+            LevelCompletionManager.Instance.SetCollectedKeys(0);
+            LevelCompletionManager.Instance.hasKey = false;
+        }
         //Debug.Log("Loading Menu...");
         //SceneManager.LoadScene("MAINMENU");
         Loader.Load(Loader.Scene.MAINMENU);
-        LevelCompletionManager.Instance.ResetGame(true);
         AudioListener.pause = false;
     }
 

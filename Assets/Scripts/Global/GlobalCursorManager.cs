@@ -16,7 +16,22 @@ public class GlobalCursorManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            if(Cursor.lockState == CursorLockMode.None)
+            {
+                DisableCursor();
+            }
+            else
+            {
+                EnableCursor();
+            }
+        }
+    }
+
     public void EnableCursor()
     {
         Cursor.visible = true;
