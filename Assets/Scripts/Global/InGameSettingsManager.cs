@@ -4,24 +4,18 @@ using UnityEngine.Rendering.PostProcessing;
 public class InGameSettingsManager : MonoBehaviour
 {
     public static InGameSettingsManager Instance;
-    
-    //[ColoredHeader("In Game Settings", "#FF00FF")] 
+
     public bool enableHeadBobbing = true;
     public bool enableFootstepSounds = true;
     public bool enableHeartbeatSounds = true;
     public bool enableCompass = true;
     public bool enableShaking = true;
     
-    //for testing purposes only
-    public bool enableJumping = false;
     public bool enableDroppingItems;
 
-    [Space(10)]
-    
     public bool isFirstLaunch = true;
     public bool hasSetFirstTime = false;
-    
-    //[ColoredHeader("Custom KeyBinds", "#FFFF00")]
+
     public KeyCode objectInteractionKeyOne = KeyCode.E;
     public KeyCode objectInteractionKeyTwo = KeyCode.Mouse0;
     public KeyCode itemExaminationInteractionKey = KeyCode.F;
@@ -38,18 +32,16 @@ public class InGameSettingsManager : MonoBehaviour
     private const string CompassPrefKey = "Compass";
     private const string ShakePrefKey = "Shake";
     
-    //Sensitivity
     public float minMouseSensitivity = 10.0f;
     public float maxMouseSensitivity = 200.0f;
     
     private PostProcessVolume _postProcessVolume;
     private AutoExposure _autoExposure;
     
-    //Brightness
     private const float MinBrightness = 0.05f;
     private const float MaxBrightness = .75f;
 
-    public int _resolutionIndex;
+    public int resolutionIndex;
 
     private void Awake()
     {
@@ -78,16 +70,7 @@ public class InGameSettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat("MouseSensitivity", clampedSensitivity);
         PlayerPrefs.Save();
     }
-    
-    /// <summary>
-    /// PUT THIS METHOD ON EVERY TOGGLE.
-    /// APPLY THE TOGGLESETTINGSCONTROLLER TO THE TOGGLE AS WELL.
-    /// GO TO THE TOP OF THIS SCRIPT WHERE ALL OF THE 'PREF' KEYS ARE DECLARED
-    /// IF THERE ISNT A SETTING FOR THE DESIRED TOGGLE, DECLARE A NEW ONE AND MAKE ANOTHER CASE BELOW!
-    /// Questions? Ask Alden.
-    /// </summary>
-    /// <param name="settingKey"></param>
-    /// <param name="value"></param>
+
     public void SetToggleSetting(string settingKey, bool value)
     {
         PlayerPrefs.SetInt(settingKey, value ? 1 : 0);
@@ -112,10 +95,8 @@ public class InGameSettingsManager : MonoBehaviour
                     compassController.SetCompassAlpha(value ? 1 : 0);
                 }
                 break;
-            // case ShakePrefKey:
-            //     enableShaking = value;
-            //     break;
-            default: Debug.Log("Error setting toggle setting.");
+            default: 
+                Debug.Log("Error setting toggle setting.");
                 break;
         }
     }
@@ -187,7 +168,7 @@ public class InGameSettingsManager : MonoBehaviour
 
     public int GetQualityLevel()
     {
-        int level = PlayerPrefs.GetInt("QualityLevel", UnityEngine.QualitySettings.GetQualityLevel());
+        int level = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
         return level;
     }
 
@@ -198,11 +179,6 @@ public class InGameSettingsManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void ToggleHeartbeat()
-    {
-        enableHeartbeatSounds = !enableHeartbeatSounds;
-        Debug.Log(enableHeartbeatSounds);
-    }
     public void LoadSettings()
     {
         enableHeadBobbing = PlayerPrefs.GetInt(ViewBobbingPrefKey, 1) == 1;
@@ -212,8 +188,10 @@ public class InGameSettingsManager : MonoBehaviour
         
         SetQualityLevel(GetQualityLevel());
         InitializeBrightness();
-        InitializeVolumes(); 
-        InitializeBrightness();
+        InitializeVolumes();
+
+        // Check if the first time resolution setting has been set
+        hasSetFirstTime = PlayerPrefs.GetInt("HasSetFirstTime", 0) == 1;
     }
 
     private void InitializeVolumes()

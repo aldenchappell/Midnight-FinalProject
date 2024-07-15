@@ -98,9 +98,7 @@ public class LevelCompletionManager : MonoBehaviour
         allIdolsCollected = false;
         
         ResetPuzzles();
-        
         _completedLevels.Clear();
-        _completedPuzzles.Clear();
         _skullDialoguePlayed.Clear();
         
         hasCompletedLobby = false;
@@ -110,26 +108,15 @@ public class LevelCompletionManager : MonoBehaviour
         {
             FindObjectOfType<KeyCubbyController>().ResetCubby();
             _keysReturned = 0;
+            _collectedIdols = 0;
         }
     }
     
     public void FinishGame()
     {
         allLevelsCompleted = true;
-        //PowerLobbyIfNeeded();
     }
-
-    private void PowerLobbyIfNeeded()
-    {
-        if (allLevelsCompleted && !hasCompletedLobby)
-        {
-            hasCompletedLobby = true;
-            
-            if(SceneManager.GetActiveScene().name == "LOBBY")
-                FindObjectOfType<FuseBox>().PowerLobby();
-        }
-    }
-
+    
     public void StartLevel(string levelName, List<SO_Puzzle> puzzles)
     {
         _currentLevel = levelName;

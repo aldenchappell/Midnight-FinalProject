@@ -13,8 +13,8 @@ public class ResolutionManager : MonoBehaviour
     private void ApplySavedResolution()
     {
         //int savedResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", _resolutions.Length - 1);
-        int savedResolutionIndex = InGameSettingsManager.Instance._resolutionIndex;
-        print(InGameSettingsManager.Instance._resolutionIndex);
+        int savedResolutionIndex = InGameSettingsManager.Instance.resolutionIndex;
+        print(InGameSettingsManager.Instance.resolutionIndex);
         if (savedResolutionIndex >= 0 && savedResolutionIndex < _resolutions.Length)
         {
             Resolution resolution = _resolutions[savedResolutionIndex];
