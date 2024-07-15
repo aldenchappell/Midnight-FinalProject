@@ -46,7 +46,7 @@ public class SetMovement : MonoBehaviour
     public void SetCurrentMovementState(string state, Vector3 setPosition)
     {
         
-       if(!_isPreppingToSpawn)
+       if(!_isPreppingToSpawn && _currentEndDestination != Vector3.zero)
        {
             switch (state)
             {
@@ -70,6 +70,10 @@ public class SetMovement : MonoBehaviour
                     PatrolArea(setPosition);
                     break;
             }
+       }
+       else if(!_isPreppingToSpawn)
+       {
+            CreateNewPatrolRoute();
        }
        
     }
