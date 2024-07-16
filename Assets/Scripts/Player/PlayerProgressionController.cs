@@ -103,7 +103,7 @@ public class PlayerProgressionController : MonoBehaviour
     #endregion
     private void UpdateProgressionUI()
     {
-        pauseMenuIdolsCollectedText.text = LevelCompletionManager.Instance.GetCollectedIdols() + " / 9";
+        pauseMenuIdolsCollectedText.text = "Idols collected: " + LevelCompletionManager.Instance.GetCollectedIdols() + "/9";
         pauseMenuKeysCollectedText.text = "Keys collected: " + keys;
         inGameKeysCollectedText.text = keys.ToString();
     }
