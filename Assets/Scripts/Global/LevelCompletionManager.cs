@@ -19,6 +19,7 @@ public class LevelCompletionManager : MonoBehaviour
     public List<SO_Puzzle> level2Puzzles;
     public List<SO_Puzzle> level3Puzzles;
 
+    public List<SO_Idol> idols;
     private int _collectedKeys;
     private int _collectedIdols;
     public bool allIdolsCollected;
@@ -109,6 +110,7 @@ public class LevelCompletionManager : MonoBehaviour
             FindObjectOfType<KeyCubbyController>().ResetCubby();
             _keysReturned = 0;
             _collectedIdols = 0;
+            ResetIdols();
         }
     }
     
@@ -250,5 +252,14 @@ public class LevelCompletionManager : MonoBehaviour
     {
         objective.isCompleted = true;
         FindObjectOfType<ObjectiveController>().UpdateTaskList();
+    }
+
+    private void ResetIdols()
+    {
+        _collectedIdols = 0;
+        foreach (var idol in idols)
+        {
+            idol.collected = false;
+        }
     }
 }

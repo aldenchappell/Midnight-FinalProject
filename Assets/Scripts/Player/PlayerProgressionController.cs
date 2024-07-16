@@ -83,8 +83,9 @@ public class PlayerProgressionController : MonoBehaviour
     #endregion
     #region Idols
 
-    public void CollectIdol()
+    public void CollectIdol(SO_Idol idol)
     {
+        idol.collected = true;
         idols++;
         LevelCompletionManager.Instance.CollectIdol();
         UpdateProgressionUI();
