@@ -13,8 +13,6 @@ public class ElevatorObjective : MonoBehaviour
 
     private void Start()
     {
-        
-        
         Invoke(nameof(Disable), 1.0f);
     }
 

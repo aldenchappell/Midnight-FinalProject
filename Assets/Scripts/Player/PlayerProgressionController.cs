@@ -15,6 +15,8 @@ public class PlayerProgressionController : MonoBehaviour
     private KeyCubbyController _cubbyController;
     private SkullDialogue _skullDialogue;
 
+
+    [SerializeField] private AudioClip[] allIdolsCollectedSounds;
     private void Awake()
     {
         _skullDialogue = FindObjectOfType<SkullDialogue>();
@@ -92,6 +94,9 @@ public class PlayerProgressionController : MonoBehaviour
 
         if (LevelCompletionManager.Instance.GetCollectedIdols() >= 9)
         {
+            EnvironmentalSoundController.Instance.PlaySound(
+                allIdolsCollectedSounds[Random.Range(0, allIdolsCollectedSounds.Length)],
+                transform.position);
             LevelCompletionManager.Instance.allIdolsCollected = true;
         }
     }
