@@ -6,9 +6,10 @@ public class ElevatorObjective : MonoBehaviour
 
     private void Start()
     {
-        if (LevelCompletionManager.Instance._keysReturned >= 2 && LevelCompletionManager.Instance.hasKey)
+        if (LevelCompletionManager.Instance.allLevelsCompleted ||
+            LevelCompletionManager.Instance._keysReturned >= 2 && LevelCompletionManager.Instance.hasKey)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
         
         Invoke(nameof(Disable), 1.0f);
