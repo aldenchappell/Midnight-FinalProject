@@ -1,16 +1,19 @@
+using System;
 using UnityEngine;
 
 public class ElevatorObjective : MonoBehaviour
 {
     private bool _shouldCheckTrigger;
 
+    private void Awake()
+    {
+        if (LevelCompletionManager.Instance.allLevelsCompleted)
+            Destroy(gameObject);
+    }
+
     private void Start()
     {
-        if (LevelCompletionManager.Instance.allLevelsCompleted ||
-            LevelCompletionManager.Instance._keysReturned >= 2 && LevelCompletionManager.Instance.hasKey)
-        {
-            Destroy(gameObject);
-        }
+        
         
         Invoke(nameof(Disable), 1.0f);
     }
