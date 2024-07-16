@@ -41,14 +41,19 @@ public class ElevatorController : MonoBehaviour
     {
         _elevatorAudioSource = GetComponent<AudioSource>();
 
-        if (isLobbyElevator && SceneTransitionManager.PreviouslyLoadedSceneName != "MAINMENU")
+        if (isLobbyElevator && LevelCompletionManager.Instance.hasCompletedLobby)
         {
+            Debug.Log("Spawning player in elevator.");
             GameObject player = GameObject.Find("Player");
             player.transform.position = lobbySpawnPosition.position;
             player.transform.localRotation = lobbySpawnPosition.localRotation;
         }
         
     }
+
+    //Two positions in the lobby. Original position, and elevator position.
+    //At runtime, the 
+
 
     private void Start()
     {
