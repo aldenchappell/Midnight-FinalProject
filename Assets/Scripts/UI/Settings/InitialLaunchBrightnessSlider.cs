@@ -7,11 +7,11 @@ public class InitialLaunchBrightnessSlider : MonoBehaviour
 
     private const string BrightnessPrefKey = "ScreenBrightness"; 
     private const float MinBrightness = .35f;
-    private const float MaxBrightness = .75f;
+    private const float MaxBrightness = .65f;
 
     private void Start()
     {
-        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, 0.25f); 
+        float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, 0.5f); 
         UpdateImageBrightness(brightness);
     }
 
