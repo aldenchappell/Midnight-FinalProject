@@ -129,11 +129,25 @@ public class InGameSettingsManager : MonoBehaviour
     public void SetBrightness(float value)
     {
         float clampedBrightness = Mathf.Clamp(value, MinBrightness, MaxBrightness);
+
         RenderSettings.ambientLight = new Color(clampedBrightness, clampedBrightness, clampedBrightness, 1);
+     
+        RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Trilight;
+
+        // Set fog settings (if applicable)
+        //RenderSettings.fog = true; // Enable fog
+        //RenderSettings.fogColor = Color.gray; // Set fog color
+        //RenderSettings.fogDensity = 0.01f; // Set fog density
+
+        RenderSettings.reflectionIntensity = value;
+
+        RenderSettings.ambientEquatorColor = new Color(clampedBrightness, clampedBrightness, clampedBrightness, 1);
+        RenderSettings.ambientGroundColor = new Color(clampedBrightness, clampedBrightness, clampedBrightness, 1);
+
         PlayerPrefs.SetFloat(BrightnessPrefKey, clampedBrightness);
         PlayerPrefs.Save();
     }
-    
+
     public void InitializeBrightness()
     {
         float brightness = PlayerPrefs.GetFloat(BrightnessPrefKey, .25f);

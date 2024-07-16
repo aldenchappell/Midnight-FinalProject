@@ -48,12 +48,7 @@ public class ElevatorController : MonoBehaviour
             player.transform.position = lobbySpawnPosition.position;
             player.transform.localRotation = lobbySpawnPosition.localRotation;
         }
-        
     }
-
-    //Two positions in the lobby. Original position, and elevator position.
-    //At runtime, the 
-
 
     private void Start()
     {
