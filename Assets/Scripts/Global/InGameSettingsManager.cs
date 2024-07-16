@@ -39,7 +39,7 @@ public class InGameSettingsManager : MonoBehaviour
     private AutoExposure _autoExposure;
     
     private const float MinBrightness = 0.05f;
-    private const float MaxBrightness = .75f;
+    private const float MaxBrightness = 1f;
     private void Awake()
     {
         if (Instance == null)

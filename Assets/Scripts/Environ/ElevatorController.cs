@@ -40,6 +40,14 @@ public class ElevatorController : MonoBehaviour
     private void Awake()
     {
         _elevatorAudioSource = GetComponent<AudioSource>();
+
+        if (isLobbyElevator && SceneTransitionManager.PreviouslyLoadedSceneName != "MAINMENU")
+        {
+            GameObject player = GameObject.Find("Player");
+            player.transform.position = lobbySpawnPosition.position;
+            player.transform.localRotation = lobbySpawnPosition.localRotation;
+        }
+        
     }
 
     private void Start()
@@ -47,15 +55,6 @@ public class ElevatorController : MonoBehaviour
         Invoke(nameof(OpenElevator), 1f);
         
         ShowElevatorLevelOnStart();
-
-        if (LevelCompletionManager.Instance.shouldSpawnInLobby) return;
-
-        if (isLobbyElevator)
-        {
-            GameObject player = GameObject.Find("Player");
-            player.transform.position = lobbySpawnPosition.position;
-            player.transform.localRotation = lobbySpawnPosition.localRotation;
-        }
     }
 
     public void OpenElevator()
@@ -153,9 +152,6 @@ public class ElevatorController : MonoBehaviour
             PromptKeyPlacement(false);
             return;
         }
-
-        //make the player NOT spawn in the lobby.
-        LevelCompletionManager.Instance.shouldSpawnInLobby = false;
 
         // Determine the selected level based on floor index
         switch (floorIndex)
