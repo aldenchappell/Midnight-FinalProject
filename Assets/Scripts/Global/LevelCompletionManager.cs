@@ -33,6 +33,8 @@ public class LevelCompletionManager : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField] private AudioClip keyDropSound;
 
+    public bool shouldSpawnInLobby = true;
+
     public bool hasKey = false;
     public bool allLevelsCompleted = false;
     private void Awake()
@@ -111,6 +113,7 @@ public class LevelCompletionManager : MonoBehaviour
             _keysReturned = 0;
             _collectedIdols = 0;
             ResetIdols();
+            shouldSpawnInLobby = true;
         }
     }
     
