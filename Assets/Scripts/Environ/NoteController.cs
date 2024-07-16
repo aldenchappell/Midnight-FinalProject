@@ -21,6 +21,17 @@ public class NoteController : MonoBehaviour
         _firstPersonController = FindObjectOfType<FirstPersonController>();
     }
 
+    private void Update()
+    {
+        if (_isPickedUp)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                ToggleUI();
+            }
+        }
+    }
+
     public void ToggleUI()
     {
         if (!_isPickedUp)
@@ -42,7 +53,7 @@ public class NoteController : MonoBehaviour
         {
             _audio.PlayOneShot(pickupClip);
         }
-        
+        GetComponent<Collider>().enabled = false;
         //GlobalCursorManager.Instance.EnableCursor();
         _firstPersonController.canMove = false;
         _firstPersonController.canRotate = false;
@@ -56,7 +67,7 @@ public class NoteController : MonoBehaviour
         {
             _audio.PlayOneShot(paperFallingClip);
         }
-        
+        GetComponent<Collider>().enabled = true;
         //GlobalCursorManager.Instance.DisableCursor();
         _firstPersonController.canMove = true;
         _firstPersonController.canRotate = true;
