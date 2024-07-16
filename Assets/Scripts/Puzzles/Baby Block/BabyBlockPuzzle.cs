@@ -229,6 +229,7 @@ public class BabyBlockPuzzle : MonoBehaviour
                     animationChild.transform.GetChild(i).GetComponent<MeshRenderer>().material = completeMaterial;
                 }
             }
+            GameObject.FindObjectOfType<DaVinciPuzzle>()._hasBlockBeenSolved = true;
 
             if(GetComponent<Puzzle>() != null)
             {

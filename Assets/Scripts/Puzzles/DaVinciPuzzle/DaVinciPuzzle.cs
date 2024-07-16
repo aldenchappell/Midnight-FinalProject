@@ -27,6 +27,7 @@ public class DaVinciPuzzle : MonoBehaviour
 
     private int _currentDialIndex;
     private bool _isActive;
+    public bool _hasBlockBeenSolved;
     private bool _canExit;
 
     private FirstPersonController _FPC;
@@ -55,6 +56,7 @@ public class DaVinciPuzzle : MonoBehaviour
         _mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
 
         _canAnimate = true;
+        _hasBlockBeenSolved = false;
     }
 
     private void Start()
@@ -200,7 +202,7 @@ public class DaVinciPuzzle : MonoBehaviour
         {
             correctLetters++;
         }
-        if(correctLetters == 4)
+        if(correctLetters == 4 && _hasBlockBeenSolved)
         {
             if(_canAnimate)
             {
