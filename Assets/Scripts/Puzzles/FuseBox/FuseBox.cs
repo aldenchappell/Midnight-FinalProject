@@ -127,7 +127,7 @@ public class FuseBox : MonoBehaviour
         {
             light.enabled = false;
 
-            //check for renderre on parent
+            //check for renderer on parent
             Renderer rend = light.GetComponentInParent<Renderer>();
             if (rend != null)
             {
@@ -135,7 +135,7 @@ public class FuseBox : MonoBehaviour
                 if (material != null && material.IsKeywordEnabled("_EMISSION"))
                 {
                     _lobbyEmissives.Add(material);
-                    continue; //if an emissive is found continue to find the ones that dont have the renderer as a parent
+                    continue; //if an emissive is found continue to find the ones that don't have the renderer as a parent
                 }
             }
 
@@ -147,11 +147,39 @@ public class FuseBox : MonoBehaviour
                 if (mat != null && mat.IsKeywordEnabled("_EMISSION"))
                 {
                     _lobbyEmissives.Add(mat);
+                    continue; //if an emissive is found continue to find the ones that have more than one material.
+                }
+            }
+
+            //For chandelier
+            GameObject chandelier = GameObject.FindWithTag("Chandelier");
+            if (chandelier != null)
+            {
+                Renderer chandelierRenderer = chandelier.GetComponent<Renderer>();
+                if (chandelierRenderer != null)
+                {
+                    foreach (Material mat in chandelierRenderer.materials)
+                    {
+                        if (mat != null && mat.IsKeywordEnabled("_EMISSION"))
+                        {
+                            _lobbyEmissives.Add(mat);
+                        }
+                    }
+                }
+
+                Renderer chandelierChainsRend = GameObject.Find("Chains").GetComponent<Renderer>();
+                if (chandelierChainsRend != null)
+                {
+                    Material chainMat = chandelierChainsRend.material;
+                    if (chainMat != null && chainMat.IsKeywordEnabled("_EMISSION"))
+                    {
+                        _lobbyEmissives.Add(chainMat);
+                    }
                 }
             }
         }
     }
-
+    
     private void ToggleEmissives(bool enable)
     {
         //emissives
