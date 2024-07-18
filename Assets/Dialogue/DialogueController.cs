@@ -25,6 +25,7 @@ public class DialogueController : MonoBehaviour
     private bool _shouldPrintText = true;
     private bool _isPrintingLine = false;
     private Coroutine _currentCoroutine = null;
+    private GameObject _currentNPC;
 
     private PlayerDualHandInventory _playerInventory;
     private FirstPersonController _firstPersonController;
@@ -63,7 +64,7 @@ public class DialogueController : MonoBehaviour
             {
                 print("Outside Distance");
                 _currentDialogueNPC = null;
-                StopDialogue();
+                StopDialogue(_currentNPC);
             }
         }
         if(_currentDialogueNPC != null)
@@ -72,11 +73,18 @@ public class DialogueController : MonoBehaviour
             {
                 GoToNextLine();
             }
+            if(Input.GetMouseButtonDown(1))
+            {
+                StopDialogue(_currentNPC);
+            }
         }
+        
     }
 
     public void StartDialogue(string[] lines, GameObject npc)
     {
+        npc.GetComponent<Collider>().enabled = false;
+        _currentNPC = npc;
         if (lines == null || lines.Length == 0)
         {
             Debug.LogError("Dialogue lines are null or empty!");
@@ -124,7 +132,7 @@ public class DialogueController : MonoBehaviour
             }
             else
             {
-                StopDialogue();
+                StopDialogue(_currentNPC);
             }
         }
         else if (_isPrintingLine)
@@ -185,8 +193,9 @@ public class DialogueController : MonoBehaviour
         _firstPersonController.canRotate = true;
     }
 
-    private void StopDialogue()
+    private void StopDialogue(GameObject npc)
     {
+
         if (_currentCoroutine != null)
         {
             StopCoroutine(_currentCoroutine);
@@ -198,6 +207,7 @@ public class DialogueController : MonoBehaviour
         
         if (audioSource.clip != null)
             audioSource.clip = null;
+        npc.GetComponent<Collider>().enabled = true;
     }
 
     public void ResetDialogue()
