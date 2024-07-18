@@ -140,37 +140,89 @@ public class PlayerDualHandInventory : MonoBehaviour
             UpdateInventoryUI();
         }
 
-        newObject.GetComponent<Collider>().enabled = false;
-        newObject.transform.parent = this.gameObject.transform;
-
-        if (!_originalScales.ContainsKey(newObject))
+        if(newObject.transform.tag == "Skull")
         {
-            _originalScales.Add(newObject, newObject.transform.localScale);
+            newObject.GetComponent<Collider>().enabled = false;
+            if(newObject.transform.parent != null)
+            {
+                newObject.transform.parent.transform.GetComponent<Collider>().enabled = true;
+                MeshRenderer[] renderers = newObject.transform.parent.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer renderer in renderers)
+                {
+                    renderer.enabled = true;
+                }
+            }
+            newObject.transform.parent = this.gameObject.transform;
+            if (!_originalScales.ContainsKey(newObject))
+            {
+                _originalScales.Add(newObject, newObject.transform.localScale);
+            }
+            //newObject.transform.localScale = _originalScales[newObject];
+            newObject.layer = LayerMask.NameToLayer("Default");
+            _inventorySlots[currentIndexSelected] = newObject;
+            ShowCurrentIndexItem();
+            PickedUp = true;
+            UpdateInventoryUI();
         }
-        //newObject.transform.localScale = _originalScales[newObject];
-        newObject.layer = LayerMask.NameToLayer("Default");
-        _inventorySlots[currentIndexSelected] = newObject;
-        ShowCurrentIndexItem();
-        PickedUp = true;
-        UpdateInventoryUI();
+        else
+        {
+            newObject.GetComponent<Collider>().enabled = false;
+            newObject.transform.parent = this.gameObject.transform;
+
+            if (!_originalScales.ContainsKey(newObject))
+            {
+                _originalScales.Add(newObject, newObject.transform.localScale);
+            }
+            //newObject.transform.localScale = _originalScales[newObject];
+            newObject.layer = LayerMask.NameToLayer("Default");
+            _inventorySlots[currentIndexSelected] = newObject;
+            ShowCurrentIndexItem();
+            PickedUp = true;
+            UpdateInventoryUI();
+        }
     }
+
 
     private void PlaceObjectFromInventory(GameObject obj)
     {
         if (_inventorySlots[currentIndexSelected] != null)
         {
-            if(_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag)
+            if (_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag && obj.transform.tag == "Skull")
             {
-                if(obj.transform.parent != null)
+                obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
+                obj.GetComponent<Collider>().enabled = false;
+                MeshRenderer[] renderers = obj.transform.parent.GetComponentsInChildren<MeshRenderer>();
+                foreach(MeshRenderer renderer in renderers)
+                {
+                    renderer.enabled = false;
+                }
+
+                _inventorySlots[currentIndexSelected].transform.parent = obj.transform;
+                _inventorySlots[currentIndexSelected].transform.position = obj.transform.position;
+                _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
+                _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
+                _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
+                UpdateInventoryUI();
+                
+
+
+                _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
+                UpdateInventoryUI();
+                _inventorySlots[currentIndexSelected] = null;
+                
+            }
+            else if(_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag)
+            {
+                if (obj.transform.parent != null)
                 {
                     _inventorySlots[currentIndexSelected].transform.parent = obj.transform.parent;
                 }
                 else
                 {
-                    _inventorySlots[currentIndexSelected].transform.parent = null; 
-                    
+                    _inventorySlots[currentIndexSelected].transform.parent = null;
+
                 }
-                
+
                 _inventorySlots[currentIndexSelected].transform.position = obj.transform.position;
                 _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
                 _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
@@ -181,7 +233,6 @@ public class PlayerDualHandInventory : MonoBehaviour
                 Destroy(obj);
                 UpdateInventoryUI();
                 _inventorySlots[currentIndexSelected] = null;
-                
             }
         }
     }
