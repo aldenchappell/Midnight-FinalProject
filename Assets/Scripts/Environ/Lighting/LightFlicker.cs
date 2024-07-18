@@ -15,6 +15,7 @@ public class LightFlicker : MonoBehaviour
     private Renderer _sconceRenderer;
     [SerializeField] private Material sconceOnMat, sconceOffMat;
     [HideInInspector] public GameObject enemy;
+    [SerializeField] private bool isSconce;
     public bool lamp;
     private void Awake()
     {
@@ -22,6 +23,11 @@ public class LightFlicker : MonoBehaviour
         flickerTime = new float[] { 0.25f, .75f };
 
         _sconceRenderer = !lamp ? GetComponentInParent<Renderer>() : transform.parent.GetChild(transform.parent.childCount - 1).GetComponent<Renderer>();
+
+        if (transform.parent.name.Contains("SconceRound"))
+        {
+            isSconce = true;
+        }
         
         GameObject lightAudioManager = GameObject.Find("LightAudioManager");
         if (lightAudioManager != null)
@@ -70,7 +76,14 @@ public class LightFlicker : MonoBehaviour
     private void SetLightState(bool state)
     {
         _light.enabled = state;
-        if(lamp)
+        if (lamp)
+        {
             _sconceRenderer.material = state ? sconceOnMat : sconceOffMat;
+        }
+        else if (isSconce)
+        {
+            Renderer sconceMat = GetComponentInParent<Renderer>();
+            sconceMat.material = state ? sconceOnMat : sconceOffMat;
+        }
     }
 }
