@@ -182,36 +182,68 @@ public class PlayerDualHandInventory : MonoBehaviour
         }
     }
 
+    public void SwapSkullIntoInventory(GameObject newObject)
+    {
+        if (_inventorySlots[currentIndexSelected] != null)
+        {
+            _inventorySlots[currentIndexSelected].transform.parent = null;
+            _inventorySlots[currentIndexSelected].SetActive(true);
+            _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
+            _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
+            if (newObject.transform.parent != null)
+            {
+                Debug.Log("Moving to " + newObject.name + "'s ghost placement position.");
+                _inventorySlots[currentIndexSelected].transform.position =
+                newObject.transform.parent.transform.Find("GhostPlacement").position;
+                _inventorySlots[currentIndexSelected].transform.localRotation =
+                newObject.transform.parent.transform.Find("GhostPlacement").localRotation;
+                _inventorySlots[currentIndexSelected].transform.GetComponent<MeshRenderer>().enabled = true;
+                _inventorySlots[currentIndexSelected].transform.GetComponent<Collider>().enabled = true;
+                UpdateInventoryUI();
+            }
+            else
+            {
+                _inventorySlots[currentIndexSelected].transform.position = newObject.transform.position;
+                _inventorySlots[currentIndexSelected].transform.eulerAngles = newObject.transform.eulerAngles;
+                Transform ghostPosition = newObject.transform.Find("GhostPlacement");
+                if (ghostPosition != null)
+                {
+                    Destroy(ghostPosition.gameObject);
+                }
+            }
+        }
+
+       
+            newObject.GetComponent<Collider>().enabled = false;
+            if (newObject.transform.parent != null)
+            {
+                newObject.transform.parent.transform.GetComponent<Collider>().enabled = true;
+                MeshRenderer[] renderers = newObject.transform.parent.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer renderer in renderers)
+                {
+                    renderer.enabled = true;
+                }
+            }
+            newObject.transform.parent = this.gameObject.transform;
+            if (!_originalScales.ContainsKey(newObject))
+            {
+                _originalScales.Add(newObject, newObject.transform.localScale);
+            }
+            //newObject.transform.localScale = _originalScales[newObject];
+            newObject.layer = LayerMask.NameToLayer("Default");
+            _inventorySlots[currentIndexSelected] = newObject;
+            ShowCurrentIndexItem();
+            PickedUp = true;
+            UpdateInventoryUI();
+        
+    }
 
     private void PlaceObjectFromInventory(GameObject obj)
     {
         if (_inventorySlots[currentIndexSelected] != null)
         {
-            if (_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag && obj.transform.tag == "Skull")
-            {
-                obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
-                obj.GetComponent<Collider>().enabled = false;
-                MeshRenderer[] renderers = obj.transform.parent.GetComponentsInChildren<MeshRenderer>();
-                foreach(MeshRenderer renderer in renderers)
-                {
-                    renderer.enabled = false;
-                }
-
-                _inventorySlots[currentIndexSelected].transform.parent = obj.transform;
-                _inventorySlots[currentIndexSelected].transform.position = obj.transform.position;
-                _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
-                _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
-                _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
-                UpdateInventoryUI();
-                
-
-
-                _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
-                UpdateInventoryUI();
-                _inventorySlots[currentIndexSelected] = null;
-                
-            }
-            else if(_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag)
+            
+            if(_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag)
             {
                 if (obj.transform.parent != null)
                 {
@@ -235,6 +267,34 @@ public class PlayerDualHandInventory : MonoBehaviour
                 _inventorySlots[currentIndexSelected] = null;
             }
         }
+    } 
+
+    public void PlaceSkullInShadowPosition(GameObject obj)
+    {
+        if (_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag)
+        {
+            obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
+            obj.GetComponent<Collider>().enabled = false;
+            MeshRenderer[] renderers = obj.transform.parent.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in renderers)
+            {
+                renderer.enabled = false;
+            }
+
+            _inventorySlots[currentIndexSelected].transform.parent = obj.transform;
+            _inventorySlots[currentIndexSelected].transform.position = obj.transform.position;
+            _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
+            _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
+            _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
+            UpdateInventoryUI();
+
+
+
+            _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
+            UpdateInventoryUI();
+            _inventorySlots[currentIndexSelected] = null;
+        }
+            
     }
 
     public void PlaceObjectInPuzzle(GameObject obj)
