@@ -271,28 +271,31 @@ public class PlayerDualHandInventory : MonoBehaviour
 
     public void PlaceSkullInShadowPosition(GameObject obj)
     {
-        if (_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag)
+        if(_inventorySlots[currentIndexSelected] != null)
         {
-            obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
-            obj.GetComponent<Collider>().enabled = false;
-            MeshRenderer[] renderers = obj.transform.parent.GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer renderer in renderers)
+            if (_inventorySlots[currentIndexSelected].transform.tag == obj.transform.tag)
             {
-                renderer.enabled = false;
+                obj.GetComponent<InteractableObject>().onPlaceObject.Invoke();
+                obj.GetComponent<Collider>().enabled = false;
+                MeshRenderer[] renderers = obj.transform.parent.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer renderer in renderers)
+                {
+                    renderer.enabled = false;
+                }
+
+                _inventorySlots[currentIndexSelected].transform.parent = obj.transform;
+                _inventorySlots[currentIndexSelected].transform.position = obj.transform.position;
+                _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
+                _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
+                _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
+                UpdateInventoryUI();
+
+
+
+                _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
+                UpdateInventoryUI();
+                _inventorySlots[currentIndexSelected] = null;
             }
-
-            _inventorySlots[currentIndexSelected].transform.parent = obj.transform;
-            _inventorySlots[currentIndexSelected].transform.position = obj.transform.position;
-            _inventorySlots[currentIndexSelected].transform.eulerAngles = obj.transform.eulerAngles;
-            _inventorySlots[currentIndexSelected].GetComponent<Collider>().enabled = true;
-            _inventorySlots[currentIndexSelected].layer = LayerMask.NameToLayer("InteractableObject");
-            UpdateInventoryUI();
-
-
-
-            _inventorySlots[currentIndexSelected].GetComponent<InteractableObject>().onPlaceObject.Invoke();
-            UpdateInventoryUI();
-            _inventorySlots[currentIndexSelected] = null;
         }
             
     }
