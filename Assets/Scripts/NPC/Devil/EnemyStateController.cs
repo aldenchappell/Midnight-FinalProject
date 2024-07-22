@@ -71,6 +71,7 @@ public class EnemyStateController : MonoBehaviour
         {
             currentState = AIState.Roam;
         }
+        _animator.ResetAllTriggers();
         _animator.SetAnimationTrigger(currentState.ToString());
     }
 

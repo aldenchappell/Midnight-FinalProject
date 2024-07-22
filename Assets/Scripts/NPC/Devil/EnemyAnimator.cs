@@ -19,6 +19,17 @@ public class EnemyAnimator : MonoBehaviour
         animator.ResetTrigger(animationName);
     }
 
+    public void ResetAllTriggers()
+    {
+        foreach(var param in animator.parameters)
+        {
+            if(param.type == AnimatorControllerParameterType.Trigger)
+            {
+                animator.ResetTrigger(param.name);
+            }
+        }
+    }
+
     public void SetAnimationBoolean(string animationName, bool value)
     {
         animator.SetBool(animationName, value);
