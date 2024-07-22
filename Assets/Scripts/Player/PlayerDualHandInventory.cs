@@ -218,7 +218,7 @@ public class PlayerDualHandInventory : MonoBehaviour
             if (newObject.transform.parent != null)
             {
                 newObject.transform.parent.transform.GetComponent<Collider>().enabled = true;
-                MeshRenderer[] renderers = newObject.transform.parent.GetComponentsInChildren<MeshRenderer>();
+                MeshRenderer[] renderers = newObject.transform.parent.transform.parent.GetComponentsInChildren<MeshRenderer>();
                 foreach (MeshRenderer renderer in renderers)
                 {
                     renderer.enabled = true;
