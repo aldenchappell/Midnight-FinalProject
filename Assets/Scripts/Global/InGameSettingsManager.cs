@@ -208,10 +208,10 @@ public class InGameSettingsManager : MonoBehaviour
 
     public void InitializeVolumes()
     {
-        SetVolume(BrightnessPrefKey, PlayerPrefs.GetFloat(BrightnessPrefKey, 0.5f));
-        SetVolume(ViewBobbingPrefKey, PlayerPrefs.GetFloat(ViewBobbingPrefKey, 0.5f));
-        SetVolume(FootstepSoundsPrefKey, PlayerPrefs.GetFloat(FootstepSoundsPrefKey, 0.5f));
-        SetVolume(HeartbeatSoundsPrefKey, PlayerPrefs.GetFloat(HeartbeatSoundsPrefKey, 0.5f));
-        SetVolume(CompassPrefKey, PlayerPrefs.GetFloat(CompassPrefKey, 0.5f));
+        SetVolume(BrightnessPrefKey, PlayerPrefs.GetFloat(BrightnessPrefKey, .5f));
+        SetVolume(ViewBobbingPrefKey, PlayerPrefs.GetFloat(ViewBobbingPrefKey, .5f));
+        SetVolume(FootstepSoundsPrefKey, PlayerPrefs.GetFloat(FootstepSoundsPrefKey, 1.0f));
+        SetVolume(HeartbeatSoundsPrefKey, PlayerPrefs.GetFloat(HeartbeatSoundsPrefKey, 1.0f));
+        SetVolume(CompassPrefKey, PlayerPrefs.GetFloat(CompassPrefKey, 1.0f));
     }
 }

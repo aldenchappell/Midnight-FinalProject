@@ -19,7 +19,7 @@ public class VolumeController : MonoBehaviour
     private void Start()
     {
         InGameSettingsManager.Instance.LoadSettings(); 
-        float savedVolume = InGameSettingsManager.Instance.GetVolume(volumeParameter, 0.5f); 
+        float savedVolume = InGameSettingsManager.Instance.GetVolume(volumeParameter, 1); 
         slider.value = savedVolume;
         HandleSliderValueChanged(savedVolume); 
     }
@@ -42,7 +42,7 @@ public class VolumeController : MonoBehaviour
 
     public void LoadVolume()
     {
-        float savedVolume = InGameSettingsManager.Instance.GetVolume(volumeParameter, 0.5f); 
+        float savedVolume = InGameSettingsManager.Instance.GetVolume(volumeParameter, 1); 
         slider.value = savedVolume;
         HandleSliderValueChanged(savedVolume); 
     }
