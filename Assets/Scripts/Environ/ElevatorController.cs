@@ -40,14 +40,14 @@ public class ElevatorController : MonoBehaviour
     private void Awake()
     {
         _elevatorAudioSource = GetComponent<AudioSource>();
-
         if (isLobbyElevator && LevelCompletionManager.Instance.hasCompletedLobby)
         {
             Debug.Log("Spawning player in elevator.");
-            GameObject player = GameObject.Find("Player");
+            GameObject player = GameObject.FindWithTag("Player");
             player.transform.position = lobbySpawnPosition.position;
             player.transform.localRotation = lobbySpawnPosition.localRotation;
         }
+
     }
 
     private void Start()
@@ -55,6 +55,7 @@ public class ElevatorController : MonoBehaviour
         Invoke(nameof(OpenElevator), 1f);
         
         ShowElevatorLevelOnStart();
+        
     }
 
     public void OpenElevator()

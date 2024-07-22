@@ -248,8 +248,7 @@ public class SetMovement : MonoBehaviour
         
         else if(_agent.remainingDistance <= _agent.stoppingDistance)
         {
-            print(_agent.remainingDistance <= _agent.stoppingDistance);
-            print("Were here bitch");
+
             Collider[] _allActiveNodes = Physics.OverlapSphere(patrolPositionCenter, maxPatrolRange, nodeLayer);
 
             int randomNodeIndex = Random.Range(0, _allActiveNodes.Length);
