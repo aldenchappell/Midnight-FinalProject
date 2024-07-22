@@ -54,7 +54,7 @@ public class RandomSuspicionEvents : MonoBehaviour
         {
             //print("Sussing");
             delay = 60f;
-            _patrolManager.RaiseSuspicion = suspicionAmount;
+            _patrolManager.DecreaseTimeToSpawn = suspicionAmount;
             _audioSource.gameObject.transform.position = transform.position;
             int randomIndex = Random.Range(0, _floorBoardSounds.Length);
             _audioSource.PlayOneShot(_floorBoardSounds[randomIndex]);
