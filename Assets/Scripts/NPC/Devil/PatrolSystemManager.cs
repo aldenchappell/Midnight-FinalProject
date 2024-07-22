@@ -10,6 +10,7 @@ public class PatrolSystemManager : MonoBehaviour
     [SerializeField] GameObject Demon;
     [SerializeField] bool hasFirstTimeSpawnCondition;
 
+
     private float _currentTime;
 
     private PlayerCameraShake _shakeCam;
@@ -31,7 +32,7 @@ public class PatrolSystemManager : MonoBehaviour
             else
             {
                 //print("Raising");
-                Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(GameObject.Find("Player").transform.position, value);
+                Demon.GetComponent<EnemySuspicionSystem>().SuspicionTriggered(GameObject.FindWithTag("Player").transform.position, value);
             }
         }
     }

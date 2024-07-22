@@ -27,6 +27,8 @@ public class SetMovement : MonoBehaviour
 
     private Vector3 _currentEndDestination;
     private bool _isPreppingToSpawn;
+    private Vector3 _currentSusZone;
+    private bool _hasReachedSusZone;
 
 
     private void Awake()
@@ -41,6 +43,7 @@ public class SetMovement : MonoBehaviour
     {
         _allActiveDemonDoors = GameObject.FindGameObjectsWithTag("DemonDoor");
         _currentEndDestination = Vector3.zero;
+        _hasReachedSusZone = false;
     }
 
     public void SetCurrentMovementState(string state, Vector3 setPosition)
@@ -206,15 +209,47 @@ public class SetMovement : MonoBehaviour
 
     private void PatrolArea(Vector3 patrolPositionCenter)
     {
-        if (_agent.destination == transform.position)
+        
+        if(_currentSusZone != patrolPositionCenter)
+        {
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(patrolPositionCenter, out hit, 1.0f, 1))
+            {
+                print("Point on navmesh");
+                _agent.destination = patrolPositionCenter;
+                _currentSusZone = patrolPositionCenter;
+            }
+            else
+            {
+                Collider[] _allActiveNodes = Physics.OverlapSphere(patrolPositionCenter, maxPatrolRange, nodeLayer);
+                float closestPosition = 100;
+                Collider chosenNode = null;
+                foreach(Collider node in _allActiveNodes)
+                {
+                    if(Vector3.Distance(patrolPositionCenter, node.transform.position) < closestPosition)
+                    {
+                        closestPosition = Vector3.Distance(patrolPositionCenter, node.transform.position);
+                        chosenNode = node;
+                    }
+                }
+                _agent.destination = chosenNode.transform.position;
+                _currentSusZone = patrolPositionCenter;
+            }
+        }
+        
+       
+        else if (_agent.destination == transform.position)
         {
             Collider[] _allActiveNodes = Physics.OverlapSphere(patrolPositionCenter, maxPatrolRange, nodeLayer);
 
             int randomNodeIndex = Random.Range(0, _allActiveNodes.Length);
             _agent.destination = _allActiveNodes[randomNodeIndex].gameObject.transform.position;
         } 
+        
         else if(_agent.remainingDistance <= _agent.stoppingDistance)
         {
+            print(_agent.remainingDistance <= _agent.stoppingDistance);
+            print("Were here bitch");
             Collider[] _allActiveNodes = Physics.OverlapSphere(patrolPositionCenter, maxPatrolRange, nodeLayer);
 
             int randomNodeIndex = Random.Range(0, _allActiveNodes.Length);
