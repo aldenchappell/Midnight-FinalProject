@@ -176,6 +176,11 @@ public class PlayerDualHandInventory : MonoBehaviour
             //newObject.transform.localScale = _originalScales[newObject];
             newObject.layer = LayerMask.NameToLayer("Default");
             _inventorySlots[currentIndexSelected] = newObject;
+            Transform ghostPosition = newObject.transform.Find("GhostPlacement");
+            if (ghostPosition != null)
+            {
+                Destroy(ghostPosition.gameObject);
+            }
             ShowCurrentIndexItem();
             PickedUp = true;
             UpdateInventoryUI();
