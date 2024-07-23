@@ -158,6 +158,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
             if (_puzzle != null)
             {
                 _puzzle.CompletePuzzle();
+                _puzzleEscape.ChangeIsActive();
             }
             else
             {
@@ -271,6 +272,7 @@ public class PhotoBoardPuzzle : MonoBehaviour
 
         _firstPersonController.canMove = true;
         _firstPersonController.controller.enabled = true;
+        _puzzleEscape.ChangeIsActive();
 
         ToggleCamera();
     }

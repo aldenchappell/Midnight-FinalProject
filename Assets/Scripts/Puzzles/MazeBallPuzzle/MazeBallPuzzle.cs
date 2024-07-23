@@ -122,6 +122,7 @@ public class MazeBallPuzzle : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && _isInPuzzle)
         {
             _puzzleEscape.EscapePressed?.Invoke();
+            _puzzleEscape.ChangeIsActive();
         }
     }
 
@@ -310,6 +311,7 @@ public class MazeBallPuzzle : MonoBehaviour
         {
             _playerDualHandInventory.RemoveObject = GameObject.FindWithTag("MazeBall");
         }
+        _puzzleEscape.ChangeIsActive();
     }
     
     private IEnumerator SpawnPolaroid()
